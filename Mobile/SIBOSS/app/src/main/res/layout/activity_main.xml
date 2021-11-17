@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="7.5dp"
+    tools:context=".MainActivity"
+    >
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/dari"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:text="Dari"/>
+
+    <EditText
+        android:id="@+id/from"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Terminal / Kota asal"
+        android:textColor="#A5A5A5"
+        android:layout_below="@+id/dari"
+        />
+
+    <TextView
+        android:id="@+id/ke"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/from"
+        android:text="Ke"/>
+
+    <EditText
+        android:id="@+id/to"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Terminal / Kota tujuan"
+        android:textColor="#A5A5A5"
+        android:layout_below="@+id/ke"
+        />
+
+    <TextView
+        android:id="@+id/pergi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pergi"
+        android:layout_below="@+id/to"
+        android:layout_marginTop="20dp"
+        />
+
+    <EditText
+        android:id="@+id/pergi_edit"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pergi"
+        android:text="Tanggal"
+        android:textColor="#A5A5A5" />
+
+    <TextView
+        android:id="@+id/pulang"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pulang"
+        android:layout_below="@+id/to"
+        android:layout_toRightOf="@+id/pergi"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="150dp"
+        />
+
+    <EditText
+        android:id="@+id/pulang_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#A5A5A5"
+        android:text="Tanggal"
+        android:layout_below="@+id/pulang"
+        android:layout_toRightOf="@+id/pergi"
+        android:layout_marginLeft="150dp"
+        />
+
+    <Button
+        android:id="@+id/cari"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="Cari"
+        android:layout_centerHorizontal="true"
+        />
+
+</RelativeLayout>
