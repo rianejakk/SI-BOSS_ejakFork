@@ -4,7 +4,8 @@
   box-sizing: border-box;
 }
 
-*::before, *::after {
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -17,13 +18,13 @@
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #527BDD;
+  background: #527bdd;
 }
 
 body {
   line-height: 1.5em;
 }
-.autoHeight{
+.autoHeight {
   height: 100vh;
 }
 
@@ -34,7 +35,7 @@ body {
   background-color: #f1f3fd;
 }
 
-.bg-img{
+.bg-img {
   background-image: url("../img/bg-pattern.png");
   background-position: 0px -80px;
   background-size: cover;
@@ -70,22 +71,32 @@ body {
   font-family: Poppins-Regular;
 }
 
-
 input.form-control-user {
   font-size: 14px;
   border-radius: 5px;
   padding: 14px;
 }
 
-.form-label{
+input.form-control-user2 {
+  font-size: 14px;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.form-label {
   font-size: 12px;
   font-family: Roboto-Medium;
   margin-bottom: 4px;
 }
 
-.form-check-label{
+.form-check-label {
   font-size: 12px;
-  color: #A1A1A1;
+  color: #a1a1a1;
+}
+
+.form-check-label2 {
+  font-size: 14px;
+  color: #000000;
 }
 
 .btn-login {
@@ -94,21 +105,21 @@ input.form-control-user {
   border-radius: 30px;
 }
 
-.btn-login:hover{
+.btn-login:hover {
   background-color: #3669e0;
 }
 
-.btn-daftar{
+.btn-daftar {
   font-size: 0.8rem;
   font-family: Roboto-Medium;
   border-radius: 30px;
-  color: #25282B;
-  border: 1px solid #FB3F4A;
+  color: #25282b;
+  border: 1px solid #fb3f4a;
 }
 
-.btn-daftar:hover{
+.btn-daftar:hover {
   color: white;
-  background-color: #FB3F4A;
+  background-color: #fb3f4a;
 }
 
 .btn-block {
@@ -122,10 +133,21 @@ input.form-control-user {
   margin-left: auto;
   margin-right: auto;
   margin-top: 32px;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
   background-color: white;
   border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(26, 26, 26, 0.151),inset 0 -5px 1px #FEDD00 !important;
+  box-shadow: 0 2px 12px rgba(26, 26, 26, 0.151), inset 0 -5px 1px #fedd00 !important;
+}
+
+.panelFormDaftar {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 32px;
+  margin-bottom: 24px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(26, 26, 26, 0.151), inset 0 -5px 1px #fedd00 !important;
 }
 
 .small {
@@ -136,7 +158,7 @@ a.small:hover {
   text-decoration: underline;
 }
 
-footer{
+footer {
   font-size: 11px;
   font-family: Roboto-Light;
   font-style: italic;
@@ -145,27 +167,26 @@ footer{
 @media screen and (max-width: 768px) {
   .panel {
     width: 54%;
-  
+
     margin-left: auto;
     margin-right: auto;
     background-color: white;
     border-radius: 12px;
     transition: 0.4s ease-in-out;
   }
-  
 }
 
 @media screen and (max-width: 680px) {
   .panel {
     width: 100%;
-  
+
     margin-left: auto;
     margin-right: auto;
     background-color: white;
     border-radius: 12px;
     transition: 0.4s ease-in-out;
   }
-  .markQuestion{
+  .markQuestion {
     right: 10px;
     margin-right: 20px;
     margin-top: -65px;
@@ -178,31 +199,37 @@ input[type="text"]:focus,
 input[type="password"]:focus,
 input[type="email"]:focus,
 input[type="checkbox"]:focus,
-input[type="search"]:focus {  
-  border-color: #527BDD;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 4px #527BDD;
+input[type="search"]:focus {
+  border-color: #527bdd;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 4px #527bdd;
   outline: 0 none;
   transition: 0.4s ease-in-out;
 }
 
-.custBtn{
+.custBtn {
   width: 45px;
   height: 45px;
-  box-shadow: 0 2px 4px #25282B 
+  box-shadow: 0 2px 4px #25282b;
 }
 
-.markQuestion{
+.markQuestion {
   top: 600px;
   right: 10px;
   margin-right: 20px;
   transition: 0.4s ease-in-out;
 }
-.txt_mark{
+.txt_mark {
   font-size: large;
   font-weight: bold;
 }
 
 /* Custom Placeholder */
-::placeholder{
+::placeholder {
   color: #d6d6d6 !important;
 }
+
+.form-select {
+  padding: 10px;
+  font-size: 14px;
+}
+
