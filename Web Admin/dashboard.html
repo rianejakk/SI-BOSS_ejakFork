@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="plugin/font/stylesheet.css" />
     <link rel="stylesheet" href="plugin/fontawesome-free/css/all.min.css" />
     <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css" />
   </head>
   <body>
     <div class="sidebar">
@@ -93,14 +94,112 @@
     </div>
 
     <!-- Content -->
-    <section class="home-section">
-      <div class="home-content">
+    <div class="home-section">
+      <div class="home-content d-flex justify-content-end pe-2 mb-4">
         <div class="menu">
           <i class="fas fa-bars"></i>
         </div>
-        <span class="text">Drop Down Sidebar</span>
+        <nav>
+          <ul class="nav">
+            <li class="nav-item">
+              <a href="#" class="nav-link transition">
+                <i class="far fa-bell"></i>
+                <span class="badge alert-danger p-1">5</span>
+              </a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="dropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <span class="RobotoReg14">Budi Santoso</span>
+                <img class="img-profile rounded-circle" src="img/bis.png"/>
+              </a>
+
+              <ul class="dropdown-menu dropdown-menu-right shadow" aria-labelledby="dropdownProfile">
+                <li>
+                  <a class="dropdown-item" href="#"> <i class="las la-user mr-2"></i> My Profile </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#"> <i class="las la-list-alt mr-2"></i> Activity Log </a>
+                </li>
+                <li><div class="dropdown-divider"></div></li>
+                <li>
+                  <a class="dropdown-item" href="#"> <i class="las la-sign-out-alt mr-2"></i> Sign Out </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
       </div>
-    </section>
+
+      <!-- Content Row -->
+      <div class="row m-0 px-3">
+        <!-- Card Total Data Bus -->
+        <div class="col-xl-3 col-md-6 mb-4">
+          <div class="card border-0 gradientBlue shadow h-100 py-2 rounded">
+            <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                  <div class="RobotoReg14 text-white">Data Bus</div>
+                  <div class="RobotoBold18 text-white">5 <span>Bus</span></div>
+                </div>
+                <div class="col-auto">
+                  <img src="img/ico/icons8_Shuttle_bus_50px.png" alt="logoBus">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card Total Data Driver -->
+        <div class="col-xl-3 col-md-6 mb-4">
+          <div class="card border-0 gradientPink shadow h-100 py-2 rounded">
+            <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                  <div class="RobotoReg14 text-white">Data Driver</div>
+                  <div class="RobotoBold18 text-white">(Belum Tersedia)</div>
+                </div>
+                <div class="col-auto">
+                  <img src="img/ico/icons8_driver_50px.png" alt="logoDriver">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card Total Data Pemesanan -->
+        <div class="col-xl-3 col-md-6 mb-4">
+          <div class="card border-0 gradientYellow shadow h-100 py-2 rounded">
+            <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                  <div class="RobotoReg14 text-white">Data Pemesanan</div>
+                  <div class="RobotoBold18 text-white">20 Pesanan</div>
+                </div>
+                <div class="col-auto">
+                  <img src="img/ico/icons8_bus_tickets_50px.png" alt="logoTicket">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card Total Data Penghasilan -->
+        <div class="col-xl-3 col-md-6 mb-4">
+          <div class="card border-0 gradientGreen shadow h-100 py-2 rounded">
+            <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                  <div class="RobotoReg14 text-white">Total Penghasilan</div>
+                  <div class="RobotoBold18 text-white"><span>Rp</span>4.125.000</div>
+                </div>
+                <div class="col-auto">
+                  <img src="img/ico/icons8_add_dollar_45px.png" alt="logoPay">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
     <script src="jquery/jquery-3.6.0.min.js"></script>
     <script src="plugin/js/bootstrap.bundle.min.js"></script>
