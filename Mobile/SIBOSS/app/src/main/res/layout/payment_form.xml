@@ -13,7 +13,7 @@
         android:layout_width="200dp"
         android:layout_height="100dp"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/ic_temp_banner_foreground" />
+        android:src="@drawable/Logo" />
 
     <TextView
         android:id="@+id/no_pemesanan_title"
