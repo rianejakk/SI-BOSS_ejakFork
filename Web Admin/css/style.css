@@ -636,3 +636,49 @@ input[type="search"]:focus {
 .gradientGreen {
   background-image: linear-gradient(240deg, #1FE6B2 0%, #42A24B 74%);
 }
+
+/* Tab Panel */
+.roundedPanel{
+  border-radius: 8px;
+}
+.roundedTab{
+  border-radius: 8px 8px 0 0;
+}
+.custShadow{
+  box-shadow: 0px 2px 14px rgba(0, 0, 0, 0.062);
+}
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+  color: #1266f1;
+  border-color: #1266f1 !important;
+}
+.nav-tabs .nav-link:hover {
+  background-color: #f5f5f5;
+  border-color: transparent;
+}
+
+.nav-tabs .nav-link:focus{
+  border-color: #1266f1 !important;
+}
+
+.nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover {
+  border-color: #eee #eee #e0e0e0;
+  isolation: isolate;
+}
+
+.nav-tabs .nav-link {
+    text-align: center;
+    width: 105px;
+    border: solid transparent;
+    border-width: 0 0 2px;
+    border-radius: 0;
+    text-transform: uppercase;
+    line-height: 1;
+    font-weight: 500;
+    font-size: 12px;
+    color: rgba(0,0,0,.6);
+    box-sizing: border-box;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 0;
+    padding-right: 0;
+}
