@@ -4,31 +4,51 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingHorizontal="7.5dp"
     tools:context=".MainActivity"
     >
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/dari"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="300dp"
+        android:layout_marginLeft="7.5dp"
         android:text="Dari"/>
+
+    <ImageView
+        android:id="@+id/blue_bus"
+        android:layout_width="match_parent"
+        android:layout_height="233dp"
+        android:src="@drawable/blue_bus" />
+
+    <TextView
+        android:id="@+id/kemana"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kemana Tujuan Anda?"
+
+        />
+
+    <TextView
+        android:id="@+id/txt_kemana"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        />
 
     <EditText
         android:id="@+id/from"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Terminal / Kota asal"
-        android:textColor="#A5A5A5"
+        android:layout_height="40dp"
         android:layout_below="@+id/dari"
-        />
+        android:layout_marginHorizontal="7.5dp"
+        android:background="@drawable/edit_round"
+        android:text="Terminal / Kota asal"
+        android:drawableLeft="@drawable/ic_gps"
+        android:paddingLeft="10dp"
+        android:elevation="3dp"
+        android:drawablePadding="10dp"
+        android:textColor="#A5A5A5" />
 
     <TextView
         android:id="@+id/ke"
@@ -36,15 +56,22 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_below="@+id/from"
+        android:layout_marginLeft="7.5dp"
         android:text="Ke"/>
 
     <EditText
         android:id="@+id/to"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:text="Terminal / Kota tujuan"
         android:textColor="#A5A5A5"
         android:layout_below="@+id/ke"
+        android:layout_marginHorizontal="7.5dp"
+        android:drawableLeft="@drawable/ic_gps"
+        android:paddingLeft="10dp"
+        android:elevation="3dp"
+        android:drawablePadding="10dp"
+        android:background="@drawable/edit_round"
         />
 
     <TextView
@@ -52,6 +79,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Pergi"
+        android:layout_marginLeft="7.5dp"
         android:layout_below="@+id/to"
         android:layout_marginTop="20dp"
         />
@@ -59,9 +87,15 @@
     <EditText
         android:id="@+id/pergi_edit"
         android:layout_width="150dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_below="@+id/pergi"
         android:text="Tanggal"
+        android:layout_marginLeft="7.5dp"
+        android:background="@drawable/edit_round"
+        android:drawableLeft="@drawable/ic_calendar"
+        android:paddingLeft="10dp"
+        android:drawablePadding="10dp"
+        android:elevation="3dp"
         android:textColor="#A5A5A5" />
 
     <TextView
@@ -78,23 +112,28 @@
     <EditText
         android:id="@+id/pulang_edit"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="#A5A5A5"
-        android:text="Tanggal"
+        android:layout_height="40dp"
         android:layout_below="@+id/pulang"
-        android:layout_toRightOf="@+id/pergi"
         android:layout_marginLeft="150dp"
-        />
+        android:layout_marginRight="7.5dp"
+        android:layout_toRightOf="@+id/pergi"
+        android:background="@drawable/edit_round"
+        android:drawableLeft="@drawable/ic_calendar"
+        android:drawablePadding="10dp"
+        android:elevation="3dp"
+        android:paddingLeft="10dp"
+        android:text="Tanggal"
+        android:textColor="#A5A5A5" />
 
     <Button
         android:id="@+id/cari"
-        android:layout_width="250dp"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="10dp"
         android:background="@drawable/gradient"
-        android:textSize="16dp"
-        android:text="Cari" />
+        android:text="Cari"
+        android:textSize="16dp" />
 
 </RelativeLayout>
