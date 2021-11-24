@@ -214,3 +214,17 @@
     font-display: block;
 }
 
+@font-face {
+    font-family: 'Pacifico';
+    src: url('Pacifico-Regular.ttf') format('truetype');
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'Italliano';
+    src: url('Italianno-Regular.ttf') format('truetype');
+    font-style: normal;
+    font-display: block;
+}
+
