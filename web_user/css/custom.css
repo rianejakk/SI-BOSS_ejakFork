@@ -140,15 +140,98 @@ background: url(bus2.png);
 }
 
  footer{
-     background-color: cornsilk ;
-     height: 7in;
-     margin-top: 200px;
+    position: absolute;
+    width: 1366px;
+    height: 334px;
+    left: 0px;
+    top: 2253px;
+    
+    background: linear-gradient(360deg, #A5A6F6 0%, rgba(73, 120, 234, 0) 100%);
+ }
+ footer h3{
+position: absolute;
+width: 150px;
+height: 33px;
+left: 662px;
+top: -80px;
+
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-style: normal;
+font-weight: bold;
+font-size: 28px;
+line-height: 33px;
+/* identical to box height */
+
+
+color: #8B8B8B;
+ }
+
+ footer p {
+    position: absolute;
+    width: 1081px;
+    height: 41px;
+    left: 179px;
+    top: 5px;
+    
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: justify;
+    
+    color: #8B8B8B;
  }
 
  .container{
      padding-top: 50px !important;
  }
 
+ @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+ body{
+   background: #f2f2f2;
+   font-family: 'Open Sans', sans-serif;
+ }
  
+ .search {
+   width: 100%;
+   position: relative;
+   display: flex;
+ }
+ 
+ .searchTerm {
+   position: absolute;
+width: 340px;
+height: 48px;
+left: -250px;
+top: 65px;
+
+background: #FFFFFF;
+border-radius: 20px;
+ }
+ 
+ /*Resize the wrap to see the search bar change!*/
+ .wrap{
+   width: 30%;
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+ } 
+ .searchTerm::placeholder{
+     text-align: center;
+ }
+
+ .searchTerm img{
+    position: absolute;
+    width: 55.95px;
+    height: 48.43px;
+    left: px;
+    top: 50px;
+    padding-right: 500px;
+    background: #E3EBFE;
+    border-radius: 20px 0px 0px 20px;
+ }
 
 
