@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <title>Login - SI BOSS</title>
-    <link rel="stylesheet" href="plugin/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="plugin/font/stylesheet.css" />
-    <link rel="stylesheet" href="plugin/js/bootstrap.min.js" />
-</head>
-<script language="php">
+<?php
     require('koneksi.php');
     session_start();
     if (isset($_POST['submit'])) {
@@ -27,7 +17,7 @@
                 $passVal = $row['kata_sandi_admin'];
                 $alamatVal = $row['alamat_admin'];
                 $jkVal = $row['jenis_kelamin'];
-                $levelVal = $row['level'];
+                $levelVal = $row['id_level'];
                 $terminalVal = $row['nama_terminal'];
                 $alamattermVal = $row['alamat_terminal'];
                 $provVal = $row['provinsi'];
@@ -39,18 +29,31 @@
                     header('Location: dashboard.html?nama_lengkap_admin='.urlencode($namaVal));
                 } else {
                     $error = 'user atau password salah!!';
-                    header('Location: index.html');
+                    header('Location: login.php');
+                    echo $error;
                 }
             } else {
                 $error = 'user tidak ditemukan!!';
-                header('Location: index.html');
+                header('Location: login.php');
+                echo $error;
             }
         } else {
             $error = 'Data tidak boleh kosong!!';
+            echo $error;
         }
     }
-</script>
+    ?>
 
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login - SI BOSS</title>
+    <link rel="stylesheet" href="plugin/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="plugin/font/stylesheet.css" />
+    <link rel="stylesheet" href="plugin/js/bootstrap.min.js" />
+</head>
 <body class="bg-white">
     <div class="container-fluid">
         <div class="row">

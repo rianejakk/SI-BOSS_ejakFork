@@ -1,3 +1,7 @@
+<?php
+require('koneksi.php');
+$email = $_GET['nama_lengkap_admin'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -86,7 +90,7 @@
                         <img src="img/bis.png" alt="profileImg" />
                     </div>
                     <div class="name-job">
-                        <div class="profile_name">Budi Santoso</div>
+                        <div class="profile_name">Budi Santoso <?php echo $email;?></div>
                         <div class="job">Staff</div>
                     </div>
                     <i class="bx bx-log-out"></i>
@@ -112,7 +116,7 @@
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="dropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <span class="RobotoReg14">Budi Santoso</span>
+                            <span class="RobotoReg14">Budi Santoso <?php echo $email;?></span>
                             <img class="img-profile rounded-circle" src="img/bis.png" alt="LogoBis" />
                         </a>
 
