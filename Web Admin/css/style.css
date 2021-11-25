@@ -262,6 +262,30 @@ input[type="search"]:focus {
 }
 
 /*  */
+
+.ico{
+  width: 18px;
+  box-sizing: border-box;
+  transition: linear 1s;
+}
+
+.frame-ico{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 60px;
+  min-height: 50px;
+  transition: linear 1s;
+}
+.sidebar.close .frame-ico{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 60px;
+  min-height: 50px;
+  transition: linear 1s;
+}
+
 .sidebar {
   position: fixed;
   top: 0;
