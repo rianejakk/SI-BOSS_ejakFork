@@ -106,7 +106,7 @@
                                                     <button type="submit" name="submit" class="btn colorPrimary btn-login text-white btn-block py-2">Login</button>
                                                 </div>
                                                 <div class="col-6 d-flex justify-content-start">
-                                                    <a href="registrasi.html" class="btn btn-daftar btn-block py-2">
+                                                    <a href="registrasi.php" class="btn btn-daftar btn-block py-2">
                                                         <span>Daftar</span>
                                                     </a>
                                                 </div>

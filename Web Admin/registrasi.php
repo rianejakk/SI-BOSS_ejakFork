@@ -15,7 +15,7 @@ if(isset ($_POST['register'])){
 
     $query = "INSERT INTO administrator VALUES ('', '$namaVal', '$emailVal', '$passVal', '', '', 1, '', '', '', '', '')";
     $result = mysqli_query($koneksi, $query);
-    header('Location: login.php');
+    header('Location: registrasi.php');
     echo mysqli_error($result);
 }
 ?>
