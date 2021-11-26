@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <title>Login - SI BOSS</title>
-    <link rel="stylesheet" href="plugin/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="plugin/font/stylesheet.css" />
-    <link rel="stylesheet" href="plugin/js/bootstrap.min.js" />
-</head>
-<script language="php">
+<?php
     require('koneksi.php');
     session_start();
     if (isset($_POST['submit'])) {
@@ -16,7 +6,7 @@
         $pass = $_POST['txt_pass'];
 
         if (!empty(trim($email)) && !empty(trim($pass))) {
-            $query = "SELECT * FROM admin WHERE email_admin = '$email'";
+            $query = "SELECT * FROM administrator WHERE email_admin = '$email'";
             $result = mysqli_query($koneksi, $query);
             $num = mysqli_num_rows($result);
 
@@ -27,7 +17,7 @@
                 $passVal = $row['kata_sandi_admin'];
                 $alamatVal = $row['alamat_admin'];
                 $jkVal = $row['jenis_kelamin'];
-                $levelVal = $row['level'];
+                $levelVal = $row['id_level'];
                 $terminalVal = $row['nama_terminal'];
                 $alamattermVal = $row['alamat_terminal'];
                 $provVal = $row['provinsi'];
@@ -36,21 +26,34 @@
             }
             if ($num != 0) {
                 if ($emailVal == $email && $passVal == $pass) {
-                    header('Location: dashboard.html?nama_lengkap_admin='.urlencode($namaVal));
+                    header('Location: dashboard.php?nama_lengkap_admin='.urlencode($namaVal));
                 } else {
                     $error = 'user atau password salah!!';
-                    header('Location: index.html');
+                    header('Location: index.php');
+                    echo $error;
                 }
             } else {
                 $error = 'user tidak ditemukan!!';
-                header('Location: index.html');
+                header('Location: index.php');
+                echo $error;
             }
         } else {
             $error = 'Data tidak boleh kosong!!';
+            echo $error;
         }
     }
-</script>
+    ?>
 
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login - SI BOSS</title>
+    <link rel="stylesheet" href="plugin/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="plugin/font/stylesheet.css" />
+    <link rel="stylesheet" href="plugin/js/bootstrap.min.js" />
+</head>
 <body class="bg-white">
     <div class="container-fluid">
         <div class="row">
@@ -77,7 +80,7 @@
                                         <div class="judul">
                                             <h4 class="text-gray-900 mb-5">Login <br /><span>System Information Booking Online Bus</span></h4>
                                         </div>
-                                        <form action="login.php" method="POST">
+                                        <form action="index.php" method="POST">
                                             <div class="mb-3">
                                                 <label for="exampleInputEmail" class="form-label">Email</label>
                                                 <input type="email" class="form-control form-control-user" id="exampleInputEmail" name="txt_email" placeholder="Ex: budiman@siboss.com" />

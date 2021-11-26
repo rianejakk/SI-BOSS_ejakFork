@@ -13,9 +13,10 @@ if(isset ($_POST['register'])){
     $kabVal = $_POST['txt_kab'];
     $kecVal = $_POST['txt_kec'];
 
-    $query = "INSERT INTO administrator VALUES ('', '$namaVal', '$emailVal', '$passVal', '$alamatVal', '', 1, '$terminalVal', '$alamattermVal', '', '', '')";
+    $query = "INSERT INTO administrator VALUES ('', '$namaVal', '$emailVal', '$passVal', '', '', 1, '', '', '', '', '')";
     $result = mysqli_query($koneksi, $query);
     header('Location: login.php');
+    echo mysqli_error($result);
 }
 ?>
 <!DOCTYPE html>
@@ -57,7 +58,7 @@ if(isset ($_POST['register'])){
                       <form action="login.php" method="POST">
                         <div class="col-lg-12 mb-3" hidden>
                           <label for="exampleInputEmail" class="form-label">Id</label>
-                          <input type="email" class="form-control form-control-user2" id="exampleInputEmail" name="txt_id" placeholder="" />
+                          <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_id" placeholder="" />
                         </div>
                         <div class="row">
                           <div class="col-lg-6 mb-3">
@@ -66,7 +67,7 @@ if(isset ($_POST['register'])){
                           </div>
                           <div class="col-lg-6 mb-3">
                             <label for="exampleInputPassword" class="form-label">Email</label>
-                            <input type="text" class="form-control form-control-user2" id="exampleInputPassword" name="txt_email" placeholder="Ex: budiman@siboss.com" />
+                            <input type="email" class="form-control form-control-user2" id="exampleInputPassword" name="txt_email" placeholder="Ex: budiman@siboss.com" />
                           </div>
                         </div>
 
@@ -84,16 +85,16 @@ if(isset ($_POST['register'])){
                         <div class="row">
                           <div class="col-lg-6 mb-3">
                             <label for="exampleInputEmail" class="form-label">Alamat</label>
-                            <input type="email" class="form-control form-control-user2" id="exampleInputEmail" name="txt_alamat" placeholder="Ex: JL. Sudirman" />
+                            <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_alamat" placeholder="Ex: JL. Sudirman" />
                           </div>
                           <div class="col-lg-6 mb-3">
                             <label for="exampleInputPassword" class="form-label">Jenis Kelamin</label>
                             <div class="form-check">
-                              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked />
+                              <input class="form-check-input" type="radio" name="Rbtnjk" id="exampleRadios1" value="option1" checked />
                               <label class="form-check-label2" for="exampleRadios1"> Laki-laki</label>
                             </div>
                             <div class="form-check">
-                              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" />
+                              <input class="form-check-input" type="radio" name="Rbtnjk" id="exampleRadios2" value="option2" />
                               <label class="form-check-label2" for="exampleRadios2"> Perempuan </label>
                             </div>
                           </div>
@@ -102,7 +103,7 @@ if(isset ($_POST['register'])){
                         <div class="row">
                           <div class="col-lg-6 mb-3">
                             <label for="exampleInputEmail" class="form-label">Nama Terminal</label>
-                            <input type="email" class="form-control form-control-user2" id="exampleInputEmail" name="txt_terminal" placeholder="Ex: Terminal A" />
+                            <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_terminal" placeholder="Ex: Terminal A" />
                           </div>
                           <div class="col-lg-6 mb-3">
                             <label for="exampleInputPassword" class="form-label">Alamat Terminal</label>
@@ -143,7 +144,7 @@ if(isset ($_POST['register'])){
 
                         <div class="mb-5"></div>
                         <div class="col-12 d-flex justify-content-center">
-                          <button type="submit" name="submit" class="btn colorPrimary btn-login text-white btn-block2">Daftar</button>
+                          <button type="submit" name="register" class="btn colorPrimary btn-login text-white btn-block2">Daftar</button>
                         </div>
                       </form>
                     </div>
