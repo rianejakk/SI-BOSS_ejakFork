@@ -10,7 +10,7 @@ $email = $_GET['nama_lengkap_admin'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard - SI BOSS</title>
     <link rel="stylesheet" href="plugin/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/custom.css" />
+    <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="plugin/font/stylesheet.css" />
     <link rel="stylesheet" href="plugin/fontawesome-free/css/all.min.css" />
     <link rel="stylesheet" href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" crossorigin="anonymous" />
@@ -247,13 +247,13 @@ $email = $_GET['nama_lengkap_admin'];
       <!-- Panel -->
       <div class="row g-2 m-0 px-4">
         <div class="col-lg-12">
-          <div class="card shadow mb-4 roundedPanel">
-            <div class="card-header py-3">
-              <div class="d-flex p-2 justify-content-center align-item-center float-start ">
-                <h6 class="m-0 font-weight-bold text-primary"><b>Table Data Akun</b></h6>
+          <div class="card shadow mb-4 rounded">
+            <div class="card-header py-3 rounded">
+              <div class="title float-start">
+                <span class="m-0"><b>Table Data Akun</b></span>
               </div>
-              <button class="float-end btn btn-danger text-white btn-circle custShadow2" data-bs-toggle="tooltip" title="Hapus Yang dipilih"><i class="fas fa-trash"></i></button>
-              <button class="float-end btn colorPrimary text-white btn-circle custShadow2 me-2" data-bs-toggle="tooltip" title="Tambah"><i class="fas fa-plus" ></i></button>
+              <button class="float-end btn btn-danger text-white btn-circle custShadow2" data-bs-toggle="modal" data-tooltip="tooltip" data-bs-target="#deleteDataAkun" title="Hapus Yang dipilih"><i class="fas fa-trash"></i></button>
+              <button class="float-end btn colorPrimary text-white btn-circle custShadow2 me-2" data-bs-toggle="modal" data-tooltip="tooltip" data-bs-target="#addDataAkun" title="Tambah"><i class="fas fa-plus"></i></button>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -277,6 +277,7 @@ $email = $_GET['nama_lengkap_admin'];
                       <th class="provinsi">Provinsi</th>
                       <th class="kabupaten">Kabupaten</th>
                       <th class="kecamatan">Kecamatan</th>
+                      <th class="status">Status Level</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -289,15 +290,13 @@ $email = $_GET['nama_lengkap_admin'];
                       </td>
                       <td>
                         <a href="#" class="actionBtn" aria-label="Edit">
-                          <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-target="#editModal" value="edit">&nbsp;<i class="fa fa-edit" data-bs-toggle="tooltip" title="Edit"></i></button>
+                          <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#editDataAkun" value="edit">&nbsp;<i class="fa fa-edit" data-bs-toggle="tooltip" title="Edit"></i></button>
                         </a>
                         <a href="#" class="actionBtn" aria-label="Delete">
-                          <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-target="#deleteModal" value="hapus"><i class="fa fa-trash" data-bs-toggle="tooltip" title="Delete"></i></button>
+                          <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteDataAkun" value="hapus"><i class="fa fa-trash" data-bs-toggle="tooltip" title="Delete"></i></button>
                         </a>
-                        <!-- <a href="#editEmployeeModal" class="edit" data-bs-toggle="modal"><i class="material-icons" data-bs-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                        <a href="#deleteEmployeeModal" class="delete" data-bs-toggle="modal"><i class="material-icons" data-bs-toggle="tooltip" title="Delete">&#xE872;</i></a> -->
                       </td>
-                      <td>Na ny</td>
+                      <td>Admin 1</td>
                       <td>amdin@admin.com</td>
                       <td>*******</td>
                       <td>Jakarta</td>
@@ -307,6 +306,7 @@ $email = $_GET['nama_lengkap_admin'];
                       <td><center>-</center></td>
                       <td><center>-</center></td>
                       <td><center>-</center></td>
+                      <td><span class="mode mode_on">Admin</span></td>
                     </tr>
                     <tr>
                       <td>
@@ -317,15 +317,13 @@ $email = $_GET['nama_lengkap_admin'];
                       </td>
                       <td>
                         <a href="#" class="actionBtn" aria-label="Edit">
-                          <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-target="#editModal" value="edit">&nbsp;<i class="fa fa-edit" data-bs-toggle="tooltip" title="Edit"></i></button>
+                          <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#editDataAkun" value="edit">&nbsp;<i class="fa fa-edit" data-bs-toggle="tooltip" title="Edit"></i></button>
                         </a>
                         <a href="#" class="actionBtn" aria-label="Delete">
-                          <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-target="#deleteModal" value="hapus"><i class="fa fa-trash" data-bs-toggle="tooltip" title="Delete"></i></button>
+                          <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteDataAkun" value="hapus"><i class="fa fa-trash" data-bs-toggle="tooltip" title="Delete"></i></button>
                         </a>
-                        <!-- <a href="#editEmployeeModal" class="edit" data-bs-toggle="modal"><i class="material-icons" data-bs-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                        <a href="#deleteEmployeeModal" class="delete" data-bs-toggle="modal"><i class="material-icons" data-bs-toggle="tooltip" title="Delete">&#xE872;</i></a> -->
                       </td>
-                      <td>Na ny</td>
+                      <td>Staff 1</td>
                       <td>amdin@admin.com</td>
                       <td>*******</td>
                       <td>Jakarta</td>
@@ -335,6 +333,7 @@ $email = $_GET['nama_lengkap_admin'];
                       <td><center>-</center></td>
                       <td><center>-</center></td>
                       <td><center>-</center></td>
+                      <td><span class="mode mode_done">Staff</span></td>
                     </tr>
                     <tr>
                       <td>
@@ -345,15 +344,13 @@ $email = $_GET['nama_lengkap_admin'];
                       </td>
                       <td>
                         <a href="#" class="actionBtn" aria-label="Edit">
-                          <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-target="#editModal" value="edit">&nbsp;<i class="fa fa-edit" data-bs-toggle="tooltip" title="Edit"></i></button>
+                          <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#editDataAkun" value="edit">&nbsp;<i class="fa fa-edit" data-bs-toggle="tooltip" title="Edit"></i></button>
                         </a>
                         <a href="#" class="actionBtn" aria-label="Delete">
-                          <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-target="#deleteModal" value="hapus"><i class="fa fa-trash" data-bs-toggle="tooltip" title="Delete"></i></button>
+                          <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteDataAkun" value="hapus"><i class="fa fa-trash" data-bs-toggle="tooltip" title="Delete"></i></button>
                         </a>
-                        <!-- <a href="#editEmployeeModal" class="edit" data-bs-toggle="modal"><i class="material-icons" data-bs-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                        <a href="#deleteEmployeeModal" class="delete" data-bs-toggle="modal"><i class="material-icons" data-bs-toggle="tooltip" title="Delete">&#xE872;</i></a> -->
                       </td>
-                      <td>Na ny</td>
+                      <td>Staff 2</td>
                       <td>amdin@admin.com</td>
                       <td>*******</td>
                       <td>Jakarta</td>
@@ -363,6 +360,7 @@ $email = $_GET['nama_lengkap_admin'];
                       <td><center>-</center></td>
                       <td><center>-</center></td>
                       <td><center>-</center></td>
+                      <td><span class="mode mode_done">Staff</span></td>
                     </tr>
                     <tr>
                       <td>
@@ -373,15 +371,13 @@ $email = $_GET['nama_lengkap_admin'];
                       </td>
                       <td>
                         <a href="#" class="actionBtn" aria-label="Edit">
-                          <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-target="#editModal" value="edit">&nbsp;<i class="fa fa-edit" data-bs-toggle="tooltip" title="Edit"></i></button>
+                          <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#editDataAkun" value="edit">&nbsp;<i class="fa fa-edit" data-bs-toggle="tooltip" title="Edit"></i></button>
                         </a>
                         <a href="#" class="actionBtn" aria-label="Delete">
-                          <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-target="#deleteModal" value="hapus"><i class="fa fa-trash" data-bs-toggle="tooltip" title="Delete"></i></button>
+                          <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteDataAkun" value="hapus"><i class="fa fa-trash" data-bs-toggle="tooltip" title="Delete"></i></button>
                         </a>
-                        <!-- <a href="#editEmployeeModal" class="edit" data-bs-toggle="modal"><i class="material-icons" data-bs-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                        <a href="#deleteEmployeeModal" class="delete" data-bs-toggle="modal"><i class="material-icons" data-bs-toggle="tooltip" title="Delete">&#xE872;</i></a> -->
                       </td>
-                      <td>Na ny</td>
+                      <td>Staff 3</td>
                       <td>amdin@admin.com</td>
                       <td>*******</td>
                       <td>Jakarta</td>
@@ -391,6 +387,7 @@ $email = $_GET['nama_lengkap_admin'];
                       <td><center>-</center></td>
                       <td><center>-</center></td>
                       <td><center>-</center></td>
+                      <td><span class="mode mode_done">Staff</span></td>
                     </tr>
                     <tr>
                       <td>
@@ -401,15 +398,13 @@ $email = $_GET['nama_lengkap_admin'];
                       </td>
                       <td>
                         <a href="#" class="actionBtn" aria-label="Edit">
-                          <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-target="#editModal" value="edit">&nbsp;<i class="fa fa-edit" data-bs-toggle="tooltip" title="Edit"></i></button>
+                          <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#editDataAkun" value="edit">&nbsp;<i class="fa fa-edit" data-bs-toggle="tooltip" title="Edit"></i></button>
                         </a>
                         <a href="#" class="actionBtn" aria-label="Delete">
-                          <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-target="#deleteModal" value="hapus"><i class="fa fa-trash" data-bs-toggle="tooltip" title="Delete"></i></button>
+                          <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteDataAkun" value="hapus"><i class="fa fa-trash" data-bs-toggle="tooltip" title="Delete"></i></button>
                         </a>
-                        <!-- <a href="#editEmployeeModal" class="edit" data-bs-toggle="modal"><i class="material-icons" data-bs-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                        <a href="#deleteEmployeeModal" class="delete" data-bs-toggle="modal"><i class="material-icons" data-bs-toggle="tooltip" title="Delete">&#xE872;</i></a> -->
                       </td>
-                      <td>Na ny</td>
+                      <td>Staff 4</td>
                       <td>amdin@admin.com</td>
                       <td>*******</td>
                       <td>Jakarta</td>
@@ -419,9 +414,104 @@ $email = $_GET['nama_lengkap_admin'];
                       <td><center>-</center></td>
                       <td><center>-</center></td>
                       <td><center>-</center></td>
+                      <td><span class="mode mode_done">Staff</span></td>
                     </tr>
                   </tbody>
                 </table>
+              </div>
+            </div>
+
+            <!-- Add Modal -->
+            <div id="addDataAkun" class="modal fade">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <form>
+                    <div class="modal-header">
+                      <h4 class="modal-title">Tambah Data Akun</h4>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true"></button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" required />
+                      </div>
+                      <div class="form-group">
+                        <label for="name">Email</label>
+                        <input type="email" class="form-control" required />
+                      </div>
+                      <div class="form-group">
+                        <label for="name">Alamat</label>
+                        <input type="text" class="form-control" required />
+                      </div>
+                      <div class="form-group">
+                        <label for="name">Phone</label>
+                        <input type="number" class="form-control" required />
+                      </div>
+                      <div class="modal-footer">
+                        <input type="button" class="btn btn-danger" data-bs-dismiss="modal" value="Cancel" />
+                        <input type="submit" class="btn btn-success" value="Delete" />
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <!-- Edit Modal -->
+            <div id="editDataAkun" class="modal fade">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <form action="">
+                    <div class="modal-header">
+                      <h4 class="modal-title">Edit Data Akun</h4>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true"></button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" required />
+                      </div>
+                      <div class="form-group">
+                        <label for="name">Email</label>
+                        <input type="email" class="form-control" required />
+                      </div>
+                      <div class="form-group">
+                        <label for="name">Alamat</label>
+                        <input type="text" class="form-control" required />
+                      </div>
+                      <div class="form-group">
+                        <label for="name">Phone</label>
+                        <input type="number" class="form-control" required />
+                      </div>
+                      <div class="modal-footer">
+                        <input type="button" class="btn btn-danger" data-bs-dismiss="modal" value="Cancel" />
+                        <input type="submit" class="btn btn-success" value="Delete" />
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <!-- Delete Modal -->
+            <div id="deleteDataAkun" class="modal fade">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <form action="">
+                    <div class="modal-header">
+                      <h4 class="modal-title">Hapus Akun</h4>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true"></button>
+                    </div>
+                    <div class="modal-body">
+                      <p>Apakah Anda yakin ingin menghapus data akun ini ?</p>
+                      <p class="text-warning"><small>Perlu hati-hati karena data akan hilang selamanya !</small></p>
+                    </div>
+                    <div class="modal-footer">
+                      <input type="button" class="btn btn-secondary" data-bs-dismiss="modal" value="Cancel" />
+                      <input type="submit" class="btn btn-danger" value="Delete" />
+                    </div>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
