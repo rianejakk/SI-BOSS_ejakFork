@@ -250,199 +250,113 @@ $email = $_GET['nama_lengkap_admin'];
           <div class="card shadow mb-4 rounded">
             <div class="card-header shadow rounded">
               <div class="title float-start">
-                <span class="m-0"><b>Tabel Data Akun</b></span>
-              </div>
-              <div class="btnAction">
-                <button class="float-end btn btn-danger text-white btn-circle custShadow2" data-bs-toggle="modal" data-tooltip="tooltip" data-bs-target="#deleteDataAkun" title="Hapus Yang dipilih"><i class="fas fa-trash"></i></button>
-                <a href="tambahAkun.html">
-                  <button class="float-end btn btn-success text-white btn-circle custShadow2 me-2"><i class="fas fa-plus" data-bs-toggle="tooltip" title="Tambah"></i></button>
+                <a href="dataAkun.html">
+                  <button class="btn text-white m-0 p-0 me-2"><i class="fas fa-arrow-alt-circle-left fa-lg" data-bs-toggle="tooltip" title="Kembali"></i></button>
                 </a>
+                <span class="m-0"><b>Tabel Data Akun</b></span>
               </div>
             </div>
             <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-hover dataTable" width="100%">
-                  <thead>
-                    <tr>
-                      <th class="cb">
-                        <span class="custom-checkbox">
-                          <input type="checkbox" class="selectAll" />
-                          <label for="selectAll"></label>
-                        </span>
-                      </th>
-                      <th class="actions">Action</th>
-                      <th class="nama">Nama Lengkap</th>
-                      <th class="email">Email</th>
-                      <th class="pass">Kata Sandi</th>
-                      <th class="alamat">Alamat</th>
-                      <th class="jenisKelamin">Jenis Kelamin</th>
-                      <th class="namaTerminal">Nama Terminal</th>
-                      <th class="AlamatTerminal">Alamat Terminal</th>
-                      <th class="provinsi">Provinsi</th>
-                      <th class="kabupaten">Kabupaten</th>
-                      <th class="kecamatan">Kecamatan</th>
-                      <th class="status">Status Level</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <span class="custom-checkbox">
-                          <input type="checkbox" id="checkbox1" name="option[]" value="1" />
-                          <label for="checkbox1"></label>
-                        </span>
-                      </td>
-                      <td>
-                        <a href="#" class="actionBtn" aria-label="Edit">
-                          <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#editDataAkun" value="edit">
-                            &nbsp;<i class="fa fa-edit fa-sm" data-bs-toggle="tooltip" title="Edit"></i>
-                          </button>
-                        </a>
-                        <a href="#" class="actionBtn" aria-label="Delete">
-                          <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteDataAkun" value="hapus">
-                            <i class="fa fa-trash fa-sm" data-bs-toggle="tooltip" title="Delete"></i>
-                          </button>
-                        </a>
-                      </td>
-                      <td>Admin 1</td>
-                      <td>amdin@admin.com</td>
-                      <td>*******</td>
-                      <td>Jakarta</td>
-                      <td>Laki-laki</td>
-                      <td>Terminal A</td>
-                      <td><center>-</center></td>
-                      <td><center>-</center></td>
-                      <td><center>-</center></td>
-                      <td><center>-</center></td>
-                      <td><span class="mode mode_on">Admin</span></td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <span class="custom-checkbox">
-                          <input type="checkbox" id="checkbox1" name="option[]" value="1" />
-                          <label for="checkbox1"></label>
-                        </span>
-                      </td>
-                      <td>
-                        <a href="#" class="actionBtn" aria-label="Edit">
-                          <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#editDataAkun" value="edit">
-                            &nbsp;<i class="fa fa-edit fa-sm" data-bs-toggle="tooltip" title="Edit"></i>
-                          </button>
-                        </a>
-                        <a href="#" class="actionBtn" aria-label="Delete">
-                          <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteDataAkun" value="hapus">
-                            <i class="fa fa-trash fa-sm" data-bs-toggle="tooltip" title="Delete"></i>
-                          </button>
-                        </a>
-                      </td>
-                      <td>Staff 1</td>
-                      <td>amdin@admin.com</td>
-                      <td>*******</td>
-                      <td>Jakarta</td>
-                      <td>Laki-laki</td>
-                      <td>Terminal A</td>
-                      <td><center>-</center></td>
-                      <td><center>-</center></td>
-                      <td><center>-</center></td>
-                      <td><center>-</center></td>
-                      <td><span class="mode mode_done">Staff</span></td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <span class="custom-checkbox">
-                          <input type="checkbox" id="checkbox1" name="option[]" value="1" />
-                          <label for="checkbox1"></label>
-                        </span>
-                      </td>
-                      <td>
-                        <a href="#" class="actionBtn" aria-label="Edit">
-                          <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#editDataAkun" value="edit">
-                            &nbsp;<i class="fa fa-edit fa-sm" data-bs-toggle="tooltip" title="Edit"></i>
-                          </button>
-                        </a>
-                        <a href="#" class="actionBtn" aria-label="Delete">
-                          <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteDataAkun" value="hapus">
-                            <i class="fa fa-trash fa-sm" data-bs-toggle="tooltip" title="Delete"></i>
-                          </button>
-                        </a>
-                      </td>
-                      <td>Staff 2</td>
-                      <td>amdin@admin.com</td>
-                      <td>*******</td>
-                      <td>Jakarta</td>
-                      <td>Laki-laki</td>
-                      <td>Terminal A</td>
-                      <td><center>-</center></td>
-                      <td><center>-</center></td>
-                      <td><center>-</center></td>
-                      <td><center>-</center></td>
-                      <td><span class="mode mode_done">Staff</span></td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <span class="custom-checkbox">
-                          <input type="checkbox" id="checkbox1" name="option[]" value="1" />
-                          <label for="checkbox1"></label>
-                        </span>
-                      </td>
-                      <td>
-                        <a href="#" class="actionBtn" aria-label="Edit">
-                          <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#editDataAkun" value="edit">
-                            &nbsp;<i class="fa fa-edit fa-sm" data-bs-toggle="tooltip" title="Edit"></i>
-                          </button>
-                        </a>
-                        <a href="#" class="actionBtn" aria-label="Delete">
-                          <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteDataAkun" value="hapus">
-                            <i class="fa fa-trash fa-sm" data-bs-toggle="tooltip" title="Delete"></i>
-                          </button>
-                        </a>
-                      </td>
-                      <td>Staff 3</td>
-                      <td>amdin@admin.com</td>
-                      <td>*******</td>
-                      <td>Jakarta</td>
-                      <td>Laki-laki</td>
-                      <td>Terminal A</td>
-                      <td><center>-</center></td>
-                      <td><center>-</center></td>
-                      <td><center>-</center></td>
-                      <td><center>-</center></td>
-                      <td><span class="mode mode_done">Staff</span></td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <span class="custom-checkbox">
-                          <input type="checkbox" id="checkbox1" name="option[]" value="1" />
-                          <label for="checkbox1"></label>
-                        </span>
-                      </td>
-                      <td>
-                        <a href="#" class="actionBtn" aria-label="Edit">
-                          <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#editDataAkun" value="edit">
-                            &nbsp;<i class="fa fa-edit fa-sm" data-bs-toggle="tooltip" title="Edit"></i>
-                          </button>
-                        </a>
-                        <a href="#" class="actionBtn" aria-label="Delete">
-                          <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteDataAkun" value="hapus">
-                            <i class="fa fa-trash fa-sm" data-bs-toggle="tooltip" title="Delete"></i>
-                          </button>
-                        </a>
-                      </td>
-                      <td>Staff 4</td>
-                      <td>amdin@admin.com</td>
-                      <td>*******</td>
-                      <td>Jakarta</td>
-                      <td>Laki-laki</td>
-                      <td>Terminal A</td>
-                      <td><center>-</center></td>
-                      <td><center>-</center></td>
-                      <td><center>-</center></td>
-                      <td><center>-</center></td>
-                      <td><span class="mode mode_done">Staff</span></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+              <form action="login.php" method="POST">
+                <div class="col-lg-12 mb-3" hidden>
+                  <label for="exampleInputEmail" class="form-label">Id</label>
+                  <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_id" placeholder="" />
+                </div>
+                <div class="row">
+                  <div class="col-lg-6 mb-3">
+                    <label for="exampleInputEmail" class="form-label">Nama Lengkap</label>
+                    <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_nama" placeholder="Ex: Budi Santoso" />
+                  </div>
+                  <div class="col-lg-6 mb-3">
+                    <label for="exampleInputPassword" class="form-label">Email</label>
+                    <input type="email" class="form-control form-control-user2" id="exampleInputPassword" name="txt_email" placeholder="Ex: budiman@siboss.com" />
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-6 mb-3">
+                    <label for="exampleInputEmail" class="form-label">Kata Sandi</label>
+                    <input type="password" class="form-control form-control-user2" id="exampleInputEmail" name="txt_pass" placeholder="********" />
+                  </div>
+                  <div class="col-lg-6 mb-3">
+                    <label for="exampleInputPassword" class="form-label">Konfirmasi Kata sandi</label>
+                    <input type="password" class="form-control form-control-user2" id="exampleInputPassword" name="txt_pass" placeholder="********" />
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-6 mb-3">
+                    <label for="exampleInputEmail" class="form-label">Alamat</label>
+                    <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_alamat" placeholder="Ex: JL. Sudirman" />
+                  </div>
+                  <div class="col-lg-6 mb-3">
+                    <label for="exampleInputPassword" class="form-label">Jenis Kelamin</label>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="Rbtnjk" id="exampleRadios1" value="option1" checked />
+                      <label class="form-check-label2" for="exampleRadios1"> Laki-laki</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="Rbtnjk" id="exampleRadios2" value="option2" />
+                      <label class="form-check-label2" for="exampleRadios2"> Perempuan </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-6 mb-3">
+                    <label for="exampleInputEmail" class="form-label">Nama Terminal</label>
+                    <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_terminal" placeholder="Ex: Terminal A" />
+                  </div>
+                  <div class="col-lg-6 mb-3">
+                    <label for="exampleInputPassword" class="form-label">Alamat Terminal</label>
+                    <input type="text" class="form-control form-control-user2" id="exampleInputPassword" name="txt_alamatterm" placeholder="JL. KH." />
+                  </div>
+                </div>
+
+                <div class="col-lg-12 mb-3">
+                  <label for="exampleInputEmail" class="form-label">Provinsi</label>
+                  <select class="form-select" aria-label=".form-select-sm example">
+                    <option disabled selected>Pilih Provinsi</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-6 mb-3">
+                    <label for="exampleInputEmail" class="form-label">Kota</label>
+                    <select class="form-select" aria-label=".form-select-sm example">
+                      <option disabled selected>Pilih kota</option>
+                      <option value="1">One</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option>
+                    </select>
+                  </div>
+                  <div class="col-lg-6 mb-3">
+                    <label for="exampleInputPassword" class="form-label">Kecamatan</label>
+                    <select class="form-select" aria-label=".form-select-sm example">
+                      <option disabled selected>Pilih Kecamatan</option>
+                      <option value="1">One</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option>
+                    </select>
+                  </div>
+                  <div class="col-lg-12 mb-2">
+                    <label for="exampleInputEmail" class="form-label">Status Level</label>
+                    <select class="form-select" aria-label=".form-select-sm example">
+                      <option disabled selected>Pilih Level Otoritas</option>
+                      <option value="1">Admin</option>
+                      <option value="2">staff</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="mb-5"></div>
+                <div class="col-12 d-flex justify-content-center">
+                  <button type="submit" name="register" class="btn btn-success roundedBtn text-white btn-block3">Tambah</button>
+                </div>
+              </form>
             </div>
 
             <!-- Add Modal -->

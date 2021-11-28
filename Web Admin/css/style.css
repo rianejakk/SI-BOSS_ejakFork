@@ -139,6 +139,13 @@ input.form-control-user2 {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.438);
 }
 
+.btn-block3 {
+  display: block;
+  width: 15%;
+  height: 38px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.438);
+}
+
 .panel {
   width: 54%;
   margin-left: auto;
@@ -175,6 +182,12 @@ footer {
   font-style: italic;
 }
 
+@media screen and (max-width:  991px) {
+  .btn-block3{
+    width: 45%;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .panel {
     width: 54%;
@@ -208,6 +221,13 @@ footer {
     margin-right: 20px;
     margin-top: -65px;
     transition: 0.4s ease-in-out !important;
+  }
+}
+
+@media screen and (max-width: 544px) {
+  .card-header a button.float-end.btn.btn-success.text-white.btn-circle.custShadow2.me-2{
+    margin-top: 5px;
+    margin-right: 0 !important;
   }
 }
 
@@ -661,10 +681,6 @@ input[type="search"]:focus {
   font-size: 18px;
 }
 
-.rounded {
-  border-radius: 12px !important;
-}
-
 .gradientBlue {
   background-image: linear-gradient(240deg, #0abcf9 0%, #2c69d1 74%);
 }
@@ -682,11 +698,20 @@ input[type="search"]:focus {
 }
 
 /* Tab Panel */
+.rounded {
+  border-radius: 12px !important;
+}
 .roundedPanel {
   border-radius: 8px;
 }
 .roundedTab {
   border-radius: 8px 8px 0 0;
+}
+.roundedBtn{
+  font-size: 0.8rem;
+  font-family: Roboto-Medium;
+  border-radius: 30px;
+  outline: none;
 }
 .custShadow {
   box-shadow: 0px 2px 14px rgba(0, 0, 0, 0.062);
@@ -935,6 +960,7 @@ input[type="search"]:focus {
 
 /*  */
 .card-header{
+  height: 65px !important;
   background-image: linear-gradient( 109.6deg,  #527bdd 10.2%, #0abcf9);
 }
 
@@ -1083,8 +1109,8 @@ table.table tr th.actions{
 }
 
 .btn-user{
-  width: 41px !important;
-  height: 41px !important;
+  width: 32px !important;
+  height: 32px !important;
   padding: 0;
   margin-bottom: 2px;
 }
@@ -1103,4 +1129,9 @@ a.actionBtn{
   letter-spacing: 1px;
   font-family: Roboto-Medium;
   color: rgb(255, 255, 255) ;
+}
+.btnAction{
+  display: block;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
