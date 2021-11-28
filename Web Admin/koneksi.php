@@ -2,7 +2,7 @@
     $server = "localhost";
     $username = "root";
     $password = "";
-    $db = "si-boss express";
+    $db = "si-boss_express";
     $koneksi = mysqli_connect($server, $username, $password, $db);
     //urutan pemanggilan
 

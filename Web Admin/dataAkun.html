@@ -1,0 +1,441 @@
+<!-- <?php
+require('koneksi.php');
+$email = $_GET['nama_lengkap_admin'];
+?> -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - SI BOSS</title>
+    <link rel="stylesheet" href="plugin/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/custom.css" />
+    <link rel="stylesheet" href="plugin/font/stylesheet.css" />
+    <link rel="stylesheet" href="plugin/fontawesome-free/css/all.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" href="plugin/datatables/DataTables-1.11.3/css/dataTables.bootstrap5.min.css" />
+  </head>
+
+  <body>
+    <div class="sidebar">
+      <!-- Logo -->
+      <div class="logo-details">
+        <i class="fas fa-bus"></i>
+        <span class="logo_name">SI-BOSS<span class="logo_nameMin">Express</span></span>
+      </div>
+
+      <!-- List Menu -->
+      <ul class="nav-links">
+        <!-- Heading -->
+        <li class="sidebar-heading mb-2 p-0">Menu :</li>
+        <li class="nav-item mb-1">
+          <a href="#" class="focusMenu">
+            <div class="frame-ico">
+              <img class="ico" src="img/ico/icoDash_Fill.png" alt="logo1" data-bs-toggle="collapse" data-bs-target="#dashboard" aria-expanded="false" aria-controls="dashboard" />
+            </div>
+            <span class="link_name">Dashboard</span>
+            <i class="bx bxs-chevron-right arrow" data-bs-toggle="collapse" data-bs-target="#dashboard" aria-expanded="false" aria-controls="dashboard"></i>
+          </a>
+          <div id="dashboard" class="collapse">
+            <ul class="sub-menu">
+              <li><a class="link_name" href="#">Dashboard</a></li>
+              <li><a href="#">Grafik</a></li>
+              <li><a href="#">Log</a></li>
+              <li><a href="#">Pengaturan</a></li>
+            </ul>
+          </div>
+        </li>
+        <li><hr /></li>
+        <li class="sidebar-heading mt-2 p-0">List Data</li>
+        <li class="nav-item">
+          <a href="#" class="focusMenu">
+            <div class="frame-ico">
+              <img class="ico2" src="img/ico/icoBus_noFill.png" alt="logo1" />
+            </div>
+            <span class="link_name">Data Bus</span>
+          </a>
+          <ul class="sub-menu blank">
+            <li><a class="link_name" href="#">Data Bus</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a href="#" class="focusMenu">
+            <div class="frame-ico">
+              <img class="ico2" src="img/ico/icoDriver_noFill.png" alt="logo1" />
+            </div>
+            <span class="link_name">Data Driver</span>
+          </a>
+          <ul class="sub-menu blank">
+            <li><a class="link_name" href="#">Data Driver</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item active">
+          <a href="#" class="focusMenu">
+            <div class="frame-ico">
+              <img class="ico2" src="img/ico/iconProfile_Fill.png" alt="logo1" />
+            </div>
+            <span class="link_name">Data Akun</span>
+          </a>
+          <ul class="sub-menu blank">
+            <li><a class="link_name" href="#">Data Akun</a></li>
+          </ul>
+        </li>
+        <li><hr class="seperator" /></li>
+
+        <li class="sidebar-heading mt-2 p-0">Layanan</li>
+        <li class="nav-item">
+          <a href="#" class="focusMenu">
+            <div class="frame-ico">
+              <img class="ico2" src="img/ico/icoBooking_no Fill.png" alt="logo1" />
+            </div>
+            <span class="link_name">Pemesanan</span>
+          </a>
+          <ul class="sub-menu blank">
+            <li><a class="link_name" href="#">Pemesanan</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a href="#" class="focusMenu">
+            <div class="frame-ico">
+              <img class="ico2" src="img/ico/icoReport_noFill.png" alt="logo1" />
+            </div>
+            <span class="link_name">Laporan</span>
+          </a>
+          <ul class="sub-menu blank">
+            <li><a class="link_name" href="#">Laporan</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <div class="profile-details">
+            <div class="profile-content">
+              <img src="img/bis.png" alt="profileImg" />
+            </div>
+            <div class="name-job">
+              <div class="profile_name">
+                Budi Santoso
+                <?php echo $email;?>
+              </div>
+              <div class="job">Staff</div>
+            </div>
+            <i class="bx bx-log-out"></i>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Content -->
+    <div class="home-section">
+      <div class="home-content d-flex justify-content-end align-items-center mb-4">
+        <div class="menu">
+          <i class="fas fa-bars"></i>
+        </div>
+        <nav class="custNav">
+          <ul class="nav">
+            <li class="nav-item">
+              <a href="#" class="nav-link transition">
+                <i class="far fa-bell"></i>
+                <span class="badge alert-danger p-1">5</span>
+              </a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="dropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <span class="RobotoReg14"
+                  >Budi Santoso
+                  <?php echo $email;?></span
+                >
+                <img class="img-profile rounded-circle" src="img/bis.png" alt="LogoBis" />
+              </a>
+
+              <ul class="dropdown-menu border-0 dropdown-menu-end shadow" aria-labelledby="dropdownProfile">
+                <li>
+                  <a class="dropdown-item" href="#"> <i class="las la-user mr-2"></i> My Profile </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#"> <i class="las la-list-alt mr-2"></i> Activity Log </a>
+                </li>
+                <li>
+                  <div class="dropdown-divider"></div>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="logout.php"> <i class="las la-sign-out-alt mr-2"></i> Sign Out </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Content Row -->
+      <div class="row m-0 px-3 rowCustom">
+        <!-- Card Total Data Bus -->
+        <div class="col-xl-3 col-md-6 mb-4">
+          <div class="card border-0 gradientBlue shadow h-100 py-2 rounded">
+            <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                  <div class="RobotoReg14 text-white">Data Bus</div>
+                  <div class="RobotoBold18 text-white">5 <span>Bus</span></div>
+                </div>
+                <div class="col-auto">
+                  <img src="img/ico/icons8_Shuttle_bus_50px.png" alt="logoBus" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card Total Data Driver -->
+        <div class="col-xl-3 col-md-6 mb-4">
+          <div class="card border-0 gradientPink shadow h-100 py-2 rounded">
+            <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                  <div class="RobotoReg14 text-white">Data Driver</div>
+                  <div class="RobotoBold18 text-white">(Belum Tersedia)</div>
+                </div>
+                <div class="col-auto">
+                  <img src="img/ico/icons8_driver_50px.png" alt="logoDriver" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card Total Data Pemesanan -->
+        <div class="col-xl-3 col-md-6 mb-4">
+          <div class="card border-0 gradientYellow shadow h-100 py-2 rounded">
+            <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                  <div class="RobotoReg14 text-white">Data Pemesanan</div>
+                  <div class="RobotoBold18 text-white">20 Pesanan</div>
+                </div>
+                <div class="col-auto">
+                  <img src="img/ico/icons8_bus_tickets_50px.png" alt="logoTicket" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card Total Data Penghasilan -->
+        <div class="col-xl-3 col-md-6 mb-4">
+          <div class="card border-0 gradientGreen shadow h-100 py-2 rounded">
+            <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                  <div class="RobotoReg14 text-white">Total Penghasilan</div>
+                  <div class="RobotoBold18 text-white"><span>Rp</span>4.125.000</div>
+                </div>
+                <div class="col-auto">
+                  <img src="img/ico/icons8_add_dollar_45px.png" alt="logoPay" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panel -->
+      <div class="row g-2 m-0 px-4">
+        <div class="col-lg-12">
+          <div class="card shadow mb-4 roundedPanel">
+            <div class="card-header py-3">
+              <div class="d-flex p-2 justify-content-center align-item-center float-start ">
+                <h6 class="m-0 font-weight-bold text-primary"><b>Table Data Akun</b></h6>
+              </div>
+              <button class="float-end btn btn-danger text-white btn-circle custShadow2" data-bs-toggle="tooltip" title="Hapus Yang dipilih"><i class="fas fa-trash"></i></button>
+              <button class="float-end btn colorPrimary text-white btn-circle custShadow2 me-2" data-bs-toggle="tooltip" title="Tambah"><i class="fas fa-plus" ></i></button>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-hover dataTable" width="100%">
+                  <thead>
+                    <tr>
+                      <th class="cb">
+                        <span class="custom-checkbox">
+                          <input type="checkbox" class="selectAll" />
+                          <label for="selectAll"></label>
+                        </span>
+                      </th>
+                      <th class="actions">Action</th>
+                      <th class="nama">Nama Lengkap</th>
+                      <th class="email">Email</th>
+                      <th class="pass">Kata Sandi</th>
+                      <th class="alamat">Alamat</th>
+                      <th class="jenisKelamin">Jenis Kelamin</th>
+                      <th class="namaTerminal">Nama Terminal</th>
+                      <th class="AlamatTerminal">Alamat Terminal</th>
+                      <th class="provinsi">Provinsi</th>
+                      <th class="kabupaten">Kabupaten</th>
+                      <th class="kecamatan">Kecamatan</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input type="checkbox" id="checkbox1" name="option[]" value="1" />
+                          <label for="checkbox1"></label>
+                        </span>
+                      </td>
+                      <td>
+                        <a href="#" class="actionBtn" aria-label="Edit">
+                          <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-target="#editModal" value="edit">&nbsp;<i class="fa fa-edit" data-bs-toggle="tooltip" title="Edit"></i></button>
+                        </a>
+                        <a href="#" class="actionBtn" aria-label="Delete">
+                          <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-target="#deleteModal" value="hapus"><i class="fa fa-trash" data-bs-toggle="tooltip" title="Delete"></i></button>
+                        </a>
+                        <!-- <a href="#editEmployeeModal" class="edit" data-bs-toggle="modal"><i class="material-icons" data-bs-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                        <a href="#deleteEmployeeModal" class="delete" data-bs-toggle="modal"><i class="material-icons" data-bs-toggle="tooltip" title="Delete">&#xE872;</i></a> -->
+                      </td>
+                      <td>Na ny</td>
+                      <td>amdin@admin.com</td>
+                      <td>*******</td>
+                      <td>Jakarta</td>
+                      <td>Laki-laki</td>
+                      <td>Terminal A</td>
+                      <td><center>-</center></td>
+                      <td><center>-</center></td>
+                      <td><center>-</center></td>
+                      <td><center>-</center></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input type="checkbox" id="checkbox1" name="option[]" value="1" />
+                          <label for="checkbox1"></label>
+                        </span>
+                      </td>
+                      <td>
+                        <a href="#" class="actionBtn" aria-label="Edit">
+                          <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-target="#editModal" value="edit">&nbsp;<i class="fa fa-edit" data-bs-toggle="tooltip" title="Edit"></i></button>
+                        </a>
+                        <a href="#" class="actionBtn" aria-label="Delete">
+                          <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-target="#deleteModal" value="hapus"><i class="fa fa-trash" data-bs-toggle="tooltip" title="Delete"></i></button>
+                        </a>
+                        <!-- <a href="#editEmployeeModal" class="edit" data-bs-toggle="modal"><i class="material-icons" data-bs-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                        <a href="#deleteEmployeeModal" class="delete" data-bs-toggle="modal"><i class="material-icons" data-bs-toggle="tooltip" title="Delete">&#xE872;</i></a> -->
+                      </td>
+                      <td>Na ny</td>
+                      <td>amdin@admin.com</td>
+                      <td>*******</td>
+                      <td>Jakarta</td>
+                      <td>Laki-laki</td>
+                      <td>Terminal A</td>
+                      <td><center>-</center></td>
+                      <td><center>-</center></td>
+                      <td><center>-</center></td>
+                      <td><center>-</center></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input type="checkbox" id="checkbox1" name="option[]" value="1" />
+                          <label for="checkbox1"></label>
+                        </span>
+                      </td>
+                      <td>
+                        <a href="#" class="actionBtn" aria-label="Edit">
+                          <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-target="#editModal" value="edit">&nbsp;<i class="fa fa-edit" data-bs-toggle="tooltip" title="Edit"></i></button>
+                        </a>
+                        <a href="#" class="actionBtn" aria-label="Delete">
+                          <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-target="#deleteModal" value="hapus"><i class="fa fa-trash" data-bs-toggle="tooltip" title="Delete"></i></button>
+                        </a>
+                        <!-- <a href="#editEmployeeModal" class="edit" data-bs-toggle="modal"><i class="material-icons" data-bs-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                        <a href="#deleteEmployeeModal" class="delete" data-bs-toggle="modal"><i class="material-icons" data-bs-toggle="tooltip" title="Delete">&#xE872;</i></a> -->
+                      </td>
+                      <td>Na ny</td>
+                      <td>amdin@admin.com</td>
+                      <td>*******</td>
+                      <td>Jakarta</td>
+                      <td>Laki-laki</td>
+                      <td>Terminal A</td>
+                      <td><center>-</center></td>
+                      <td><center>-</center></td>
+                      <td><center>-</center></td>
+                      <td><center>-</center></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input type="checkbox" id="checkbox1" name="option[]" value="1" />
+                          <label for="checkbox1"></label>
+                        </span>
+                      </td>
+                      <td>
+                        <a href="#" class="actionBtn" aria-label="Edit">
+                          <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-target="#editModal" value="edit">&nbsp;<i class="fa fa-edit" data-bs-toggle="tooltip" title="Edit"></i></button>
+                        </a>
+                        <a href="#" class="actionBtn" aria-label="Delete">
+                          <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-target="#deleteModal" value="hapus"><i class="fa fa-trash" data-bs-toggle="tooltip" title="Delete"></i></button>
+                        </a>
+                        <!-- <a href="#editEmployeeModal" class="edit" data-bs-toggle="modal"><i class="material-icons" data-bs-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                        <a href="#deleteEmployeeModal" class="delete" data-bs-toggle="modal"><i class="material-icons" data-bs-toggle="tooltip" title="Delete">&#xE872;</i></a> -->
+                      </td>
+                      <td>Na ny</td>
+                      <td>amdin@admin.com</td>
+                      <td>*******</td>
+                      <td>Jakarta</td>
+                      <td>Laki-laki</td>
+                      <td>Terminal A</td>
+                      <td><center>-</center></td>
+                      <td><center>-</center></td>
+                      <td><center>-</center></td>
+                      <td><center>-</center></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input type="checkbox" id="checkbox1" name="option[]" value="1" />
+                          <label for="checkbox1"></label>
+                        </span>
+                      </td>
+                      <td>
+                        <a href="#" class="actionBtn" aria-label="Edit">
+                          <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-target="#editModal" value="edit">&nbsp;<i class="fa fa-edit" data-bs-toggle="tooltip" title="Edit"></i></button>
+                        </a>
+                        <a href="#" class="actionBtn" aria-label="Delete">
+                          <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-target="#deleteModal" value="hapus"><i class="fa fa-trash" data-bs-toggle="tooltip" title="Delete"></i></button>
+                        </a>
+                        <!-- <a href="#editEmployeeModal" class="edit" data-bs-toggle="modal"><i class="material-icons" data-bs-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                        <a href="#deleteEmployeeModal" class="delete" data-bs-toggle="modal"><i class="material-icons" data-bs-toggle="tooltip" title="Delete">&#xE872;</i></a> -->
+                      </td>
+                      <td>Na ny</td>
+                      <td>amdin@admin.com</td>
+                      <td>*******</td>
+                      <td>Jakarta</td>
+                      <td>Laki-laki</td>
+                      <td>Terminal A</td>
+                      <td><center>-</center></td>
+                      <td><center>-</center></td>
+                      <td><center>-</center></td>
+                      <td><center>-</center></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="jquery/jquery-3.6.0.min.js"></script>
+    <script src="plugin/js/bootstrap.bundle.min.js"></script>
+    <script src="plugin/jquery-easing/jquery.easing.min.js"></script>
+    <script src="plugin/js/script.js"></script>
+    <script src="plugin/js/calender.js"></script>
+    <script src="plugin/datatables/DataTables-1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="plugin/datatables/DataTables-1.11.3/js/dataTables.bootstrap5.min.js"></script>
+    <script src="plugin/js/datatables-demo.js"></script>
+    <script src="plugin/js/javascript.js"></script>
+  </body>
+</html>
