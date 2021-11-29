@@ -1062,6 +1062,21 @@ table.table tr th.cb{
 table.table tr th.actions{
   min-width: 72px;
 }
+table.table tr th.no{
+  min-width: 25px;
+}
+table.table tr th.jenisBus,
+table.table tr th.harga,
+table.table tr th.waktu,
+table.table tr th.waktuTiba{
+  min-width: 70px;
+}
+table.table tr th.detailRute{
+  min-width: 320px;
+}
+.customW{
+  width: 120px !important;
+}
 
 
 .table-responsive::-webkit-scrollbar {
@@ -1098,6 +1113,7 @@ table.table tr th.actions{
   font-size: 11px;
   letter-spacing: 0.4px;
 }
+
 .mode_on {
   background-color: #09922d;
 }
@@ -1109,6 +1125,14 @@ table.table tr th.actions{
 }
 .mode_done {
   background-color: #03a9f3;
+}
+.mode_ekonomi{
+  background-color: #527bdd;
+}
+.mode_eksekutif{
+  color: #FFD700;
+  border: 1px solid #FFD700;
+  background-color: #3d4244;
 }
 
 .btn-user{
