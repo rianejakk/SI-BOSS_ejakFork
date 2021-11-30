@@ -86,6 +86,16 @@ input.form-control-user2 {
   border-radius: 5px;
   padding: 10px;
 }
+select.form-select-user {
+  font-size: 14px;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.tarif{
+  font-family: Roboto-Regular;
+  font-size: 14px;
+}
 
 .form-label {
   font-size: 12px;
@@ -240,6 +250,8 @@ input[type="text"]:focus,
 input[type="password"]:focus,
 input[type="email"]:focus,
 input[type="checkbox"]:focus,
+input[type="date"]:focus,
+input[type="time"]:focus,
 input[type="search"]:focus {
   border-color: #527bdd;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 4px #527bdd;
@@ -1197,4 +1209,56 @@ a.actionBtn{
 }
 .form-group {
   margin-bottom: 1.25rem;
+}
+
+/*  */
+#profileDisplay {
+  display: block;
+  height: 135px;
+  width: 135px;
+  margin: 0px auto;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.329);
+}
+.img-placeholder {
+  display: block;
+  height: 135px;
+  width: 135px;
+  margin: 0px auto;
+  border-radius: 50%;
+  object-fit: cover;
+  background: rgba(0, 0, 0, 0.39);
+  position: absolute;
+  display: none;
+}
+.img-placeholder span {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  padding-left: 10px;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  color: white;
+}
+.img-div{
+  width: 135px;
+  height: 135px;
+  margin: 0px auto;
+}
+
+.img-div:hover .img-placeholder {
+  display: block;
+  cursor: pointer;
+}
+
+.view{
+  font-family: Roboto-Regular;
+  font-size: 14px;
+  text-decoration: none;
+}
+.card-body a.view:hover{
+  text-decoration: underline;
+  color: #527bdd !important;
 }

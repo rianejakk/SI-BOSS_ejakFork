@@ -32,7 +32,7 @@ $email = $_GET['nama_lengkap_admin'];
         <!-- Heading -->
         <li class="sidebar-heading mb-2 p-0">Menu :</li>
         <li class="nav-item mb-1">
-          <a href="#" class="focusMenu">
+          <a href="dashboard.html" class="focusMenu">
             <div class="frame-ico">
               <img class="ico" src="img/ico/icoDash_Fill.png" alt="logo1" data-bs-toggle="collapse" data-bs-target="#dashboard" aria-expanded="false" aria-controls="dashboard" />
             </div>
@@ -41,7 +41,7 @@ $email = $_GET['nama_lengkap_admin'];
           </a>
           <div id="dashboard" class="collapse">
             <ul class="sub-menu">
-              <li><a class="link_name" href="#">Dashboard</a></li>
+              <li><a class="link_name" href="dashboard.html">Dashboard</a></li>
               <li><a href="#">Grafik</a></li>
               <li><a href="#">Log</a></li>
               <li><a href="#">Pengaturan</a></li>
@@ -75,14 +75,14 @@ $email = $_GET['nama_lengkap_admin'];
         </li>
 
         <li class="nav-item">
-          <a href="#" class="focusMenu">
+          <a href="dataAkun.html" class="focusMenu">
             <div class="frame-ico">
               <img class="ico2" src="img/ico/iconProfile_Fill.png" alt="logo1" />
             </div>
             <span class="link_name">Data Akun</span>
           </a>
           <ul class="sub-menu blank">
-            <li><a class="link_name" href="#">Data Akun</a></li>
+            <li><a class="link_name" href="dataAkun.html">Data Akun</a></li>
           </ul>
         </li>
         <li><hr class="seperator" /></li>
@@ -250,7 +250,7 @@ $email = $_GET['nama_lengkap_admin'];
           <div class="card shadow mb-4 rounded">
             <div class="card-header shadow rounded">
               <div class="title float-start">
-                <a href="dataAkun.html">
+                <a href="dataBus.html">
                   <button class="btn text-white m-0 p-0 me-2"><i class="fas fa-arrow-alt-circle-left fa-lg" data-bs-toggle="tooltip" title="Kembali"></i></button>
                 </a>
                 <span class="m-0"><b>Tambah Data Bus</b></span>
@@ -261,161 +261,113 @@ $email = $_GET['nama_lengkap_admin'];
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group" hidden>
-                      <label for="exampleInputEmail" class="form-label">Id</label>
-                      <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_id" placeholder="" />
+                      <label for="InputId" class="form-label">Id</label>
+                      <input type="text" class="form-control form-control-user2" id="InputId" name="txt_id" placeholder="" />
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputEmail" class="form-label">Foto Bus</label>
-                      <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_id" placeholder="" />
+                      <label for="InputFotoBus" class="form-label">Foto Bus</label>
+                      <div class="img-div">
+                        <div class="img-placeholder" onClick="triggerClick()">
+                          <img src="img/ico/IcoeditBusW.png" alt="" />
+                        </div>
+                        <img src="img/ico/IcoeditBus.png" onClick="triggerClick()" id="profileDisplay" />
+                      </div>
+                      <input type="file" name="profileImage" onChange="displayImage(this)" id="profileImage" class="form-control" style="display: none" />
+                      <a href="#" class="float-end view text-secondary"> Lihat Foto </a>
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputEmail" class="form-label">Nama Bus</label>
-                      <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_id" placeholder="" />
+                      <label for="InputNamaBus" class="form-label">Nama Bus</label>
+                      <input type="text" class="form-control form-control-user2" id="InputNamaBus" name="txt_NamaBus" placeholder="" />
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputEmail" class="form-label">Jenis Bus</label>
-                      <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_id" placeholder="" />
+                      <label for="InputJenisBus" class="form-label">Jenis Bus</label>
+                      <select class="form-select form-select-user" aria-label=".form-select-sm example" name="InputJenisBus">
+                        <option disabled selected>Pilih Jenis Bus</option>
+                        <option value="Ekonomi">Ekonomi</option>
+                        <option value="Eksekutif">Eksekutif</option>
+                        <option value="Pariwisata">Pariwisata</option>
+                      </select>
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputEmail" class="form-label">Fasilitas Bus</label>
-                      <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_id" placeholder="" />
+                      <label for="InputFasilitasBus" class="form-label">Fasilitas Bus</label>
+                      <div class="row">
+                        <div class="col-sm-2">
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="AC" id="flexCheckDefault" />
+                            <label class="form-check-label" for="flexCheckDefault"> AC </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="TV" id="flexCheckDefault" />
+                            <label class="form-check-label" for="flexCheckDefault"> TV </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Wi-Fi" id="flexCheckDefault" />
+                            <label class="form-check-label" for="flexCheckDefault"> Wi-Fi </label>
+                          </div>
+                        </div>
+                        <div class="col-sm-10">
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Toilet" id="flexCheckDefault" />
+                            <label class="form-check-label" for="flexCheckDefault"> Toilet </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Kursi baring" id="flexCheckDefault" />
+                            <label class="form-check-label" for="flexCheckDefault"> Kursi baring </label>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputEmail" class="form-label">Status</label>
-                      <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_id" placeholder="" />
+                      <label for="InputStatusBus" class="form-label d-block">Status</label>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="Operasional" checked />
+                        <label class="form-check-label" for="exampleRadios1"> Operasional </label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="Pemeliharaan" />
+                        <label class="form-check-label" for="exampleRadios2"> Pemeliharaan/Maintenance </label>
+                      </div>
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputEmail" class="form-label">Harga</label>
-                      <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_id" placeholder="" />
+                      <label for="InputTarif" class="form-label">Tarif</label>
+                      <div class="input-group mb-3">
+                        <span class="input-group-text tarif">Rp</span>
+                        <input type="text" class="form-control form-control-user2" aria-label="Amount (to the nearest dollar)">
+                      </div>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label for="exampleInputEmail" class="form-label">Tanggal Pemberangkatan</label>
-                      <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_id" placeholder="" />
+                      <label for="InputTglPemberangkatan" class="form-label">Tanggal Pemberangkatan</label>
+                      <input type="date" class="form-control form-control-user2" id="InputTglPemberangkatan" name="txt_Tgl" >
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputEmail" class="form-label">Waktu pemberangkatan</label>
-                      <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_id" placeholder="" />
+                      <label for="InputWaktu" class="form-label">Waktu pemberangkatan</label>
+                      <input type="time" class="form-control form-control-user2" id="InputWaktu" name="txt_waktu" >
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputEmail" class="form-label">Pemberangkatan</label>
-                      <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_id" placeholder="" />
+                      <label for="InputPemberangkatan" class="form-label">Pemberangkatan</label>
+                      <input type="text" class="form-control form-control-user2" id="InputPemberangkatan" name="txt_Pemberangkatan" placeholder="" />
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputEmail" class="form-label">Tujuan</label>
-                      <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_id" placeholder="" />
+                      <label for="InputTujuan" class="form-label">Tujuan</label>
+                      <input type="text" class="form-control form-control-user2" id="InputTujuan" name="txt_Tujuan" placeholder="" />
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputEmail" class="form-label">Estimasi Waktu Kedatangan</label>
-                      <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_id" placeholder="" />
+                      <label for="InputWaktuKedatangan" class="form-label">Estimasi Waktu Kedatangan</label>
+                      <input type="time" class="form-control form-control-user2" id="InputWaktuKedatangan" name="txt_waktuDatang" >
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputEmail" class="form-label">Detail Rute</label>
-                      <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_id" placeholder="" />
+                      <label for="InputDetail" class="form-label">Detail Rute</label>
+                      <input type="text" class="form-control form-control-user2" id="InputDetail" name="txt_Detail" placeholder="" />
                     </div>
                   </div>
-
-
-                <div class="mb-5"></div>
-                <div class="col-12 d-flex justify-content-center">
-                  <button type="submit" name="register" class="btn btn-success roundedBtn text-white btn-block3">Tambah</button>
+                  <div class="mb-5"></div>
+                  <div class="col-12 d-flex justify-content-center">
+                    <button type="submit" name="register" class="btn btn-success roundedBtn text-white btn-block3">Tambah</button>
+                  </div>
                 </div>
               </form>
-            </div>
-
-            <!-- Add Modal -->
-            <div id="addDataAkun" class="modal fade">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <form>
-                    <div class="modal-header">
-                      <h4 class="modal-title">Tambah Data Akun</h4>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true"></button>
-                    </div>
-                    <div class="modal-body">
-                      <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" class="form-control" required />
-                      </div>
-                      <div class="form-group">
-                        <label for="name">Email</label>
-                        <input type="email" class="form-control" required />
-                      </div>
-                      <div class="form-group">
-                        <label for="name">Alamat</label>
-                        <input type="text" class="form-control" required />
-                      </div>
-                      <div class="form-group">
-                        <label for="name">Phone</label>
-                        <input type="number" class="form-control" required />
-                      </div>
-                      <div class="modal-footer">
-                        <input type="button" class="btn btn-danger" data-bs-dismiss="modal" value="Cancel" />
-                        <input type="submit" class="btn btn-success" value="Delete" />
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-
-            <!-- Edit Modal -->
-            <div id="editDataAkun" class="modal fade">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <form action="">
-                    <div class="modal-header">
-                      <h4 class="modal-title">Edit Data Akun</h4>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true"></button>
-                    </div>
-                    <div class="modal-body">
-                      <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" class="form-control" required />
-                      </div>
-                      <div class="form-group">
-                        <label for="name">Email</label>
-                        <input type="email" class="form-control" required />
-                      </div>
-                      <div class="form-group">
-                        <label for="name">Alamat</label>
-                        <input type="text" class="form-control" required />
-                      </div>
-                      <div class="form-group">
-                        <label for="name">Phone</label>
-                        <input type="number" class="form-control" required />
-                      </div>
-                      <div class="modal-footer">
-                        <input type="button" class="btn btn-danger" data-bs-dismiss="modal" value="Cancel" />
-                        <input type="submit" class="btn btn-success" value="Delete" />
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-
-            <!-- Delete Modal -->
-            <div id="deleteDataAkun" class="modal fade">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <form action="">
-                    <div class="modal-header">
-                      <h4 class="modal-title">Hapus Akun</h4>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true"></button>
-                    </div>
-                    <div class="modal-body">
-                      <p>Apakah Anda yakin ingin menghapus data akun ini ?</p>
-                      <p class="text-warning"><small>Perlu hati-hati karena data akan hilang selamanya !</small></p>
-                    </div>
-                    <div class="modal-footer">
-                      <input type="button" class="btn btn-secondary" data-bs-dismiss="modal" value="Cancel" />
-                      <input type="submit" class="btn btn-danger" value="Delete" />
-                    </div>
-                  </form>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -430,5 +382,6 @@ $email = $_GET['nama_lengkap_admin'];
     <script src="plugin/datatables/DataTables-1.11.3/js/dataTables.bootstrap5.min.js"></script>
     <script src="plugin/js/datatables-demo.js"></script>
     <script src="plugin/js/javascript.js"></script>
+    <script src="plugin/js/UpImg.js"></script>
   </body>
 </html>

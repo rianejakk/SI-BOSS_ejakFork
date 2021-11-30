@@ -32,7 +32,7 @@ $email = $_GET['nama_lengkap_admin'];
         <!-- Heading -->
         <li class="sidebar-heading mb-2 p-0">Menu :</li>
         <li class="nav-item mb-1">
-          <a href="#" class="focusMenu">
+          <a href="dashboard.html" class="focusMenu">
             <div class="frame-ico">
               <img class="ico" src="img/ico/icoDash_Fill.png" alt="logo1" data-bs-toggle="collapse" data-bs-target="#dashboard" aria-expanded="false" aria-controls="dashboard" />
             </div>
@@ -41,7 +41,7 @@ $email = $_GET['nama_lengkap_admin'];
           </a>
           <div id="dashboard" class="collapse">
             <ul class="sub-menu">
-              <li><a class="link_name" href="#">Dashboard</a></li>
+              <li><a class="link_name" href="dashboard.html">Dashboard</a></li>
               <li><a href="#">Grafik</a></li>
               <li><a href="#">Log</a></li>
               <li><a href="#">Pengaturan</a></li>
@@ -75,14 +75,14 @@ $email = $_GET['nama_lengkap_admin'];
         </li>
 
         <li class="nav-item">
-          <a href="#" class="focusMenu">
+          <a href="dataAkun.html" class="focusMenu">
             <div class="frame-ico">
               <img class="ico2" src="img/ico/iconProfile_Fill.png" alt="logo1" />
             </div>
             <span class="link_name">Data Akun</span>
           </a>
           <ul class="sub-menu blank">
-            <li><a class="link_name" href="#">Data Akun</a></li>
+            <li><a class="link_name" href="dataAkun.html">Data Akun</a></li>
           </ul>
         </li>
         <li><hr class="seperator" /></li>
@@ -253,7 +253,7 @@ $email = $_GET['nama_lengkap_admin'];
                 <span class="m-0"><b>Tabel Data Bus</b></span>
               </div>
               <div class="btnAction float-end">
-                <a href="tambahAkun.html">
+                <a href="tambahDataBus.html">
                   <button class="btn btn-light text-dark btn-circle custShadow2 me-2"><i class="fas fa-plus" data-bs-toggle="tooltip" title="Tambah"></i></button>
                 </a>
                 <button class="btn btn-light text-danger btn-circle custShadow2" data-bs-toggle="modal" data-tooltip="tooltip" data-bs-target="#deleteDataAkun" title="Hapus Yang dipilih"><i class="fas fa-trash"></i></button>
@@ -415,7 +415,7 @@ $email = $_GET['nama_lengkap_admin'];
                 <div class="modal-content modal-edit">
                   <form action="">
                     <div class="modal-header">
-                      <h4 class="modal-title">Edit Data Akun</h4>
+                      <h4 class="modal-title">Edit Data Bus</h4>
                       <button type="button" class="btn btn-danger btn-circle btn-user2 shadow" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true">
                         <i class="fa fa-times fa-sm"></i>
                       </button>
@@ -530,11 +530,11 @@ $email = $_GET['nama_lengkap_admin'];
                 <div class="modal-content">
                   <form action="">
                     <div class="modal-header">
-                      <h4 class="modal-title">Hapus Akun</h4>
+                      <h4 class="modal-title">Hapus Data Bus</h4>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true"></button>
                     </div>
                     <div class="modal-body">
-                      <p>Apakah Anda yakin ingin menghapus data akun ini ?</p>
+                      <p>Apakah Anda yakin ingin menghapus data bus ini ?</p>
                       <p class="text-warning"><small>Perlu hati-hati karena data akan hilang selamanya !</small></p>
                     </div>
                     <div class="modal-footer">
