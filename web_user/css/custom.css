@@ -390,10 +390,24 @@ border-radius: 20px;
     color: #000000;
  }
 
+ .rect .span3{
+   position: absolute;
+    width: auto;
+    height: 35px;
+    left: 20px;
+    top: 175px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 19px;
+    line-height: 35px;
+    color: #000000;
+}
+
  .form-control-user{
-    position: absolute;
-    width: 420px;
-    height: 64px;
+   position: absolute;
+   width: 395px;
+   height: 57px;
     left: 30px;
     top: 190px;
     box-sizing: border-box;
@@ -405,10 +419,10 @@ border-radius: 20px;
 
  .form-control-user2{
     position: absolute;
-    width: 420px;
-    height: 64px;
+   width: 395px;
+   height: 57px;
     left: 30px;
-    top: 280px;
+    top: 270px;
     box-sizing: border-box;
     font-size: 14px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -499,7 +513,336 @@ border-radius: 20px;
 
  .copy{
    position: absolute;
-   left: 540px;
+   left: 520px;
    top: 690px;
  }
- 
+
+ .form-control-user01{
+   position: absolute;
+   width: 395px;
+   height: 57px;
+    left: 30px;
+    top: 190px;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    border-radius: 10px;
+    padding: 14px;
+ }
+
+ .form-control-user02{
+   position: absolute;
+   width: 395px;
+   height: 57px;
+   left: 30px;
+   top: 270px;
+   box-sizing: border-box;
+   font-size: 14px;
+   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+   border-radius: 10px;
+   padding: 14px;
+}
+
+.form-control-user03{
+   position: absolute;
+   width: 395px;
+   height: 57px;
+   left: 30px;
+   top: 350px;
+   box-sizing: border-box;
+   font-size: 14px;
+   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+   border-radius: 10px;
+   padding: 14px;
+}
+
+.form-control-user04{
+   position: absolute;
+   width: 395px;
+   height: 57px;
+   left: 30px;
+   top: 430px;
+   box-sizing: border-box;
+   font-size: 14px;
+   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+   border-radius: 10px;
+   padding: 14px;
+}
+
+.login_container01 button{
+   position: absolute;
+   width: 137px;
+   height: 41px;
+   left: 185px;
+   top: 515px;
+   background: linear-gradient(90deg, rgba(17, 84, 244, 0.76) -20.67%, #002886 175.08%);
+   border-radius: 20px;
+   color: #ffffff !important;
+ }
+
+ .custom-control-label01{
+   position: absolute;
+   left: 148px;
+   top: 565px;
+ }
+
+ .login01{
+   position: absolute;
+   left: 230px;
+   top: 595px;
+ }
+
+ .form-control-user001{
+   position: absolute;
+   width: 395px;
+   height: 57px;
+    left: 30px;
+    top: 190px;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    border-radius: 10px;
+    padding: 14px;
+ }
+
+ .login_container001 button{
+   position: absolute;
+   width: 137px;
+   height: 41px;
+   left: 185px;
+   top: 515px;
+   background: linear-gradient(90deg, rgba(17, 84, 244, 0.76) -20.67%, #002886 175.08%);
+   border-radius: 20px;
+   color: #ffffff !important;
+ }
+
+ .rect .span01{
+ position: absolute;
+    left: 20px;
+    top: 70px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 21px;
+    color: #000000;
+ }
+
+ .form-control-userks1{
+   position: absolute;
+   width: 395px;
+   height: 57px;
+    left: 30px;
+    top: 135px;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    border-radius: 10px;
+    padding: 14px;
+ }
+
+ .rect .span02{
+   position: absolute;
+      left: 20px;
+      top: 240px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 20px;
+      line-height: 21px;
+      color: #000000;
+   }
+
+   .form-control-userks2{
+      position: absolute;
+      width: 395px;
+      height: 57px;
+       left: 30px;
+       top: 305px;
+       box-sizing: border-box;
+       font-size: 14px;
+       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+       border-radius: 10px;
+       padding: 14px;
+    }
+
+    .login_containerks1 button{
+      position: absolute;
+      width: 137px;
+      height: 41px;
+      left: 190px;
+      top: 395px;
+      background: linear-gradient(90deg, rgba(17, 84, 244, 0.76) -20.67%, #002886 175.08%);
+      border-radius: 20px;
+      color: #ffffff !important;
+    }
+
+    .form-control-userv1{
+      position: absolute;
+      width: 50px;
+      height: auto;
+      padding: 10px;
+      outline: none !important;
+      border : 0px;
+      font-size: 20px;
+      text-align: center;
+      left: 60px;
+      top: 250px;
+      border-bottom: 1px solid #000000;
+    }
+
+    .form-control-userv2{
+      position: absolute;
+      width: 50px;
+      height: auto;
+      padding: 10px;
+      outline: none !important;
+      border : 0px;
+      font-size: 20px;
+      text-align: center;
+      left: 120px;
+      top: 250px;
+      border-bottom: 1px solid #000000;
+    }
+
+    .form-control-userv3{
+      position: absolute;
+      width: 50px;
+      height: auto;
+      padding: 10px;
+      outline: none !important;
+      border : 0px;
+      font-size: 20px;
+      text-align: center;
+      left: 180px;
+      top: 250px;
+      border-bottom: 1px solid #000000;
+    }
+
+    .form-control-userv4{
+      position: absolute;
+      width: 50px;
+      height: auto;
+      padding: 10px;
+      outline: none !important;
+      border : 0px;
+      font-size: 20px;
+      text-align: center;
+      left: 240px;
+      top: 250px;
+      border-bottom: 1px solid #000000;
+    }
+
+    .form-control-userv5{
+      position: absolute;
+      width: 50px;
+      height: auto;
+      padding: 10px;
+      outline: none !important;
+      border : 0px;
+      font-size: 20px;
+      text-align: center;
+      left: 300px;
+      top: 250px;
+      border-bottom: 1px solid #000000;
+    }
+
+    .form-control-userv6{
+      position: absolute;
+      width: 50px;
+      height: auto;
+      padding: 10px;
+      outline: none !important;
+      border : 0px;
+      font-size: 20px;
+      text-align: center;
+      left: 360px;
+      top: 250px;
+      border-bottom: 1px solid #000000;
+    }
+
+    .login_containerv1 button{
+      position: absolute;
+      width: 137px;
+      height: 41px;
+      left: 188px;
+      top: 350px;
+      background: linear-gradient(90deg, rgba(17, 84, 244, 0.76) -20.67%, #002886 175.08%);
+      border-radius: 20px;
+      color: #ffffff !important;
+    }
+
+    .custom-control-labelv1{
+      position: absolute;
+      left: 175px;
+      top: 405px;
+    }
+   
+    .verifv1{
+      position: absolute;
+      left: 220px;
+      top: 437px;
+    }
+
+    .profil{
+      position: absolute;
+      width: 1260px;
+      height: 821px;
+      left: 50px;
+      top: 132px;
+      background: #FFFFFF;
+      border: 1px solid #C2C2C2;
+      box-sizing: border-box;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+      border-radius: 20px;
+  
+    }
+
+    .profil2{
+      position: absolute;
+      width: 393px;
+      height: 821px;
+      left: 0px;
+      top: 0px;
+      background: #FFFFFF;
+      border: 1px solid #C2C2C2;
+      box-sizing: border-box;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+      border-radius: 20px;
+    }
+
+    .profil2 img{
+      position: absolute;
+      width: 120px;
+      height: 100px;
+      left: 20px;
+      top: 50px;
+      
+    }
+    .spanp1{
+      position: absolute;
+      left: 150px;
+      top: 70px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 20px;
+      line-height: 21px;
+      color: #000000;
+ }
+
+ .spanp2{
+   position: absolute;
+   left: 150px;
+   top: 100px;
+   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+   font-style: normal;
+   font-weight: normal;
+   font-size: 14px;
+   line-height: 21px;
+   color: #000000;
+}
+
+
+
+
