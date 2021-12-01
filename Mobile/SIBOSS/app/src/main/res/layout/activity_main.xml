@@ -19,21 +19,32 @@
         android:id="@+id/blue_bus"
         android:layout_width="match_parent"
         android:layout_height="233dp"
-        android:src="@drawable/blue_bus" />
+        android:src="@drawable/blue_bus"
+        android:foreground="@drawable/bus_blur"
+        />
 
     <TextView
         android:id="@+id/kemana"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Kemana Tujuan Anda?"
-
+        android:text="Kemana"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="7.5dp"
+        android:textSize="36dp"
+        android:textColor="@color/white"
+        android:fontFamily="sans-serif"
         />
 
     <TextView
-        android:id="@+id/txt_kemana"
+        android:id="@+id/tujuan_anda"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
+        android:text="Tujuan Anda?"
+        android:textSize="36dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="7.5dp"
+        android:layout_below="@id/kemana"
+        android:textColor="@color/white"
         />
 
     <EditText
