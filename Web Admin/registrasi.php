@@ -1,19 +1,17 @@
 <?php
 require ('koneksi.php');
 if(isset ($_POST['register'])){
-    $namaVal = $_POST['txt_nama'];
-    $emailVal = $_POST['txt_email'];
-    $passVal = $_POST['txt_pass'];
-    $alamatVal = $_POST['txt_alamat'];
-    $jkVal = $_POST['txt_jk'];
-    $levelVal = $_POST['txt_level'];
-    $terminalVal = $_POST['txt_terminal'];
-    $alamattermVal = $_POST['txt_alamatterm'];
-    $provVal = $_POST['txt_prov'];
-    $kabVal = $_POST['txt_kab'];
-    $kecVal = $_POST['txt_kec'];
+    $nama = $_POST['txt_nama'];
+    $jenis_kelamin = $_POST['Rbtn_jenis_kelamin'];
+    $alamat = $_POST['txt_alamat'];
+    $no_hp = $_POST['txt_no_hp'];
+    $foto = $_POST['txt_foto'];
+    // $status = $_POST['txt_status'];
+    $id_terminal = $_POST['txt_id_terminal'];
+    $email = $_POST['txt_email'];
+    $password = $_POST['txt_password'];
 
-    $query = "INSERT INTO administrator VALUES ('', '$namaVal', '$emailVal', '$passVal', '', '', 1, '', '', '', '', '')";
+    $query = "INSERT INTO administrator VALUES ('', '$nama', '$jenis_kelamin', '$alamat', '$no_hp', '', 2, '1', '$email', '$password')";
     $result = mysqli_query($koneksi, $query);
     header('Location: registrasi.php');
     echo mysqli_error($result);
@@ -55,7 +53,7 @@ if(isset ($_POST['register'])){
                       <div class="judul">
                         <h4 class="text-gray-900 mb-5">Daftar <br /><span>System Information Booking Online Bus</span></h4>
                       </div>
-                      <form action="login.php" method="POST">
+                      <form action="registrasi.php" method="POST">
                         <div class="col-lg-12 mb-3" hidden>
                           <label for="exampleInputEmail" class="form-label">Id</label>
                           <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_id" placeholder="" />
@@ -74,11 +72,11 @@ if(isset ($_POST['register'])){
                         <div class="row">
                           <div class="col-lg-6 mb-3">
                             <label for="exampleInputEmail" class="form-label">Kata Sandi</label>
-                            <input type="password" class="form-control form-control-user2" id="exampleInputEmail" name="txt_pass" placeholder="********" />
+                            <input type="password" class="form-control form-control-user2" id="exampleInputEmail" name="txt_password" placeholder="********" />
                           </div>
                           <div class="col-lg-6 mb-3">
                             <label for="exampleInputPassword" class="form-label">Konfirmasi Kata sandi</label>
-                            <input type="password" class="form-control form-control-user2" id="exampleInputPassword" name="txt_pass" placeholder="********" />
+                            <input type="password" class="form-control form-control-user2" id="exampleInputPassword" name="txt_password" placeholder="********" />
                           </div>
                         </div>
 
@@ -90,24 +88,29 @@ if(isset ($_POST['register'])){
                           <div class="col-lg-6 mb-3">
                             <label for="exampleInputPassword" class="form-label">Jenis Kelamin</label>
                             <div class="form-check">
-                              <input class="form-check-input" type="radio" name="Rbtnjk" id="exampleRadios1" value="option1" checked />
+                              <input class="form-check-input" type="radio" name="Rbtn_jenis_kelamin" id="exampleRadios1" value="LAKI - LAKI" checked />
                               <label class="form-check-label2" for="exampleRadios1"> Laki-laki</label>
                             </div>
                             <div class="form-check">
-                              <input class="form-check-input" type="radio" name="Rbtnjk" id="exampleRadios2" value="option2" />
+                              <input class="form-check-input" type="radio" name="Rbtn_jenis_kelamin" id="exampleRadios2" value="PEREMPUAN" />
                               <label class="form-check-label2" for="exampleRadios2"> Perempuan </label>
                             </div>
                           </div>
                         </div>
-
+                        <div class="row">
+                          <div class="col-lg-6 mb-3">
+                            <label for="exampleInputEmail" class="form-label">No Handphone</label>
+                            <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_no_hp" placeholder="Ex: 085808241204" />
+                          </div>
+                        </div>
                         <div class="row">
                           <div class="col-lg-6 mb-3">
                             <label for="exampleInputEmail" class="form-label">Nama Terminal</label>
-                            <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_terminal" placeholder="Ex: Terminal A" />
+                            <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_terminal" placeholder="Ex: Tawang Alun" />
                           </div>
                           <div class="col-lg-6 mb-3">
                             <label for="exampleInputPassword" class="form-label">Alamat Terminal</label>
-                            <input type="text" class="form-control form-control-user2" id="exampleInputPassword" name="txt_alamatterm" placeholder="JL. KH." />
+                            <input type="text" class="form-control form-control-user2" id="exampleInputPassword" name="txt_alamat" placeholder="JL. KH." />
                           </div>
                         </div>
 

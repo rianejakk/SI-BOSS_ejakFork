@@ -3,30 +3,28 @@
     session_start();
     if (isset($_POST['submit'])) {
         $email = $_POST['txt_email'];
-        $pass = $_POST['txt_pass'];
+        $password = $_POST['txt_password'];
 
-        if (!empty(trim($email)) && !empty(trim($pass))) {
-            $query = "SELECT * FROM administrator WHERE email_admin = '$email'";
+        if (!empty(trim($email)) && !empty(trim($password))) {
+            $query = "SELECT * FROM administrator WHERE email = '$email'";
             $result = mysqli_query($koneksi, $query);
             $num = mysqli_num_rows($result);
 
             while ($row = mysqli_fetch_array($result)) {
-                $id = $row['id_admin'];
-                $namaVal = $row['nama_lengkap_admin'];
-                $emailVal = $row['email_admin'];
-                $passVal = $row['kata_sandi_admin'];
-                $alamatVal = $row['alamat_admin'];
-                $jkVal = $row['jenis_kelamin'];
-                $levelVal = $row['id_level'];
-                $terminalVal = $row['nama_terminal'];
-                $alamattermVal = $row['alamat_terminal'];
-                $provVal = $row['provinsi'];
-                $kabVal = $row['kabupaten'];
-                $kecVal = $row['kecamatan'];
+                $id_user_admin = $row['id_user_admin'];
+                $nama = $row['nama'];
+                $jenis_kelamin = $row['Rbtn_jenis_kelamin'];
+                $alamat = $row['alamat'];
+                $no_hp = $row['no_hp'];
+                $foto = $row['foto'];
+                $level = $row['id_level'];
+                $id_terminal = $row['id_terminal'];
+                $emailVal = $row['email'];
+                $passwordVal = $row['password'];
             }
             if ($num != 0) {
-                if ($emailVal == $email && $passVal == $pass) {
-                    header('Location: dashboard.php?nama_lengkap_admin='.urlencode($namaVal));
+                if ($emailVal == $email && $passwordVal == $password) {
+                    header('Location: dashboard.php?nama='.urlencode($nama));
                 } else {
                     $error = 'user atau password salah!!';
                     header('Location: index.php');
@@ -87,7 +85,7 @@
                                             </div>
                                             <div class="mb-2">
                                                 <label for="exampleInputPassword" class="form-label">Kata sandi</label>
-                                                <input type="password" class="form-control form-control-user" id="exampleInputPassword" name="txt_pass" placeholder="********" />
+                                                <input type="password" class="form-control form-control-user" id="exampleInputPassword" name="txt_password" placeholder="********" />
                                             </div>
                                             <div class="mb-3 float-start">
                                                 <div class="form-check small">
