@@ -24,6 +24,7 @@
             }
             if ($num != 0) {
                 if ($emailVal == $email && $passwordVal == $password) {
+                    
                     header('Location: dashboard.php?nama='.urlencode($nama));
                 } else {
                     $error = 'email dan password salah!!';
