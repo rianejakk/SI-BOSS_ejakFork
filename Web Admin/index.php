@@ -129,9 +129,11 @@
             </div>
         </div>
     </div>
+
+    <script src="plugin/js/bootstrap.bundle.min.js"></script>
+    <script src="jquery/jquery-3.6.0.min.js"></script>
     <script src="plugin/js/form-validation.init.js"></script>
     <script src="plugin/js/parsley.min.js"></script>
-    <script src="jquery/jquery-3.6.0.min.js"></script>
 </body>
 
 </html>
