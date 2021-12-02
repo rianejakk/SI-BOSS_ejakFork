@@ -23,12 +23,18 @@
                 $passwordVal = $row['password'];
             }
             if ($num != 0) {
-                if ($emailVal == $email && $passwordVal == $password) {
-                    header('Location: dashboard.php?nama='.urlencode($nama));
-                } else {
-                    $error = 'user atau password salah!!';
-                    header('Location: index.php');
-                    echo $error;
+                if ($emailVal == 0){
+                    $error = 'email masih kosong';
+                    if ($password == 0){
+                        $error = 'password masih kosong';
+                        if ($emailVal == $email && $passwordVal == $password) {
+                            header('Location: dashboard.php?nama='.urlencode($nama));
+                        } else {
+                            $error = 'user atau password salah!!';
+                            header('Location: index.php');
+                            echo $error;
+                        }
+                    }
                 }
             } else {
                 $error = 'user tidak ditemukan!!';
