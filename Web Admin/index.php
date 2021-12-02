@@ -23,21 +23,15 @@
                 $passwordVal = $row['password'];
             }
             if ($num != 0) {
-                if ($emailVal == 0){
-                    $error = 'email masih kosong';
-                    if ($password == 0){
-                        $error = 'password masih kosong';
-                        if ($emailVal == $email && $passwordVal == $password) {
-                            header('Location: dashboard.php?nama='.urlencode($nama));
-                        } else {
-                            $error = 'user atau password salah!!';
-                            header('Location: index.php');
-                            echo $error;
-                        }
-                    }
+                if ($emailVal == $email && $passwordVal == $password) {
+                    header('Location: dashboard.php?nama='.urlencode($nama));
+                } else {
+                    $error = 'email dan password salah!!';
+                    header('Location: index.php');
+                    echo $error;
                 }
             } else {
-                $error = 'user tidak ditemukan!!';
+                $error = 'email dan password tidak ditemukan!!';
                 header('Location: index.php');
                 echo $error;
             }
@@ -56,7 +50,7 @@
     <link rel="stylesheet" href="plugin/css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="plugin/font/stylesheet.css" />
-    <link rel="stylesheet" href="plugin/js/bootstrap.min.js" />
+    <link rel="stylesheet" href="plugin/css/app.min.css" />
 </head>
 <body class="bg-white">
     <div class="container-fluid">
@@ -84,14 +78,14 @@
                                         <div class="judul">
                                             <h4 class="text-gray-900 mb-5">Login <br /><span>System Information Booking Online Bus</span></h4>
                                         </div>
-                                        <form action="index.php" method="POST">
+                                        <form class="custom-validation" action="index.php" method="POST">
                                             <div class="mb-3">
                                                 <label for="exampleInputEmail" class="form-label">Email</label>
-                                                <input type="email" class="form-control form-control-user" id="exampleInputEmail" name="txt_email" placeholder="Ex: budiman@siboss.com" />
+                                                <input type="email" class="form-control form-control-user" id="exampleInputEmail" name="txt_email" required placeholder="Ex: budiman@siboss.com" />
                                             </div>
                                             <div class="mb-2">
                                                 <label for="exampleInputPassword" class="form-label">Kata sandi</label>
-                                                <input type="password" class="form-control form-control-user" id="exampleInputPassword" name="txt_password" placeholder="********" />
+                                                <input type="password" class="form-control form-control-user" id="exampleInputPassword" name="txt_password" required placeholder="********" />
                                             </div>
                                             <div class="mb-3 float-start">
                                                 <div class="form-check small">
@@ -135,6 +129,9 @@
             </div>
         </div>
     </div>
+    <script src="plugin/js/form-validation.init.js"></script>
+    <script src="plugin/js/parsley.min.js"></script>
+    <script src="jquery/jquery-3.6.0.min.js"></script>
 </body>
 
 </html>

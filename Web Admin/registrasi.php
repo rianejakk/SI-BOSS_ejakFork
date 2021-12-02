@@ -24,7 +24,6 @@ if(isset ($_POST['register'])){
     <link rel="stylesheet" href="plugin/css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="plugin/font/stylesheet.css" />
-    <link rel="stylesheet" href="plugin/js/bootstrap.min.js" />
   </head>
   <body class="bg-white">
     <div class="container-fluid">
@@ -76,7 +75,7 @@ if(isset ($_POST['register'])){
                           </div>
                           <div class="col-lg-6 mb-3">
                             <label for="exampleInputPassword" class="form-label">Konfirmasi Kata sandi</label>
-                            <input type="password" class="form-control form-control-user2" id="exampleInputPassword" name="txt_password" placeholder="********" />
+                            <input type="password" class="form-control form-control-user2" id="exampleInputPassword" name="txt_pass" placeholder="********" />
                           </div>
                         </div>
 
@@ -169,5 +168,9 @@ if(isset ($_POST['register'])){
         </div>
       </div>
     </div>
+    <!-- JavaScript -->
+    <script src="plugin/js/bootstrap.bundle.min.js"></script>
+    <script src="plugin/jquery-easing/jquery.easing.min.js"></script>
+    
   </body>
 </html>
