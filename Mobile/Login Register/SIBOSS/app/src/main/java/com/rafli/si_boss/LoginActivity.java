@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.rafli.si_boss.api.ApiClient;
 import com.rafli.si_boss.api.ApiInterface;
+import com.rafli.si_boss.model.login.register.Login;
+import com.rafli.si_boss.model.login.register.LoginData;
 
 import retrofit2.Call;
 import retrofit2.Callback;

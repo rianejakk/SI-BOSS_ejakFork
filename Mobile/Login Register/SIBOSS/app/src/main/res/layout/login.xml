@@ -93,7 +93,7 @@
             android:layout_below="@id/tv3"
             android:layout_marginTop="30dp"
             android:background="@drawable/edittext_bg"
-            android:drawableStart="@drawable/ic_baseline_email_24"
+            android:drawableStart="@drawable/ic_baseline_account_box_24"
             android:drawablePadding="16dp"
             android:fontFamily="@font/roboto"
             android:hint="Ussername"
@@ -137,11 +137,11 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_centerInParent="true"
+                android:fontFamily="@font/roboto"
                 android:onClick=""
                 android:text="Lupa kata sandi?"
                 android:textColor="@color/blue"
-                android:fontFamily="@font/roboto"
-                android:textSize="12sp"/>
+                android:textSize="12sp" />
         </RelativeLayout>
 
         <RelativeLayout

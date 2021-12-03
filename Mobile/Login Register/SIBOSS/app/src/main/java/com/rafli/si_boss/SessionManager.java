@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
+import com.rafli.si_boss.model.login.register.LoginData;
+
 import java.util.HashMap;
 
 public class SessionManager {
@@ -27,7 +29,7 @@ public class SessionManager {
         editor.putBoolean(IS_LOGGED_IN, true);
         editor.putString(USER_ID, user.getUserId());
         editor.putString(USERNAME, user.getUsername());
-        editor.putString(NAME, user.getUserName());
+        editor.putString(NAME, user.getName());
         editor.commit();
     }
 
