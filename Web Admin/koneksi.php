@@ -1,8 +1,9 @@
 <?php
+    // session_start();
     $server = "localhost";
     $username = "root";
     $password = "";
-    $db = "si-boss_express";
+    $db = "si_boss_express";
     $koneksi = mysqli_connect($server, $username, $password, $db);
     //urutan pemanggilan
 

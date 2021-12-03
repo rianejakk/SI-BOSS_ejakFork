@@ -1,19 +1,17 @@
 <?php
 require ('koneksi.php');
 if(isset ($_POST['register'])){
-    $namaVal = $_POST['txt_nama'];
-    $emailVal = $_POST['txt_email'];
-    $passVal = $_POST['txt_pass'];
-    $alamatVal = $_POST['txt_alamat'];
-    $jkVal = $_POST['txt_jk'];
-    $levelVal = $_POST['txt_level'];
-    $terminalVal = $_POST['txt_terminal'];
-    $alamattermVal = $_POST['txt_alamatterm'];
-    $provVal = $_POST['txt_prov'];
-    $kabVal = $_POST['txt_kab'];
-    $kecVal = $_POST['txt_kec'];
+    $nama = $_POST['txt_nama'];
+    $jenis_kelamin = $_POST['Rbtn_jenis_kelamin'];
+    $alamat = $_POST['txt_alamat'];
+    $no_hp = $_POST['txt_no_hp'];
+    $foto = $_POST['txt_foto'];
+    // $status = $_POST['txt_status'];
+    $id_terminal = $_POST['txt_id_terminal'];
+    $email = $_POST['txt_email'];
+    $password = $_POST['txt_password'];
 
-    $query = "INSERT INTO administrator VALUES ('', '$namaVal', '$emailVal', '$passVal', '', '', 1, '', '', '', '', '')";
+    $query = "INSERT INTO administrator VALUES ('', '$nama', '$jenis_kelamin', '$alamat', '$no_hp', '', 2, '1', '$email', '$password')";
     $result = mysqli_query($koneksi, $query);
     header('Location: registrasi.php');
     echo mysqli_error($result);
@@ -26,7 +24,7 @@ if(isset ($_POST['register'])){
     <link rel="stylesheet" href="plugin/css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="plugin/font/stylesheet.css" />
-    <link rel="stylesheet" href="plugin/js/bootstrap.min.js" />
+    <link rel="stylesheet" href="plugin/css/app.min.css" />
   </head>
   <body class="bg-white">
     <div class="container-fluid">
@@ -55,65 +53,75 @@ if(isset ($_POST['register'])){
                       <div class="judul">
                         <h4 class="text-gray-900 mb-5">Daftar <br /><span>System Information Booking Online Bus</span></h4>
                       </div>
-                      <form action="login.php" method="POST">
+                      <form class="custom-validation" action="registrasi.php" method="POST">
                         <div class="col-lg-12 mb-3" hidden>
-                          <label for="exampleInputEmail" class="form-label">Id</label>
-                          <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_id" placeholder="" />
+                          <label for="InputId" class="form-label">Id</label>
+                          <input type="text" class="form-control form-control-user2" id="InputId" name="txt_id" placeholder="" />
                         </div>
                         <div class="row">
                           <div class="col-lg-6 mb-3">
-                            <label for="exampleInputEmail" class="form-label">Nama Lengkap</label>
-                            <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_nama" placeholder="Ex: Budi Santoso" />
+                            <label for="InputNama" class="form-label">Nama Lengkap</label>
+                            <input type="text" class="form-control form-control-user2" id="InputNama" name="txt_nama" required placeholder="Ex: Budi Santoso" />
                           </div>
                           <div class="col-lg-6 mb-3">
-                            <label for="exampleInputPassword" class="form-label">Email</label>
-                            <input type="email" class="form-control form-control-user2" id="exampleInputPassword" name="txt_email" placeholder="Ex: budiman@siboss.com" />
-                          </div>
-                        </div>
-
-                        <div class="row">
-                          <div class="col-lg-6 mb-3">
-                            <label for="exampleInputEmail" class="form-label">Kata Sandi</label>
-                            <input type="password" class="form-control form-control-user2" id="exampleInputEmail" name="txt_pass" placeholder="********" />
-                          </div>
-                          <div class="col-lg-6 mb-3">
-                            <label for="exampleInputPassword" class="form-label">Konfirmasi Kata sandi</label>
-                            <input type="password" class="form-control form-control-user2" id="exampleInputPassword" name="txt_pass" placeholder="********" />
+                            <label for="InputEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control form-control-user2" id="InputEmail" name="txt_email" required data-parsley-required-message="Email Kosong !!!" placeholder="Ex: budiman@siboss.com" />
                           </div>
                         </div>
 
                         <div class="row">
                           <div class="col-lg-6 mb-3">
-                            <label for="exampleInputEmail" class="form-label">Alamat</label>
-                            <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_alamat" placeholder="Ex: JL. Sudirman" />
+                            <label for="InputPassword" class="form-label">Kata Sandi</label>
+                            <input type="password" class="form-control form-control-user2" id="InputPassword" name="txt_password" placeholder="********" 
+                              data-parsley-length="[8,16]"
+                              maxlength="16"
+                              data-parsley-uppercase="1"
+                              data-parsley-lowercase="1"
+                              data-parsley-number="1"/>
                           </div>
                           <div class="col-lg-6 mb-3">
-                            <label for="exampleInputPassword" class="form-label">Jenis Kelamin</label>
+                            <label for="InputPassword2" class="form-label">Konfirmasi Kata sandi</label>
+                            <input type="password" class="form-control form-control-user2" id="InputPassword2" name="txt_pass" required data-parsley-equalto="#InputPassword" placeholder="********" />
+                          </div>
+                        </div>
+
+                        <div class="row">
+                        <div class="col-lg-6 mb-3">
+                            <label for="InputNoHp" class="form-label">No Handphone</label>
+                            <input type="text" class="form-control form-control-user2" id="InputNoHp" name="txt_no_hp" required placeholder="Ex: 085808241204" />
+                          </div>
+                          <div class="col-lg-6 mb-3">
+                            <label for="InputJenisKelamin" class="form-label">Jenis Kelamin</label>
                             <div class="form-check">
-                              <input class="form-check-input" type="radio" name="Rbtnjk" id="exampleRadios1" value="option1" checked />
+                              <input class="form-check-input" type="radio" name="Rbtn_jenis_kelamin" id="exampleRadios1" value="LAKI - LAKI" checked />
                               <label class="form-check-label2" for="exampleRadios1"> Laki-laki</label>
                             </div>
                             <div class="form-check">
-                              <input class="form-check-input" type="radio" name="Rbtnjk" id="exampleRadios2" value="option2" />
+                              <input class="form-check-input" type="radio" name="Rbtn_jenis_kelamin" id="exampleRadios2" value="PEREMPUAN" />
                               <label class="form-check-label2" for="exampleRadios2"> Perempuan </label>
                             </div>
                           </div>
                         </div>
-
+                        <div class="row">
+                        <div class="col-lg-12 mb-3">
+                            <label for="InputAlamat" class="form-label">Alamat</label>
+                            <input type="text" class="form-control form-control-user2" id="InputAlamat" name="txt_alamat" required placeholder="Ex: JL. Sudirman" />
+                          </div>
+                        </div>
                         <div class="row">
                           <div class="col-lg-6 mb-3">
-                            <label for="exampleInputEmail" class="form-label">Nama Terminal</label>
-                            <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_terminal" placeholder="Ex: Terminal A" />
+                            <label for="InputIdTerminal" class="form-label">Nama Terminal</label>
+                            <input type="text" class="form-control form-control-user2" id="InputIdTerminal" name="txt_terminal" required placeholder="Ex: Tawang Alun" />
                           </div>
                           <div class="col-lg-6 mb-3">
-                            <label for="exampleInputPassword" class="form-label">Alamat Terminal</label>
-                            <input type="text" class="form-control form-control-user2" id="exampleInputPassword" name="txt_alamatterm" placeholder="JL. KH." />
+                            <label for="InputAlamat" class="form-label">Alamat Terminal</label>
+                            <input type="text" class="form-control form-control-user2" id="InputAlamat" name="txt_alamat" required placeholder="JL. KH." />
                           </div>
                         </div>
 
                         <div class="col-lg-12 mb-3">
-                          <label for="exampleInputEmail" class="form-label">Provinsi</label>
-                          <select class="form-select" aria-label=".form-select-sm example">
+                          <label for="InputProvinsi" class="form-label">Provinsi</label>
+                          <select class="form-select" aria-label=".form-select-sm example" required>
                             <option disabled selected>Pilih Provinsi</option>
                             <option value="1">One</option>
                             <option value="2">Two</option>
@@ -123,8 +131,8 @@ if(isset ($_POST['register'])){
 
                         <div class="row">
                           <div class="col-lg-6 mb-3">
-                            <label for="exampleInputEmail" class="form-label">Kota</label>
-                            <select class="form-select" aria-label=".form-select-sm example">
+                            <label for="InputKota" class="form-label">Kota</label>
+                            <select class="form-select" aria-label=".form-select-sm example" required>
                               <option disabled selected>Pilih kota</option>
                               <option value="1">One</option>
                               <option value="2">Two</option>
@@ -132,8 +140,8 @@ if(isset ($_POST['register'])){
                             </select>
                           </div>
                           <div class="col-lg-6 mb-2">
-                            <label for="exampleInputPassword" class="form-label">Kecamatan</label>
-                            <select class="form-select" aria-label=".form-select-sm example">
+                            <label for="InputKecamatan" class="form-label">Kecamatan</label>
+                            <select class="form-select" aria-label=".form-select-sm example" required>
                               <option disabled selected>Pilih Kecamatan</option>
                               <option value="1">One</option>
                               <option value="2">Two</option>
@@ -141,7 +149,7 @@ if(isset ($_POST['register'])){
                             </select>
                           </div>
                         </div>
-
+                        <div class="clearfix"></div>
                         <div class="mb-5"></div>
                         <div class="col-12 d-flex justify-content-center">
                           <button type="submit" name="register" class="btn colorPrimary btn-login text-white btn-block2">Daftar</button>
@@ -166,5 +174,60 @@ if(isset ($_POST['register'])){
         </div>
       </div>
     </div>
-  </body>
+    <!-- JavaScript -->
+    <script src="plugin/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="plugin/jquery-easing/jquery.easing.min.js"></script> -->
+    <script src="jquery/jquery-3.6.0.min.js"></script>
+    <script src="plugin/js/form-validation.init.js"></script>
+    <script src="plugin/js/parsley.min.js"></script>
+    <script>
+        window.Parsley.addValidator('uppercase', {
+  requirementType: 'number',
+  validateString: function(value, requirement) {
+    var uppercases = value.match(/[A-Z]/g) || [];
+    return uppercases.length >= requirement;
+  },
+  messages: {
+    en: 'Password harus terdiri dari minimal (%s) huruf kapital !!!'
+  }
+});
+
+//has lowercase
+window.Parsley.addValidator('lowercase', {
+  requirementType: 'number',
+  validateString: function(value, requirement) {
+    var lowecases = value.match(/[a-z]/g) || [];
+    return lowecases.length >= requirement;
+  },
+  messages: {
+    en: 'Password harus terdiri dari huruf abjad !!!'
+  }
+});
+
+//has number
+window.Parsley.addValidator('number', {
+  requirementType: 'number',
+  validateString: function(value, requirement) {
+    var numbers = value.match(/[0-9]/g) || [];
+    return numbers.length >= requirement;
+  },
+  messages: {
+    en: 'Password harus terdiri dari minimal (%s) angka !!!'
+  }
+});
+
+//has special char
+window.Parsley.addValidator('special', {
+  requirementType: 'number',
+  validateString: function(value, requirement) {
+    var specials = value.match(/[^a-zA-Z0-9]/g) || [];
+    return specials.length >= requirement;
+  },
+  messages: {
+    en: 'Your password must contain at least (%s) special characters.'
+  }
+});
+
+    </script>
+</body>
 </html>
