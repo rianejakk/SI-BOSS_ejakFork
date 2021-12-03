@@ -1,5 +1,6 @@
 package com.rafli.si_boss.api;
 
+import com.rafli.si_boss.model.login.register.Login;
 import com.rafli.si_boss.model.login.register.Register;
 
 import retrofit2.Call;
