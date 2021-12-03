@@ -1,6 +1,7 @@
+<?php include ('koneksi.php')?>
 <?php
     require('koneksi.php');
-    session_start();
+    // session_start();
     if (isset($_POST['submit'])) {
         $email = $_POST['txt_email'];
         $password = $_POST['txt_password'];
@@ -13,7 +14,7 @@
             while ($row = mysqli_fetch_array($result)) {
                 $id_user_admin = $row['id_user_admin'];
                 $nama = $row['nama'];
-                $jenis_kelamin = $row['Rbtn_jenis_kelamin'];
+                // $jenis_kelamin = $row['Rbtn_jenis_kelamin'];
                 $alamat = $row['alamat'];
                 $no_hp = $row['no_hp'];
                 $foto = $row['foto'];
@@ -24,21 +25,26 @@
             }
             if ($num != 0) {
                 if ($emailVal == $email && $passwordVal == $password) {
-                    
-                    header('Location: dashboard.php?nama='.urlencode($nama));
-                } else {
-                    $error = 'email dan password salah!!';
-                    header('Location: index.php');
-                    echo $error;
+                    $_SESSION['status'] = "Login Berhasil";
+                    $_SESSION['status_code'] = "success";
+                    // header('Location: dashboard.php?nama='.urlencode($nama));
+                } if ($emailVal != $email && $passwordVal == $password) {
+                    $_SESSION['status'] = "Email tidak ditemukan!!!";
+                    $_SESSION['status_code'] = "error";
+                    // header('Location: index.php');
+                } if ($emailVal == $email && $passwordVal != $password) {
+                    $_SESSION['status'] = "Password salah!!!";
+                    $_SESSION['status_code'] = "error";
+                    // header('Location: index.php');
                 }
             } else {
-                $error = 'email dan password tidak ditemukan!!';
-                header('Location: index.php');
-                echo $error;
+                $_SESSION['status'] = "Email dan Password Salah !!!";
+                $_SESSION['status_code'] = "error";
+                // header('Location: index.php');
             }
         } else {
-            $error = 'Data tidak boleh kosong!!';
-            echo $error;
+            $_SESSION['status'] = "Email dan Password Kosong !!!";
+            $_SESSION['status_code'] = "error";
         }
     }
     ?>
@@ -82,11 +88,15 @@
                                         <form class="custom-validation" action="index.php" method="POST">
                                             <div class="mb-3">
                                                 <label for="exampleInputEmail" class="form-label">Email</label>
-                                                <input type="email" class="form-control form-control-user" id="exampleInputEmail" name="txt_email" required placeholder="Ex: budiman@siboss.com" />
+                                                <input type="email" class="form-control form-control-user" id="exampleInputEmail" name="txt_email" required data-parsley-required-message="Email tidak boleh kosong !!!" placeholder="Ex: budiman@siboss.com" />
                                             </div>
                                             <div class="mb-2">
                                                 <label for="exampleInputPassword" class="form-label">Kata sandi</label>
-                                                <input type="password" class="form-control form-control-user" id="exampleInputPassword" name="txt_password" required placeholder="********" />
+                                                <input type="password" class="form-control form-control-user" id="exampleInputPassword" name="txt_password" required data-parsley-required-message="Kata sandi tidak boleh kosong !!!" placeholder="********" 
+                                                    data-parsley-length="[8,16]"
+                                                    maxlength="16"
+                                                    data-parsley-length-message ="Password harus terdiri dari 8 sampai 16 karakter !!!"
+                                                    />
                                             </div>
                                             <div class="mb-3 float-start">
                                                 <div class="form-check small">
@@ -135,6 +145,24 @@
     <script src="jquery/jquery-3.6.0.min.js"></script>
     <script src="plugin/js/form-validation.init.js"></script>
     <script src="plugin/js/parsley.min.js"></script>
+    <script src="plugin/js/sweetalert2.min.js"></script>
+    <?php
+    if(isset($_SESSION['status']) && $_SESSION['status_code'] !='')
+    {
+        ?>
+        <script>
+            // const href = $(this).attr('href');
+            swal({
+                title: "<?php echo $_SESSION['status']?>",
+                // text: "Klik tombol OK!",
+                icon: "<?php echo $_SESSION['status_code']?>",
+                button: "OK",
+            });
+        </script>
+        <?php
+        unset($_SESSION['status']);
+    }
+    ?>
 </body>
 
 </html>

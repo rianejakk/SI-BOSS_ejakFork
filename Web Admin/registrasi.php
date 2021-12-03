@@ -65,14 +65,19 @@ if(isset ($_POST['register'])){
                           </div>
                           <div class="col-lg-6 mb-3">
                             <label for="InputEmail" class="form-label">Email</label>
-                            <input type="email" class="form-control form-control-user2" id="InputEmail" name="txt_email" required placeholder="Ex: budiman@siboss.com" />
+                            <input type="email" class="form-control form-control-user2" id="InputEmail" name="txt_email" required data-parsley-required-message="Email Kosong !!!" placeholder="Ex: budiman@siboss.com" />
                           </div>
                         </div>
 
                         <div class="row">
                           <div class="col-lg-6 mb-3">
                             <label for="InputPassword" class="form-label">Kata Sandi</label>
-                            <input type="password" class="form-control form-control-user2" id="InputPassword" name="txt_password" placeholder="********" />
+                            <input type="password" class="form-control form-control-user2" id="InputPassword" name="txt_password" placeholder="********" 
+                              data-parsley-length="[8,16]"
+                              maxlength="16"
+                              data-parsley-uppercase="1"
+                              data-parsley-lowercase="1"
+                              data-parsley-number="1"/>
                           </div>
                           <div class="col-lg-6 mb-3">
                             <label for="InputPassword2" class="form-label">Konfirmasi Kata sandi</label>
@@ -175,5 +180,54 @@ if(isset ($_POST['register'])){
     <script src="jquery/jquery-3.6.0.min.js"></script>
     <script src="plugin/js/form-validation.init.js"></script>
     <script src="plugin/js/parsley.min.js"></script>
+    <script>
+        window.Parsley.addValidator('uppercase', {
+  requirementType: 'number',
+  validateString: function(value, requirement) {
+    var uppercases = value.match(/[A-Z]/g) || [];
+    return uppercases.length >= requirement;
+  },
+  messages: {
+    en: 'Password harus terdiri dari minimal (%s) huruf kapital !!!'
+  }
+});
+
+//has lowercase
+window.Parsley.addValidator('lowercase', {
+  requirementType: 'number',
+  validateString: function(value, requirement) {
+    var lowecases = value.match(/[a-z]/g) || [];
+    return lowecases.length >= requirement;
+  },
+  messages: {
+    en: 'Password harus terdiri dari huruf abjad !!!'
+  }
+});
+
+//has number
+window.Parsley.addValidator('number', {
+  requirementType: 'number',
+  validateString: function(value, requirement) {
+    var numbers = value.match(/[0-9]/g) || [];
+    return numbers.length >= requirement;
+  },
+  messages: {
+    en: 'Password harus terdiri dari minimal (%s) angka !!!'
+  }
+});
+
+//has special char
+window.Parsley.addValidator('special', {
+  requirementType: 'number',
+  validateString: function(value, requirement) {
+    var specials = value.match(/[^a-zA-Z0-9]/g) || [];
+    return specials.length >= requirement;
+  },
+  messages: {
+    en: 'Your password must contain at least (%s) special characters.'
+  }
+});
+
+    </script>
 </body>
 </html>
