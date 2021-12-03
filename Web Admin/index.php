@@ -30,16 +30,16 @@
                     // header('Location: dashboard.php?nama='.urlencode($nama));
                 } if ($emailVal != $email && $passwordVal == $password) {
                     $_SESSION['status'] = "Email tidak ditemukan!!!";
-                    $_SESSION['status_code'] = "error";
+                    $_SESSION['status_code'] = "warning";
                     // header('Location: index.php');
                 } if ($emailVal == $email && $passwordVal != $password) {
                     $_SESSION['status'] = "Password salah!!!";
-                    $_SESSION['status_code'] = "error";
+                    $_SESSION['status_code'] = "warning";
                     // header('Location: index.php');
                 }
             } else {
                 $_SESSION['status'] = "Email dan Password Salah !!!";
-                $_SESSION['status_code'] = "error";
+                $_SESSION['status_code'] = "warning";
                 // header('Location: index.php');
             }
         } else {
