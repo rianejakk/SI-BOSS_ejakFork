@@ -27,7 +27,7 @@
                 if ($emailVal == $email && $passwordVal == $password) {
                     $_SESSION['status'] = "Login Berhasil";
                     $_SESSION['status_code'] = "success";
-                    // header('Location: dashboard.php?nama='.urlencode($nama));
+                    header('Location: dashboard.php?nama='.urlencode($nama));
                 } if ($emailVal != $email && $passwordVal == $password) {
                     $_SESSION['status'] = "Email tidak ditemukan!!!";
                     $_SESSION['status_code'] = "warning";

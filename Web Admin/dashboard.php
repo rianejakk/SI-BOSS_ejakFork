@@ -1,6 +1,6 @@
 <!-- <?php
 require('koneksi.php');
-$email = $_GET['nama_lengkap_admin'];
+$nama = $_GET['nama'];
 ?> -->
 <!DOCTYPE html>
 <html lang="en">
@@ -49,14 +49,14 @@ $email = $_GET['nama_lengkap_admin'];
         <li><hr></li>
         <li class="sidebar-heading mt-2 p-0">List Data</li>
         <li class="nav-item">
-          <a href="dataBus.html" class="focusMenu">
+          <a href="dataBus.php" class="focusMenu">
             <div class="frame-ico">
               <img class="ico2" src="img/ico/icoBus_noFill.png" alt="logo1" />
             </div>
             <span class="link_name">Data Bus</span>
           </a>
           <ul class="sub-menu blank">
-            <li><a class="link_name" href="dataBus.html">Data Bus</a></li>
+            <li><a class="link_name" href="dataBus.php">Data Bus</a></li>
           </ul>
         </li>
 
@@ -73,14 +73,14 @@ $email = $_GET['nama_lengkap_admin'];
         </li>
 
         <li class="nav-item">
-          <a href="dataAkun.html" class="focusMenu">
+          <a href="dataAkun.php" class="focusMenu">
             <div class="frame-ico">
               <img class="ico2" src="img/ico/iconProfile_noFill.png" alt="logo1" />
             </div>
             <span class="link_name">Data Akun</span>
           </a>
           <ul class="sub-menu blank">
-            <li><a class="link_name" href="dataAkun.html">Data Akun</a></li>
+            <li><a class="link_name" href="dataAkun.php">Data Akun</a></li>
           </ul>
         </li>
         <li><hr class="seperator"></li>
@@ -117,8 +117,7 @@ $email = $_GET['nama_lengkap_admin'];
             </div>
             <div class="name-job">
               <div class="profile_name">
-                Budi Santoso
-                <?php echo $email;?>
+                <?php echo $nama;?>
               </div>
               <div class="job">Staff</div>
             </div>
@@ -146,8 +145,8 @@ $email = $_GET['nama_lengkap_admin'];
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" id="dropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <span class="RobotoReg14"
-                  >Budi Santoso
-                  <?php echo $email;?></span
+                  >
+                  <?php echo $nama;?></span
                 >
                 <img class="img-profile rounded-circle" src="img/bis.png" alt="LogoBis" />
               </a>
