@@ -1,8 +1,7 @@
 <!-- <?php
 require('koneksi.php');
 $nama = $_GET['nama'];
-
-if(isset ($_POST['tambah'])){
+if(isset ($_POST['submit'])){
   $nama_bus = $_POST['txt_nama_bus'];
   $status = $_POST['txt_status'];
   $kursi = $_POST['txt_kursi'];
@@ -18,9 +17,9 @@ if(isset ($_POST['tambah'])){
   $waktu_tiba = $_POST['txt_waktu_tiba'];
   $harga = $_POST['txt_harga'];
 
-  $query = "INSERT INTO bus VALUES ('', '$nama_bus', '', '$status', '$kursi', '$foto', '$id_jenis', '$id_rute')";
-  $query2 = "INSERT INTO jenis_bus VALUES ('', '$jenis_bus', '$fasilitas')";
-  $query3 = "INSERT INTO terminal VALUES ('', '$pemberangkatan', '$waktu_berangkat', '$tujuan', '$waktu_tiba','$harga')";
+  $query = "UPDATE INTO bus VALUES ('', '$nama_bus', '', '$status', '$kursi', '$foto', '$id_jenis', '$id_rute')";
+  $query2 = "UPDATE INTO jenis_bus VALUES ('', '$jenis_bus', '$fasilitas')";
+  $query3 = "UPDATE INTO terminal VALUES ('', '$pemberangkatan', '$waktu_berangkat', '$tujuan', '$waktu_tiba','$harga')";
   $result = mysqli_query($koneksi, $query);
   $result = mysqli_query($koneksi, $query2);
   $result = mysqli_query($koneksi, $query3);
@@ -58,7 +57,7 @@ if(isset ($_POST['tambah'])){
         <!-- Heading -->
         <li class="sidebar-heading mb-2 p-0">Menu :</li>
         <li class="nav-item mb-1">
-          <a href="dashboard.html" class="focusMenu">
+          <a href="dashboard.php" class="focusMenu">
             <div class="frame-ico">
               <img class="ico" src="img/ico/icoDash_Fill.png" alt="logo1" data-bs-toggle="collapse" data-bs-target="#dashboard" aria-expanded="false" aria-controls="dashboard" />
             </div>
@@ -67,7 +66,7 @@ if(isset ($_POST['tambah'])){
           </a>
           <div id="dashboard" class="collapse">
             <ul class="sub-menu">
-              <li><a class="link_name" href="dashboard.html">Dashboard</a></li>
+              <li><a class="link_name" href="dashboard.php">Dashboard</a></li>
               <li><a href="#">Grafik</a></li>
               <li><a href="#">Log</a></li>
               <li><a href="#">Pengaturan</a></li>
@@ -107,14 +106,14 @@ if(isset ($_POST['tambah'])){
         </li>
 
         <li class="nav-item">
-          <a href="dataAkun.html" class="focusMenu">
+          <a href="dataAkun.php" class="focusMenu">
             <div class="frame-ico">
               <img class="ico2" src="img/ico/iconProfile_Fill.png" alt="logo1" />
             </div>
             <span class="link_name">Data Akun</span>
           </a>
           <ul class="sub-menu blank">
-            <li><a class="link_name" href="dataAkun.html">Data Akun</a></li>
+            <li><a class="link_name" href="dataAkun.php">Data Akun</a></li>
           </ul>
         </li>
         <li><hr class="seperator" /></li>
@@ -284,7 +283,7 @@ if(isset ($_POST['tambah'])){
                 <span class="m-0"><b>Tabel Data Bus</b></span>
               </div>
               <div class="btnAction float-end">
-                <a href="tambahDataBus.html">
+                <a href="tambahDataBus.php">
                   <button class="btn btn-light text-dark btn-circle custShadow2 me-2"><i class="fas fa-plus" data-bs-toggle="tooltip" title="Tambah"></i></button>
                 </a>
                 <button class="btn btn-light text-danger btn-circle custShadow2" data-bs-toggle="modal" data-tooltip="tooltip" data-bs-target="#deleteDataAkun" title="Hapus Yang dipilih"><i class="fas fa-trash"></i></button>

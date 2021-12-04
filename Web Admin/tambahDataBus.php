@@ -1,6 +1,32 @@
 <!-- <?php
 require('koneksi.php');
-$email = $_GET['nama_lengkap_admin'];
+$nama = $_GET['nama'];
+
+if(isset ($_POST['submit'])){
+  $nama_bus = $_POST['txt_nama_bus'];
+  $status = $_POST['txt_status'];
+  $kursi = $_POST['txt_kursi'];
+  $jenis_bus = $_POST['txt_jenis_bus'];
+  $fasilitas = $_POST['txt_fasilitas'];
+  // $foto = $_POST['txt_foto'];
+  $id_jenis = $_POST['d_id_jenis'];
+  $id_rute = $_POST['d_id_rute'];
+  
+  $pemberangkatan = $_POST['txt_pemberangkatan'];
+  $waktu_berangkat = $_POST['txt_waktu_berangkat'];
+  $tujuan = $_POST['txt_tujuan'];
+  $waktu_tiba = $_POST['txt_waktu_tiba'];
+  $harga = $_POST['txt_harga'];
+
+  $query = "INSERT INTO bus VALUES ('', '$nama_bus', '', '$status', '$kursi', '$foto', '$id_jenis', '$id_rute')";
+  $query2 = "INSERT INTO jenis_bus VALUES ('', '$jenis_bus', '$fasilitas')";
+  $query3 = "INSERT INTO terminal VALUES ('', '$pemberangkatan', '$waktu_berangkat', '$tujuan', '$waktu_tiba','$harga')";
+  $result = mysqli_query($koneksi, $query);
+  $result = mysqli_query($koneksi, $query2);
+  $result = mysqli_query($koneksi, $query3);
+  header('Location: registrasi.php');
+  echo mysqli_error($result);
+}
 ?> -->
 <!DOCTYPE html>
 <html lang="en">
@@ -32,7 +58,7 @@ $email = $_GET['nama_lengkap_admin'];
         <!-- Heading -->
         <li class="sidebar-heading mb-2 p-0">Menu :</li>
         <li class="nav-item mb-1">
-          <a href="dashboard.html" class="focusMenu">
+          <a href="dashboard.php" class="focusMenu">
             <div class="frame-ico">
               <img class="ico" src="img/ico/icoDash_Fill.png" alt="logo1" data-bs-toggle="collapse" data-bs-target="#dashboard" aria-expanded="false" aria-controls="dashboard" />
             </div>
@@ -41,7 +67,7 @@ $email = $_GET['nama_lengkap_admin'];
           </a>
           <div id="dashboard" class="collapse">
             <ul class="sub-menu">
-              <li><a class="link_name" href="dashboard.html">Dashboard</a></li>
+              <li><a class="link_name" href="dashboard.php">Dashboard</a></li>
               <li><a href="#">Grafik</a></li>
               <li><a href="#">Log</a></li>
               <li><a href="#">Pengaturan</a></li>
@@ -75,14 +101,14 @@ $email = $_GET['nama_lengkap_admin'];
         </li>
 
         <li class="nav-item">
-          <a href="dataAkun.html" class="focusMenu">
+          <a href="dataAkun.php" class="focusMenu">
             <div class="frame-ico">
               <img class="ico2" src="img/ico/iconProfile_Fill.png" alt="logo1" />
             </div>
             <span class="link_name">Data Akun</span>
           </a>
           <ul class="sub-menu blank">
-            <li><a class="link_name" href="dataAkun.html">Data Akun</a></li>
+            <li><a class="link_name" href="dataAkun.php">Data Akun</a></li>
           </ul>
         </li>
         <li><hr class="seperator" /></li>
@@ -119,8 +145,8 @@ $email = $_GET['nama_lengkap_admin'];
             </div>
             <div class="name-job">
               <div class="profile_name">
-                Budi Santoso
-                <?php echo $email;?>
+                
+                <?php echo $nama;?>
               </div>
               <div class="job">Staff</div>
             </div>
@@ -148,8 +174,8 @@ $email = $_GET['nama_lengkap_admin'];
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" id="dropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <span class="RobotoReg14"
-                  >Budi Santoso
-                  <?php echo $email;?></span
+                  >
+                  <?php echo $nama;?></span
                 >
                 <img class="img-profile rounded-circle" src="img/bis.png" alt="LogoBis" />
               </a>
@@ -250,7 +276,7 @@ $email = $_GET['nama_lengkap_admin'];
           <div class="card shadow mb-4 rounded">
             <div class="card-header shadow rounded">
               <div class="title float-start">
-                <a href="dataBus.html">
+                <a href="dataBus.php">
                   <button class="btn text-white m-0 p-0 me-2"><i class="fas fa-arrow-alt-circle-left fa-lg" data-bs-toggle="tooltip" title="Kembali"></i></button>
                 </a>
                 <span class="m-0"><b>Tambah Data Bus</b></span>
