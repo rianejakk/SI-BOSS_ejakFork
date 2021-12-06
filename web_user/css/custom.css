@@ -866,6 +866,206 @@ hr{
   color: #FFFFFF;text-align: center;
 }
 
+.akun_container img{
+  position: absolute;
+  width: 50px !important;
+  height: 50px;
+  left: 56px;
+  top: 230px;
+  color: white !important;
+}
+
+.akun_container1 img{
+  position: absolute;
+  width: 50px ;
+  height: 50px;
+  left: 300px;
+  top: 230px;
+  color: white !important;
+}
+
+.akun_btn1{
+  position: absolute;
+  width: 348px;
+  height: 81px;
+  left: 20px;
+  bottom: 50px;
+  background: linear-gradient(90deg, #1154F4 -138.67%, rgba(17, 84, 244, 0.76) -138.65%, #002886 57.08%, #002886 57.08%);
+  border-radius: 20px;
+  font-size: 20px;
+  font-family: Open Sans;
+  line-height: 41px;
+  color: #FFFFFF;text-align: center;
+}
+
+.akun_container2 img{
+  position: absolute;
+  width: 50px !important;
+  height: 50px;
+  left: 48px;
+  top: 700px !important;
+  color: white !important;
+}
+
+.akun_container3 img{
+  position: absolute;
+  width: 50px ;
+  height: 50px;
+  left: 300px;
+  top: 705px;
+  color: white !important;
+}
+
+.akunsaya .spanakun{
+  position: absolute;
+  width: 189px;
+  height: 43px;
+  left: 454px;
+  top: 25px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 35px;
+  line-height: 41px;
+  color: #000000;
+}
+
+.akunsaya .spanakun2{
+  position: absolute;
+  width: 189px;
+  height: 43px;
+  left: 454px;
+  top: 100px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 23px;
+  color: #000000;
+}
+
+.form-control-userak1{
+  position: absolute;
+  width: 750px;
+  height: 86px;
+  left: 454px;
+  top: 150px;
+  border-radius: 15px;
+  
+}
+
+.akunsaya .spanakun3{
+  position: absolute;
+  width: 189px;
+  height: 43px;
+  left: 454px;
+  top: 260px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 23px;
+  color: #000000;
+}
+
+.form-control-userak2{
+  position: absolute;
+  width: 320px;
+  height: 86px;
+  left: 454px;
+  top: 310px;
+  border-radius: 15px;
+  
+}
+
+.akunsaya .spanakun4{
+  position: absolute;
+  width: 189px;
+  height: 43px;
+  left: 850px;
+  top: 260px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 23px;
+  color: #000000;
+}
+
+.form-control-userak3{
+  position: absolute;
+  width: 320px;
+  height: 86px;
+  left: 850px;
+  top: 310px;
+  border-radius: 15px;
+}
+
+.akunsaya .spanakun5{
+  position: absolute;
+  width: 189px;
+  height: 43px;
+  left: 454px;
+  top: 420px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 23px;
+  color: #000000;
+}
+
+.form-control-userak4{
+  position: absolute;
+  width: 320px;
+  height: 86px;
+  left: 454px;
+  top: 460px;
+  border-radius: 15px;
+  
+}
+
+.akunsaya .spanakun6{
+  position: absolute;
+  width: 189px;
+  height: 43px;
+  left: 850px;
+  top: 420px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 23px;
+  color: #000000;
+}
+
+.form-control-userak5{
+  position: absolute;
+  width: 320px;
+  height:170px;
+  left: 850px;
+  top: 460px;
+  border-radius: 15px;
+}
+
+.akun_btn2{
+  position: absolute;
+  width: 136px;
+  height: 53px;
+  left: 1025px;
+  top: 650px;
+  background: linear-gradient(90deg, #05FF00 -20.67%, #4072EB 175.08%);
+  border-radius: 20px;
+  font-family: Open Sans;
+  line-height: 41px;
+  color: #FFFFFF !important;text-align: center;
+  }
+
+
+
+
+
+
 
 
 
