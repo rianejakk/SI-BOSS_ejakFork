@@ -6,68 +6,97 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="172dp"
-        android:orientation="vertical"
-        android:background="@drawable/edittext_bg">
+        android:background="@drawable/round_dashboard"
+        android:orientation="vertical">
 
         <ImageView
             android:id="@+id/FotoProfil"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginTop="50dp"
             android:layout_marginLeft="30dp"
-            android:background="@drawable/round_img"/>
+            android:layout_marginTop="50dp"
+            android:background="@drawable/round_img" />
 
         <TextView
             android:id="@+id/etMainUsername"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="16dp"
             android:text="Username"
             android:textColor="@color/black"
-            android:textStyle="bold"
             android:textSize="14sp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="16dp" />
+            android:textStyle="bold" />
+
         <TextView
             android:id="@+id/etMainName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
             android:text="Full name"
             android:textColor="@color/black"
-            android:textStyle="bold"
             android:textSize="14sp"
-            android:layout_marginLeft="20dp"/>
+            android:textStyle="bold" />
     </LinearLayout>
-    </LinearLayout>
-
-<!--<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
-<!--    xmlns:tools="http://schemas.android.com/tools"-->
-<!--    android:layout_width="match_parent"-->
-<!--    android:layout_height="match_parent"-->
-<!--    tools:context=".MainActivity">-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/etMainUsername"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="152dp"-->
-<!--        android:text="Username"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.498"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/etMainName"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="32dp"-->
-<!--        android:text="Name"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/etMainUsername" />-->
-
-<!--</androidx.constraintlayout.widget.ConstraintLayout>-->
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/round_dashboard">
+    <Button
+        android:id="@+id/BtnBeranda"
+        android:layout_marginTop="8dp"
+        android:layout_width="279dp"
+        android:layout_height="40dp"
+        android:text="Beranda"
+        android:fontFamily="@font/opensanssemibold"
+        android:textSize="16sp"
+        android:drawableStart="@drawable/ic_baseline_home_24"
+        android:textAllCaps="false"
+        android:background="@drawable/edittext_bg"/>
+    <Button
+        android:id="@+id/BtnPemesanan"
+        android:layout_marginTop="8dp"
+        android:layout_width="279dp"
+        android:layout_height="40dp"
+        android:text="Pemesanan"
+        android:fontFamily="@font/opensanssemibold"
+        android:textSize="16sp"
+        android:textAllCaps="false"
+        android:background="@drawable/edittext_bg"/>
+    <Button
+        android:id="@+id/BtnPembayaran"
+        android:layout_marginTop="8dp"
+        android:layout_width="279dp"
+        android:layout_height="40dp"
+        android:text="Pembayaran"
+        android:fontFamily="@font/opensanssemibold"
+        android:textSize="16sp"
+        android:textAllCaps="false"
+        android:background="@drawable/edittext_bg"/>
+    <Button
+        android:id="@+id/BtnAkunSaya"
+        android:layout_marginTop="8dp"
+        android:layout_width="279dp"
+        android:layout_height="40dp"
+        android:text="akun saya"
+        android:fontFamily="@font/opensanssemibold"
+        android:textSize="16sp"
+        android:textAllCaps="false"
+        android:background="@drawable/edittext_bg"/>
+    <Button
+        android:id="@+id/BtnKeluar"
+        android:layout_marginTop="8dp"
+        android:layout_width="279dp"
+        android:layout_height="40dp"
+        android:text="Keluar dari akun"
+        android:fontFamily="@font/opensanssemibold"
+        android:textSize="16sp"
+        android:textAllCaps="false"
+        android:background="@drawable/edittext_bg"/>
+</LinearLayout>
+</LinearLayout>

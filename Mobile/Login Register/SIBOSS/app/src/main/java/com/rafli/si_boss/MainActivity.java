@@ -16,11 +16,12 @@ import android.widget.Toast;
 
 import java.util.jar.Attributes;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity  {
 
     TextView etUsername, etName;
     SessionManager sessionManager;
     String username, name;
+    Button BtnKeluar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
         etUsername = findViewById(R.id.etMainUsername);
         etName = findViewById(R.id.etMainName);
+        BtnKeluar =findViewById(R.id.BtnKeluar);
 
         username = sessionManager.getUserDetail().get(SessionManager.USERNAME);
         name = sessionManager.getUserDetail().get(SessionManager.NAME);
@@ -40,6 +42,16 @@ public class MainActivity extends AppCompatActivity {
         etUsername.setText(username);
         etName.setText(name);
 
+        BtnKeluar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NO_HISTORY);
+                startActivity(intent);
+                sessionManager.logoutSession();
+                moveToLogin();
+            }
+        });
     }
 
     private void moveToLogin() {
@@ -48,20 +60,23 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-//Actions Log out
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.actionLogout:
-                sessionManager.logoutSession();
-                moveToLogin();
-        }
-        return super.onOptionsItemSelected(item);
-    }
+//Actions Log out
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.menu, menu);
+//        return super.onCreateOptionsMenu(menu);
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+//        switch (item.getItemId()){
+//            case R.id.actionLogout:
+//                sessionManager.logoutSession();
+//                moveToLogin();
+//        }
+//        return super.onOptionsItemSelected(item);
+//
+//
+//    }
 }

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-import com.rafli.si_boss.model.login.register.LoginData;
+import com.rafli.si_boss.model.login.LoginData;
 
 import java.util.HashMap;
 
@@ -36,7 +36,7 @@ public class SessionManager {
     public HashMap<String,String> getUserDetail(){
         HashMap<String,String> user = new HashMap<>();
         user.put(USER_ID, sharedPreferences.getString(USER_ID, null));
-        user.put(USERNAME, sharedPreferences.getString(USER_ID, null));
+        user.put(USERNAME, sharedPreferences.getString(USERNAME, null));
         user.put(NAME, sharedPreferences.getString(NAME, null));
         return user;
     }
@@ -46,6 +46,7 @@ public class SessionManager {
         editor.commit();
     }
 
+//    jika sudah login tidak perlu masuk ke login lagi
     public boolean isLoggedIn() {
         return sharedPreferences.getBoolean(IS_LOGGED_IN,false);
     }
