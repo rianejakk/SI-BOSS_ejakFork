@@ -56,6 +56,25 @@ $sesName = $_SESSION['name'];
         <li><hr></li>
         <li class="sidebar-heading mt-2 p-0">List Data</li>
         <li class="nav-item">
+          <a href="sumberData.php" class="focusMenu">
+            <div class="frame-ico">
+              <img class="ico2" src="img/ico/icoData_noFill.png" alt="logo2" data-bs-toggle="collapse" data-bs-target="#SumberData" aria-expanded="false" aria-controls="SumberData" />
+            </div>
+            <span class="link_name">Sumber Data</span>
+            <i class="bx bxs-chevron-right arrow" data-bs-toggle="collapse" data-bs-target="#SumberData" aria-expanded="false" aria-controls="SumberData"></i>
+          </a>
+          <div id="SumberData" class="collapse">
+            <ul class="sub-menu">
+              <li><a class="link_name" href="sumberData.php">Sumber Data</a></li>
+              <li><a href="#">Terminal</a></li>
+              <li><a href="#">Jenis Bus</a></li>
+              <li><a href="#">Rute User</a></li>
+              <li><a href="#">Penumpang</a></li>
+              <li><a href="#">Staff</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item">
           <a href="dataBus.php" class="focusMenu">
             <div class="frame-ico">
               <img class="ico2" src="img/ico/icoBus_noFill.png" alt="logo1" />

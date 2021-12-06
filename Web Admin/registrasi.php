@@ -1,6 +1,38 @@
 <?php
-require ('koneksi.php');
-if(isset ($_POST['submit'])){
+  require ('koneksi.php');
+
+  session_start();
+
+  if(isset($_COOKIE['cookie_email'])){
+    $cookieEmail = $_COOKIE['cookie_email'];
+    $cookiePass = $_COOKIE['cookie_password'];
+    $cookieName = $_COOKIE['cookie_name'];
+
+    $query = "SELECT * FROM administrator WHERE email = '$cookieEmail'";
+      $result = mysqli_query($koneksi, $query);
+      $num = mysqli_num_rows($result);
+
+    while ($row = mysqli_fetch_array($result)) {
+      $id_user_admin = $row['id_user_admin'];
+      $nama = $row['nama'];
+      $emailVal = $row['email'];
+      $passwordVal = $row['password'];
+      $level = $row['id_level'];
+    }
+
+    if ($emailVal == $cookieEmail && $passwordVal == $cookiePass) {
+      $_SESSION['name'] = $cookieName;
+      $_SESSION['email'] = $cookieEmail;
+      $_SESSION['pass'] = $cookiePass;
+    }
+
+    if(isset($_SESSION['email'])){
+      header('Location: dashboard.php');
+
+    }
+  }  
+
+  if(isset ($_POST['submit'])){
     $nama = $_POST['txt_nama'];
     $jenis_kelamin = $_POST['Rbtn_jenis_kelamin'];
     $alamat = $_POST['txt_alamat'];
@@ -22,9 +54,9 @@ if(isset ($_POST['submit'])){
     $result = mysqli_query($koneksi, $query);
     $result = mysqli_query($koneksi, $query2);
     header('Location: registrasi.php');
-    echo mysqli_error($result);
-}
+  }
 ?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -33,6 +65,7 @@ if(isset ($_POST['submit'])){
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="plugin/font/stylesheet.css" />
     <link rel="stylesheet" href="plugin/css/app.min.css" />
+    <link rel="stylesheet" href="plugin/fontawesome-free/css/all.min.css" />
   </head>
   <body class="bg-white">
     <div class="container-fluid">
@@ -51,9 +84,9 @@ if(isset ($_POST['submit'])){
                   </div>
                 </div>
                 <div class="col-lg-8 p-4 py-3 colorSecondary bg-img">
-                  <div class="logo">
+                  <div class="logoT">
                     <a href="#">
-                      <img src="img/logo.png" alt="" />
+                      <img src="img/logo.png" alt="LogoSiboss" />
                     </a>
                   </div>
                   <div class="panelFormDaftar o-hidden border-0 shadow">
@@ -69,117 +102,72 @@ if(isset ($_POST['submit'])){
                         <div class="row">
                           <div class="col-lg-6 mb-3">
                             <label for="InputNama" class="form-label">Nama Lengkap</label>
-                            <input type="text" class="form-control form-control-user2" id="InputNama" name="txt_nama" required placeholder="Ex: Budi Santoso" />
+                            <input type="text" class="form-control form-control-user2" id="InputNama" name="txt_nama" required data-parsley-required-message="Nama lengkap harus di isi !!!" placeholder="Ex: Budi Santoso" />
                           </div>
                           <div class="col-lg-6 mb-3">
                             <label for="InputEmail" class="form-label">Email</label>
-                            <input type="email" class="form-control form-control-user2" id="InputEmail" name="txt_email" required data-parsley-required-message="Email Kosong !!!" placeholder="Ex: budiman@siboss.com" />
+                            <input type="email" class="form-control form-control-user2" id="InputEmail" name="txt_email" required data-parsley-required-message="Email harus di isi !!!" placeholder="Ex: budiman@siboss.com" />
                           </div>
                         </div>
 
                         <div class="row">
                           <div class="col-lg-6 mb-3">
                             <label for="InputPassword" class="form-label">Kata Sandi</label>
-                            <input type="password" class="form-control form-control-user2" id="InputPassword" name="txt_password" placeholder="********" 
-                              data-parsley-length="[8,16]"
-                              maxlength="16"
-                              data-parsley-uppercase="1"
-                              data-parsley-lowercase="1"
-                              data-parsley-number="1"/>
+                            <input type="password" class="form-control form-control-user2" id="InputPassword" name="txt_password" required data-parsley-required-message="Kata sandi harus di isi !!!" placeholder="********" data-parsley-length="[8,16]" maxlength="16" data-parsley-uppercase="1" data-parsley-lowercase="1" data-parsley-number="1" />
                           </div>
                           <div class="col-lg-6 mb-3">
                             <label for="InputPassword2" class="form-label">Konfirmasi Kata sandi</label>
-                            <input type="password" class="form-control form-control-user2" id="InputPassword2" name="txt_pass" required data-parsley-equalto="#InputPassword" placeholder="********" />
+                            <input type="password" class="form-control form-control-user2" id="InputPassword2" name="txt_pass" required data-parsley-required-message="Masukan ulang kata sandi !!!" data-parsley-equalto="#InputPassword" placeholder="********" />
                           </div>
                         </div>
 
                         <div class="row">
-                        <div class="col-lg-6 mb-3">
+                          <div class="col-lg-6 mb-3">
                             <label for="InputNoHp" class="form-label">No Handphone</label>
-                            <input type="text" class="form-control form-control-user2" id="InputNoHp" name="txt_no_hp" required placeholder="Ex: 085808241204" />
+                            <input type="text" class="form-control form-control-user2" id="InputNoHp" name="txt_no_hp" required data-parsley-required-message="No. HP harus di isi !!!" placeholder="Ex: 085808241204" />
                           </div>
                           <div class="col-lg-6 mb-3">
                             <label for="InputJenisKelamin" class="form-label">Jenis Kelamin</label>
                             <div class="form-check">
-                              <input class="form-check-input" type="radio" name="Rbtn_jenis_kelamin" id="exampleRadios1" value="LAKI - LAKI" checked />
-                              <label class="form-check-label2" for="exampleRadios1"> Laki-laki</label>
+                              <input class="form-check-input" type="radio" name="Rbtn_jenis_kelamin" id="Radios1" value="Laki-laki" checked />
+                              <label class="form-label2" for="Radios1"><span>Laki-laki</span></label>
                             </div>
                             <div class="form-check">
-                              <input class="form-check-input" type="radio" name="Rbtn_jenis_kelamin" id="exampleRadios2" value="PEREMPUAN" />
-                              <label class="form-check-label2" for="exampleRadios2"> Perempuan </label>
+                              <input class="form-check-input" type="radio" name="Rbtn_jenis_kelamin" id="Radios2" value="Perempuan" />
+                              <label class="form-label2" for="Radios2"><span>Perempuan</span></label>
                             </div>
                           </div>
                         </div>
                         <div class="row">
-                        <div class="col-lg-6 mb-3">
+                          <div class="col-lg-6 mb-3">
                             <label for="InputAlamat" class="form-label">Alamat</label>
-                            <input type="text" class="form-control form-control-user2" id="InputAlamat" name="txt_alamat" required placeholder="Ex: JL. Sudirman" />
+                            <input type="text" class="form-control form-control-user2" id="InputAlamat" name="txt_alamat" required data-parsley-required-message="Alamat harus di isi !!!" placeholder="Ex: JL. Sudirman" />
                           </div>
                           <div class="col-lg-6 mb-3">
                             <label for="InputIdTerminal" class="form-label">Terminal Tersedia</label>
-                            <select class="form-select" aria-label=".form-select-sm example" required>
+                            <select class="form-select form-select-user select-md" aria-label=".form-select-sm example" required data-parsley-required-message="Harap pilih data terminal !!!">
                               <option disabled selected>Pilih Terminal</option>
                               <option value="1">One</option>
                               <option value="2">Two</option>
                               <option value="3">Three</option>
                             </select>
-                          </div>
-                        </div>
-                        
-                        
-
-                        <div class="row">
-                          <div class="col-lg-6 mb-3">
-                            <label for="InputTerminal" class="form-label">Nama Terminal</label>
-                            <input type="text" class="form-control form-control-user2" id="InputIdTerminal" name="txt_nama_terminal" required placeholder="Ex: Tawang Alun" />
-                          </div>
-                          <div class="col-lg-6 mb-3">
-                            <label for="InputAlamat" class="form-label">Alamat Terminal</label>
-                            <input type="text" class="form-control form-control-user2" id="InputAlamat" name="txt_detail_alamat_terminal" required placeholder="JL. KH." />
-                          </div>
-                        </div>
-
-                        <div class="col-lg-12 mb-3">
-                          <label for="InputProvinsi" class="form-label">Provinsi</label>
-                          <select class="form-select" name="d_provinsi_terminal" aria-label=".form-select-sm example" required>
-                            <option disabled selected>Pilih Provinsi</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                          </select>
-                        </div>
-
-                        <div class="row">
-                          <div class="col-lg-6 mb-3">
-                            <label for="InputKota" class="form-label">Kabupaten/Kota</label>
-                            <select class="form-select" name="d_kabupaten_terminal" aria-label=".form-select-sm example" required>
-                              <option disabled selected>Pilih Kabupaten/kota</option>
-                              <option value="1">One</option>
-                              <option value="2">Two</option>
-                              <option value="3">Three</option>
-                            </select>
-                          </div>
-                          <div class="col-lg-6 mb-2">
-                            <label for="InputKecamatan" class="form-label">Kecamatan</label>
-                            <select class="form-select" name="d_kecamatan_terminal" aria-label=".form-select-sm example" required>
-                              <option disabled selected>Pilih Kecamatan</option>
-                              <option value="1">One</option>
-                              <option value="2">Two</option>
-                              <option value="3">Three</option>
-                            </select>
-                          </div>
-                        </div>
-                        <div class="clearfix"></div>
-                        <div class="mb-5"></div>
-                          <div class="col-12 d-flex justify-content-center">
-                            <button type="submit" name="submit" class="btn colorPrimary btn-login text-white btn-block2 ">Daftar</button>
-                          </div>
-                          <div class="mb-3"></div>
-                          <div class="col-6 d-flex justify-content-center">
-                            <a href="index.php" class="btn btn-daftar btn-block py-2">
-                              <span>Login</span>
+                            <a href="#" class="actionBtn" aria-label="Tambah">
+                              <button class="btn colorPrimary text-white btn-user btn-circle btn-xs" aria-label="TambahModal" data-bs-toggle="modal" data-bs-target="#TambahDataTerminal" value="tambah"><i class="fa fa-plus" data-bs-toggle="tooltip" title="Tambah"></i></button>
                             </a>
                           </div>
+                        </div>
+
+                        <div class="clearfix"></div>
+                        <div class="mb-5"></div>
+                        <div class="col-12 d-flex justify-content-center mb-3">
+                          <button type="submit" name="submit" class="btn colorPrimary btn-login text-white btn-block2">Daftar</button>
+                        </div>
+                        <div class="col-12 d-flex justify-content-center">
+                          <a href="index.php" class="btn btn-daftar btn-block2 py-2">
+                            <span>Login</span>
+                          </a>
+                        </div>
+                        <div class="mb-3"></div>
                       </form>
                     </div>
                   </div>
@@ -200,60 +188,124 @@ if(isset ($_POST['submit'])){
         </div>
       </div>
     </div>
+
+    <!-- Modal -->
+    <div id="TambahDataTerminal" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content modal-edit">
+          <form action="">
+            <div class="modal-header">
+              <h4 class="modal-title">Tambah Data Terminal</h4>
+              <button type="button" class="btn btn-danger btn-circle btn-user2 shadow" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true">
+                <i class="fa fa-times fa-sm"></i>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="col-lg-12 mb-3" hidden>
+                <label for="exampleInputEmail" class="form-label">Id</label>
+                <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_id" placeholder="" />
+              </div>
+              <div class="row">
+                <div class="col-12 mb-3">
+                  <label for="exampleInputEmail" class="form-label">Nama Terminal</label>
+                  <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_terminal" placeholder="Ex: Terminal A" />
+                </div>
+                <div class="col-12 mb-3">
+                  <label for="exampleInputPassword" class="form-label">Alamat Terminal</label>
+                  <textarea class="form-control form-control-user2" id="exampleInputPassword" name="txt_alamatterm" placeholder="JL. KH."></textarea>
+                </div>
+                <div class="col-lg-12 mb-3">
+                  <label for="exampleInputEmail" class="form-label">Provinsi</label>
+                  <select class="form-select" aria-label=".form-select-sm example">
+                    <option disabled selected>Pilih Provinsi</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+                </div>
+                <div class="col-lg-6 mb-3">
+                  <label for="exampleInputEmail" class="form-label">Kota</label>
+                  <select class="form-select" aria-label=".form-select-sm example">
+                    <option disabled selected>Pilih kota</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+                </div>
+                <div class="col-lg-6 mb-3">
+                  <label for="exampleInputPassword" class="form-label">Kecamatan</label>
+                  <select class="form-select" aria-label=".form-select-sm example">
+                    <option disabled selected>Pilih Kecamatan</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <input type="button" class="btn btn-secondary roundedBtn" data-bs-dismiss="modal" value="Cancel" />
+                <input type="submit" class="btn colorPrimary text-white roundedBtn" value="Simpan" />
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
     <!-- JavaScript -->
     <script src="plugin/js/bootstrap.bundle.min.js"></script>
     <!-- <script src="plugin/jquery-easing/jquery.easing.min.js"></script> -->
     <script src="jquery/jquery-3.6.0.min.js"></script>
     <script src="plugin/js/form-validation.init.js"></script>
     <script src="plugin/js/parsley.min.js"></script>
+    <script src="plugin/js/javascript.js"></script>
     <script>
-        window.Parsley.addValidator('uppercase', {
-  requirementType: 'number',
-  validateString: function(value, requirement) {
-    var uppercases = value.match(/[A-Z]/g) || [];
-    return uppercases.length >= requirement;
-  },
-  messages: {
-    en: 'Password harus terdiri dari minimal (%s) huruf kapital !!!'
-  }
-});
+      window.Parsley.addValidator("uppercase", {
+        requirementType: "number",
+        validateString: function (value, requirement) {
+          var uppercases = value.match(/[A-Z]/g) || [];
+          return uppercases.length >= requirement;
+        },
+        messages: {
+          en: "Password harus terdiri dari minimal (%s) huruf kapital !!!",
+        },
+      });
 
-//has lowercase
-window.Parsley.addValidator('lowercase', {
-  requirementType: 'number',
-  validateString: function(value, requirement) {
-    var lowecases = value.match(/[a-z]/g) || [];
-    return lowecases.length >= requirement;
-  },
-  messages: {
-    en: 'Password harus terdiri dari huruf abjad !!!'
-  }
-});
+      //has lowercase
+      window.Parsley.addValidator("lowercase", {
+        requirementType: "number",
+        validateString: function (value, requirement) {
+          var lowecases = value.match(/[a-z]/g) || [];
+          return lowecases.length >= requirement;
+        },
+        messages: {
+          en: "Password harus terdiri dari huruf abjad !!!",
+        },
+      });
 
-//has number
-window.Parsley.addValidator('number', {
-  requirementType: 'number',
-  validateString: function(value, requirement) {
-    var numbers = value.match(/[0-9]/g) || [];
-    return numbers.length >= requirement;
-  },
-  messages: {
-    en: 'Password harus terdiri dari minimal (%s) angka !!!'
-  }
-});
+      //has number
+      window.Parsley.addValidator("number", {
+        requirementType: "number",
+        validateString: function (value, requirement) {
+          var numbers = value.match(/[0-9]/g) || [];
+          return numbers.length >= requirement;
+        },
+        messages: {
+          en: "Password harus terdiri dari minimal (%s) angka !!!",
+        },
+      });
 
-//has special char
-window.Parsley.addValidator('special', {
-  requirementType: 'number',
-  validateString: function(value, requirement) {
-    var specials = value.match(/[^a-zA-Z0-9]/g) || [];
-    return specials.length >= requirement;
-  },
-  messages: {
-    en: 'Your password must contain at least (%s) special characters.'
-  }
-});
-
+      //has special char
+      window.Parsley.addValidator("special", {
+        requirementType: "number",
+        validateString: function (value, requirement) {
+          var specials = value.match(/[^a-zA-Z0-9]/g) || [];
+          return specials.length >= requirement;
+        },
+        messages: {
+          en: "Your password must contain at least (%s) special characters.",
+        },
+      });
     </script>
-</body>
+  </body>
 </html>

@@ -120,7 +120,7 @@
                   </div>
                 </div>
                 <div class="col-lg-8 p-4 py-3 colorSecondary bg-img">
-                  <div class="logo">
+                  <div class="logo2">
                     <a href="#">
                       <img src="img/logo.png" alt="" />
                     </a>
@@ -182,7 +182,7 @@
                       </button>
                     </a>
                   </div>
-                  <footer class="d-flex justify-content-center text-center">
+                  <footer class="d-flex justify-content-center text-center mb-1">
                     <p class="col-md-4 mb-0 text-muted">&copy; 2021 SI-BOSS, All Rights Reserved</p>
                   </footer>
                 </div>
