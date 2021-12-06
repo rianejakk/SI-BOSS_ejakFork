@@ -57,7 +57,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         }
     }
 
-    private void register(String username, String password, String name) {
+    public void register(String username, String password, String name) {
 
         apiInterface = ApiClient.getClient().create(ApiInterface.class);
         Call<Register> call = apiInterface.registerResponse(username, password, name);

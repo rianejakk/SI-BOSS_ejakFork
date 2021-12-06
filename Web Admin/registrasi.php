@@ -1,18 +1,26 @@
 <?php
 require ('koneksi.php');
-if(isset ($_POST['register'])){
+if(isset ($_POST['submit'])){
     $nama = $_POST['txt_nama'];
     $jenis_kelamin = $_POST['Rbtn_jenis_kelamin'];
     $alamat = $_POST['txt_alamat'];
     $no_hp = $_POST['txt_no_hp'];
-    $foto = $_POST['txt_foto'];
+    // $foto = $_POST['txt_foto'];
     // $status = $_POST['txt_status'];
-    $id_terminal = $_POST['txt_id_terminal'];
+    // $id_terminal = $_POST['txt_id_terminal'];
     $email = $_POST['txt_email'];
     $password = $_POST['txt_password'];
 
+    $nama_terminal = $_POST['txt_nama_terminal'];
+    $alamat_terminal = $_POST['txt_detail_alamat_terminal'];
+    $provinsi = $_POST['d_provinsi_terminal'];
+    $kabupaten = $_POST['d_kabupaten_terminal'];
+    $kecamatan = $_POST['d_kecamatan_terminal'];
+
     $query = "INSERT INTO administrator VALUES ('', '$nama', '$jenis_kelamin', '$alamat', '$no_hp', '', 2, '1', '$email', '$password')";
+    $query2 = "INSERT INTO terminal VALUES ('', '$nama_terminal', '$alamat_terminal', '$provinsi', '$kabupaten','$kecamatan')";
     $result = mysqli_query($koneksi, $query);
+    $result = mysqli_query($koneksi, $query2);
     header('Location: registrasi.php');
     echo mysqli_error($result);
 }
@@ -103,25 +111,37 @@ if(isset ($_POST['register'])){
                           </div>
                         </div>
                         <div class="row">
-                        <div class="col-lg-12 mb-3">
+                        <div class="col-lg-6 mb-3">
                             <label for="InputAlamat" class="form-label">Alamat</label>
                             <input type="text" class="form-control form-control-user2" id="InputAlamat" name="txt_alamat" required placeholder="Ex: JL. Sudirman" />
                           </div>
+                          <div class="col-lg-6 mb-3">
+                            <label for="InputIdTerminal" class="form-label">Terminal Tersedia</label>
+                            <select class="form-select" aria-label=".form-select-sm example" required>
+                              <option disabled selected>Pilih Terminal</option>
+                              <option value="1">One</option>
+                              <option value="2">Two</option>
+                              <option value="3">Three</option>
+                            </select>
+                          </div>
                         </div>
+                        
+                        
+
                         <div class="row">
                           <div class="col-lg-6 mb-3">
-                            <label for="InputIdTerminal" class="form-label">Nama Terminal</label>
-                            <input type="text" class="form-control form-control-user2" id="InputIdTerminal" name="txt_terminal" required placeholder="Ex: Tawang Alun" />
+                            <label for="InputTerminal" class="form-label">Nama Terminal</label>
+                            <input type="text" class="form-control form-control-user2" id="InputIdTerminal" name="txt_nama_terminal" required placeholder="Ex: Tawang Alun" />
                           </div>
                           <div class="col-lg-6 mb-3">
                             <label for="InputAlamat" class="form-label">Alamat Terminal</label>
-                            <input type="text" class="form-control form-control-user2" id="InputAlamat" name="txt_alamat" required placeholder="JL. KH." />
+                            <input type="text" class="form-control form-control-user2" id="InputAlamat" name="txt_detail_alamat_terminal" required placeholder="JL. KH." />
                           </div>
                         </div>
 
                         <div class="col-lg-12 mb-3">
                           <label for="InputProvinsi" class="form-label">Provinsi</label>
-                          <select class="form-select" aria-label=".form-select-sm example" required>
+                          <select class="form-select" name="d_provinsi_terminal" aria-label=".form-select-sm example" required>
                             <option disabled selected>Pilih Provinsi</option>
                             <option value="1">One</option>
                             <option value="2">Two</option>
@@ -131,9 +151,9 @@ if(isset ($_POST['register'])){
 
                         <div class="row">
                           <div class="col-lg-6 mb-3">
-                            <label for="InputKota" class="form-label">Kota</label>
-                            <select class="form-select" aria-label=".form-select-sm example" required>
-                              <option disabled selected>Pilih kota</option>
+                            <label for="InputKota" class="form-label">Kabupaten/Kota</label>
+                            <select class="form-select" name="d_kabupaten_terminal" aria-label=".form-select-sm example" required>
+                              <option disabled selected>Pilih Kabupaten/kota</option>
                               <option value="1">One</option>
                               <option value="2">Two</option>
                               <option value="3">Three</option>
@@ -141,7 +161,7 @@ if(isset ($_POST['register'])){
                           </div>
                           <div class="col-lg-6 mb-2">
                             <label for="InputKecamatan" class="form-label">Kecamatan</label>
-                            <select class="form-select" aria-label=".form-select-sm example" required>
+                            <select class="form-select" name="d_kecamatan_terminal" aria-label=".form-select-sm example" required>
                               <option disabled selected>Pilih Kecamatan</option>
                               <option value="1">One</option>
                               <option value="2">Two</option>
@@ -151,9 +171,15 @@ if(isset ($_POST['register'])){
                         </div>
                         <div class="clearfix"></div>
                         <div class="mb-5"></div>
-                        <div class="col-12 d-flex justify-content-center">
-                          <button type="submit" name="register" class="btn colorPrimary btn-login text-white btn-block2">Daftar</button>
-                        </div>
+                          <div class="col-12 d-flex justify-content-center">
+                            <button type="submit" name="submit" class="btn colorPrimary btn-login text-white btn-block2 ">Daftar</button>
+                          </div>
+                          <div class="mb-3"></div>
+                          <div class="col-6 d-flex justify-content-center">
+                            <a href="index.php" class="btn btn-daftar btn-block py-2">
+                              <span>Login</span>
+                            </a>
+                          </div>
                       </form>
                     </div>
                   </div>

@@ -1,6 +1,31 @@
 <!-- <?php
 require('koneksi.php');
-$email = $_GET['nama_lengkap_admin'];
+$nama = $_GET['nama'];
+if(isset ($_POST['submit'])){
+  $nama_bus = $_POST['txt_nama_bus'];
+  $status = $_POST['txt_status'];
+  $kursi = $_POST['txt_kursi'];
+  $jenis_bus = $_POST['txt_jenis_bus'];
+  $fasilitas = $_POST['txt_fasilitas'];
+  // $foto = $_POST['txt_foto'];
+  $id_jenis = $_POST['d_id_jenis'];
+  $id_rute = $_POST['d_id_rute'];
+  
+  $pemberangkatan = $_POST['txt_pemberangkatan'];
+  $waktu_berangkat = $_POST['txt_waktu_berangkat'];
+  $tujuan = $_POST['txt_tujuan'];
+  $waktu_tiba = $_POST['txt_waktu_tiba'];
+  $harga = $_POST['txt_harga'];
+
+  $query = "UPDATE INTO bus VALUES ('', '$nama_bus', '', '$status', '$kursi', '$foto', '$id_jenis', '$id_rute')";
+  $query2 = "UPDATE INTO jenis_bus VALUES ('', '$jenis_bus', '$fasilitas')";
+  $query3 = "UPDATE INTO terminal VALUES ('', '$pemberangkatan', '$waktu_berangkat', '$tujuan', '$waktu_tiba','$harga')";
+  $result = mysqli_query($koneksi, $query);
+  $result = mysqli_query($koneksi, $query2);
+  $result = mysqli_query($koneksi, $query3);
+  header('Location: registrasi.php');
+  echo mysqli_error($result);
+}
 ?> -->
 <!DOCTYPE html>
 <html lang="en">
@@ -32,7 +57,7 @@ $email = $_GET['nama_lengkap_admin'];
         <!-- Heading -->
         <li class="sidebar-heading mb-2 p-0">Menu :</li>
         <li class="nav-item mb-1">
-          <a href="dashboard.html" class="focusMenu">
+          <a href="dashboard.php" class="focusMenu">
             <div class="frame-ico">
               <img class="ico" src="img/ico/icoDash_Fill.png" alt="logo1" data-bs-toggle="collapse" data-bs-target="#dashboard" aria-expanded="false" aria-controls="dashboard" />
             </div>
@@ -41,25 +66,31 @@ $email = $_GET['nama_lengkap_admin'];
           </a>
           <div id="dashboard" class="collapse">
             <ul class="sub-menu">
-              <li><a class="link_name" href="dashboard.html">Dashboard</a></li>
+              <li><a class="link_name" href="dashboard.php">Dashboard</a></li>
               <li><a href="#">Grafik</a></li>
               <li><a href="#">Log</a></li>
               <li><a href="#">Pengaturan</a></li>
             </ul>
           </div>
         </li>
-        <li><hr /></li>
+        <li><hr></li>
         <li class="sidebar-heading mt-2 p-0">List Data</li>
-        <li class="nav-item active">
-          <a href="#" class="focusMenu">
+        <li class="nav-item active mb-1">
+          <a href="dataBus.php" class="focusMenu">
             <div class="frame-ico">
-              <img class="ico2" src="img/ico/icoBus_noFill.png" alt="logo1" />
+              <img class="ico2" src="img/ico/icoBus_noFill.png" alt="logo1" data-bs-toggle="collapse" data-bs-target="#dataBus" aria-expanded="false" aria-controls="dataBus"/>
             </div>
             <span class="link_name">Data Bus</span>
+            <i class="bx bxs-chevron-right arrow" data-bs-toggle="collapse" data-bs-target="#dataBus" aria-expanded="false" aria-controls="dataBus"></i>
           </a>
-          <ul class="sub-menu blank">
-            <li><a class="link_name" href="#">Data Bus</a></li>
-          </ul>
+          <div id="dataBus" class="collapse">
+            <ul class="sub-menu">
+              <li><a class="link_name" href="dataBus.php">Data Bus</a></li>
+              <li><a href="#">Grafik</a></li>
+              <li><a href="#">Log</a></li>
+              <li><a href="#">Pengaturan</a></li>
+            </ul>
+          </div>
         </li>
 
         <li class="nav-item">
@@ -75,14 +106,14 @@ $email = $_GET['nama_lengkap_admin'];
         </li>
 
         <li class="nav-item">
-          <a href="dataAkun.html" class="focusMenu">
+          <a href="dataAkun.php" class="focusMenu">
             <div class="frame-ico">
               <img class="ico2" src="img/ico/iconProfile_Fill.png" alt="logo1" />
             </div>
             <span class="link_name">Data Akun</span>
           </a>
           <ul class="sub-menu blank">
-            <li><a class="link_name" href="dataAkun.html">Data Akun</a></li>
+            <li><a class="link_name" href="dataAkun.php">Data Akun</a></li>
           </ul>
         </li>
         <li><hr class="seperator" /></li>
@@ -119,8 +150,7 @@ $email = $_GET['nama_lengkap_admin'];
             </div>
             <div class="name-job">
               <div class="profile_name">
-                Budi Santoso
-                <?php echo $email;?>
+                <?php echo $nama;?>
               </div>
               <div class="job">Staff</div>
             </div>
@@ -148,8 +178,8 @@ $email = $_GET['nama_lengkap_admin'];
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" id="dropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <span class="RobotoReg14"
-                  >Budi Santoso
-                  <?php echo $email;?></span
+                  >
+                  <?php echo $nama;?></span
                 >
                 <img class="img-profile rounded-circle" src="img/bis.png" alt="LogoBis" />
               </a>
@@ -253,7 +283,7 @@ $email = $_GET['nama_lengkap_admin'];
                 <span class="m-0"><b>Tabel Data Bus</b></span>
               </div>
               <div class="btnAction float-end">
-                <a href="tambahDataBus.html">
+                <a href="tambahDataBus.php">
                   <button class="btn btn-light text-dark btn-circle custShadow2 me-2"><i class="fas fa-plus" data-bs-toggle="tooltip" title="Tambah"></i></button>
                 </a>
                 <button class="btn btn-light text-danger btn-circle custShadow2" data-bs-toggle="modal" data-tooltip="tooltip" data-bs-target="#deleteDataAkun" title="Hapus Yang dipilih"><i class="fas fa-trash"></i></button>
@@ -272,15 +302,18 @@ $email = $_GET['nama_lengkap_admin'];
                       </th>
                       <th class="actions">Action</th>
                       <th class="no">No</th>
+                      <th class="foto">Foto</th>
                       <th class="nama">Nama Bus</th>
                       <th class="jenisBus">Jenis Bus</th>
-                      <th class="status">Status Bus</th>
+                      <th class="fasilitas">Fasilitas</th>
+                      <th class="kursi">Kursi</th>
                       <th class="harga">Harga</th>
-                      <th class="waktu">Waktu</th>
                       <th class="pemberangkatan">Pemberangkatan</th>
                       <th class="tujuan">Tujuan</th>
+                      <th class="waktu">Waktu Berangkat</th>
                       <th class="waktuTiba">Waktu Tiba</th>
-                      <th class="detailRute">Detail Rute</th>
+                      <th class="status">Status Bus</th>
+                      <!-- <th class="detailRute">Detail Rute</th> -->
                     </tr>
                   </thead>
                   <tbody>

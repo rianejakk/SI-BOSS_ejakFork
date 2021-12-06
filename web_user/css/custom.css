@@ -843,6 +843,36 @@ border-radius: 20px;
    color: #000000;
 }
 
+hr{
+  position: absolute;
+  width: 393px;
+  height: 0px;
+  left: 0px;
+  top: 150px;
+  border: 1px solid #C2C2C2;
+}
+
+.akun_btn{
+  position: absolute;
+  width: 348px;
+  height: 81px;
+  left: 20px;
+  top: 215px;
+  background: linear-gradient(90deg, #1154F4 -138.67%, rgba(17, 84, 244, 0.76) -138.65%, #002886 57.08%, #002886 57.08%);
+  border-radius: 20px;
+  font-size: 20px;
+  font-family: Open Sans;
+  line-height: 41px;
+  color: #FFFFFF;text-align: center;
+}
+
+
+
+
+
+
+
+
 
 
 
