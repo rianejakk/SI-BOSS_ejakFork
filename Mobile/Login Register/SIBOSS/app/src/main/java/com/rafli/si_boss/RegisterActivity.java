@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.rafli.si_boss.api.ApiClient;
 import com.rafli.si_boss.api.ApiInterface;
-import com.rafli.si_boss.model.login.register.Register;
+import com.rafli.si_boss.model.register.Register;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -52,6 +52,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             case R.id.TvLogin:
                 Intent intent = new Intent(this, LoginActivity.class);
                 startActivity(intent);
+                finish();
                 break;
         }
     }

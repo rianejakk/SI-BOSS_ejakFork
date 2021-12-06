@@ -1,4 +1,4 @@
-package com.rafli.si_boss.model.login.register;
+package com.rafli.si_boss.model.register;
 
 import com.google.gson.annotations.SerializedName;
 
