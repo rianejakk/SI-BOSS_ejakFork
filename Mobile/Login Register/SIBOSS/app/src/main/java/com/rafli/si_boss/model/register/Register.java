@@ -1,4 +1,4 @@
-package com.rafli.si_boss.model.login.register;
+package com.rafli.si_boss.model.register;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -13,11 +13,11 @@ public class Register{
 	@SerializedName("status")
 	private boolean status;
 
-	public void setData(RegisterData registerData){
+	public void setRegisterData(RegisterData registerData){
 		this.registerData = registerData;
 	}
 
-	public RegisterData getData(){
+	public RegisterData getRegisterData(){
 		return registerData;
 	}
 

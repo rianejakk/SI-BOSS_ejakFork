@@ -1,6 +1,13 @@
 <!-- <?php
 require('koneksi.php');
-$nama = $_GET['nama'];
+session_start();
+
+if(!isset($_SESSION['email'])){
+    header('Location: index.php');
+}
+
+$sesName = $_SESSION['name'];
+
 ?> -->
 <!DOCTYPE html>
 <html lang="en">
@@ -48,6 +55,25 @@ $nama = $_GET['nama'];
         </li>
         <li><hr></li>
         <li class="sidebar-heading mt-2 p-0">List Data</li>
+        <li class="nav-item">
+          <a href="sumberData.php" class="focusMenu">
+            <div class="frame-ico">
+              <img class="ico2" src="img/ico/icoData_noFill.png" alt="logo2" data-bs-toggle="collapse" data-bs-target="#SumberData" aria-expanded="false" aria-controls="SumberData" />
+            </div>
+            <span class="link_name">Sumber Data</span>
+            <i class="bx bxs-chevron-right arrow" data-bs-toggle="collapse" data-bs-target="#SumberData" aria-expanded="false" aria-controls="SumberData"></i>
+          </a>
+          <div id="SumberData" class="collapse">
+            <ul class="sub-menu">
+              <li><a class="link_name" href="sumberData.php">Sumber Data</a></li>
+              <li><a href="#">Terminal</a></li>
+              <li><a href="#">Jenis Bus</a></li>
+              <li><a href="#">Rute User</a></li>
+              <li><a href="#">Penumpang</a></li>
+              <li><a href="#">Staff</a></li>
+            </ul>
+          </div>
+        </li>
         <li class="nav-item">
           <a href="dataBus.php" class="focusMenu">
             <div class="frame-ico">
@@ -117,7 +143,7 @@ $nama = $_GET['nama'];
             </div>
             <div class="name-job">
               <div class="profile_name">
-                <?php echo $nama;?>
+              <span><?= (str_word_count($sesName) > 2 ? substr($sesName,0,9)."..." : $sesName);?></span>
               </div>
               <div class="job">Staff</div>
             </div>
@@ -144,10 +170,7 @@ $nama = $_GET['nama'];
 
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" id="dropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <span class="RobotoReg14"
-                  >
-                  <?php echo $nama;?></span
-                >
+                <span class="RobotoReg14"><?php echo $sesName;?></span>
                 <img class="img-profile rounded-circle" src="img/bis.png" alt="LogoBis" />
               </a>
 

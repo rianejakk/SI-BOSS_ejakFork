@@ -12,8 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.rafli.si_boss.api.ApiClient;
 import com.rafli.si_boss.api.ApiInterface;
-import com.rafli.si_boss.model.login.register.Login;
-import com.rafli.si_boss.model.login.register.LoginData;
+import com.rafli.si_boss.model.login.Login;
+import com.rafli.si_boss.model.login.LoginData;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -68,15 +68,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             public void onResponse(Call<Login> call, Response<Login> response) {
                 if (response.body() != null && response.isSuccessful() && response.body().isStatus()){
 
-                    // Untuk menyimpan sesi
                     sessionManager = new SessionManager(LoginActivity.this);
                     LoginData loginData = response.body().getLoginData();
                     sessionManager.createLoginSession(loginData);
 
-                    // untuk pindah
-                    Toast.makeText( LoginActivity.this, response.body().getLoginData().getName(), Toast.LENGTH_SHORT).show();
+
+                    Toast.makeText(LoginActivity.this, response.body().getLoginData().getName(), Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intent);
+                    finish();
                 } else {
                     Toast.makeText(LoginActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }

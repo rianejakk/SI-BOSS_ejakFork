@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 02 Des 2021 pada 15.42
+-- Waktu pembuatan: 06 Des 2021 pada 11.40
 -- Versi server: 10.4.21-MariaDB
 -- Versi PHP: 8.0.10
 
@@ -29,9 +29,9 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
-  `username` varchar(25) NOT NULL,
-  `name` varchar(30) NOT NULL,
-  `password` varchar(100) NOT NULL
+  `username` varchar(32) NOT NULL,
+  `name` varchar(32) NOT NULL,
+  `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -39,10 +39,12 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `name`, `password`) VALUES
-(4, 'rafli123', 'rafli123', '79ece3a5487d094'),
-(5, 'rafli1234', 'rafli1234', '95823f5cd9a2185'),
-(6, 'rafli', 'rafli', '054a3c3033e8f67'),
-(7, 'rafli12', 'rafli12', '5df649a8e86cf7c8f43c5fba6c3983bc');
+(12, 'ibnuas', 'ibnu', '$2y$10$2QM6NQ31WDg4XFuLJbkBeuXm4zV/QpCvmwnNkWz4YAQsquPBOLVbC'),
+(13, 'rafli', 'rafli', '$2y$10$pnAxziAN7GZf9KSqTq/Z/eETKPPyRAqnLhy77A3lB22b/xKu5LQhi'),
+(14, 'rafli13', 'rafli13', '$2y$10$w3iOap7ti6vLO0.x7aZ/a.5uZwoXrlGxUMY6DWNKHlYg0xeqeeKMy'),
+(15, 'raflialfajar', 'raflialfajar', '$2y$10$uH9dvsM66i26Mp6fUKbAf.z5aDXd44kTupGUsTnL/S0meFqjKxnPm'),
+(16, 'rafli1', 'rafli1', '$2y$10$CQcm0FRbvjHLejuXtUK7AO3RTVmBPZE79aMoGaAZh.OPTLsx0VovK'),
+(17, 'siboss', 'siboss', '$2y$10$vrmXt2s0qHHgex28ViSSReNNLMcDGMbHrzk1dX1jyPcazDWHp6Dje');
 
 --
 -- Indexes for dumped tables
@@ -63,7 +65,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
