@@ -1262,3 +1262,15 @@ a.actionBtn{
   text-decoration: underline;
   color: #527bdd !important;
 }
+
+/* Custom Alert Sementara*/
+.alert{
+  width: 250px !important;
+  z-index: 9999;
+}
+.custAlert{
+  top: 9px;
+  right: 1px;
+  margin-right: 20px;
+  transition: 0.4s ease-in-out;
+}

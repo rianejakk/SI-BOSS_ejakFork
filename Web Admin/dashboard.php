@@ -1,6 +1,13 @@
 <!-- <?php
 require('koneksi.php');
-$nama = $_GET['nama'];
+session_start();
+
+if(!isset($_SESSION['email'])){
+    header('Location: index.php');
+}
+
+$sesName = $_SESSION['name'];
+
 ?> -->
 <!DOCTYPE html>
 <html lang="en">
@@ -117,7 +124,7 @@ $nama = $_GET['nama'];
             </div>
             <div class="name-job">
               <div class="profile_name">
-                <?php echo $nama;?>
+              <span><?= (str_word_count($sesName) > 2 ? substr($sesName,0,9)."..." : $sesName);?></span>
               </div>
               <div class="job">Staff</div>
             </div>
@@ -144,10 +151,7 @@ $nama = $_GET['nama'];
 
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" id="dropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <span class="RobotoReg14"
-                  >
-                  <?php echo $nama;?></span
-                >
+                <span class="RobotoReg14"><?php echo $sesName;?></span>
                 <img class="img-profile rounded-circle" src="img/bis.png" alt="LogoBis" />
               </a>
 
