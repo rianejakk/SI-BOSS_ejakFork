@@ -43,15 +43,19 @@
     $email = $_POST['txt_email'];
     $password = $_POST['txt_password'];
 
+    $query = "INSERT INTO administrator VALUES ('', '$nama', '$jenis_kelamin', '$alamat', '$no_hp', '', 2, '1', '$email', '$password')";
+    $result = mysqli_query($koneksi, $query);
+    header('Location: registrasi.php');
+  }
+
+  if(isset ($_POST['simpan'])){
     $nama_terminal = $_POST['txt_nama_terminal'];
     $alamat_terminal = $_POST['txt_detail_alamat_terminal'];
     $provinsi = $_POST['d_provinsi_terminal'];
     $kabupaten = $_POST['d_kabupaten_terminal'];
     $kecamatan = $_POST['d_kecamatan_terminal'];
 
-    $query = "INSERT INTO administrator VALUES ('', '$nama', '$jenis_kelamin', '$alamat', '$no_hp', '', 2, '1', '$email', '$password')";
     $query2 = "INSERT INTO terminal VALUES ('', '$nama_terminal', '$alamat_terminal', '$provinsi', '$kabupaten','$kecamatan')";
-    $result = mysqli_query($koneksi, $query);
     $result = mysqli_query($koneksi, $query2);
     header('Location: registrasi.php');
   }
@@ -193,7 +197,7 @@
     <div id="TambahDataTerminal" class="modal fade">
       <div class="modal-dialog">
         <div class="modal-content modal-edit">
-          <form action="">
+          <form action="registrasi.php" method="POST">
             <div class="modal-header">
               <h4 class="modal-title">Tambah Data Terminal</h4>
               <button type="button" class="btn btn-danger btn-circle btn-user2 shadow" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true">
@@ -202,49 +206,40 @@
             </div>
             <div class="modal-body">
               <div class="col-lg-12 mb-3" hidden>
-                <label for="exampleInputEmail" class="form-label">Id</label>
-                <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_id" placeholder="" />
+                <label for="InputId" class="form-label">Id</label>
+                <input type="text" class="form-control form-control-user2" id="InputId" name="txt_id" placeholder="" />
               </div>
               <div class="row">
                 <div class="col-12 mb-3">
-                  <label for="exampleInputEmail" class="form-label">Nama Terminal</label>
-                  <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_terminal" placeholder="Ex: Terminal A" />
+                  <label for="InputNamaTerminal" class="form-label">Nama Terminal</label>
+                  <input type="text" class="form-control form-control-user2" id="InputNamaTerminal" name="txt_nama_terminal" placeholder="Ex: Terminal A" />
                 </div>
                 <div class="col-12 mb-3">
-                  <label for="exampleInputPassword" class="form-label">Alamat Terminal</label>
-                  <textarea class="form-control form-control-user2" id="exampleInputPassword" name="txt_alamatterm" placeholder="JL. KH."></textarea>
+                  <label for="InputAlamat" class="form-label">Alamat Terminal</label>
+                  <textarea class="form-control form-control-user2" id="InputAlamat" name="txt_detail_alamat_terminal" placeholder="JL. KH."></textarea>
                 </div>
                 <div class="col-lg-12 mb-3">
-                  <label for="exampleInputEmail" class="form-label">Provinsi</label>
-                  <select class="form-select" aria-label=".form-select-sm example">
+                  <label for="InputPropinsi" class="form-label">Provinsi</label>
+                  <select class="form-select" aria-label=".form-select-sm example" name="d_provinsi_terminal" id="propinsi">
                     <option disabled selected>Pilih Provinsi</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
                   </select>
                 </div>
                 <div class="col-lg-6 mb-3">
-                  <label for="exampleInputEmail" class="form-label">Kota</label>
-                  <select class="form-select" aria-label=".form-select-sm example">
+                  <label for="InputKabupaten" class="form-label">Kota</label>
+                  <select class="form-select" aria-label=".form-select-sm example" name="d_kabupaten_terminal" id="kabupaten">
                     <option disabled selected>Pilih kota</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
                   </select>
                 </div>
                 <div class="col-lg-6 mb-3">
-                  <label for="exampleInputPassword" class="form-label">Kecamatan</label>
-                  <select class="form-select" aria-label=".form-select-sm example">
+                  <label for="InputKecamatan" class="form-label">Kecamatan</label>
+                  <select class="form-select" aria-label=".form-select-sm example" name="d_kecamatan_terminal" id="kecamatan">
                     <option disabled selected>Pilih Kecamatan</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
                   </select>
                 </div>
               </div>
               <div class="modal-footer">
                 <input type="button" class="btn btn-secondary roundedBtn" data-bs-dismiss="modal" value="Cancel" />
-                <input type="submit" class="btn colorPrimary text-white roundedBtn" value="Simpan" />
+                <input type="submit" name="simpan" class="btn colorPrimary text-white roundedBtn" value="Simpan" />
               </div>
             </div>
           </form>
@@ -259,6 +254,103 @@
     <script src="plugin/js/form-validation.init.js"></script>
     <script src="plugin/js/parsley.min.js"></script>
     <script src="plugin/js/javascript.js"></script>
+        <script type = "text/javascript" >
+          var return_first = function() {
+              var tmp = null;
+              $.ajax({
+                  'async': false,
+                  'type': "get",
+                  'global': false,
+                  'dataType': 'json',
+                  'url': 'https://x.rajaapi.com/poe',
+                  'success': function(data) {
+                      tmp = data.token;
+                  }
+              });
+              return tmp;
+          }();
+      $(document).ready(function() {
+          $.ajax({
+              url: 'https://x.rajaapi.com/MeP7c5ne' + window.return_first + '/m/wilayah/provinsi',
+              type: 'GET',
+              dataType: 'json',
+              success: function(json) {
+                  if (json.code == 200) {
+                      for (i = 0; i < Object.keys(json.data).length; i++) {
+                          $('#propinsi').append($('<option>').text(json.data[i].name).attr('value', json.data[i].id));
+                      }
+                  } else {
+                      $('#kabupaten').append($('<option>').text('Data tidak di temukan').attr('value', 'Data tidak di temukan'));
+                  }
+              }
+          });
+          $("#propinsi").change(function() {
+              var propinsi = $("#propinsi").val();
+              $.ajax({
+                  url: 'https://x.rajaapi.com/MeP7c5ne' + window.return_first + '/m/wilayah/kabupaten',
+                  data: "idpropinsi=" + propinsi,
+                  type: 'GET',
+                  cache: false,
+                  dataType: 'json',
+                  success: function(json) {
+                      $("#kabupaten").html('');
+                      if (json.code == 200) {
+                          for (i = 0; i < Object.keys(json.data).length; i++) {
+                              $('#kabupaten').append($('<option>').text(json.data[i].name).attr('value', json.data[i].id));
+                          }
+                          $('#kecamatan').html($('<option>').text('-- Pilih Kecamatan --').attr('value', '-- Pilih Kecamatan --'));
+                          $('#kelurahan').html($('<option>').text('-- Pilih Kelurahan --').attr('value', '-- Pilih Kelurahan --'));
+
+                      } else {
+                          $('#kabupaten').append($('<option>').text('Data tidak di temukan').attr('value', 'Data tidak di temukan'));
+                      }
+                  }
+              });
+          });
+          $("#kabupaten").change(function() {
+              var kabupaten = $("#kabupaten").val();
+              $.ajax({
+                  url: 'https://x.rajaapi.com/MeP7c5ne' + window.return_first + '/m/wilayah/kecamatan',
+                  data: "idkabupaten=" + kabupaten + "&idpropinsi=" + propinsi,
+                  type: 'GET',
+                  cache: false,
+                  dataType: 'json',
+                  success: function(json) {
+                      $("#kecamatan").html('');
+                      if (json.code == 200) {
+                          for (i = 0; i < Object.keys(json.data).length; i++) {
+                              $('#kecamatan').append($('<option>').text(json.data[i].name).attr('value', json.data[i].id));
+                          }
+                          $('#kelurahan').html($('<option>').text('-- Pilih Kelurahan --').attr('value', '-- Pilih Kelurahan --'));
+                          
+                      } else {
+                          $('#kecamatan').append($('<option>').text('Data tidak di temukan').attr('value', 'Data tidak di temukan'));
+                      }
+                  }
+              });
+          });
+          $("#kecamatan").change(function() {
+              var kecamatan = $("#kecamatan").val();
+              $.ajax({
+                  url: 'https://x.rajaapi.com/MeP7c5ne' + window.return_first + '/m/wilayah/kelurahan',
+                  data: "idkabupaten=" + kabupaten + "&idpropinsi=" + propinsi + "&idkecamatan=" + kecamatan,
+                  type: 'GET',
+                  dataType: 'json',
+                  cache: false,
+                  success: function(json) {
+                      $("#kelurahan").html('');
+                      if (json.code == 200) {
+                          for (i = 0; i < Object.keys(json.data).length; i++) {
+                              $('#kelurahan').append($('<option>').text(json.data[i].name).attr('value', json.data[i].id));
+                          }
+                      } else {
+                          $('#kelurahan').append($('<option>').text('Data tidak di temukan').attr('value', 'Data tidak di temukan'));
+                      }
+                  }
+              });
+          });
+      });
+    </script>
     <script>
       window.Parsley.addValidator("uppercase", {
         requirementType: "number",
