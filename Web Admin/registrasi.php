@@ -39,11 +39,11 @@
     $no_hp = $_POST['txt_no_hp'];
     // $foto = $_POST['txt_foto'];
     // $status = $_POST['txt_status'];
-    // $id_terminal = $_POST['txt_id_terminal'];
+    $id_terminal = $_POST['id_terminal'];
     $email = $_POST['txt_email'];
     $password = $_POST['txt_password'];
 
-    $query = "INSERT INTO administrator VALUES ('', '$nama', '$jenis_kelamin', '$alamat', '$no_hp', '', 2, '1', '$email', '$password')";
+    $query = "INSERT INTO administrator VALUES ('', '$nama', '$jenis_kelamin', '$alamat', '$no_hp', '', 2, '$id_terminal', '$email', '$password')";
     $result = mysqli_query($koneksi, $query);
     header('Location: registrasi.php');
   }
@@ -149,11 +149,20 @@
                           </div>
                           <div class="col-lg-6 mb-3">
                             <label for="InputIdTerminal" class="form-label">Terminal Tersedia</label>
-                            <select class="form-select form-select-user select-md" aria-label=".form-select-sm example" required data-parsley-required-message="Harap pilih data terminal !!!">
+                            <select class="form-select form-select-user select-md" aria-label=".form-select-sm example" required data-parsley-required-message="Harap pilih data terminal !!!" name="id_terminal">
                               <option disabled selected>Pilih Terminal</option>
-                              <option value="1">One</option>
-                              <option value="2">Two</option>
-                              <option value="3">Three</option>
+                              <?php
+                                $sql="SELECT * FROM terminal";
+
+                                $hasil=mysqli_query($koneksi,$sql);
+                                $no=0;
+                                while ($data = mysqli_fetch_array($hasil)) {
+                                $no++;
+                               ?>
+                                <option value="<?php echo $data['id_terminal'];?>"><?php echo $data['nama_terminal'];?></option>
+                              <?php 
+                              }
+                              ?>
                             </select>
                             <a href="#" class="actionBtn" aria-label="Tambah">
                               <button class="btn colorPrimary text-white btn-user btn-circle btn-xs" aria-label="TambahModal" data-bs-toggle="modal" data-bs-target="#TambahDataTerminal" value="tambah"><i class="fa fa-plus" data-bs-toggle="tooltip" title="Tambah"></i></button>
