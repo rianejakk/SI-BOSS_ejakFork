@@ -1,14 +1,19 @@
 <?php
-    // session_start();
-    $server = "localhost";
-    $username = "root";
-    $password = "";
-    $db = "si_boss_express";
-    $koneksi = mysqli_connect($server, $username, $password, $db);
-    //urutan pemanggilan
-
-    //cek kokeksi gagal ke database
-    if(mysqli_connect_errno()){
-        echo "Koneksi gagal : ".mysqli_connect_error();
+class koneksi {
+    private $host = "localhost";
+    private $user = "root";
+    private $pass = "";
+    private $db = "si_boss_express";
+    protected $koneksi;
+    public function __construct(){
+        try {
+            $this->koneksi = new PDO ("mysql:host=$this->host; dbname=$this->db", $this->user, $this->pass);
+            $this->koneksi->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+        return $this->koneksi;
+    }
+        
     }
 ?>

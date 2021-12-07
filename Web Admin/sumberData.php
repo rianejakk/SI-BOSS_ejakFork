@@ -1,12 +1,16 @@
-<!-- <?php
-require('koneksi.php');
-session_start();
+<?php
+  require('koneksi.php');
+  require('query.php');
+  $obj = new crud;
 
-if(!isset($_SESSION['email'])){
-    header('Location: index.php');
-}
+  session_start();
 
+  if(!isset($_SESSION['email'])){
+      header('Location: index.php');
+  }
+$sesID = $_SESSION['id'];
 $sesName = $_SESSION['name'];
+$sesLvl = $_SESSION['level'];
 
 ?> -->
 <!DOCTYPE html>
@@ -68,7 +72,7 @@ $sesName = $_SESSION['name'];
               <li><a class="link_name" href="#">Sumber Data</a></li>
               <li><a href="#">Terminal</a></li>
               <li><a href="#">Jenis Bus</a></li>
-              <li><a href="#">Rute User</a></li>
+              <li><a href="#">Rute</a></li>
               <li><a href="#">Penumpang</a></li>
               <li><a href="#">Staff</a></li>
             </ul>
@@ -202,7 +206,13 @@ $sesName = $_SESSION['name'];
               <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
                   <div class="RobotoReg14 text-white">Data Bus</div>
-                  <div class="RobotoBold18 text-white">5 <span>Bus</span></div>
+                  <div class="RobotoBold18 text-white">
+                    <?php
+                      $data = $obj->lihatTerminal();
+                      $num = $data->rowCount();
+                      echo $num;
+                    ?> 
+                  <span>Bus</span></div>
                 </div>
                 <div class="col-auto">
                   <img src="img/ico/icons8_Shuttle_bus_50px.png" alt="logoBus" />
@@ -277,7 +287,7 @@ $sesName = $_SESSION['name'];
                 <button class="nav-link" id="tab-2" data-bs-toggle="tab" data-bs-target="#tabs-2" type="button" role="tab" aria-controls="tabs-2" aria-selected="false">Jenis Bus</button>
               </li>
               <li class="nav-item" role="presentation">
-                <button class="nav-link" id="tab-3" data-bs-toggle="tab" data-bs-target="#tabs-3" type="button" role="tab" aria-controls="tabs-3" aria-selected="false">Rute User</button>
+                <button class="nav-link" id="tab-3" data-bs-toggle="tab" data-bs-target="#tabs-3" type="button" role="tab" aria-controls="tabs-3" aria-selected="false">Rute</button>
               </li>
               <li class="nav-item" role="presentation">
                 <button class="nav-link" id="tab-4" data-bs-toggle="tab" data-bs-target="#tabs-4" type="button" role="tab" aria-controls="tabs-4" aria-selected="false">Penumpang</button>
@@ -298,8 +308,13 @@ $sesName = $_SESSION['name'];
                           <span class="m-0"><b>Tabel Data Terminal</b></span>
                         </div>
                         <div class="btnAction float-end">
-                          <a href="tambahAkun.php">
-                            <button class="btn btn-light text-dark btn-circle custShadow2 me-2"><i class="fas fa-plus" data-bs-toggle="tooltip" title="Tambah"></i></button>
+                        <a href="#" class="actionBtn" aria-label="Tambah">
+                          <button class="btn btn-light text-dark btn-circle custShadow2 me-2" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#editDataAkun" value="edit">
+                            &nbsp;<i class="fa fa-edit fa-sm" data-bs-toggle="tooltip" title="Edit"></i>
+                          </button>
+                        </a>
+                          <a href="#" class="actionBtn" aria-label="Tambah">
+                            <button class="btn btn-light text-dark btn-circle custShadow2 me-2"><i class="fas fa-plus" data-bs-toggle="tooltip" data-bs-target="#editDataAkun" value="edit" title="Tambah"></i></button>
                           </a>
                           <button class="btn btn-light text-danger btn-circle custShadow2" data-bs-toggle="modal" data-tooltip="tooltip" data-bs-target="#deleteDataAkun" title="Hapus Yang dipilih"><i class="fas fa-trash"></i></button>
                         </div>
@@ -326,16 +341,21 @@ $sesName = $_SESSION['name'];
                             </thead>
                             <tbody>
                             <?php
-                              $query = "SELECT * FROM  terminal";
-                              $result = mysqli_query($koneksi, $query);
+                              $data = $obj->lihatTerminal();
                               $no = 1;
-                              while ($row = mysqli_fetch_array($result)){
+                              if($data->rowCount()>0){
+                                if($sesLvl == 1){
+                                    $dis = "";
+                                } else{
+                                    $dis = "disabled";
+                                }
+                                while($row=$data->fetch(PDO::FETCH_ASSOC)){
                                   $terminal = $row['nama_terminal'];
                                   $alamat = $row['detail_alamat_terminal'];
                                   $provinsi = $row['provinsi_terminal'];
                                   $kabupaten = $row['kabupaten_terminal'];
                                   $kecamatan = $row['kecamatan_terminal'];
-                              ?>
+                            ?>
                             <tr>
                                 <td>
                                   <span class="custom-checkbox">
@@ -361,12 +381,11 @@ $sesName = $_SESSION['name'];
                               <td><?php echo $provinsi; ?></td>
                               <td><?php echo $kabupaten; ?></td>
                               <td><?php echo $kecamatan; ?></td>
-                                
                             </tr>
-                          <?php
-                          $no++;
-                          } ?>
-                              
+                              <?php
+                              $no++;
+                              }} 
+                              ?>
                             </tbody>
                           </table>
                         </div>
@@ -521,7 +540,7 @@ $sesName = $_SESSION['name'];
                           <span class="m-0"><b>Tabel Jenis Bus</b></span>
                         </div>
                         <div class="btnAction float-end">
-                          <a href="tambahAkun.php">
+                          <a href="tambahJenisBus.php">
                             <button class="btn btn-light text-dark btn-circle custShadow2 me-2"><i class="fas fa-plus" data-bs-toggle="tooltip" title="Tambah"></i></button>
                           </a>
                           <button class="btn btn-light text-danger btn-circle custShadow2" data-bs-toggle="modal" data-tooltip="tooltip" data-bs-target="#deleteDataAkun" title="Hapus Yang dipilih"><i class="fas fa-trash"></i></button>
@@ -731,10 +750,10 @@ $sesName = $_SESSION['name'];
                     <div class="card mb-4 rounded">
                       <div class="card-header shadow">
                         <div class="title float-start">
-                          <span class="m-0"><b>Tabel Rute User</b></span>
+                          <span class="m-0"><b>Tabel Rute</b></span>
                         </div>
                         <div class="btnAction float-end">
-                          <a href="tambahAkun.php">
+                          <a href="tambahRute.php">
                             <button class="btn btn-light text-dark btn-circle custShadow2 me-2"><i class="fas fa-plus" data-bs-toggle="tooltip" title="Tambah"></i></button>
                           </a>
                           <button class="btn btn-light text-danger btn-circle custShadow2" data-bs-toggle="modal" data-tooltip="tooltip" data-bs-target="#deleteDataAkun" title="Hapus Yang dipilih"><i class="fas fa-trash"></i></button>
@@ -952,10 +971,10 @@ $sesName = $_SESSION['name'];
                     <div class="card mb-4 rounded">
                       <div class="card-header shadow">
                         <div class="title float-start">
-                          <span class="m-0"><b>Tabel penumpang</b></span>
+                          <span class="m-0"><b>Tabel Penumpang</b></span>
                         </div>
                         <div class="btnAction float-end">
-                          <a href="tambahAkun.php">
+                          <a href="tambahPenumpang.php">
                             <button class="btn btn-light text-dark btn-circle custShadow2 me-2"><i class="fas fa-plus" data-bs-toggle="tooltip" title="Tambah"></i></button>
                           </a>
                           <button class="btn btn-light text-danger btn-circle custShadow2" data-bs-toggle="modal" data-tooltip="tooltip" data-bs-target="#deleteDataAkun" title="Hapus Yang dipilih"><i class="fas fa-trash"></i></button>

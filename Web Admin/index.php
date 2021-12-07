@@ -1,5 +1,7 @@
 <?php
   require('koneksi.php');
+  require ('query.php');
+  $obj = new crud;
   
   session_start();
 
@@ -7,12 +9,8 @@
     $cookieEmail = $_COOKIE['cookie_email'];
     $cookiePass = $_COOKIE['cookie_password'];
     $cookieName = $_COOKIE['cookie_name'];
-
-    $query = "SELECT * FROM administrator WHERE email = '$cookieEmail'";
-      $result = mysqli_query($koneksi, $query);
-      $num = mysqli_num_rows($result);
-
-    while ($row = mysqli_fetch_array($result)) {
+    $queryCookie = $obj->login($cookieEmail);
+    while ($row = $queryCookie->fetch(PDO::FETCH_ASSOC)) {
       $id_user_admin = $row['id_user_admin'];
       $nama = $row['nama'];
       $emailVal = $row['email'];
@@ -38,11 +36,10 @@
     $rememberMe = !empty($_POST['check_remember']) ? $_POST['check_remember'] : '';
 
     if (!empty(trim($email)) && !empty(trim($password))) {
-      $query = "SELECT * FROM administrator WHERE email = '$email'";
-      $result = mysqli_query($koneksi, $query);
-      $num = mysqli_num_rows($result);
+      $query = $obj->login($email);
+      $num = $query->rowCount();
 
-    while ($row = mysqli_fetch_array($result)) {
+    while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
       $id_user_admin = $row['id_user_admin'];
       $nama = $row['nama'];
       $emailVal = $row['email'];
