@@ -316,21 +316,27 @@ $sesName = $_SESSION['name'];
                                   </span>
                                 </th>
                                 <th class="actions">Action</th>
-                                <th class="nama">Nama Lengkap</th>
-                                <th class="email">Email</th>
-                                <th class="pass">Kata Sandi</th>
+                                <th class="id">ID Terminal</th>
+                                <th class="terminal">Terminal</th>
                                 <th class="alamat">Alamat</th>
-                                <th class="jenisKelamin">Jenis Kelamin</th>
-                                <th class="namaTerminal">Nama Terminal</th>
-                                <th class="AlamatTerminal">Alamat Terminal</th>
                                 <th class="provinsi">Provinsi</th>
                                 <th class="kabupaten">Kabupaten</th>
                                 <th class="kecamatan">Kecamatan</th>
-                                <th class="status">Status Level</th>
                               </tr>
                             </thead>
                             <tbody>
-                              <tr>
+                            <?php
+                              $query = "SELECT * FROM  terminal";
+                              $result = mysqli_query($koneksi, $query);
+                              $no = 1;
+                              while ($row = mysqli_fetch_array($result)){
+                                  $terminal = $row['nama_terminal'];
+                                  $alamat = $row['detail_alamat_terminal'];
+                                  $provinsi = $row['provinsi_terminal'];
+                                  $kabupaten = $row['kabupaten_terminal'];
+                                  $kecamatan = $row['kecamatan_terminal'];
+                              ?>
+                            <tr>
                                 <td>
                                   <span class="custom-checkbox">
                                     <input type="checkbox" id="checkbox1" name="option[]" value="1" />
@@ -349,142 +355,18 @@ $sesName = $_SESSION['name'];
                                     </button>
                                   </a>
                                 </td>
-                                <td>Admin 1</td>
-                                <td>amdin@admin.com</td>
-                                <td>*******</td>
-                                <td>Jakarta</td>
-                                <td>Laki-laki</td>
-                                <td>Terminal A</td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><span class="mode mode_on">Admin</span></td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <span class="custom-checkbox">
-                                    <input type="checkbox" id="checkbox1" name="option[]" value="1" />
-                                    <label for="checkbox1"></label>
-                                  </span>
-                                </td>
-                                <td>
-                                  <a href="#" class="actionBtn" aria-label="Edit">
-                                    <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#editDataAkun" value="edit">
-                                      &nbsp;<i class="fa fa-edit fa-sm" data-bs-toggle="tooltip" title="Edit"></i>
-                                    </button>
-                                  </a>
-                                  <a href="#" class="actionBtn" aria-label="Delete">
-                                    <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteDataAkun" value="hapus">
-                                      <i class="fa fa-trash fa-sm" data-bs-toggle="tooltip" title="Delete"></i>
-                                    </button>
-                                  </a>
-                                </td>
-                                <td>Staff 1</td>
-                                <td>amdin@admin.com</td>
-                                <td>*******</td>
-                                <td>Jakarta</td>
-                                <td>Laki-laki</td>
-                                <td>Terminal A</td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><span class="mode mode_done">Staff</span></td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <span class="custom-checkbox">
-                                    <input type="checkbox" id="checkbox1" name="option[]" value="1" />
-                                    <label for="checkbox1"></label>
-                                  </span>
-                                </td>
-                                <td>
-                                  <a href="#" class="actionBtn" aria-label="Edit">
-                                    <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#editDataAkun" value="edit">
-                                      &nbsp;<i class="fa fa-edit fa-sm" data-bs-toggle="tooltip" title="Edit"></i>
-                                    </button>
-                                  </a>
-                                  <a href="#" class="actionBtn" aria-label="Delete">
-                                    <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteDataAkun" value="hapus">
-                                      <i class="fa fa-trash fa-sm" data-bs-toggle="tooltip" title="Delete"></i>
-                                    </button>
-                                  </a>
-                                </td>
-                                <td>Staff 2</td>
-                                <td>amdin@admin.com</td>
-                                <td>*******</td>
-                                <td>Jakarta</td>
-                                <td>Laki-laki</td>
-                                <td>Terminal A</td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><span class="mode mode_done">Staff</span></td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <span class="custom-checkbox">
-                                    <input type="checkbox" id="checkbox1" name="option[]" value="1" />
-                                    <label for="checkbox1"></label>
-                                  </span>
-                                </td>
-                                <td>
-                                  <a href="#" class="actionBtn" aria-label="Edit">
-                                    <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#editDataAkun" value="edit">
-                                      &nbsp;<i class="fa fa-edit fa-sm" data-bs-toggle="tooltip" title="Edit"></i>
-                                    </button>
-                                  </a>
-                                  <a href="#" class="actionBtn" aria-label="Delete">
-                                    <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteDataAkun" value="hapus">
-                                      <i class="fa fa-trash fa-sm" data-bs-toggle="tooltip" title="Delete"></i>
-                                    </button>
-                                  </a>
-                                </td>
-                                <td>Staff 3</td>
-                                <td>amdin@admin.com</td>
-                                <td>*******</td>
-                                <td>Jakarta</td>
-                                <td>Laki-laki</td>
-                                <td>Terminal A</td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><span class="mode mode_done">Staff</span></td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <span class="custom-checkbox">
-                                    <input type="checkbox" id="checkbox1" name="option[]" value="1" />
-                                    <label for="checkbox1"></label>
-                                  </span>
-                                </td>
-                                <td>
-                                  <a href="#" class="actionBtn" aria-label="Edit">
-                                    <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#editDataAkun" value="edit">
-                                      &nbsp;<i class="fa fa-edit fa-sm" data-bs-toggle="tooltip" title="Edit"></i>
-                                    </button>
-                                  </a>
-                                  <a href="#" class="actionBtn" aria-label="Delete">
-                                    <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteDataAkun" value="hapus">
-                                      <i class="fa fa-trash fa-sm" data-bs-toggle="tooltip" title="Delete"></i>
-                                    </button>
-                                  </a>
-                                </td>
-                                <td>Staff 4</td>
-                                <td>amdin@admin.com</td>
-                                <td>*******</td>
-                                <td>Jakarta</td>
-                                <td>Laki-laki</td>
-                                <td>Terminal A</td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><span class="mode mode_done">Staff</span></td>
-                              </tr>
+                              <td><?php echo $no; ?></td>
+                              <td><?php echo $terminal; ?></td>
+                              <td><?php echo $alamat; ?></td>
+                              <td><?php echo $provinsi; ?></td>
+                              <td><?php echo $kabupaten; ?></td>
+                              <td><?php echo $kecamatan; ?></td>
+                                
+                            </tr>
+                          <?php
+                          $no++;
+                          } ?>
+                              
                             </tbody>
                           </table>
                         </div>
@@ -657,21 +539,22 @@ $sesName = $_SESSION['name'];
                                   </span>
                                 </th>
                                 <th class="actions">Action</th>
-                                <th class="nama">Nama Lengkap</th>
-                                <th class="email">Email</th>
-                                <th class="pass">Kata Sandi</th>
-                                <th class="alamat">Alamat</th>
-                                <th class="jenisKelamin">Jenis Kelamin</th>
-                                <th class="namaTerminal">Nama Terminal</th>
-                                <th class="AlamatTerminal">Alamat Terminal</th>
-                                <th class="provinsi">Provinsi</th>
-                                <th class="kabupaten">Kabupaten</th>
-                                <th class="kecamatan">Kecamatan</th>
-                                <th class="status">Status Level</th>
+                                <th class="id">ID Jenis</th>
+                                <th class="jenis_bus">Jenis Bus</th>
+                                <th class="fasilitas">Fasilitas</th>
+                                
                               </tr>
                             </thead>
                             <tbody>
-                              <tr>
+                            <?php
+                              $query = "SELECT * FROM jenis_bus";
+                              $result = mysqli_query($koneksi, $query);
+                              $no = 1;
+                              while ($row = mysqli_fetch_array($result)){
+                                  $jenis = $row['jenis'];
+                                  $fasilitas = $row['fasilitas'];
+                              ?>
+                            <tr>
                                 <td>
                                   <span class="custom-checkbox">
                                     <input type="checkbox" id="checkbox1" name="option[]" value="1" />
@@ -690,142 +573,13 @@ $sesName = $_SESSION['name'];
                                     </button>
                                   </a>
                                 </td>
-                                <td>Admin 1</td>
-                                <td>amdin@admin.com</td>
-                                <td>*******</td>
-                                <td>Jakarta</td>
-                                <td>Laki-laki</td>
-                                <td>Terminal A</td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><span class="mode mode_on">Admin</span></td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <span class="custom-checkbox">
-                                    <input type="checkbox" id="checkbox1" name="option[]" value="1" />
-                                    <label for="checkbox1"></label>
-                                  </span>
-                                </td>
-                                <td>
-                                  <a href="#" class="actionBtn" aria-label="Edit">
-                                    <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#editDataAkun" value="edit">
-                                      &nbsp;<i class="fa fa-edit fa-sm" data-bs-toggle="tooltip" title="Edit"></i>
-                                    </button>
-                                  </a>
-                                  <a href="#" class="actionBtn" aria-label="Delete">
-                                    <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteDataAkun" value="hapus">
-                                      <i class="fa fa-trash fa-sm" data-bs-toggle="tooltip" title="Delete"></i>
-                                    </button>
-                                  </a>
-                                </td>
-                                <td>Staff 1</td>
-                                <td>amdin@admin.com</td>
-                                <td>*******</td>
-                                <td>Jakarta</td>
-                                <td>Laki-laki</td>
-                                <td>Terminal A</td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><span class="mode mode_done">Staff</span></td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <span class="custom-checkbox">
-                                    <input type="checkbox" id="checkbox1" name="option[]" value="1" />
-                                    <label for="checkbox1"></label>
-                                  </span>
-                                </td>
-                                <td>
-                                  <a href="#" class="actionBtn" aria-label="Edit">
-                                    <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#editDataAkun" value="edit">
-                                      &nbsp;<i class="fa fa-edit fa-sm" data-bs-toggle="tooltip" title="Edit"></i>
-                                    </button>
-                                  </a>
-                                  <a href="#" class="actionBtn" aria-label="Delete">
-                                    <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteDataAkun" value="hapus">
-                                      <i class="fa fa-trash fa-sm" data-bs-toggle="tooltip" title="Delete"></i>
-                                    </button>
-                                  </a>
-                                </td>
-                                <td>Staff 2</td>
-                                <td>amdin@admin.com</td>
-                                <td>*******</td>
-                                <td>Jakarta</td>
-                                <td>Laki-laki</td>
-                                <td>Terminal A</td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><span class="mode mode_done">Staff</span></td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <span class="custom-checkbox">
-                                    <input type="checkbox" id="checkbox1" name="option[]" value="1" />
-                                    <label for="checkbox1"></label>
-                                  </span>
-                                </td>
-                                <td>
-                                  <a href="#" class="actionBtn" aria-label="Edit">
-                                    <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#editDataAkun" value="edit">
-                                      &nbsp;<i class="fa fa-edit fa-sm" data-bs-toggle="tooltip" title="Edit"></i>
-                                    </button>
-                                  </a>
-                                  <a href="#" class="actionBtn" aria-label="Delete">
-                                    <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteDataAkun" value="hapus">
-                                      <i class="fa fa-trash fa-sm" data-bs-toggle="tooltip" title="Delete"></i>
-                                    </button>
-                                  </a>
-                                </td>
-                                <td>Staff 3</td>
-                                <td>amdin@admin.com</td>
-                                <td>*******</td>
-                                <td>Jakarta</td>
-                                <td>Laki-laki</td>
-                                <td>Terminal A</td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><span class="mode mode_done">Staff</span></td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <span class="custom-checkbox">
-                                    <input type="checkbox" id="checkbox1" name="option[]" value="1" />
-                                    <label for="checkbox1"></label>
-                                  </span>
-                                </td>
-                                <td>
-                                  <a href="#" class="actionBtn" aria-label="Edit">
-                                    <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#editDataAkun" value="edit">
-                                      &nbsp;<i class="fa fa-edit fa-sm" data-bs-toggle="tooltip" title="Edit"></i>
-                                    </button>
-                                  </a>
-                                  <a href="#" class="actionBtn" aria-label="Delete">
-                                    <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteDataAkun" value="hapus">
-                                      <i class="fa fa-trash fa-sm" data-bs-toggle="tooltip" title="Delete"></i>
-                                    </button>
-                                  </a>
-                                </td>
-                                <td>Staff 4</td>
-                                <td>amdin@admin.com</td>
-                                <td>*******</td>
-                                <td>Jakarta</td>
-                                <td>Laki-laki</td>
-                                <td>Terminal A</td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><span class="mode mode_done">Staff</span></td>
-                              </tr>
+                              <td><?php echo $no; ?></td>
+                              <td><?php echo $jenis; ?></td>
+                              <td><?php echo $fasilitas; ?></td>
+                            </tr>
+                          <?php
+                          $no++;
+                          } ?>
                             </tbody>
                           </table>
                         </div>
@@ -998,21 +752,27 @@ $sesName = $_SESSION['name'];
                                   </span>
                                 </th>
                                 <th class="actions">Action</th>
-                                <th class="nama">Nama Lengkap</th>
-                                <th class="email">Email</th>
-                                <th class="pass">Kata Sandi</th>
-                                <th class="alamat">Alamat</th>
-                                <th class="jenisKelamin">Jenis Kelamin</th>
-                                <th class="namaTerminal">Nama Terminal</th>
-                                <th class="AlamatTerminal">Alamat Terminal</th>
-                                <th class="provinsi">Provinsi</th>
-                                <th class="kabupaten">Kabupaten</th>
-                                <th class="kecamatan">Kecamatan</th>
-                                <th class="status">Status Level</th>
+                                <th class="id">ID Rute</th>
+                                <th class="pemberangkatan">Pemberangkatan</th>
+                                <th class="waktu_berangkat">Waktu Berangkat</th>
+                                <th class="tujuan">Tujuan</th>
+                                <th class="waktu_tiba">Waktu Tiba</th>
+                                <th class="harga">Harga</th>
                               </tr>
                             </thead>
                             <tbody>
-                              <tr>
+                            <?php
+                              $query = "SELECT * FROM rute";
+                              $result = mysqli_query($koneksi, $query);
+                              $no = 1;
+                              while ($row = mysqli_fetch_array($result)){
+                                  $pemberangkatan = $row['pemberangkatan'];
+                                  $waktu_berangkat = $row['waktu_berangkat'];
+                                  $tujuan = $row['tujuan'];
+                                  $waktu_tiba = $row['waktu_tiba'];
+                                  $harga = $row['harga'];
+                              ?>
+                            <tr>
                                 <td>
                                   <span class="custom-checkbox">
                                     <input type="checkbox" id="checkbox1" name="option[]" value="1" />
@@ -1031,142 +791,16 @@ $sesName = $_SESSION['name'];
                                     </button>
                                   </a>
                                 </td>
-                                <td>Admin 1</td>
-                                <td>amdin@admin.com</td>
-                                <td>*******</td>
-                                <td>Jakarta</td>
-                                <td>Laki-laki</td>
-                                <td>Terminal A</td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><span class="mode mode_on">Admin</span></td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <span class="custom-checkbox">
-                                    <input type="checkbox" id="checkbox1" name="option[]" value="1" />
-                                    <label for="checkbox1"></label>
-                                  </span>
-                                </td>
-                                <td>
-                                  <a href="#" class="actionBtn" aria-label="Edit">
-                                    <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#editDataAkun" value="edit">
-                                      &nbsp;<i class="fa fa-edit fa-sm" data-bs-toggle="tooltip" title="Edit"></i>
-                                    </button>
-                                  </a>
-                                  <a href="#" class="actionBtn" aria-label="Delete">
-                                    <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteDataAkun" value="hapus">
-                                      <i class="fa fa-trash fa-sm" data-bs-toggle="tooltip" title="Delete"></i>
-                                    </button>
-                                  </a>
-                                </td>
-                                <td>Staff 1</td>
-                                <td>amdin@admin.com</td>
-                                <td>*******</td>
-                                <td>Jakarta</td>
-                                <td>Laki-laki</td>
-                                <td>Terminal A</td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><span class="mode mode_done">Staff</span></td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <span class="custom-checkbox">
-                                    <input type="checkbox" id="checkbox1" name="option[]" value="1" />
-                                    <label for="checkbox1"></label>
-                                  </span>
-                                </td>
-                                <td>
-                                  <a href="#" class="actionBtn" aria-label="Edit">
-                                    <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#editDataAkun" value="edit">
-                                      &nbsp;<i class="fa fa-edit fa-sm" data-bs-toggle="tooltip" title="Edit"></i>
-                                    </button>
-                                  </a>
-                                  <a href="#" class="actionBtn" aria-label="Delete">
-                                    <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteDataAkun" value="hapus">
-                                      <i class="fa fa-trash fa-sm" data-bs-toggle="tooltip" title="Delete"></i>
-                                    </button>
-                                  </a>
-                                </td>
-                                <td>Staff 2</td>
-                                <td>amdin@admin.com</td>
-                                <td>*******</td>
-                                <td>Jakarta</td>
-                                <td>Laki-laki</td>
-                                <td>Terminal A</td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><span class="mode mode_done">Staff</span></td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <span class="custom-checkbox">
-                                    <input type="checkbox" id="checkbox1" name="option[]" value="1" />
-                                    <label for="checkbox1"></label>
-                                  </span>
-                                </td>
-                                <td>
-                                  <a href="#" class="actionBtn" aria-label="Edit">
-                                    <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#editDataAkun" value="edit">
-                                      &nbsp;<i class="fa fa-edit fa-sm" data-bs-toggle="tooltip" title="Edit"></i>
-                                    </button>
-                                  </a>
-                                  <a href="#" class="actionBtn" aria-label="Delete">
-                                    <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteDataAkun" value="hapus">
-                                      <i class="fa fa-trash fa-sm" data-bs-toggle="tooltip" title="Delete"></i>
-                                    </button>
-                                  </a>
-                                </td>
-                                <td>Staff 3</td>
-                                <td>amdin@admin.com</td>
-                                <td>*******</td>
-                                <td>Jakarta</td>
-                                <td>Laki-laki</td>
-                                <td>Terminal A</td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><span class="mode mode_done">Staff</span></td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <span class="custom-checkbox">
-                                    <input type="checkbox" id="checkbox1" name="option[]" value="1" />
-                                    <label for="checkbox1"></label>
-                                  </span>
-                                </td>
-                                <td>
-                                  <a href="#" class="actionBtn" aria-label="Edit">
-                                    <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#editDataAkun" value="edit">
-                                      &nbsp;<i class="fa fa-edit fa-sm" data-bs-toggle="tooltip" title="Edit"></i>
-                                    </button>
-                                  </a>
-                                  <a href="#" class="actionBtn" aria-label="Delete">
-                                    <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteDataAkun" value="hapus">
-                                      <i class="fa fa-trash fa-sm" data-bs-toggle="tooltip" title="Delete"></i>
-                                    </button>
-                                  </a>
-                                </td>
-                                <td>Staff 4</td>
-                                <td>amdin@admin.com</td>
-                                <td>*******</td>
-                                <td>Jakarta</td>
-                                <td>Laki-laki</td>
-                                <td>Terminal A</td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><span class="mode mode_done">Staff</span></td>
-                              </tr>
+                              <td><?php echo $no; ?></td>
+                              <td><?php echo $pemberangkatan; ?></td>
+                              <td><?php echo $waktu_berangkat; ?></td>
+                              <td><?php echo $tujuan; ?></td>
+                              <td><?php echo $waktu_tiba; ?></td>
+                              <td><?php echo $harga?></td>
+                            </tr>
+                          <?php
+                          $no++;
+                          } ?>
                             </tbody>
                           </table>
                         </div>
@@ -1339,21 +973,24 @@ $sesName = $_SESSION['name'];
                                   </span>
                                 </th>
                                 <th class="actions">Action</th>
-                                <th class="nama">Nama Lengkap</th>
-                                <th class="email">Email</th>
-                                <th class="pass">Kata Sandi</th>
-                                <th class="alamat">Alamat</th>
-                                <th class="jenisKelamin">Jenis Kelamin</th>
-                                <th class="namaTerminal">Nama Terminal</th>
-                                <th class="AlamatTerminal">Alamat Terminal</th>
-                                <th class="provinsi">Provinsi</th>
-                                <th class="kabupaten">Kabupaten</th>
-                                <th class="kecamatan">Kecamatan</th>
-                                <th class="status">Status Level</th>
+                                <th class="nik">NIK Penumpang</th>
+                                <th class="nama">Nama</th>
+                                <th class="jenis_kelamin">Jenis Kelamin</th>
+                                <th class="no_hp">No Handphone</th>
                               </tr>
                             </thead>
                             <tbody>
-                              <tr>
+                            <?php
+                              $query = "SELECT * FROM penumpang";
+                              $result = mysqli_query($koneksi, $query);
+                              $no = 1;
+                              while ($row = mysqli_fetch_array($result)){
+                                  $nik = $row['nik_penumpang'];
+                                  $nama = $row['nama_penumpang'];
+                                  $jk = $row['jenis_kelamin_penumpang'];
+                                  $no_hp = $row['no_hp_penumpang'];
+                              ?>
+                            <tr>
                                 <td>
                                   <span class="custom-checkbox">
                                     <input type="checkbox" id="checkbox1" name="option[]" value="1" />
@@ -1372,142 +1009,14 @@ $sesName = $_SESSION['name'];
                                     </button>
                                   </a>
                                 </td>
-                                <td>Admin 1</td>
-                                <td>amdin@admin.com</td>
-                                <td>*******</td>
-                                <td>Jakarta</td>
-                                <td>Laki-laki</td>
-                                <td>Terminal A</td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><span class="mode mode_on">Admin</span></td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <span class="custom-checkbox">
-                                    <input type="checkbox" id="checkbox1" name="option[]" value="1" />
-                                    <label for="checkbox1"></label>
-                                  </span>
-                                </td>
-                                <td>
-                                  <a href="#" class="actionBtn" aria-label="Edit">
-                                    <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#editDataAkun" value="edit">
-                                      &nbsp;<i class="fa fa-edit fa-sm" data-bs-toggle="tooltip" title="Edit"></i>
-                                    </button>
-                                  </a>
-                                  <a href="#" class="actionBtn" aria-label="Delete">
-                                    <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteDataAkun" value="hapus">
-                                      <i class="fa fa-trash fa-sm" data-bs-toggle="tooltip" title="Delete"></i>
-                                    </button>
-                                  </a>
-                                </td>
-                                <td>Staff 1</td>
-                                <td>amdin@admin.com</td>
-                                <td>*******</td>
-                                <td>Jakarta</td>
-                                <td>Laki-laki</td>
-                                <td>Terminal A</td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><span class="mode mode_done">Staff</span></td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <span class="custom-checkbox">
-                                    <input type="checkbox" id="checkbox1" name="option[]" value="1" />
-                                    <label for="checkbox1"></label>
-                                  </span>
-                                </td>
-                                <td>
-                                  <a href="#" class="actionBtn" aria-label="Edit">
-                                    <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#editDataAkun" value="edit">
-                                      &nbsp;<i class="fa fa-edit fa-sm" data-bs-toggle="tooltip" title="Edit"></i>
-                                    </button>
-                                  </a>
-                                  <a href="#" class="actionBtn" aria-label="Delete">
-                                    <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteDataAkun" value="hapus">
-                                      <i class="fa fa-trash fa-sm" data-bs-toggle="tooltip" title="Delete"></i>
-                                    </button>
-                                  </a>
-                                </td>
-                                <td>Staff 2</td>
-                                <td>amdin@admin.com</td>
-                                <td>*******</td>
-                                <td>Jakarta</td>
-                                <td>Laki-laki</td>
-                                <td>Terminal A</td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><span class="mode mode_done">Staff</span></td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <span class="custom-checkbox">
-                                    <input type="checkbox" id="checkbox1" name="option[]" value="1" />
-                                    <label for="checkbox1"></label>
-                                  </span>
-                                </td>
-                                <td>
-                                  <a href="#" class="actionBtn" aria-label="Edit">
-                                    <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#editDataAkun" value="edit">
-                                      &nbsp;<i class="fa fa-edit fa-sm" data-bs-toggle="tooltip" title="Edit"></i>
-                                    </button>
-                                  </a>
-                                  <a href="#" class="actionBtn" aria-label="Delete">
-                                    <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteDataAkun" value="hapus">
-                                      <i class="fa fa-trash fa-sm" data-bs-toggle="tooltip" title="Delete"></i>
-                                    </button>
-                                  </a>
-                                </td>
-                                <td>Staff 3</td>
-                                <td>amdin@admin.com</td>
-                                <td>*******</td>
-                                <td>Jakarta</td>
-                                <td>Laki-laki</td>
-                                <td>Terminal A</td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><span class="mode mode_done">Staff</span></td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <span class="custom-checkbox">
-                                    <input type="checkbox" id="checkbox1" name="option[]" value="1" />
-                                    <label for="checkbox1"></label>
-                                  </span>
-                                </td>
-                                <td>
-                                  <a href="#" class="actionBtn" aria-label="Edit">
-                                    <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#editDataAkun" value="edit">
-                                      &nbsp;<i class="fa fa-edit fa-sm" data-bs-toggle="tooltip" title="Edit"></i>
-                                    </button>
-                                  </a>
-                                  <a href="#" class="actionBtn" aria-label="Delete">
-                                    <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteDataAkun" value="hapus">
-                                      <i class="fa fa-trash fa-sm" data-bs-toggle="tooltip" title="Delete"></i>
-                                    </button>
-                                  </a>
-                                </td>
-                                <td>Staff 4</td>
-                                <td>amdin@admin.com</td>
-                                <td>*******</td>
-                                <td>Jakarta</td>
-                                <td>Laki-laki</td>
-                                <td>Terminal A</td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><center>-</center></td>
-                                <td><span class="mode mode_done">Staff</span></td>
-                              </tr>
+                              <td><?php echo $nik; ?></td>
+                              <td><?php echo $nama; ?></td>
+                              <td><?php echo $jk; ?></td>
+                              <td><?php echo $no_hp; ?></td>
+                            </tr>
+                          <?php
+                          $no++;
+                          } ?>
                             </tbody>
                           </table>
                         </div>
