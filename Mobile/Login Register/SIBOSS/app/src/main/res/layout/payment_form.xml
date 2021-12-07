@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PaymentFormActivity"
+    android:layout_marginHorizontal="7.5dp"
+    android:layout_marginVertical="7.5dp">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/Logo" />
+
+    <TextView
+        android:id="@+id/no_pemesanan_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/logo"
+        android:text="Nomor Pemesanan"
+        />
+
+    <TextView
+        android:id="@+id/no_pemesanan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/no_pemesanan_title"
+        android:text="-------------------"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        />
+
+    <TextView
+        android:id="@+id/nama_pemesan_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/no_pemesanan"
+        android:layout_marginTop="10dp"
+
+        android:text="Nama Pemesan"
+        />
+
+    <TextView
+        android:id="@+id/nama_pemesan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nama_pemesan_title"
+        android:text="-------------------"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        />
+
+    <TextView
+        android:id="@+id/depart_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nama_pemesan"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp"
+        android:text="Depart time"
+        />
+
+    <TextView
+        android:id="@+id/depart_city"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nama_pemesan"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="150dp"
+        android:layout_toRightOf="@+id/depart_time"
+        android:text="Depart city"
+        />
+
+    <TextView
+        android:id="@+id/depart_place"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/depart_city"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="150dp"
+        android:layout_toRightOf="@+id/depart_time"
+        android:text="Depart place"
+        />
+
+    <TextView
+        android:id="@+id/depart_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/depart_time"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="30dp"
+        android:text="Depart date"
+        />
+
+    <TextView
+        android:id="@+id/estimate_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/depart_date"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp"
+        android:text="Estimate time"
+        />
+
+    <TextView
+        android:id="@+id/arrival_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/estimate_time"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp"
+        android:text="Arrival time"
+        />
+
+    <TextView
+        android:id="@+id/arrival_city"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/estimate_time"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="150dp"
+        android:layout_toRightOf="@id/arrival_time"
+        android:text="Arrival city"
+        />
+
+    <TextView
+        android:id="@+id/arrival_place"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/arrival_city"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="150dp"
+        android:layout_toRightOf="@id/arrival_time"
+        android:text="Arrival place"
+        />
+
+    <TextView
+        android:id="@+id/arrival_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/arrival_time"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="30dp"
+        android:text="Arrival date"
+        />
+
+    <TextView
+        android:id="@+id/rute_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/arrival_date"
+        android:layout_marginTop="30dp"
+        android:text="Rute :"
+        />
+
+    <TextView
+        android:id="@+id/rute"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rute_title"
+        android:text="-------------------"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        />
+
+    <TextView
+        android:id="@+id/jml_penumpang_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rute"
+        android:layout_marginTop="30dp"
+        android:text="Jumlah Penumpang :"
+        />
+
+    <TextView
+        android:id="@+id/jml_penumpang_sum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/jml_penumpang_title"
+        android:text="-------------------"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        />
+
+    <TextView
+        android:id="@+id/payment_sum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/jml_penumpang_sum"
+        android:layout_marginTop="30dp"
+        android:text="Total Pembayaran :"
+        />
+
+    <TextView
+        android:id="@+id/payment_sum_total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/payment_sum"
+        android:text="-------------------"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        />
+
+</RelativeLayout>

@@ -18,9 +18,9 @@ import java.util.jar.Attributes;
 
 public class MainActivity extends AppCompatActivity  {
 
-    TextView etUsername, etName;
+    TextView etEmail, etName;
     SessionManager sessionManager;
-    String username, name;
+    String email, name;
     Button BtnKeluar;
 
     @Override
@@ -32,14 +32,14 @@ public class MainActivity extends AppCompatActivity  {
             moveToLogin();
         }
 
-        etUsername = findViewById(R.id.etMainUsername);
+        etEmail = findViewById(R.id.etMainEmail);
         etName = findViewById(R.id.etMainName);
         BtnKeluar =findViewById(R.id.BtnKeluar);
 
-        username = sessionManager.getUserDetail().get(SessionManager.USERNAME);
+        email = sessionManager.getUserDetail().get(SessionManager.EMAIL);
         name = sessionManager.getUserDetail().get(SessionManager.NAME);
 
-        etUsername.setText(username);
+        etEmail.setText(email);
         etName.setText(name);
 
         BtnKeluar.setOnClickListener(new View.OnClickListener() {

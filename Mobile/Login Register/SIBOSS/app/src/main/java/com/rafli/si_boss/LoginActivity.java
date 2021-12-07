@@ -21,9 +21,9 @@ import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
-    EditText EtUsernameLogin, EtPasswordLogin;
+    EditText EtEmailLogin, EtPasswordLogin;
     Button BtnLogin;
-    String Username, Password;
+    String Email, Password;
     TextView TvRegister;
     ApiInterface apiInterface;
     SessionManager sessionManager;
@@ -34,7 +34,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
 
-        EtUsernameLogin = findViewById(R.id.EtUsernameLogin);
+        EtEmailLogin = findViewById(R.id.EtEmailLogin);
         EtPasswordLogin = findViewById(R.id.EtPasswordLogin);
 
         BtnLogin = findViewById(R.id.BtnLogin);
@@ -48,9 +48,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.BtnLogin:
-                Username = EtUsernameLogin.getText().toString();
+                Email = EtEmailLogin.getText().toString();
                 Password = EtPasswordLogin.getText().toString();
-                login(Username, Password);
+                login(Email, Password);
                 break;
             case R.id.TvDaftar:
                 Intent intent = new Intent(this, RegisterActivity.class);
@@ -59,10 +59,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    public void login(String username, String password) {
+    private void login(String email, String password) {
 
         apiInterface = ApiClient.getClient().create(ApiInterface.class);
-        Call<Login> loginCall = apiInterface.loginResponse(username, password);
+        Call<Login> loginCall = apiInterface.loginResponse(email, password);
         loginCall.enqueue(new Callback<Login>() {
             @Override
             public void onResponse(Call<Login> call, Response<Login> response) {
