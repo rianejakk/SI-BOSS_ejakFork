@@ -7,8 +7,8 @@ public class RegisterData {
 	@SerializedName("name")
 	private String name;
 
-	@SerializedName("username")
-	private String username;
+	@SerializedName("email")
+	private String email;
 
 	public void setName(String name){
 		this.name = name;
@@ -18,11 +18,11 @@ public class RegisterData {
 		return name;
 	}
 
-	public void setUsername(String username){
-		this.username = username;
+	public void setEmail(String email){
+		this.email = email;
 	}
 
-	public String getUsername(){
-		return username;
+	public String getEmail(){
+		return email;
 	}
 }

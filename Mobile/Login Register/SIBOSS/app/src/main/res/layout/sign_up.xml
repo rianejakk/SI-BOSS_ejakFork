@@ -69,17 +69,22 @@
             android:textColor="@color/textDescription"
             android:textSize="14sp" />
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            android:src="@drawable/background2" />
+
         <EditText
-            android:id="@+id/EtUsernameDaftar"
+            android:id="@+id/EtEmailDaftar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/tv3"
             android:layout_marginTop="30dp"
             android:background="@drawable/edittext_bg"
-            android:drawableStart="@drawable/ic_baseline_account_box_24"
+            android:drawableStart="@drawable/ic_baseline_email_24"
             android:drawablePadding="16dp"
             android:fontFamily="@font/roboto"
-            android:hint="Username"
+            android:hint="Email"
             android:inputType="textEmailAddress"
             android:padding="8dp"
             android:textSize="16sp" />
@@ -88,7 +93,7 @@
             android:id="@+id/EtNamaLengkapDaftar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/EtUsernameDaftar"
+            android:layout_below="@+id/EtEmailDaftar"
             android:layout_marginTop="10dp"
             android:background="@drawable/edittext_bg"
             android:drawableStart="@drawable/ic_baseline_account_circle_24"

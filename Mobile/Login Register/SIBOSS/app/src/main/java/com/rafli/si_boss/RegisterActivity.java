@@ -19,10 +19,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
-    EditText EtUsernameDaftar, EtNamaLengkapDaftar, EtPasswordDaftar;
+    EditText EtEmailDaftar, EtNamaLengkapDaftar, EtPasswordDaftar;
     Button BtnDaftar;
     TextView TvLogin;
-    String Username, Password, Name;
+    String Email, Password, Name;
     ApiInterface apiInterface;
 
     @Override
@@ -30,7 +30,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_up);
 
-        EtUsernameDaftar = findViewById(R.id.EtUsernameDaftar);
+        EtEmailDaftar = findViewById(R.id.EtEmailDaftar);
         EtPasswordDaftar = findViewById(R.id.EtPasswordDaftar);
         EtNamaLengkapDaftar = findViewById(R.id.EtNamaLengkapDaftar);
         BtnDaftar = findViewById(R.id.BtnDaftar);
@@ -44,10 +44,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.BtnDaftar:
-                Username = EtUsernameDaftar.getText().toString();
+                Email = EtEmailDaftar.getText().toString();
                 Password = EtPasswordDaftar.getText().toString();
                 Name = EtNamaLengkapDaftar.getText().toString();
-                register(Username, Password, Name);
+                register(Email, Password, Name);
                 break;
             case R.id.TvLogin:
                 Intent intent = new Intent(this, LoginActivity.class);
@@ -57,10 +57,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         }
     }
 
-    public void register(String username, String password, String name) {
+    private void register(String email, String password, String name) {
 
         apiInterface = ApiClient.getClient().create(ApiInterface.class);
-        Call<Register> call = apiInterface.registerResponse(username, password, name);
+        Call<Register> call = apiInterface.registerResponse(email, password, name);
         call.enqueue(new Callback<Register>() {
             @Override
             public void onResponse(Call<Register> call, Response<Register> response) {
