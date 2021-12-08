@@ -231,9 +231,9 @@ class crud extends koneksi {
 
     public function deleteTerminal($data){
         try{
-            $sql ="DELETE FROM terminal WHERE id_terminal=:id";
+            $sql ="DELETE FROM terminal WHERE id_terminal=:id_terminal";
             $result = $this->koneksi->prepare($sql);
-            $result->execute(array("id"=>$data));
+            $result->execute(array("id_terminal"=>$data));
             return true;
         }
         catch (PDOException $e){

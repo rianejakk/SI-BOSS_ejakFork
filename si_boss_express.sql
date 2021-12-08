@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 02, 2021 at 04:15 PM
+-- Generation Time: Dec 08, 2021 at 09:35 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.8
 
@@ -37,7 +37,7 @@ CREATE TABLE `administrator` (
   `id_level` int(1) NOT NULL,
   `id_terminal` int(3) NOT NULL,
   `email` varchar(30) NOT NULL,
-  `password` varchar(8) NOT NULL
+  `password` varchar(16) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -45,9 +45,9 @@ CREATE TABLE `administrator` (
 --
 
 INSERT INTO `administrator` (`id_user_admin`, `nama`, `jenis_kelamin`, `alamat`, `no_hp`, `foto`, `id_level`, `id_terminal`, `email`, `password`) VALUES
-(29, 'MUHAMMAD KHOIRUL ROSIKIN', 'option1', 'Jl. Dharmawangsa', '085808241204', '', 2, 1, '', ''),
-(30, 'MUHAMMAD KHOIRUL ROSIKIN', 'option1', 'Jl. Dharmawangsa', '085808241204', '', 2, 1, 'mkhoirulr97@gmail.com', '00000000'),
-(31, 'ALVIN PRADANA ANTONY', 'LAKI - LAKI', 'Jl. Suwandak', '085808241204', '', 2, 1, 'alvin@gmail.com', '00000000');
+(30, 'Muhammad Khoirul Rosikin', 'LAKI - LAKI', 'Jl. Dharmawangsa', '085808241204', '', 2, 1, 'mkhoirulr97@gmail.com', 'Khoirulrosikin97'),
+(41, 'Admin', 'LAKI - LAKI', 'Jl. Suwandak', '085808241204', '', 1, 1, 'admin@gmail.com', 'Admin123'),
+(42, 'Alvin Pradana Antony', 'LAKI - LAKI', 'Jl. Sudirman', '0987654321', '', 1, 1, 'alvin@gmail.com', '12345678');
 
 -- --------------------------------------------------------
 
@@ -59,12 +59,20 @@ CREATE TABLE `bus` (
   `id_bus` int(3) NOT NULL,
   `nama_bus` varchar(15) NOT NULL,
   `detail_bus` varchar(30) NOT NULL,
-  `status_bus` varchar(10) NOT NULL,
+  `status_bus` varchar(15) NOT NULL,
   `jumlah_kursi` int(3) NOT NULL,
   `foto_bus` varchar(50) NOT NULL,
   `id_jenis` int(3) NOT NULL,
   `id_rute` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `bus`
+--
+
+INSERT INTO `bus` (`id_bus`, `nama_bus`, `detail_bus`, `status_bus`, `jumlah_kursi`, `foto_bus`, `id_jenis`, `id_rute`) VALUES
+(2, 'Pahala Kencana', 'sfsdfsfsdf', 'Operasiona', 60, '', 1, 1),
+(3, 'Pahala Kencana', 'sfsdfsfsdf', 'Operasional', 60, '', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -90,6 +98,13 @@ CREATE TABLE `jenis_bus` (
   `jenis` varchar(10) NOT NULL,
   `fasilitas` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `jenis_bus`
+--
+
+INSERT INTO `jenis_bus` (`id_jenis`, `jenis`, `fasilitas`) VALUES
+(1, 'Patas', 'Wifi, TV, AC');
 
 -- --------------------------------------------------------
 
@@ -118,8 +133,8 @@ INSERT INTO `level` (`id_level`, `level`) VALUES
 
 CREATE TABLE `pemesanan` (
   `id_pemesanan` int(3) NOT NULL,
-  `nik_user` int(17) NOT NULL,
-  `nik_penumpang` int(17) NOT NULL,
+  `nik_user` char(17) NOT NULL,
+  `nik_penumpang` char(17) NOT NULL,
   `waktu_pemesanan` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `total_bayar` int(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -131,12 +146,18 @@ CREATE TABLE `pemesanan` (
 --
 
 CREATE TABLE `penumpang` (
-  `nik_penumpang` int(17) NOT NULL,
+  `nik_penumpang` char(17) NOT NULL,
   `nama_penumpang` varchar(30) NOT NULL,
   `jenis_kelamin_penumpang` varchar(12) NOT NULL,
-  `no_hp_penumpang` varchar(15) NOT NULL,
-  `email_penumpang` varchar(30) NOT NULL
+  `no_hp_penumpang` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `penumpang`
+--
+
+INSERT INTO `penumpang` (`nik_penumpang`, `nama_penumpang`, `jenis_kelamin_penumpang`, `no_hp_penumpang`) VALUES
+('', '3509030907020005', 'Laki - Laki', '085808241204');
 
 -- --------------------------------------------------------
 
@@ -153,6 +174,13 @@ CREATE TABLE `rute` (
   `harga` int(7) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `rute`
+--
+
+INSERT INTO `rute` (`id_rute`, `pemberangkatan`, `waktu_berangkat`, `tujuan`, `waktu_tiba`, `harga`) VALUES
+(1, 1, '21:00:00', 2, '00:00:00', 90000);
+
 -- --------------------------------------------------------
 
 --
@@ -162,18 +190,23 @@ CREATE TABLE `rute` (
 CREATE TABLE `terminal` (
   `id_terminal` int(3) NOT NULL,
   `nama_terminal` varchar(15) NOT NULL,
-  `provinsi` varchar(20) NOT NULL,
+  `detail_alamat_terminal` varchar(50) NOT NULL,
+  `provinsi_terminal` varchar(20) NOT NULL,
   `kabupaten_terminal` varchar(20) NOT NULL,
-  `kecamatan_terminal` varchar(20) NOT NULL,
-  `detail_alamat_terminal` varchar(50) NOT NULL
+  `kecamatan_terminal` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `terminal`
 --
 
-INSERT INTO `terminal` (`id_terminal`, `nama_terminal`, `provinsi`, `kabupaten_terminal`, `kecamatan_terminal`, `detail_alamat_terminal`) VALUES
-(1, 'Tawang Alun', 'Jawa Timur', 'Jember', 'Kecamatan', 'Jl. Dharmawangsa');
+INSERT INTO `terminal` (`id_terminal`, `nama_terminal`, `detail_alamat_terminal`, `provinsi_terminal`, `kabupaten_terminal`, `kecamatan_terminal`) VALUES
+(1, 'Tawang Alun', 'Jl. Dharmawangsa', 'Jawa Timur', 'Jember', 'Kecamatan'),
+(2, 'Wonorejo', 'Jl. Wonorejo', 'Jawa Timur', 'Lumajang', 'Wonorejo'),
+(3, 'Bungurasih', 'Jl. Semolowaru', 'Jawa Timur', 'Surabaya', 'Sukolilo'),
+(4, 'Tawang Alun', 'Jl. Suwandak', '35', '3509', '3509170'),
+(5, 'Tawang Alun', 'Jl. Suwandak', '35', '3509', '3509170'),
+(6, 'Tawang Alun', 'Jl. Suwandak', '15', '1504', '1504020');
 
 -- --------------------------------------------------------
 
@@ -182,7 +215,7 @@ INSERT INTO `terminal` (`id_terminal`, `nama_terminal`, `provinsi`, `kabupaten_t
 --
 
 CREATE TABLE `user` (
-  `nik_user` int(17) NOT NULL,
+  `nik_user` char(17) NOT NULL,
   `nama_user` varchar(30) NOT NULL,
   `tempat_lahir_user` varchar(20) NOT NULL,
   `tanggal_lahir_user` date NOT NULL,
@@ -193,6 +226,13 @@ CREATE TABLE `user` (
   `email_user` varchar(30) NOT NULL,
   `password_user` varchar(16) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`nik_user`, `nama_user`, `tempat_lahir_user`, `tanggal_lahir_user`, `jenis_kelamin_user`, `alamat_user`, `no_hp_user`, `foto_user`, `email_user`, `password_user`) VALUES
+('3509030907020005', 'Muhammad Khoirul Rosikin', 'Jember', '2002-07-09', 'Laki - Laki', 'Jember', '085808241204', '', 'mkhoirulr97@gmail.com', 'Khoirulrosikin97');
 
 --
 -- Indexes for dumped tables
@@ -279,13 +319,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `administrator`
 --
 ALTER TABLE `administrator`
-  MODIFY `id_user_admin` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id_user_admin` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `bus`
 --
 ALTER TABLE `bus`
-  MODIFY `id_bus` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_bus` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `detail_pemesanan`
@@ -297,7 +337,7 @@ ALTER TABLE `detail_pemesanan`
 -- AUTO_INCREMENT for table `jenis_bus`
 --
 ALTER TABLE `jenis_bus`
-  MODIFY `id_jenis` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_jenis` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `level`
@@ -312,28 +352,16 @@ ALTER TABLE `pemesanan`
   MODIFY `id_pemesanan` int(3) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `penumpang`
---
-ALTER TABLE `penumpang`
-  MODIFY `nik_penumpang` int(17) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `rute`
 --
 ALTER TABLE `rute`
-  MODIFY `id_rute` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_rute` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `terminal`
 --
 ALTER TABLE `terminal`
-  MODIFY `id_terminal` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `user`
---
-ALTER TABLE `user`
-  MODIFY `nik_user` int(17) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_terminal` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
@@ -364,8 +392,8 @@ ALTER TABLE `detail_pemesanan`
 -- Constraints for table `pemesanan`
 --
 ALTER TABLE `pemesanan`
-  ADD CONSTRAINT `pemesanan_ibfk_2` FOREIGN KEY (`nik_user`) REFERENCES `user` (`nik_user`),
-  ADD CONSTRAINT `pemesanan_ibfk_3` FOREIGN KEY (`nik_penumpang`) REFERENCES `penumpang` (`nik_penumpang`);
+  ADD CONSTRAINT `pemesanan_ibfk_1` FOREIGN KEY (`nik_penumpang`) REFERENCES `penumpang` (`nik_penumpang`),
+  ADD CONSTRAINT `pemesanan_ibfk_2` FOREIGN KEY (`nik_user`) REFERENCES `user` (`nik_user`);
 
 --
 -- Constraints for table `rute`

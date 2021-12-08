@@ -453,14 +453,16 @@
                       </div>
 
                       <!-- Edit Modal -->
-                      <div id="editDataTerminal" class="modal fade">
+                      <div id="editDataTerminal<?php 
+                      echo $row['id_terminal']; 
+                      ?>" class="modal fade">
                         <div class="modal-dialog modal-lg">
                           <div class="modal-content modal-edit">
-                            <form role="form" action="editTerminal" method="GET">
+                            <form role="form" action="editTerminal.php" method="GET">
                               <?php
-                                // $id = $row['id_terminal'];
-                                // $query = $obj->pilihTerminal($id);
-                                // while ($row = $query->fetch(PDO::FETCH_ASSOC)){
+                                $id = $row['id_terminal'];
+                                $query = $obj->pilihTerminal($id);
+                                while ($row = $query->fetch(PDO::FETCH_ASSOC)){
                               ?>
                               <div class="modal-header">
                                 <h4 class="modal-title">Edit Data Terminal</h4>
@@ -513,14 +515,16 @@
                               </div>
                             </form>
                               <?php 
-                                // }
+                                }
                               ?> 
                           </div>
                         </div>
                       </div>
 
                       <!-- Delete Modal -->
-                      <div id="deleteDataTerminal" class="modal fade">
+                      <div id="deleteDataTerminal<?php 
+                      echo $row['id_terminal']; 
+                      ?>" class="modal fade">
                         <div class="modal-dialog">
                           <div class="modal-content">
                             <form action="">
@@ -534,7 +538,7 @@
                               </div>
                               <div class="modal-footer">
                                 <input type="button" class="btn btn-secondary" data-bs-dismiss="modal" value="Cancel" />
-                                <input type="submit" href="hapusTerminal.php?id=<?php echo $row['id_terminal']; ?>" class="btn btn-danger" value="Delete" />
+                                <input type="submit" href="hapusTerminal.php?id_terminal=<?php echo $row['id_terminal']; ?>" class="btn btn-danger" value="Delete" />
                               </div>
                             </form>
                           </div>
