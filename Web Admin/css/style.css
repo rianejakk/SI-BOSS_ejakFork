@@ -91,6 +91,18 @@ select.form-select-user {
   border-radius: 5px;
   padding: 10px;
 }
+textarea.form-textarea-user {
+  height: 43px;
+  font-size: 14px;
+  border-radius: 5px;
+  padding: 10px;
+}
+textarea.form-textarea-user:focus {
+  border-color: #527bdd !important;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 4px #527bdd;
+  outline: 0 none;
+  transition: 0.4s ease-in-out;
+}
 
 .select-md{
   width: 90%;

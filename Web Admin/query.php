@@ -143,9 +143,9 @@ class crud extends koneksi {
     // }
 
     public function pilihTerminal($data){
-        $sql ="SELECT * FROM terminal WHERE id_terminal=:id";
+        $sql ="SELECT * FROM terminal WHERE id_terminal=:id_terminal";
         $result = $this->koneksi->prepare($sql);
-        $result->bindParam(":id", $data);
+        $result->bindParam(":id_terminal", $data);
         $result->execute();
         return $result;
     }
