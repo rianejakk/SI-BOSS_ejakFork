@@ -777,8 +777,14 @@ input[type="search"]:focus {
 .roundedPanel {
   border-radius: 8px;
 }
-.roundedTab {
-  border-radius: 8px 8px 0 0;
+.roundedTab{
+  border-radius: 8px 8px 0px 0px !important;
+}
+
+.roundedTabContent{
+  border-radius: 0px 0px 12px 12px !important;
+  outline: none !important;
+  border: none;
 }
 .roundedBtn{
   font-size: 0.8rem;

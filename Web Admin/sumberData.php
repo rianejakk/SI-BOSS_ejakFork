@@ -39,6 +39,8 @@
     <link rel="stylesheet" href="plugin/fontawesome-free/css/all.min.css" />
     <link rel="stylesheet" href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" href="plugin/datatables/DataTables-1.11.3/css/dataTables.bootstrap5.min.css" />
   </head>
 
   <body>
@@ -300,23 +302,18 @@
                 <button class="nav-link" id="tab-4" data-bs-toggle="tab" data-bs-target="#tabs-4" type="button" role="tab" aria-controls="tabs-4" aria-selected="false">Penumpang</button>
               </li>
             </ul>
-            <div class="tab-content mb-5 px-4" id="ex1-content">
+            <div class="tab-content mb-5" id="ex1-content">
               <div class="tab-pane fade show active" id="tabs-1" role="tabpanel" aria-labelledby="ex1-tab-1">
-              <div class="row g-2 m-0 ">
-                  <div class="col-lg-12">
-                    <div class="card mb-4 rounded">
-                      <div class="card-header shadow">
+                <div class="row g-2 m-0">
+                  <div class="col-lg-12 p-0 m-0">
+                    <div class="card mb-4 roundedTabContent">
+                      <div class="card-header shadow roundedTabContent">
                         <div class="title float-start">
                           <span class="m-0"><b>Tabel Data Terminal</b></span>
                         </div>
                         <div class="btnAction float-end">
-                        <a href="#" class="actionBtn" aria-label="edit">
-                          <button class="btn btn-light text-dark btn-circle custShadow2 me-2" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#tambahDataTerminal" value="edit">
-                            &nbsp;<i class="fa fa-edit fa-sm" data-bs-toggle="tooltip" title="Edit"></i>
-                          </button>
-                        </a>
-                          
-                          <button class="btn btn-light text-danger btn-circle custShadow2" data-bs-toggle="modal" data-tooltip="tooltip" data-bs-target="#deleteDataTerminal" title="Hapus Yang dipilih"><i class="fas fa-trash"></i></button>
+                          <button class="btn btn-light text-dark btn-circle custShadow2 me-2" data-bs-toggle="modal" data-bs-target="#tambahData"><i class="fas fa-plus" data-bs-toggle="tooltip" title="Tambah Data"></i></button>
+                          <button class="btn btn-light text-danger btn-circle custShadow2" data-bs-toggle="modal" data-bs-target="#deleteData"><i class="fas fa-trash" data-bs-toggle="tooltip" title="Hapus Data"></i></button>
                         </div>
                       </div>
                       <div class="card-body">
@@ -340,52 +337,51 @@
                               </tr>
                             </thead>
                             <tbody>
-                            <?php
-                              $data = $obj->lihatTerminal();
-                              $no = 1;
-                              if($data->rowCount()>0){
-                                if($sesLvl == 1){
-                                    $dis = "";
-                                } else{
-                                    $dis = "disabled";
-                                }
-                                while($row=$data->fetch(PDO::FETCH_ASSOC)){
-                                  $terminal = $row['nama_terminal'];
-                                  $alamat = $row['detail_alamat_terminal'];
-                                  $provinsi = $row['provinsi_terminal'];
-                                  $kabupaten = $row['kabupaten_terminal'];
-                                  $kecamatan = $row['kecamatan_terminal'];
-                            ?>
-                            <tr>
+                              <?php
+                                $data = $obj->lihatTerminal();
+                                $no = 1;
+                                if($data->rowCount()>0){
+                                  if($sesLvl == 1){
+                                      $dis = "";
+                                  } else{
+                                      $dis = "disabled";
+                                  }
+                                  while($row=$data->fetch(PDO::FETCH_ASSOC)){
+                                    $terminal = $row['nama_terminal'];
+                                    $alamat = $row['detail_alamat_terminal'];
+                                    $provinsi = $row['provinsi_terminal'];
+                                    $kabupaten = $row['kabupaten_terminal'];
+                                    $kecamatan = $row['kecamatan_terminal'];
+                              ?>
+                              <tr>
                                 <td>
                                   <span class="custom-checkbox">
-                                    <input type="checkbox" id="checkbox1" name="option[]" value="1" />
+                                    <input type="checkbox" id="checkbox1" name="option[]" value="<?php echo $no; ?>" />
                                     <label for="checkbox1"></label>
                                   </span>
                                 </td>
                                 <td>
                                   <a href="#" class="actionBtn" aria-label="Edit">
-                                    <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#editDataTerminal" <?php echo $row['id_terminal']; ?> value="edit" 
-                                    
-                                      > &nbsp;<i class="fa fa-edit fa-sm" data-bs-toggle="tooltip" title="Edit"></i>
+                                    <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#editDataAkun" value="edit">
+                                      &nbsp;<i class="fa fa-edit fa-sm" data-bs-toggle="tooltip" title="Edit"></i>
                                     </button>
                                   </a>
                                   <a href="#" class="actionBtn" aria-label="Delete">
-                                    <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteDataTerminal" <?php echo $row['id_terminal']; ?> value="hapus">
+                                    <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteDataAkun" value="hapus">
                                       <i class="fa fa-trash fa-sm" data-bs-toggle="tooltip" title="Delete"></i>
                                     </button>
                                   </a>
                                 </td>
-                              <td><?php echo $no; ?></td>
-                              <td><?php echo $terminal; ?></td>
-                              <td><?php echo $alamat; ?></td>
-                              <td><?php echo $provinsi; ?></td>
-                              <td><?php echo $kabupaten; ?></td>
-                              <td><?php echo $kecamatan; ?></td>
-                            </tr>
+                                <td><?php echo $no; ?></td>
+                                <td><?php echo $terminal; ?></td>
+                                <td><?php echo $alamat; ?></td>
+                                <td><?php echo $provinsi; ?></td>
+                                <td><?php echo $kabupaten; ?></td>
+                                <td><?php echo $kecamatan; ?></td>
+                              </tr>
                               <?php
-                              $no++;
-                              }} 
+                                $no++;
+                                }}
                               ?>
                             </tbody>
                           </table>
@@ -393,11 +389,10 @@
                       </div>
 
                       <!-- Tambah Modal -->
-                      <div id="tambahDataTerminal" class="modal fade">
+                      <div id="tambahData" class="modal fade">
                         <div class="modal-dialog modal-lg">
                           <div class="modal-content modal-edit">
-                            <form role="form" action="sumberData.php" method="POST">
-                              
+                            <form action="">
                               <div class="modal-header">
                                 <h4 class="modal-title">Tambah Data Terminal</h4>
                                 <button type="button" class="btn btn-danger btn-circle btn-user2 shadow" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true">
@@ -406,45 +401,101 @@
                               </div>
                               <div class="modal-body">
                                 <div class="col-lg-12 mb-3" hidden>
-                                  <label for="inputId" class="form-label">Id</label>
-                                  <input type="text" class="form-control form-control-user2" id="inputId" name="txt_id_terminal" value="<?php echo $idTerminal?>" placeholder="" />
+                                  <label for="exampleInputEmail" class="form-label">Id</label>
+                                  <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_id" placeholder="" />
                                 </div>
-                                
                                 <div class="row">
                                   <div class="col-lg-6 mb-3">
-                                    <label for="inputTerminal" class="form-label">Nama Terminal</label>
-                                    <input type="text" class="form-control form-control-user2" id="inputTerminal" name="txt_nama_terminal" placeholder="Ex: Tawang Alun" />
+                                    <label for="exampleInputEmail" class="form-label">Nama Lengkap</label>
+                                    <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_nama" placeholder="Ex: Budi Santoso" />
                                   </div>
                                   <div class="col-lg-6 mb-3">
-                                    <label for="inputAlamat" class="form-label">Alamat Terminal</label>
-                                    <input type="text" class="form-control form-control-user2" id="inputAlamat" name="txt_detail_alamat_terminal" placeholder="Ex: Jl. Dharmawangsa" />
+                                    <label for="exampleInputPassword" class="form-label">Email</label>
+                                    <input type="email" class="form-control form-control-user2" id="exampleInputPassword" name="txt_email" placeholder="Ex: budiman@siboss.com" />
+                                  </div>
+                                </div>
+
+                                <div class="row">
+                                  <div class="col-lg-6 mb-3">
+                                    <label for="exampleInputEmail" class="form-label">Kata Sandi</label>
+                                    <input type="password" class="form-control form-control-user2" id="exampleInputEmail" name="txt_pass" placeholder="********" />
+                                  </div>
+                                  <div class="col-lg-6 mb-3">
+                                    <label for="exampleInputPassword" class="form-label">Konfirmasi Kata sandi</label>
+                                    <input type="password" class="form-control form-control-user2" id="exampleInputPassword" name="txt_pass" placeholder="********" />
+                                  </div>
+                                </div>
+
+                                <div class="row">
+                                  <div class="col-lg-6 mb-3">
+                                    <label for="exampleInputEmail" class="form-label">Alamat</label>
+                                    <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_alamat" placeholder="Ex: JL. Sudirman" />
+                                  </div>
+                                  <div class="col-lg-6 mb-3">
+                                    <label for="exampleInputPassword" class="form-label">Jenis Kelamin</label>
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="radio" name="Rbtnjk" id="exampleRadios1" value="option1" checked />
+                                      <label class="form-check-label2" for="exampleRadios1"> Laki-laki</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="radio" name="Rbtnjk" id="exampleRadios2" value="option2" />
+                                      <label class="form-check-label2" for="exampleRadios2"> Perempuan </label>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="row">
+                                  <div class="col-lg-6 mb-3">
+                                    <label for="exampleInputEmail" class="form-label">Nama Terminal</label>
+                                    <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_terminal" placeholder="Ex: Terminal A" />
+                                  </div>
+                                  <div class="col-lg-6 mb-3">
+                                    <label for="exampleInputPassword" class="form-label">Alamat Terminal</label>
+                                    <input type="text" class="form-control form-control-user2" id="exampleInputPassword" name="txt_alamatterm" placeholder="JL. KH." />
                                   </div>
                                 </div>
 
                                 <div class="col-lg-12 mb-3">
-                                  <label for="inputProvinsi" class="form-label">Provinsi</label>
-                                  <select class="form-select" aria-label=".form-select-sm example" name="d_provinsi_terminal" id="propinsi" >
+                                  <label for="exampleInputEmail" class="form-label">Provinsi</label>
+                                  <select class="form-select" aria-label=".form-select-sm example">
                                     <option disabled selected>Pilih Provinsi</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
                                   </select>
                                 </div>
 
                                 <div class="row">
                                   <div class="col-lg-6 mb-3">
-                                    <label for="inputKabupaten" class="form-label">Kota</label>
-                                    <select class="form-select" aria-label=".form-select-sm example" name="d_kabupaten_terminal" id="kabupaten">
+                                    <label for="exampleInputEmail" class="form-label">Kota</label>
+                                    <select class="form-select" aria-label=".form-select-sm example">
                                       <option disabled selected>Pilih kota</option>
+                                      <option value="1">One</option>
+                                      <option value="2">Two</option>
+                                      <option value="3">Three</option>
                                     </select>
                                   </div>
                                   <div class="col-lg-6 mb-3">
-                                    <label for="inputKecamatan" class="form-label">Kecamatan</label>
-                                    <select class="form-select" aria-label=".form-select-sm example" name="d_kecamatan_terminal" id="kecamatan">
+                                    <label for="exampleInputPassword" class="form-label">Kecamatan</label>
+                                    <select class="form-select" aria-label=".form-select-sm example">
                                       <option disabled selected>Pilih Kecamatan</option>
+                                      <option value="1">One</option>
+                                      <option value="2">Two</option>
+                                      <option value="3">Three</option>
+                                    </select>
+                                  </div>
+                                  <div class="col-lg-12 mb-2">
+                                    <label for="exampleInputEmail" class="form-label">Status Level</label>
+                                    <select class="form-select" aria-label=".form-select-sm example">
+                                      <option disabled selected>Pilih Level Otoritas</option>
+                                      <option value="1">Admin</option>
+                                      <option value="2">staff</option>
                                     </select>
                                   </div>
                                 </div>
                                 <div class="modal-footer">
                                   <input type="button" class="btn btn-secondary roundedBtn" data-bs-dismiss="modal" value="Cancel" />
-                                  <input type="submit" name="simpan" class="btn colorPrimary text-white roundedBtn" value="Simpan" />
+                                  <input type="submit" class="btn colorPrimary text-white roundedBtn" value="Simpan" />
                                 </div>
                               </div>
                             </form>
@@ -453,78 +504,122 @@
                       </div>
 
                       <!-- Edit Modal -->
-                      <div id="editDataTerminal<?php 
-                      echo $row['id_terminal']; 
-                      ?>" class="modal fade">
+                      <div id="editData" class="modal fade">
                         <div class="modal-dialog modal-lg">
                           <div class="modal-content modal-edit">
-                            <form role="form" action="editTerminal.php" method="GET">
-                              <?php
-                                $id = $row['id_terminal'];
-                                $query = $obj->pilihTerminal($id);
-                                while ($row = $query->fetch(PDO::FETCH_ASSOC)){
-                              ?>
+                            <form action="">
                               <div class="modal-header">
-                                <h4 class="modal-title">Edit Data Terminal</h4>
+                                <h4 class="modal-title">Edit Data Akun</h4>
                                 <button type="button" class="btn btn-danger btn-circle btn-user2 shadow" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true">
                                   <i class="fa fa-times fa-sm"></i>
                                 </button>
                               </div>
                               <div class="modal-body">
                                 <div class="col-lg-12 mb-3" hidden>
-                                  <label for="inputId" class="form-label">Id</label>
-                                  <input type="text" class="form-control form-control-user2" id="inputId" name="txt_id_terminal" value="<?php echo $row['id_terminal']; ?>" placeholder="" />
+                                  <label for="exampleInputEmail" class="form-label">Id</label>
+                                  <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_id" placeholder="" />
                                 </div>
-                                
                                 <div class="row">
                                   <div class="col-lg-6 mb-3">
-                                    <label for="inputTerminal" class="form-label">Nama Terminal</label>
-                                    <input type="text" class="form-control form-control-user2" id="inputTerminal" name="txt_nama_terminal" value="<?php echo $row['nama_terminal']; ?>" placeholder="Ex: Tawang Alun" />
+                                    <label for="exampleInputEmail" class="form-label">Nama Lengkap</label>
+                                    <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_nama" placeholder="Ex: Budi Santoso" />
                                   </div>
                                   <div class="col-lg-6 mb-3">
-                                    <label for="inputAlamat" class="form-label">Alamat Terminal</label>
-                                    <input type="text" class="form-control form-control-user2" id="inputAlamat" name="txt_detail_alamat_terminal" value="<?php echo $row['detail_alamat_terminal']; ?>" placeholder="Ex: Jl. Dharmawangsa" />
+                                    <label for="exampleInputPassword" class="form-label">Email</label>
+                                    <input type="email" class="form-control form-control-user2" id="exampleInputPassword" name="txt_email" placeholder="Ex: budiman@siboss.com" />
+                                  </div>
+                                </div>
+
+                                <div class="row">
+                                  <div class="col-lg-6 mb-3">
+                                    <label for="exampleInputEmail" class="form-label">Kata Sandi</label>
+                                    <input type="password" class="form-control form-control-user2" id="exampleInputEmail" name="txt_pass" placeholder="********" />
+                                  </div>
+                                  <div class="col-lg-6 mb-3">
+                                    <label for="exampleInputPassword" class="form-label">Konfirmasi Kata sandi</label>
+                                    <input type="password" class="form-control form-control-user2" id="exampleInputPassword" name="txt_pass" placeholder="********" />
+                                  </div>
+                                </div>
+
+                                <div class="row">
+                                  <div class="col-lg-6 mb-3">
+                                    <label for="exampleInputEmail" class="form-label">Alamat</label>
+                                    <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_alamat" placeholder="Ex: JL. Sudirman" />
+                                  </div>
+                                  <div class="col-lg-6 mb-3">
+                                    <label for="exampleInputPassword" class="form-label">Jenis Kelamin</label>
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="radio" name="Rbtnjk" id="exampleRadios1" value="option1" checked />
+                                      <label class="form-check-label2" for="exampleRadios1"> Laki-laki</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="radio" name="Rbtnjk" id="exampleRadios2" value="option2" />
+                                      <label class="form-check-label2" for="exampleRadios2"> Perempuan </label>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="row">
+                                  <div class="col-lg-6 mb-3">
+                                    <label for="exampleInputEmail" class="form-label">Nama Terminal</label>
+                                    <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_terminal" placeholder="Ex: Terminal A" />
+                                  </div>
+                                  <div class="col-lg-6 mb-3">
+                                    <label for="exampleInputPassword" class="form-label">Alamat Terminal</label>
+                                    <input type="text" class="form-control form-control-user2" id="exampleInputPassword" name="txt_alamatterm" placeholder="JL. KH." />
                                   </div>
                                 </div>
 
                                 <div class="col-lg-12 mb-3">
-                                  <label for="inputProvinsi" class="form-label">Provinsi</label>
-                                  <select class="form-select" aria-label=".form-select-sm example" name="d_provinsi_terminal" id="propinsi">
+                                  <label for="exampleInputEmail" class="form-label">Provinsi</label>
+                                  <select class="form-select" aria-label=".form-select-sm example">
                                     <option disabled selected>Pilih Provinsi</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
                                   </select>
                                 </div>
 
                                 <div class="row">
                                   <div class="col-lg-6 mb-3">
-                                    <label for="inputKabupaten" class="form-label">Kota</label>
-                                    <select class="form-select" aria-label=".form-select-sm example" name="d_kabupaten_terminal" id="kabupaten" >
+                                    <label for="exampleInputEmail" class="form-label">Kota</label>
+                                    <select class="form-select" aria-label=".form-select-sm example">
                                       <option disabled selected>Pilih kota</option>
+                                      <option value="1">One</option>
+                                      <option value="2">Two</option>
+                                      <option value="3">Three</option>
                                     </select>
                                   </div>
                                   <div class="col-lg-6 mb-3">
-                                    <label for="inputKecamatan" class="form-label">Kecamatan</label>
-                                    <select class="form-select" aria-label=".form-select-sm example" name="d_kecamatan_terminal" id="kecamatan" >
+                                    <label for="exampleInputPassword" class="form-label">Kecamatan</label>
+                                    <select class="form-select" aria-label=".form-select-sm example">
                                       <option disabled selected>Pilih Kecamatan</option>
+                                      <option value="1">One</option>
+                                      <option value="2">Two</option>
+                                      <option value="3">Three</option>
+                                    </select>
+                                  </div>
+                                  <div class="col-lg-12 mb-2">
+                                    <label for="exampleInputEmail" class="form-label">Status Level</label>
+                                    <select class="form-select" aria-label=".form-select-sm example">
+                                      <option disabled selected>Pilih Level Otoritas</option>
+                                      <option value="1">Admin</option>
+                                      <option value="2">staff</option>
                                     </select>
                                   </div>
                                 </div>
                                 <div class="modal-footer">
                                   <input type="button" class="btn btn-secondary roundedBtn" data-bs-dismiss="modal" value="Cancel" />
-                                  <input type="submit" name="update" class="btn colorPrimary text-white roundedBtn" value="Simpan" />
+                                  <input type="submit" class="btn colorPrimary text-white roundedBtn" value="Simpan" />
                                 </div>
                               </div>
                             </form>
-                              <?php 
-                                }
-                              ?> 
                           </div>
                         </div>
                       </div>
 
                       <!-- Delete Modal -->
-                      <div id="deleteDataTerminal<?php 
-                      echo $row['id_terminal']; 
-                      ?>" class="modal fade">
+                      <div id="deleteData" class="modal fade">
                         <div class="modal-dialog">
                           <div class="modal-content">
                             <form action="">
@@ -538,7 +633,7 @@
                               </div>
                               <div class="modal-footer">
                                 <input type="button" class="btn btn-secondary" data-bs-dismiss="modal" value="Cancel" />
-                                <input type="submit" href="hapusTerminal.php?id_terminal=<?php echo $row['id_terminal']; ?>" class="btn btn-danger" value="Delete" />
+                                <input type="submit" class="btn btn-danger" value="Delete" />
                               </div>
                             </form>
                           </div>
@@ -561,6 +656,10 @@
     <script src="plugin/jquery-easing/jquery.easing.min.js"></script>
     <script src="plugin/js/script.js"></script>
     <script src="plugin/js/calender.js"></script>
+    <script src="plugin/datatables/DataTables-1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="plugin/datatables/DataTables-1.11.3/js/dataTables.bootstrap5.min.js"></script>
+    <script src="plugin/js/datatables-demo.js"></script>
+    <script src="plugin/js/javascript.js"></script>
     <script type = "text/javascript" >
           var return_first = function() {
               var tmp = null;
