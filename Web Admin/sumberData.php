@@ -328,7 +328,7 @@
                                   </span>
                                 </th>
                                 <th class="actions">Action</th>
-                                <th class="id">ID Terminal</th>
+                                <th class="id">Id </th>
                                 <th class="terminal">Terminal</th>
                                 <th class="alamat">Alamat</th>
                                 <th class="provinsi">Provinsi</th>

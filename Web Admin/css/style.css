@@ -1146,6 +1146,12 @@ table.table tr th.actions{
 table.table tr th.no{
   min-width: 25px;
 }
+table.table tr th.id{
+  min-width: 25px;
+}
+table.table tr th.kursi{
+  min-width: 45px;
+}
 table.table tr th.jenisBus,
 table.table tr th.harga,
 table.table tr th.waktu,
