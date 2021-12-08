@@ -546,8 +546,9 @@
                   </div>
                 </div>
               </div>
+
               <!-- Tab Jenis Bus -->
-              <div class="tab-pane fade show active" id="tabs-2" role="tabpanel" aria-labelledby="ex1-tab-2">
+              <div class="tab-pane fade" id="tabs-2" role="tabpanel" aria-labelledby="tab-2">
                 <div class="row g-2 m-0">
                   <div class="col-lg-12 p-0 m-0">
                     <div class="card mb-4 roundedTabContent">
