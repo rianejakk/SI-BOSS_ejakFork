@@ -68,6 +68,8 @@ class crud extends koneksi {
         }
     }
 
+    
+
     // public function insertJenisBus($nama_terminal, $alamat_terminal, $provinsi, $kabupaten, $kecamatan){
     //     try{
     //         $sql ="INSERT INTO terminal(nama_terminal, detail_alamat_terminal, provinsi_terminal, kabupaten_terminal, kecamatan_terminal) VALUES (:terminal, :alamat, :provinsi, :kabupaten, :kecamatan)";
@@ -141,9 +143,9 @@ class crud extends koneksi {
     // }
 
     public function pilihTerminal($data){
-        $sql ="SELECT * FROM terminal WHERE id_terminal=:id_terminal";
+        $sql ="SELECT * FROM terminal WHERE id_terminal=:id";
         $result = $this->koneksi->prepare($sql);
-        $result->bindParam(":id_terminal", $data);
+        $result->bindParam(":id", $data);
         $result->execute();
         return $result;
     }
@@ -227,9 +229,9 @@ class crud extends koneksi {
         }
     }
 
-    public function delete($data){
+    public function deleteTerminal($data){
         try{
-            $sql ="DELETE FROM user_detail WHERE id=:id";
+            $sql ="DELETE FROM terminal WHERE id_terminal=:id";
             $result = $this->koneksi->prepare($sql);
             $result->execute(array("id"=>$data));
             return true;

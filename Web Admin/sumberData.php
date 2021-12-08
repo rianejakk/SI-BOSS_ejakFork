@@ -25,22 +25,6 @@
     }
   }
 
-  if(!$obj->detailTerminal($_GET['id_terminal'])) die ("Error: Id tidak ada");
-  if($_SERVER['REQUEST_METHOD']=='POST'):
-    // $idTerminal = $_POST['txt_id_terminal'];
-    $namaTerminal = $_POST['txt_nama_terminal'];
-    $alamatTerminal = $_POST['txt_alamat_terminal'];
-    $provinsiTerminal= $_POST['txt_provinsi_terminal'];
-    $kabupatenTerminal= $_POST['txt_kabupaten_terminal'];
-    $kecamatanTerminal= $_POST['txt_kecamatan_terminal'];
-    if($obj->updateTerminal($namaTerminal, $alamatTerminal, $provinsiTerminal, $kabupatenTerminal, $kecamatanTerminal, $obj->id_terminal)):
-      echo '<div class="alert alert-success">Data Berhasil disimpan</div>';
-      header("Location: sumberData.php");
-    else:
-      echo '<div class="alert alert-success">Data gagal disimpan</div>';
-      header("Location: sumberData.php");
-    endif;
-  endif;
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -387,7 +371,7 @@
                                     </button>
                                   </a>
                                   <a href="#" class="actionBtn" aria-label="Delete">
-                                    <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteDataTerminal" value="hapus">
+                                    <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteDataTerminal" <?php echo $row['id_terminal']; ?> value="hapus">
                                       <i class="fa fa-trash fa-sm" data-bs-toggle="tooltip" title="Delete"></i>
                                     </button>
                                   </a>
@@ -472,8 +456,12 @@
                       <div id="editDataTerminal" class="modal fade">
                         <div class="modal-dialog modal-lg">
                           <div class="modal-content modal-edit">
-                            <form role="form" action="<?php echo $_SERVER['REQUEST_URI'];?>" method="POST">
-                              
+                            <form role="form" action="editTerminal" method="GET">
+                              <?php
+                                // $id = $row['id_terminal'];
+                                // $query = $obj->pilihTerminal($id);
+                                // while ($row = $query->fetch(PDO::FETCH_ASSOC)){
+                              ?>
                               <div class="modal-header">
                                 <h4 class="modal-title">Edit Data Terminal</h4>
                                 <button type="button" class="btn btn-danger btn-circle btn-user2 shadow" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true">
@@ -483,23 +471,23 @@
                               <div class="modal-body">
                                 <div class="col-lg-12 mb-3" hidden>
                                   <label for="inputId" class="form-label">Id</label>
-                                  <input type="text" class="form-control form-control-user2" id="inputId" name="txt_id_terminal" value="<?php echo $idTerminal; ?>" placeholder="" />
+                                  <input type="text" class="form-control form-control-user2" id="inputId" name="txt_id_terminal" value="<?php echo $row['id_terminal']; ?>" placeholder="" />
                                 </div>
                                 
                                 <div class="row">
                                   <div class="col-lg-6 mb-3">
                                     <label for="inputTerminal" class="form-label">Nama Terminal</label>
-                                    <input type="text" class="form-control form-control-user2" id="inputTerminal" name="txt_nama_terminal" value="<?php echo $obj->nama_terminal; ?>" placeholder="Ex: Tawang Alun" />
+                                    <input type="text" class="form-control form-control-user2" id="inputTerminal" name="txt_nama_terminal" value="<?php echo $row['nama_terminal']; ?>" placeholder="Ex: Tawang Alun" />
                                   </div>
                                   <div class="col-lg-6 mb-3">
                                     <label for="inputAlamat" class="form-label">Alamat Terminal</label>
-                                    <input type="text" class="form-control form-control-user2" id="inputAlamat" name="txt_detail_alamat_terminal" value="<?php echo $obj->alamat_terminal; ?>" placeholder="Ex: Jl. Dharmawangsa" />
+                                    <input type="text" class="form-control form-control-user2" id="inputAlamat" name="txt_detail_alamat_terminal" value="<?php echo $row['detail_alamat_terminal']; ?>" placeholder="Ex: Jl. Dharmawangsa" />
                                   </div>
                                 </div>
 
                                 <div class="col-lg-12 mb-3">
                                   <label for="inputProvinsi" class="form-label">Provinsi</label>
-                                  <select class="form-select" aria-label=".form-select-sm example" name="d_provinsi_terminal" id="propinsi" >
+                                  <select class="form-select" aria-label=".form-select-sm example" name="d_provinsi_terminal" id="propinsi">
                                     <option disabled selected>Pilih Provinsi</option>
                                   </select>
                                 </div>
@@ -507,13 +495,13 @@
                                 <div class="row">
                                   <div class="col-lg-6 mb-3">
                                     <label for="inputKabupaten" class="form-label">Kota</label>
-                                    <select class="form-select" aria-label=".form-select-sm example" name="d_kabupaten_terminal" id="kabupaten">
+                                    <select class="form-select" aria-label=".form-select-sm example" name="d_kabupaten_terminal" id="kabupaten" >
                                       <option disabled selected>Pilih kota</option>
                                     </select>
                                   </div>
                                   <div class="col-lg-6 mb-3">
                                     <label for="inputKecamatan" class="form-label">Kecamatan</label>
-                                    <select class="form-select" aria-label=".form-select-sm example" name="d_kecamatan_terminal" id="kecamatan">
+                                    <select class="form-select" aria-label=".form-select-sm example" name="d_kecamatan_terminal" id="kecamatan" >
                                       <option disabled selected>Pilih Kecamatan</option>
                                     </select>
                                   </div>
@@ -524,7 +512,9 @@
                                 </div>
                               </div>
                             </form>
-              
+                              <?php 
+                                // }
+                              ?> 
                           </div>
                         </div>
                       </div>
@@ -544,7 +534,7 @@
                               </div>
                               <div class="modal-footer">
                                 <input type="button" class="btn btn-secondary" data-bs-dismiss="modal" value="Cancel" />
-                                <input type="submit" class="btn btn-danger" value="Delete" />
+                                <input type="submit" href="hapusTerminal.php?id=<?php echo $row['id_terminal']; ?>" class="btn btn-danger" value="Delete" />
                               </div>
                             </form>
                           </div>

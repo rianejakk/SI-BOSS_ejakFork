@@ -5,10 +5,10 @@
 
     $idTerminal = $_GET['txt_id_terminal'];
     $namaTerminal = $_GET['txt_nama_terminal'];
-    $alamatTerminal = $_GET['txt_alamat_terminal'];
-    $provinsiTerminal= $_GET['txt_provinsi_terminal'];
-    $kabupatenTerminal= $_GET['txt_kabupaten_terminal'];
-    $kecamatanTerminal= $_GET['txt_kecamatan_terminal'];
+    $alamatTerminal = $_GET['txt_detail_alamat_terminal'];
+    $provinsiTerminal= $_GET['d_provinsi_terminal'];
+    $kabupatenTerminal= $_GET['d_kabupaten_terminal'];
+    $kecamatanTerminal= $_GET['d_kecamatan_terminal'];
     if(!$obj->detailTerminal($idTerminal)) die ("Error: Id tidak ada");
         if($obj->updateTerminal($namaTerminal, $alamatTerminal, $provinsiTerminal, $kabupatenTerminal, $kecamatanTerminal, $idTerminal)){
             echo '<div class="alert alert-success">Data Berhasil disimpan</div>';

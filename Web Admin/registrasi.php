@@ -177,6 +177,14 @@
                                 // $hasil=mysqli_query($koneksi,$sql);
                                 // $no=0;
                                 // while ($data = mysqli_fetch_array($hasil)) {
+                                //   $no++;
+                               ?>
+                               <?php
+                                // $sql="SELECT * FROM terminal";
+
+                                // $hasil = $this->koneksi->prepare($sql);
+                                // $no=0;
+                                // while ($data = mysqli_fetch_array($hasil)) {
                                 // $no++;
                                ?>
                                
