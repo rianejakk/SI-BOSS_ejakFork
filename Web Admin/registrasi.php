@@ -1,5 +1,7 @@
 <?php
   require ('koneksi.php');
+  require('query.php');
+  $obj = new crud;
 
   session_start();
 
@@ -48,16 +50,34 @@
     header('Location: registrasi.php');
   }
 
-  if(isset ($_POST['simpan'])){
+  if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    $nama = $_POST['txt_nama'];
+    $jenis_kelamin = $_POST['Rbtn_jenis_kelamin'];
+    $alamat = $_POST['txt_alamat'];
+    $no_hp = $_POST['txt_no_hp'];
+    // $foto = $_POST['txt_foto'];
+    $level = $_POST['txt_status'];
+    $id_terminal = $_POST['id_terminal'];
+    $email = $_POST['txt_email'];
+    $password = $_POST['txt_password'];
+    if($obj->insertAdministrator($nama, $jenis_kelamin, $alamat, $no_hp, $level, $id_terminal, $email, $password)){
+      echo '<div class="alert alert-success">Akun Berhasil Didaftarkan</div>';
+    } else{
+      echo '<div class="alert alert-danger">Akun Gagal Didaftarkan</div>';
+    }
+  }
+  
+  if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $nama_terminal = $_POST['txt_nama_terminal'];
     $alamat_terminal = $_POST['txt_detail_alamat_terminal'];
     $provinsi = $_POST['d_provinsi_terminal'];
     $kabupaten = $_POST['d_kabupaten_terminal'];
     $kecamatan = $_POST['d_kecamatan_terminal'];
-
-    $query2 = "INSERT INTO terminal VALUES ('', '$nama_terminal', '$alamat_terminal', '$provinsi', '$kabupaten','$kecamatan')";
-    $result = mysqli_query($koneksi, $query2);
-    header('Location: registrasi.php');
+    if($obj->insertTerminal($nama_terminal, $alamat_terminal, $provinsi, $kabupaten, $kecamatan)){
+      echo '<div class="alert alert-success">Terminal Berhasil Ditambahkan</div>';
+    } else{
+      echo '<div class="alert alert-danger">Terminal Gagal Ditambahkan</div>';
+    }
   }
 ?>
 
@@ -145,23 +165,24 @@
                         <div class="row">
                           <div class="col-lg-6 mb-3">
                             <label for="InputAlamat" class="form-label">Alamat</label>
-                            <input type="text" class="form-control form-control-user2" id="InputAlamat" name="txt_alamat" required data-parsley-required-message="Alamat harus di isi !!!" placeholder="Ex: JL. Sudirman" />
+                            <input type="text" class="form-control form-control-user2" id="InputAlamat" name="txt_alamat" required data-parsley-required-message="Alamat harus di isi !!!" placeholder="Ex: JL. Dharmawangsa" />
                           </div>
                           <div class="col-lg-6 mb-3">
                             <label for="InputIdTerminal" class="form-label">Terminal Tersedia</label>
                             <select class="form-select form-select-user select-md" aria-label=".form-select-sm example" required data-parsley-required-message="Harap pilih data terminal !!!" name="id_terminal">
                               <option disabled selected>Pilih Terminal</option>
                               <?php
-                                $sql="SELECT * FROM terminal";
+                                // $sql="SELECT * FROM terminal";
 
-                                $hasil=mysqli_query($koneksi,$sql);
-                                $no=0;
-                                while ($data = mysqli_fetch_array($hasil)) {
-                                $no++;
+                                // $hasil=mysqli_query($koneksi,$sql);
+                                // $no=0;
+                                // while ($data = mysqli_fetch_array($hasil)) {
+                                // $no++;
                                ?>
+                               
                                 <option value="<?php echo $data['id_terminal'];?>"><?php echo $data['nama_terminal'];?></option>
                               <?php 
-                              }
+                              // }
                               ?>
                             </select>
                             <a href="#" class="actionBtn" aria-label="Tambah">
@@ -221,11 +242,11 @@
               <div class="row">
                 <div class="col-12 mb-3">
                   <label for="InputNamaTerminal" class="form-label">Nama Terminal</label>
-                  <input type="text" class="form-control form-control-user2" id="InputNamaTerminal" name="txt_nama_terminal" placeholder="Ex: Terminal A" />
+                  <input type="text" class="form-control form-control-user2" id="InputNamaTerminal" name="txt_nama_terminal" placeholder="Ex: Tawang Alun" />
                 </div>
                 <div class="col-12 mb-3">
                   <label for="InputAlamat" class="form-label">Alamat Terminal</label>
-                  <textarea class="form-control form-control-user2" id="InputAlamat" name="txt_detail_alamat_terminal" placeholder="JL. KH."></textarea>
+                  <textarea class="form-control form-control-user2" id="InputAlamat" name="txt_detail_alamat_terminal" placeholder="Ex: Jl. Dharmawangsa"></textarea>
                 </div>
                 <div class="col-lg-12 mb-3">
                   <label for="InputPropinsi" class="form-label">Provinsi</label>

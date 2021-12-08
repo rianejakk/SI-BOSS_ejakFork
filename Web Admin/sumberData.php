@@ -12,6 +12,35 @@
   $sesName = $_SESSION['name'];
   $sesLvl = $_SESSION['level'];
 
+  if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    $nama_terminal = $_POST['txt_nama_terminal'];
+    $alamat_terminal = $_POST['txt_detail_alamat_terminal'];
+    $provinsi = $_POST['d_provinsi_terminal'];
+    $kabupaten = $_POST['d_kabupaten_terminal'];
+    $kecamatan = $_POST['d_kecamatan_terminal'];
+    if($obj->insertTerminal($nama_terminal, $alamat_terminal, $provinsi, $kabupaten, $kecamatan)){
+      echo '<div class="alert alert-success">Terminal Berhasil Ditambahkan</div>';
+    } else{
+      echo '<div class="alert alert-danger">Terminal Gagal Ditambahkan</div>';
+    }
+  }
+
+  if(!$obj->detailTerminal($_GET['id_terminal'])) die ("Error: Id tidak ada");
+  if($_SERVER['REQUEST_METHOD']=='POST'):
+    // $idTerminal = $_POST['txt_id_terminal'];
+    $namaTerminal = $_POST['txt_nama_terminal'];
+    $alamatTerminal = $_POST['txt_alamat_terminal'];
+    $provinsiTerminal= $_POST['txt_provinsi_terminal'];
+    $kabupatenTerminal= $_POST['txt_kabupaten_terminal'];
+    $kecamatanTerminal= $_POST['txt_kecamatan_terminal'];
+    if($obj->updateTerminal($namaTerminal, $alamatTerminal, $provinsiTerminal, $kabupatenTerminal, $kecamatanTerminal, $obj->id_terminal)):
+      echo '<div class="alert alert-success">Data Berhasil disimpan</div>';
+      header("Location: sumberData.php");
+    else:
+      echo '<div class="alert alert-success">Data gagal disimpan</div>';
+      header("Location: sumberData.php");
+    endif;
+  endif;
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -297,15 +326,13 @@
                           <span class="m-0"><b>Tabel Data Terminal</b></span>
                         </div>
                         <div class="btnAction float-end">
-                        <a href="#" class="actionBtn" aria-label="Tambah">
-                          <button class="btn btn-light text-dark btn-circle custShadow2 me-2" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#editDataAkun" value="edit">
+                        <a href="#" class="actionBtn" aria-label="edit">
+                          <button class="btn btn-light text-dark btn-circle custShadow2 me-2" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#tambahDataTerminal" value="edit">
                             &nbsp;<i class="fa fa-edit fa-sm" data-bs-toggle="tooltip" title="Edit"></i>
                           </button>
                         </a>
-                          <a href="#" class="actionBtn" aria-label="Tambah">
-                            <button class="btn btn-light text-dark btn-circle custShadow2 me-2"><i class="fas fa-plus" data-bs-toggle="tooltip" data-bs-target="#editDataAkun" value="edit" title="Tambah"></i></button>
-                          </a>
-                          <button class="btn btn-light text-danger btn-circle custShadow2" data-bs-toggle="modal" data-tooltip="tooltip" data-bs-target="#deleteDataAkun" title="Hapus Yang dipilih"><i class="fas fa-trash"></i></button>
+                          
+                          <button class="btn btn-light text-danger btn-circle custShadow2" data-bs-toggle="modal" data-tooltip="tooltip" data-bs-target="#deleteDataTerminal" title="Hapus Yang dipilih"><i class="fas fa-trash"></i></button>
                         </div>
                       </div>
                       <div class="card-body">
@@ -354,12 +381,13 @@
                                 </td>
                                 <td>
                                   <a href="#" class="actionBtn" aria-label="Edit">
-                                    <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#editDataAkun" value="edit">
-                                      &nbsp;<i class="fa fa-edit fa-sm" data-bs-toggle="tooltip" title="Edit"></i>
+                                    <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#editDataTerminal" <?php echo $row['id_terminal']; ?> value="edit" 
+                                    
+                                      > &nbsp;<i class="fa fa-edit fa-sm" data-bs-toggle="tooltip" title="Edit"></i>
                                     </button>
                                   </a>
                                   <a href="#" class="actionBtn" aria-label="Delete">
-                                    <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteDataAkun" value="hapus">
+                                    <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteDataTerminal" value="hapus">
                                       <i class="fa fa-trash fa-sm" data-bs-toggle="tooltip" title="Delete"></i>
                                     </button>
                                   </a>
@@ -380,114 +408,59 @@
                         </div>
                       </div>
 
-                      <!-- Edit Modal -->
-                      <div id="editDataAkun" class="modal fade">
+                      <!-- Tambah Modal -->
+                      <div id="tambahDataTerminal" class="modal fade">
                         <div class="modal-dialog modal-lg">
                           <div class="modal-content modal-edit">
-                            <form action="">
+                            <form role="form" action="sumberData.php" method="POST">
+                              
                               <div class="modal-header">
-                                <h4 class="modal-title">Edit Data Akun</h4>
+                                <h4 class="modal-title">Tambah Data Terminal</h4>
                                 <button type="button" class="btn btn-danger btn-circle btn-user2 shadow" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true">
                                   <i class="fa fa-times fa-sm"></i>
                                 </button>
                               </div>
                               <div class="modal-body">
                                 <div class="col-lg-12 mb-3" hidden>
-                                  <label for="exampleInputEmail" class="form-label">Id</label>
-                                  <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_id" placeholder="" />
+                                  <label for="inputId" class="form-label">Id</label>
+                                  <input type="text" class="form-control form-control-user2" id="inputId" name="txt_id_terminal" value="<?php echo $idTerminal?>" placeholder="" />
                                 </div>
+                                
                                 <div class="row">
                                   <div class="col-lg-6 mb-3">
-                                    <label for="exampleInputEmail" class="form-label">Nama Lengkap</label>
-                                    <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_nama" placeholder="Ex: Budi Santoso" />
+                                    <label for="inputTerminal" class="form-label">Nama Terminal</label>
+                                    <input type="text" class="form-control form-control-user2" id="inputTerminal" name="txt_nama_terminal" placeholder="Ex: Tawang Alun" />
                                   </div>
                                   <div class="col-lg-6 mb-3">
-                                    <label for="exampleInputPassword" class="form-label">Email</label>
-                                    <input type="email" class="form-control form-control-user2" id="exampleInputPassword" name="txt_email" placeholder="Ex: budiman@siboss.com" />
-                                  </div>
-                                </div>
-
-                                <div class="row">
-                                  <div class="col-lg-6 mb-3">
-                                    <label for="exampleInputEmail" class="form-label">Kata Sandi</label>
-                                    <input type="password" class="form-control form-control-user2" id="exampleInputEmail" name="txt_pass" placeholder="********" />
-                                  </div>
-                                  <div class="col-lg-6 mb-3">
-                                    <label for="exampleInputPassword" class="form-label">Konfirmasi Kata sandi</label>
-                                    <input type="password" class="form-control form-control-user2" id="exampleInputPassword" name="txt_pass" placeholder="********" />
-                                  </div>
-                                </div>
-
-                                <div class="row">
-                                  <div class="col-lg-6 mb-3">
-                                    <label for="exampleInputEmail" class="form-label">Alamat</label>
-                                    <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_alamat" placeholder="Ex: JL. Sudirman" />
-                                  </div>
-                                  <div class="col-lg-6 mb-3">
-                                    <label for="exampleInputPassword" class="form-label">Jenis Kelamin</label>
-                                    <div class="form-check">
-                                      <input class="form-check-input" type="radio" name="Rbtnjk" id="exampleRadios1" value="option1" checked />
-                                      <label class="form-check-label2" for="exampleRadios1"> Laki-laki</label>
-                                    </div>
-                                    <div class="form-check">
-                                      <input class="form-check-input" type="radio" name="Rbtnjk" id="exampleRadios2" value="option2" />
-                                      <label class="form-check-label2" for="exampleRadios2"> Perempuan </label>
-                                    </div>
-                                  </div>
-                                </div>
-
-                                <div class="row">
-                                  <div class="col-lg-6 mb-3">
-                                    <label for="exampleInputEmail" class="form-label">Nama Terminal</label>
-                                    <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_terminal" placeholder="Ex: Terminal A" />
-                                  </div>
-                                  <div class="col-lg-6 mb-3">
-                                    <label for="exampleInputPassword" class="form-label">Alamat Terminal</label>
-                                    <input type="text" class="form-control form-control-user2" id="exampleInputPassword" name="txt_alamatterm" placeholder="JL. KH." />
+                                    <label for="inputAlamat" class="form-label">Alamat Terminal</label>
+                                    <input type="text" class="form-control form-control-user2" id="inputAlamat" name="txt_detail_alamat_terminal" placeholder="Ex: Jl. Dharmawangsa" />
                                   </div>
                                 </div>
 
                                 <div class="col-lg-12 mb-3">
-                                  <label for="exampleInputEmail" class="form-label">Provinsi</label>
-                                  <select class="form-select" aria-label=".form-select-sm example">
+                                  <label for="inputProvinsi" class="form-label">Provinsi</label>
+                                  <select class="form-select" aria-label=".form-select-sm example" name="d_provinsi_terminal" id="propinsi" >
                                     <option disabled selected>Pilih Provinsi</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
                                   </select>
                                 </div>
 
                                 <div class="row">
                                   <div class="col-lg-6 mb-3">
-                                    <label for="exampleInputEmail" class="form-label">Kota</label>
-                                    <select class="form-select" aria-label=".form-select-sm example">
+                                    <label for="inputKabupaten" class="form-label">Kota</label>
+                                    <select class="form-select" aria-label=".form-select-sm example" name="d_kabupaten_terminal" id="kabupaten">
                                       <option disabled selected>Pilih kota</option>
-                                      <option value="1">One</option>
-                                      <option value="2">Two</option>
-                                      <option value="3">Three</option>
                                     </select>
                                   </div>
                                   <div class="col-lg-6 mb-3">
-                                    <label for="exampleInputPassword" class="form-label">Kecamatan</label>
-                                    <select class="form-select" aria-label=".form-select-sm example">
+                                    <label for="inputKecamatan" class="form-label">Kecamatan</label>
+                                    <select class="form-select" aria-label=".form-select-sm example" name="d_kecamatan_terminal" id="kecamatan">
                                       <option disabled selected>Pilih Kecamatan</option>
-                                      <option value="1">One</option>
-                                      <option value="2">Two</option>
-                                      <option value="3">Three</option>
-                                    </select>
-                                  </div>
-                                  <div class="col-lg-12 mb-2">
-                                    <label for="exampleInputEmail" class="form-label">Status Level</label>
-                                    <select class="form-select" aria-label=".form-select-sm example">
-                                      <option disabled selected>Pilih Level Otoritas</option>
-                                      <option value="1">Admin</option>
-                                      <option value="2">staff</option>
                                     </select>
                                   </div>
                                 </div>
                                 <div class="modal-footer">
                                   <input type="button" class="btn btn-secondary roundedBtn" data-bs-dismiss="modal" value="Cancel" />
-                                  <input type="submit" class="btn colorPrimary text-white roundedBtn" value="Simpan" />
+                                  <input type="submit" name="simpan" class="btn colorPrimary text-white roundedBtn" value="Simpan" />
                                 </div>
                               </div>
                             </form>
@@ -495,8 +468,69 @@
                         </div>
                       </div>
 
+                      <!-- Edit Modal -->
+                      <div id="editDataTerminal" class="modal fade">
+                        <div class="modal-dialog modal-lg">
+                          <div class="modal-content modal-edit">
+                            <form role="form" action="<?php echo $_SERVER['REQUEST_URI'];?>" method="POST">
+                              
+                              <div class="modal-header">
+                                <h4 class="modal-title">Edit Data Terminal</h4>
+                                <button type="button" class="btn btn-danger btn-circle btn-user2 shadow" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true">
+                                  <i class="fa fa-times fa-sm"></i>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                <div class="col-lg-12 mb-3" hidden>
+                                  <label for="inputId" class="form-label">Id</label>
+                                  <input type="text" class="form-control form-control-user2" id="inputId" name="txt_id_terminal" value="<?php echo $idTerminal; ?>" placeholder="" />
+                                </div>
+                                
+                                <div class="row">
+                                  <div class="col-lg-6 mb-3">
+                                    <label for="inputTerminal" class="form-label">Nama Terminal</label>
+                                    <input type="text" class="form-control form-control-user2" id="inputTerminal" name="txt_nama_terminal" value="<?php echo $obj->nama_terminal; ?>" placeholder="Ex: Tawang Alun" />
+                                  </div>
+                                  <div class="col-lg-6 mb-3">
+                                    <label for="inputAlamat" class="form-label">Alamat Terminal</label>
+                                    <input type="text" class="form-control form-control-user2" id="inputAlamat" name="txt_detail_alamat_terminal" value="<?php echo $obj->alamat_terminal; ?>" placeholder="Ex: Jl. Dharmawangsa" />
+                                  </div>
+                                </div>
+
+                                <div class="col-lg-12 mb-3">
+                                  <label for="inputProvinsi" class="form-label">Provinsi</label>
+                                  <select class="form-select" aria-label=".form-select-sm example" name="d_provinsi_terminal" id="propinsi" >
+                                    <option disabled selected>Pilih Provinsi</option>
+                                  </select>
+                                </div>
+
+                                <div class="row">
+                                  <div class="col-lg-6 mb-3">
+                                    <label for="inputKabupaten" class="form-label">Kota</label>
+                                    <select class="form-select" aria-label=".form-select-sm example" name="d_kabupaten_terminal" id="kabupaten">
+                                      <option disabled selected>Pilih kota</option>
+                                    </select>
+                                  </div>
+                                  <div class="col-lg-6 mb-3">
+                                    <label for="inputKecamatan" class="form-label">Kecamatan</label>
+                                    <select class="form-select" aria-label=".form-select-sm example" name="d_kecamatan_terminal" id="kecamatan">
+                                      <option disabled selected>Pilih Kecamatan</option>
+                                    </select>
+                                  </div>
+                                </div>
+                                <div class="modal-footer">
+                                  <input type="button" class="btn btn-secondary roundedBtn" data-bs-dismiss="modal" value="Cancel" />
+                                  <input type="submit" name="update" class="btn colorPrimary text-white roundedBtn" value="Simpan" />
+                                </div>
+                              </div>
+                            </form>
+              
+                          </div>
+                        </div>
+                      </div>
+
                       <!-- Delete Modal -->
-                      <div id="deleteDataAkun" class="modal fade">
+                      <div id="deleteDataTerminal" class="modal fade">
                         <div class="modal-dialog">
                           <div class="modal-content">
                             <form action="">
@@ -533,5 +567,102 @@
     <script src="plugin/jquery-easing/jquery.easing.min.js"></script>
     <script src="plugin/js/script.js"></script>
     <script src="plugin/js/calender.js"></script>
+    <script type = "text/javascript" >
+          var return_first = function() {
+              var tmp = null;
+              $.ajax({
+                  'async': false,
+                  'type': "get",
+                  'global': false,
+                  'dataType': 'json',
+                  'url': 'https://x.rajaapi.com/poe',
+                  'success': function(data) {
+                      tmp = data.token;
+                  }
+              });
+              return tmp;
+          }();
+      $(document).ready(function() {
+          $.ajax({
+              url: 'https://x.rajaapi.com/MeP7c5ne' + window.return_first + '/m/wilayah/provinsi',
+              type: 'GET',
+              dataType: 'json',
+              success: function(json) {
+                  if (json.code == 200) {
+                      for (i = 0; i < Object.keys(json.data).length; i++) {
+                          $('#propinsi').append($('<option>').text(json.data[i].name).attr('value', json.data[i].id));
+                      }
+                  } else {
+                      $('#kabupaten').append($('<option>').text('Data tidak di temukan').attr('value', 'Data tidak di temukan'));
+                  }
+              }
+          });
+          $("#propinsi").change(function() {
+              var propinsi = $("#propinsi").val();
+              $.ajax({
+                  url: 'https://x.rajaapi.com/MeP7c5ne' + window.return_first + '/m/wilayah/kabupaten',
+                  data: "idpropinsi=" + propinsi,
+                  type: 'GET',
+                  cache: false,
+                  dataType: 'json',
+                  success: function(json) {
+                      $("#kabupaten").html('');
+                      if (json.code == 200) {
+                          for (i = 0; i < Object.keys(json.data).length; i++) {
+                              $('#kabupaten').append($('<option>').text(json.data[i].name).attr('value', json.data[i].id));
+                          }
+                          $('#kecamatan').html($('<option>').text('-- Pilih Kecamatan --').attr('value', '-- Pilih Kecamatan --'));
+                          $('#kelurahan').html($('<option>').text('-- Pilih Kelurahan --').attr('value', '-- Pilih Kelurahan --'));
+
+                      } else {
+                          $('#kabupaten').append($('<option>').text('Data tidak di temukan').attr('value', 'Data tidak di temukan'));
+                      }
+                  }
+              });
+          });
+          $("#kabupaten").change(function() {
+              var kabupaten = $("#kabupaten").val();
+              $.ajax({
+                  url: 'https://x.rajaapi.com/MeP7c5ne' + window.return_first + '/m/wilayah/kecamatan',
+                  data: "idkabupaten=" + kabupaten + "&idpropinsi=" + propinsi,
+                  type: 'GET',
+                  cache: false,
+                  dataType: 'json',
+                  success: function(json) {
+                      $("#kecamatan").html('');
+                      if (json.code == 200) {
+                          for (i = 0; i < Object.keys(json.data).length; i++) {
+                              $('#kecamatan').append($('<option>').text(json.data[i].name).attr('value', json.data[i].id));
+                          }
+                          $('#kelurahan').html($('<option>').text('-- Pilih Kelurahan --').attr('value', '-- Pilih Kelurahan --'));
+                          
+                      } else {
+                          $('#kecamatan').append($('<option>').text('Data tidak di temukan').attr('value', 'Data tidak di temukan'));
+                      }
+                  }
+              });
+          });
+          $("#kecamatan").change(function() {
+              var kecamatan = $("#kecamatan").val();
+              $.ajax({
+                  url: 'https://x.rajaapi.com/MeP7c5ne' + window.return_first + '/m/wilayah/kelurahan',
+                  data: "idkabupaten=" + kabupaten + "&idpropinsi=" + propinsi + "&idkecamatan=" + kecamatan,
+                  type: 'GET',
+                  dataType: 'json',
+                  cache: false,
+                  success: function(json) {
+                      $("#kelurahan").html('');
+                      if (json.code == 200) {
+                          for (i = 0; i < Object.keys(json.data).length; i++) {
+                              $('#kelurahan').append($('<option>').text(json.data[i].name).attr('value', json.data[i].id));
+                          }
+                      } else {
+                          $('#kelurahan').append($('<option>').text('Data tidak di temukan').attr('value', 'Data tidak di temukan'));
+                      }
+                  }
+              });
+          });
+      });
+    </script>
   </body>
 </html>
