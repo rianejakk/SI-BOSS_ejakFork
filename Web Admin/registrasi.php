@@ -1,4 +1,5 @@
 <?php
+<<<<<<< Updated upstream
   require ('koneksi.php');
   require('query.php');
   $obj = new crud;
@@ -79,6 +80,26 @@
       echo '<div class="alert alert-danger">Terminal Gagal Ditambahkan</div>';
     }
   }
+=======
+require ('koneksi.php');
+if(isset ($_POST['register'])){
+    $namaVal = $_POST['txt_nama'];
+    $emailVal = $_POST['txt_email'];
+    $passVal = $_POST['txt_pass'];
+    $alamatVal = $_POST['txt_alamat'];
+    $jkVal = $_POST['txt_jk'];
+    $levelVal = $_POST['txt_level'];
+    $terminalVal = $_POST['txt_terminal'];
+    $alamattermVal = $_POST['txt_alamatterm'];
+    $provVal = $_POST['txt_prov'];
+    $kabVal = $_POST['txt_kab'];
+    $kecVal = $_POST['txt_kec'];
+
+    $query = "INSERT INTO administrator VALUES ('', '$namaVal', '$emailVal', '$passVal', '', '', 2, '', '', '', '', '')";
+    $result = mysqli_query($koneksi, $query);
+    header('Location: index.php');
+}
+>>>>>>> Stashed changes
 ?>
 
 <!DOCTYPE html>
@@ -118,10 +139,17 @@
                       <div class="judul">
                         <h4 class="text-gray-900 mb-5">Daftar <br /><span>System Information Booking Online Bus</span></h4>
                       </div>
+<<<<<<< Updated upstream
                       <form class="custom-validation" action="registrasi.php" method="POST">
                         <div class="col-lg-12 mb-3" hidden>
                           <label for="InputId" class="form-label">Id</label>
                           <input type="text" class="form-control form-control-user2" id="InputId" name="txt_id" placeholder="" />
+=======
+                      <form action="registrasi.php" method="POST">
+                        <div class="col-lg-12 mb-3" hidden>
+                          <label for="exampleInputName" class="form-label">Id</label>
+                          <input type="text" class="form-control form-control-user2" id="exampleInputName" name="txt_id" placeholder="" />
+>>>>>>> Stashed changes
                         </div>
                         <div class="row">
                           <div class="col-lg-6 mb-3">
