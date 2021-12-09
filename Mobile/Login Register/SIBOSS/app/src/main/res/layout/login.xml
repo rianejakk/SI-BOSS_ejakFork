@@ -113,11 +113,11 @@
             android:layout_below="@+id/EtPasswordLogin">
 
             <CheckBox
-                android:id="@+id/CheckBox"
+                android:id="@+id/CbShowPasswordLogin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto"
-                android:text="ingat kata sandi"
+                android:text="Show password"
                 android:textSize="12sp" />
 
             <TextView
@@ -139,7 +139,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/relative4"
-            android:layout_marginTop="14dp">
+            android:layout_marginTop="19dp">
 
             <Button
                 android:id="@+id/BtnLogin"

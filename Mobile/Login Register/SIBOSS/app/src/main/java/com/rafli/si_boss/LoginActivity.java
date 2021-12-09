@@ -2,8 +2,12 @@ package com.rafli.si_boss;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,6 +27,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     EditText EtEmailLogin, EtPasswordLogin;
     Button BtnLogin;
+    CheckBox CbShowPasswordLogin;
     String Email, Password;
     TextView TvRegister;
     ApiInterface apiInterface;
@@ -37,11 +42,26 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         EtEmailLogin = findViewById(R.id.EtEmailLogin);
         EtPasswordLogin = findViewById(R.id.EtPasswordLogin);
 
+        CbShowPasswordLogin = findViewById(R.id.CbShowPasswordLogin);
+
         BtnLogin = findViewById(R.id.BtnLogin);
         BtnLogin.setOnClickListener(this);
 
         TvRegister = findViewById(R.id.TvDaftar);
         TvRegister.setOnClickListener(this);
+
+        //        Show/Hide password
+        CbShowPasswordLogin.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b){
+                    EtPasswordLogin.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                } else {
+                    EtPasswordLogin.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                }
+
+            }
+        });
     }
 //ketika di click pindah halaman lain
     @Override

@@ -83,7 +83,7 @@
             android:textSize="12sp" />
 
         <EditText
-            android:id="@+id/et1"
+            android:id="@+id/EtNamaBiodata"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/tv4"
@@ -100,7 +100,7 @@
             android:id="@+id/tv5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/et1"
+            android:layout_below="@+id/EtNamaBiodata"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="6dp"
             android:layout_marginRight="10dp"
@@ -110,7 +110,7 @@
             android:textSize="12sp" />
 
         <EditText
-            android:id="@+id/et2"
+            android:id="@+id/EtNIK"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv5"
@@ -134,17 +134,17 @@
             android:textColor="@color/black"
             android:textSize="12sp"
             android:fontFamily="@font/roboto"
-            android:layout_below="@id/et2"/>
+            android:layout_below="@id/EtNIK"/>
 
         <RadioGroup
-            android:id="@+id/rg2"
+            android:id="@+id/RadioGroup"
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_below="@+id/tv6">
             <RadioButton
-                android:id="@+id/radio_L"
+                android:id="@+id/Radio_L"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Laki-laki"
@@ -152,7 +152,7 @@
                 android:fontFamily="@font/roboto"
                 android:onClick="onRadioButtonClicked"/>
             <RadioButton
-                android:id="@+id/radio_P"
+                android:id="@+id/Radio_P"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Perempuan"
@@ -171,10 +171,10 @@
             android:textColor="@color/black"
             android:textSize="12sp"
             android:fontFamily="@font/roboto"
-            android:layout_below="@id/rg2"/>
+            android:layout_below="@id/RadioGroup"/>
 
         <EditText
-            android:id="@id/et3"
+            android:id="@id/EtTTL"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
@@ -198,10 +198,10 @@
             android:textColor="@color/black"
             android:textSize="12sp"
             android:fontFamily="@font/roboto"
-            android:layout_below="@+id/et3"/>
+            android:layout_below="@+id/EtTTL"/>
 
         <EditText
-            android:id="@+id/et4"
+            android:id="@+id/EtAlamat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
@@ -216,7 +216,7 @@
     </RelativeLayout>
 
     <Button
-        android:id="@+id/btnubah"
+        android:id="@+id/Btnubah"
         android:layout_width="80dp"
         android:layout_height="30dp"
         android:layout_below="@id/relative3"

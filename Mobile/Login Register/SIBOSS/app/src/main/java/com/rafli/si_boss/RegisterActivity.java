@@ -2,8 +2,12 @@ package com.rafli.si_boss;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,6 +24,7 @@ import retrofit2.Response;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
     EditText EtEmailDaftar, EtNamaLengkapDaftar, EtPasswordDaftar;
+    CheckBox CbShowPasswordRegister;
     Button BtnDaftar;
     TextView TvLogin;
     String Email, Password, Name;
@@ -33,12 +38,29 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         EtEmailDaftar = findViewById(R.id.EtEmailDaftar);
         EtPasswordDaftar = findViewById(R.id.EtPasswordDaftar);
         EtNamaLengkapDaftar = findViewById(R.id.EtNamaLengkapDaftar);
+
+        CbShowPasswordRegister = findViewById(R.id.CbShowPasswordRegister);
+
         BtnDaftar = findViewById(R.id.BtnDaftar);
         BtnDaftar.setOnClickListener(this);
 
         TvLogin = findViewById(R.id.TvLogin);
         TvLogin.setOnClickListener(this);
+
+//        Show/Hide password
+        CbShowPasswordRegister.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b){
+                    EtPasswordDaftar.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                } else {
+                    EtPasswordDaftar.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                }
+
+            }
+        });
     }
+
 
     @Override
     public void onClick(View v) {

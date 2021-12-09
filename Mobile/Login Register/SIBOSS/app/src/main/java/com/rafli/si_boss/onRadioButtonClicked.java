@@ -10,11 +10,11 @@ public class onRadioButtonClicked {
 
         // Check which radio button was clicked
         switch(view.getId()) {
-            case R.id.radio_L:
+            case R.id.Radio_L:
                 if (checked)
                     // Pirates are the best
                     break;
-            case R.id.radio_P:
+            case R.id.Radio_P:
                 if (checked)
                     // Ninjas rule
                     break;

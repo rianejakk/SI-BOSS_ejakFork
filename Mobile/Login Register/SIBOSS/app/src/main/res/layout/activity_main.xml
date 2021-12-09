@@ -19,7 +19,8 @@
             android:layout_height="50dp"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="50dp"
-            android:background="@drawable/round_img" />
+            android:background="@drawable/round_img"
+            android:src="@drawable/profile"/>
 
         <TextView
             android:id="@+id/etMainEmail"
@@ -83,7 +84,7 @@
         android:layout_marginTop="8dp"
         android:layout_width="279dp"
         android:layout_height="40dp"
-        android:text="akun saya"
+        android:text="Profile"
         android:fontFamily="@font/opensanssemibold"
         android:textSize="16sp"
         android:textAllCaps="false"
@@ -93,7 +94,7 @@
         android:layout_marginTop="8dp"
         android:layout_width="279dp"
         android:layout_height="40dp"
-        android:text="Keluar dari akun"
+        android:text="Logout"
         android:fontFamily="@font/opensanssemibold"
         android:textSize="16sp"
         android:textAllCaps="false"

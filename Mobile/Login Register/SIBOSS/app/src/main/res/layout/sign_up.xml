@@ -71,7 +71,7 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="280dp"
+            android:layout_height="355dp"
             android:src="@drawable/background2" />
 
         <EditText
@@ -99,7 +99,7 @@
             android:drawableStart="@drawable/ic_baseline_account_circle_24"
             android:drawablePadding="16dp"
             android:fontFamily="@font/roboto"
-            android:hint="Full name"
+            android:hint="Name"
             android:inputType="text"
             android:padding="8dp"
             android:textSize="16sp" />
@@ -119,6 +119,15 @@
             android:inputType="textPassword"
             android:padding="8dp"
             android:textSize="16sp" />
+
+        <CheckBox
+            android:id="@+id/CbShowPasswordRegister"
+            android:layout_below="@+id/EtPasswordDaftar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:text="Show password"
+            android:textSize="12sp" />
 
 <!--        <EditText-->
 <!--            android:id="@+id/EtKonfirmasiSandi"-->
@@ -141,8 +150,8 @@
             android:id="@+id/relative5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/EtPasswordDaftar"
-            android:layout_marginTop="14dp">
+            android:layout_below="@+id/CbShowPasswordRegister"
+            android:layout_marginTop="19dp">
 
             <Button
                 android:id="@+id/BtnDaftar"

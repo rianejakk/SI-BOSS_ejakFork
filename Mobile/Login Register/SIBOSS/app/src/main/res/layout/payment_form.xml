@@ -3,16 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PaymentFormActivity"
     android:layout_marginHorizontal="7.5dp"
     android:layout_marginVertical="7.5dp">
+<!--    tools:context=".PaymentFormActivity">-->
 
     <ImageView
         android:id="@+id/logo"
         android:layout_width="200dp"
         android:layout_height="100dp"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/Logo" />
+        android:src="@drawable/textsibos" />
 
     <TextView
         android:id="@+id/no_pemesanan_title"
