@@ -35,6 +35,31 @@
     }
   }
 
+  if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    $pemberangkatan = $_POST['txt_pemberangkatan'];
+    $waktu_berangkat = $_POST['txt_waktu_berangkat'];
+    $tujuan = $_POST['txt_tujuan'];
+    $waktu_tiba = $_POST['txt_waktu_tiba'];
+    $harga = $_POST['txt_harga'];
+    if($obj->insertRute($pemberangkatan, $waktu_berangkat, $tujuan, $waktu_tiba, $harga)){
+      // echo '<div class="alert alert-success">Terminal Berhasil Ditambahkan</div>';
+    } else{
+      // echo '<div class="alert alert-danger">Terminal Gagal Ditambahkan</div>';
+    }
+  }
+
+  if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    $nik_penumpang = $_POST['txt_nik_penumpang'];
+    $nama_penumpang = $_POST['txt_nama_penumpang'];
+    $jenis_kelamin_penumpang = $_POST['txt_jenis_kelamin_penumpang'];
+    $no_hp_penumpang = $_POST['txt_no_hp_penumpang'];
+    if($obj->insertPenumpang($nik_penumpang, $nama_penumpang, $jenis_kelamin_penumpang, $no_hp_penumpang)){
+      // echo '<div class="alert alert-success">Terminal Berhasil Ditambahkan</div>';
+    } else{
+      // echo '<div class="alert alert-danger">Terminal Gagal Ditambahkan</div>';
+    }
+  }
+
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -729,9 +754,433 @@
                   </div>
                 </div>
               </div>
-              <div class="tab-pane fade" id="tabs-3" role="tabpanel" aria-labelledby="tab-3">Tab 3 content</div>
-              <div class="tab-pane fade" id="tabs-4" role="tabpanel" aria-labelledby="tab-4">Tab 4 content</div>
-            </div>
+              <!-- Tabs Rute -->
+              <div class="tab-content mb-5" id="ex1-content">
+                <div class="tab-pane fade show active" id="tabs-3" role="tabpanel" aria-labelledby="ex1-tab-3">
+                  <div class="row g-2 m-0">
+                    <div class="col-lg-12 p-0 m-0">
+                      <div class="card mb-4 roundedTabContent">
+                        <div class="card-header shadow roundedTabContent">
+                          <div class="title float-start">
+                            <span class="m-0"><b>Tabel Data Rute</b></span>
+                          </div>
+                          <div class="btnAction float-end">
+                            <button class="btn btn-light text-dark btn-circle custShadow2 me-2" data-bs-toggle="modal" data-bs-target="#tambahDataRute"><i class="fas fa-plus" data-bs-toggle="tooltip" title="Tambah Data"></i></button>
+                            <button class="btn btn-light text-danger btn-circle custShadow2" data-bs-toggle="modal" data-bs-target="#deleteDataRute"><i class="fas fa-trash" data-bs-toggle="tooltip" title="Hapus Data"></i></button>
+                          </div>
+                        </div>
+                        <div class="card-body">
+                          <div class="table-responsive">
+                            <table class="table table-hover dataTable" width="100%">
+                              <thead>
+                                <tr>
+                                  <th class="cb">
+                                    <span class="custom-checkbox">
+                                      <input type="checkbox" class="selectAll" />
+                                      <label for="selectAll"></label>
+                                    </span>
+                                  </th>
+                                  <th class="actions">Action</th>
+                                  <th class="id">Id </th>
+                                  <th class="pemberangkatan">Pemberangkatan</th>
+                                  <th class="waktu_berangkat">Waktu Berangkat</th>
+                                  <th class="tujuan">Tujuan</th>
+                                  <th class="waktu_tiba">Waktu Tiba</th>
+                                  <th class="harga">Harga</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <?php
+                                  $data = $obj->lihatRute();
+                                  $no = 1;
+                                  if($data->rowCount()>0){
+                                    if($sesLvl == 1){
+                                        $dis = "";
+                                    } else{
+                                        $dis = "disabled";
+                                    }
+                                    while($row=$data->fetch(PDO::FETCH_ASSOC)){
+                                      $id_rute = $row['id_rute'];
+                                      $pemberangkatan = $row['pemberangkatan'];
+                                      $waktu_berangkat = $row['waktu_berangkat'];
+                                      $tujuan = $row['tujuan'];
+                                      $waktu_tiba = $row['waktu_tiba'];
+                                      $harga = $row['harga'];
+                                  ?>
+                                <tr>
+                                  <td>
+                                    <span class="custom-checkbox">
+                                      <input type="checkbox" id="checkbox1" name="option[]" value="<?php echo $no; ?>" />
+                                      <label for="checkbox1"></label>
+                                    </span>
+                                  </td>
+                                  <td>
+                                    <a href="#" class="actionBtn" aria-label="Edit">
+                                      <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#editDataRute<?php echo $id_rute ?>" value="edit">
+                                        &nbsp;<i class="fa fa-edit fa-sm" data-bs-toggle="tooltip" title="Edit"></i>
+                                      </button>
+                                    </a>
+                                    <a href="#" class="actionBtn" aria-label="Delete">
+                                      <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteDataRute<?php echo $id_rute ?>" value="hapus">
+                                        <i class="fa fa-trash fa-sm" data-bs-toggle="tooltip" title="Delete"></i>
+                                      </button>
+                                    </a>
+
+                                    <!-- Edit Modal -->
+                                    <div id="editDataRute<?php echo $id_rute ?>" class="modal fade">
+                                      <div class="modal-dialog">
+                                        <div class="modal-content modal-edit">
+                                          <form role="form" action="editRute.php" method="POST">
+                                            <?php
+                                              $query = $obj->pilihRute($id_rute);
+                                              while ($row = $query->fetch(PDO::FETCH_ASSOC)){
+                                            ?>
+                                            <div class="modal-header">
+                                              <h4 class="modal-title">Edit Data Rute</h4>
+                                              <button type="button" class="btn btn-danger btn-circle btn-user2 shadow" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true">
+                                                <i class="fa fa-times fa-sm"></i>
+                                              </button>
+                                            </div>
+                                            <div class="modal-body">
+                                              <div class="row">
+                                                <div class="col-lg-12 mb-3" hidden>
+                                                  <label for="inputId" class="form-label">Id</label>
+                                                  <input type="text" class="form-control form-control-user2" id="inputId" name="txt_id_rute" value="<?php echo $id_rute?>" placeholder="" readonly/>
+                                                </div>
+                                              </div>
+
+                                              <div class="row">
+                                                <div class="col-lg-6 mb-3">
+                                                  <label for="inputPemberangkatan" class="form-label">Pemberangkatan</label>
+                                                  <input type="text" class="form-control form-control-user2" id="inputPemberangkatan" name="txt_pemberangkatan" placeholder="Ex: Tawang Alun" value="<?php echo $pemberangkatan?>"/>
+                                                </div>
+                                                <div class="col-lg-6 mb-3">
+                                                  <label for="inputWaktuBerangkat" class="form-label">Waktu Berangkat</label>
+                                                  <textarea class="form-control form-textarea-user" id="inputWaktuBerangkat" name="txt_waktu_berangkat" placeholder="Ex: 00.00" ><?php echo $waktu_berangkat ?></textarea>
+                                                </div>
+                                              </div>
+
+                                              <div class="row">
+                                                <div class="col-lg-6 mb-3">
+                                                  <label for="inputTujuan" class="form-label">Tujuan</label>
+                                                  <input type="text" class="form-control form-control-user2" id="inputTujuan" name="txt_tujuan" placeholder="Ex: Bungurasih" value="<?php echo $tujuan?>"/>
+                                                </div>
+                                                <div class="col-lg-6 mb-3">
+                                                  <label for="inputWaktuTiba" class="form-label">Waktu Tiba</label>
+                                                  <textarea class="form-control form-textarea-user" id="inputWaktuTiba" name="txt_waktu_tiba" placeholder="Ex: 06.00" ><?php echo $waktu_tiba ?></textarea>
+                                                </div>
+                                                <div class="col-lg-6 mb-3">
+                                                  <label for="inputHarga" class="form-label">Harga</label>
+                                                  <textarea class="form-control form-textarea-user" id="inputHarga" name="txt_harga" placeholder="Ex: 100000" ><?php echo $harga ?></textarea>
+                                                </div>
+                                              </div>
+                                              
+                                              <div class="modal-footer">
+                                                <button class="btn btn-secondary roundedBtn" type="button" data-dismiss="modal">Batal</button>
+                                                <button type="submit" class="btn text-white colorPrimary roundedBtn" name="simpan">Update</button>
+                                              </div>
+                                            </div>
+                                          </form>
+                                          <?php 
+                                            }
+                                          ?> 
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <!-- Delete Modal -->
+                                    <div id="deleteDataRute<?php echo $id_rute; ?>" class="modal fade">
+                                      <div class="modal-dialog">
+                                        <div class="modal-content">
+                                          <form action="">
+                                            <div class="modal-header">
+                                              <h4 class="modal-title">Hapus Rute</h4>
+                                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                              <p>Apakah Anda yakin ingin menghapus data rute ini ?</p>
+                                              <p class="text-warning"><small>Perlu hati-hati karena data akan hilang selamanya !</small></p>
+                                            </div>
+                                            <div class="modal-footer">
+                                              <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+                                              <a class="btn btn-danger" href="hapusRute.php?id_rute=<?php echo $id_rute; ?>">Hapus</a>
+                                            </div>
+                                          </form>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </td>
+                                  <td><?php echo $no; ?></td>
+                                  <td><?php echo $pemberangkatan; ?></td>
+                                  <td><?php echo $waktu_berangkat; ?></td>
+                                  <td><?php echo $tujuan; ?></td>
+                                  <td><?php echo $waktu_tiba; ?></td>
+                                  <td><?php echo $harga; ?></td>
+                                </tr>
+                                <?php
+                                  $no++;
+                                  }}
+                                ?>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+
+                        <!-- Tambah Modal -->
+                        <div id="tambahDataRute" class="modal fade">
+                          <div class="modal-dialog">
+                            <div class="modal-content modal-edit">
+                              <form role="form" action="sumberData.php" method="POST">
+                                <div class="modal-header">
+                                  <h4 class="modal-title">Tambah Data Rute</h4>
+                                  <button type="button" class="btn btn-danger btn-circle btn-user2 shadow" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true">
+                                    <i class="fa fa-times fa-sm"></i>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  <div class="row">
+                                    <div class="col-lg-6 mb-3">
+                                      <label for="inputPemberangkatan" class="form-label">Pemberangkatan</label>
+                                      <input type="text" class="form-control form-control-user2" id="inputPemberangkatan" name="txt_pemberangkatan" placeholder="Ex: Tawang Alun" />
+                                    </div>
+                                    <div class="col-lg-6 mb-3">
+                                      <label for="inputWaktuBerangkat" class="form-label">Waktu Berangkat</label>
+                                      <textarea class="form-control form-textarea-user" id="inputWaktuBerangkat" name="txt_waktu_berangkat" placeholder="Ex: 00.00"></textarea>
+                                    </div>
+                                  </div>
+
+                                  <div class="row">
+                                    <div class="col-lg-6 mb-3">
+                                      <label for="inputTujuan" class="form-label">Tujuan</label>
+                                      <input type="text" class="form-control form-control-user2" id="inputTujuan" name="txt_tujuan" placeholder="Ex: Bungurasih" />
+                                    </div>
+                                    <div class="col-lg-6 mb-3">
+                                      <label for="inputWaktuTiba" class="form-label">Waktu Tiba</label>
+                                      <textarea class="form-control form-textarea-user" id="inputWaktuTiba" name="txt_waktu_tiba" placeholder="Ex: 06.00"></textarea>
+                                    </div>
+                                    <div class="col-lg-6 mb-3">
+                                      <label for="inputHarga" class="form-label">Harga</label>
+                                      <input type="text" class="form-control form-control-user2" id="inputHarga" name="txt_harga" placeholder="Ex: 100000" />
+                                    </div>
+                                  </div>
+                                  
+                                  <div class="modal-footer">
+                                    <input type="button" class="btn btn-secondary roundedBtn" data-bs-dismiss="modal" value="Cancel" />
+                                    <input type="submit" name="simpan" class="btn colorPrimary text-white roundedBtn" value="Simpan" />
+                                  </div>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Tabs Penumpang   -->
+                <div class="tab-content mb-5" id="ex1-content">
+                <div class="tab-pane fade show active" id="tabs-4" role="tabpanel" aria-labelledby="ex1-tab-4">
+                  <div class="row g-2 m-0">
+                    <div class="col-lg-12 p-0 m-0">
+                      <div class="card mb-4 roundedTabContent">
+                        <div class="card-header shadow roundedTabContent">
+                          <div class="title float-start">
+                            <span class="m-0"><b>Tabel Data Penumpang</b></span>
+                          </div>
+                          <div class="btnAction float-end">
+                            <button class="btn btn-light text-dark btn-circle custShadow2 me-2" data-bs-toggle="modal" data-bs-target="#tambahDataPenumpang"><i class="fas fa-plus" data-bs-toggle="tooltip" title="Tambah Data"></i></button>
+                            <button class="btn btn-light text-danger btn-circle custShadow2" data-bs-toggle="modal" data-bs-target="#deleteDataPenumpang"><i class="fas fa-trash" data-bs-toggle="tooltip" title="Hapus Data"></i></button>
+                          </div>
+                        </div>
+                        <div class="card-body">
+                          <div class="table-responsive">
+                            <table class="table table-hover dataTable" width="100%">
+                              <thead>
+                                <tr>
+                                  <th class="cb">
+                                    <span class="custom-checkbox">
+                                      <input type="checkbox" class="selectAll" />
+                                      <label for="selectAll"></label>
+                                    </span>
+                                  </th>
+                                  <th class="actions">Action</th>
+                                  <th class="nik">NIK Penumpang </th>
+                                  <th class="nama">Nama Penumpang</th>
+                                  <th class="jk">Jenis Kelamin</th>
+                                  <th class="no_hp">No Handphone</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <?php
+                                  $data = $obj->lihatPenumpang();
+                                  $no = 1;
+                                  if($data->rowCount()>0){
+                                    if($sesLvl == 1){
+                                        $dis = "";
+                                    } else{
+                                        $dis = "disabled";
+                                    }
+                                    while($row=$data->fetch(PDO::FETCH_ASSOC)){
+                                      $nik_penumpang = $row['nik_penumpang'];
+                                      $nama_penumpang = $row['nama_penumpang'];
+                                      $jenis_kelamin_penumpang = $row['jenis_kelamin_penumpang'];
+                                      $no_hp_penumpang = $row['no_hp_penumpang'];
+                                  ?>
+                                <tr>
+                                  <td>
+                                    <span class="custom-checkbox">
+                                      <input type="checkbox" id="checkbox1" name="option[]" value="<?php echo $no; ?>" />
+                                      <label for="checkbox1"></label>
+                                    </span>
+                                  </td>
+                                  <td>
+                                    <a href="#" class="actionBtn" aria-label="Edit">
+                                      <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#editDataPenumpang<?php echo $nik_penumpang ?>" value="edit">
+                                        &nbsp;<i class="fa fa-edit fa-sm" data-bs-toggle="tooltip" title="Edit"></i>
+                                      </button>
+                                    </a>
+                                    <a href="#" class="actionBtn" aria-label="Delete">
+                                      <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteDataPenumpang<?php echo $nik_penumpang ?>" value="hapus">
+                                        <i class="fa fa-trash fa-sm" data-bs-toggle="tooltip" title="Delete"></i>
+                                      </button>
+                                    </a>
+
+                                    <!-- Edit Modal -->
+                                    <div id="editDataPenumpang<?php echo $nik_penumpang ?>" class="modal fade">
+                                      <div class="modal-dialog">
+                                        <div class="modal-content modal-edit">
+                                          <form role="form" action="editPenumpang.php" method="POST">
+                                            <?php
+                                              $query = $obj->pilihPenumpang($nik_penumpang);
+                                              while ($row = $query->fetch(PDO::FETCH_ASSOC)){
+                                            ?>
+                                            <div class="modal-header">
+                                              <h4 class="modal-title">Edit Data Penumpang</h4>
+                                              <button type="button" class="btn btn-danger btn-circle btn-user2 shadow" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true">
+                                                <i class="fa fa-times fa-sm"></i>
+                                              </button>
+                                            </div>
+                                            <div class="modal-body">
+                                              <div class="row">
+                                                <div class="col-lg-6 mb-3">
+                                                  <label for="inputNik" class="form-label">NIK Penumpang</label>
+                                                  <input type="text" class="form-control form-control-user2" id="inputNik" name="txt_nik_penumpang" placeholder="Ex: 3509030907020006" value="<?php echo $nik_penumpang?>" placeholder="" readonly/>
+                                                </div>
+                                                <div class="col-lg-6 mb-3">
+                                                  <label for="inputNamaPenumpang" class="form-label">Nama Penumpang</label>
+                                                  <input type="text" class="form-control form-control-user2" id="inputNamaPenumpang" name="txt_nama_penumpang" placeholder="Ex: Budi Santoso" value="<?php echo $nama_penumpang?>"/>
+                                                </div>
+                                                
+                                              </div>
+
+                                              <div class="row">
+                                                <div class="col-lg-6 mb-3">
+                                                  <label for="inputWaktuBerangkat" class="form-label">Jenis Kelamin</label>
+                                                  <textarea class="form-control form-textarea-user" id="inputWaktuBerangkat" name="txt_jenis_kelamin_penumpang" placeholder="Ex: Laki-laki" ><?php echo $jenis_kelamin_penumpang ?></textarea>
+                                                </div>
+                                                <div class="col-lg-6 mb-3">
+                                                  <label for="inputNoHp" class="form-label">No Handphone</label>
+                                                  <input type="text" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp_penumpang" placeholder="Ex: 085808241204" value="<?php echo $no_hp_penumpang?>"/>
+                                                </div>
+                                              </div>
+                                              
+                                              <div class="modal-footer">
+                                                <button class="btn btn-secondary roundedBtn" type="button" data-dismiss="modal">Batal</button>
+                                                <button type="submit" class="btn text-white colorPrimary roundedBtn" name="simpan">Update</button>
+                                              </div>
+                                            </div>
+                                          </form>
+                                          <?php 
+                                            }
+                                          ?> 
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <!-- Delete Modal -->
+                                    <div id="deleteDataPenumpang<?php echo $nik_penumpang; ?>" class="modal fade">
+                                      <div class="modal-dialog">
+                                        <div class="modal-content">
+                                          <form action="">
+                                            <div class="modal-header">
+                                              <h4 class="modal-title">Hapus Penumpang</h4>
+                                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                              <p>Apakah Anda yakin ingin menghapus data penumpang ini ?</p>
+                                              <p class="text-warning"><small>Perlu hati-hati karena data akan hilang selamanya !</small></p>
+                                            </div>
+                                            <div class="modal-footer">
+                                              <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+                                              <a class="btn btn-danger" href="hapusPenumpang.php?nik_penumpang=<?php echo $nik_penumpang; ?>">Hapus</a>
+                                            </div>
+                                          </form>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </td>
+                                  <td><?php echo $nik_penumpang; ?></td>
+                                  <td><?php echo $nama_penumpang; ?></td>
+                                  <td><?php echo $jenis_kelamin_penumpang; ?></td>
+                                  <td><?php echo $no_hp_penumpang; ?></td>
+                                </tr>
+                                <?php
+                                  $no++;
+                                  }}
+                                ?>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+
+                        <!-- Tambah Modal -->
+                        <div id="tambahDataPenumpang" class="modal fade">
+                          <div class="modal-dialog">
+                            <div class="modal-content modal-edit">
+                              <form role="form" action="sumberData.php" method="POST">
+                                <div class="modal-header">
+                                  <h4 class="modal-title">Tambah Data Penumpang</h4>
+                                  <button type="button" class="btn btn-danger btn-circle btn-user2 shadow" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true">
+                                    <i class="fa fa-times fa-sm"></i>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  <div class="row">
+                                    <div class="col-lg-6 mb-3">
+                                      <label for="inputNikPenumpang" class="form-label">NIK Penumpang</label>
+                                      <input type="text" class="form-control form-control-user2" id="inputNikPenumpang" name="txt_nik_penumpang" placeholder="Ex: 3509030907020006" />
+                                    </div>
+                                    <div class="col-lg-6 mb-3">
+                                      <label for="inputNamaPenumpang" class="form-label">Nama Penumpang</label>
+                                      <input type="text" class="form-control form-control-user2" id="inputNamaPenumpang" name="txt_nama_penumpang" placeholder="Ex: Budi Santoso" />
+                                    </div>
+                                  </div>
+
+                                  <div class="row">
+                                    <div class="col-lg-6 mb-3">
+                                      <label for="inputWaktuBerangkat" class="form-label">Jenis Kelamin</label>
+                                      <textarea class="form-control form-textarea-user" id="inputWaktuBerangkat" name="txt_jenis_kelamin_penumpang" placeholder="Ex: Laki-Laki"></textarea>
+                                    </div>
+                                    <div class="col-lg-6 mb-3">
+                                      <label for="inputNoHp" class="form-label">No Handphone</label>
+                                      <input type="text" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp_penumpang" placeholder="Ex: 085808241204" />
+                                    </div>
+                                  </div>
+                                  
+                                  <div class="modal-footer">
+                                    <input type="button" class="btn btn-secondary roundedBtn" data-bs-dismiss="modal" value="Cancel" />
+                                    <input type="submit" name="simpan" class="btn colorPrimary text-white roundedBtn" value="Simpan" />
+                                  </div>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
           </div>
         </div>
       </div>
