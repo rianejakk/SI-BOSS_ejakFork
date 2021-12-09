@@ -1,39 +1,53 @@
-<!-- <?php
-require('koneksi.php');
+<?php
+  require('koneksi.php');
+  require('query.php');
+  $obj = new crud;
 
-session_start();
+  session_start();
 
-if(!isset($_SESSION['email'])){
-    header('Location: index.php');
-}
+  if(!isset($_SESSION['email'])){
+      header('Location: index.php');
+  }
 
-$sesName = $_SESSION['name'];
+  $sesID = $_SESSION['id'];
+  $sesName = $_SESSION['name'];
+  $sesLvl = $_SESSION['level'];
+  
+  if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    $nama = $_POST['txt_nama'];
+    $jenis_kelamin = $_POST['Rbtn_jenis_kelamin'];
+    $alamat = $_POST['txt_alamat'];
+    $no_hp = $_POST['txt_no_hp'];
+    $foto = $_POST['txt_foto'];
+    $id_level = $_POST['txt_id_level'];
+    $id_terminal = $_POST['txt_id_terminal'];
+    $email = $_POST['txt_email'];
+    $password = $_POST['txt_password'];
 
-$email = $_GET['nama'];
-if(isset ($_POST['submit'])){
-  $nama = $_POST['txt_nama'];
-  $jenis_kelamin = $_POST['Rbtn_jenis_kelamin'];
-  $alamat = $_POST['txt_alamat'];
-  $no_hp = $_POST['txt_no_hp'];
-  // $foto = $_POST['txt_foto'];
-  // $status = $_POST['txt_status'];
-  // $id_terminal = $_POST['txt_id_terminal'];
-  $email = $_POST['txt_email'];
-  $password = $_POST['txt_password'];
+    if($obj->insertAdministrator($nama, $jenis_kelamin, $alamat, $no_hp, $foto, $id_level, $id_jenis, $email, $password)){
+      // echo '<div class="alert alert-success">Terminal Berhasil Ditambahkan</div>';
+    } else{
+      // echo '<div class="alert alert-danger">Terminal Gagal Ditambahkan</div>';
+    }
+  }
 
-  $nama_terminal = $_POST['txt_nama_terminal'];
-  $alamat_terminal = $_POST['txt_detail_alamat_terminal'];
-  $provinsi = $_POST['d_provinsi_terminal'];
-  $kabupaten = $_POST['d_kabupaten_terminal'];
-  $kecamatan = $_POST['d_kecamatan_terminal'];
+  if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    $nama_user = $_POST['txt_nama_user'];
+    $tempat_lahir_user = $_POST['txt_tempat_lahir_user'];
+    $tanggal_lahir_user = $_POST['txt_tanggal_lahir_user'];
+    $jenis_kelamin_user = $_POST['Rbtn_jenis_kelamin_user'];
+    $alamat_user = $_POST['txt_alamat_user'];
+    $no_hp_user = $_POST['txt_no_hp_user'];
+    $foto_user = $_POST['txt_foto_user'];
+    $email_user = $_POST['txt_email_user'];
+    $password_user = $_POST['txt_password_user'];
 
-  $query = "UPDATE INTO administrator VALUES ('', '$nama', '$jenis_kelamin', '$alamat', '$no_hp', '', 2, '1', '$email', '$password')";
-  $query2 = "INSERT INTO terminal VALUES ('', '$nama_terminal', '$alamat_terminal', '$provinsi', '$kabupaten','$kecamatan')";
-  $result = mysqli_query($koneksi, $query);
-  $result = mysqli_query($koneksi, $query2);
-  header('Location: registrasi.php');
-  echo mysqli_error($result);
-}
+    if($obj->insertUser($nama_user, $tempat_lahir_user, $tanggal_lahir_user, $jenis_kelamin_user, $alamat_user, $no_hp_user, $foto_user, $email_user, $password_user)){
+      // echo '<div class="alert alert-success">Terminal Berhasil Ditambahkan</div>';
+    } else{
+      // echo '<div class="alert alert-danger">Terminal Gagal Ditambahkan</div>';
+    }
+  }
 ?> -->
 <!DOCTYPE html>
 <html lang="en">
@@ -394,7 +408,7 @@ if(isset ($_POST['submit'])){
                                             while ($row = $query->fetch(PDO::FETCH_ASSOC)){
                                           ?>
                                           <div class="modal-header">
-                                            <h4 class="modal-title">Edit Data User</h4>
+                                            <h4 class="modal-title">Edit Data Administrator</h4>
                                             <button type="button" class="btn btn-danger btn-circle btn-user2 shadow" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true">
                                               <i class="fa fa-times fa-sm"></i>
                                             </button>
@@ -403,39 +417,54 @@ if(isset ($_POST['submit'])){
                                             <div class="row">
                                               <div class="col-lg-12 mb-3" hidden>
                                                 <label for="inputId" class="form-label">Id</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputId" name="txt_id_terminal" value="<?php echo $id_terminal?>" placeholder="" readonly/>
+                                                <input type="text" class="form-control form-control-user2" id="inputId" name="txt_id_user_admin" value="<?php echo $id_user_admin?>" placeholder="" readonly/>
                                               </div>
                                             </div>
 
                                             <div class="row">
                                               <div class="col-lg-6 mb-3">
-                                                <label for="inputTerminal" class="form-label">Nama Terminal</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputTerminal" name="txt_nama_terminal" placeholder="Ex: Tawang Alun" value="<?php echo $terminal?>"/>
-                                              </div>
-                                              <div class="col-lg-6 mb-3">
-                                                <label for="inputAlamat" class="form-label">Alamat Terminal</label>
-                                                <textarea class="form-control form-textarea-user" id="inputAlamat" name="txt_detail_alamat_terminal" placeholder="Ex: Jl. Dharmawangsa" ><?php echo $alamat ?></textarea>
-                                              </div>
-                                              <div class="col-lg-12 mb-3">
-                                                <label for="inputProvinsi" class="form-label">Provinsi</label>
-                                                <select class="form-select form-select-user" aria-label=".form-select-sm example" name="d_provinsi_terminal" id="propinsi">
-                                                  <option disabled selected>Pilih Provinsi</option>
-                                                </select>
+                                                <label for="inputNama" class="form-label">Nama</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputNama" name="txt_nama" placeholder="Ex: Budi Santoso" value="<?php echo $nama?>"/>
                                               </div>
                                             </div>
 
                                             <div class="row">
                                               <div class="col-lg-6 mb-3">
-                                                <label for="inputKabupaten" class="form-label">Kota</label>
-                                                <select class="form-select form-select-user" aria-label=".form-select-sm example" name="d_kabupaten_terminal" id="kabupaten">
-                                                  <option disabled selected>Pilih kota</option>
-                                                </select>
+                                                <label for="inputAlamat" class="form-label">Alamat</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputAlamat" name="txt_alamat" placeholder="Ex: Jl. Dharmawangsa" value="<?php echo $alamat?>"/>
                                               </div>
                                               <div class="col-lg-6 mb-3">
-                                                <label for="inputKecamatan" class="form-label">Kecamatan</label>
-                                                <select class="form-select form-select-user" aria-label=".form-select-sm example" name="d_kecamatan_terminal" id="kecamatan">
-                                                  <option disabled selected>Pilih Kecamatan</option>
-                                                </select>
+                                                <label for="inputNoHp" class="form-label">No Handphone</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp" placeholder="Ex: 085808241205" value="<?php echo $no_hp?>"/>
+                                              </div>
+                                            </div>
+
+                                            <div class="row">
+                                              <div class="col-lg-6 mb-3">
+                                                <label for="inputFoto" class="form-label">Foto</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputFoto" name="txt_foto" placeholder="Ex:" value="<?php echo $foto?>"/>
+                                              </div>
+                                              <div class="col-lg-6 mb-3">
+                                                <label for="inputIdLevel" class="form-label">ID Level</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputIdLevel" name="txt_id_level" placeholder="Ex: 2" value="<?php echo $id_level?>"/>
+                                              </div>
+                                            </div>
+
+                                            <div class="row">
+                                              <div class="col-lg-6 mb-3">
+                                                <label for="inputIdTerminal" class="form-label">ID Terminal</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputIdTerminal" name="txt_id_terminal" placeholder="Ex: 1" value="<?php echo $id_terminal?>"/>
+                                              </div>
+                                              <div class="col-lg-6 mb-3">
+                                                <label for="inputEmail" class="form-label">Email</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputEmail" name="txt_email" placeholder="Ex: admin@gmail.com" value="<?php echo $email?>"/>
+                                              </div>
+                                            </div>
+
+                                            <div class="row">
+                                              <div class="col-lg-6 mb-3">
+                                                <label for="inputPassword" class="form-label">Password</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputPassword" name="txt_password" placeholder="Ex: ********" value="<?php echo $password?>"/>
                                               </div>
                                             </div>
                                             
@@ -453,21 +482,21 @@ if(isset ($_POST['submit'])){
                                   </div>
 
                                   <!-- Delete Modal -->
-                                  <div id="deleteDataTerminal<?php echo $id_terminal; ?>" class="modal fade">
+                                  <div id="deleteDataAdministrator<?php echo $id_user_admin; ?>" class="modal fade">
                                     <div class="modal-dialog">
                                       <div class="modal-content">
                                         <form action="">
                                           <div class="modal-header">
-                                            <h4 class="modal-title">Hapus Terminal</h4>
+                                            <h4 class="modal-title">Hapus Administrator</h4>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true"></button>
                                           </div>
                                           <div class="modal-body">
-                                            <p>Apakah Anda yakin ingin menghapus data terminal ini ?</p>
+                                            <p>Apakah Anda yakin ingin menghapus data administrator ini ?</p>
                                             <p class="text-warning"><small>Perlu hati-hati karena data akan hilang selamanya !</small></p>
                                           </div>
                                           <div class="modal-footer">
                                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                                            <a class="btn btn-danger" href="hapusTerminal.php?id_terminal=<?php echo $id_terminal; ?>">Hapus</a>
+                                            <a class="btn btn-danger" href="hapusAdministrator.php?id_user_admin=<?php echo $id_user_admin; ?>">Hapus</a>
                                           </div>
                                         </form>
                                       </div>
@@ -475,11 +504,277 @@ if(isset ($_POST['submit'])){
                                   </div>
                                 </td>
                                 <td><?php echo $no; ?></td>
-                                <td><?php echo $terminal; ?></td>
+                                <td><?php echo $nama; ?></td>
+                                <td><?php echo $jenis_kelamin; ?></td>
                                 <td><?php echo $alamat; ?></td>
-                                <td><?php echo $provinsi; ?></td>
-                                <td><?php echo $kabupaten; ?></td>
-                                <td><?php echo $kecamatan; ?></td>
+                                <td><?php echo $no_hp; ?></td>
+                                <td><?php echo $foto; ?></td>
+                                <td><?php echo $id_level?></td>
+                                <td><?php echo $id_terminal?></td>
+                                <td><?php echo $email?></td>
+                                <td><?php echo $password?></td>
+                              </tr>
+                              <?php
+                                $no++;
+                                }}
+                              ?>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+
+                      <!-- Tambah Modal -->
+                      <div id="tambahDataAdministrator" class="modal fade">
+                        <div class="modal-dialog">
+                          <div class="modal-content modal-edit">
+                            <form role="form" action="dataAkun.php" method="POST">
+                              <div class="modal-header">
+                                <h4 class="modal-title">Tambah Data Terminal</h4>
+                                <button type="button" class="btn btn-danger btn-circle btn-user2 shadow" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true">
+                                  <i class="fa fa-times fa-sm"></i>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                <div class="row">
+                                  <div class="col-lg-6 mb-3">
+                                    <label for="inputTerminal" class="form-label">Nama Terminal</label>
+                                    <input type="text" class="form-control form-control-user2" id="inputTerminal" name="txt_nama_terminal" placeholder="Ex: Tawang Alun" />
+                                  </div>
+                                  <div class="col-lg-6 mb-3">
+                                    <label for="inputAlamat" class="form-label">Alamat Terminal</label>
+                                    <textarea class="form-control form-textarea-user" id="inputAlamat" name="txt_detail_alamat_terminal" placeholder="Ex: Jl. Dharmawangsa"></textarea>
+                                  </div>
+                                  <div class="col-lg-12 mb-3">
+                                    <label for="inputProvinsi" class="form-label">Provinsi</label>
+                                    <select class="form-select form-select-user" aria-label=".form-select-sm example" name="d_provinsi_terminal" id="propinsi" >
+                                      <option disabled selected>Pilih Provinsi</option>
+                                    </select>
+                                  </div>
+                                </div>
+
+                                <div class="row">
+                                  <div class="col-lg-6 mb-3">
+                                    <label for="inputKabupaten" class="form-label">Kota</label>
+                                    <select class="form-select form-select-user" aria-label=".form-select-sm example" name="d_kabupaten_terminal" id="kabupaten">
+                                      <option disabled selected>Pilih kota</option>
+                                    </select>
+                                  </div>
+                                  <div class="col-lg-6 mb-3">
+                                    <label for="inputKecamatan" class="form-label">Kecamatan</label>
+                                    <select class="form-select form-select-user" aria-label=".form-select-sm example" name="d_kecamatan_terminal" id="kecamatan">
+                                      <option disabled selected>Pilih Kecamatan</option>
+                                    </select>
+                                  </div>
+                                </div>
+                                
+                                <div class="modal-footer">
+                                  <input type="button" class="btn btn-secondary roundedBtn" data-bs-dismiss="modal" value="Cancel" />
+                                  <input type="submit" name="simpan" class="btn colorPrimary text-white roundedBtn" value="Simpan" />
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Tabs User -->
+              <div class="tab-pane fade" id="tabs-2" role="tabpanel" aria-labelledby="ex1-tab-2">
+                <div class="row g-2 m-0">
+                  <div class="col-lg-12 p-0 m-0">
+                    <div class="card mb-4 roundedTabContent">
+                      <div class="card-header shadow roundedTabContent">
+                        <div class="title float-start">
+                          <span class="m-0"><b>Tabel Data User</b></span>
+                        </div>
+                        <div class="btnAction float-end">
+                          <button class="btn btn-light text-dark btn-circle custShadow2 me-2" data-bs-toggle="modal" data-bs-target="#tambahDataUser"><i class="fas fa-plus" data-bs-toggle="tooltip" title="Tambah Data"></i></button>
+                          <button class="btn btn-light text-danger btn-circle custShadow2" data-bs-toggle="modal" data-bs-target="#deleteDataUser"><i class="fas fa-trash" data-bs-toggle="tooltip" title="Hapus Data"></i></button>
+                        </div>
+                      </div>
+                      <div class="card-body">
+                        <div class="table-responsive">
+                          <table class="table table-hover dataTable" width="100%">
+                            <thead>
+                              <tr>
+                                <th class="cb">
+                                  <span class="custom-checkbox">
+                                    <input type="checkbox" class="selectAll" />
+                                    <label for="selectAll"></label>
+                                  </span>
+                                </th>
+                                <th class="actions">Action</th>
+                                <th class="id">NIK</th>
+                                <th class="nama">Nama</th>
+                                <th class="tempat">Tempat Lahir</th>
+                                <th class="tanggal">Tanggal Lahir</th>
+                                <th class="jk">Jenis Kelamin</th>
+                                <th class="alamat">Alamat</th>
+                                <th class="nohp">No Handphone</th>
+                                <th class="foto">Foto</th>
+                                <th class="email">Email</th>
+                                <th class="password">Password</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <?php
+                                $data = $obj->lihatUser();
+                                $no = 1;
+                                if($data->rowCount()>0){
+                                  if($sesLvl == 1){
+                                      $dis = "";
+                                  } else{
+                                      $dis = "disabled";
+                                  }
+                                  while($row=$data->fetch(PDO::FETCH_ASSOC)){
+                                    $nik_user = $row['nik_user'];
+                                    $nama_user = $row['nama_user'];
+                                    $tempat_lahir_user = $row['tempat_lahir_user'];
+                                    $tanggal_lahir_user = $row['tanggal_lahir_user'];
+                                    $jenis_kelamin_user = $row['jenis_kelamin_user'];
+                                    $alamat_user = $row['alamat_user'];
+                                    $no_hp_user = $row['no_hp_user'];
+                                    $foto_user = $row['foto_user'];
+                                    $email_user = $row['email_user'];
+                                    $password_user = $row['password_user'];
+                                ?>
+                              <tr>
+                                <td>
+                                  <span class="custom-checkbox">
+                                    <input type="checkbox" id="checkbox1" name="option[]" value="<?php echo $no; ?>" />
+                                    <label for="checkbox1"></label>
+                                  </span>
+                                </td>
+                                <td>
+                                  <a href="#" class="actionBtn" aria-label="Edit">
+                                    <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#editDataUser<?php echo $nik_user ?>" value="edit">
+                                      &nbsp;<i class="fa fa-edit fa-sm" data-bs-toggle="tooltip" title="Edit"></i>
+                                    </button>
+                                  </a>
+                                  <a href="#" class="actionBtn" aria-label="Delete">
+                                    <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteDataUser<?php echo $nik_user ?>" value="hapus">
+                                      <i class="fa fa-trash fa-sm" data-bs-toggle="tooltip" title="Delete"></i>
+                                    </button>
+                                  </a>
+
+                                   <!-- Edit Modal -->
+                                  <div id="editDataUser<?php echo $nik_user ?>" class="modal fade">
+                                    <div class="modal-dialog">
+                                      <div class="modal-content modal-edit">
+                                        <form role="form" action="editUser.php" method="POST">
+                                          <?php
+                                            $query = $obj->pilihUser($nik_user);
+                                            while ($row = $query->fetch(PDO::FETCH_ASSOC)){
+                                          ?>
+                                          <div class="modal-header">
+                                            <h4 class="modal-title">Edit Data User</h4>
+                                            <button type="button" class="btn btn-danger btn-circle btn-user2 shadow" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true">
+                                              <i class="fa fa-times fa-sm"></i>
+                                            </button>
+                                          </div>
+                                          <div class="modal-body">
+                                            <div class="row">
+                                              <div class="col-lg-12 mb-3" hidden>
+                                                <label for="inputId" class="form-label">Id</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputId" name="txt_id_user_admin" value="<?php echo $id_user_admin?>" placeholder="" readonly/>
+                                              </div>
+                                            </div>
+
+                                            <div class="row">
+                                              <div class="col-lg-6 mb-3">
+                                                <label for="inputNama" class="form-label">Nama</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputNama" name="txt_nama" placeholder="Ex: Budi Santoso" value="<?php echo $nama?>"/>
+                                              </div>
+                                            </div>
+
+                                            <div class="row">
+                                              <div class="col-lg-6 mb-3">
+                                                <label for="inputAlamat" class="form-label">Alamat</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputAlamat" name="txt_alamat" placeholder="Ex: Jl. Dharmawangsa" value="<?php echo $alamat?>"/>
+                                              </div>
+                                              <div class="col-lg-6 mb-3">
+                                                <label for="inputNoHp" class="form-label">No Handphone</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp" placeholder="Ex: 085808241205" value="<?php echo $no_hp?>"/>
+                                              </div>
+                                            </div>
+
+                                            <div class="row">
+                                              <div class="col-lg-6 mb-3">
+                                                <label for="inputFoto" class="form-label">Foto</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputFoto" name="txt_foto" placeholder="Ex:" value="<?php echo $foto?>"/>
+                                              </div>
+                                              <div class="col-lg-6 mb-3">
+                                                <label for="inputIdLevel" class="form-label">ID Level</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputIdLevel" name="txt_id_level" placeholder="Ex: 2" value="<?php echo $id_level?>"/>
+                                              </div>
+                                            </div>
+
+                                            <div class="row">
+                                              <div class="col-lg-6 mb-3">
+                                                <label for="inputIdTerminal" class="form-label">ID Terminal</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputIdTerminal" name="txt_id_terminal" placeholder="Ex: 1" value="<?php echo $id_terminal?>"/>
+                                              </div>
+                                              <div class="col-lg-6 mb-3">
+                                                <label for="inputEmail" class="form-label">Email</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputEmail" name="txt_email" placeholder="Ex: admin@gmail.com" value="<?php echo $email?>"/>
+                                              </div>
+                                            </div>
+
+                                            <div class="row">
+                                              <div class="col-lg-6 mb-3">
+                                                <label for="inputPassword" class="form-label">Password</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputPassword" name="txt_password" placeholder="Ex: ********" value="<?php echo $password?>"/>
+                                              </div>
+                                            </div>
+                                            
+                                            <div class="modal-footer">
+                                              <button class="btn btn-secondary roundedBtn" type="button" data-dismiss="modal">Batal</button>
+                                              <button type="submit" class="btn text-white colorPrimary roundedBtn" name="simpan">Update</button>
+                                            </div>
+                                          </div>
+                                        </form>
+                                        <?php 
+                                          }
+                                        ?> 
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                  <!-- Delete Modal -->
+                                  <div id="deleteDataUser<?php echo $nik_user; ?>" class="modal fade">
+                                    <div class="modal-dialog">
+                                      <div class="modal-content">
+                                        <form action="">
+                                          <div class="modal-header">
+                                            <h4 class="modal-title">Hapus User</h4>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true"></button>
+                                          </div>
+                                          <div class="modal-body">
+                                            <p>Apakah Anda yakin ingin menghapus data administrator ini ?</p>
+                                            <p class="text-warning"><small>Perlu hati-hati karena data akan hilang selamanya !</small></p>
+                                          </div>
+                                          <div class="modal-footer">
+                                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+                                            <a class="btn btn-danger" href="hapusUser.php?nik_user=<?php echo $nik_user; ?>">Hapus</a>
+                                          </div>
+                                        </form>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </td>
+                                <td><?php echo $nik_user; ?></td>
+                                <td><?php echo $nama_user; ?></td>
+                                <td><?php echo $tempat_lahir_user; ?></td>
+                                <td><?php echo $tanggal_lahir_user; ?></td>
+                                <td><?php echo $jenis_kelamin_user; ?></td>
+                                <td><?php echo $alamat_user; ?></td>
+                                <td><?php echo $no_hp_user; ?></td>
+                                <td><?php echo $foto_user; ?></td>
+                                <td><?php echo $email_user?></td>
+                                <td><?php echo $password_user?></td>
                               </tr>
                               <?php
                                 $no++;
@@ -534,189 +829,6 @@ if(isset ($_POST['submit'])){
                                   </div>
                                 </div>
                                 
-                                <div class="modal-footer">
-                                  <input type="button" class="btn btn-secondary roundedBtn" data-bs-dismiss="modal" value="Cancel" />
-                                  <input type="submit" name="simpan" class="btn colorPrimary text-white roundedBtn" value="Simpan" />
-                                </div>
-                              </div>
-                            </form>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Tab Jenis Bus -->
-              <div class="tab-pane fade" id="tabs-2" role="tabpanel" aria-labelledby="tab-2">
-                <div class="row g-2 m-0">
-                  <div class="col-lg-12 p-0 m-0">
-                    <div class="card mb-4 roundedTabContent">
-                      <div class="card-header shadow roundedTabContent">
-                        <div class="title float-start">
-                          <span class="m-0"><b>Tabel Jenis Bus</b></span>
-                        </div>
-                        <div class="btnAction float-end">
-                          <button class="btn btn-light text-dark btn-circle custShadow2 me-2" data-bs-toggle="modal" data-bs-target="#tambahDataJenisBus"><i class="fas fa-plus" data-bs-toggle="tooltip" title="Tambah Data"></i></button>
-                          <button class="btn btn-light text-danger btn-circle custShadow2" data-bs-toggle="modal" data-bs-target="#deleteDataJenisBus"><i class="fas fa-trash" data-bs-toggle="tooltip" title="Hapus Data"></i></button>
-                        </div>
-                      </div>
-                      <div class="card-body">
-                        <div class="table-responsive">
-                          <table class="table table-hover dataTable" width="100%">
-                            <thead>
-                              <tr>
-                                <th class="cb">
-                                  <span class="custom-checkbox">
-                                    <input type="checkbox" class="selectAll" />
-                                    <label for="selectAll"></label>
-                                  </span>
-                                </th>
-                                <th class="actions">Action</th>
-                                <th class="id">Id </th>
-                                <th class="jenis">Jenis Bus</th>
-                                <th class="fasilitas">Fasilitas</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <?php
-                                $data = $obj->lihatJenisBus();
-                                $no = 1;
-                                if($data->rowCount()>0){
-                                  if($sesLvl == 1){
-                                      $dis = "";
-                                  } else{
-                                      $dis = "disabled";
-                                  }
-                                  while($row=$data->fetch(PDO::FETCH_ASSOC)){
-                                    $id_jenis = $row['id_jenis'];
-                                    $jenis = $row['jenis'];
-                                    $fasilitas = $row['fasilitas'];
-                                ?>
-                              <tr>
-                                <td>
-                                  <span class="custom-checkbox">
-                                    <input type="checkbox" id="checkbox1" name="option[]" value="<?php echo $no; ?>" />
-                                    <label for="checkbox1"></label>
-                                  </span>
-                                </td>
-                                <td>
-                                  <a href="#" class="actionBtn" aria-label="Edit">
-                                    <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#editDataJenisBus<?php echo $id_jenis ?>" value="edit">
-                                      &nbsp;<i class="fa fa-edit fa-sm" data-bs-toggle="tooltip" title="Edit"></i>
-                                    </button>
-                                  </a>
-                                  <a href="#" class="actionBtn" aria-label="Delete">
-                                    <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteDataJenisBus<?php echo $id_jenis ?>" value="hapus">
-                                      <i class="fa fa-trash fa-sm" data-bs-toggle="tooltip" title="Delete"></i>
-                                    </button>
-                                  </a>
-
-                                   <!-- Edit Modal -->
-                                  <div id="editDataJenisBus<?php echo $id_jenis ?>" class="modal fade">
-                                    <div class="modal-dialog">
-                                      <div class="modal-content modal-edit">
-                                        <form role="form" action="editJenisBus.php" method="POST">
-                                          <?php
-                                            $query = $obj->pilihJenisBus($id_jenis);
-                                            while ($row = $query->fetch(PDO::FETCH_ASSOC)){
-                                          ?>
-                                          <div class="modal-header">
-                                            <h4 class="modal-title">Edit Data Jenis Bus</h4>
-                                            <button type="button" class="btn btn-danger btn-circle btn-user2 shadow" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true">
-                                              <i class="fa fa-times fa-sm"></i>
-                                            </button>
-                                          </div>
-                                          <div class="modal-body">
-                                            <div class="row">
-                                              <div class="col-lg-12 mb-3" hidden>
-                                                <label for="inputId" class="form-label">Id</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputId" name="txt_id_jenis" value="<?php echo $id_jenis?>" placeholder="" readonly/>
-                                              </div>
-                                            </div>
-
-                                            <div class="row">
-                                              <div class="col-lg-6 mb-3">
-                                                <label for="inputJenis" class="form-label">Jenis</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputJenis" name="txt_jenis" placeholder="Ex: AKAS" value="<?php echo $jenis?>"/>
-                                              </div>
-                                              <div class="col-lg-6 mb-3">
-                                                <label for="inputFasilitas" class="form-label">Fasilitas</label>
-                                                <textarea class="form-control form-textarea-user" id="inputFasilitas" name="txt_fasilitas" placeholder="Ex: Jl. Dharmawangsa" ><?php echo $fasilitas ?></textarea>
-                                              </div>
-                                            </div>
-
-                                            <div class="modal-footer">
-                                              <button class="btn btn-secondary roundedBtn" type="button" data-dismiss="modal">Batal</button>
-                                              <button type="submit" class="btn text-white colorPrimary roundedBtn" name="simpan">Update</button>
-                                            </div>
-                                          </div>
-                                        </form>
-                                        <?php 
-                                          }
-                                        ?> 
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  <!-- Delete Modal -->
-                                  <div id="deleteDataJenisBus<?php echo $id_jenis; ?>" class="modal fade">
-                                    <div class="modal-dialog">
-                                      <div class="modal-content">
-                                        <form action="">
-                                          <div class="modal-header">
-                                            <h4 class="modal-title">Hapus Jenis Bus</h4>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true"></button>
-                                          </div>
-                                          <div class="modal-body">
-                                            <p>Apakah Anda yakin ingin menghapus data jenis bus ini ?</p>
-                                            <p class="text-warning"><small>Perlu hati-hati karena data akan hilang selamanya !</small></p>
-                                          </div>
-                                          <div class="modal-footer">
-                                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                                            <a class="btn btn-danger" href="hapusJenisBus.php?id_jenis=<?php echo $id_jenis; ?>">Hapus</a>
-                                          </div>
-                                        </form>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </td>
-                                <td><?php echo $no; ?></td>
-                                <td><?php echo $jenis; ?></td>
-                                <td><?php echo $fasilitas; ?></td>
-                              </tr>
-                              <?php
-                                $no++;
-                                }}
-                              ?>
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-
-                      <!-- Tambah Modal -->
-                      <div id="tambahDataJenisBus" class="modal fade">
-                        <div class="modal-dialog">
-                          <div class="modal-content modal-edit">
-                            <form role="form" action="sumberData.php" method="POST">
-                              <div class="modal-header">
-                                <h4 class="modal-title">Tambah Data Jenis Bus</h4>
-                                <button type="button" class="btn btn-danger btn-circle btn-user2 shadow" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true">
-                                  <i class="fa fa-times fa-sm"></i>
-                                </button>
-                              </div>
-                              <div class="modal-body">
-                                <div class="row">
-                                  <div class="col-lg-6 mb-3">
-                                    <label for="inputJenis" class="form-label">Jenis</label>
-                                    <input type="text" class="form-control form-control-user2" id="inputJenis" name="txt_jenis" placeholder="Ex: AKAS" />
-                                  </div>
-                                  <div class="col-lg-6 mb-3">
-                                    <label for="inputfasilitas" class="form-label">Fasilitas</label>
-                                    <textarea class="form-control form-textarea-user" id="inputFasilitas" name="txt_fasilitas" placeholder="Ex: TV"></textarea>
-                                  </div>
-                                </div>
                                 <div class="modal-footer">
                                   <input type="button" class="btn btn-secondary roundedBtn" data-bs-dismiss="modal" value="Cancel" />
                                   <input type="submit" name="simpan" class="btn colorPrimary text-white roundedBtn" value="Simpan" />

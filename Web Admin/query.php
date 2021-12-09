@@ -698,7 +698,7 @@ class crud extends koneksi {
     // delete
     public function deleteAdministrator($data){
         try{
-            $sql ="DELETE FROM terminal WHERE id_user_admin=:id_user_admin";
+            $sql ="DELETE FROM administrator WHERE id_user_admin=:id_user_admin";
             $result = $this->koneksi->prepare($sql);
             $result->execute(array("id_user_admin"=>$data));
             return true;

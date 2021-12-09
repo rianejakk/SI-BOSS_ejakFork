@@ -1,39 +1,35 @@
-<!-- <?php
-require('koneksi.php');
+<?php
+  require('koneksi.php');
+  require('query.php');
+  $obj = new crud;
 
-session_start();
+  session_start();
 
-if(!isset($_SESSION['email'])){
-    header('Location: index.php');
-}
+  if(!isset($_SESSION['email'])){
+      header('Location: index.php');
+  }
 
-$sesName = $_SESSION['name'];
+  $sesID = $_SESSION['id'];
+  $sesName = $_SESSION['name'];
+  $sesLvl = $_SESSION['level'];
 
-if(isset ($_POST['submit'])){
-  $nama_bus = $_POST['txt_nama_bus'];
-  $status = $_POST['txt_status'];
-  $kursi = $_POST['txt_kursi'];
-  $jenis_bus = $_POST['txt_jenis_bus'];
-  $fasilitas = $_POST['txt_fasilitas'];
-  // $foto = $_POST['txt_foto'];
-  $id_jenis = $_POST['d_id_jenis'];
-  $id_rute = $_POST['d_id_rute'];
-  
-  $pemberangkatan = $_POST['txt_pemberangkatan'];
-  $waktu_berangkat = $_POST['txt_waktu_berangkat'];
-  $tujuan = $_POST['txt_tujuan'];
-  $waktu_tiba = $_POST['txt_waktu_tiba'];
-  $harga = $_POST['txt_harga'];
-
-  $query = "UPDATE INTO bus VALUES ('', '$nama_bus', '', '$status', '$kursi', '$foto', '$id_jenis', '$id_rute')";
-  $query2 = "UPDATE INTO jenis_bus VALUES ('', '$jenis_bus', '$fasilitas')";
-  $query3 = "UPDATE INTO terminal VALUES ('', '$pemberangkatan', '$waktu_berangkat', '$tujuan', '$waktu_tiba','$harga')";
-  $result = mysqli_query($koneksi, $query);
-  $result = mysqli_query($koneksi, $query2);
-  $result = mysqli_query($koneksi, $query3);
-  header('Location: registrasi.php');
-  echo mysqli_error($result);
-}
+  if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    $nama_bus = $_POST['txt_nama_bus'];
+    $detail_bus = $_POST['txt_detail_bus'];
+    $status_bus = $_POST['txt_status_bus'];
+    $jumlah_kursi = $_POST['txt_jumlah_kursi'];
+    $jenis_bus = $_POST['txt_jenis_bus'];
+    $fasilitas = $_POST['txt_fasilitas'];
+    $foto_bus = $_POST['txt_foto_bus'];
+    $id_jenis = $_POST['txt_id_jenis'];
+    $id_rute = $_POST['txt_id_rute'];
+    
+    if($obj->insertBus($nama_bus, $detail_bus, $status_bus, $jumlah_kursi, $foto_bus, $id_jenis, $id_rute)){
+      // echo '<div class="alert alert-success">Terminal Berhasil Ditambahkan</div>';
+    } else{
+      // echo '<div class="alert alert-danger">Terminal Gagal Ditambahkan</div>';
+    }
+  }
 ?> -->
 <!DOCTYPE html>
 <html lang="en">
@@ -320,11 +316,13 @@ if(isset ($_POST['submit'])){
                       </th>
                       <th class="actions">Action</th>
                       <th class="no">No</th>
-                      <th class="foto">Foto</th>
                       <th class="nama">Nama Bus</th>
-                      <th class="jenisBus">Jenis Bus</th>
+                      <th class="detailBus">Detail Bus</th>
                       <th class="status">Status Bus</th>
                       <th class="kursi">Kursi</th>
+                      <th class="foto">Foto</th>
+                      <th class="idJenis">ID Jenis</th>
+                      <th class="idRute">ID Rute</th>
                       <th class="harga">Harga</th>
                       <th class="pemberangkatan">Pemberangkatan</th>
                       <th class="tujuan">Tujuan</th>
@@ -335,285 +333,220 @@ if(isset ($_POST['submit'])){
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>
-                        <span class="custom-checkbox">
-                          <input type="checkbox" id="checkbox1" name="option[]" value="1" />
-                          <label for="checkbox1"></label>
-                        </span>
-                      </td>
-                      <td>
-                        <a href="#" class="actionBtn" aria-label="Edit">
-                          <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#editData" value="edit">
-                            &nbsp;<i class="fa fa-edit fa-sm" data-bs-toggle="tooltip" title="Edit"></i>
-                          </button>
-                        </a>
-                          <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteData" value="hapus">
-                            <i class="fa fa-trash fa-sm" data-bs-toggle="tooltip" title="Delete"></i>
-                          </button>
-                      </td>
-                      <td>1</td>
-                      <td>-</td>
-                      <td>Pahala Kencana</td>
-                      <td><span class="mode mode_ekonomi">Ekonomi</span></td>
-                      <td><span class="mode mode_on customW">Operasional</span></td>
-                      <td>-</td>
-                      <td>200.000</td>
-                      <td>Jember</td>
-                      <td>Bali</td>
-                      <td>10:00</td>
-                      <td>18:00</td>
-                      <td>-</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <span class="custom-checkbox">
-                          <input type="checkbox" id="checkbox1" name="option[]" value="1" />
-                          <label for="checkbox1"></label>
-                        </span>
-                      </td>
-                      <td>
-                        <a href="#" class="actionBtn" aria-label="Edit">
-                          <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#editData" value="edit">
-                            &nbsp;<i class="fa fa-edit fa-sm" data-bs-toggle="tooltip" title="Edit"></i>
-                          </button>
-                        </a>
-                        <a href="#" class="actionBtn" aria-label="Delete">
-                          <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteData" value="hapus">
-                            <i class="fa fa-trash fa-sm" data-bs-toggle="tooltip" title="Delete"></i>
-                          </button>
-                        </a>
-                      </td>
-                      <td>2</td>
-                      <td>-</td>
-                      <td>Pahala Kencana</td>
-                      <td><span class="mode mode_eksekutif">Eksekutif</span></td>
-                      <td><span class="mode mode_on customW">Operasional</span></td>
-                      <td>-</td>
-                      <td>200.000</td>
-                      <td>Jember</td>
-                      <td>Bali</td>
-                      <td>10:00</td>
-                      <td>18:00</td>
-                      <td>-</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <span class="custom-checkbox">
-                          <input type="checkbox" id="checkbox1" name="option[]" value="1" />
-                          <label for="checkbox1"></label>
-                        </span>
-                      </td>
-                      <td>
-                        <a href="#" class="actionBtn" aria-label="Edit">
-                          <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#editData" value="edit">
-                            &nbsp;<i class="fa fa-edit fa-sm" data-bs-toggle="tooltip" title="Edit"></i>
-                          </button>
-                        </a>
-                        <a href="#" class="actionBtn" aria-label="Delete">
-                          <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteData" value="hapus">
-                            <i class="fa fa-trash fa-sm" data-bs-toggle="tooltip" title="Delete"></i>
-                          </button>
-                        </a>
-                      </td>
-                      <td>3</td>
-                      <td>-</td>
-                      <td>Pahala Kencana</td>
-                      <td><span class="mode mode_ekonomi">Ekonomi</span></td>
-                      <td><span class="mode mode_process customW">Pemeliharaan</span></td>
-                      <td>-</td>
-                      <td>200.000</td>
-                      <td>Jember</td>
-                      <td>Bali</td>
-                      <td>10:00</td>
-                      <td>18:00</td>
-                      <td>-</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <span class="custom-checkbox">
-                          <input type="checkbox" id="checkbox1" name="option[]" value="1" />
-                          <label for="checkbox1"></label>
-                        </span>
-                      </td>
-                      <td>
-                        <a href="#" class="actionBtn" aria-label="Edit">
-                          <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#editData" value="edit">
-                            &nbsp;<i class="fa fa-edit fa-sm" data-bs-toggle="tooltip" title="Edit"></i>
-                          </button>
-                        </a>
-                        <a href="#" class="actionBtn" aria-label="Delete">
-                          <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteData" value="hapus">
-                            <i class="fa fa-trash fa-sm" data-bs-toggle="tooltip" title="Delete"></i>
-                          </button>
-                        </a>
-                      </td>
-                      <td>4</td>
-                      <td>-</td>
-                      <td>Pahala Kencana</td>
-                      <td><span class="mode mode_eksekutif">Eksekutif</span></td>
-                      <td><span class="mode mode_on customW">Operasional</span></td>
-                      <td>-</td>
-                      <td>200.000</td>
-                      <td>Jember</td>
-                      <td>Bali</td>
-                      <td>10:00</td>
-                      <td>18:00</td>
-                      <td>-</td>
-                    </tr>
-                  </tbody>
+                              <?php
+                                $data = $obj->lihatBus();
+                                $no = 1;
+                                if($data->rowCount()>0){
+                                  if($sesLvl == 1){
+                                      $dis = "";
+                                  } else{
+                                      $dis = "disabled";
+                                  }
+                                  while($row=$data->fetch(PDO::FETCH_ASSOC)){
+                                    $id_bus = $row['id_bus'];
+                                    $nama_bus = $row['nama_bus'];
+                                    $detail_bus = $row['detail_bus'];
+                                    $status_bus = $row['status_bus'];
+                                    $jumlah_kursi = $row['jumlah_kursi'];
+                                    $foto_bus = $row['foto_bus'];
+                                    $id_jenis = $row['id_jenis'];
+                                    $id_rute = $row['id_rute'];
+                                ?>
+                              <tr>
+                                <td>
+                                  <span class="custom-checkbox">
+                                    <input type="checkbox" id="checkbox1" name="option[]" value="<?php echo $no; ?>" />
+                                    <label for="checkbox1"></label>
+                                  </span>
+                                </td>
+                                <td>
+                                  <a href="#" class="actionBtn" aria-label="Edit">
+                                    <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#editDataBus<?php echo $id_bus ?>" value="edit">
+                                      &nbsp;<i class="fa fa-edit fa-sm" data-bs-toggle="tooltip" title="Edit"></i>
+                                    </button>
+                                  </a>
+                                  <a href="#" class="actionBtn" aria-label="Delete">
+                                    <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteDataBus<?php echo $id_bus ?>" value="hapus">
+                                      <i class="fa fa-trash fa-sm" data-bs-toggle="tooltip" title="Delete"></i>
+                                    </button>
+                                  </a>
+
+                                   <!-- Edit Modal -->
+                                  <div id="editDataBus<?php echo $id_bus ?>" class="modal fade">
+                                    <div class="modal-dialog">
+                                      <div class="modal-content modal-edit">
+                                        <form role="form" action="editBus.php" method="POST">
+                                          <?php
+                                            $query = $obj->pilihBus($id_bus);
+                                            while ($row = $query->fetch(PDO::FETCH_ASSOC)){
+                                          ?>
+                                          <div class="modal-header">
+                                            <h4 class="modal-title">Edit Data Bus</h4>
+                                            <button type="button" class="btn btn-danger btn-circle btn-user2 shadow" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true">
+                                              <i class="fa fa-times fa-sm"></i>
+                                            </button>
+                                          </div>
+                                          <div class="modal-body">
+                                            <div class="row">
+                                              <div class="col-lg-12 mb-3" hidden>
+                                                <label for="inputId" class="form-label">Id</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputId" name="txt_id_user_admin" value="<?php echo $id_user_admin?>" placeholder="" readonly/>
+                                              </div>
+                                            </div>
+
+                                            <div class="row">
+                                              <div class="col-lg-6 mb-3">
+                                                <label for="inputNama" class="form-label">Nama</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputNama" name="txt_nama" placeholder="Ex: Budi Santoso" value="<?php echo $nama?>"/>
+                                              </div>
+                                            </div>
+
+                                            <div class="row">
+                                              <div class="col-lg-6 mb-3">
+                                                <label for="inputAlamat" class="form-label">Alamat</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputAlamat" name="txt_alamat" placeholder="Ex: Jl. Dharmawangsa" value="<?php echo $alamat?>"/>
+                                              </div>
+                                              <div class="col-lg-6 mb-3">
+                                                <label for="inputNoHp" class="form-label">No Handphone</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp" placeholder="Ex: 085808241205" value="<?php echo $no_hp?>"/>
+                                              </div>
+                                            </div>
+
+                                            <div class="row">
+                                              <div class="col-lg-6 mb-3">
+                                                <label for="inputFoto" class="form-label">Foto</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputFoto" name="txt_foto" placeholder="Ex:" value="<?php echo $foto?>"/>
+                                              </div>
+                                              <div class="col-lg-6 mb-3">
+                                                <label for="inputIdLevel" class="form-label">ID Level</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputIdLevel" name="txt_id_level" placeholder="Ex: 2" value="<?php echo $id_level?>"/>
+                                              </div>
+                                            </div>
+
+                                            <div class="row">
+                                              <div class="col-lg-6 mb-3">
+                                                <label for="inputIdTerminal" class="form-label">ID Terminal</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputIdTerminal" name="txt_id_terminal" placeholder="Ex: 1" value="<?php echo $id_terminal?>"/>
+                                              </div>
+                                              <div class="col-lg-6 mb-3">
+                                                <label for="inputEmail" class="form-label">Email</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputEmail" name="txt_email" placeholder="Ex: admin@gmail.com" value="<?php echo $email?>"/>
+                                              </div>
+                                            </div>
+
+                                            <div class="row">
+                                              <div class="col-lg-6 mb-3">
+                                                <label for="inputPassword" class="form-label">Password</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputPassword" name="txt_password" placeholder="Ex: ********" value="<?php echo $password?>"/>
+                                              </div>
+                                            </div>
+                                            
+                                            <div class="modal-footer">
+                                              <button class="btn btn-secondary roundedBtn" type="button" data-dismiss="modal">Batal</button>
+                                              <button type="submit" class="btn text-white colorPrimary roundedBtn" name="simpan">Update</button>
+                                            </div>
+                                          </div>
+                                        </form>
+                                        <?php 
+                                          }
+                                        ?> 
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                  <!-- Delete Modal -->
+                                  <div id="deleteDataBus<?php echo $id_bus; ?>" class="modal fade">
+                                    <div class="modal-dialog">
+                                      <div class="modal-content">
+                                        <form action="">
+                                          <div class="modal-header">
+                                            <h4 class="modal-title">Hapus Bus</h4>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true"></button>
+                                          </div>
+                                          <div class="modal-body">
+                                            <p>Apakah Anda yakin ingin menghapus data bus ini ?</p>
+                                            <p class="text-warning"><small>Perlu hati-hati karena data akan hilang selamanya !</small></p>
+                                          </div>
+                                          <div class="modal-footer">
+                                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+                                            <a class="btn btn-danger" href="hapusBus.php?id_bus=<?php echo $id_bus; ?>">Hapus</a>
+                                          </div>
+                                        </form>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </td>
+                                <td><?php echo $no; ?></td>
+                                <td><?php echo $nama_bus; ?></td>
+                                <td><?php echo $detail_bus; ?></td>
+                                <td><?php echo $status_bus; ?></td>
+                                <td><?php echo $jumlah_kursi; ?></td>
+                                <td><?php echo $foto_bus; ?></td>
+                                <td><?php echo $id_jenis?></td>
+                                <td><?php echo $id_rute?></td>
+                              </tr>
+                              <?php
+                                $no++;
+                                }}
+                              ?>
+                            </tbody>
                 </table>
               </div>
             </div>
 
-            <!-- Edit Modal -->
-            <div id="editData" class="modal fade">
-              <div class="modal-dialog modal-lg">
-                <div class="modal-content modal-edit">
-                  <form action="">
-                    <div class="modal-header">
-                      <h4 class="modal-title">Edit Data Akun</h4>
-                      <button type="button" class="btn btn-danger btn-circle btn-user2 shadow" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true">
-                        <i class="fa fa-times fa-sm"></i>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      <div class="row">
-                        <div class="col-md-6">
-                          <div class="form-group" hidden>
-                            <label for="InputId" class="form-label">Id</label>
-                            <input type="text" class="form-control form-control-user2" id="InputId" name="txt_id" placeholder="" />
-                          </div>
-                          <div class="form-group">
-                            <label for="InputFotoBus" class="form-label">Foto Bus</label>
-                            <div class="img-div">
-                              <div class="img-placeholder" onClick="triggerClick()">
-                                <img src="img/ico/IcoeditBusW.png" alt="" />
+            <!-- Tambah Modal -->
+            <div id="tambahDataBus" class="modal fade">
+                        <div class="modal-dialog">
+                          <div class="modal-content modal-edit">
+                            <form role="form" action="dataBus.php" method="POST">
+                              <div class="modal-header">
+                                <h4 class="modal-title">Tambah Data Bus</h4>
+                                <button type="button" class="btn btn-danger btn-circle btn-user2 shadow" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true">
+                                  <i class="fa fa-times fa-sm"></i>
+                                </button>
                               </div>
-                              <img src="img/ico/IcoeditBus.png" onClick="triggerClick()" id="profileDisplay" />
-                            </div>
-                            <input type="file" name="profileImage" onChange="displayImage(this)" id="profileImage" class="form-control" style="display: none" />
-                            <a href="#" class="float-end view text-secondary"> Lihat Foto </a>
-                          </div>
-                          <div class="form-group">
-                            <label for="InputNamaBus" class="form-label">Nama Bus</label>
-                            <input type="text" class="form-control form-control-user2" id="InputNamaBus" name="txt_NamaBus" placeholder="" />
-                          </div>
-                          <div class="form-group">
-                            <label for="InputJenisBus" class="form-label">Jenis Bus</label>
-                            <select class="form-select form-select-user" aria-label=".form-select-sm example" name="InputJenisBus">
-                              <option disabled selected>Pilih Jenis Bus</option>
-                              <option value="Ekonomi">Ekonomi</option>
-                              <option value="Eksekutif">Eksekutif</option>
-                              <option value="Pariwisata">Pariwisata</option>
-                            </select>
-                          </div>
-                          <div class="form-group">
-                            <label for="InputFasilitasBus" class="form-label">Fasilitas Bus</label>
-                            <div class="row">
-                              <div class="col-sm-2">
-                                <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" value="AC" id="flexCheckDefault" />
-                                  <label class="form-check-label" for="flexCheckDefault"> AC </label>
+                              <div class="modal-body">
+                                <div class="row">
+                                  <div class="col-lg-6 mb-3">
+                                    <label for="inputTerminal" class="form-label">Nama Terminal</label>
+                                    <input type="text" class="form-control form-control-user2" id="inputTerminal" name="txt_nama_terminal" placeholder="Ex: Tawang Alun" />
+                                  </div>
+                                  <div class="col-lg-6 mb-3">
+                                    <label for="inputAlamat" class="form-label">Alamat Terminal</label>
+                                    <textarea class="form-control form-textarea-user" id="inputAlamat" name="txt_detail_alamat_terminal" placeholder="Ex: Jl. Dharmawangsa"></textarea>
+                                  </div>
+                                  <div class="col-lg-12 mb-3">
+                                    <label for="inputProvinsi" class="form-label">Provinsi</label>
+                                    <select class="form-select form-select-user" aria-label=".form-select-sm example" name="d_provinsi_terminal" id="propinsi" >
+                                      <option disabled selected>Pilih Provinsi</option>
+                                    </select>
+                                  </div>
                                 </div>
-                                <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" value="TV" id="flexCheckDefault" />
-                                  <label class="form-check-label" for="flexCheckDefault"> TV </label>
+
+                                <div class="row">
+                                  <div class="col-lg-6 mb-3">
+                                    <label for="inputKabupaten" class="form-label">Kota</label>
+                                    <select class="form-select form-select-user" aria-label=".form-select-sm example" name="d_kabupaten_terminal" id="kabupaten">
+                                      <option disabled selected>Pilih kota</option>
+                                    </select>
+                                  </div>
+                                  <div class="col-lg-6 mb-3">
+                                    <label for="inputKecamatan" class="form-label">Kecamatan</label>
+                                    <select class="form-select form-select-user" aria-label=".form-select-sm example" name="d_kecamatan_terminal" id="kecamatan">
+                                      <option disabled selected>Pilih Kecamatan</option>
+                                    </select>
+                                  </div>
                                 </div>
-                                <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" value="Wi-Fi" id="flexCheckDefault" />
-                                  <label class="form-check-label" for="flexCheckDefault"> Wi-Fi </label>
+                                
+                                <div class="modal-footer">
+                                  <input type="button" class="btn btn-secondary roundedBtn" data-bs-dismiss="modal" value="Cancel" />
+                                  <input type="submit" name="simpan" class="btn colorPrimary text-white roundedBtn" value="Simpan" />
                                 </div>
                               </div>
-                              <div class="col-sm-10">
-                                <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" value="Toilet" id="flexCheckDefault" />
-                                  <label class="form-check-label" for="flexCheckDefault"> Toilet </label>
-                                </div>
-                                <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" value="Kursi baring" id="flexCheckDefault" />
-                                  <label class="form-check-label" for="flexCheckDefault"> Kursi baring </label>
-                                </div>
-                              </div>
-                            </div>
+                            </form>
                           </div>
-                          <div class="form-group">
-                            <label for="InputStatusBus" class="form-label d-block">Status</label>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="Operasional" checked />
-                              <label class="form-check-label" for="exampleRadios1"> Operasional </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="Pemeliharaan" />
-                              <label class="form-check-label" for="exampleRadios2"> Pemeliharaan/Maintenance </label>
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label for="InputTarif" class="form-label">Tarif</label>
-                            <div class="input-group mb-3">
-                              <span class="input-group-text tarif">Rp</span>
-                              <input type="text" class="form-control form-control-user2" aria-label="Amount (to the nearest dollar)">
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-6">
-                          <div class="form-group">
-                            <label for="InputTglPemberangkatan" class="form-label">Tanggal Pemberangkatan</label>
-                            <input type="date" class="form-control form-control-user2" id="InputTglPemberangkatan" name="txt_Tgl" >
-                          </div>
-                          <div class="form-group">
-                            <label for="InputWaktu" class="form-label">Waktu pemberangkatan</label>
-                            <input type="time" class="form-control form-control-user2" id="InputWaktu" name="txt_waktu" >
-                          </div>
-                          <div class="form-group">
-                            <label for="InputPemberangkatan" class="form-label">Pemberangkatan</label>
-                            <input type="text" class="form-control form-control-user2" id="InputPemberangkatan" name="txt_Pemberangkatan" placeholder="" />
-                          </div>
-                          <div class="form-group">
-                            <label for="InputTujuan" class="form-label">Tujuan</label>
-                            <input type="text" class="form-control form-control-user2" id="InputTujuan" name="txt_Tujuan" placeholder="" />
-                          </div>
-                          <div class="form-group">
-                            <label for="InputWaktuKedatangan" class="form-label">Estimasi Waktu Kedatangan</label>
-                            <input type="time" class="form-control form-control-user2" id="InputWaktuKedatangan" name="txt_waktuDatang" >
-                          </div>
-                          <div class="form-group">
-                            <label for="InputDetail" class="form-label">Detail Rute</label>
-                            <input type="text" class="form-control form-control-user2" id="InputDetail" name="txt_Detail" placeholder="" />
-                          </div>
-                        </div>
-                        <div class="mb-5"></div>
-                        <div class="col-12 d-flex justify-content-center">
-                          <button type="submit" name="register" class="btn btn-success roundedBtn text-white btn-block3">Tambah</button>
                         </div>
                       </div>
-                    </form>
-                  </div>  
-                </div>
-              </div>
-            </div>
-
-            <!-- Delete Modal -->
-            <div id="deleteData" class="modal fade">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <form action="">
-                    <div class="modal-header">
-                      <h4 class="modal-title">Hapus Akun</h4>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true"></button>
-                    </div>
-                    <div class="modal-body">
-                      <p>Apakah Anda yakin ingin menghapus data akun ini ?</p>
-                      <p class="text-warning"><small>Perlu hati-hati karena data akan hilang selamanya !</small></p>
-                    </div>
-                    <div class="modal-footer">
-                      <input type="button" class="btn btn-secondary" data-bs-dismiss="modal" value="Cancel" />
-                      <input type="submit" class="btn btn-danger" value="Delete" />
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
