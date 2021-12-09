@@ -1,5 +1,37 @@
 <?php
 class crud extends koneksi {
+
+    //insert, detail, update
+    public function login($data){
+        $sql ="SELECT * FROM administrator WHERE email=:email";
+        $result = $this->koneksi->prepare($sql);
+        $result->bindParam(":email", $data);
+        $result->execute();
+        return $result;
+    }
+    
+    // lihat
+    public function lihatAdministrator(){
+        $sql = "SELECT * FROM administrator";
+        $result = $this->koneksi->prepare($sql);
+        $result->execute();
+        return $result;
+    }
+
+    public function lihatUser(){
+        $sql = "SELECT * FROM user";
+        $result = $this->koneksi->prepare($sql);
+        $result->execute();
+        return $result;
+    }
+
+    public function lihatBus(){
+        $sql = "SELECT * FROM bus";
+        $result = $this->koneksi->prepare($sql);
+        $result->execute();
+        return $result;
+    }
+
     public function lihatTerminal(){
         $sql = "SELECT * FROM terminal";
         $result = $this->koneksi->prepare($sql);
@@ -28,27 +60,42 @@ class crud extends koneksi {
         return $result;
     }
 
-    // public function insertAdministrator($nama, $jenis_kelamin, $alamat, $no_hp, $level, $id_terminal, $email, $password){
-    //     try{
-    //         $sql ="INSERT INTO administrator(nama, jenis_kelamin, alamat, no_hp, '', id_level, id_terminal, email, password) VALUES (:nama, :jenis_kelamin, :alamat, :no_hp, :foto, :2, :id_terminal, :email, :password)";
-    //         $result = $this->koneksi->prepare($sql);
-    //         $result->bindParam(":nama", $nama);
-    //         $result->bindParam(":jenis_kelamin", $jenis_kelamin);
-    //         $result->bindParam(":alamat", $alamat);
-    //         $result->bindParam(":no_hp", $no_hp);
-    //         // $result->bindParam(":", $foto);
-    //         $result->bindParam(":2", $level);
-    //         $result->bindParam(":id_terminal", $id_terminal);
-    //         $result->bindParam(":email", $email);
-    //         $result->bindParam(":password", $password);
-    //         $result->execute();
-    //         return true;
-    //     }
-    //     catch (PDOException $e){
-    //         echo $e->getMessage();
-    //         return false;
-    //     }
-    // }
+    public function lihatPemesanan(){
+        $sql = "SELECT * FROM pemesanan";
+        $result = $this->koneksi->prepare($sql);
+        $result->execute();
+        return $result;
+    }
+
+    public function lihatDetailPemesanan(){
+        $sql = "SELECT * FROM detail_pemesanan";
+        $result = $this->koneksi->prepare($sql);
+        $result->execute();
+        return $result;
+    }
+
+    // insert
+    public function insertAdministrator($nama, $jenis_kelamin, $alamat, $no_hp, $level, $id_terminal, $email, $password){
+        try{
+            $sql ="INSERT INTO administrator(nama, jenis_kelamin, alamat, no_hp, '', id_level, id_terminal, email, password) VALUES (:nama, :jenis_kelamin, :alamat, :no_hp, :foto, :2, :id_terminal, :email, :password)";
+            $result = $this->koneksi->prepare($sql);
+            $result->bindParam(":nama", $nama);
+            $result->bindParam(":jenis_kelamin", $jenis_kelamin);
+            $result->bindParam(":alamat", $alamat);
+            $result->bindParam(":no_hp", $no_hp);
+            // $result->bindParam(":", $foto);
+            $result->bindParam(":2", $level);
+            $result->bindParam(":id_terminal", $id_terminal);
+            $result->bindParam(":email", $email);
+            $result->bindParam(":password", $password);
+            $result->execute();
+            return true;
+        }
+        catch (PDOException $e){
+            echo $e->getMessage();
+            return false;
+        }
+    }
 
     public function insertTerminal($nama_terminal, $alamat_terminal, $provinsi, $kabupaten, $kecamatan){
         try{
@@ -80,6 +127,34 @@ class crud extends koneksi {
         catch (PDOException $e){
             echo $e->getMessage();
             return false;
+        }
+    }
+
+    // detail
+    public function detailAdministrator($data){
+        try{
+            $sql ="SELECT * FROM administrator WHERE id_user_admin=:id_user_admin";
+            $result = $this->koneksi->prepare($sql);
+            $result->bindParam(":id_user_admin", $data);
+            $result->execute();
+            $result->bindColumn(1, $this->id_user_admin);
+            $result->bindColumn(2, $this->nama);
+            $result->bindColumn(3, $this->jenis_kelamin);
+            $result->bindColumn(4, $this->alamat);
+            $result->bindColumn(5, $this->no_hp);
+            $result->bindColumn(6, $this->foto);
+            $result->bindColumn(7, $this->id_level);
+            $result->bindColumn(8, $this->id_terminal);
+            $result->bindColumn(9, $this->email);
+            $result->bindColumn(10, $this->password);
+            $result->fetch(PDO::FETCH_ASSOC);
+            if($result->rowCount()==1):
+                return true;
+            else:
+                return false;
+            endif;    
+        } catch (PDOException $e){
+            echo $e->getMessage();
         }
     }
 
@@ -126,6 +201,31 @@ class crud extends koneksi {
         }
     }
 
+    // pilih
+    public function pilihAdministrator($data){
+        $sql ="SELECT * FROM administrator WHERE id_user_admin=:id_user_admin";
+        $result = $this->koneksi->prepare($sql);
+        $result->bindParam(":id_user_admin", $data);
+        $result->execute();
+        return $result;
+    }
+
+    public function pilihUser($data){
+        $sql ="SELECT * FROM user WHERE nik_user=:nik_user";
+        $result = $this->koneksi->prepare($sql);
+        $result->bindParam(":nik_user", $data);
+        $result->execute();
+        return $result;
+    }
+
+    public function pilihBus($data){
+        $sql ="SELECT * FROM bus WHERE id_bus=:id_bus";
+        $result = $this->koneksi->prepare($sql);
+        $result->bindParam(":id_bus", $data);
+        $result->execute();
+        return $result;
+    }
+
     public function pilihTerminal($data){
         $sql ="SELECT * FROM terminal WHERE id_terminal=:id_terminal";
         $result = $this->koneksi->prepare($sql);
@@ -142,12 +242,60 @@ class crud extends koneksi {
         return $result;
     }
 
-    public function login($data){
-        $sql ="SELECT * FROM administrator WHERE email=:email";
+    public function pilihRute($data){
+        $sql ="SELECT * FROM rute WHERE id_rute=:id_rute";
         $result = $this->koneksi->prepare($sql);
-        $result->bindParam(":email", $data);
+        $result->bindParam(":id_rute", $data);
         $result->execute();
         return $result;
+    }
+
+    public function pilihPenumpang($data){
+        $sql ="SELECT * FROM penumpang WHERE nik_penumpang=:nik_penumpang";
+        $result = $this->koneksi->prepare($sql);
+        $result->bindParam(":nik_penumpang", $data);
+        $result->execute();
+        return $result;
+    }
+
+    public function pilihPemesanan($data){
+        $sql ="SELECT * FROM pemesanan WHERE id_pemesanan=:id_pemesanan";
+        $result = $this->koneksi->prepare($sql);
+        $result->bindParam(":id_pemesanan", $data);
+        $result->execute();
+        return $result;
+    }
+
+    public function pilihDetailPemesanan($data){
+        $sql ="SELECT * FROM detail_pemesanan WHERE id_detail_pemesanan=:id_detail_pemesanan";
+        $result = $this->koneksi->prepare($sql);
+        $result->bindParam(":id_detail_pemesanan", $data);
+        $result->execute();
+        return $result;
+    }
+
+    // update
+    public function updateAdministrator($nama, $jenis_kelamin, $alamat, $no_hp, $foto, $id_level, $id_terminal, $email, $password, $data){
+        try{
+            $sql ="UPDATE administrator SET nama=:nama, jenis_kelamin=:jenis_kelamin, alamat=:alamat, no_hp=:no_hp, foto=:foto, id_level=:id_level, id_terminal=:id_terminal, email=:email, password=:password WHERE id_user_admin=:id_user_admin";
+            $result = $this->koneksi->prepare($sql);
+            $result->bindParam(":nama", $nama);
+            $result->bindParam(":jenis_kelamin", $jenis_kelamin);
+            $result->bindParam(":alamat", $alamat);
+            $result->bindParam(":no_hp", $no_hp);
+            // $result->bindParam(":foto", $foto);
+            $result->bindParam(":id_level", $id_level);
+            $result->bindParam(":id_terminal", $id_terminal);
+            $result->bindParam(":email", $email);
+            $result->bindParam(":password", $password);
+            $result->bindParam(":id_user_admin", $data);
+            $result->execute();
+            return true;
+        }
+        catch (PDOException $e){
+            echo $e->getMessage();
+            return false;
+        }
     }
 
     public function updateTerminal($terminal, $alamat, $provinsi, $kabupaten, $kecamatan, $data){
@@ -221,6 +369,46 @@ class crud extends koneksi {
         }
     }
 
+    // delete
+    public function deleteAdministrator($data){
+        try{
+            $sql ="DELETE FROM terminal WHERE id_user_admin=:id_user_admin";
+            $result = $this->koneksi->prepare($sql);
+            $result->execute(array("id_user_admin"=>$data));
+            return true;
+        }
+        catch (PDOException $e){
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+    public function deleteUser($data){
+        try{
+            $sql ="DELETE FROM user WHERE nik_user=:nik_user";
+            $result = $this->koneksi->prepare($sql);
+            $result->execute(array("nik_user"=>$data));
+            return true;
+        }
+        catch (PDOException $e){
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+    public function deleteBus($data){
+        try{
+            $sql ="DELETE FROM bus WHERE id_bus=:id_bus";
+            $result = $this->koneksi->prepare($sql);
+            $result->execute(array("id_bus"=>$data));
+            return true;
+        }
+        catch (PDOException $e){
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
     public function deleteTerminal($data){
         try{
             $sql ="DELETE FROM terminal WHERE id_terminal=:id_terminal";
@@ -239,6 +427,58 @@ class crud extends koneksi {
             $sql ="DELETE FROM jenis_bus WHERE id_jenis=:id_jenis";
             $result = $this->koneksi->prepare($sql);
             $result->execute(array("id_jenis"=>$data));
+            return true;
+        }
+        catch (PDOException $e){
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+    public function deleteRute($data){
+        try{
+            $sql ="DELETE FROM rute WHERE id_rute=:id_rute";
+            $result = $this->koneksi->prepare($sql);
+            $result->execute(array("id_rute"=>$data));
+            return true;
+        }
+        catch (PDOException $e){
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+    public function deletePenumpang($data){
+        try{
+            $sql ="DELETE FROM penumpang WHERE nik_penumpang=:nik_penumpang";
+            $result = $this->koneksi->prepare($sql);
+            $result->execute(array("nik_penumpang"=>$data));
+            return true;
+        }
+        catch (PDOException $e){
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+    public function deletePemesanan($data){
+        try{
+            $sql ="DELETE FROM pemesanan WHERE id_pemesanan=:id_pemesanan";
+            $result = $this->koneksi->prepare($sql);
+            $result->execute(array("id_pemesanan"=>$data));
+            return true;
+        }
+        catch (PDOException $e){
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+    public function deleteDetailPemesanan($data){
+        try{
+            $sql ="DELETE FROM detail_pemesanan WHERE id_detail_pemesanan=:id_detail_pemesanan";
+            $result = $this->koneksi->prepare($sql);
+            $result->execute(array("id_detail_pemesanan"=>$data));
             return true;
         }
         catch (PDOException $e){
