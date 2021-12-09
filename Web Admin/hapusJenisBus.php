@@ -3,8 +3,8 @@ require ('koneksi.php');
 require ('query.php');
 $obj = new crud;
 
-if(!$obj->detailTerminal($_GET['id_terminal'])) die ("Error: Id tidak ada");
-    if($obj->deleteTerminal($obj->id_terminal)){
+if(!$obj->detailJenisBus($_GET['id_jenis'])) die ("Error: Id tidak ada");
+    if($obj->deleteJenisBus($obj->id_jenis)){
         echo '<div class="alert alert-success">Data Berhasil dihapus</div>';
         header("Location: sumberData.php");
     } else {
