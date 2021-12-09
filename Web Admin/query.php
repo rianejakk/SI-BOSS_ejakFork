@@ -1,7 +1,5 @@
 <?php
 class crud extends koneksi {
-
-    //insert, detail, update
     public function login($data){
         $sql ="SELECT * FROM administrator WHERE email=:email";
         $result = $this->koneksi->prepare($sql);
@@ -75,19 +73,61 @@ class crud extends koneksi {
     }
 
     // insert
-    public function insertAdministrator($nama, $jenis_kelamin, $alamat, $no_hp, $level, $id_terminal, $email, $password){
+    public function insertAdministrator($nama, $jenis_kelamin, $alamat, $no_hp, $foto, $level, $id_terminal, $email, $password){
         try{
-            $sql ="INSERT INTO administrator(nama, jenis_kelamin, alamat, no_hp, '', id_level, id_terminal, email, password) VALUES (:nama, :jenis_kelamin, :alamat, :no_hp, :foto, :2, :id_terminal, :email, :password)";
+            $sql ="INSERT INTO administrator(nama, jenis_kelamin, alamat, no_hp, foto, id_level, id_terminal, email, password) VALUES (:nama, :jenis_kelamin, :alamat, :no_hp, :foto, :2, :id_terminal, :email, :password)";
             $result = $this->koneksi->prepare($sql);
             $result->bindParam(":nama", $nama);
             $result->bindParam(":jenis_kelamin", $jenis_kelamin);
             $result->bindParam(":alamat", $alamat);
             $result->bindParam(":no_hp", $no_hp);
-            // $result->bindParam(":", $foto);
+            $result->bindParam(":foto", $foto);
             $result->bindParam(":2", $level);
             $result->bindParam(":id_terminal", $id_terminal);
             $result->bindParam(":email", $email);
             $result->bindParam(":password", $password);
+            $result->execute();
+            return true;
+        }
+        catch (PDOException $e){
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+    public function insertUser($nama_user, $tempat_lahir_user, $tanggal_lahir_user, $jenis_kelamin_user, $alamat_user, $no_hp_user, $foto_user, $email_user, $password_user){
+        try{
+            $sql ="INSERT INTO user(nama_user, tempat_lahir_user, tanggal_lahir_user, jenis_kelamin_user, alamat_user, no_hp_user, foto_user, email_user, password_user) VALUES (:nama_user, :tempat_lahir_user, :tanggal_lahir_user, :jenis_kelamin_user, :alamat_user, :no_hp_user, :foto_user, :email_user, :password_user)";
+            $result = $this->koneksi->prepare($sql);
+            $result->bindParam(":nama_user", $nama_user);
+            $result->bindParam(":tempat_lahir_user", $tempat_lahir_user);
+            $result->bindParam(":tanggal_lahir_user", $tanggal_lahir_user);
+            $result->bindParam(":jenis_kelamin_user", $jenis_kelamin_user);
+            $result->bindParam(":alamat_user", $alamat_user);
+            $result->bindParam(":no_hp_user", $no_hp_user);
+            $result->bindParam(":foto_user", $foto_user);
+            $result->bindParam(":email_user", $email_user);
+            $result->bindParam(":password_user", $password_user);
+            $result->execute();
+            return true;
+        }
+        catch (PDOException $e){
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+    public function insertBus($nama_bus, $detail_bus, $status_bus, $jumlah_kursi, $foto_bus, $id_jenis, $id_rute){
+        try{
+            $sql ="INSERT INTO bus(nama_bus, detail_bus, status_bus, jumlah_kursi, foto_bus, id_jenis, id_rute) VALUES (:nama_bus, :detail_bus, :status_bus, :jumlah_kursi, :foto_bus, :id_jenis, :id_rute)";
+            $result = $this->koneksi->prepare($sql);
+            $result->bindParam(":nama_bus", $nama_bus);
+            $result->bindParam(":detail_bus", $detail_bus);
+            $result->bindParam(":status_bus", $status_bus);
+            $result->bindParam(":jumlah_kursi", $jumlah_kursi);
+            $result->bindParam(":foto_bus", $foto_bus);
+            $result->bindParam(":id_jenis", $id_jenis);
+            $result->bindParam(":id_rute", $id_rute);
             $result->execute();
             return true;
         }
@@ -130,6 +170,74 @@ class crud extends koneksi {
         }
     }
 
+    public function insertRute($pemberangkatan, $waktu_berangkat, $tujuan, $waktu_tiba, $harga){
+        try{
+            $sql ="INSERT INTO rute(pemberangkatan, waktu_berangkat, tujuan, waktu_tiba, harga) VALUES (:pemberangkatan, :waktu_berangkat, :tujuan, :waktu_tiba, :harga)";
+            $result = $this->koneksi->prepare($sql);
+            $result->bindParam(":pemberangkatan", $pemberangkatan);
+            $result->bindParam(":waktu_berangkat", $waktu_berangkat);
+            $result->bindParam(":tujuan", $tujuan);
+            $result->bindParam(":waktu_tiba", $waktu_tiba);
+            $result->bindParam(":harga", $harga);
+            $result->execute();
+            return true;
+        }
+        catch (PDOException $e){
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+    public function insertPenumpang($nik_penumpang, $nama_penumpang, $jenis_kelamin_penumpang, $no_hp_penumpang){
+        try{
+            $sql ="INSERT INTO penumpang(nik_penumpang, nama_penumpang, jenis_kelamin_penumpang, no_hp_penumpang) VALUES (:nik_penumpang, :nama_penumpang, :jenis_kelamin_penumpang, :no_hp_penumpang)";
+            $result = $this->koneksi->prepare($sql);
+            $result->bindParam(":nik_penumpang", $nik_penumpang);
+            $result->bindParam(":nama_penumpang", $nama_penumpang);
+            $result->bindParam(":jenis_kelamin_penumpang", $jenis_kelamin_penumpang);
+            $result->bindParam(":no_hp_penumpang", $no_hp_penumpang);
+            $result->execute();
+            return true;
+        }
+        catch (PDOException $e){
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+    public function insertPemesanan($nik_user, $nik_penumpang, $waktu_pemesanan, $total_bayar){
+        try{
+            $sql ="INSERT INTO pemesanan(nik_user, nik_penumpang, waktu_pemesanan, total_bayar) VALUES (:nik_user, :nik_penumpang, :waktu_pemesanan, :total_bayar)";
+            $result = $this->koneksi->prepare($sql);
+            $result->bindParam(":nik_user", $nik_user);
+            $result->bindParam(":nik_penumpang", $nik_penumpang);
+            $result->bindParam(":waktu_pemesanan", $waktu_pemesanan);
+            $result->bindParam(":total_bayar", $total_bayar);
+            $result->execute();
+            return true;
+        }
+        catch (PDOException $e){
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+    public function insertDetailPemesanan($id_pemesanan, $id_bus, $jumlah_kursi_pesan){
+        try{
+            $sql ="INSERT INTO detail_pemesanan(id_pemesanan, id_bus, jumlah_kursi_pesan) VALUES (:id_pemesanan, :id_bus, :jumlah_kursi_pesan)";
+            $result = $this->koneksi->prepare($sql);
+            $result->bindParam(":id_pemesanan", $id_pemesanan);
+            $result->bindParam(":id_bus", $id_bus);
+            $result->bindParam(":jumlah_kursi_pesan", $jumlah_kursi_pesan);
+            $result->execute();
+            return true;
+        }
+        catch (PDOException $e){
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
     // detail
     public function detailAdministrator($data){
         try{
@@ -147,6 +255,58 @@ class crud extends koneksi {
             $result->bindColumn(8, $this->id_terminal);
             $result->bindColumn(9, $this->email);
             $result->bindColumn(10, $this->password);
+            $result->fetch(PDO::FETCH_ASSOC);
+            if($result->rowCount()==1):
+                return true;
+            else:
+                return false;
+            endif;    
+        } catch (PDOException $e){
+            echo $e->getMessage();
+        }
+    }
+
+    public function detailUser($data){
+        try{
+            $sql ="SELECT * FROM user WHERE nik_user=:nik_user";
+            $result = $this->koneksi->prepare($sql);
+            $result->bindParam(":nik_user", $data);
+            $result->execute();
+            $result->bindColumn(1, $this->nik_user);
+            $result->bindColumn(2, $this->nama_user);
+            $result->bindColumn(3, $this->tempat_lahir_user);
+            $result->bindColumn(4, $this->tanggal_lahir_user);
+            $result->bindColumn(5, $this->jenis_kelamin_user);
+            $result->bindColumn(6, $this->alamat_user);
+            $result->bindColumn(7, $this->no_hp_user);
+            $result->bindColumn(8, $this->foto_user);
+            $result->bindColumn(9, $this->email_user);
+            $result->bindColumn(10, $this->password_user);
+            $result->fetch(PDO::FETCH_ASSOC);
+            if($result->rowCount()==1):
+                return true;
+            else:
+                return false;
+            endif;    
+        } catch (PDOException $e){
+            echo $e->getMessage();
+        }
+    }
+
+    public function detailBus($data){
+        try{
+            $sql ="SELECT * FROM bus WHERE id_bus=:id_bus";
+            $result = $this->koneksi->prepare($sql);
+            $result->bindParam(":id_bus", $data);
+            $result->execute();
+            $result->bindColumn(1, $this->id_bus);
+            $result->bindColumn(2, $this->nama_bus);
+            $result->bindColumn(3, $this->detail_bus);
+            $result->bindColumn(4, $this->status_bus);
+            $result->bindColumn(5, $this->jumlah_kursi);
+            $result->bindColumn(6, $this->foto_bus);
+            $result->bindColumn(7, $this->id_jenis);
+            $result->bindColumn(8, $this->id_rute);
             $result->fetch(PDO::FETCH_ASSOC);
             if($result->rowCount()==1):
                 return true;
@@ -190,6 +350,93 @@ class crud extends koneksi {
             $result->bindColumn(1, $this->id_jenis);
             $result->bindColumn(2, $this->jenis);
             $result->bindColumn(3, $this->fasilitas);
+            $result->fetch(PDO::FETCH_ASSOC);
+            if($result->rowCount()==1):
+                return true;
+            else:
+                return false;
+            endif;    
+        } catch (PDOException $e){
+            echo $e->getMessage();
+        }
+    }
+
+    public function detailRute($data){
+        try{
+            $sql ="SELECT * FROM rute WHERE id_rute=:id_rute";
+            $result = $this->koneksi->prepare($sql);
+            $result->bindParam(":id_rute", $data);
+            $result->execute();
+            $result->bindColumn(1, $this->id_rute);
+            $result->bindColumn(2, $this->pemberangkatan);
+            $result->bindColumn(3, $this->waktu_berangkat);
+            $result->bindColumn(4, $this->tujuan);
+            $result->bindColumn(5, $this->waktu_tiba);
+            $result->bindColumn(6, $this->harga);
+            $result->fetch(PDO::FETCH_ASSOC);
+            if($result->rowCount()==1):
+                return true;
+            else:
+                return false;
+            endif;    
+        } catch (PDOException $e){
+            echo $e->getMessage();
+        }
+    }
+
+    public function detailPenumpang($data){
+        try{
+            $sql ="SELECT * FROM penumpang WHERE nik_penumpang=:nik_penumpang";
+            $result = $this->koneksi->prepare($sql);
+            $result->bindParam(":nik_penumpang", $data);
+            $result->execute();
+            $result->bindColumn(1, $this->nik_penumpang);
+            $result->bindColumn(2, $this->nama_penumpang);
+            $result->bindColumn(3, $this->jenis_kelamin_penumpang);
+            $result->bindColumn(4, $this->no_hp_penumpang);
+            $result->fetch(PDO::FETCH_ASSOC);
+            if($result->rowCount()==1):
+                return true;
+            else:
+                return false;
+            endif;    
+        } catch (PDOException $e){
+            echo $e->getMessage();
+        }
+    }
+
+    public function detailPemesanan($data){
+        try{
+            $sql ="SELECT * FROM pemesanan WHERE id_pemesanan=:id_pemesanan";
+            $result = $this->koneksi->prepare($sql);
+            $result->bindParam(":id_pemesanan", $data);
+            $result->execute();
+            $result->bindColumn(1, $this->id_pemesanan);
+            $result->bindColumn(2, $this->nik_user);
+            $result->bindColumn(3, $this->nik_penumpang);
+            $result->bindColumn(4, $this->waktu_pemesanan);
+            $result->bindColumn(5, $this->total_bayar);
+            $result->fetch(PDO::FETCH_ASSOC);
+            if($result->rowCount()==1):
+                return true;
+            else:
+                return false;
+            endif;    
+        } catch (PDOException $e){
+            echo $e->getMessage();
+        }
+    }
+
+    public function detailDetailPemesanan($data){
+        try{
+            $sql ="SELECT * FROM detail_pemesanan WHERE id_detail_pemesanan=:id_detail_pemesanan";
+            $result = $this->koneksi->prepare($sql);
+            $result->bindParam(":id_detail_pemesanan", $data);
+            $result->execute();
+            $result->bindColumn(1, $this->id_detail_pemesanan);
+            $result->bindColumn(2, $this->id_pemesanan);
+            $result->bindColumn(3, $this->id_bus);
+            $result->bindColumn(4, $this->jumlah_kursi_pesan);
             $result->fetch(PDO::FETCH_ASSOC);
             if($result->rowCount()==1):
                 return true;
@@ -283,12 +530,56 @@ class crud extends koneksi {
             $result->bindParam(":jenis_kelamin", $jenis_kelamin);
             $result->bindParam(":alamat", $alamat);
             $result->bindParam(":no_hp", $no_hp);
-            // $result->bindParam(":foto", $foto);
+            $result->bindParam(":foto", $foto);
             $result->bindParam(":id_level", $id_level);
             $result->bindParam(":id_terminal", $id_terminal);
             $result->bindParam(":email", $email);
             $result->bindParam(":password", $password);
             $result->bindParam(":id_user_admin", $data);
+            $result->execute();
+            return true;
+        }
+        catch (PDOException $e){
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+    public function updateUser($nama_user, $tempat_lahir_user, $tanggal_lahir_user, $jenis_kelamin_user, $alamat_user, $no_hp_user, $foto_user, $email_user, $password_user, $data){
+        try{
+            $sql ="UPDATE user SET nama_user=:nama_user, tempat_lahir_user=:tempat_lahir_user, tanggal_lahir_user=:tanggal_lahir_user, jenis_kelamin_user=:jenis_kelamin_user, alamat_user=:alamat_user, no_hp_user=:no_hp_user, foto_user=:foto_user, email_user=:email_user, password_user=:password_user WHERE nik_user=:nik_user";
+            $result = $this->koneksi->prepare($sql);
+            $result->bindParam(":nama_user", $nama_user);
+            $result->bindParam(":tempat_lahir_user", $tempat_lahir_user);
+            $result->bindParam(":tanggal_lahir_user", $tanggal_lahir_user);
+            $result->bindParam(":jenis_kelamin_user", $jenis_kelamin_user);
+            $result->bindParam(":alamat_user", $alamat_user);
+            $result->bindParam(":no_hp_user", $no_hp_user);
+            $result->bindParam(":foto_user", $foto_user);
+            $result->bindParam(":email_user", $email_user);
+            $result->bindParam(":password_user", $password_user);
+            $result->bindParam(":nik_user", $data);
+            $result->execute();
+            return true;
+        }
+        catch (PDOException $e){
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+    public function updateBus($nama_bus, $detail_bus, $status_bus, $jumlah_kursi, $foto_bus, $id_jenis, $id_rute, $data){
+        try{
+            $sql ="UPDATE bus SET nama_bus=:nama_bus, detail_bus=:detail_bus, status_bus=:status_bus, jumlah_kursi=:jumlah_kursi, foto_bus=:foto_bus, id_jenis=:id_jenis, id_rute=:id_rute WHERE nik_user=:nik_user";
+            $result = $this->koneksi->prepare($sql);
+            $result->bindParam(":nama_bus", $nama_bus);
+            $result->bindParam(":detail_bus", $detail_bus);
+            $result->bindParam(":status_bus", $status_bus);
+            $result->bindParam(":jumlah_kursi", $jumlah_kursi);
+            $result->bindParam(":foto_bus", $foto_bus);
+            $result->bindParam(":id_jenis", $id_jenis);
+            $result->bindParam(":id_rute", $id_rute);
+            $result->bindParam(":id_bus", $data);
             $result->execute();
             return true;
         }
@@ -335,14 +626,14 @@ class crud extends koneksi {
 
     public function updateRute($pemberangkatan, $waktu_berangkat, $tujuan, $waktu_tiba, $harga, $data){
         try{
-            $sql ="UPDATE rute SET pemberangkatan=:pemberangkatan, waktu_berangkat=:waktu_berangkat, tujuan=:tujuan, waktu_tiba=:waktu_tiba, harga=:harga WHERE id_rute=:id";
+            $sql ="UPDATE rute SET pemberangkatan=:pemberangkatan, waktu_berangkat=:waktu_berangkat, tujuan=:tujuan, waktu_tiba=:waktu_tiba, harga=:harga WHERE id_rute=:id_rute";
             $result = $this->koneksi->prepare($sql);
             $result->bindParam(":pemberangkatan", $pemberangkatan);
             $result->bindParam(":waktu_berangkat", $waktu_berangkat);
             $result->bindParam(":tujuan", $tujuan);
             $result->bindParam(":waktu_tiba", $waktu_tiba);
             $result->bindParam(":harga", $harga);
-            $result->bindParam(":id", $data);
+            $result->bindParam(":id_rute", $data);
             $result->execute();
             return true;
         }
@@ -354,12 +645,47 @@ class crud extends koneksi {
 
     public function updatePenumpang($nama_penumpang, $jenis_kelamin_penumpang, $no_hp_penumpang, $data){
         try{
-            $sql ="UPDATE penumpang SET nama_penumpang=:nama_penumpang, jenis_kelamin_penumpang=:jenis_kelamin_penumpang, no_hp_penumpang=:no_hp_penumpang WHERE nik_penumpang=:id";
+            $sql ="UPDATE penumpang SET nama_penumpang=:nama_penumpang, jenis_kelamin_penumpang=:jenis_kelamin_penumpang, no_hp_penumpang=:no_hp_penumpang WHERE nik_penumpang=:nik_penumpang";
             $result = $this->koneksi->prepare($sql);
             $result->bindParam(":nama_penumpang", $nama_penumpang);
             $result->bindParam(":jenis_kelamin_penumpang", $jenis_kelamin_penumpang);
             $result->bindParam(":no_hp_penumpang", $no_hp_penumpang);
-            $result->bindParam(":id", $data);
+            $result->bindParam(":nik_penumpang", $data);
+            $result->execute();
+            return true;
+        }
+        catch (PDOException $e){
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+    public function updatePemesanan($nik_user, $nik_penumpang, $waktu_pemesanan, $total_bayar, $data){
+        try{
+            $sql ="UPDATE pemesanan SET nik_user=:nik_user, nik_penumpang=:nik_penumpang, waktu_pemesanan=:waktu_pemesanan, total_bayar=:total_bayar WHERE id_pemesanan=:id_pemesanan";
+            $result = $this->koneksi->prepare($sql);
+            $result->bindParam(":nik_user", $nik_user);
+            $result->bindParam(":nik_penumpang", $nik_penumpang);
+            $result->bindParam(":waktu_pemesanan", $waktu_pemesanan);
+            $result->bindParam(":total_bayar", $total_bayar);
+            $result->bindParam(":id_pemesanan", $data);
+            $result->execute();
+            return true;
+        }
+        catch (PDOException $e){
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+    public function updateDetailPemesanan($id_pemesanan, $id_bus, $jumlah_kursi_pesan, $data){
+        try{
+            $sql ="UPDATE detail_pemesanan SET id_pemesanan=:id_pemesanan, id_bus=:id_bus, jumlah_kursi_pesan=:jumlah_kursi_pesan WHERE id_detail_pemesanan=:id_detail_pemesanan";
+            $result = $this->koneksi->prepare($sql);
+            $result->bindParam(":id_pemesanan", $id_pemesanan);
+            $result->bindParam(":id_bus", $id_bus);
+            $result->bindParam(":jumlah_kursi_pesan", $jumlah_kursi_pesan);
+            $result->bindParam(":id_detail_pemesanan", $data);
             $result->execute();
             return true;
         }
