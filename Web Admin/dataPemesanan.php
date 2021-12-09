@@ -9,28 +9,28 @@ if(!isset($_SESSION['email'])){
 
 $sesName = $_SESSION['name'];
 
+$email = $_GET['nama'];
 if(isset ($_POST['submit'])){
-  $nama_bus = $_POST['txt_nama_bus'];
-  $status = $_POST['txt_status'];
-  $kursi = $_POST['txt_kursi'];
-  $jenis_bus = $_POST['txt_jenis_bus'];
-  $fasilitas = $_POST['txt_fasilitas'];
+  $nama = $_POST['txt_nama'];
+  $jenis_kelamin = $_POST['Rbtn_jenis_kelamin'];
+  $alamat = $_POST['txt_alamat'];
+  $no_hp = $_POST['txt_no_hp'];
   // $foto = $_POST['txt_foto'];
-  $id_jenis = $_POST['d_id_jenis'];
-  $id_rute = $_POST['d_id_rute'];
-  
-  $pemberangkatan = $_POST['txt_pemberangkatan'];
-  $waktu_berangkat = $_POST['txt_waktu_berangkat'];
-  $tujuan = $_POST['txt_tujuan'];
-  $waktu_tiba = $_POST['txt_waktu_tiba'];
-  $harga = $_POST['txt_harga'];
+  // $status = $_POST['txt_status'];
+  // $id_terminal = $_POST['txt_id_terminal'];
+  $email = $_POST['txt_email'];
+  $password = $_POST['txt_password'];
 
-  $query = "UPDATE INTO bus VALUES ('', '$nama_bus', '', '$status', '$kursi', '$foto', '$id_jenis', '$id_rute')";
-  $query2 = "UPDATE INTO jenis_bus VALUES ('', '$jenis_bus', '$fasilitas')";
-  $query3 = "UPDATE INTO terminal VALUES ('', '$pemberangkatan', '$waktu_berangkat', '$tujuan', '$waktu_tiba','$harga')";
+  $nama_terminal = $_POST['txt_nama_terminal'];
+  $alamat_terminal = $_POST['txt_detail_alamat_terminal'];
+  $provinsi = $_POST['d_provinsi_terminal'];
+  $kabupaten = $_POST['d_kabupaten_terminal'];
+  $kecamatan = $_POST['d_kecamatan_terminal'];
+
+  $query = "UPDATE INTO administrator VALUES ('', '$nama', '$jenis_kelamin', '$alamat', '$no_hp', '', 2, '1', '$email', '$password')";
+  $query2 = "INSERT INTO terminal VALUES ('', '$nama_terminal', '$alamat_terminal', '$provinsi', '$kabupaten','$kecamatan')";
   $result = mysqli_query($koneksi, $query);
   $result = mysqli_query($koneksi, $query2);
-  $result = mysqli_query($koneksi, $query3);
   header('Location: registrasi.php');
   echo mysqli_error($result);
 }
@@ -81,7 +81,7 @@ if(isset ($_POST['submit'])){
             </ul>
           </div>
         </li>
-        <li><hr></li>
+        <li><hr /></li>
         <li class="sidebar-heading mt-2 p-0">List Data</li>
         <li class="nav-item">
           <a href="sumberData.php" class="focusMenu">
@@ -102,10 +102,10 @@ if(isset ($_POST['submit'])){
             </ul>
           </div>
         </li>
-        <li class="nav-item active">
+        <li class="nav-item">
           <a href="dataBus.php" class="focusMenu">
             <div class="frame-ico">
-              <img class="ico2" src="img/ico/icoBus_Fill.png" alt="logo1" />
+              <img class="ico2" src="img/ico/icoBus_noFill.png" alt="logo1" />
             </div>
             <span class="link_name">Data Bus</span>
           </a>
@@ -126,7 +126,7 @@ if(isset ($_POST['submit'])){
           </ul>
         </li>
 
-        <li class="nav-item">
+        <li class="nav-item ">
           <a href="dataAkun.php" class="focusMenu">
             <div class="frame-ico">
               <img class="ico2" src="img/ico/iconProfile_noFill.png" alt="logo1" />
@@ -140,15 +140,15 @@ if(isset ($_POST['submit'])){
         <li><hr class="seperator" /></li>
 
         <li class="sidebar-heading mt-2 p-0">Layanan</li>
-        <li class="nav-item">
-          <a href="dataPemesanan.php" class="focusMenu">
+        <li class="nav-item active">
+          <a href="#" class="focusMenu">
             <div class="frame-ico">
-              <img class="ico2" src="img/ico/icoBooking_no Fill.png" alt="logo1" />
+              <img class="ico2" src="img/ico/icoBooking_Fill.png" alt="logo1" />
             </div>
             <span class="link_name">Pemesanan</span>
           </a>
           <ul class="sub-menu blank">
-            <li><a class="link_name" href="dataPemesanan.php">Pemesanan</a></li>
+            <li><a class="link_name" href="#">Pemesanan</a></li>
           </ul>
         </li>
 
@@ -171,7 +171,7 @@ if(isset ($_POST['submit'])){
             </div>
             <div class="name-job">
               <div class="profile_name">
-              <span><?= (str_word_count($sesName) > 2 ? substr($sesName,0,9)."..." : $sesName);?></span>
+                <span><?= (str_word_count($sesName) > 2 ? substr($sesName,0,9)."..." : $sesName);?></span>
               </div>
               <div class="job">Staff</div>
             </div>
@@ -292,16 +292,16 @@ if(isset ($_POST['submit'])){
         </div>
       </div>
 
-            <!-- Panel -->
-            <div class="row g-2 m-0 px-4">
+      <!-- Panel -->
+      <div class="row g-2 m-0 px-4">
         <div class="col-lg-12">
           <div class="card shadow mb-4 rounded">
             <div class="card-header shadow rounded">
               <div class="title float-start">
-                <span class="m-0"><b>Tabel Data Bus</b></span>
+                <span class="m-0"><b>Tabel Data Akun</b></span>
               </div>
               <div class="btnAction float-end">
-                <a href="tambahDataBus.php">
+                <a href="tambahAkun.php">
                   <button class="btn btn-light text-dark btn-circle custShadow2 me-2"><i class="fas fa-plus" data-bs-toggle="tooltip" title="Tambah"></i></button>
                 </a>
                 <button class="btn btn-light text-danger btn-circle custShadow2" data-bs-toggle="modal" data-tooltip="tooltip" data-bs-target="#deleteDataAkun" title="Hapus Yang dipilih"><i class="fas fa-trash"></i></button>
@@ -309,7 +309,7 @@ if(isset ($_POST['submit'])){
             </div>
             <div class="card-body">
               <div class="table-responsive">
-              <table class="table table-hover dataTable" width="100%">
+                <table class="table table-hover dataTable" width="100%">
                   <thead>
                     <tr>
                       <th class="cb">
@@ -319,19 +319,17 @@ if(isset ($_POST['submit'])){
                         </span>
                       </th>
                       <th class="actions">Action</th>
-                      <th class="no">No</th>
-                      <th class="foto">Foto</th>
-                      <th class="nama">Nama Bus</th>
-                      <th class="jenisBus">Jenis Bus</th>
-                      <th class="status">Status Bus</th>
-                      <th class="kursi">Kursi</th>
-                      <th class="harga">Harga</th>
-                      <th class="pemberangkatan">Pemberangkatan</th>
-                      <th class="tujuan">Tujuan</th>
-                      <th class="waktu">Waktu Berangkat</th>
-                      <th class="waktuTiba">Waktu Tiba</th>
-                      <th class="fasilitas">Fasilitas</th>
-                      <!-- <th class="detailRute">Detail Rute</th> -->
+                      <th class="nama">Nama Lengkap</th>
+                      <th class="email">Email</th>
+                      <th class="pass">Kata Sandi</th>
+                      <th class="alamat">Alamat</th>
+                      <th class="jenisKelamin">Jenis Kelamin</th>
+                      <th class="namaTerminal">Nama Terminal</th>
+                      <th class="AlamatTerminal">Alamat Terminal</th>
+                      <th class="provinsi">Provinsi</th>
+                      <th class="kabupaten">Kabupaten</th>
+                      <th class="kecamatan">Kecamatan</th>
+                      <th class="status">Status Level</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -344,26 +342,27 @@ if(isset ($_POST['submit'])){
                       </td>
                       <td>
                         <a href="#" class="actionBtn" aria-label="Edit">
-                          <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#editData" value="edit">
+                          <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#editDataAkun" value="edit">
                             &nbsp;<i class="fa fa-edit fa-sm" data-bs-toggle="tooltip" title="Edit"></i>
                           </button>
                         </a>
-                          <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteData" value="hapus">
+                        <a href="#" class="actionBtn" aria-label="Delete">
+                          <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteDataAkun" value="hapus">
                             <i class="fa fa-trash fa-sm" data-bs-toggle="tooltip" title="Delete"></i>
                           </button>
+                        </a>
                       </td>
-                      <td>1</td>
-                      <td>-</td>
-                      <td>Pahala Kencana</td>
-                      <td><span class="mode mode_ekonomi">Ekonomi</span></td>
-                      <td><span class="mode mode_on customW">Operasional</span></td>
-                      <td>-</td>
-                      <td>200.000</td>
-                      <td>Jember</td>
-                      <td>Bali</td>
-                      <td>10:00</td>
-                      <td>18:00</td>
-                      <td>-</td>
+                      <td>Admin 1</td>
+                      <td>amdin@admin.com</td>
+                      <td>*******</td>
+                      <td>Jakarta</td>
+                      <td>Laki-laki</td>
+                      <td>Terminal A</td>
+                      <td><center>-</center></td>
+                      <td><center>-</center></td>
+                      <td><center>-</center></td>
+                      <td><center>-</center></td>
+                      <td><span class="mode mode_on">Admin</span></td>
                     </tr>
                     <tr>
                       <td>
@@ -374,28 +373,27 @@ if(isset ($_POST['submit'])){
                       </td>
                       <td>
                         <a href="#" class="actionBtn" aria-label="Edit">
-                          <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#editData" value="edit">
+                          <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#editDataAkun" value="edit">
                             &nbsp;<i class="fa fa-edit fa-sm" data-bs-toggle="tooltip" title="Edit"></i>
                           </button>
                         </a>
                         <a href="#" class="actionBtn" aria-label="Delete">
-                          <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteData" value="hapus">
+                          <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteDataAkun" value="hapus">
                             <i class="fa fa-trash fa-sm" data-bs-toggle="tooltip" title="Delete"></i>
                           </button>
                         </a>
                       </td>
-                      <td>2</td>
-                      <td>-</td>
-                      <td>Pahala Kencana</td>
-                      <td><span class="mode mode_eksekutif">Eksekutif</span></td>
-                      <td><span class="mode mode_on customW">Operasional</span></td>
-                      <td>-</td>
-                      <td>200.000</td>
-                      <td>Jember</td>
-                      <td>Bali</td>
-                      <td>10:00</td>
-                      <td>18:00</td>
-                      <td>-</td>
+                      <td>Staff 1</td>
+                      <td>amdin@admin.com</td>
+                      <td>*******</td>
+                      <td>Jakarta</td>
+                      <td>Laki-laki</td>
+                      <td>Terminal A</td>
+                      <td><center>-</center></td>
+                      <td><center>-</center></td>
+                      <td><center>-</center></td>
+                      <td><center>-</center></td>
+                      <td><span class="mode mode_done">Staff</span></td>
                     </tr>
                     <tr>
                       <td>
@@ -406,28 +404,27 @@ if(isset ($_POST['submit'])){
                       </td>
                       <td>
                         <a href="#" class="actionBtn" aria-label="Edit">
-                          <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#editData" value="edit">
+                          <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#editDataAkun" value="edit">
                             &nbsp;<i class="fa fa-edit fa-sm" data-bs-toggle="tooltip" title="Edit"></i>
                           </button>
                         </a>
                         <a href="#" class="actionBtn" aria-label="Delete">
-                          <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteData" value="hapus">
+                          <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteDataAkun" value="hapus">
                             <i class="fa fa-trash fa-sm" data-bs-toggle="tooltip" title="Delete"></i>
                           </button>
                         </a>
                       </td>
-                      <td>3</td>
-                      <td>-</td>
-                      <td>Pahala Kencana</td>
-                      <td><span class="mode mode_ekonomi">Ekonomi</span></td>
-                      <td><span class="mode mode_process customW">Pemeliharaan</span></td>
-                      <td>-</td>
-                      <td>200.000</td>
-                      <td>Jember</td>
-                      <td>Bali</td>
-                      <td>10:00</td>
-                      <td>18:00</td>
-                      <td>-</td>
+                      <td>Staff 2</td>
+                      <td>amdin@admin.com</td>
+                      <td>*******</td>
+                      <td>Jakarta</td>
+                      <td>Laki-laki</td>
+                      <td>Terminal A</td>
+                      <td><center>-</center></td>
+                      <td><center>-</center></td>
+                      <td><center>-</center></td>
+                      <td><center>-</center></td>
+                      <td><span class="mode mode_done">Staff</span></td>
                     </tr>
                     <tr>
                       <td>
@@ -438,28 +435,58 @@ if(isset ($_POST['submit'])){
                       </td>
                       <td>
                         <a href="#" class="actionBtn" aria-label="Edit">
-                          <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#editData" value="edit">
+                          <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#editDataAkun" value="edit">
                             &nbsp;<i class="fa fa-edit fa-sm" data-bs-toggle="tooltip" title="Edit"></i>
                           </button>
                         </a>
                         <a href="#" class="actionBtn" aria-label="Delete">
-                          <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteData" value="hapus">
+                          <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteDataAkun" value="hapus">
                             <i class="fa fa-trash fa-sm" data-bs-toggle="tooltip" title="Delete"></i>
                           </button>
                         </a>
                       </td>
-                      <td>4</td>
-                      <td>-</td>
-                      <td>Pahala Kencana</td>
-                      <td><span class="mode mode_eksekutif">Eksekutif</span></td>
-                      <td><span class="mode mode_on customW">Operasional</span></td>
-                      <td>-</td>
-                      <td>200.000</td>
-                      <td>Jember</td>
-                      <td>Bali</td>
-                      <td>10:00</td>
-                      <td>18:00</td>
-                      <td>-</td>
+                      <td>Staff 3</td>
+                      <td>amdin@admin.com</td>
+                      <td>*******</td>
+                      <td>Jakarta</td>
+                      <td>Laki-laki</td>
+                      <td>Terminal A</td>
+                      <td><center>-</center></td>
+                      <td><center>-</center></td>
+                      <td><center>-</center></td>
+                      <td><center>-</center></td>
+                      <td><span class="mode mode_done">Staff</span></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input type="checkbox" id="checkbox1" name="option[]" value="1" />
+                          <label for="checkbox1"></label>
+                        </span>
+                      </td>
+                      <td>
+                        <a href="#" class="actionBtn" aria-label="Edit">
+                          <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#editDataAkun" value="edit">
+                            &nbsp;<i class="fa fa-edit fa-sm" data-bs-toggle="tooltip" title="Edit"></i>
+                          </button>
+                        </a>
+                        <a href="#" class="actionBtn" aria-label="Delete">
+                          <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteDataAkun" value="hapus">
+                            <i class="fa fa-trash fa-sm" data-bs-toggle="tooltip" title="Delete"></i>
+                          </button>
+                        </a>
+                      </td>
+                      <td>Staff 4</td>
+                      <td>amdin@admin.com</td>
+                      <td>*******</td>
+                      <td>Jakarta</td>
+                      <td>Laki-laki</td>
+                      <td>Terminal A</td>
+                      <td><center>-</center></td>
+                      <td><center>-</center></td>
+                      <td><center>-</center></td>
+                      <td><center>-</center></td>
+                      <td><span class="mode mode_done">Staff</span></td>
                     </tr>
                   </tbody>
                 </table>
@@ -467,7 +494,7 @@ if(isset ($_POST['submit'])){
             </div>
 
             <!-- Edit Modal -->
-            <div id="editData" class="modal fade">
+            <div id="editDataAkun" class="modal fade">
               <div class="modal-dialog modal-lg">
                 <div class="modal-content modal-edit">
                   <form action="">
@@ -478,123 +505,111 @@ if(isset ($_POST['submit'])){
                       </button>
                     </div>
                     <div class="modal-body">
+                      <div class="col-lg-12 mb-3" hidden>
+                        <label for="exampleInputEmail" class="form-label">Id</label>
+                        <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_id" placeholder="" />
+                      </div>
                       <div class="row">
-                        <div class="col-md-6">
-                          <div class="form-group" hidden>
-                            <label for="InputId" class="form-label">Id</label>
-                            <input type="text" class="form-control form-control-user2" id="InputId" name="txt_id" placeholder="" />
-                          </div>
-                          <div class="form-group">
-                            <label for="InputFotoBus" class="form-label">Foto Bus</label>
-                            <div class="img-div">
-                              <div class="img-placeholder" onClick="triggerClick()">
-                                <img src="img/ico/IcoeditBusW.png" alt="" />
-                              </div>
-                              <img src="img/ico/IcoeditBus.png" onClick="triggerClick()" id="profileDisplay" />
-                            </div>
-                            <input type="file" name="profileImage" onChange="displayImage(this)" id="profileImage" class="form-control" style="display: none" />
-                            <a href="#" class="float-end view text-secondary"> Lihat Foto </a>
-                          </div>
-                          <div class="form-group">
-                            <label for="InputNamaBus" class="form-label">Nama Bus</label>
-                            <input type="text" class="form-control form-control-user2" id="InputNamaBus" name="txt_NamaBus" placeholder="" />
-                          </div>
-                          <div class="form-group">
-                            <label for="InputJenisBus" class="form-label">Jenis Bus</label>
-                            <select class="form-select form-select-user" aria-label=".form-select-sm example" name="InputJenisBus">
-                              <option disabled selected>Pilih Jenis Bus</option>
-                              <option value="Ekonomi">Ekonomi</option>
-                              <option value="Eksekutif">Eksekutif</option>
-                              <option value="Pariwisata">Pariwisata</option>
-                            </select>
-                          </div>
-                          <div class="form-group">
-                            <label for="InputFasilitasBus" class="form-label">Fasilitas Bus</label>
-                            <div class="row">
-                              <div class="col-sm-2">
-                                <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" value="AC" id="flexCheckDefault" />
-                                  <label class="form-check-label" for="flexCheckDefault"> AC </label>
-                                </div>
-                                <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" value="TV" id="flexCheckDefault" />
-                                  <label class="form-check-label" for="flexCheckDefault"> TV </label>
-                                </div>
-                                <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" value="Wi-Fi" id="flexCheckDefault" />
-                                  <label class="form-check-label" for="flexCheckDefault"> Wi-Fi </label>
-                                </div>
-                              </div>
-                              <div class="col-sm-10">
-                                <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" value="Toilet" id="flexCheckDefault" />
-                                  <label class="form-check-label" for="flexCheckDefault"> Toilet </label>
-                                </div>
-                                <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" value="Kursi baring" id="flexCheckDefault" />
-                                  <label class="form-check-label" for="flexCheckDefault"> Kursi baring </label>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label for="InputStatusBus" class="form-label d-block">Status</label>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="Operasional" checked />
-                              <label class="form-check-label" for="exampleRadios1"> Operasional </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="Pemeliharaan" />
-                              <label class="form-check-label" for="exampleRadios2"> Pemeliharaan/Maintenance </label>
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label for="InputTarif" class="form-label">Tarif</label>
-                            <div class="input-group mb-3">
-                              <span class="input-group-text tarif">Rp</span>
-                              <input type="text" class="form-control form-control-user2" aria-label="Amount (to the nearest dollar)">
-                            </div>
-                          </div>
+                        <div class="col-lg-6 mb-3">
+                          <label for="exampleInputEmail" class="form-label">Nama Lengkap</label>
+                          <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_nama" placeholder="Ex: Budi Santoso" />
                         </div>
-                        <div class="col-md-6">
-                          <div class="form-group">
-                            <label for="InputTglPemberangkatan" class="form-label">Tanggal Pemberangkatan</label>
-                            <input type="date" class="form-control form-control-user2" id="InputTglPemberangkatan" name="txt_Tgl" >
-                          </div>
-                          <div class="form-group">
-                            <label for="InputWaktu" class="form-label">Waktu pemberangkatan</label>
-                            <input type="time" class="form-control form-control-user2" id="InputWaktu" name="txt_waktu" >
-                          </div>
-                          <div class="form-group">
-                            <label for="InputPemberangkatan" class="form-label">Pemberangkatan</label>
-                            <input type="text" class="form-control form-control-user2" id="InputPemberangkatan" name="txt_Pemberangkatan" placeholder="" />
-                          </div>
-                          <div class="form-group">
-                            <label for="InputTujuan" class="form-label">Tujuan</label>
-                            <input type="text" class="form-control form-control-user2" id="InputTujuan" name="txt_Tujuan" placeholder="" />
-                          </div>
-                          <div class="form-group">
-                            <label for="InputWaktuKedatangan" class="form-label">Estimasi Waktu Kedatangan</label>
-                            <input type="time" class="form-control form-control-user2" id="InputWaktuKedatangan" name="txt_waktuDatang" >
-                          </div>
-                          <div class="form-group">
-                            <label for="InputDetail" class="form-label">Detail Rute</label>
-                            <input type="text" class="form-control form-control-user2" id="InputDetail" name="txt_Detail" placeholder="" />
-                          </div>
-                        </div>
-                        <div class="mb-5"></div>
-                        <div class="col-12 d-flex justify-content-center">
-                          <button type="submit" name="register" class="btn btn-success roundedBtn text-white btn-block3">Tambah</button>
+                        <div class="col-lg-6 mb-3">
+                          <label for="exampleInputPassword" class="form-label">Email</label>
+                          <input type="email" class="form-control form-control-user2" id="exampleInputPassword" name="txt_email" placeholder="Ex: budiman@siboss.com" />
                         </div>
                       </div>
-                    </form>
-                  </div>  
+
+                      <div class="row">
+                        <div class="col-lg-6 mb-3">
+                          <label for="exampleInputEmail" class="form-label">Kata Sandi</label>
+                          <input type="password" class="form-control form-control-user2" id="exampleInputEmail" name="txt_pass" placeholder="********" />
+                        </div>
+                        <div class="col-lg-6 mb-3">
+                          <label for="exampleInputPassword" class="form-label">Konfirmasi Kata sandi</label>
+                          <input type="password" class="form-control form-control-user2" id="exampleInputPassword" name="txt_pass" placeholder="********" />
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-lg-6 mb-3">
+                          <label for="exampleInputEmail" class="form-label">Alamat</label>
+                          <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_alamat" placeholder="Ex: JL. Sudirman" />
+                        </div>
+                        <div class="col-lg-6 mb-3">
+                          <label for="exampleInputPassword" class="form-label">Jenis Kelamin</label>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="Rbtnjk" id="exampleRadios1" value="option1" checked />
+                            <label class="form-check-label2" for="exampleRadios1"> Laki-laki</label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="Rbtnjk" id="exampleRadios2" value="option2" />
+                            <label class="form-check-label2" for="exampleRadios2"> Perempuan </label>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-lg-6 mb-3">
+                          <label for="exampleInputEmail" class="form-label">Nama Terminal</label>
+                          <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_terminal" placeholder="Ex: Terminal A" />
+                        </div>
+                        <div class="col-lg-6 mb-3">
+                          <label for="exampleInputPassword" class="form-label">Alamat Terminal</label>
+                          <input type="text" class="form-control form-control-user2" id="exampleInputPassword" name="txt_alamatterm" placeholder="JL. KH." />
+                        </div>
+                      </div>
+
+                      <div class="col-lg-12 mb-3">
+                        <label for="exampleInputEmail" class="form-label">Provinsi</label>
+                        <select class="form-select" aria-label=".form-select-sm example">
+                          <option disabled selected>Pilih Provinsi</option>
+                          <option value="1">One</option>
+                          <option value="2">Two</option>
+                          <option value="3">Three</option>
+                        </select>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-lg-6 mb-3">
+                          <label for="exampleInputEmail" class="form-label">Kota</label>
+                          <select class="form-select" aria-label=".form-select-sm example">
+                            <option disabled selected>Pilih kota</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                          </select>
+                        </div>
+                        <div class="col-lg-6 mb-3">
+                          <label for="exampleInputPassword" class="form-label">Kecamatan</label>
+                          <select class="form-select" aria-label=".form-select-sm example">
+                            <option disabled selected>Pilih Kecamatan</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                          </select>
+                        </div>
+                        <div class="col-lg-12 mb-2">
+                          <label for="exampleInputEmail" class="form-label">Status Level</label>
+                          <select class="form-select" aria-label=".form-select-sm example">
+                            <option disabled selected>Pilih Level Otoritas</option>
+                            <option value="1">Admin</option>
+                            <option value="2">staff</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <input type="button" class="btn btn-secondary roundedBtn" data-bs-dismiss="modal" value="Cancel" />
+                        <input type="submit" class="btn colorPrimary text-white roundedBtn" value="Simpan" />
+                      </div>
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>
 
             <!-- Delete Modal -->
-            <div id="deleteData" class="modal fade">
+            <div id="deleteDataAkun" class="modal fade">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <form action="">

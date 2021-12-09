@@ -91,7 +91,7 @@
         <!-- Heading -->
         <li class="sidebar-heading mb-2 p-0">Menu :</li>
         <li class="nav-item">
-          <a href="#" class="focusMenu">
+          <a href="dashboard.php" class="focusMenu">
             <div class="frame-ico">
               <img class="ico" src="img/ico/icoDash_Fill.png" alt="logo1" data-bs-toggle="collapse" data-bs-target="#dashboard" aria-expanded="false" aria-controls="dashboard" />
             </div>
@@ -167,14 +167,14 @@
 
         <li class="sidebar-heading mt-2 p-0">Layanan</li>
         <li class="nav-item">
-          <a href="#" class="focusMenu">
+          <a href="dataPemesanan.php" class="focusMenu">
             <div class="frame-ico">
               <img class="ico2" src="img/ico/icoBooking_no Fill.png" alt="logo1" />
             </div>
             <span class="link_name">Pemesanan</span>
           </a>
           <ul class="sub-menu blank">
-            <li><a class="link_name" href="#">Pemesanan</a></li>
+            <li><a class="link_name" href="dataPemesanan.php">Pemesanan</a></li>
           </ul>
         </li>
 
@@ -443,7 +443,7 @@
                                               <div class="col-lg-12 mb-3">
                                                 <label for="inputProvinsi" class="form-label">Provinsi</label>
                                                 <select class="form-select form-select-user" aria-label=".form-select-sm example" name="d_provinsi_terminal" id="propinsi">
-                                                  <option selected ><?php echo $provinsi; ?></option>
+                                                  <option disabled selected>Pilih Provinsi</option>
                                                 </select>
                                               </div>
                                             </div>
@@ -754,9 +754,9 @@
                   </div>
                 </div>
               </div>
+
               <!-- Tabs Rute -->
-              <div class="tab-content mb-5" id="ex1-content">
-                <div class="tab-pane fade show active" id="tabs-3" role="tabpanel" aria-labelledby="ex1-tab-3">
+                <div class="tab-pane fade" id="tabs-3" role="tabpanel" aria-labelledby="ex1-tab-3">
                   <div class="row g-2 m-0">
                     <div class="col-lg-12 p-0 m-0">
                       <div class="card mb-4 roundedTabContent">
@@ -977,9 +977,9 @@
                     </div>
                   </div>
                 </div>
+
                 <!-- Tabs Penumpang   -->
-                <div class="tab-content mb-5" id="ex1-content">
-                <div class="tab-pane fade show active" id="tabs-4" role="tabpanel" aria-labelledby="ex1-tab-4">
+                <div class="tab-pane fade" id="tabs-4" role="tabpanel" aria-labelledby="ex1-tab-4">
                   <div class="row g-2 m-0">
                     <div class="col-lg-12 p-0 m-0">
                       <div class="card mb-4 roundedTabContent">

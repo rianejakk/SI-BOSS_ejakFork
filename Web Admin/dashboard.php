@@ -113,14 +113,14 @@ $sesName = $_SESSION['name'];
 
         <li class="sidebar-heading mt-2 p-0">Layanan</li>
         <li class="nav-item">
-          <a href="#" class="focusMenu">
+          <a href="dataPemesanan.php" class="focusMenu">
             <div class="frame-ico">
               <img class="ico2" src="img/ico/icoBooking_no Fill.png" alt="logo1" />
             </div>
             <span class="link_name">Pemesanan</span>
           </a>
           <ul class="sub-menu blank">
-            <li><a class="link_name" href="#">Pemesanan</a></li>
+            <li><a class="link_name" href="dataPemesanan.php">Pemesanan</a></li>
           </ul>
         </li>
 

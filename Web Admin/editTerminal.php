@@ -25,7 +25,7 @@
     $provinsi = $_POST['d_provinsi_terminal'];
     $kabupaten = $_POST['d_kabupaten_terminal'];
     $kecamatan = $_POST['d_kecamatan_terminal'];
-    if($obj->updateData($namaTerminal, $alamatTerminal, $provinsi, $kabupaten, $kecamatan->id)){
+    if($obj->updateTerminal($namaTerminal, $alamatTerminal, $provinsi, $kabupaten, $kecamatan->id)){
         echo '<div class="alert alert-success">Data Berhasil disimpan</div>';
         header("Location: sumberData.php");
     } else {
