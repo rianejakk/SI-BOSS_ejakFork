@@ -124,7 +124,6 @@ $sesName = $_SESSION['name'];
           </ul>
         </li>
 
-<<<<<<< Updated upstream
         <li class="nav-item">
           <a href="#" class="focusMenu">
             <div class="frame-ico">
@@ -152,21 +151,6 @@ $sesName = $_SESSION['name'];
           </div>
         </li>
       </ul>
-=======
-            <li class="nav-item">
-                <div class="profile-details">
-                    <div class="profile-content">
-                        <img src="img/bis.png" alt="profileImg" />
-                    </div>
-                    <div class="name-job">
-                        <div class="profile_name"></div>
-                        <div class="job">Staff</div>
-                    </div>
-                    <i class="bx bx-log-out"></i>
-                </div>
-            </li>
-        </ul>
->>>>>>> Stashed changes
     </div>
 
     <!-- Content -->
@@ -184,19 +168,11 @@ $sesName = $_SESSION['name'];
               </a>
             </li>
 
-<<<<<<< Updated upstream
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" id="dropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <span class="RobotoReg14"><?php echo $sesName;?></span>
                 <img class="img-profile rounded-circle" src="img/bis.png" alt="LogoBis" />
               </a>
-=======
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="dropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <span class="RobotoReg14"><?php echo $email;?></span>
-                            <img class="img-profile rounded-circle" src="img/bis.png" alt="LogoBis" />
-                        </a>
->>>>>>> Stashed changes
 
               <ul class="dropdown-menu border-0 dropdown-menu-end shadow" aria-labelledby="dropdownProfile">
                 <li>
