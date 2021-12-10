@@ -11,8 +11,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
   $harga = $_POST['txt_harga'];
   if($obj->insertRute($pemberangkatan, $waktu_berangkat, $tujuan, $waktu_tiba, $harga)){
     // echo '<div class="alert alert-success">Terminal Berhasil Ditambahkan</div>';
+    header("Location: sumberData.php");
   } else{
     // echo '<div class="alert alert-danger">Terminal Gagal Ditambahkan</div>';
+    header("Location: sumberData.php");
   }
 }
 

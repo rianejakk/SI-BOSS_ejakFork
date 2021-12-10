@@ -10,8 +10,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
   $no_hp_penumpang = $_POST['txt_no_hp_penumpang'];
   if($obj->insertPenumpang($nik_penumpang, $nama_penumpang, $jenis_kelamin_penumpang, $no_hp_penumpang)){
     // echo '<div class="alert alert-success">Terminal Berhasil Ditambahkan</div>';
+    header("Location: sumberData.php");
   } else{
     // echo '<div class="alert alert-danger">Terminal Gagal Ditambahkan</div>';
+    header("Location: sumberData.php");
   }
 }
 
