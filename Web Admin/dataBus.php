@@ -30,7 +30,7 @@
       // echo '<div class="alert alert-danger">Terminal Gagal Ditambahkan</div>';
     }
   }
-?> -->
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
