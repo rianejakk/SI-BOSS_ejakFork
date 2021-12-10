@@ -637,7 +637,7 @@
                                     </button>
                                   </a>
 
-                                   <!-- Edit Modal -->
+                                  <!-- Edit Modal -->
                                   <div id="editDataJenisBus<?php echo $id_jenis ?>" class="modal fade">
                                     <div class="modal-dialog">
                                       <div class="modal-content modal-edit">
@@ -645,6 +645,9 @@
                                           <?php
                                             $query = $obj->pilihJenisBus($id_jenis);
                                             while ($row = $query->fetch(PDO::FETCH_ASSOC)){
+                                              $id_jenis2 = $row['id_jenis'];
+                                              $jenis2 = $row['jenis'];
+                                              $fasilitas2 = $row['fasilitas'];
                                           ?>
                                           <div class="modal-header">
                                             <h4 class="modal-title">Edit Data Jenis Bus</h4>
@@ -654,20 +657,20 @@
                                           </div>
                                           <div class="modal-body">
                                             <div class="row">
-                                              <div class="col-lg-12 mb-3" hidden>
+                                              <div class="col-lg-12 mb-3">
                                                 <label for="inputId" class="form-label">Id</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputId" name="txt_id_jenis" value="<?php echo $id_jenis?>" placeholder="" readonly/>
+                                                <input type="text" class="form-control form-control-user2" id="inputId" name="txt_id_jenis" value="<?php echo $id_jenis2; ?>" placeholder="" readonly/>
                                               </div>
                                             </div>
 
                                             <div class="row">
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputJenis" class="form-label">Jenis</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputJenis" name="txt_jenis" placeholder="Ex: AKAS" value="<?php echo $jenis?>"/>
+                                                <input type="text" class="form-control form-control-user2" id="inputJenis" name="txt_jenis" placeholder="Ex: AKAS" value="<?php echo $jenis2; ?>"/>
                                               </div>
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputFasilitas" class="form-label">Fasilitas</label>
-                                                <textarea class="form-control form-textarea-user" id="inputFasilitas" name="txt_fasilitas" placeholder="Ex: Jl. Dharmawangsa" ><?php echo $fasilitas ?></textarea>
+                                                <textarea class="form-control form-textarea-user" id="inputFasilitas" name="txt_fasilitas" placeholder="Ex: Jl. Dharmawangsa" ><?php echo $fasilitas2; ?></textarea>
                                               </div>
                                             </div>
 
