@@ -609,7 +609,7 @@
                                           </div>
                                           <div class="modal-body">
                                             <div class="row">
-                                              <div class="col-lg-12 mb-3">
+                                              <div class="col-lg-12 mb-3" hidden>
                                                 <label for="inputId" class="form-label">Id</label>
                                                 <input type="text" class="form-control form-control-user2" id="inputId" name="txt_id_jenis" value="<?php echo $id_jenis2; ?>" placeholder="" readonly/>
                                               </div>
