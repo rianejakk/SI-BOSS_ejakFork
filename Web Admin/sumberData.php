@@ -12,54 +12,6 @@
   $sesName = $_SESSION['name'];
   $sesLvl = $_SESSION['level'];
 
-  if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    $nama_terminal = $_POST['txt_nama_terminal'];
-    $alamat_terminal = $_POST['txt_detail_alamat_terminal'];
-    $provinsi = $_POST['d_provinsi_terminal'];
-    $kabupaten = $_POST['d_kabupaten_terminal'];
-    $kecamatan = $_POST['d_kecamatan_terminal'];
-    if($obj->insertTerminal($nama_terminal, $alamat_terminal, $provinsi, $kabupaten, $kecamatan)){
-      // echo '<div class="alert alert-success">Terminal Berhasil Ditambahkan</div>';
-    } else{
-      // echo '<div class="alert alert-danger">Terminal Gagal Ditambahkan</div>';
-    }
-  }
-
-  if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    $jenis = $_POST['txt_jenis'];
-    $fasilitas = $_POST['txt_fasilitas'];
-    if($obj->insertJenisBus($jenis, $fasilitas)){
-      // echo '<div class="alert alert-success">Jenis Bus Berhasil Ditambahkan</div>';
-    } else{
-      // echo '<div class="alert alert-danger">Jenis Bus Gagal Ditambahkan</div>';
-    }
-  }
-
-  if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    $pemberangkatan = $_POST['txt_pemberangkatan'];
-    $waktu_berangkat = $_POST['txt_waktu_berangkat'];
-    $tujuan = $_POST['txt_tujuan'];
-    $waktu_tiba = $_POST['txt_waktu_tiba'];
-    $harga = $_POST['txt_harga'];
-    if($obj->insertRute($pemberangkatan, $waktu_berangkat, $tujuan, $waktu_tiba, $harga)){
-      // echo '<div class="alert alert-success">Terminal Berhasil Ditambahkan</div>';
-    } else{
-      // echo '<div class="alert alert-danger">Terminal Gagal Ditambahkan</div>';
-    }
-  }
-
-  if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    $nik_penumpang = $_POST['txt_nik_penumpang'];
-    $nama_penumpang = $_POST['txt_nama_penumpang'];
-    $jenis_kelamin_penumpang = $_POST['txt_jenis_kelamin_penumpang'];
-    $no_hp_penumpang = $_POST['txt_no_hp_penumpang'];
-    if($obj->insertPenumpang($nik_penumpang, $nama_penumpang, $jenis_kelamin_penumpang, $no_hp_penumpang)){
-      // echo '<div class="alert alert-success">Terminal Berhasil Ditambahkan</div>';
-    } else{
-      // echo '<div class="alert alert-danger">Terminal Gagal Ditambahkan</div>';
-    }
-  }
-
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -366,9 +318,9 @@
                                 <th class="id">Id </th>
                                 <th class="terminal">Terminal</th>
                                 <th class="alamat">Alamat</th>
-                                <th class="provinsi">Provinsi</th>
-                                <th class="kabupaten">Kabupaten</th>
-                                <th class="kecamatan">Kecamatan</th>
+                                <th class="provinsis">Provinsi</th>
+                                <th class="kabupatens">Kabupaten</th>
+                                <th class="kecamatans">Kecamatan</th>
                               </tr>
                             </thead>
                             <tbody>
@@ -442,7 +394,7 @@
                                               </div>
                                               <div class="col-lg-12 mb-3">
                                                 <label for="inputProvinsi" class="form-label">Provinsi</label>
-                                                <select class="form-select form-select-user" aria-label=".form-select-sm example" name="d_provinsi_terminal" id="propinsi">
+                                                <select class="form-select form-select-user propinsi" aria-label=".form-select-sm example" name="d_provinsi_terminal" >
                                                   <option disabled selected>Pilih Provinsi</option>
                                                 </select>
                                               </div>
@@ -451,13 +403,13 @@
                                             <div class="row">
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputKabupaten" class="form-label">Kota</label>
-                                                <select class="form-select form-select-user" aria-label=".form-select-sm example" name="d_kabupaten_terminal" id="kabupaten">
+                                                <select class="form-select form-select-user kabupaten" aria-label=".form-select-sm example" name="d_kabupaten_terminal" >
                                                   <option disabled selected>Pilih kota</option>
                                                 </select>
                                               </div>
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputKecamatan" class="form-label">Kecamatan</label>
-                                                <select class="form-select form-select-user" aria-label=".form-select-sm example" name="d_kecamatan_terminal" id="kecamatan">
+                                                <select class="form-select form-select-user kecamatan" aria-label=".form-select-sm example" name="d_kecamatan_terminal">
                                                   <option disabled selected>Pilih Kecamatan</option>
                                                 </select>
                                               </div>
@@ -518,7 +470,7 @@
                       <div id="tambahDataTerminal" class="modal fade">
                         <div class="modal-dialog">
                           <div class="modal-content modal-edit">
-                            <form role="form" action="sumberData.php" method="POST">
+                            <form role="form" action="tambahTerminal.php" method="POST">
                               <div class="modal-header">
                                 <h4 class="modal-title">Tambah Data Terminal</h4>
                                 <button type="button" class="btn btn-danger btn-circle btn-user2 shadow" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true">
@@ -726,7 +678,7 @@
                       <div id="tambahDataJenisBus" class="modal fade">
                         <div class="modal-dialog">
                           <div class="modal-content modal-edit">
-                            <form role="form" action="sumberData.php" method="POST">
+                            <form role="form" action="tambahJenisBus.php" method="POST">
                               <div class="modal-header">
                                 <h4 class="modal-title">Tambah Data Jenis Bus</h4>
                                 <button type="button" class="btn btn-danger btn-circle btn-user2 shadow" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true">
@@ -933,7 +885,7 @@
                         <div id="tambahDataRute" class="modal fade">
                           <div class="modal-dialog">
                             <div class="modal-content modal-edit">
-                              <form role="form" action="sumberData.php" method="POST">
+                              <form role="form" action="tambahRute.php" method="POST">
                                 <div class="modal-header">
                                   <h4 class="modal-title">Tambah Data Rute</h4>
                                   <button type="button" class="btn btn-danger btn-circle btn-user2 shadow" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true">
@@ -1140,7 +1092,7 @@
                         <div id="tambahDataPenumpang" class="modal fade">
                           <div class="modal-dialog">
                             <div class="modal-content modal-edit">
-                              <form role="form" action="sumberData.php" method="POST">
+                              <form role="form" action="tambahPenumpang.php" method="POST">
                                 <div class="modal-header">
                                   <h4 class="modal-title">Tambah Data Penumpang</h4>
                                   <button type="button" class="btn btn-danger btn-circle btn-user2 shadow" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true">
@@ -1197,102 +1149,7 @@
     <script src="plugin/datatables/DataTables-1.11.3/js/dataTables.bootstrap5.min.js"></script>
     <script src="plugin/js/datatables-demo.js"></script>
     <script src="plugin/js/javascript.js"></script>
-    <script type = "text/javascript" >
-          var return_first = function() {
-              var tmp = null;
-              $.ajax({
-                  'async': false,
-                  'type': "get",
-                  'global': false,
-                  'dataType': 'json',
-                  'url': 'https://x.rajaapi.com/poe',
-                  'success': function(data) {
-                      tmp = data.token;
-                  }
-              });
-              return tmp;
-          }();
-      $(document).ready(function() {
-          $.ajax({
-              url: 'https://x.rajaapi.com/MeP7c5ne' + window.return_first + '/m/wilayah/provinsi',
-              type: 'GET',
-              dataType: 'json',
-              success: function(json) {
-                  if (json.code == 200) {
-                      for (i = 0; i < Object.keys(json.data).length; i++) {
-                          $('#propinsi').append($('<option>').text(json.data[i].name).attr('value', json.data[i].id));
-                      }
-                  } else {
-                      $('#kabupaten').append($('<option>').text('Data tidak di temukan').attr('value', 'Data tidak di temukan'));
-                  }
-              }
-          });
-          $("#propinsi").change(function() {
-              var propinsi = $("#propinsi").val();
-              $.ajax({
-                  url: 'https://x.rajaapi.com/MeP7c5ne' + window.return_first + '/m/wilayah/kabupaten',
-                  data: "idpropinsi=" + propinsi,
-                  type: 'GET',
-                  cache: false,
-                  dataType: 'json',
-                  success: function(json) {
-                      $("#kabupaten").html('');
-                      if (json.code == 200) {
-                          for (i = 0; i < Object.keys(json.data).length; i++) {
-                              $('#kabupaten').append($('<option>').text(json.data[i].name).attr('value', json.data[i].id));
-                          }
-                          $('#kecamatan').html($('<option>').text('-- Pilih Kecamatan --').attr('value', '-- Pilih Kecamatan --'));
-                          $('#kelurahan').html($('<option>').text('-- Pilih Kelurahan --').attr('value', '-- Pilih Kelurahan --'));
-
-                      } else {
-                          $('#kabupaten').append($('<option>').text('Data tidak di temukan').attr('value', 'Data tidak di temukan'));
-                      }
-                  }
-              });
-          });
-          $("#kabupaten").change(function() {
-              var kabupaten = $("#kabupaten").val();
-              $.ajax({
-                  url: 'https://x.rajaapi.com/MeP7c5ne' + window.return_first + '/m/wilayah/kecamatan',
-                  data: "idkabupaten=" + kabupaten + "&idpropinsi=" + propinsi,
-                  type: 'GET',
-                  cache: false,
-                  dataType: 'json',
-                  success: function(json) {
-                      $("#kecamatan").html('');
-                      if (json.code == 200) {
-                          for (i = 0; i < Object.keys(json.data).length; i++) {
-                              $('#kecamatan').append($('<option>').text(json.data[i].name).attr('value', json.data[i].id));
-                          }
-                          $('#kelurahan').html($('<option>').text('-- Pilih Kelurahan --').attr('value', '-- Pilih Kelurahan --'));
-                          
-                      } else {
-                          $('#kecamatan').append($('<option>').text('Data tidak di temukan').attr('value', 'Data tidak di temukan'));
-                      }
-                  }
-              });
-          });
-          $("#kecamatan").change(function() {
-              var kecamatan = $("#kecamatan").val();
-              $.ajax({
-                  url: 'https://x.rajaapi.com/MeP7c5ne' + window.return_first + '/m/wilayah/kelurahan',
-                  data: "idkabupaten=" + kabupaten + "&idpropinsi=" + propinsi + "&idkecamatan=" + kecamatan,
-                  type: 'GET',
-                  dataType: 'json',
-                  cache: false,
-                  success: function(json) {
-                      $("#kelurahan").html('');
-                      if (json.code == 200) {
-                          for (i = 0; i < Object.keys(json.data).length; i++) {
-                              $('#kelurahan').append($('<option>').text(json.data[i].name).attr('value', json.data[i].id));
-                          }
-                      } else {
-                          $('#kelurahan').append($('<option>').text('Data tidak di temukan').attr('value', 'Data tidak di temukan'));
-                      }
-                  }
-              });
-          });
-      });
-    </script>
+    <script src="plugin/js/dataWilayah.js"></script>
+    <script src="plugin/js/dataWilayahT.js"></script>
   </body>
 </html>
