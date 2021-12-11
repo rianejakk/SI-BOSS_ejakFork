@@ -315,21 +315,20 @@
                         </span>
                       </th>
                       <th class="actions">Action</th>
-                      <th class="no">No</th>
+                      <th class="no">ID Bus</th>
+                      <th class="foto">Foto</th>
                       <th class="nama">Nama Bus</th>
                       <th class="detailBus">Detail Bus</th>
                       <th class="status">Status Bus</th>
                       <th class="kursi">Kursi</th>
-                      <th class="foto">Foto</th>
-                      <th class="idJenis">ID Jenis</th>
+                      <!-- <th class="idJenis">ID Jenis</th> -->
                       <th class="jenis">Jenis</th>
-                      <th class="idRute">ID Rute</th>
+                      <th class="fasilitas">Fasilitas</th>
                       <th class="harga">Harga</th>
                       <th class="pemberangkatan">Pemberangkatan</th>
                       <th class="tujuan">Tujuan</th>
                       <th class="waktu">Waktu Berangkat</th>
                       <th class="waktuTiba">Waktu Tiba</th>
-                      <th class="fasilitas">Fasilitas</th>
                       <!-- <th class="detailRute">Detail Rute</th> -->
                     </tr>
                   </thead>
@@ -352,7 +351,15 @@
                                     $foto_bus = $row['foto_bus'];
                                     $id_jenis = $row['id_jenis'];
                                     $jenis_bus = $row['jenis'];
+                                    $fasilitas = $row['fasilitas'];
                                     $id_rute = $row['id_rute'];
+                                    $pemberangkatan = $row['pemberangkatan'];
+                                    $waktu_berangkat = $row['waktu_berangkat'];
+                                    $tujuan = $row['tujuan'];
+                                    $waktu_tiba = $row['waktu_tiba'];
+                                    $harga = $row['harga'];
+                                    $id_terminal = $row['id_terminal'];
+                                    $nama_terminal = $row['nama_terminal'];
                                 ?>
                               <tr>
                                 <td>
@@ -478,15 +485,19 @@
                                     </div>
                                   </div>
                                 </td>
-                                <td><?php echo $no; ?></td>
+                                <td><?php echo $id_bus; ?></td>
+                                <td><?php echo $foto_bus; ?></td>
                                 <td><?php echo $nama_bus; ?></td>
                                 <td><?php echo $detail_bus; ?></td>
                                 <td><?php echo $status_bus; ?></td>
                                 <td><?php echo $jumlah_kursi; ?></td>
-                                <td><?php echo $foto_bus; ?></td>
-                                <td><?php echo $id_jenis?></td>
-                                <td><?php echo $jenis_bus?></td>
-                                <td><?php echo $id_rute?></td>
+                                <td><?php echo $jenis_bus;?></td>
+                                <td><?php echo $fasilitas;?></td>
+                                <td><?php echo $harga;?></td>
+                                <td value="<?php echo $pemberangkatan;?>"><?php echo $nama_terminal?></td>
+                                <td><?php echo $waktu_berangkat;?></td>
+                                <td value="<?php echo $tujuan;?>"><?php echo $nama_terminal?></td>
+                                <td><?php echo $waktu_tiba;?></td>
                               </tr>
                               <?php
                                 $no++;

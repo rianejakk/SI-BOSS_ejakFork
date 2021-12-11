@@ -34,29 +34,15 @@
     }
   }  
 
-  if(isset ($_POST['submit'])){
-    $nama = $_POST['txt_nama'];
-    $jenis_kelamin = $_POST['Rbtn_jenis_kelamin'];
-    $alamat = $_POST['txt_alamat'];
-    $no_hp = $_POST['txt_no_hp'];
-    // $foto = $_POST['txt_foto'];
-    // $status = $_POST['txt_status'];
-    $id_terminal = $_POST['id_terminal'];
-    $email = $_POST['txt_email'];
-    $password = $_POST['txt_password'];
-
-    $query = "INSERT INTO administrator VALUES ('', '$nama', '$jenis_kelamin', '$alamat', '$no_hp', '', 2, '$id_terminal', '$email', '$password')";
-    $result = mysqli_query($koneksi, $query);
-    header('Location: registrasi.php');
-  }
-
   if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    $_POST['id_level'] = 2;
+    // echo json_encode($_POST); die();
     $nama = $_POST['txt_nama'];
     $jenis_kelamin = $_POST['Rbtn_jenis_kelamin'];
     $alamat = $_POST['txt_alamat'];
     $no_hp = $_POST['txt_no_hp'];
     // $foto = $_POST['txt_foto'];
-    $level = $_POST['txt_status'];
+    $level = $_POST['id_level'];
     $id_terminal = $_POST['id_terminal'];
     $email = $_POST['txt_email'];
     $password = $_POST['txt_password'];
@@ -144,7 +130,7 @@
                             <input type="password" class="form-control form-control-user2" id="InputPassword2" name="txt_pass" required data-parsley-required-message="Masukan ulang kata sandi !!!" data-parsley-equalto="#InputPassword" placeholder="********" />
                           </div>
                         </div>
-
+                        <input type="hidden" name="id_level">
                         <div class="row">
                           <div class="col-lg-6 mb-3">
                             <label for="InputNoHp" class="form-label">No Handphone</label>
@@ -182,9 +168,12 @@
                                   }
                                   while($row=$data->fetch(PDO::FETCH_ASSOC)){
                                     $id_terminal = $row['id_terminal'];
-                                    $nama_terminal = $row['nama_terminal']
+                                    $nama_terminal = $row['nama_terminal'];
+                                    $provinsi = $row['provinsi_terminal'];
+                                    $kabupaten = $row['kabupaten_terminal'];
+                                    $kecamatan = $row['kecamatan_terminal'];
                                 ?>
-                                <option value="<?php echo $id_terminal;?>"><?php echo $nama_terminal;?></option>
+                                <option value="<?php echo $id_terminal;?>"><?php echo $nama_terminal, ' ', $provinsi,' ', $kabupaten, ' ', $kecamatan;?></option>
                               <?php 
                               }}
                               ?>

@@ -747,6 +747,7 @@
                               <tbody>
                                 <?php
                                   $data = $obj->lihatRute();
+                                  $datas = $obj->lihatRutes();
                                   $no = 1;
                                   if($data->rowCount()>0){
                                     if($sesLvl == 1){
@@ -761,7 +762,19 @@
                                       $tujuan = $row['tujuan'];
                                       $waktu_tiba = $row['waktu_tiba'];
                                       $harga = $row['harga'];
+                                      $id_terminal = $row['id_terminal'];
+                                      $nama_terminal = $row['nama_terminal'];
+                                      while($row=$datas->fetch(PDO::FETCH_ASSOC)){
+                                        $id_rute = $row['id_rute'];
+                                        $pemberangkatan = $row['pemberangkatan'];
+                                        $waktu_berangkats = $row['waktu_berangkat'];
+                                        $tujuans = $row['tujuan'];
+                                        $waktu_tibas = $row['waktu_tiba'];
+                                        $hargas = $row['harga'];
+                                        $id_terminals = $row['id_terminal'];
+                                        $nama_terminals = $row['nama_terminal'];
                                   ?>
+                                
                                 <tr>
                                   <td>
                                     <span class="custom-checkbox">
@@ -872,15 +885,15 @@
                                     </div>
                                   </td>
                                   <td><?php echo $id_rute; ?></td>
-                                  <td><?php echo $pemberangkatan; ?></td>
+                                  <td value="<?php echo $pemberangkatan;?>"><?php echo $nama_terminal; ?></td>
                                   <td><?php echo $waktu_berangkat; ?></td>
-                                  <td><?php echo $tujuan; ?></td>
+                                  <td value="<?php echo $tujuans;?>"><?php echo $nama_terminals; ?></td>
                                   <td><?php echo $waktu_tiba; ?></td>
                                   <td><?php echo $harga; ?></td>
                                 </tr>
                                 <?php
                                   $no++;
-                                  }}
+                                  }}}
                                 ?>
                               </tbody>
                             </table>

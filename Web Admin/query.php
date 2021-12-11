@@ -24,7 +24,7 @@ class crud extends koneksi {
     }
 
     public function lihatBus(){
-        $sql = "SELECT * FROM bus JOIN jenis_bus ON bus.id_jenis=jenis_bus.id_jenis";
+        $sql = "SELECT * FROM bus JOIN jenis_bus ON bus.id_jenis=jenis_bus.id_jenis JOIN rute ON bus.id_rute=rute.id_rute JOIN terminal ON rute.pemberangkatan=terminal.id_terminal OR rute.tujuan=terminal.id_terminal";
         $result = $this->koneksi->prepare($sql);
         $result->execute();
         return $result;
@@ -45,7 +45,14 @@ class crud extends koneksi {
     }
 
     public function lihatRute(){
-        $sql = "SELECT * FROM rute";
+        $sql = "SELECT * FROM rute JOIN terminal ON rute.pemberangkatan=terminal.id_terminal";
+        $result = $this->koneksi->prepare($sql);
+        $result->execute();
+        return $result;
+    }
+
+    public function lihatRutes(){
+        $sql = "SELECT * FROM rute JOIN terminal ON rute.tujuan=terminal.id_terminal";
         $result = $this->koneksi->prepare($sql);
         $result->execute();
         return $result;
@@ -73,16 +80,16 @@ class crud extends koneksi {
     }
 
     // insert
-    public function insertAdministrator($nama, $jenis_kelamin, $alamat, $no_hp, $foto, $level, $id_terminal, $email, $password){
+    public function insertAdministrator($nama, $jenis_kelamin, $alamat, $no_hp, $level, $id_terminal, $email, $password){
         try{
-            $sql ="INSERT INTO administrator(nama, jenis_kelamin, alamat, no_hp, foto, id_level, id_terminal, email, password) VALUES (:nama, :jenis_kelamin, :alamat, :no_hp, :foto, :2, :id_terminal, :email, :password)";
+            $sql ="INSERT INTO administrator(nama, jenis_kelamin, alamat, no_hp, foto, id_level, id_terminal, email, password) VALUES (:nama, :jenis_kelamin, :alamat, :no_hp, :foto, :id_level, :id_terminal, :email, :password)";
             $result = $this->koneksi->prepare($sql);
             $result->bindParam(":nama", $nama);
             $result->bindParam(":jenis_kelamin", $jenis_kelamin);
             $result->bindParam(":alamat", $alamat);
             $result->bindParam(":no_hp", $no_hp);
             $result->bindParam(":foto", $foto);
-            $result->bindParam(":2", $level);
+            $result->bindParam(":id_level", $level);
             $result->bindParam(":id_terminal", $id_terminal);
             $result->bindParam(":email", $email);
             $result->bindParam(":password", $password);
