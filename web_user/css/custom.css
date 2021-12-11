@@ -236,7 +236,7 @@ border-radius: 20px;
 
  .bg-custom{
     background: #E3EBFE;
-    background-image: url(/assets/img/pblack.png);
+    background-image: url(assets/img/pblack.png) !important;
     background-size: cover;
  }
 
