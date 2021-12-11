@@ -322,6 +322,7 @@
                       <th class="kursi">Kursi</th>
                       <th class="foto">Foto</th>
                       <th class="idJenis">ID Jenis</th>
+                      <th class="jenis">Jenis</th>
                       <th class="idRute">ID Rute</th>
                       <th class="harga">Harga</th>
                       <th class="pemberangkatan">Pemberangkatan</th>
@@ -350,6 +351,7 @@
                                     $jumlah_kursi = $row['jumlah_kursi'];
                                     $foto_bus = $row['foto_bus'];
                                     $id_jenis = $row['id_jenis'];
+                                    $jenis_bus = $row['jenis'];
                                     $id_rute = $row['id_rute'];
                                 ?>
                               <tr>
@@ -373,7 +375,7 @@
 
                                    <!-- Edit Modal -->
                                   <div id="editDataBus<?php echo $id_bus ?>" class="modal fade">
-                                    <div class="modal-dialog">
+                                    <div class="modal-dialog modal-lg">
                                       <div class="modal-content modal-edit">
                                         <form role="form" action="editBus.php" method="POST">
                                           <?php
@@ -483,6 +485,7 @@
                                 <td><?php echo $jumlah_kursi; ?></td>
                                 <td><?php echo $foto_bus; ?></td>
                                 <td><?php echo $id_jenis?></td>
+                                <td><?php echo $jenis_bus?></td>
                                 <td><?php echo $id_rute?></td>
                               </tr>
                               <?php

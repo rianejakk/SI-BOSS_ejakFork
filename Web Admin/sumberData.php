@@ -315,7 +315,7 @@
                                   </span>
                                 </th>
                                 <th class="actions">Action</th>
-                                <th class="id">Id </th>
+                                <th class="id">Id</th>
                                 <th class="terminal">Terminal</th>
                                 <th class="alamat">Alamat</th>
                                 <th class="provinsis">Provinsi</th>
@@ -450,7 +450,7 @@
                                     </div>
                                   </div>
                                 </td>
-                                <td><?php echo $no; ?></td>
+                                <td><?php echo $id_terminal; ?></td>
                                 <td><?php echo $terminal; ?></td>
                                 <td><?php echo $alamat; ?></td>
                                 <td><?php echo $provinsi; ?></td>
@@ -550,7 +550,7 @@
                                   </span>
                                 </th>
                                 <th class="actions">Action</th>
-                                <th class="id">Id </th>
+                                <th class="id">ID Jenis Bus</th>
                                 <th class="jenis">Jenis Bus</th>
                                 <th class="fasilitas">Fasilitas</th>
                               </tr>
@@ -661,7 +661,7 @@
                                     </div>
                                   </div>
                                 </td>
-                                <td><?php echo $no; ?></td>
+                                <td><?php echo $id_jenis; ?></td>
                                 <td><?php echo $jenis; ?></td>
                                 <td><?php echo $fasilitas; ?></td>
                               </tr>
@@ -736,7 +736,7 @@
                                     </span>
                                   </th>
                                   <th class="actions">Action</th>
-                                  <th class="id">Id </th>
+                                  <th class="id">ID Rute </th>
                                   <th class="pemberangkatan">Pemberangkatan</th>
                                   <th class="waktu_berangkat">Waktu Berangkat</th>
                                   <th class="tujuan">Tujuan</th>
@@ -789,6 +789,12 @@
                                             <?php
                                               $query = $obj->pilihRute($id_rute);
                                               while ($row = $query->fetch(PDO::FETCH_ASSOC)){
+                                                $id_rute2 = $row['id_rute'];
+                                                $pemberangkatan2 = $row['pemberangkatan'];
+                                                $waktu_berangkat2 = $row['waktu_berangkat'];
+                                                $tujuan2 = $row['tujuan'];
+                                                $waktu_tiba2 = $row['waktu_tiba'];
+                                                $harga2 = $row['harga'];
                                             ?>
                                             <div class="modal-header">
                                               <h4 class="modal-title">Edit Data Rute</h4>
@@ -800,33 +806,33 @@
                                               <div class="row">
                                                 <div class="col-lg-12 mb-3" hidden>
                                                   <label for="inputId" class="form-label">Id</label>
-                                                  <input type="text" class="form-control form-control-user2" id="inputId" name="txt_id_rute" value="<?php echo $id_rute?>" placeholder="" readonly/>
+                                                  <input type="text" class="form-control form-control-user2" id="inputId" name="txt_id_rute" value="<?php echo $id_rute2?>" placeholder="" readonly/>
                                                 </div>
                                               </div>
 
                                               <div class="row">
                                                 <div class="col-lg-6 mb-3">
                                                   <label for="inputPemberangkatan" class="form-label">Pemberangkatan</label>
-                                                  <input type="text" class="form-control form-control-user2" id="inputPemberangkatan" name="txt_pemberangkatan" placeholder="Ex: Tawang Alun" value="<?php echo $pemberangkatan?>"/>
+                                                  <input type="text" class="form-control form-control-user2" id="inputPemberangkatan" name="txt_pemberangkatan" placeholder="Ex: Tawang Alun" value="<?php echo $pemberangkatan2?>"/>
                                                 </div>
                                                 <div class="col-lg-6 mb-3">
                                                   <label for="inputWaktuBerangkat" class="form-label">Waktu Berangkat</label>
-                                                  <textarea class="form-control form-textarea-user" id="inputWaktuBerangkat" name="txt_waktu_berangkat" placeholder="Ex: 00.00" ><?php echo $waktu_berangkat ?></textarea>
+                                                  <textarea class="form-control form-textarea-user" id="inputWaktuBerangkat" name="txt_waktu_berangkat" placeholder="Ex: 00.00" ><?php echo $waktu_berangkat2 ?></textarea>
                                                 </div>
                                               </div>
 
                                               <div class="row">
                                                 <div class="col-lg-6 mb-3">
                                                   <label for="inputTujuan" class="form-label">Tujuan</label>
-                                                  <input type="text" class="form-control form-control-user2" id="inputTujuan" name="txt_tujuan" placeholder="Ex: Bungurasih" value="<?php echo $tujuan?>"/>
+                                                  <input type="text" class="form-control form-control-user2" id="inputTujuan" name="txt_tujuan" placeholder="Ex: Bungurasih" value="<?php echo $tujuan2?>"/>
                                                 </div>
                                                 <div class="col-lg-6 mb-3">
                                                   <label for="inputWaktuTiba" class="form-label">Waktu Tiba</label>
-                                                  <textarea class="form-control form-textarea-user" id="inputWaktuTiba" name="txt_waktu_tiba" placeholder="Ex: 06.00" ><?php echo $waktu_tiba ?></textarea>
+                                                  <textarea class="form-control form-textarea-user" id="inputWaktuTiba" name="txt_waktu_tiba" placeholder="Ex: 06.00" ><?php echo $waktu_tiba2 ?></textarea>
                                                 </div>
                                                 <div class="col-lg-6 mb-3">
                                                   <label for="inputHarga" class="form-label">Harga</label>
-                                                  <textarea class="form-control form-textarea-user" id="inputHarga" name="txt_harga" placeholder="Ex: 100000" ><?php echo $harga ?></textarea>
+                                                  <textarea class="form-control form-textarea-user" id="inputHarga" name="txt_harga" placeholder="Ex: 100000" ><?php echo $harga2 ?></textarea>
                                                 </div>
                                               </div>
                                               
@@ -865,7 +871,7 @@
                                       </div>
                                     </div>
                                   </td>
-                                  <td><?php echo $no; ?></td>
+                                  <td><?php echo $id_rute; ?></td>
                                   <td><?php echo $pemberangkatan; ?></td>
                                   <td><?php echo $waktu_berangkat; ?></td>
                                   <td><?php echo $tujuan; ?></td>
@@ -1008,6 +1014,10 @@
                                             <?php
                                               $query = $obj->pilihPenumpang($nik_penumpang);
                                               while ($row = $query->fetch(PDO::FETCH_ASSOC)){
+                                                $nik_penumpang2 = $row['nik_penumpang'];
+                                                $nama_penumpang2 = $row['nama_penumpang'];
+                                                $jenis_kelamin_penumpang2 = $row['jenis_kelamin_penumpang'];
+                                                $no_hp_penumpang2 = $row['no_hp_penumpang'];
                                             ?>
                                             <div class="modal-header">
                                               <h4 class="modal-title">Edit Data Penumpang</h4>
@@ -1019,11 +1029,11 @@
                                               <div class="row">
                                                 <div class="col-lg-6 mb-3">
                                                   <label for="inputNik" class="form-label">NIK Penumpang</label>
-                                                  <input type="text" class="form-control form-control-user2" id="inputNik" name="txt_nik_penumpang" placeholder="Ex: 3509030907020006" value="<?php echo $nik_penumpang?>" placeholder="" readonly/>
+                                                  <input type="text" class="form-control form-control-user2" id="inputNik" name="txt_nik_penumpang" placeholder="Ex: 3509030907020006" value="<?php echo $nik_penumpang2?>" placeholder="" readonly/>
                                                 </div>
                                                 <div class="col-lg-6 mb-3">
                                                   <label for="inputNamaPenumpang" class="form-label">Nama Penumpang</label>
-                                                  <input type="text" class="form-control form-control-user2" id="inputNamaPenumpang" name="txt_nama_penumpang" placeholder="Ex: Budi Santoso" value="<?php echo $nama_penumpang?>"/>
+                                                  <input type="text" class="form-control form-control-user2" id="inputNamaPenumpang" name="txt_nama_penumpang" placeholder="Ex: Budi Santoso" value="<?php echo $nama_penumpang2?>"/>
                                                 </div>
                                                 
                                               </div>
@@ -1031,11 +1041,11 @@
                                               <div class="row">
                                                 <div class="col-lg-6 mb-3">
                                                   <label for="inputWaktuBerangkat" class="form-label">Jenis Kelamin</label>
-                                                  <textarea class="form-control form-textarea-user" id="inputWaktuBerangkat" name="txt_jenis_kelamin_penumpang" placeholder="Ex: Laki-laki" ><?php echo $jenis_kelamin_penumpang ?></textarea>
+                                                  <textarea class="form-control form-textarea-user" id="inputWaktuBerangkat" name="txt_jenis_kelamin_penumpang" placeholder="Ex: Laki-laki" ><?php echo $jenis_kelamin_penumpang2 ?></textarea>
                                                 </div>
                                                 <div class="col-lg-6 mb-3">
                                                   <label for="inputNoHp" class="form-label">No Handphone</label>
-                                                  <input type="text" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp_penumpang" placeholder="Ex: 085808241204" value="<?php echo $no_hp_penumpang?>"/>
+                                                  <input type="text" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp_penumpang" placeholder="Ex: 085808241204" value="<?php echo $no_hp_penumpang2?>"/>
                                                 </div>
                                               </div>
                                               

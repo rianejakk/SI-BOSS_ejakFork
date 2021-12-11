@@ -172,25 +172,21 @@
                             <select class="form-select form-select-user select-md" aria-label=".form-select-sm example" required data-parsley-required-message="Harap pilih data terminal !!!" name="id_terminal">
                               <option disabled selected>Pilih Terminal</option>
                               <?php
-                                // $sql="SELECT * FROM terminal";
-
-                                // $hasil=mysqli_query($koneksi,$sql);
-                                // $no=0;
-                                // while ($data = mysqli_fetch_array($hasil)) {
-                                //   $no++;
-                               ?>
-                               <?php
-                                // $sql="SELECT * FROM terminal";
-
-                                // $hasil = $this->koneksi->prepare($sql);
-                                // $no=0;
-                                // while ($data = mysqli_fetch_array($hasil)) {
-                                // $no++;
-                               ?>
-                               
-                                <option value="<?php echo $data['id_terminal'];?>"><?php echo $data['nama_terminal'];?></option>
+                                $data = $obj->lihatTerminal();
+                                $no = 1;
+                                if($data->rowCount()>0){
+                                  if($sesLvl == 1){
+                                      $dis = "";
+                                  } else{
+                                      $dis = "disabled";
+                                  }
+                                  while($row=$data->fetch(PDO::FETCH_ASSOC)){
+                                    $id_terminal = $row['id_terminal'];
+                                    $nama_terminal = $row['nama_terminal']
+                                ?>
+                                <option value="<?php echo $id_terminal;?>"><?php echo $nama_terminal;?></option>
                               <?php 
-                              // }
+                              }}
                               ?>
                             </select>
                             <a href="#" class="actionBtn" aria-label="Tambah">

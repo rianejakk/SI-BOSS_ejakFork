@@ -753,7 +753,7 @@
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true"></button>
                                           </div>
                                           <div class="modal-body">
-                                            <p>Apakah Anda yakin ingin menghapus data administrator ini ?</p>
+                                            <p>Apakah Anda yakin ingin menghapus data user ini ?</p>
                                             <p class="text-warning"><small>Perlu hati-hati karena data akan hilang selamanya !</small></p>
                                           </div>
                                           <div class="modal-footer">

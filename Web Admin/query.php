@@ -24,7 +24,7 @@ class crud extends koneksi {
     }
 
     public function lihatBus(){
-        $sql = "SELECT * FROM bus";
+        $sql = "SELECT * FROM bus JOIN jenis_bus ON bus.id_jenis=jenis_bus.id_jenis";
         $result = $this->koneksi->prepare($sql);
         $result->execute();
         return $result;
