@@ -378,6 +378,10 @@
                                     $id_terminal = $row['id_terminal'];
                                     $email = $row['email'];
                                     $password = $row['password'];
+                                    $id_level = $row['id_level'];
+                                    $level = $row['level'];
+                                    $id_terminal = $row['id_terminal'];
+                                    $nama_terminal = $row['nama_terminal'];
                                 ?>
                               <tr>
                                 <td>
@@ -509,8 +513,8 @@
                                 <td><?php echo $alamat; ?></td>
                                 <td><?php echo $no_hp; ?></td>
                                 <td><?php echo $foto; ?></td>
-                                <td><?php echo $id_level?></td>
-                                <td><?php echo $id_terminal?></td>
+                                <td value="<?php echo $id_level?>"><?php echo $level?></td>
+                                <td value="<?php echo $id_terminal?>"><?php echo $nama_terminal?></td>
                                 <td><?php echo $email?></td>
                                 <td><?php echo $password?></td>
                               </tr>

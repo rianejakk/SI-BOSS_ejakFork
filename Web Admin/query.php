@@ -10,7 +10,7 @@ class crud extends koneksi {
     
     // lihat
     public function lihatAdministrator(){
-        $sql = "SELECT * FROM administrator";
+        $sql = "SELECT * FROM administrator JOIN level ON administrator.id_level=level.id_level JOIN terminal ON administrator.id_terminal=terminal.id_terminal";
         $result = $this->koneksi->prepare($sql);
         $result->execute();
         return $result;
