@@ -3,7 +3,7 @@
     require ('query.php');
     $obj = new crud;
 
-    $id_user_admin = ['txt_id_user_admin'];
+    $id_user_admin = $_POST['txt_id_user_admin'];
     $nama = $_POST['txt_nama'];
     $jenis_kelamin = $_POST['Rbtn_jenis_kelamin'];
     $alamat = $_POST['txt_alamat'];

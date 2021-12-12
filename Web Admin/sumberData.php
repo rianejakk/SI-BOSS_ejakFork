@@ -315,7 +315,7 @@
                                   </span>
                                 </th>
                                 <th class="actions">Action</th>
-                                <th class="id">Id</th>
+                                <th class="id">ID</th>
                                 <th class="terminal">Terminal</th>
                                 <th class="alamat">Alamat</th>
                                 <th class="provinsis">Provinsi</th>
@@ -736,12 +736,11 @@
                                     </span>
                                   </th>
                                   <th class="actions">Action</th>
-                                  <th class="id">ID Rute </th>
+                                  <th class="id">ID</th>
                                   <th class="pemberangkatan">Pemberangkatan</th>
                                   <th class="waktu_berangkat">Waktu Berangkat</th>
                                   <th class="tujuan">Tujuan</th>
                                   <th class="waktu_tiba">Waktu Tiba</th>
-                                  <th class="harga">Harga</th>
                                 </tr>
                               </thead>
                               <tbody>
@@ -761,7 +760,6 @@
                                       $waktu_berangkat = $row['waktu_berangkat'];
                                       $tujuan = $row['tujuan'];
                                       $waktu_tiba = $row['waktu_tiba'];
-                                      $harga = $row['harga'];
                                       $id_terminal = $row['id_terminal'];
                                       $nama_terminal = $row['nama_terminal'];
                                       while($row=$datas->fetch(PDO::FETCH_ASSOC)){
@@ -770,7 +768,6 @@
                                         $waktu_berangkats = $row['waktu_berangkat'];
                                         $tujuans = $row['tujuan'];
                                         $waktu_tibas = $row['waktu_tiba'];
-                                        $hargas = $row['harga'];
                                         $id_terminals = $row['id_terminal'];
                                         $nama_terminals = $row['nama_terminal'];
                                   ?>
@@ -807,7 +804,6 @@
                                                 $waktu_berangkat2 = $row['waktu_berangkat'];
                                                 $tujuan2 = $row['tujuan'];
                                                 $waktu_tiba2 = $row['waktu_tiba'];
-                                                $harga2 = $row['harga'];
                                             ?>
                                             <div class="modal-header">
                                               <h4 class="modal-title">Edit Data Rute</h4>
@@ -842,10 +838,6 @@
                                                 <div class="col-lg-6 mb-3">
                                                   <label for="inputWaktuTiba" class="form-label">Waktu Tiba</label>
                                                   <textarea class="form-control form-textarea-user" id="inputWaktuTiba" name="txt_waktu_tiba" placeholder="Ex: 06.00" ><?php echo $waktu_tiba2 ?></textarea>
-                                                </div>
-                                                <div class="col-lg-6 mb-3">
-                                                  <label for="inputHarga" class="form-label">Harga</label>
-                                                  <textarea class="form-control form-textarea-user" id="inputHarga" name="txt_harga" placeholder="Ex: 100000" ><?php echo $harga2 ?></textarea>
                                                 </div>
                                               </div>
                                               
@@ -888,8 +880,7 @@
                                   <td value="<?php echo $pemberangkatan;?>"><?php echo $nama_terminal; ?></td>
                                   <td><?php echo $waktu_berangkat; ?></td>
                                   <td value="<?php echo $tujuans;?>"><?php echo $nama_terminals; ?></td>
-                                  <td><?php echo $waktu_tiba; ?></td>
-                                  <td><?php echo $harga; ?></td>
+                                  <td><?php echo $waktu_tibas; ?></td>
                                 </tr>
                                 <?php
                                   $no++;
@@ -931,10 +922,6 @@
                                     <div class="col-lg-6 mb-3">
                                       <label for="inputWaktuTiba" class="form-label">Waktu Tiba</label>
                                       <textarea class="form-control form-textarea-user" id="inputWaktuTiba" name="txt_waktu_tiba" placeholder="Ex: 06.00"></textarea>
-                                    </div>
-                                    <div class="col-lg-6 mb-3">
-                                      <label for="inputHarga" class="form-label">Harga</label>
-                                      <input type="text" class="form-control form-control-user2" id="inputHarga" name="txt_harga" placeholder="Ex: 100000" />
                                     </div>
                                   </div>
                                   

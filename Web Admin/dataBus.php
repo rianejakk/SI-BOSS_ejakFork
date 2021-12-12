@@ -15,7 +15,7 @@
 
   if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $nama_bus = $_POST['txt_nama_bus'];
-    $detail_bus = $_POST['txt_detail_bus'];
+    $harga = $_POST['txt_harga'];
     $status_bus = $_POST['txt_status_bus'];
     $jumlah_kursi = $_POST['txt_jumlah_kursi'];
     $jenis_bus = $_POST['txt_jenis_bus'];
@@ -24,7 +24,7 @@
     $id_jenis = $_POST['txt_id_jenis'];
     $id_rute = $_POST['txt_id_rute'];
     
-    if($obj->insertBus($nama_bus, $detail_bus, $status_bus, $jumlah_kursi, $foto_bus, $id_jenis, $id_rute)){
+    if($obj->insertBus($nama_bus, $harga, $status_bus, $jumlah_kursi, $foto_bus, $id_jenis, $id_rute)){
       // echo '<div class="alert alert-success">Terminal Berhasil Ditambahkan</div>';
     } else{
       // echo '<div class="alert alert-danger">Terminal Gagal Ditambahkan</div>';
@@ -315,16 +315,15 @@
                         </span>
                       </th>
                       <th class="actions">Action</th>
-                      <th class="no">ID Bus</th>
+                      <th class="no">ID</th>
                       <th class="foto">Foto</th>
                       <th class="nama">Nama Bus</th>
-                      <th class="detailBus">Detail Bus</th>
+                      <th class="detailBus">Harga</th>
                       <th class="status">Status Bus</th>
                       <th class="kursi">Kursi</th>
                       <!-- <th class="idJenis">ID Jenis</th> -->
                       <th class="jenis">Jenis</th>
                       <th class="fasilitas">Fasilitas</th>
-                      <th class="harga">Harga</th>
                       <th class="pemberangkatan">Pemberangkatan</th>
                       <th class="tujuan">Tujuan</th>
                       <th class="waktu">Waktu Berangkat</th>
@@ -345,7 +344,7 @@
                                   while($row=$data->fetch(PDO::FETCH_ASSOC)){
                                     $id_bus = $row['id_bus'];
                                     $nama_bus = $row['nama_bus'];
-                                    $detail_bus = $row['detail_bus'];
+                                    $harga = $row['harga'];
                                     $status_bus = $row['status_bus'];
                                     $jumlah_kursi = $row['jumlah_kursi'];
                                     $foto_bus = $row['foto_bus'];
@@ -357,7 +356,6 @@
                                     $waktu_berangkat = $row['waktu_berangkat'];
                                     $tujuan = $row['tujuan'];
                                     $waktu_tiba = $row['waktu_tiba'];
-                                    $harga = $row['harga'];
                                     $id_terminal = $row['id_terminal'];
                                     $nama_terminal = $row['nama_terminal'];
                                 ?>
@@ -488,15 +486,14 @@
                                 <td><?php echo $id_bus; ?></td>
                                 <td><?php echo $foto_bus; ?></td>
                                 <td><?php echo $nama_bus; ?></td>
-                                <td><?php echo $detail_bus; ?></td>
+                                <td><?php echo $harga; ?></td>
                                 <td><?php echo $status_bus; ?></td>
                                 <td><?php echo $jumlah_kursi; ?></td>
                                 <td><?php echo $jenis_bus;?></td>
                                 <td><?php echo $fasilitas;?></td>
-                                <td><?php echo $harga;?></td>
                                 <td value="<?php echo $pemberangkatan;?>"><?php echo $nama_terminal?></td>
-                                <td><?php echo $waktu_berangkat;?></td>
                                 <td value="<?php echo $tujuan;?>"><?php echo $nama_terminal?></td>
+                                <td><?php echo $waktu_berangkat;?></td>
                                 <td><?php echo $waktu_tiba;?></td>
                               </tr>
                               <?php

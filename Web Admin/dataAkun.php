@@ -345,14 +345,14 @@
                                   </span>
                                 </th>
                                 <th class="actions">Action</th>
-                                <th class="id">Id</th>
+                                <th class="id">ID </th>
+                                <th class="foto">Foto</th>
                                 <th class="nama">Nama</th>
                                 <th class="jk">Jenis Kelamin</th>
                                 <th class="alamat">Alamat</th>
                                 <th class="nohp">No Handphone</th>
-                                <th class="foto">Foto</th>
-                                <th class="level">ID Level</th>
-                                <th class="terminal">ID Terminal</th>
+                                <th class="level">Status</th>
+                                <th class="terminal">Terminal</th>
                                 <th class="email">Email</th>
                                 <th class="password">Password</th>
                               </tr>
@@ -404,7 +404,7 @@
 
                                    <!-- Edit Modal -->
                                   <div id="editDataAdministrator<?php echo $id_user_admin ?>" class="modal fade">
-                                    <div class="modal-dialog">
+                                    <div class="modal-dialog modal-lg">
                                       <div class="modal-content modal-edit">
                                         <form role="form" action="editAdministrator.php" method="POST">
                                           <?php
@@ -430,6 +430,17 @@
                                                 <label for="inputNama" class="form-label">Nama</label>
                                                 <input type="text" class="form-control form-control-user2" id="inputNama" name="txt_nama" placeholder="Ex: Budi Santoso" value="<?php echo $nama?>"/>
                                               </div>
+                                              <div class="col-lg-6 mb-3">
+                            <label for="InputJenisKelamin" class="form-label">Jenis Kelamin</label>
+                            <div class="form-check">
+                              <input class="form-check-input" type="radio" name="Rbtn_jenis_kelamin" id="Radios1" value="Laki-laki" checked />
+                              <label class="form-label2" for="Radios1"><span>Laki-laki</span></label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="radio" name="Rbtn_jenis_kelamin" id="Radios2" value="Perempuan" />
+                              <label class="form-label2" for="Radios2"><span>Perempuan</span></label>
+                            </div>
+                          </div>
                                             </div>
 
                                             <div class="row">
@@ -507,12 +518,12 @@
                                     </div>
                                   </div>
                                 </td>
-                                <td><?php echo $no; ?></td>
+                                <td><?php echo $id_user_admin; ?></td>
+                                <td><?php echo $foto; ?></td>
                                 <td><?php echo $nama; ?></td>
                                 <td><?php echo $jenis_kelamin; ?></td>
                                 <td><?php echo $alamat; ?></td>
                                 <td><?php echo $no_hp; ?></td>
-                                <td><?php echo $foto; ?></td>
                                 <td value="<?php echo $id_level?>"><?php echo $level?></td>
                                 <td value="<?php echo $id_terminal?>"><?php echo $nama_terminal?></td>
                                 <td><?php echo $email?></td>
@@ -529,52 +540,85 @@
 
                       <!-- Tambah Modal -->
                       <div id="tambahDataAdministrator" class="modal fade">
-                        <div class="modal-dialog">
+                        <div class="modal-dialog modal-lg">
                           <div class="modal-content modal-edit">
-                            <form role="form" action="dataAkun.php" method="POST">
+                            <form role="form" action="tambahAdministrator.php" method="POST">
                               <div class="modal-header">
-                                <h4 class="modal-title">Tambah Data Terminal</h4>
+                                <h4 class="modal-title">Tambah Data Administrator</h4>
                                 <button type="button" class="btn btn-danger btn-circle btn-user2 shadow" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true">
                                   <i class="fa fa-times fa-sm"></i>
                                 </button>
                               </div>
                               <div class="modal-body">
-                                <div class="row">
-                                  <div class="col-lg-6 mb-3">
-                                    <label for="inputTerminal" class="form-label">Nama Terminal</label>
-                                    <input type="text" class="form-control form-control-user2" id="inputTerminal" name="txt_nama_terminal" placeholder="Ex: Tawang Alun" />
-                                  </div>
-                                  <div class="col-lg-6 mb-3">
-                                    <label for="inputAlamat" class="form-label">Alamat Terminal</label>
-                                    <textarea class="form-control form-textarea-user" id="inputAlamat" name="txt_detail_alamat_terminal" placeholder="Ex: Jl. Dharmawangsa"></textarea>
-                                  </div>
-                                  <div class="col-lg-12 mb-3">
-                                    <label for="inputProvinsi" class="form-label">Provinsi</label>
-                                    <select class="form-select form-select-user" aria-label=".form-select-sm example" name="d_provinsi_terminal" id="propinsi" >
-                                      <option disabled selected>Pilih Provinsi</option>
-                                    </select>
-                                  </div>
-                                </div>
+                              <div class="row">
+                                              <div class="col-lg-12 mb-3" hidden>
+                                                <label for="inputId" class="form-label">Id</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputId" name="txt_id_user_admin" placeholder="" readonly/>
+                                              </div>
+                                            </div>
 
-                                <div class="row">
-                                  <div class="col-lg-6 mb-3">
-                                    <label for="inputKabupaten" class="form-label">Kota</label>
-                                    <select class="form-select form-select-user" aria-label=".form-select-sm example" name="d_kabupaten_terminal" id="kabupaten">
-                                      <option disabled selected>Pilih kota</option>
-                                    </select>
-                                  </div>
-                                  <div class="col-lg-6 mb-3">
-                                    <label for="inputKecamatan" class="form-label">Kecamatan</label>
-                                    <select class="form-select form-select-user" aria-label=".form-select-sm example" name="d_kecamatan_terminal" id="kecamatan">
-                                      <option disabled selected>Pilih Kecamatan</option>
-                                    </select>
-                                  </div>
-                                </div>
-                                
-                                <div class="modal-footer">
-                                  <input type="button" class="btn btn-secondary roundedBtn" data-bs-dismiss="modal" value="Cancel" />
-                                  <input type="submit" name="simpan" class="btn colorPrimary text-white roundedBtn" value="Simpan" />
-                                </div>
+                                            <div class="row">
+                                              <div class="col-lg-6 mb-3">
+                                                <label for="inputNama" class="form-label">Nama</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputNama" name="txt_nama" placeholder="Ex: Budi Santoso" />
+                                              </div>
+                                              <div class="col-lg-6 mb-3">
+                            <label for="InputJenisKelamin" class="form-label">Jenis Kelamin</label>
+                            <div class="form-check">
+                              <input class="form-check-input" type="radio" name="Rbtn_jenis_kelamin" id="Radios1" value="Laki-laki" checked />
+                              <label class="form-label2" for="Radios1"><span>Laki-laki</span></label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="radio" name="Rbtn_jenis_kelamin" id="Radios2" value="Perempuan" />
+                              <label class="form-label2" for="Radios2"><span>Perempuan</span></label>
+                            </div>
+                          </div>
+                                            </div>
+
+                                            <div class="row">
+                                              <div class="col-lg-6 mb-3">
+                                                <label for="inputAlamat" class="form-label">Alamat</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputAlamat" name="txt_alamat" placeholder="Ex: Jl. Dharmawangsa" />
+                                              </div>
+                                              <div class="col-lg-6 mb-3">
+                                                <label for="inputNoHp" class="form-label">No Handphone</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp" placeholder="Ex: 085808241205"/>
+                                              </div>
+                                            </div>
+
+                                            <div class="row">
+                                              <div class="col-lg-6 mb-3">
+                                                <label for="inputFoto" class="form-label">Foto</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputFoto" name="txt_foto" placeholder="Ex:" />
+                                              </div>
+                                              <div class="col-lg-6 mb-3">
+                                                <label for="inputIdLevel" class="form-label">ID Level</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputIdLevel" name="txt_id_level" placeholder="Ex: 2" />
+                                              </div>
+                                            </div>
+
+                                            <div class="row">
+                                              <div class="col-lg-6 mb-3">
+                                                <label for="inputIdTerminal" class="form-label">ID Terminal</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputIdTerminal" name="txt_id_terminal" placeholder="Ex: 1"/>
+                                              </div>
+                                              <div class="col-lg-6 mb-3">
+                                                <label for="inputEmail" class="form-label">Email</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputEmail" name="txt_email" placeholder="Ex: admin@gmail.com" />
+                                              </div>
+                                            </div>
+
+                                            <div class="row">
+                                              <div class="col-lg-6 mb-3">
+                                                <label for="inputPassword" class="form-label">Password</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputPassword" name="txt_password" placeholder="Ex: ********" />
+                                              </div>
+                                            </div>
+                                            
+                                            <div class="modal-footer">
+                                              <button class="btn btn-secondary roundedBtn" type="button" data-dismiss="modal">Batal</button>
+                                              <button type="submit" class="btn text-white colorPrimary roundedBtn" name="simpan">Simpan</button>
+                                            </div>
                               </div>
                             </form>
                           </div>
@@ -611,14 +655,14 @@
                                   </span>
                                 </th>
                                 <th class="actions">Action</th>
-                                <th class="id">NIK</th>
-                                <th class="nama">Nama</th>
+                                <th class="foto">Foto</th>
+                                <th class="id">NIK User</th>
+                                <th class="nama">Nama User</th>
                                 <th class="tempat">Tempat Lahir</th>
                                 <th class="tanggal">Tanggal Lahir</th>
                                 <th class="jk">Jenis Kelamin</th>
                                 <th class="alamat">Alamat</th>
                                 <th class="nohp">No Handphone</th>
-                                <th class="foto">Foto</th>
                                 <th class="email">Email</th>
                                 <th class="password">Password</th>
                               </tr>
@@ -666,7 +710,7 @@
 
                                    <!-- Edit Modal -->
                                   <div id="editDataUser<?php echo $nik_user ?>" class="modal fade">
-                                    <div class="modal-dialog">
+                                    <div class="modal-dialog modal-lg">
                                       <div class="modal-content modal-edit">
                                         <form role="form" action="editUser.php" method="POST">
                                           <?php
@@ -680,57 +724,68 @@
                                             </button>
                                           </div>
                                           <div class="modal-body">
-                                            <div class="row">
-                                              <div class="col-lg-12 mb-3" hidden>
-                                                <label for="inputId" class="form-label">Id</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputId" name="txt_id_user_admin" value="<?php echo $id_user_admin?>" placeholder="" readonly/>
+                                          <div class="row">
+                                              <div class="col-lg-12 mb-3" >
+                                                <label for="inputId" class="form-label">NIK</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputId" name="txt_nik_user" value="<?php echo $nik_user?>" placeholder="" />
                                               </div>
                                             </div>
 
                                             <div class="row">
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputNama" class="form-label">Nama</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputNama" name="txt_nama" placeholder="Ex: Budi Santoso" value="<?php echo $nama?>"/>
+                                                <input type="text" class="form-control form-control-user2" id="inputNama" name="txt_nama_user" placeholder="Ex: Budi Santoso" value="<?php echo $nama_user?>"/>
                                               </div>
+                                              <div class="col-lg-6 mb-3">
+                            <label for="InputJenisKelamin" class="form-label">Jenis Kelamin</label>
+                            <div class="form-check">
+                              <input class="form-check-input" type="radio" name="Rbtn_jenis_kelamin_user" id="Radios1" value="Laki-laki" checked />
+                              <label class="form-label2" for="Radios1"><span>Laki-laki</span></label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="radio" name="Rbtn_jenis_kelamin_user" id="Radios2" value="Perempuan" />
+                              <label class="form-label2" for="Radios2"><span>Perempuan</span></label>
+                            </div>
+                          </div>
                                             </div>
 
                                             <div class="row">
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputAlamat" class="form-label">Alamat</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputAlamat" name="txt_alamat" placeholder="Ex: Jl. Dharmawangsa" value="<?php echo $alamat?>"/>
+                                                <input type="text" class="form-control form-control-user2" id="inputAlamat" name="txt_alamat_user" placeholder="Ex: Jl. Dharmawangsa" value="<?php echo $alamat_user?>"/>
                                               </div>
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputNoHp" class="form-label">No Handphone</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp" placeholder="Ex: 085808241205" value="<?php echo $no_hp?>"/>
+                                                <input type="text" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp_user" placeholder="Ex: 085808241205" value="<?php echo $no_hp_user?>"/>
                                               </div>
                                             </div>
 
                                             <div class="row">
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputFoto" class="form-label">Foto</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputFoto" name="txt_foto" placeholder="Ex:" value="<?php echo $foto?>"/>
+                                                <input type="text" class="form-control form-control-user2" id="inputFoto" name="txt_foto_user" placeholder="Ex:" value="<?php echo $foto_user?>"/>
                                               </div>
                                               <div class="col-lg-6 mb-3">
-                                                <label for="inputIdLevel" class="form-label">ID Level</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputIdLevel" name="txt_id_level" placeholder="Ex: 2" value="<?php echo $id_level?>"/>
+                                                <label for="inputIdLevel" class="form-label">Tempat Lahir</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputIdLevel" name="txt_tempat_lahir_user" placeholder="Ex: 2" value="<?php echo $tempat_lahir_user?>"/>
                                               </div>
                                             </div>
 
                                             <div class="row">
                                               <div class="col-lg-6 mb-3">
-                                                <label for="inputIdTerminal" class="form-label">ID Terminal</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputIdTerminal" name="txt_id_terminal" placeholder="Ex: 1" value="<?php echo $id_terminal?>"/>
+                                                <label for="inputIdTerminal" class="form-label">Tanggal Lahir</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputIdTerminal" name="txt_tanggal_lahir_user" placeholder="Ex: 1" value="<?php echo $tanggal_lahir_user?>"/>
                                               </div>
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputEmail" class="form-label">Email</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputEmail" name="txt_email" placeholder="Ex: admin@gmail.com" value="<?php echo $email?>"/>
+                                                <input type="text" class="form-control form-control-user2" id="inputEmail" name="txt_email_user" placeholder="Ex: admin@gmail.com" value="<?php echo $email_user?>"/>
                                               </div>
                                             </div>
 
                                             <div class="row">
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputPassword" class="form-label">Password</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputPassword" name="txt_password" placeholder="Ex: ********" value="<?php echo $password?>"/>
+                                                <input type="text" class="form-control form-control-user2" id="inputPassword" name="txt_password_user" placeholder="Ex: ********" value="<?php echo $password_user?>"/>
                                               </div>
                                             </div>
                                             
@@ -769,6 +824,7 @@
                                     </div>
                                   </div>
                                 </td>
+                                <td><?php echo $foto_user; ?></td>
                                 <td><?php echo $nik_user; ?></td>
                                 <td><?php echo $nama_user; ?></td>
                                 <td><?php echo $tempat_lahir_user; ?></td>
@@ -776,7 +832,6 @@
                                 <td><?php echo $jenis_kelamin_user; ?></td>
                                 <td><?php echo $alamat_user; ?></td>
                                 <td><?php echo $no_hp_user; ?></td>
-                                <td><?php echo $foto_user; ?></td>
                                 <td><?php echo $email_user?></td>
                                 <td><?php echo $password_user?></td>
                               </tr>
@@ -790,50 +845,83 @@
                       </div>
 
                       <!-- Tambah Modal -->
-                      <div id="tambahDataTerminal" class="modal fade">
-                        <div class="modal-dialog">
+                      <div id="tambahDataUser" class="modal fade">
+                        <div class="modal-dialog modal-lg">
                           <div class="modal-content modal-edit">
-                            <form role="form" action="sumberData.php" method="POST">
+                            <form role="form" action="tambahUser.php" method="POST">
                               <div class="modal-header">
-                                <h4 class="modal-title">Tambah Data Terminal</h4>
+                                <h4 class="modal-title">Tambah Data User</h4>
                                 <button type="button" class="btn btn-danger btn-circle btn-user2 shadow" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true">
                                   <i class="fa fa-times fa-sm"></i>
                                 </button>
                               </div>
                               <div class="modal-body">
-                                <div class="row">
-                                  <div class="col-lg-6 mb-3">
-                                    <label for="inputTerminal" class="form-label">Nama Terminal</label>
-                                    <input type="text" class="form-control form-control-user2" id="inputTerminal" name="txt_nama_terminal" placeholder="Ex: Tawang Alun" />
-                                  </div>
-                                  <div class="col-lg-6 mb-3">
-                                    <label for="inputAlamat" class="form-label">Alamat Terminal</label>
-                                    <textarea class="form-control form-textarea-user" id="inputAlamat" name="txt_detail_alamat_terminal" placeholder="Ex: Jl. Dharmawangsa"></textarea>
-                                  </div>
-                                  <div class="col-lg-12 mb-3">
-                                    <label for="inputProvinsi" class="form-label">Provinsi</label>
-                                    <select class="form-select form-select-user" aria-label=".form-select-sm example" name="d_provinsi_terminal" id="propinsi" >
-                                      <option disabled selected>Pilih Provinsi</option>
-                                    </select>
-                                  </div>
-                                </div>
+                              <div class="row">
+                                              <div class="col-lg-12 mb-3" >
+                                                <label for="inputId" class="form-label">NIK</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputId" name="txt_nik_user" placeholder="" />
+                                              </div>
+                                            </div>
 
-                                <div class="row">
-                                  <div class="col-lg-6 mb-3">
-                                    <label for="inputKabupaten" class="form-label">Kota</label>
-                                    <select class="form-select form-select-user" aria-label=".form-select-sm example" name="d_kabupaten_terminal" id="kabupaten">
-                                      <option disabled selected>Pilih kota</option>
-                                    </select>
-                                  </div>
-                                  <div class="col-lg-6 mb-3">
-                                    <label for="inputKecamatan" class="form-label">Kecamatan</label>
-                                    <select class="form-select form-select-user" aria-label=".form-select-sm example" name="d_kecamatan_terminal" id="kecamatan">
-                                      <option disabled selected>Pilih Kecamatan</option>
-                                    </select>
-                                  </div>
-                                </div>
-                                
-                                <div class="modal-footer">
+                                            <div class="row">
+                                              <div class="col-lg-6 mb-3">
+                                                <label for="inputNama" class="form-label">Nama</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputNama" name="txt_nama_user" placeholder="Ex: Budi Santoso" />
+                                              </div>
+                                              <div class="col-lg-6 mb-3">
+                            <label for="InputJenisKelamin" class="form-label">Jenis Kelamin</label>
+                            <div class="form-check">
+                              <input class="form-check-input" type="radio" name="Rbtn_jenis_kelamin_user" id="Radios1" value="Laki-laki" checked />
+                              <label class="form-label2" for="Radios1"><span>Laki-laki</span></label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="radio" name="Rbtn_jenis_kelamin_user" id="Radios2" value="Perempuan" />
+                              <label class="form-label2" for="Radios2"><span>Perempuan</span></label>
+                            </div>
+                          </div>
+                                            </div>
+
+                                            <div class="row">
+                                              <div class="col-lg-6 mb-3">
+                                                <label for="inputAlamat" class="form-label">Alamat</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputAlamat" name="txt_alamat_user" placeholder="Ex: Jl. Dharmawangsa"/>
+                                              </div>
+                                              <div class="col-lg-6 mb-3">
+                                                <label for="inputNoHp" class="form-label">No Handphone</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp_user" placeholder="Ex: 085808241205" />
+                                              </div>
+                                            </div>
+
+                                            <div class="row">
+                                              <div class="col-lg-6 mb-3">
+                                                <label for="inputFoto" class="form-label">Foto</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputFoto" name="txt_foto_user" placeholder="Ex:" />
+                                              </div>
+                                              <div class="col-lg-6 mb-3">
+                                                <label for="inputIdLevel" class="form-label">Tempat Lahir</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputIdLevel" name="txt_tempat_lahir_user" placeholder="Ex: 2" />
+                                              </div>
+                                            </div>
+
+                                            <div class="row">
+                                              <div class="col-lg-6 mb-3">
+                                                <label for="inputIdTerminal" class="form-label">Tanggal Lahir</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputIdTerminal" name="txt_tanggal_lahir_user" placeholder="Ex: 1"/>
+                                              </div>
+                                              <div class="col-lg-6 mb-3">
+                                                <label for="inputEmail" class="form-label">Email</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputEmail" name="txt_email_user" placeholder="Ex: admin@gmail.com" />
+                                              </div>
+                                            </div>
+
+                                            <div class="row">
+                                              <div class="col-lg-6 mb-3">
+                                                <label for="inputPassword" class="form-label">Password</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputPassword" name="txt_password_user" placeholder="Ex: ********" />
+                                              </div>
+                                            </div>
+                                            
+                                            <div class="modal-footer">
                                   <input type="button" class="btn btn-secondary roundedBtn" data-bs-dismiss="modal" value="Cancel" />
                                   <input type="submit" name="simpan" class="btn colorPrimary text-white roundedBtn" value="Simpan" />
                                 </div>

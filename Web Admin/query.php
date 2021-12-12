@@ -80,7 +80,7 @@ class crud extends koneksi {
     }
 
     // insert
-    public function insertAdministrator($nama, $jenis_kelamin, $alamat, $no_hp, $level, $id_terminal, $email, $password){
+    public function insertAdministrator($nama, $jenis_kelamin, $alamat, $no_hp, $foto, $level, $id_terminal, $email, $password){
         try{
             $sql ="INSERT INTO administrator(nama, jenis_kelamin, alamat, no_hp, foto, id_level, id_terminal, email, password) VALUES (:nama, :jenis_kelamin, :alamat, :no_hp, :foto, :id_level, :id_terminal, :email, :password)";
             $result = $this->koneksi->prepare($sql);
@@ -102,10 +102,11 @@ class crud extends koneksi {
         }
     }
 
-    public function insertUser($nama_user, $tempat_lahir_user, $tanggal_lahir_user, $jenis_kelamin_user, $alamat_user, $no_hp_user, $foto_user, $email_user, $password_user){
+    public function insertUser($nik_user, $nama_user, $tempat_lahir_user, $tanggal_lahir_user, $jenis_kelamin_user, $alamat_user, $no_hp_user, $foto_user, $email_user, $password_user){
         try{
-            $sql ="INSERT INTO user(nama_user, tempat_lahir_user, tanggal_lahir_user, jenis_kelamin_user, alamat_user, no_hp_user, foto_user, email_user, password_user) VALUES (:nama_user, :tempat_lahir_user, :tanggal_lahir_user, :jenis_kelamin_user, :alamat_user, :no_hp_user, :foto_user, :email_user, :password_user)";
+            $sql ="INSERT INTO user(nik_user, nama_user, tempat_lahir_user, tanggal_lahir_user, jenis_kelamin_user, alamat_user, no_hp_user, foto_user, email_user, password_user) VALUES (:nik_user, :nama_user, :tempat_lahir_user, :tanggal_lahir_user, :jenis_kelamin_user, :alamat_user, :no_hp_user, :foto_user, :email_user, :password_user)";
             $result = $this->koneksi->prepare($sql);
+            $result->bindParam(":nik_user", $nik_user);
             $result->bindParam(":nama_user", $nama_user);
             $result->bindParam(":tempat_lahir_user", $tempat_lahir_user);
             $result->bindParam(":tanggal_lahir_user", $tanggal_lahir_user);
@@ -124,12 +125,12 @@ class crud extends koneksi {
         }
     }
 
-    public function insertBus($nama_bus, $detail_bus, $status_bus, $jumlah_kursi, $foto_bus, $id_jenis, $id_rute){
+    public function insertBus($nama_bus, $harga, $status_bus, $jumlah_kursi, $foto_bus, $id_jenis, $id_rute){
         try{
-            $sql ="INSERT INTO bus(nama_bus, detail_bus, status_bus, jumlah_kursi, foto_bus, id_jenis, id_rute) VALUES (:nama_bus, :detail_bus, :status_bus, :jumlah_kursi, :foto_bus, :id_jenis, :id_rute)";
+            $sql ="INSERT INTO bus(nama_bus, harga, status_bus, jumlah_kursi, foto_bus, id_jenis, id_rute) VALUES (:nama_bus, :harga, :status_bus, :jumlah_kursi, :foto_bus, :id_jenis, :id_rute)";
             $result = $this->koneksi->prepare($sql);
             $result->bindParam(":nama_bus", $nama_bus);
-            $result->bindParam(":detail_bus", $detail_bus);
+            $result->bindParam(":harga", $harga);
             $result->bindParam(":status_bus", $status_bus);
             $result->bindParam(":jumlah_kursi", $jumlah_kursi);
             $result->bindParam(":foto_bus", $foto_bus);
@@ -177,15 +178,14 @@ class crud extends koneksi {
         }
     }
 
-    public function insertRute($pemberangkatan, $waktu_berangkat, $tujuan, $waktu_tiba, $harga){
+    public function insertRute($pemberangkatan, $waktu_berangkat, $tujuan, $waktu_tiba){
         try{
-            $sql ="INSERT INTO rute(pemberangkatan, waktu_berangkat, tujuan, waktu_tiba, harga) VALUES (:pemberangkatan, :waktu_berangkat, :tujuan, :waktu_tiba, :harga)";
+            $sql ="INSERT INTO rute(pemberangkatan, waktu_berangkat, tujuan, waktu_tiba) VALUES (:pemberangkatan, :waktu_berangkat, :tujuan, :waktu_tiba)";
             $result = $this->koneksi->prepare($sql);
             $result->bindParam(":pemberangkatan", $pemberangkatan);
             $result->bindParam(":waktu_berangkat", $waktu_berangkat);
             $result->bindParam(":tujuan", $tujuan);
             $result->bindParam(":waktu_tiba", $waktu_tiba);
-            $result->bindParam(":harga", $harga);
             $result->execute();
             return true;
         }
@@ -308,7 +308,7 @@ class crud extends koneksi {
             $result->execute();
             $result->bindColumn(1, $this->id_bus);
             $result->bindColumn(2, $this->nama_bus);
-            $result->bindColumn(3, $this->detail_bus);
+            $result->bindColumn(3, $this->harga);
             $result->bindColumn(4, $this->status_bus);
             $result->bindColumn(5, $this->jumlah_kursi);
             $result->bindColumn(6, $this->foto_bus);
@@ -379,7 +379,6 @@ class crud extends koneksi {
             $result->bindColumn(3, $this->waktu_berangkat);
             $result->bindColumn(4, $this->tujuan);
             $result->bindColumn(5, $this->waktu_tiba);
-            $result->bindColumn(6, $this->harga);
             $result->fetch(PDO::FETCH_ASSOC);
             if($result->rowCount()==1):
                 return true;
@@ -575,12 +574,12 @@ class crud extends koneksi {
         }
     }
 
-    public function updateBus($nama_bus, $detail_bus, $status_bus, $jumlah_kursi, $foto_bus, $id_jenis, $id_rute, $data){
+    public function updateBus($nama_bus, $harga, $status_bus, $jumlah_kursi, $foto_bus, $id_jenis, $id_rute, $data){
         try{
-            $sql ="UPDATE bus SET nama_bus=:nama_bus, detail_bus=:detail_bus, status_bus=:status_bus, jumlah_kursi=:jumlah_kursi, foto_bus=:foto_bus, id_jenis=:id_jenis, id_rute=:id_rute WHERE nik_user=:nik_user";
+            $sql ="UPDATE bus SET nama_bus=:nama_bus, harga=:harga, status_bus=:status_bus, jumlah_kursi=:jumlah_kursi, foto_bus=:foto_bus, id_jenis=:id_jenis, id_rute=:id_rute WHERE nik_user=:nik_user";
             $result = $this->koneksi->prepare($sql);
             $result->bindParam(":nama_bus", $nama_bus);
-            $result->bindParam(":detail_bus", $detail_bus);
+            $result->bindParam(":harga", $harga);
             $result->bindParam(":status_bus", $status_bus);
             $result->bindParam(":jumlah_kursi", $jumlah_kursi);
             $result->bindParam(":foto_bus", $foto_bus);
@@ -631,15 +630,14 @@ class crud extends koneksi {
         }
     }
 
-    public function updateRute($pemberangkatan, $waktu_berangkat, $tujuan, $waktu_tiba, $harga, $data){
+    public function updateRute($pemberangkatan, $waktu_berangkat, $tujuan, $waktu_tiba, $data){
         try{
-            $sql ="UPDATE rute SET pemberangkatan=:pemberangkatan, waktu_berangkat=:waktu_berangkat, tujuan=:tujuan, waktu_tiba=:waktu_tiba, harga=:harga WHERE id_rute=:id_rute";
+            $sql ="UPDATE rute SET pemberangkatan=:pemberangkatan, waktu_berangkat=:waktu_berangkat, tujuan=:tujuan, waktu_tiba=:waktu_tiba WHERE id_rute=:id_rute";
             $result = $this->koneksi->prepare($sql);
             $result->bindParam(":pemberangkatan", $pemberangkatan);
             $result->bindParam(":waktu_berangkat", $waktu_berangkat);
             $result->bindParam(":tujuan", $tujuan);
             $result->bindParam(":waktu_tiba", $waktu_tiba);
-            $result->bindParam(":harga", $harga);
             $result->bindParam(":id_rute", $data);
             $result->execute();
             return true;
