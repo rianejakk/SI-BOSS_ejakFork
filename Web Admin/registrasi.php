@@ -53,18 +53,18 @@
     }
   }
   
-  if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    $nama_terminal = $_POST['txt_nama_terminal'];
-    $alamat_terminal = $_POST['txt_detail_alamat_terminal'];
-    $provinsi = $_POST['d_provinsi_terminal'];
-    $kabupaten = $_POST['d_kabupaten_terminal'];
-    $kecamatan = $_POST['d_kecamatan_terminal'];
-    if($obj->insertTerminal($nama_terminal, $alamat_terminal, $provinsi, $kabupaten, $kecamatan)){
-      echo '<div class="alert alert-success">Terminal Berhasil Ditambahkan</div>';
-    } else{
-      echo '<div class="alert alert-danger">Terminal Gagal Ditambahkan</div>';
-    }
-  }
+  // if($_SERVER['REQUEST_METHOD'] == 'POST'){
+  //   $nama_terminal = $_POST['txt_nama_terminal'];
+  //   $alamat_terminal = $_POST['txt_detail_alamat_terminal'];
+  //   $provinsi = $_POST['d_provinsi_terminal'];
+  //   $kabupaten = $_POST['d_kabupaten_terminal'];
+  //   $kecamatan = $_POST['d_kecamatan_terminal'];
+  //   if($obj->insertTerminal($nama_terminal, $alamat_terminal, $provinsi, $kabupaten, $kecamatan)){
+  //     echo '<div class="alert alert-success">Terminal Berhasil Ditambahkan</div>';
+  //   } else{
+  //     echo '<div class="alert alert-danger">Terminal Gagal Ditambahkan</div>';
+  //   }
+  // }
 ?>
 
 <!DOCTYPE html>
@@ -220,7 +220,7 @@
     <div id="TambahDataTerminal" class="modal fade">
       <div class="modal-dialog">
         <div class="modal-content modal-edit">
-          <form action="registrasi.php" method="POST">
+          <form action="tambahTerminalRegister.php" method="POST">
             <div class="modal-header">
               <h4 class="modal-title">Tambah Data Terminal</h4>
               <button type="button" class="btn btn-danger btn-circle btn-user2 shadow" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true">
@@ -230,7 +230,7 @@
             <div class="modal-body">
               <div class="col-lg-12 mb-3" hidden>
                 <label for="InputId" class="form-label">Id</label>
-                <input type="text" class="form-control form-control-user2" id="InputId" name="txt_id" placeholder="" />
+                <input type="text" class="form-control form-control-user2" id="InputId" name="txt_id_terminal" placeholder="" />
               </div>
               <div class="row">
                 <div class="col-12 mb-3">

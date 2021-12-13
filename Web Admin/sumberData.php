@@ -390,7 +390,7 @@
                                               </div>
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputAlamat" class="form-label">Alamat Terminal</label>
-                                                <textarea class="form-control form-textarea-user" id="inputAlamat" name="txt_detail_alamat_terminal" placeholder="Ex: Jl. Dharmawangsa" ><?php echo $alamat ?></textarea>
+                                                <input type="text" class="form-control form-control-user2" id="inputAlamat" name="txt_detail_alamat_terminal" placeholder="Ex: Jl. Dharmawangsa" value="<?php echo $alamat?>"/>
                                               </div>
                                               <div class="col-lg-12 mb-3">
                                                 <label for="inputProvinsi" class="form-label">Provinsi</label>
@@ -484,9 +484,9 @@
                                     <input type="text" class="form-control form-control-user2" id="inputTerminal" name="txt_nama_terminal" placeholder="Ex: Tawang Alun" />
                                   </div>
                                   <div class="col-lg-6 mb-3">
-                                    <label for="inputAlamat" class="form-label">Alamat Terminal</label>
-                                    <textarea class="form-control form-textarea-user" id="inputAlamat" name="txt_detail_alamat_terminal" placeholder="Ex: Jl. Dharmawangsa"></textarea>
-                                  </div>
+                                                <label for="inputAlamat" class="form-label">Alamat Terminal</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputAlamat" name="txt_detail_alamat_terminal" placeholder="Ex: Jl. Dharmawangsa"/>
+                                              </div>
                                   <div class="col-lg-12 mb-3">
                                     <label for="inputProvinsi" class="form-label">Provinsi</label>
                                     <select class="form-select form-select-user" aria-label=".form-select-sm example" name="d_provinsi_terminal" id="propinsi" >
@@ -622,7 +622,7 @@
                                               </div>
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputFasilitas" class="form-label">Fasilitas</label>
-                                                <textarea class="form-control form-textarea-user" id="inputFasilitas" name="txt_fasilitas" placeholder="Ex: Jl. Dharmawangsa" ><?php echo $fasilitas2; ?></textarea>
+                                                <input type="text" class="form-control form-control-user2" id="inputFasilitas" name="txt_fasilitas" placeholder="Ex: Jl. Dharmawangsa" value="<?php echo $fasilitas2; ?>"/>
                                               </div>
                                             </div>
 
@@ -692,9 +692,9 @@
                                     <input type="text" class="form-control form-control-user2" id="inputJenis" name="txt_jenis" placeholder="Ex: AKAS" />
                                   </div>
                                   <div class="col-lg-6 mb-3">
-                                    <label for="inputfasilitas" class="form-label">Fasilitas</label>
-                                    <textarea class="form-control form-textarea-user" id="inputFasilitas" name="txt_fasilitas" placeholder="Ex: TV"></textarea>
-                                  </div>
+                                                <label for="inputFasilitas" class="form-label">Fasilitas</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputFasilitas" name="txt_fasilitas" placeholder="Ex: Jl. Dharmawangsa"/>
+                                              </div>
                                 </div>
                                 <div class="modal-footer">
                                   <input type="button" class="btn btn-secondary roundedBtn" data-bs-dismiss="modal" value="Cancel" />
@@ -746,7 +746,6 @@
                               <tbody>
                                 <?php
                                   $data = $obj->lihatRute();
-                                  $datas = $obj->lihatRutes();
                                   $no = 1;
                                   if($data->rowCount()>0){
                                     if($sesLvl == 1){
@@ -760,16 +759,6 @@
                                       $waktu_berangkat = $row['waktu_berangkat'];
                                       $tujuan = $row['tujuan'];
                                       $waktu_tiba = $row['waktu_tiba'];
-                                      $id_terminal = $row['id_terminal'];
-                                      $nama_terminal = $row['nama_terminal'];
-                                      while($row=$datas->fetch(PDO::FETCH_ASSOC)){
-                                        $id_rute = $row['id_rute'];
-                                        $pemberangkatan = $row['pemberangkatan'];
-                                        $waktu_berangkats = $row['waktu_berangkat'];
-                                        $tujuans = $row['tujuan'];
-                                        $waktu_tibas = $row['waktu_tiba'];
-                                        $id_terminals = $row['id_terminal'];
-                                        $nama_terminals = $row['nama_terminal'];
                                   ?>
                                 
                                 <tr>
@@ -821,23 +810,61 @@
 
                                               <div class="row">
                                                 <div class="col-lg-6 mb-3">
-                                                  <label for="inputPemberangkatan" class="form-label">Pemberangkatan</label>
-                                                  <input type="text" class="form-control form-control-user2" id="inputPemberangkatan" name="txt_pemberangkatan" placeholder="Ex: Tawang Alun" value="<?php echo $pemberangkatan2?>"/>
+                                                  <label for="InputIdTerminal" class="form-label">Pemberangkatan</label>
+                                                  <select class="form-select form-select-user select-md" aria-label=".form-select-sm example" required data-parsley-required-message="Harap pilih data terminal !!!" name="txt_pemberangkatan" >
+                                                    <option disabled selected>Pilih Terminal</option>
+                                                    <?php
+                                                      $datas = $obj->lihatTerminal();
+                                                      $no = 1;
+                                                      if($datas->rowCount()>0){
+                                                        if($sesLvl == 1){
+                                                            $dis = "";
+                                                        } else{
+                                                            $dis = "disabled";
+                                                        }
+                                                        while($row=$datas->fetch(PDO::FETCH_ASSOC)){
+                                                          $id_terminal = $row['id_terminal'];
+                                                          $nama_terminal = $row['nama_terminal'];
+                                                      ?>
+                                                      <option value="<?php echo $id_terminal;?>"><?php echo $nama_terminal;?></option>
+                                                    <?php 
+                                                    }}
+                                                    ?>
+                                                  </select>
                                                 </div>
                                                 <div class="col-lg-6 mb-3">
                                                   <label for="inputWaktuBerangkat" class="form-label">Waktu Berangkat</label>
-                                                  <textarea class="form-control form-textarea-user" id="inputWaktuBerangkat" name="txt_waktu_berangkat" placeholder="Ex: 00.00" ><?php echo $waktu_berangkat2 ?></textarea>
+                                                  <input type="time" class="form-control form-control-user2" id="inputWaktuBerangkat" name="txt_waktu_berangkat" placeholder="Ex: 00.00" value="<?php echo $waktu_berangkat2 ?>"></input>
                                                 </div>
                                               </div>
 
                                               <div class="row">
                                                 <div class="col-lg-6 mb-3">
-                                                  <label for="inputTujuan" class="form-label">Tujuan</label>
-                                                  <input type="text" class="form-control form-control-user2" id="inputTujuan" name="txt_tujuan" placeholder="Ex: Bungurasih" value="<?php echo $tujuan2?>"/>
+                                                  <label for="InputIdTerminal" class="form-label">Tujuan</label>
+                                                  <select class="form-select form-select-user select-md" aria-label=".form-select-sm example" required data-parsley-required-message="Harap pilih data terminal !!!" name="txt_tujuan">
+                                                    <option disabled selected>Pilih Terminal</option>
+                                                    <?php
+                                                      $datasd = $obj->lihatTerminal();
+                                                      $no = 1;
+                                                      if($datasd->rowCount()>0){
+                                                        if($sesLvl == 1){
+                                                            $dis = "";
+                                                        } else{
+                                                            $dis = "disabled";
+                                                        }
+                                                        while($row=$datasd->fetch(PDO::FETCH_ASSOC)){
+                                                          $id_terminal = $row['id_terminal'];
+                                                          $nama_terminal = $row['nama_terminal'];
+                                                      ?>
+                                                      <option value="<?php echo $id_terminal;?>"><?php echo $nama_terminal;?></option>
+                                                    <?php 
+                                                    }}
+                                                    ?>
+                                                  </select>
                                                 </div>
                                                 <div class="col-lg-6 mb-3">
                                                   <label for="inputWaktuTiba" class="form-label">Waktu Tiba</label>
-                                                  <textarea class="form-control form-textarea-user" id="inputWaktuTiba" name="txt_waktu_tiba" placeholder="Ex: 06.00" ><?php echo $waktu_tiba2 ?></textarea>
+                                                  <input type="time" class="form-control form-control-user2" id="inputWaktuTiba" name="txt_waktu_tiba" placeholder="Ex: 06.00" value="<?php echo $waktu_tiba2 ?>"></input>
                                                 </div>
                                               </div>
                                               
@@ -877,14 +904,14 @@
                                     </div>
                                   </td>
                                   <td><?php echo $id_rute; ?></td>
-                                  <td value="<?php echo $pemberangkatan;?>"><?php echo $nama_terminal; ?></td>
+                                  <td><?php echo $pemberangkatan; ?></td>
                                   <td><?php echo $waktu_berangkat; ?></td>
-                                  <td value="<?php echo $tujuans;?>"><?php echo $nama_terminals; ?></td>
-                                  <td><?php echo $waktu_tibas; ?></td>
+                                  <td><?php echo $tujuan; ?></td>
+                                  <td><?php echo $waktu_tiba; ?></td>
                                 </tr>
                                 <?php
                                   $no++;
-                                  }}}
+                                  }}
                                 ?>
                               </tbody>
                             </table>
@@ -905,23 +932,61 @@
                                 <div class="modal-body">
                                   <div class="row">
                                     <div class="col-lg-6 mb-3">
-                                      <label for="inputPemberangkatan" class="form-label">Pemberangkatan</label>
-                                      <input type="text" class="form-control form-control-user2" id="inputPemberangkatan" name="txt_pemberangkatan" placeholder="Ex: Tawang Alun" />
+                                      <label for="InputIdTerminal" class="form-label">Pemberangkatan</label>
+                                      <select class="form-select form-select-user select-md" aria-label=".form-select-sm example" required data-parsley-required-message="Harap pilih data terminal !!!" name="txt_pemberangkatan" >
+                                        <option disabled selected>Pilih Terminal</option>
+                                        <?php
+                                          $datas = $obj->lihatTerminal();
+                                          $no = 1;
+                                          if($datas->rowCount()>0){
+                                            if($sesLvl == 1){
+                                                $dis = "";
+                                            } else{
+                                                $dis = "disabled";
+                                            }
+                                            while($row=$datas->fetch(PDO::FETCH_ASSOC)){
+                                              $id_terminal = $row['id_terminal'];
+                                              $nama_terminal = $row['nama_terminal'];
+                                          ?>
+                                          <option value="<?php echo $id_terminal;?>"><?php echo $nama_terminal;?></option>
+                                        <?php 
+                                        }}
+                                        ?>
+                                      </select>
                                     </div>
                                     <div class="col-lg-6 mb-3">
                                       <label for="inputWaktuBerangkat" class="form-label">Waktu Berangkat</label>
-                                      <textarea class="form-control form-textarea-user" id="inputWaktuBerangkat" name="txt_waktu_berangkat" placeholder="Ex: 00.00"></textarea>
+                                      <input type="time" class="form-control form-control-user2" id="inputWaktuBerangkat" name="txt_waktu_berangkat" placeholder="Ex: 00.00"></input>
                                     </div>
                                   </div>
 
                                   <div class="row">
                                     <div class="col-lg-6 mb-3">
-                                      <label for="inputTujuan" class="form-label">Tujuan</label>
-                                      <input type="text" class="form-control form-control-user2" id="inputTujuan" name="txt_tujuan" placeholder="Ex: Bungurasih" />
+                                      <label for="InputIdTerminal" class="form-label">Tujuan</label>
+                                      <select class="form-select form-select-user select-md" aria-label=".form-select-sm example" required data-parsley-required-message="Harap pilih data terminal !!!" name="txt_tujuan">
+                                        <option disabled selected>Pilih Terminal</option>
+                                        <?php
+                                          $datasd = $obj->lihatTerminal();
+                                          $no = 1;
+                                          if($datasd->rowCount()>0){
+                                            if($sesLvl == 1){
+                                                $dis = "";
+                                            } else{
+                                                $dis = "disabled";
+                                            }
+                                            while($row=$datasd->fetch(PDO::FETCH_ASSOC)){
+                                              $id_terminal = $row['id_terminal'];
+                                              $nama_terminal = $row['nama_terminal'];
+                                          ?>
+                                          <option value="<?php echo $id_terminal;?>"><?php echo $nama_terminal;?></option>
+                                        <?php 
+                                        }}
+                                        ?>
+                                      </select>
                                     </div>
                                     <div class="col-lg-6 mb-3">
                                       <label for="inputWaktuTiba" class="form-label">Waktu Tiba</label>
-                                      <textarea class="form-control form-textarea-user" id="inputWaktuTiba" name="txt_waktu_tiba" placeholder="Ex: 06.00"></textarea>
+                                      <input type="time" class="form-control form-control-user2" id="inputWaktuTiba" name="txt_waktu_tiba" placeholder="Ex: 06.00"></input>
                                     </div>
                                   </div>
                                   
@@ -1040,8 +1105,15 @@
 
                                               <div class="row">
                                                 <div class="col-lg-6 mb-3">
-                                                  <label for="inputWaktuBerangkat" class="form-label">Jenis Kelamin</label>
-                                                  <textarea class="form-control form-textarea-user" id="inputWaktuBerangkat" name="txt_jenis_kelamin_penumpang" placeholder="Ex: Laki-laki" ><?php echo $jenis_kelamin_penumpang2 ?></textarea>
+                                                <label for="InputJenisKelamin" class="form-label">Jenis Kelamin</label>
+                                                  <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="txt_jenis_kelamin_penumpang" id="Radios1" value="Laki-laki" checked />
+                                                    <label class="form-label2" for="Radios1"><span>Laki-laki</span></label>
+                                                  </div>
+                                                  <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="txt_jenis_kelamin_penumpang" id="Radios2" value="Perempuan" />
+                                                    <label class="form-label2" for="Radios2"><span>Perempuan</span></label>
+                                                  </div>
                                                 </div>
                                                 <div class="col-lg-6 mb-3">
                                                   <label for="inputNoHp" class="form-label">No Handphone</label>
@@ -1123,9 +1195,16 @@
 
                                   <div class="row">
                                     <div class="col-lg-6 mb-3">
-                                      <label for="inputWaktuBerangkat" class="form-label">Jenis Kelamin</label>
-                                      <textarea class="form-control form-textarea-user" id="inputWaktuBerangkat" name="txt_jenis_kelamin_penumpang" placeholder="Ex: Laki-Laki"></textarea>
-                                    </div>
+                                                <label for="InputJenisKelamin" class="form-label">Jenis Kelamin</label>
+                                                  <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="txt_jenis_kelamin_penumpang" id="Radios1" value="Laki-laki" checked />
+                                                    <label class="form-label2" for="Radios1"><span>Laki-laki</span></label>
+                                                  </div>
+                                                  <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="txt_jenis_kelamin_penumpang" id="Radios2" value="Perempuan" />
+                                                    <label class="form-label2" for="Radios2"><span>Perempuan</span></label>
+                                                  </div>
+                                                </div>
                                     <div class="col-lg-6 mb-3">
                                       <label for="inputNoHp" class="form-label">No Handphone</label>
                                       <input type="text" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp_penumpang" placeholder="Ex: 085808241204" />

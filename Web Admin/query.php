@@ -9,6 +9,13 @@ class crud extends koneksi {
     }
     
     // lihat
+    public function lihatLevel(){
+        $sql = "SELECT * FROM level";
+        $result = $this->koneksi->prepare($sql);
+        $result->execute();
+        return $result;
+    }
+
     public function lihatAdministrator(){
         $sql = "SELECT * FROM administrator JOIN level ON administrator.id_level=level.id_level JOIN terminal ON administrator.id_terminal=terminal.id_terminal";
         $result = $this->koneksi->prepare($sql);
@@ -24,7 +31,7 @@ class crud extends koneksi {
     }
 
     public function lihatBus(){
-        $sql = "SELECT * FROM bus JOIN jenis_bus ON bus.id_jenis=jenis_bus.id_jenis JOIN rute ON bus.id_rute=rute.id_rute JOIN terminal ON rute.pemberangkatan=terminal.id_terminal OR rute.tujuan=terminal.id_terminal";
+        $sql = "SELECT id_bus, foto_bus, nama_bus, harga, status_bus, jumlah_kursi, jenis, fasilitas, u1.nama_terminal pemberangkatan, u2.nama_terminal tujuan, waktu_berangkat, waktu_tiba FROM bus JOIN jenis_bus ON bus.id_jenis=jenis_bus.id_jenis JOIN rute ON bus.id_rute=rute.id_rute JOIN terminal u1 ON rute.pemberangkatan=u1.id_terminal JOIN terminal u2 ON rute.tujuan=u2.id_terminal ORDER BY bus.id_bus ASC";
         $result = $this->koneksi->prepare($sql);
         $result->execute();
         return $result;
@@ -45,14 +52,7 @@ class crud extends koneksi {
     }
 
     public function lihatRute(){
-        $sql = "SELECT * FROM rute JOIN terminal ON rute.pemberangkatan=terminal.id_terminal";
-        $result = $this->koneksi->prepare($sql);
-        $result->execute();
-        return $result;
-    }
-
-    public function lihatRutes(){
-        $sql = "SELECT * FROM rute JOIN terminal ON rute.tujuan=terminal.id_terminal";
+        $sql = "SELECT id_rute, u1.nama_terminal pemberangkatan, u2.nama_terminal tujuan, waktu_berangkat, waktu_tiba FROM rute JOIN terminal u1 ON rute.pemberangkatan=u1.id_terminal JOIN terminal u2 ON rute.tujuan=u2.id_terminal ORDER BY rute.id_rute ASC";
         $result = $this->koneksi->prepare($sql);
         $result->execute();
         return $result;

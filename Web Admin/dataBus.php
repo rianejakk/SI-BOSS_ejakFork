@@ -348,16 +348,16 @@
                                     $status_bus = $row['status_bus'];
                                     $jumlah_kursi = $row['jumlah_kursi'];
                                     $foto_bus = $row['foto_bus'];
-                                    $id_jenis = $row['id_jenis'];
+                                    // $id_jenis = $row['id_jenis'];
                                     $jenis_bus = $row['jenis'];
                                     $fasilitas = $row['fasilitas'];
-                                    $id_rute = $row['id_rute'];
+                                    // $id_rute = $row['id_rute'];
                                     $pemberangkatan = $row['pemberangkatan'];
                                     $waktu_berangkat = $row['waktu_berangkat'];
                                     $tujuan = $row['tujuan'];
                                     $waktu_tiba = $row['waktu_tiba'];
-                                    $id_terminal = $row['id_terminal'];
-                                    $nama_terminal = $row['nama_terminal'];
+                                    // $id_terminal = $row['id_terminal'];
+                                    // $nama_terminal = $row['nama_terminal'];
                                 ?>
                               <tr>
                                 <td>
@@ -491,8 +491,8 @@
                                 <td><?php echo $jumlah_kursi; ?></td>
                                 <td><?php echo $jenis_bus;?></td>
                                 <td><?php echo $fasilitas;?></td>
-                                <td value="<?php echo $pemberangkatan;?>"><?php echo $nama_terminal?></td>
-                                <td value="<?php echo $tujuan;?>"><?php echo $nama_terminal?></td>
+                                <td><?php echo $pemberangkatan?></td>
+                                <td><?php echo $tujuan?></td>
                                 <td><?php echo $waktu_berangkat;?></td>
                                 <td><?php echo $waktu_tiba;?></td>
                               </tr>

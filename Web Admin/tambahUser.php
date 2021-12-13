@@ -4,7 +4,7 @@ require ('query.php');
 $obj = new crud;
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    $nik_user = $_POST['nik_user'];
+    $nik_user = $_POST['txt_nik_user'];
     $nama_user = $_POST['txt_nama_user'];
     $tempat_lahir_user = $_POST['txt_tempat_lahir_user'];
     $tanggal_lahir_user = $_POST['txt_tanggal_lahir_user'];

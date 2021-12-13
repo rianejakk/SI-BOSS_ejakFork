@@ -418,31 +418,43 @@
                                             </button>
                                           </div>
                                           <div class="modal-body">
+                                            
                                             <div class="row">
                                               <div class="col-lg-12 mb-3" hidden>
                                                 <label for="inputId" class="form-label">Id</label>
                                                 <input type="text" class="form-control form-control-user2" id="inputId" name="txt_id_user_admin" value="<?php echo $id_user_admin?>" placeholder="" readonly/>
                                               </div>
                                             </div>
-
                                             <div class="row">
+                                              <div class="col-lg-6 mb-3">
+                                                <div class="form-group">
+                                                  <label for="InputFotoBus" class="form-label">Foto Bus</label>
+                                                  <div class="img-div">
+                                                    <div class="img-placeholder" onClick="triggerClick()">
+                                                      <img src="img/ico/IcoeditBusW.png" alt="" />
+                                                    </div>
+                                                    <img src="img/ico/IcoeditBus.png" onClick="triggerClick()" id="profileDisplay" />
+                                                  </div>
+                                                  <input type="file" name="txt_foto" onChange="displayImage(this)" id="profileImage" class="form-control" style="display: none" />
+                                                  <a href="#" class="float-end view text-secondary"> Lihat Foto </a>
+                                                </div>
+                                              </div>
+                                              
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputNama" class="form-label">Nama</label>
                                                 <input type="text" class="form-control form-control-user2" id="inputNama" name="txt_nama" placeholder="Ex: Budi Santoso" value="<?php echo $nama?>"/>
+                                                <label for="InputJenisKelamin" class="form-label">Jenis Kelamin</label>
+                                                <div class="form-check">
+                                                  <input class="form-check-input" type="radio" name="Rbtn_jenis_kelamin" id="Radios1" value="Laki-laki" checked />
+                                                  <label class="form-label2" for="Radios1"><span>Laki-laki</span></label>
+                                                </div>
+                                                <div class="form-check">
+                                                  <input class="form-check-input" type="radio" name="Rbtn_jenis_kelamin" id="Radios2" value="Perempuan" />
+                                                  <label class="form-label2" for="Radios2"><span>Perempuan</span></label>
+                                                </div>
                                               </div>
-                                              <div class="col-lg-6 mb-3">
-                            <label for="InputJenisKelamin" class="form-label">Jenis Kelamin</label>
-                            <div class="form-check">
-                              <input class="form-check-input" type="radio" name="Rbtn_jenis_kelamin" id="Radios1" value="Laki-laki" checked />
-                              <label class="form-label2" for="Radios1"><span>Laki-laki</span></label>
-                            </div>
-                            <div class="form-check">
-                              <input class="form-check-input" type="radio" name="Rbtn_jenis_kelamin" id="Radios2" value="Perempuan" />
-                              <label class="form-label2" for="Radios2"><span>Perempuan</span></label>
-                            </div>
-                          </div>
                                             </div>
-
+                                            
                                             <div class="row">
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputAlamat" class="form-label">Alamat</label>
@@ -456,33 +468,67 @@
 
                                             <div class="row">
                                               <div class="col-lg-6 mb-3">
-                                                <label for="inputFoto" class="form-label">Foto</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputFoto" name="txt_foto" placeholder="Ex:" value="<?php echo $foto?>"/>
-                                              </div>
-                                              <div class="col-lg-6 mb-3">
-                                                <label for="inputIdLevel" class="form-label">ID Level</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputIdLevel" name="txt_id_level" placeholder="Ex: 2" value="<?php echo $id_level?>"/>
-                                              </div>
-                                            </div>
-
-                                            <div class="row">
-                                              <div class="col-lg-6 mb-3">
-                                                <label for="inputIdTerminal" class="form-label">ID Terminal</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputIdTerminal" name="txt_id_terminal" placeholder="Ex: 1" value="<?php echo $id_terminal?>"/>
-                                              </div>
-                                              <div class="col-lg-6 mb-3">
                                                 <label for="inputEmail" class="form-label">Email</label>
                                                 <input type="text" class="form-control form-control-user2" id="inputEmail" name="txt_email" placeholder="Ex: admin@gmail.com" value="<?php echo $email?>"/>
                                               </div>
+                                              <div class="col-lg-6 mb-3">
+                                                <label for="inputPassword" class="form-label">Password</label>
+                                                <input type="password" class="form-control form-control-user2" id="inputPassword" name="txt_password" placeholder="Ex: ********" value="<?php echo $password?>"/>
+                                              </div>
                                             </div>
 
                                             <div class="row">
                                               <div class="col-lg-6 mb-3">
-                                                <label for="inputPassword" class="form-label">Password</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputPassword" name="txt_password" placeholder="Ex: ********" value="<?php echo $password?>"/>
+                                                <label for="InputIdTerminal" class="form-label">Status</label>
+                                                <select class="form-select form-select-user select-md" aria-label=".form-select-sm example" required data-parsley-required-message="Harap pilih data status !!!" name="txt_id_level">
+                                                  <option disabled selected>Pilih Status</option>
+                                                  <?php
+                                                    $datasd = $obj->lihatLevel();
+                                                    $no = 1;
+                                                    if($datasd->rowCount()>0){
+                                                      if($sesLvl == 1){
+                                                          $dis = "";
+                                                      } else{
+                                                          $dis = "disabled";
+                                                      }
+                                                      while($row=$datasd->fetch(PDO::FETCH_ASSOC)){
+                                                        $id_level = $row['id_level'];
+                                                        $level = $row['level'];
+                                                    ?>
+                                                    <option value="<?php echo $id_level;?>"><?php echo $level;?></option>
+                                                  <?php 
+                                                  }}
+                                                  ?>
+                                                </select>
+                                              </div>
+                                              <div class="col-lg-6 mb-3">
+                                                <label for="InputIdTerminal" class="form-label">Terminal</label>
+                                                <select class="form-select form-select-user select-md" aria-label=".form-select-sm example" required data-parsley-required-message="Harap pilih data terminal !!!" name="txt_id_terminal">
+                                                  <option disabled selected>Pilih Terminal</option>
+                                                  <?php
+                                                    $datas = $obj->lihatTerminal();
+                                                    $no = 1;
+                                                    if($datas->rowCount()>0){
+                                                      if($sesLvl == 1){
+                                                          $dis = "";
+                                                      } else{
+                                                          $dis = "disabled";
+                                                      }
+                                                      while($row=$datas->fetch(PDO::FETCH_ASSOC)){
+                                                        $id_terminals = $row['id_terminal'];
+                                                        $nama_terminals = $row['nama_terminal'];
+                                                        $provinsis = $row['provinsi_terminal'];
+                                                        $kabupatens = $row['kabupaten_terminal'];
+                                                        $kecamatans = $row['kecamatan_terminal'];
+                                                    ?>
+                                                    <option value="<?php echo $id_terminals;?>"><?php echo $nama_terminals, ' ', $provinsis,' ', $kabupatens, ' ', $kecamatans;?></option>
+                                                  <?php 
+                                                  }}
+                                                  ?>
+                                                </select>
                                               </div>
                                             </div>
-                                            
+
                                             <div class="modal-footer">
                                               <button class="btn btn-secondary roundedBtn" type="button" data-dismiss="modal">Batal</button>
                                               <button type="submit" class="btn text-white colorPrimary roundedBtn" name="simpan">Update</button>
@@ -519,7 +565,7 @@
                                   </div>
                                 </td>
                                 <td><?php echo $id_user_admin; ?></td>
-                                <td><?php echo $foto; ?></td>
+                                <td><img src="../fotoAdmin/<?php echo $foto; ?>" height='50px' width='50px'></td>
                                 <td><?php echo $nama; ?></td>
                                 <td><?php echo $jenis_kelamin; ?></td>
                                 <td><?php echo $alamat; ?></td>
@@ -553,28 +599,39 @@
                               <div class="row">
                                               <div class="col-lg-12 mb-3" hidden>
                                                 <label for="inputId" class="form-label">Id</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputId" name="txt_id_user_admin" placeholder="" readonly/>
+                                                <input type="text" class="form-control form-control-user2" id="inputId" name="txt_id_user_admin" value="<?php echo $id_user_admin?>" placeholder="" readonly/>
                                               </div>
                                             </div>
-
                                             <div class="row">
+                                              <div class="col-lg-6 mb-3">
+                                                <div class="form-group">
+                                                  <label for="InputFotoBus" class="form-label">Foto Bus</label>
+                                                  <div class="img-div">
+                                                    <div class="img-placeholder" onClick="triggerClick()">
+                                                      <img src="img/ico/IcoeditBusW.png" alt="" />
+                                                    </div>
+                                                    <img src="img/ico/IcoeditBus.png" onClick="triggerClick()" id="profileDisplay" />
+                                                  </div>
+                                                  <input type="file" name="txt_foto" onChange="displayImage(this)" id="profileImage" class="form-control" style="display: none" />
+                                                  <a href="#" class="float-end view text-secondary"> Lihat Foto </a>
+                                                </div>
+                                              </div>
+                                              
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputNama" class="form-label">Nama</label>
                                                 <input type="text" class="form-control form-control-user2" id="inputNama" name="txt_nama" placeholder="Ex: Budi Santoso" />
+                                                <label for="InputJenisKelamin" class="form-label">Jenis Kelamin</label>
+                                                <div class="form-check">
+                                                  <input class="form-check-input" type="radio" name="Rbtn_jenis_kelamin" id="Radios1" value="Laki-laki" checked />
+                                                  <label class="form-label2" for="Radios1"><span>Laki-laki</span></label>
+                                                </div>
+                                                <div class="form-check">
+                                                  <input class="form-check-input" type="radio" name="Rbtn_jenis_kelamin" id="Radios2" value="Perempuan" />
+                                                  <label class="form-label2" for="Radios2"><span>Perempuan</span></label>
+                                                </div>
                                               </div>
-                                              <div class="col-lg-6 mb-3">
-                            <label for="InputJenisKelamin" class="form-label">Jenis Kelamin</label>
-                            <div class="form-check">
-                              <input class="form-check-input" type="radio" name="Rbtn_jenis_kelamin" id="Radios1" value="Laki-laki" checked />
-                              <label class="form-label2" for="Radios1"><span>Laki-laki</span></label>
-                            </div>
-                            <div class="form-check">
-                              <input class="form-check-input" type="radio" name="Rbtn_jenis_kelamin" id="Radios2" value="Perempuan" />
-                              <label class="form-label2" for="Radios2"><span>Perempuan</span></label>
-                            </div>
-                          </div>
                                             </div>
-
+                                            
                                             <div class="row">
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputAlamat" class="form-label">Alamat</label>
@@ -582,39 +639,73 @@
                                               </div>
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputNoHp" class="form-label">No Handphone</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp" placeholder="Ex: 085808241205"/>
+                                                <input type="text" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp" placeholder="Ex: 085808241205" />
                                               </div>
                                             </div>
 
                                             <div class="row">
-                                              <div class="col-lg-6 mb-3">
-                                                <label for="inputFoto" class="form-label">Foto</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputFoto" name="txt_foto" placeholder="Ex:" />
-                                              </div>
-                                              <div class="col-lg-6 mb-3">
-                                                <label for="inputIdLevel" class="form-label">ID Level</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputIdLevel" name="txt_id_level" placeholder="Ex: 2" />
-                                              </div>
-                                            </div>
-
-                                            <div class="row">
-                                              <div class="col-lg-6 mb-3">
-                                                <label for="inputIdTerminal" class="form-label">ID Terminal</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputIdTerminal" name="txt_id_terminal" placeholder="Ex: 1"/>
-                                              </div>
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputEmail" class="form-label">Email</label>
                                                 <input type="text" class="form-control form-control-user2" id="inputEmail" name="txt_email" placeholder="Ex: admin@gmail.com" />
                                               </div>
+                                              <div class="col-lg-6 mb-3">
+                                                <label for="inputPassword" class="form-label">Password</label>
+                                                <input type="password" class="form-control form-control-user2" id="inputPassword" name="txt_password" placeholder="Ex: ********" />
+                                              </div>
                                             </div>
 
                                             <div class="row">
                                               <div class="col-lg-6 mb-3">
-                                                <label for="inputPassword" class="form-label">Password</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputPassword" name="txt_password" placeholder="Ex: ********" />
+                                                <label for="InputIdTerminal" class="form-label">Status</label>
+                                                <select class="form-select form-select-user select-md" aria-label=".form-select-sm example" required data-parsley-required-message="Harap pilih data status !!!" name="txt_id_level">
+                                                  <option disabled selected>Pilih Status</option>
+                                                  <?php
+                                                    $datasd = $obj->lihatLevel();
+                                                    $no = 1;
+                                                    if($datasd->rowCount()>0){
+                                                      if($sesLvl == 1){
+                                                          $dis = "";
+                                                      } else{
+                                                          $dis = "disabled";
+                                                      }
+                                                      while($row=$datasd->fetch(PDO::FETCH_ASSOC)){
+                                                        $id_level = $row['id_level'];
+                                                        $level = $row['level'];
+                                                    ?>
+                                                    <option value="<?php echo $id_level;?>"><?php echo $level;?></option>
+                                                  <?php 
+                                                  }}
+                                                  ?>
+                                                </select>
+                                              </div>
+                                              <div class="col-lg-6 mb-3">
+                                                <label for="InputIdTerminal" class="form-label">Terminal</label>
+                                                <select class="form-select form-select-user select-md" aria-label=".form-select-sm example" required data-parsley-required-message="Harap pilih data terminal !!!" name="txt_id_terminal">
+                                                  <option disabled selected>Pilih Terminal</option>
+                                                  <?php
+                                                    $datas = $obj->lihatTerminal();
+                                                    $no = 1;
+                                                    if($datas->rowCount()>0){
+                                                      if($sesLvl == 1){
+                                                          $dis = "";
+                                                      } else{
+                                                          $dis = "disabled";
+                                                      }
+                                                      while($row=$datas->fetch(PDO::FETCH_ASSOC)){
+                                                        $id_terminals = $row['id_terminal'];
+                                                        $nama_terminals = $row['nama_terminal'];
+                                                        $provinsis = $row['provinsi_terminal'];
+                                                        $kabupatens = $row['kabupaten_terminal'];
+                                                        $kecamatans = $row['kecamatan_terminal'];
+                                                    ?>
+                                                    <option value="<?php echo $id_terminals;?>"><?php echo $nama_terminals, ' ', $provinsis,' ', $kabupatens, ' ', $kecamatans;?></option>
+                                                  <?php 
+                                                  }}
+                                                  ?>
+                                                </select>
                                               </div>
                                             </div>
-                                            
+
                                             <div class="modal-footer">
                                               <button class="btn btn-secondary roundedBtn" type="button" data-dismiss="modal">Batal</button>
                                               <button type="submit" class="btn text-white colorPrimary roundedBtn" name="simpan">Simpan</button>
@@ -724,29 +815,46 @@
                                             </button>
                                           </div>
                                           <div class="modal-body">
-                                          <div class="row">
-                                              <div class="col-lg-12 mb-3" >
+                                            <div class="row">
+                                            <div class="col-lg-6 mb-3">
+                                                <div class="form-group">
+                                                  <label for="InputFotoBus" class="form-label">Foto Bus</label>
+                                                  <div class="img-div">
+                                                    <div class="img-placeholder" onClick="triggerClick()">
+                                                      <img src="img/ico/IcoeditBusW.png" alt="" />
+                                                    </div>
+                                                    <img src="img/ico/IcoeditBus.png" onClick="triggerClick()" id="profileDisplay" />
+                                                  </div>
+                                                  <input type="file" name="txt_foto_user" onChange="displayImage(this)" id="profileImage" class="form-control" style="display: none" />
+                                                  <a href="#" class="float-end view text-secondary"> Lihat Foto </a>
+                                                </div>
+                                              </div>
+                                              <div class="col-lg-6 mb-3" >
                                                 <label for="inputId" class="form-label">NIK</label>
                                                 <input type="text" class="form-control form-control-user2" id="inputId" name="txt_nik_user" value="<?php echo $nik_user?>" placeholder="" />
+                                                <label for="inputNama" class="form-label">Nama</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputNama" name="txt_nama_user" placeholder="Ex: Budi Santoso" value="<?php echo $nama_user?>"/>
+                                                <label for="InputJenisKelamin" class="form-label">Jenis Kelamin</label>
+                                                <div class="form-check">
+                                                  <input class="form-check-input" type="radio" name="Rbtn_jenis_kelamin_user" id="Radios1" value="Laki-laki" checked />
+                                                  <label class="form-label2" for="Radios1"><span>Laki-laki</span></label>
+                                                </div>
+                                                <div class="form-check">
+                                                  <input class="form-check-input" type="radio" name="Rbtn_jenis_kelamin_user" id="Radios2" value="Perempuan" />
+                                                  <label class="form-label2" for="Radios2"><span>Perempuan</span></label>
+                                                </div>
                                               </div>
                                             </div>
 
                                             <div class="row">
                                               <div class="col-lg-6 mb-3">
-                                                <label for="inputNama" class="form-label">Nama</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputNama" name="txt_nama_user" placeholder="Ex: Budi Santoso" value="<?php echo $nama_user?>"/>
+                                                <label for="inputIdLevel" class="form-label">Tempat Lahir</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputIdLevel" name="txt_tempat_lahir_user" placeholder="Ex: 2" value="<?php echo $tempat_lahir_user?>"/>
                                               </div>
                                               <div class="col-lg-6 mb-3">
-                            <label for="InputJenisKelamin" class="form-label">Jenis Kelamin</label>
-                            <div class="form-check">
-                              <input class="form-check-input" type="radio" name="Rbtn_jenis_kelamin_user" id="Radios1" value="Laki-laki" checked />
-                              <label class="form-label2" for="Radios1"><span>Laki-laki</span></label>
-                            </div>
-                            <div class="form-check">
-                              <input class="form-check-input" type="radio" name="Rbtn_jenis_kelamin_user" id="Radios2" value="Perempuan" />
-                              <label class="form-label2" for="Radios2"><span>Perempuan</span></label>
-                            </div>
-                          </div>
+                                                <label for="inputIdTerminal" class="form-label">Tanggal Lahir</label>
+                                                <input type="date" class="form-control form-control-user2" id="inputIdTerminal" name="txt_tanggal_lahir_user" placeholder="Ex: 1" value="<?php echo $tanggal_lahir_user?>"/>
+                                              </div>
                                             </div>
 
                                             <div class="row">
@@ -759,38 +867,19 @@
                                                 <input type="text" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp_user" placeholder="Ex: 085808241205" value="<?php echo $no_hp_user?>"/>
                                               </div>
                                             </div>
-
                                             <div class="row">
-                                              <div class="col-lg-6 mb-3">
-                                                <label for="inputFoto" class="form-label">Foto</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputFoto" name="txt_foto_user" placeholder="Ex:" value="<?php echo $foto_user?>"/>
-                                              </div>
-                                              <div class="col-lg-6 mb-3">
-                                                <label for="inputIdLevel" class="form-label">Tempat Lahir</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputIdLevel" name="txt_tempat_lahir_user" placeholder="Ex: 2" value="<?php echo $tempat_lahir_user?>"/>
-                                              </div>
-                                            </div>
-
-                                            <div class="row">
-                                              <div class="col-lg-6 mb-3">
-                                                <label for="inputIdTerminal" class="form-label">Tanggal Lahir</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputIdTerminal" name="txt_tanggal_lahir_user" placeholder="Ex: 1" value="<?php echo $tanggal_lahir_user?>"/>
-                                              </div>
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputEmail" class="form-label">Email</label>
                                                 <input type="text" class="form-control form-control-user2" id="inputEmail" name="txt_email_user" placeholder="Ex: admin@gmail.com" value="<?php echo $email_user?>"/>
                                               </div>
-                                            </div>
-
-                                            <div class="row">
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputPassword" class="form-label">Password</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputPassword" name="txt_password_user" placeholder="Ex: ********" value="<?php echo $password_user?>"/>
+                                                <input type="password" class="form-control form-control-user2" id="inputPassword" name="txt_password_user" placeholder="Ex: ********" value="<?php echo $password_user?>"/>
                                               </div>
                                             </div>
                                             
                                             <div class="modal-footer">
-                                              <button class="btn btn-secondary roundedBtn" type="button" data-dismiss="modal">Batal</button>
+                                              <button class="btn btn-secondary roundedBtn" type="button" data-bs-dismiss="modal">Batal</button>
                                               <button type="submit" class="btn text-white colorPrimary roundedBtn" name="simpan">Update</button>
                                             </div>
                                           </div>
@@ -824,7 +913,7 @@
                                     </div>
                                   </div>
                                 </td>
-                                <td><?php echo $foto_user; ?></td>
+                                <td><img src="../fotoUser/<?php echo $foto_user; ?>" height='50px' width='50px'></td>
                                 <td><?php echo $nik_user; ?></td>
                                 <td><?php echo $nama_user; ?></td>
                                 <td><?php echo $tempat_lahir_user; ?></td>
@@ -857,74 +946,72 @@
                               </div>
                               <div class="modal-body">
                               <div class="row">
-                                              <div class="col-lg-12 mb-3" >
+                                            <div class="col-lg-6 mb-3">
+                                                <div class="form-group">
+                                                  <label for="InputFotoBus" class="form-label">Foto Bus</label>
+                                                  <div class="img-div">
+                                                    <div class="img-placeholder" onClick="triggerClick()">
+                                                      <img src="img/ico/IcoeditBusW.png" alt="" />
+                                                    </div>
+                                                    <img src="img/ico/IcoeditBus.png" onClick="triggerClick()" id="profileDisplay" />
+                                                  </div>
+                                                  <input type="file" name="txt_foto_user" onChange="displayImage(this)" id="profileImage" class="form-control" style="display: none" />
+                                                  <a href="#" class="float-end view text-secondary"> Lihat Foto </a>
+                                                </div>
+                                              </div>
+                                              <div class="col-lg-6 mb-3" >
                                                 <label for="inputId" class="form-label">NIK</label>
                                                 <input type="text" class="form-control form-control-user2" id="inputId" name="txt_nik_user" placeholder="" />
+                                                <label for="inputNama" class="form-label">Nama</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputNama" name="txt_nama_user" placeholder="Ex: Budi Santoso" />
+                                                <label for="InputJenisKelamin" class="form-label">Jenis Kelamin</label>
+                                                <div class="form-check">
+                                                  <input class="form-check-input" type="radio" name="Rbtn_jenis_kelamin_user" id="Radios1" value="Laki-laki" checked />
+                                                  <label class="form-label2" for="Radios1"><span>Laki-laki</span></label>
+                                                </div>
+                                                <div class="form-check">
+                                                  <input class="form-check-input" type="radio" name="Rbtn_jenis_kelamin_user" id="Radios2" value="Perempuan" />
+                                                  <label class="form-label2" for="Radios2"><span>Perempuan</span></label>
+                                                </div>
                                               </div>
                                             </div>
 
                                             <div class="row">
                                               <div class="col-lg-6 mb-3">
-                                                <label for="inputNama" class="form-label">Nama</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputNama" name="txt_nama_user" placeholder="Ex: Budi Santoso" />
+                                                <label for="inputIdLevel" class="form-label">Tempat Lahir</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputIdLevel" name="txt_tempat_lahir_user" placeholder="Ex: 2" />
                                               </div>
                                               <div class="col-lg-6 mb-3">
-                            <label for="InputJenisKelamin" class="form-label">Jenis Kelamin</label>
-                            <div class="form-check">
-                              <input class="form-check-input" type="radio" name="Rbtn_jenis_kelamin_user" id="Radios1" value="Laki-laki" checked />
-                              <label class="form-label2" for="Radios1"><span>Laki-laki</span></label>
-                            </div>
-                            <div class="form-check">
-                              <input class="form-check-input" type="radio" name="Rbtn_jenis_kelamin_user" id="Radios2" value="Perempuan" />
-                              <label class="form-label2" for="Radios2"><span>Perempuan</span></label>
-                            </div>
-                          </div>
+                                                <label for="inputIdTerminal" class="form-label">Tanggal Lahir</label>
+                                                <input type="date" class="form-control form-control-user2" id="inputIdTerminal" name="txt_tanggal_lahir_user" placeholder="Ex: 1" />
+                                              </div>
                                             </div>
 
                                             <div class="row">
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputAlamat" class="form-label">Alamat</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputAlamat" name="txt_alamat_user" placeholder="Ex: Jl. Dharmawangsa"/>
+                                                <input type="text" class="form-control form-control-user2" id="inputAlamat" name="txt_alamat_user" placeholder="Ex: Jl. Dharmawangsa" />
                                               </div>
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputNoHp" class="form-label">No Handphone</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp_user" placeholder="Ex: 085808241205" />
+                                                <input type="text" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp_user" placeholder="Ex: 085808241205"/>
                                               </div>
                                             </div>
-
                                             <div class="row">
-                                              <div class="col-lg-6 mb-3">
-                                                <label for="inputFoto" class="form-label">Foto</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputFoto" name="txt_foto_user" placeholder="Ex:" />
-                                              </div>
-                                              <div class="col-lg-6 mb-3">
-                                                <label for="inputIdLevel" class="form-label">Tempat Lahir</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputIdLevel" name="txt_tempat_lahir_user" placeholder="Ex: 2" />
-                                              </div>
-                                            </div>
-
-                                            <div class="row">
-                                              <div class="col-lg-6 mb-3">
-                                                <label for="inputIdTerminal" class="form-label">Tanggal Lahir</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputIdTerminal" name="txt_tanggal_lahir_user" placeholder="Ex: 1"/>
-                                              </div>
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputEmail" class="form-label">Email</label>
                                                 <input type="text" class="form-control form-control-user2" id="inputEmail" name="txt_email_user" placeholder="Ex: admin@gmail.com" />
                                               </div>
-                                            </div>
-
-                                            <div class="row">
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputPassword" class="form-label">Password</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputPassword" name="txt_password_user" placeholder="Ex: ********" />
+                                                <input type="password" class="form-control form-control-user2" id="inputPassword" name="txt_password_user" placeholder="Ex: ********" />
                                               </div>
                                             </div>
                                             
                                             <div class="modal-footer">
-                                  <input type="button" class="btn btn-secondary roundedBtn" data-bs-dismiss="modal" value="Cancel" />
-                                  <input type="submit" name="simpan" class="btn colorPrimary text-white roundedBtn" value="Simpan" />
-                                </div>
+                                              <button class="btn btn-secondary roundedBtn" type="button" data-bs-dismiss="modal">Batal</button>
+                                              <button type="submit" class="btn text-white colorPrimary roundedBtn" name="simpan">Simpan</button>
+                                            </div>
                               </div>
                             </form>
                           </div>
