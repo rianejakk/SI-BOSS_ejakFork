@@ -321,9 +321,9 @@
                       <th class="detailBus">Harga</th>
                       <th class="status">Status Bus</th>
                       <th class="kursi">Kursi</th>
-                      <!-- <th class="idJenis">ID Jenis</th> -->
                       <th class="jenis">Jenis</th>
                       <th class="fasilitas">Fasilitas</th>
+                      <th class="tanggal">Tanggal</th>
                       <th class="pemberangkatan">Pemberangkatan</th>
                       <th class="tujuan">Tujuan</th>
                       <th class="waktu">Waktu Berangkat</th>
@@ -351,7 +351,7 @@
                                     // $id_jenis = $row['id_jenis'];
                                     $jenis_bus = $row['jenis'];
                                     $fasilitas = $row['fasilitas'];
-                                    // $id_rute = $row['id_rute'];
+                                    $tanggal_pemberangkatan = $row['tanggal_pemberangkatan'];
                                     $pemberangkatan = $row['pemberangkatan'];
                                     $waktu_berangkat = $row['waktu_berangkat'];
                                     $tujuan = $row['tujuan'];
@@ -403,51 +403,98 @@
 
                                             <div class="row">
                                               <div class="col-lg-6 mb-3">
-                                                <label for="inputNama" class="form-label">Nama</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputNama" name="txt_nama" placeholder="Ex: Budi Santoso" value="<?php echo $nama?>"/>
+                                                <div class="form-group">
+                                                  <label for="InputFotoBus" class="form-label">Foto Bus</label>
+                                                  <div class="img-div">
+                                                    <div class="img-placeholder" onClick="triggerClick()">
+                                                      <img src="img/ico/IcoeditBusW.png" alt="" />
+                                                    </div>
+                                                    <img src="img/ico/IcoeditBus.png" onClick="triggerClick()" id="profileDisplay" />
+                                                  </div>
+                                                  <input type="file" name="txt_foto_bus" onChange="displayImage(this)" id="profileImage" class="form-control" style="display: none" />
+                                                  <a href="#" class="float-end view text-secondary"> Lihat Foto </a>
+                                                </div>
+                                              </div>
+                                              <div class="col-lg-6 mb-3">
+                                                <label for="inputNama" class="form-label">Nama Bus</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputNama" name="txt_nama_bus" placeholder="Ex: Pahala Kencana" value="<?php echo $nama_bus?>"/>
+                                                <label for="InputIdTerminal" class="form-label">Jenis Bus</label>
+                                                <select class="form-select form-select-user select-md" aria-label=".form-select-sm example" required data-parsley-required-message="Harap pilih data jenis !!!" name="txt_id_jenis">
+                                                  <option disabled selected>Pilih Jenis Bus</option>
+                                                  <?php
+                                                    $datas = $obj->lihatJenisBus();
+                                                    $no = 1;
+                                                    if($datas->rowCount()>0){
+                                                      if($sesLvl == 1){
+                                                          $dis = "";
+                                                      } else{
+                                                          $dis = "disabled";
+                                                      }
+                                                      while($row=$datas->fetch(PDO::FETCH_ASSOC)){
+                                                        $id_jeniss = $row['id_jenis'];
+                                                        $jeniss = $row['jenis'];
+                                                    ?>
+                                                    <option value="<?php echo $id_jeniss;?>"><?php echo $jeniss;?></option>
+                                                  <?php 
+                                                  }}
+                                                  ?>
+                                                </select>
+                                                <label for="InputIdTerminal" class="form-label">Rute</label>
+                                                <select class="form-select form-select-user select-md" aria-label=".form-select-sm example" required data-parsley-required-message="Harap pilih data rute !!!" name="txt_id_rute">
+                                                  <option disabled selected>Pilih Rute</option>
+                                                  <?php
+                                                    $datasd = $obj->lihatRute();
+                                                    $no = 1;
+                                                    if($datasd->rowCount()>0){
+                                                      if($sesLvl == 1){
+                                                          $dis = "";
+                                                      } else{
+                                                          $dis = "disabled";
+                                                      }
+                                                      while($row=$datasd->fetch(PDO::FETCH_ASSOC)){
+                                                        $id_rutes = $row['id_rute'];
+                                                        $pemberangkatans = $row['pemberangkatan'];
+                                                        $tujuans = $row['tujuan'];
+                                                    ?>
+                                                    <option value="<?php echo $id_rutes;?>"><?php echo $pemberangkatans, " - ", $tujuans;?></option>
+                                                  <?php 
+                                                  }}
+                                                  ?>
+                                                </select>
                                               </div>
                                             </div>
 
                                             <div class="row">
                                               <div class="col-lg-6 mb-3">
-                                                <label for="inputAlamat" class="form-label">Alamat</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputAlamat" name="txt_alamat" placeholder="Ex: Jl. Dharmawangsa" value="<?php echo $alamat?>"/>
-                                              </div>
-                                              <div class="col-lg-6 mb-3">
-                                                <label for="inputNoHp" class="form-label">No Handphone</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp" placeholder="Ex: 085808241205" value="<?php echo $no_hp?>"/>
-                                              </div>
-                                            </div>
-
-                                            <div class="row">
-                                              <div class="col-lg-6 mb-3">
-                                                <label for="inputFoto" class="form-label">Foto</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputFoto" name="txt_foto" placeholder="Ex:" value="<?php echo $foto?>"/>
-                                              </div>
-                                              <div class="col-lg-6 mb-3">
-                                                <label for="inputIdLevel" class="form-label">ID Level</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputIdLevel" name="txt_id_level" placeholder="Ex: 2" value="<?php echo $id_level?>"/>
+                                                <div class="form-group">
+                                                  <label for="InputStatusBus" class="form-label d-block">Status</label>
+                                                  <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="txt_status" id="exampleRadios1" value="Operasional" checked />
+                                                    <label class="form-check-label" for="exampleRadios1"> Operasional </label>
+                                                  </div>
+                                                  <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="txt_status" id="exampleRadios2" value="Pemeliharaan" />
+                                                    <label class="form-check-label" for="exampleRadios2"> Pemeliharaan/Maintenance </label>
+                                                  </div>
+                                                </div>
+                                                <label for="inputFoto" class="form-label">Jumlah Kursi</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputFoto" name="txt_jumlah_kursi" placeholder="Ex:" value="<?php echo $jumlah_kursi?>"/>
                                               </div>
                                             </div>
 
                                             <div class="row">
                                               <div class="col-lg-6 mb-3">
-                                                <label for="inputIdTerminal" class="form-label">ID Terminal</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputIdTerminal" name="txt_id_terminal" placeholder="Ex: 1" value="<?php echo $id_terminal?>"/>
+                                                <label for="inputFoto" class="form-label">Tanggal Pemberangkatan</label>
+                                                <input type="date" class="form-control form-control-user2" id="inputFoto" name="txt_tanggal_pemberangkatan" placeholder="Ex:" value="<?php echo $tanggal_pemberangkatan?>"/>
+                                                <div class="form-group">
+                                                <label for="InputTarif" class="form-label">Tarif</label>
+                                                <div class="input-group mb-3">
+                                                  <span class="input-group-text tarif">Rp</span>
+                                                  <input type="text" name="txt_harga" class="form-control form-control-user2" aria-label="Amount (to the nearest dollar)" value="<?php echo $harga?>">
+                                                </div>
                                               </div>
-                                              <div class="col-lg-6 mb-3">
-                                                <label for="inputEmail" class="form-label">Email</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputEmail" name="txt_email" placeholder="Ex: admin@gmail.com" value="<?php echo $email?>"/>
-                                              </div>
-                                            </div>
-
-                                            <div class="row">
-                                              <div class="col-lg-6 mb-3">
-                                                <label for="inputPassword" class="form-label">Password</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputPassword" name="txt_password" placeholder="Ex: ********" value="<?php echo $password?>"/>
                                               </div>
                                             </div>
-                                            
                                             <div class="modal-footer">
                                               <button class="btn btn-secondary roundedBtn" type="button" data-dismiss="modal">Batal</button>
                                               <button type="submit" class="btn text-white colorPrimary roundedBtn" name="simpan">Update</button>
@@ -491,6 +538,7 @@
                                 <td><?php echo $jumlah_kursi; ?></td>
                                 <td><?php echo $jenis_bus;?></td>
                                 <td><?php echo $fasilitas;?></td>
+                                <td><?php echo $tanggal_pemberangkatan?></td>
                                 <td><?php echo $pemberangkatan?></td>
                                 <td><?php echo $tujuan?></td>
                                 <td><?php echo $waktu_berangkat;?></td>

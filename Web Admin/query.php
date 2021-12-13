@@ -31,7 +31,7 @@ class crud extends koneksi {
     }
 
     public function lihatBus(){
-        $sql = "SELECT id_bus, foto_bus, nama_bus, harga, status_bus, jumlah_kursi, jenis, fasilitas, u1.nama_terminal pemberangkatan, u2.nama_terminal tujuan, waktu_berangkat, waktu_tiba FROM bus JOIN jenis_bus ON bus.id_jenis=jenis_bus.id_jenis JOIN rute ON bus.id_rute=rute.id_rute JOIN terminal u1 ON rute.pemberangkatan=u1.id_terminal JOIN terminal u2 ON rute.tujuan=u2.id_terminal ORDER BY bus.id_bus ASC";
+        $sql = "SELECT id_bus, foto_bus, nama_bus, harga, status_bus, jumlah_kursi, tanggal_pemberangkatan, jenis, fasilitas, u1.nama_terminal pemberangkatan, u2.nama_terminal tujuan, waktu_berangkat, waktu_tiba FROM bus JOIN jenis_bus ON bus.id_jenis=jenis_bus.id_jenis JOIN rute ON bus.id_rute=rute.id_rute JOIN terminal u1 ON rute.pemberangkatan=u1.id_terminal JOIN terminal u2 ON rute.tujuan=u2.id_terminal ORDER BY bus.id_bus ASC";
         $result = $this->koneksi->prepare($sql);
         $result->execute();
         return $result;
@@ -125,15 +125,16 @@ class crud extends koneksi {
         }
     }
 
-    public function insertBus($nama_bus, $harga, $status_bus, $jumlah_kursi, $foto_bus, $id_jenis, $id_rute){
+    public function insertBus($nama_bus, $harga, $status_bus, $jumlah_kursi, $foto_bus, $tanggal_pemberangkatan, $id_jenis, $id_rute){
         try{
-            $sql ="INSERT INTO bus(nama_bus, harga, status_bus, jumlah_kursi, foto_bus, id_jenis, id_rute) VALUES (:nama_bus, :harga, :status_bus, :jumlah_kursi, :foto_bus, :id_jenis, :id_rute)";
+            $sql ="INSERT INTO bus(nama_bus, harga, status_bus, jumlah_kursi, foto_bus, tanggal_pemberangkatan, id_jenis, id_rute) VALUES (:nama_bus, :harga, :status_bus, :jumlah_kursi, :foto_bus, :tanggal_pemberangkatan, :id_jenis, :id_rute)";
             $result = $this->koneksi->prepare($sql);
             $result->bindParam(":nama_bus", $nama_bus);
             $result->bindParam(":harga", $harga);
             $result->bindParam(":status_bus", $status_bus);
             $result->bindParam(":jumlah_kursi", $jumlah_kursi);
             $result->bindParam(":foto_bus", $foto_bus);
+            $result->bindParam(":tanggal_pemberangkatan", $tanggal_pemberangkatan);
             $result->bindParam(":id_jenis", $id_jenis);
             $result->bindParam(":id_rute", $id_rute);
             $result->execute();
@@ -312,8 +313,9 @@ class crud extends koneksi {
             $result->bindColumn(4, $this->status_bus);
             $result->bindColumn(5, $this->jumlah_kursi);
             $result->bindColumn(6, $this->foto_bus);
-            $result->bindColumn(7, $this->id_jenis);
-            $result->bindColumn(8, $this->id_rute);
+            $result->bindColumn(7, $this->tanggal_pemberangkatan);
+            $result->bindColumn(8, $this->id_jenis);
+            $result->bindColumn(9, $this->id_rute);
             $result->fetch(PDO::FETCH_ASSOC);
             if($result->rowCount()==1):
                 return true;
@@ -574,15 +576,16 @@ class crud extends koneksi {
         }
     }
 
-    public function updateBus($nama_bus, $harga, $status_bus, $jumlah_kursi, $foto_bus, $id_jenis, $id_rute, $data){
+    public function updateBus($nama_bus, $harga, $status_bus, $jumlah_kursi, $foto_bus, $tanggal_pemberangkatan, $id_jenis, $id_rute, $data){
         try{
-            $sql ="UPDATE bus SET nama_bus=:nama_bus, harga=:harga, status_bus=:status_bus, jumlah_kursi=:jumlah_kursi, foto_bus=:foto_bus, id_jenis=:id_jenis, id_rute=:id_rute WHERE nik_user=:nik_user";
+            $sql ="UPDATE bus SET nama_bus=:nama_bus, harga=:harga, status_bus=:status_bus, jumlah_kursi=:jumlah_kursi, foto_bus=:foto_bus, tanggal_pemberangkatan=:tanggal_pemberangkatan, id_jenis=:id_jenis, id_rute=:id_rute WHERE nik_user=:nik_user";
             $result = $this->koneksi->prepare($sql);
             $result->bindParam(":nama_bus", $nama_bus);
             $result->bindParam(":harga", $harga);
             $result->bindParam(":status_bus", $status_bus);
             $result->bindParam(":jumlah_kursi", $jumlah_kursi);
             $result->bindParam(":foto_bus", $foto_bus);
+            $result->bindParam(":tanggal_pemberangkatan", $tanggal_pemberangkatan);
             $result->bindParam(":id_jenis", $id_jenis);
             $result->bindParam(":id_rute", $id_rute);
             $result->bindParam(":id_bus", $data);

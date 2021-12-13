@@ -428,7 +428,7 @@
                                             <div class="row">
                                               <div class="col-lg-6 mb-3">
                                                 <div class="form-group">
-                                                  <label for="InputFotoBus" class="form-label">Foto Bus</label>
+                                                  <label for="InputFotoBus" class="form-label">Foto Administrator</label>
                                                   <div class="img-div">
                                                     <div class="img-placeholder" onClick="triggerClick()">
                                                       <img src="img/ico/IcoeditBusW.png" alt="" />
@@ -605,7 +605,7 @@
                                             <div class="row">
                                               <div class="col-lg-6 mb-3">
                                                 <div class="form-group">
-                                                  <label for="InputFotoBus" class="form-label">Foto Bus</label>
+                                                  <label for="InputFotoBus" class="form-label">Foto Administrator</label>
                                                   <div class="img-div">
                                                     <div class="img-placeholder" onClick="triggerClick()">
                                                       <img src="img/ico/IcoeditBusW.png" alt="" />
@@ -818,7 +818,7 @@
                                             <div class="row">
                                             <div class="col-lg-6 mb-3">
                                                 <div class="form-group">
-                                                  <label for="InputFotoBus" class="form-label">Foto Bus</label>
+                                                  <label for="InputFotoBus" class="form-label">Foto User</label>
                                                   <div class="img-div">
                                                     <div class="img-placeholder" onClick="triggerClick()">
                                                       <img src="img/ico/IcoeditBusW.png" alt="" />
@@ -948,7 +948,7 @@
                               <div class="row">
                                             <div class="col-lg-6 mb-3">
                                                 <div class="form-group">
-                                                  <label for="InputFotoBus" class="form-label">Foto Bus</label>
+                                                  <label for="InputFotoBus" class="form-label">Foto User</label>
                                                   <div class="img-div">
                                                     <div class="img-placeholder" onClick="triggerClick()">
                                                       <img src="img/ico/IcoeditBusW.png" alt="" />
