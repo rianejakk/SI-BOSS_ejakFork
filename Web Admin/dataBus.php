@@ -387,41 +387,39 @@
                                             $query = $obj->pilihBus($id_bus);
                                             while ($row = $query->fetch(PDO::FETCH_ASSOC)){
                                           ?>
-                                          <div class="modal-header">
-                                            <h4 class="modal-title">Edit Data Bus</h4>
-                                            <button type="button" class="btn btn-danger btn-circle btn-user2 shadow" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true">
-                                              <i class="fa fa-times fa-sm"></i>
-                                            </button>
-                                          </div>
-                                          <div class="modal-body">
-                                            <div class="row">
-                                              <div class="col-lg-12 mb-3" hidden>
-                                                <label for="inputId" class="form-label">Id</label>
+                                        <div class="modal-header">
+                                          <h4 class="modal-title">Edit Data Bus</h4>
+                                          <button type="button" class="btn btn-danger btn-circle btn-user2 shadow" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true">
+                                            <i class="fa fa-times fa-sm"></i>
+                                          </button>
+                                        </div>
+                                        <div class="modal-body">
+                                          <div class="row">
+                                            <div class="col-md-6">
+                                              <div class="form-group" hidden>
+                                                <label for="InputId" class="form-label">Id</label>
                                                 <input type="text" class="form-control form-control-user2" id="inputId" name="txt_id_user_admin" value="<?php echo $id_user_admin?>" placeholder="" readonly/>
                                               </div>
-                                            </div>
-
-                                            <div class="row">
-                                              <div class="col-lg-6 mb-3">
-                                                <div class="form-group">
-                                                  <label for="InputFotoBus" class="form-label">Foto Bus</label>
-                                                  <div class="img-div">
-                                                    <div class="img-placeholder" onClick="triggerClick()">
-                                                      <img src="img/ico/IcoeditBusW.png" alt="" />
-                                                    </div>
-                                                    <img src="img/ico/IcoeditBus.png" onClick="triggerClick()" id="profileDisplay" />
+                                              <div class="form-group">
+                                                <label for="InputFotoBus" class="form-label">Foto Bus</label>
+                                                <div class="img-div">
+                                                  <div class="img-placeholder" onClick="triggerClick()">
+                                                    <img src="img/ico/IcoeditBusW.png" alt="" />
                                                   </div>
-                                                  <input type="file" name="txt_foto_bus" onChange="displayImage(this)" id="profileImage" class="form-control" style="display: none" />
-                                                  <a href="#" class="float-end view text-secondary"> Lihat Foto </a>
+                                                  <img src="img/ico/IcoeditBus.png" onClick="triggerClick()" id="profileDisplay" />
                                                 </div>
+                                                <input type="file" name="profileImage" onChange="displayImage(this)" id="profileImage" class="form-control" style="display: none" />
+                                                  <a href="#" class="float-end view text-secondary"> Lihat Foto </a>
                                               </div>
-                                              <div class="col-lg-6 mb-3">
-                                                <label for="inputNama" class="form-label">Nama Bus</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputNama" name="txt_nama_bus" placeholder="Ex: Pahala Kencana" value="<?php echo $nama_bus?>"/>
-                                                <label for="InputIdTerminal" class="form-label">Jenis Bus</label>
-                                                <select class="form-select form-select-user select-md" aria-label=".form-select-sm example" required data-parsley-required-message="Harap pilih data jenis !!!" name="txt_id_jenis">
-                                                  <option disabled selected>Pilih Jenis Bus</option>
-                                                  <?php
+                                                <div class="form-group">
+                                                  <label for="InputNamaBus" class="form-label">Nama Bus</label>
+                                                  <input type="text" class="form-control form-control-user2" id="inputNama" name="txt_nama_bus" placeholder="Ex: Pahala Kencana" value="<?php echo $nama_bus?>"/>
+                                                </div>
+                                                <div class="form-group">
+                                                  <label for="InputJenisBus" class="form-label">Jenis Bus</label>
+                                                  <select class="form-select form-select-user select-md" aria-label=".form-select-sm example" required data-parsley-required-message="Harap pilih data jenis !!!" name="txt_id_jenis">
+                                                    <option disabled selected>Pilih Jenis Bus</option>
+                                                    <?php
                                                     $datas = $obj->lihatJenisBus();
                                                     $no = 1;
                                                     if($datas->rowCount()>0){
@@ -438,11 +436,45 @@
                                                   <?php 
                                                   }}
                                                   ?>
-                                                </select>
-                                                <label for="InputIdTerminal" class="form-label">Rute</label>
-                                                <select class="form-select form-select-user select-md" aria-label=".form-select-sm example" required data-parsley-required-message="Harap pilih data rute !!!" name="txt_id_rute">
-                                                  <option disabled selected>Pilih Rute</option>
-                                                  <?php
+                                                  </select>
+                                                </div>
+                                                <div class="form-group">
+                                                  <label for="inputFoto" class="form-label">Jumlah Kursi</label>
+                                                  <input type="text" class="form-control form-control-user2" id="inputFoto" name="txt_jumlah_kursi" placeholder="Ex:" value="<?php echo $jumlah_kursi?>"/>
+                                                </div>
+                                                <div class="form-group">
+                                                  <label for="InputStatusBus" class="form-label d-block">Status</label>
+                                                  <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="Operasional" checked />
+                                                    <label class="form-check-label" for="exampleRadios1"> Operasional </label>
+                                                  </div>
+                                                  <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="Pemeliharaan" />
+                                                    <label class="form-check-label" for="exampleRadios2"> Pemeliharaan/Maintenance </label>
+                                                  </div>
+                                                </div>
+                                                <div class="form-group">
+                                                  <label for="InputTarif" class="form-label">Tarif</label>
+                                                  <div class="input-group mb-3">
+                                                    <span class="input-group-text tarif">Rp</span>
+                                                    <input type="text" class="form-control form-control-user2" aria-label="Amount (to the nearest dollar)">
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="col-md-6">
+                                                <div class="form-group">
+                                                  <label for="InputTglPemberangkatan" class="form-label">Tanggal Pemberangkatan</label>
+                                                  <input type="date" class="form-control form-control-user2" id="InputTglPemberangkatan" name="txt_Tgl" >
+                                                </div>
+                                                <div class="form-group">
+                                                  <label for="InputWaktu" class="form-label">Waktu pemberangkatan</label>
+                                                  <input type="time" class="form-control form-control-user2" id="InputWaktu" name="txt_waktu" >
+                                                </div>
+                                                <div class="form-group">
+                                                  <label for="InputJenisBus" class="form-label">Rute</label>
+                                                  <select class="form-select form-select-user select-md" aria-label=".form-select-sm example" required data-parsley-required-message="Harap pilih data rute !!!" name="txt_id_rute">
+                                                    <option disabled selected>Pilih Rute</option>
+                                                    <?php
                                                     $datasd = $obj->lihatRute();
                                                     $no = 1;
                                                     if($datasd->rowCount()>0){
@@ -460,50 +492,31 @@
                                                   <?php 
                                                   }}
                                                   ?>
-                                                </select>
-                                              </div>
-                                            </div>
-
-                                            <div class="row">
-                                              <div class="col-lg-6 mb-3">
-                                                <div class="form-group">
-                                                  <label for="InputStatusBus" class="form-label d-block">Status</label>
-                                                  <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="txt_status" id="exampleRadios1" value="Operasional" checked />
-                                                    <label class="form-check-label" for="exampleRadios1"> Operasional </label>
-                                                  </div>
-                                                  <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="txt_status" id="exampleRadios2" value="Pemeliharaan" />
-                                                    <label class="form-check-label" for="exampleRadios2"> Pemeliharaan/Maintenance </label>
-                                                  </div>
+                                                  </select>
                                                 </div>
-                                                <label for="inputFoto" class="form-label">Jumlah Kursi</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputFoto" name="txt_jumlah_kursi" placeholder="Ex:" value="<?php echo $jumlah_kursi?>"/>
-                                              </div>
-                                            </div>
-
-                                            <div class="row">
-                                              <div class="col-lg-6 mb-3">
-                                                <label for="inputFoto" class="form-label">Tanggal Pemberangkatan</label>
-                                                <input type="date" class="form-control form-control-user2" id="inputFoto" name="txt_tanggal_pemberangkatan" placeholder="Ex:" value="<?php echo $tanggal_pemberangkatan?>"/>
                                                 <div class="form-group">
-                                                <label for="InputTarif" class="form-label">Tarif</label>
-                                                <div class="input-group mb-3">
-                                                  <span class="input-group-text tarif">Rp</span>
-                                                  <input type="text" name="txt_harga" class="form-control form-control-user2" aria-label="Amount (to the nearest dollar)" value="<?php echo $harga?>">
+                                                  <label for="InputTujuan" class="form-label">Tujuan</label>
+                                                  <input type="text" class="form-control form-control-user2" id="InputTujuan" name="txt_Tujuan" placeholder="" />
+                                                </div>
+                                                <div class="form-group">
+                                                  <label for="InputWaktuKedatangan" class="form-label">Estimasi Waktu Kedatangan</label>
+                                                  <input type="time" class="form-control form-control-user2" id="InputWaktuKedatangan" name="txt_waktuDatang" >
+                                                </div>
+                                                <div class="form-group">
+                                                  <label for="InputDetail" class="form-label">Detail Rute</label>
+                                                  <input type="text" class="form-control form-control-user2" id="InputDetail" name="txt_Detail" placeholder="" />
                                                 </div>
                                               </div>
+                                              <div class="modal-footer">
+                                                <button class="btn btn-secondary roundedBtn" type="button" data-dismiss="modal">Batal</button>
+                                                <button type="submit" class="btn text-white colorPrimary roundedBtn" name="simpan">Update</button>
                                               </div>
                                             </div>
-                                            <div class="modal-footer">
-                                              <button class="btn btn-secondary roundedBtn" type="button" data-dismiss="modal">Batal</button>
-                                              <button type="submit" class="btn text-white colorPrimary roundedBtn" name="simpan">Update</button>
-                                            </div>
-                                          </div>
-                                        </form>
-                                        <?php 
-                                          }
-                                        ?> 
+                                          </form>
+                                          <?php 
+                                            }
+                                          ?> 
+                                        </div>
                                       </div>
                                     </div>
                                   </div>
