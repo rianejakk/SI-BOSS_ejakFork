@@ -13,7 +13,7 @@
     $id_jenis = $_POST['txt_id_jenis'];
     $id_rute = $_POST['txt_id_rute'];
     if(!$obj->detailBus($id_bus)) die ("Error: Id tidak ada");
-        if($obj->updateBus($nama_bus, $detail_bus, $harga, $jumlah_kursi, $foto_bus, $tanggal_pemberangkatan, $id_jenis, $id_rute, $id_bus)){
+        if($obj->updateBus($nama_bus, $harga, $status_bus, $jumlah_kursi, $foto_bus, $tanggal_pemberangkatan, $id_jenis, $id_rute, $id_bus)){
             echo '<div class="alert alert-success">Data Berhasil disimpan</div>';
             header("Location: dataBus.php");
         } else {

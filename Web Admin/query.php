@@ -66,14 +66,14 @@ class crud extends koneksi {
     }
 
     public function lihatPemesanan(){
-        $sql = "SELECT * FROM pemesanan";
+        $sql = "SELECT * FROM tiket JOIN pemesanan ON tiket.id_pemesanan=pemesanan.id_pemesanan JOIN penumpang ON tiket.nik_penumpang=penumpang.nik_penumpang JOIN user ON pemesanan.nik_user=user.nik_user JOIN bus ON pemesanan.id_bus=bus.id_bus";
         $result = $this->koneksi->prepare($sql);
         $result->execute();
         return $result;
     }
 
-    public function lihatDetailPemesanan(){
-        $sql = "SELECT * FROM detail_pemesanan";
+    public function lihatTiket(){
+        $sql = "SELECT * FROM tiket";
         $result = $this->koneksi->prepare($sql);
         $result->execute();
         return $result;
@@ -230,7 +230,7 @@ class crud extends koneksi {
         }
     }
 
-    public function insertDetailPemesanan($id_pemesanan, $id_bus, $jumlah_kursi_pesan){
+    public function insertTiket($id_tiket, $id_bus, $jumlah_kursi_pesan){
         try{
             $sql ="INSERT INTO detail_pemesanan(id_pemesanan, id_bus, jumlah_kursi_pesan) VALUES (:id_pemesanan, :id_bus, :jumlah_kursi_pesan)";
             $result = $this->koneksi->prepare($sql);
@@ -521,10 +521,10 @@ class crud extends koneksi {
         return $result;
     }
 
-    public function pilihDetailPemesanan($data){
-        $sql ="SELECT * FROM detail_pemesanan WHERE id_detail_pemesanan=:id_detail_pemesanan";
+    public function pilihTiket($data){
+        $sql ="SELECT * FROM tiket WHERE id_tiket=:id_tiket";
         $result = $this->koneksi->prepare($sql);
-        $result->bindParam(":id_detail_pemesanan", $data);
+        $result->bindParam(":id_tiket", $data);
         $result->execute();
         return $result;
     }
@@ -578,7 +578,7 @@ class crud extends koneksi {
 
     public function updateBus($nama_bus, $harga, $status_bus, $jumlah_kursi, $foto_bus, $tanggal_pemberangkatan, $id_jenis, $id_rute, $data){
         try{
-            $sql ="UPDATE bus SET nama_bus=:nama_bus, harga=:harga, status_bus=:status_bus, jumlah_kursi=:jumlah_kursi, foto_bus=:foto_bus, tanggal_pemberangkatan=:tanggal_pemberangkatan, id_jenis=:id_jenis, id_rute=:id_rute WHERE nik_user=:nik_user";
+            $sql ="UPDATE bus SET nama_bus=:nama_bus, harga=:harga, status_bus=:status_bus, jumlah_kursi=:jumlah_kursi, foto_bus=:foto_bus, tanggal_pemberangkatan=:tanggal_pemberangkatan, id_jenis=:id_jenis, id_rute=:id_rute WHERE id_bus=:id_bus";
             $result = $this->koneksi->prepare($sql);
             $result->bindParam(":nama_bus", $nama_bus);
             $result->bindParam(":harga", $harga);

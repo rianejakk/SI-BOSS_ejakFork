@@ -1,13 +1,17 @@
 <!-- <?php
 require('koneksi.php');
+require('query.php');
+$obj = new crud;
+
 session_start();
 
 if(!isset($_SESSION['email'])){
     header('Location: index.php');
 }
 
+$sesID = $_SESSION['id'];
 $sesName = $_SESSION['name'];
-
+$sesLvl = $_SESSION['level'];
 ?> -->
 <!DOCTYPE html>
 <html lang="en">
@@ -202,7 +206,12 @@ $sesName = $_SESSION['name'];
               <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
                   <div class="RobotoReg14 text-white">Data Bus</div>
-                  <div class="RobotoBold18 text-white">5 <span>Bus</span></div>
+                  <div class="RobotoBold18 text-white">
+                  <?php
+                        $data = $obj->lihatBus();
+                        $num = $data->rowCount();
+                        echo $num;
+                      ?><span> Bus</span></div>
                 </div>
                 <div class="col-auto">
                   <img src="img/ico/icons8_Shuttle_bus_50px.png" alt="logoBus" />
@@ -236,7 +245,12 @@ $sesName = $_SESSION['name'];
               <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
                   <div class="RobotoReg14 text-white">Data Pemesanan</div>
-                  <div class="RobotoBold18 text-white">20 Pesanan</div>
+                  <div class="RobotoBold18 text-white">
+                  <?php
+                        $data = $obj->lihatPemesanan();
+                        $num = $data->rowCount();
+                        echo $num;
+                      ?> Pesanan</div>
                 </div>
                 <div class="col-auto">
                   <img src="img/ico/icons8_bus_tickets_50px.png" alt="logoTicket" />
@@ -253,7 +267,22 @@ $sesName = $_SESSION['name'];
               <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
                   <div class="RobotoReg14 text-white">Total Penghasilan</div>
-                  <div class="RobotoBold18 text-white"><span>Rp</span>4.125.000</div>
+                  <div class="RobotoBold18 text-white"><span>Rp.</span>
+                    <?php
+                      $data = $obj->lihatPemesanan();
+                                $no = 1;
+                                if($data->rowCount()>0){
+                                  if($sesLvl == 1){
+                                      $dis = "";
+                                  } else{
+                                      $dis = "disabled";
+                                  }
+                                  while($row=$data->fetch(PDO::FETCH_ASSOC)){
+                                    $no++;
+                                    $hargatotal[$no] = $row['total_bayar'];
+                                  }
+                                  echo "".array_sum($hargatotal);
+                                  }?></div>
                 </div>
                 <div class="col-auto">
                   <img src="img/ico/icons8_add_dollar_45px.png" alt="logoPay" />
