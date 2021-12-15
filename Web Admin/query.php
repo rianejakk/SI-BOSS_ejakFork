@@ -66,7 +66,14 @@ class crud extends koneksi {
     }
 
     public function lihatPemesanan(){
-        $sql = "SELECT * FROM tiket JOIN pemesanan ON tiket.id_pemesanan=pemesanan.id_pemesanan JOIN penumpang ON tiket.nik_penumpang=penumpang.nik_penumpang JOIN user ON pemesanan.nik_user=user.nik_user JOIN bus ON pemesanan.id_bus=bus.id_bus";
+        $sql = "SELECT * FROM pembayaran JOIN pemesanan ON pembayaran.id_pemesanan=pemesanan.id_pemesanan JOIN tiket ON tiket.id_pemesanan=pemesanan.id_pemesanan JOIN penumpang ON tiket.nik_penumpang=penumpang.nik_penumpang JOIN user ON pemesanan.nik_user=user.nik_user JOIN bus ON pemesanan.id_bus=bus.id_bus";
+        $result = $this->koneksi->prepare($sql);
+        $result->execute();
+        return $result;
+    }
+
+    public function lihatLaporan(){
+        $sql = "SELECT * FROM pembayaran JOIN pemesanan ON pembayaran.id_pemesanan=pemesanan.id_pemesanan JOIN tiket ON tiket.id_pemesanan=pemesanan.id_pemesanan JOIN penumpang ON tiket.nik_penumpang=penumpang.nik_penumpang JOIN user ON pemesanan.nik_user=user.nik_user JOIN bus ON pemesanan.id_bus=bus.id_bus WHERE waktu_pemesanan BETWEEN '$tanggal_mulai' AND '$tanggal_selesai'";
         $result = $this->koneksi->prepare($sql);
         $result->execute();
         return $result;
@@ -74,6 +81,13 @@ class crud extends koneksi {
 
     public function lihatTiket(){
         $sql = "SELECT * FROM tiket";
+        $result = $this->koneksi->prepare($sql);
+        $result->execute();
+        return $result;
+    }
+
+    public function lihatPembayaran(){
+        $sql = "SELECT * FROM pembayaran";
         $result = $this->koneksi->prepare($sql);
         $result->execute();
         return $result;

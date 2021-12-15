@@ -120,27 +120,27 @@ $email = $_GET['nama'];
         <li><hr class="seperator" /></li>
 
         <li class="sidebar-heading mt-2 p-0">Layanan</li>
-        <li class="nav-item active">
-          <a href="#" class="focusMenu">
+        <li class="nav-item ">
+          <a href="dataPemesanan.php" class="focusMenu">
             <div class="frame-ico">
-              <img class="ico2" src="img/ico/icoBooking_Fill.png" alt="logo1" />
+              <img class="ico2" src="img/ico/icoBooking_no Fill.png" alt="logo1" />
             </div>
             <span class="link_name">Pemesanan</span>
           </a>
           <ul class="sub-menu blank">
-            <li><a class="link_name" href="#">Pemesanan</a></li>
+            <li><a class="link_name" href="dataPemesanan.php">Pemesanan</a></li>
           </ul>
         </li>
 
-        <li class="nav-item">
-          <a href="dataLaporan.php" class="focusMenu">
+        <li class="nav-item active">
+          <a href="#" class="focusMenu">
             <div class="frame-ico">
-              <img class="ico2" src="img/ico/icoReport_noFill.png" alt="logo1" />
+              <img class="ico2" src="img/ico/icoReport_Fill.png" alt="logo1" />
             </div>
             <span class="link_name">Laporan</span>
           </a>
           <ul class="sub-menu blank">
-            <li><a class="link_name" href="dataLaporan.php">Laporan</a></li>
+            <li><a class="link_name" href="#">Laporan</a></li>
           </ul>
         </li>
 
@@ -304,11 +304,11 @@ $email = $_GET['nama'];
           <div class="card shadow mb-4 rounded">
             <div class="card-header shadow rounded">
               <div class="title float-start">
-                <span class="m-0"><b>Tabel Data Pemesanan</b></span>
+                <span class="m-0"><b>Tabel Data Laporan</b></span>
               </div>
               <div class="btnAction float-end">
-                <button class="btn btn-light text-dark btn-circle custShadow2 me-2" data-bs-toggle="modal" data-bs-target="#tambahDataPemesanan"><i class="fas fa-plus" data-bs-toggle="tooltip" title="Tambah Data"></i></button>
-                <button class="btn btn-light text-danger btn-circle custShadow2" data-bs-toggle="modal" data-bs-target="#deleteDataPemesanan"><i class="fas fa-trash" data-bs-toggle="tooltip" title="Hapus Data"></i></button>
+                <!-- <button class="btn btn-light text-dark btn-circle custShadow2 me-2" data-bs-toggle="modal" data-bs-target="#tambahDataPemesanan"><i class="fas fa-plus" data-bs-toggle="tooltip" title="Tambah Data"></i></button>
+                <button class="btn btn-light text-danger btn-circle custShadow2" data-bs-toggle="modal" data-bs-target="#deleteDataPemesanan"><i class="fas fa-trash" data-bs-toggle="tooltip" title="Hapus Data"></i></button> -->
               </div>
             </div>
             <div class="card-body">
@@ -393,11 +393,11 @@ $email = $_GET['nama'];
                                       &nbsp;<i class="fas fa-file-invoice-dollar" data-bs-toggle="tooltip" title="Edit"></i>
                                     </button>
                                   </a> -->
-                                  <a href="#" class="actionBtn" aria-label="Delete">
+                                  <!-- <a href="#" class="actionBtn" aria-label="Delete">
                                     <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteDataPemesanan<?php echo $id_tiket ?>" value="hapus">
                                       <i class="fa fa-trash fa-sm" data-bs-toggle="tooltip" title="Delete"></i>
                                     </button>
-                                  </a>
+                                  </a> -->
 
                                    <!-- Edit Modal -->
                                   <div id="editDataPemesanan<?php echo $id_tiket ?>" class="modal fade">
@@ -421,7 +421,9 @@ $email = $_GET['nama'];
                                                 <label for="InputId" class="form-label">Id</label>
                                                 <input type="text" class="form-control form-control-user2" id="inputId" name="txt_id_bus" value="<?php echo $id_tiket?>" placeholder="" readonly/>
                                               </div>
-                                              </div>
+                                                
+                                                
+                                                </div>
                                               </div>
                                               <div class="col-md-6">
                                               <div class="form-group">

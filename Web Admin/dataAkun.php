@@ -167,14 +167,14 @@
         </li>
 
         <li class="nav-item">
-          <a href="#" class="focusMenu">
+          <a href="dataLaporan.php" class="focusMenu">
             <div class="frame-ico">
               <img class="ico2" src="img/ico/icoReport_noFill.png" alt="logo1" />
             </div>
             <span class="link_name">Laporan</span>
           </a>
           <ul class="sub-menu blank">
-            <li><a class="link_name" href="#">Laporan</a></li>
+            <li><a class="link_name" href="dataLaporan.php">Laporan</a></li>
           </ul>
         </li>
 
@@ -456,11 +456,11 @@
                                                   <label for="InputFotoBus" class="form-label">Foto Administrator</label>
                                                   <div class="img-div">
                                                     <div class="img-placeholder" onClick="triggerClick()">
-                                                      <img src="img/ico/IcoeditBusW.png" alt="" />
+                                                      <img src="img/ico/icons8_driver_50px.png" alt="" />
                                                     </div>
-                                                    <img src="img/ico/IcoeditBus.png" onClick="triggerClick()" id="profileDisplay" />
+                                                    <img src="img/ico/icons8_driver_50px.png" onClick="triggerClick()" id="profileDisplay" />
                                                   </div>
-                                                  <input type="file" name="txt_foto" onChange="displayImage(this)" id="profileImage" class="form-control" style="display: none" />
+                                                  <input type="file" name="txt_fotoe" onChange="displayImage(this)" id="profileImage" class="form-control" style="display: none" />
                                                   <a href="#" class="float-end view text-secondary"> Lihat Foto </a>
                                                 </div>
                                               </div>
@@ -633,11 +633,11 @@
                                                   <label for="InputFotoBus" class="form-label">Foto Administrator</label>
                                                   <div class="img-div">
                                                     <div class="img-placeholder" onClick="triggerClick()">
-                                                      <img src="img/ico/IcoeditBusW.png" alt="" />
+                                                      <img src="img/ico/icons8_driver_50px.png" alt="" />
                                                     </div>
-                                                    <img src="img/ico/IcoeditBus.png" onClick="triggerClick()" id="profileDisplay" />
+                                                    <img src="img/ico/icons8_driver_50px.png" onClick="triggerClick()" id="profileDisplay" />
                                                   </div>
-                                                  <input type="file" name="txt_foto" onChange="displayImage(this)" id="profileImage" class="form-control" style="display: none" />
+                                                  <input type="file" name="txt_fotot" onChange="displayImage(this)" id="profileImage" class="form-control" style="display: none" />
                                                   <a href="#" class="float-end view text-secondary"> Lihat Foto </a>
                                                 </div>
                                               </div>
@@ -842,15 +842,15 @@
                                           <div class="modal-body">
                                             <div class="row">
                                             <div class="col-lg-6 mb-3">
-                                                <div class="form-group">
-                                                  <label for="InputFotoBus" class="form-label">Foto User</label>
+                                            <div class="form-group">
+                                                  <label for="InputFotoUser" class="form-label">Foto User</label>
                                                   <div class="img-div">
                                                     <div class="img-placeholder" onClick="triggerClick()">
-                                                      <img src="img/ico/IcoeditBusW.png" alt="" />
+                                                      <img src="img/ico/icons8_driver_50px.png" alt="" />
                                                     </div>
-                                                    <img src="img/ico/IcoeditBus.png" onClick="triggerClick()" id="profileDisplay" />
+                                                    <img src="img/ico/icons8_driver_50px.png" onClick="triggerClick()" id="profileDisplay" />
                                                   </div>
-                                                  <input type="file" name="txt_foto_user" onChange="displayImage(this)" id="profileImage" class="form-control" style="display: none" />
+                                                  <input type="file" name="txt_foto_usere" onChange="displayImag(this)" id="profileImage" class="form-control" style="display: none" />
                                                   <a href="#" class="float-end view text-secondary"> Lihat Foto </a>
                                                 </div>
                                               </div>
@@ -980,7 +980,7 @@
                                                     </div>
                                                     <img src="img/ico/IcoeditBus.png" onClick="triggerClick()" id="profileDisplay" />
                                                   </div>
-                                                  <input type="file" name="txt_foto_user" onChange="displayImage(this)" id="profileImage" class="form-control" style="display: none" />
+                                                  <input type="file" name="txt_foto_usert" onChange="displayImage(this)" id="profileImage" class="form-control" style="display: none" />
                                                   <a href="#" class="float-end view text-secondary"> Lihat Foto </a>
                                                 </div>
                                               </div>
@@ -1060,5 +1060,6 @@
     <script src="plugin/datatables/DataTables-1.11.3/js/dataTables.bootstrap5.min.js"></script>
     <script src="plugin/js/datatables-demo.js"></script>
     <script src="plugin/js/javascript.js"></script>
+    <script src="plugin/js/UpImg.js"></script>
   </body>
 </html>

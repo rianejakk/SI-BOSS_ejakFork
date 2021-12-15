@@ -149,14 +149,14 @@
         </li>
 
         <li class="nav-item">
-          <a href="#" class="focusMenu">
+          <a href="dataLaporan.php" class="focusMenu">
             <div class="frame-ico">
               <img class="ico2" src="img/ico/icoReport_noFill.png" alt="logo1" />
             </div>
             <span class="link_name">Laporan</span>
           </a>
           <ul class="sub-menu blank">
-            <li><a class="link_name" href="#">Laporan</a></li>
+            <li><a class="link_name" href="dataLaporan.php">Laporan</a></li>
           </ul>
         </li>
 
@@ -553,7 +553,7 @@
                                   </div>
                                 </td>
                                 <td><?php echo $id_bus; ?></td>
-                                <td><?php echo $foto_bus; ?></td>
+                                <td><img src="../fotoBus/<?php echo $foto_bus; ?>" height='50px' width='50px'></td>
                                 <td><?php echo $nama_bus; ?></td>
                                 <td>Rp. <?php echo $harga; ?></td>
                                 <td><?php echo $status_bus; ?></td>
@@ -708,5 +708,6 @@
     <script src="plugin/datatables/DataTables-1.11.3/js/dataTables.bootstrap5.min.js"></script>
     <script src="plugin/js/datatables-demo.js"></script>
     <script src="plugin/js/javascript.js"></script>
+    <script src="plugin/js/UpImg.js"></script>
   </body>
 </html>

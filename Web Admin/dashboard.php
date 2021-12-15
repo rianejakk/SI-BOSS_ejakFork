@@ -129,14 +129,14 @@ $sesLvl = $_SESSION['level'];
         </li>
 
         <li class="nav-item">
-          <a href="#" class="focusMenu">
+          <a href="dataLaporan.php" class="focusMenu">
             <div class="frame-ico">
               <img class="ico2" src="img/ico/icoReport_noFill.png" alt="logo1" />
             </div>
             <span class="link_name">Laporan</span>
           </a>
           <ul class="sub-menu blank">
-            <li><a class="link_name" href="#">Laporan</a></li>
+            <li><a class="link_name" href="dataLaporan.php">Laporan</a></li>
           </ul>
         </li>
 
@@ -391,5 +391,6 @@ $sesLvl = $_SESSION['level'];
     <script src="plugin/jquery-easing/jquery.easing.min.js"></script>
     <script src="plugin/js/script.js"></script>
     <script src="plugin/js/calender.js"></script>
+    <script src="plugin/js/UpImg.js"></script>
   </body>
 </html>

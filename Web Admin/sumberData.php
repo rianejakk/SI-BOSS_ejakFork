@@ -131,14 +131,14 @@
         </li>
 
         <li class="nav-item">
-          <a href="#" class="focusMenu">
+          <a href="dataLaporan.php" class="focusMenu">
             <div class="frame-ico">
               <img class="ico2" src="img/ico/icoReport_noFill.png" alt="logo1" />
             </div>
             <span class="link_name">Laporan</span>
           </a>
           <ul class="sub-menu blank">
-            <li><a class="link_name" href="#">Laporan</a></li>
+            <li><a class="link_name" href="dataLaporan.php">Laporan</a></li>
           </ul>
         </li>
 
