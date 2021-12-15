@@ -7,25 +7,25 @@
 <!--  Layout dari tampilan per item ListView  -->
 
     <TextView
-        android:id="@+id/mod_title"
+        android:id="@+id/busName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="5pt"
         android:layout_marginTop="5pt"
-        android:text="mod title"
+        android:text="bus name"
         android:textSize="14pt"
         android:layout_toRightOf="@id/bus_image"
         />
 
     <TextView
-        android:id="@+id/category"
+        android:id="@+id/detail_bus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="category"
+        android:text="detail"
         android:layout_marginHorizontal="5pt"
         android:layout_marginTop="2pt"
         android:layout_toRightOf="@id/bus_image"
-        android:layout_below="@id/mod_title"
+        android:layout_below="@id/busName"
         />
 
     <TextView
@@ -36,14 +36,14 @@
         android:layout_marginHorizontal="5pt"
         android:layout_marginTop="2pt"
         android:layout_marginBottom="2pt"
-        android:layout_below="@id/category"
+        android:layout_below="@id/detail_bus"
         android:layout_toRightOf="@id/bus_image"
         />
 
     <ImageView
         android:id="@+id/bus_image"
         android:layout_width="200dp"
-        android:layout_height="100dp"/>
+        android:layout_height="100dp" />
 <!--        android:src="@drawable/ic_temp_banner_foreground"-->
 
 

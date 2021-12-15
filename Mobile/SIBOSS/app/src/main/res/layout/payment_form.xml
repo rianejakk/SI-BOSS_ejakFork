@@ -12,7 +12,8 @@
         android:layout_width="200dp"
         android:layout_height="100dp"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/Logo" />
+        android:src="@drawable/bus_blur"
+        />
 
     <TextView
         android:id="@+id/no_pemesanan_title"
