@@ -1,6 +1,7 @@
-package com.rafli.si_boss.model;
+package com.rafli.si_boss;
 
 public class Bus {
+
     private int id_bus;
     private String nama_bus;
     private String detail_bus;

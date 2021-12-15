@@ -122,9 +122,9 @@
 
         <CheckBox
             android:id="@+id/CbShowPasswordRegister"
-            android:layout_below="@+id/EtPasswordDaftar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/EtPasswordDaftar"
             android:fontFamily="@font/roboto"
             android:text="Show password"
             android:textSize="12sp" />
