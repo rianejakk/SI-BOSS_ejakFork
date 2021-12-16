@@ -30,7 +30,7 @@ public class ProgressBarAnimation extends Animation {
         textView.setText((int)value+ "%");
 
         if (value == to) {
-            context.startActivity(new Intent(context, LoginActivity.class));
+            context.startActivity(new Intent(context, SliderActivity.class));
         }
     }
 }

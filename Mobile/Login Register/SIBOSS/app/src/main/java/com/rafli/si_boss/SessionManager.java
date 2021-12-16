@@ -46,7 +46,7 @@ public class SessionManager {
         editor.commit();
     }
 
-//    jika sudah login tidak perlu masuk ke login lagi
+    //    jika sudah login tidak perlu masuk ke login lagi
     public boolean isLoggedIn() {
         return sharedPreferences.getBoolean(IS_LOGGED_IN,false);
     }

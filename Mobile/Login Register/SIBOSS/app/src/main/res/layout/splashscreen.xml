@@ -31,6 +31,5 @@
         android:layout_height="wrap_content"
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="20dp"
-        android:outlineAmbientShadowColor="@color/lightGrey"/>
+        android:layout_marginBottom="20dp"/>
 </RelativeLayout>

@@ -99,5 +99,6 @@
         android:textSize="16sp"
         android:textAllCaps="false"
         android:background="@drawable/edittext_bg"/>
+
 </LinearLayout>
 </LinearLayout>

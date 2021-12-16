@@ -20,6 +20,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity android:name=".MainActivity" />
+        <activity android:name=".SliderActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".order_activity" />

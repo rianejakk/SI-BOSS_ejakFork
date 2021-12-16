@@ -3,25 +3,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<!--    <RelativeLayout-->
-<!--        android:id="@+id/relative1"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="56dp"-->
-<!--        android:gravity="center"-->
-<!--        android:orientation="horizontal"-->
-<!--        android:layout_marginTop="27dp">-->
-<!--&lt;!&ndash;        android:background="@drawable/shape_header"&ndash;&gt;-->
+    <!--    <RelativeLayout-->
+    <!--        android:id="@+id/relative1"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="56dp"-->
+    <!--        android:gravity="center"-->
+    <!--        android:orientation="horizontal"-->
+    <!--        android:layout_marginTop="27dp">-->
+    <!--&lt;!&ndash;        android:background="@drawable/shape_header"&ndash;&gt;-->
 
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="center"-->
-<!--            android:fontFamily="@font/roboto"-->
-<!--            android:text="Login"-->
-<!--            android:textColor="@color/black"-->
-<!--            android:textSize="20sp"-->
-<!--            android:textStyle="bold" />-->
-<!--    </RelativeLayout>-->
+    <!--        <TextView-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_gravity="center"-->
+    <!--            android:fontFamily="@font/roboto"-->
+    <!--            android:text="Login"-->
+    <!--            android:textColor="@color/black"-->
+    <!--            android:textSize="20sp"-->
+    <!--            android:textStyle="bold" />-->
+    <!--    </RelativeLayout>-->
 
     <RelativeLayout
         android:id="@+id/relative2"
@@ -37,24 +37,24 @@
             android:layout_height="wrap_content"
             android:src="@drawable/textsibos"/>
 
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_alignParentBottom="true"-->
-<!--            android:fontFamily="@font/pacifico"-->
-<!--            android:text="SI-BOSS"-->
-<!--            android:textColor="@drawable/gradient_bg"-->
-<!--            android:textSize="24sp" />-->
+        <!--        <TextView-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_alignParentBottom="true"-->
+        <!--            android:fontFamily="@font/pacifico"-->
+        <!--            android:text="SI-BOSS"-->
+        <!--            android:textColor="@drawable/gradient_bg"-->
+        <!--            android:textSize="24sp" />-->
 
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_alignParentBottom="true"-->
-<!--            android:layout_marginLeft="115dp"-->
-<!--            android:fontFamily="@font/italianno"-->
-<!--            android:text="Express"-->
-<!--            android:textColor="@drawable/gradient_bg"-->
-<!--            android:textSize="24sp" />-->
+        <!--        <TextView-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_alignParentBottom="true"-->
+        <!--            android:layout_marginLeft="115dp"-->
+        <!--            android:fontFamily="@font/italianno"-->
+        <!--            android:text="Express"-->
+        <!--            android:textColor="@drawable/gradient_bg"-->
+        <!--            android:textSize="24sp" />-->
     </RelativeLayout>
 
     <RelativeLayout
@@ -89,10 +89,10 @@
             android:textColor="@color/textDescription"
             android:textSize="14sp" />
 
-<!--        <ImageView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="258dp"-->
-<!--            android:src="@drawable/background2" />-->
+        <!--        <ImageView-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="258dp"-->
+        <!--            android:src="@drawable/background2" />-->
 
         <RelativeLayout
             android:id="@id/relativeEt"
@@ -206,6 +206,18 @@
                 android:text="@string/sign_up_button"
                 android:textColor="@color/textHeadline"
                 android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/Btn_ulang_slide"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true"
+                android:background="@null"
+                android:text="Ulangi Slide"
+                android:textSize="12sp"
+                android:textAllCaps="false"
+                android:textColor="@color/textDescription"/>
 
         </RelativeLayout>
     </RelativeLayout>

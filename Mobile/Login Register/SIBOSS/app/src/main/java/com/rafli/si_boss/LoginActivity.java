@@ -26,7 +26,7 @@ import retrofit2.Response;
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
     EditText EtEmailLogin, EtPasswordLogin;
-    Button BtnLogin;
+    Button BtnLogin, Btn_ulang_slide;
     CheckBox CbShowPasswordLogin;
     String Email, Password;
     TextView TvRegister;
@@ -50,6 +50,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         TvRegister = findViewById(R.id.TvDaftar);
         TvRegister.setOnClickListener(this);
 
+        findViewById(R.id.Btn_ulang_slide).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PrefManager prefManager = new PrefManager(getApplicationContext());
+                prefManager.setFirstTimeLaunch(true);
+                startActivity(new Intent(LoginActivity.this, SliderActivity.class));
+                finish();
+            }
+        });
+
         //        Show/Hide password
         CbShowPasswordLogin.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -63,7 +73,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             }
         });
     }
-//ketika di click pindah halaman lain
+    //ketika di click pindah halaman lain
     @Override
     public void onClick(View v) {
         switch (v.getId()){

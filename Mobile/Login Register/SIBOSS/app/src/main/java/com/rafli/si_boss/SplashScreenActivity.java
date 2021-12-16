@@ -15,28 +15,28 @@ public class SplashScreenActivity extends AppCompatActivity {
     ProgressBar progressBar;
     TextView textView;
 
-        @Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.splashscreen);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.splashscreen);
 
-            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                    WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-            progressBar = findViewById(R.id.progressBar);
-            textView = findViewById(R.id.text_view);
+        progressBar = findViewById(R.id.progressBar);
+        textView = findViewById(R.id.text_view);
 
-            progressBar.setMax(100);
-            progressBar.setScaleY(3f);
+        progressBar.setMax(100);
+        progressBar.setScaleY(3f);
 
-            progresAnimation();
-        }
+        progresAnimation();
+    }
 
-        public void progresAnimation(){
-            ProgressBarAnimation anim = new ProgressBarAnimation(this, progressBar, textView, 0f, 100f);
-            anim.setDuration(10000);
-            progressBar.setAnimation(anim);
-        }
+    public void progresAnimation(){
+        ProgressBarAnimation anim = new ProgressBarAnimation(this, progressBar, textView, 0f, 100f);
+        anim.setDuration(5000);
+        progressBar.setAnimation(anim);
+    }
 }
 //
 ////        inisialisai handler
