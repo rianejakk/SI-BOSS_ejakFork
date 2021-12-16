@@ -7,6 +7,7 @@
         android:id="@+id/relative1"
         android:layout_width="match_parent"
         android:layout_height="56dp"
+        android:layout_marginTop="27dp"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -15,7 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:fontFamily="@font/roboto"
-            android:text="Register"
+            android:text="Profile"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -24,207 +25,360 @@
     <RelativeLayout
         android:id="@+id/relative2"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/relative1"
-        android:layout_marginTop="100dp"
-        android:gravity="center"
+        android:layout_marginTop="5dp"
+        android:gravity="center_horizontal"
         android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/textsibos"/>
+            android:id="@+id/FotoProfil"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/round_img"
+            android:src="@drawable/profile" />
     </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/relative3"
+
+    <TextView
+        android:id="@+id/tv2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/relative2"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:text="Informasi pribadi"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:layout_below="@+id/relative2"/>
+
+    <TextView
+        android:id="@+id/tv3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv2"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/roboto"
+        android:text="Akun saya"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <ScrollView
+        android:id="@+id/ScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv3"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="30dp"
         android:gravity="center"
         android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/tv2"
+        <RelativeLayout
+            android:id="@+id/relative3"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-medium"
-            android:gravity="center"
-            android:text="Informasi pribadi"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/tv3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv2"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/roboto"
-            android:text="Akun saya"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tv4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="10dp"
+                android:fontFamily="@font/roboto"
+                android:text="Nama lengkap"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
 
-        <TextView
-            android:id="@+id/tv4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv3"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="6dp"
-            android:layout_marginRight="10dp"
-            android:fontFamily="@font/roboto"
-            android:text="Nama lengkap"
-            android:textColor="@color/black"
-            android:textSize="12sp" />
+            <EditText
+                android:id="@+id/EtNamaBiodata"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv4"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/edittext_bg"
+                android:drawablePadding="16dp"
+                android:fontFamily="@font/roboto"
+                android:hint="Masukkan nama lengkap"
+                android:inputType="text"
+                android:padding="8dp"
+                android:textSize="16sp" />
 
-        <EditText
-            android:id="@+id/EtNamaBiodata"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv4"
-            android:layout_marginTop="6dp"
-            android:background="@drawable/edittext_bg"
-            android:drawablePadding="16dp"
-            android:fontFamily="@font/roboto"
-            android:hint="Masukkan nama lengkap"
-            android:inputType="text"
-            android:padding="8dp"
-            android:textSize="16sp" />
+            <TextView
+                android:id="@+id/tv5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/EtNamaBiodata"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginRight="10dp"
+                android:fontFamily="@font/roboto"
+                android:text="NIK"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
 
-        <TextView
-            android:id="@+id/tv5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/EtNamaBiodata"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="6dp"
-            android:layout_marginRight="10dp"
-            android:fontFamily="@font/roboto"
-            android:text="NIK"
-            android:textColor="@color/black"
-            android:textSize="12sp" />
+            <EditText
+                android:id="@+id/EtNIK"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv5"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/edittext_bg"
+                android:drawablePadding="16dp"
+                android:fontFamily="@font/roboto"
+                android:hint="Masukkan no induk keluarga"
+                android:inputType="text"
+                android:padding="8dp"
+                android:textSize="16sp" />
 
-        <EditText
-            android:id="@+id/EtNIK"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv5"
-            android:layout_marginTop="6dp"
-            android:background="@drawable/edittext_bg"
-            android:drawablePadding="16dp"
-            android:fontFamily="@font/roboto"
-            android:hint="Masukkan no induk keluarga"
-            android:inputType="text"
-            android:padding="8dp"
-            android:textSize="16sp" />
+            <TextView
+                android:id="@+id/tv6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/EtNIK"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginRight="10dp"
+                android:fontFamily="@font/roboto"
+                android:text="Email"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
 
-        <TextView
-            android:id="@id/tv6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="6dp"
-            android:layout_marginRight="10dp"
-            android:text="Jenis kelamin"
-            android:textColor="@color/black"
-            android:textSize="12sp"
-            android:fontFamily="@font/roboto"
-            android:layout_below="@id/EtNIK"/>
+            <EditText
+                android:id="@+id/EtEmailBiodata"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv6"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/edittext_bg"
+                android:drawablePadding="16dp"
+                android:fontFamily="@font/roboto"
+                android:hint="Masukkan email"
+                android:inputType="textEmailAddress"
+                android:padding="8dp"
+                android:textSize="16sp" />
 
-        <RadioGroup
-            android:id="@+id/RadioGroup"
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_below="@+id/tv6">
-            <RadioButton
-                android:id="@+id/Radio_L"
+            <TextView
+                android:id="@+id/tv7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/EtEmailBiodata"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginRight="10dp"
+                android:fontFamily="@font/roboto"
+                android:text="Kata sandi"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/EtPasswordBiodata"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv7"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/edittext_bg"
+                android:drawablePadding="16dp"
+                android:fontFamily="@font/roboto"
+                android:hint="Masukkan kata sandi"
+                android:inputType="textPassword"
+                android:padding="8dp"
+                android:textSize="16sp" />
+
+            <CheckBox
+                android:id="@+id/CbShowPasswordBiodata"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Laki-laki"
-                android:textSize="16sp"
+                android:layout_below="@id/EtPasswordBiodata"
                 android:fontFamily="@font/roboto"
-                android:onClick="onRadioButtonClicked"/>
-            <RadioButton
-                android:id="@+id/Radio_P"
+                android:text="Lihat kata sandi"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/CbShowPasswordBiodata"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginRight="10dp"
+                android:fontFamily="@font/roboto"
+                android:text="Jenis Kelamin"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/RadioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv8"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/Radio_L"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="Laki-laki"
+                    android:textSize="16sp" />
+
+                <RadioButton
+                    android:id="@+id/Radio_P"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="Perempuan"
+                    android:textSize="16sp" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/tv9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/RadioGroup"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginRight="10dp"
+                android:fontFamily="@font/roboto"
+                android:text="Tempat lahir"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/EtTempatLahirBiodata"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv9"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/edittext_bg"
+                android:drawablePadding="16dp"
+                android:fontFamily="@font/roboto"
+                android:hint="Masukkan tempat lahir"
+                android:inputType="text"
+                android:padding="8dp"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/EtTempatLahirBiodata"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginRight="10dp"
+                android:fontFamily="@font/roboto"
+                android:text="Tanggal lahir"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@id/EtTanggalLahirBiodata"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv10"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/edittext_bg"
+                android:drawableStart="@drawable/ic_baseline_date_range_24"
+                android:drawablePadding="16dp"
+                android:fontFamily="@font/roboto"
+                android:hint="DD-MM-YYYY"
+                android:inputType="date"
+                android:padding="8dp"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/EtTanggalLahirBiodata"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginRight="10dp"
+                android:fontFamily="@font/roboto"
+                android:text="Nomor handphone"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/EtNoHandphone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv11"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/edittext_bg"
+                android:drawablePadding="16dp"
+                android:fontFamily="@font/roboto"
+                android:hint="Masukkan no handphone"
+                android:inputType="number"
+                android:padding="8dp"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/EtNoHandphone"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginRight="10dp"
+                android:fontFamily="@font/roboto"
+                android:text="Alamat"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/EtAlamat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv12"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/edittext_bg"
+                android:drawablePadding="16dp"
+                android:fontFamily="@font/roboto"
+                android:hint="Masukkan alamat"
+                android:inputType="text"
+                android:padding="8dp"
+                android:textSize="16sp" />
+
+            <RelativeLayout
+                android:id="@+id/relative4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Perempuan"
-                android:textSize="16sp"
-                android:fontFamily="@font/roboto"
-                android:onClick="onRadioButtonClicked"/>
-        </RadioGroup>
-        <TextView
-            android:id="@+id/tv7"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="6dp"
-            android:layout_marginRight="10dp"
-            android:text="Tanggal lahir"
-            android:textColor="@color/black"
-            android:textSize="12sp"
-            android:fontFamily="@font/roboto"
-            android:layout_below="@id/RadioGroup"/>
+                android:layout_below="@+id/EtAlamat">
 
-        <EditText
-            android:id="@id/EtTTL"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:background="@drawable/edittext_bg"
-            android:drawableStart="@drawable/ic_baseline_date_range_24"
-            android:drawablePadding="16dp"
-            android:hint="DD-MM-YYYY"
-            android:inputType="date"
-            android:padding="8dp"
-            android:textSize="16sp"
-            android:fontFamily="@font/roboto"
-            android:layout_below="@id/tv7"/>
-        <TextView
-            android:id="@+id/tv8"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="6dp"
-            android:layout_marginRight="10dp"
-            android:text="Alamat"
-            android:textColor="@color/black"
-            android:textSize="12sp"
-            android:fontFamily="@font/roboto"
-            android:layout_below="@+id/EtTTL"/>
+                <Button
+                    android:id="@+id/BtnUbah"
+                    android:layout_width="80dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/round_btn"
+                    android:text="Simpan"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white" />
 
-        <EditText
-            android:id="@+id/EtAlamat"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:background="@drawable/edittext_bg"
-            android:drawablePadding="16dp"
-            android:hint="Masukkan alamat"
-            android:inputType="text"
-            android:padding="8dp"
-            android:textSize="16sp"
-            android:fontFamily="@font/roboto"
-            android:layout_below="@id/tv8"/>
-    </RelativeLayout>
+                <Button
+                    android:id="@+id/BtnSimpan"
+                    android:layout_width="80dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginHorizontal="95dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/round_btn2"
+                    android:text="Ubah"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white" />
+            </RelativeLayout>
 
-    <Button
-        android:id="@+id/Btnubah"
-        android:layout_width="80dp"
-        android:layout_height="30dp"
-        android:layout_below="@id/relative3"
-        android:layout_alignParentRight="true"
-        android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/round_btn2"
-        android:text="Ubah"
-        android:textAllCaps="false"
-        android:textColor="@color/white" />
+        </RelativeLayout>
+
+    </ScrollView>
+
 </RelativeLayout>

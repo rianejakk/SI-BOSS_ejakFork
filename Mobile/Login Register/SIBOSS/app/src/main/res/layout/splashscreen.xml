@@ -14,4 +14,23 @@
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/logo_splash_screen"
         android:layout_centerInParent="true"/>
+
+    <TextView
+        android:id="@+id/text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0 %"
+        android:textColor="@color/colorAccent"
+        android:textSize="25dp"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/progressBar"/>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:outlineAmbientShadowColor="@color/lightGrey"/>
 </RelativeLayout>

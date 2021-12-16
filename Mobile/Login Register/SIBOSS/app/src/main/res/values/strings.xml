@@ -3,7 +3,7 @@
     <string name="String_login">Sudah punya akun <font color='#0404A9'>SI-BOSS</font> ?</string>
     <string name="String_sign_up">Belum punya akun <font color='#0404A9'>SI-BOSS</font> ?</string>
     <string name="login_button"><b><font color='#0404A9'>Login</font></b></string>
-    <string name="sign_up_button"><b><font color='#0404A9'>Register</font></b></string>
+    <string name="sign_up_button"><b><font color='#0404A9'>Daftar</font></b></string>
     <string name="verifikasi_email">Kami telah mengirimkan kode verifikasi ke <b>siboss@gmail.com</b>, silahkan cek</string>
     <string name="password_baru">Masukkan kata sandi baru untuk akun anda</string>
     <string name="title_activity_content_main">ContentMainActivity</string>
@@ -16,16 +16,23 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="title_activity_content">Content_activity</string>
-    <string name="title_activity_nav_menu">nav_menu</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
 
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
-    <string name="title_activity_navigation_bar">navigationBar</string>
+
+    <string name="lanjut">LANJUT</string>
+    <string name="lewati">LEWATI</string>
+    <string name="mulai">MULAI</string>
+
+    <string name="slide_1_title">Tiket Bus Online</string>
+    <string name="slide_1_desc">Lakukan pemesanan tiket bus hanya di SI-BOSS Express</string>
+
+    <string name="slide_2_title">Pembayaran Mudah</string>
+    <string name="slide_2_desc">Sekarang kamu dapat memesan online dan bayar melalui ATM terdekat</string>
+
+    <string name="slide_3_title">Pembayaran Aman</string>
+    <string name="slide_3_desc">Informasi anda terjamin aman</string>
+
+    <string name="slide_4_title">Ajak dan Nikamti</string>
+    <string name="slide_4_desc">Ajak teman dan keuarga bergabung</string>
+
+
 </resources>

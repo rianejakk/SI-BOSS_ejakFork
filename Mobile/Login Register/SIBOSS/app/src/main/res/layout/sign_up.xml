@@ -3,30 +3,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:id="@+id/relative1"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:gravity="center"
-        android:orientation="horizontal">
+<!--    <RelativeLayout-->
+<!--        android:id="@+id/relative1"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="56dp"-->
+<!--        android:gravity="center"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:layout_marginTop="27dp">-->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:fontFamily="@font/roboto"
-            android:text="Register"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-    </RelativeLayout>
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:fontFamily="@font/roboto"-->
+<!--            android:text="Register"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="20sp"-->
+<!--            android:textStyle="bold" />-->
+<!--    </RelativeLayout>-->
 
 
     <RelativeLayout
         android:id="@+id/relative2"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:layout_below="@+id/relative1"
         android:layout_marginTop="100dp"
         android:gravity="center"
         android:orientation="horizontal">
@@ -69,66 +69,75 @@
             android:textColor="@color/textDescription"
             android:textSize="14sp" />
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="355dp"
-            android:src="@drawable/background2" />
-
-        <EditText
-            android:id="@+id/EtEmailDaftar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv3"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/edittext_bg"
-            android:drawableStart="@drawable/ic_baseline_email_24"
-            android:drawablePadding="16dp"
-            android:fontFamily="@font/roboto"
-            android:hint="Email"
-            android:inputType="textEmailAddress"
-            android:padding="8dp"
-            android:textSize="16sp" />
-
-        <EditText
-            android:id="@+id/EtNamaLengkapDaftar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/EtEmailDaftar"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/edittext_bg"
-            android:drawableStart="@drawable/ic_baseline_account_circle_24"
-            android:drawablePadding="16dp"
-            android:fontFamily="@font/roboto"
-            android:hint="Name"
-            android:inputType="text"
-            android:padding="8dp"
-            android:textSize="16sp" />
-
-        <EditText
-            android:id="@+id/EtPasswordDaftar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/EtNamaLengkapDaftar"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/edittext_bg"
-            android:drawableStart="@drawable/ic_baseline_lock_24"
-            android:drawableEnd="@drawable/ic_baseline_visibility_24"
-            android:drawablePadding="16dp"
-            android:fontFamily="@font/roboto"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:padding="8dp"
-            android:textSize="16sp" />
-
-        <CheckBox
-            android:id="@+id/CbShowPasswordRegister"
+        <RelativeLayout
+            android:id="@id/relativeEt"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/EtPasswordDaftar"
-            android:fontFamily="@font/roboto"
-            android:text="Show password"
-            android:textSize="12sp" />
+            android:layout_height="210dp"
+            android:layout_below="@+id/tv3"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/background2">
 
+
+            <EditText
+                android:id="@+id/EtEmailDaftar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/edittext_bg"
+                android:drawableStart="@drawable/ic_baseline_email_24"
+                android:drawablePadding="16dp"
+                android:fontFamily="@font/roboto"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:padding="8dp"
+                android:textSize="16sp"
+                android:layout_marginRight="6dp"
+                android:layout_marginLeft="6dp"/>
+
+            <EditText
+                android:id="@+id/EtNamaLengkapDaftar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/EtEmailDaftar"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/edittext_bg"
+                android:drawableStart="@drawable/ic_baseline_account_circle_24"
+                android:drawablePadding="16dp"
+                android:fontFamily="@font/roboto"
+                android:hint="Nama lengkap"
+                android:inputType="text"
+                android:padding="8dp"
+                android:textSize="16sp"
+                android:layout_marginRight="6dp"
+                android:layout_marginLeft="6dp"/>
+
+            <EditText
+                android:id="@+id/EtPasswordDaftar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/EtNamaLengkapDaftar"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/edittext_bg"
+                android:drawableStart="@drawable/ic_baseline_lock_24"
+                android:drawablePadding="16dp"
+                android:fontFamily="@font/roboto"
+                android:hint="Kata sandi"
+                android:inputType="textPassword"
+                android:padding="8dp"
+                android:textSize="16sp"
+                android:layout_marginRight="6dp"
+                android:layout_marginLeft="6dp"/>
+
+            <CheckBox
+                android:id="@+id/CbShowPasswordRegister"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/EtPasswordDaftar"
+                android:fontFamily="@font/roboto"
+                android:text="Lihat kata sandi"
+                android:textSize="12sp"
+                android:layout_marginLeft="6dp"/>
+        </RelativeLayout>
 <!--        <EditText-->
 <!--            android:id="@+id/EtKonfirmasiSandi"-->
 <!--            android:layout_width="match_parent"-->
@@ -150,7 +159,7 @@
             android:id="@+id/relative5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/CbShowPasswordRegister"
+            android:layout_below="@+id/relativeEt"
             android:layout_marginTop="19dp">
 
             <Button
@@ -161,7 +170,7 @@
                 android:layout_marginLeft="150dp"
                 android:layout_marginRight="150dp"
                 android:background="@drawable/round_btn"
-                android:text="Register"
+                android:text="Daftar"
                 android:textAllCaps="true"
                 android:textColor="@color/white" />
 
@@ -183,7 +192,6 @@
                 android:layout_below="@+id/tv4"
                 android:layout_marginTop="5dp"
                 android:gravity="center"
-                android:onClick=""
                 android:text="@string/login_button"
                 android:textColor="@color/textHeadline"
                 android:textSize="16sp" />
