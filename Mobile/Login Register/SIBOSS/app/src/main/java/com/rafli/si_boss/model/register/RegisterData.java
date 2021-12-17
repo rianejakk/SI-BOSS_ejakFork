@@ -4,25 +4,25 @@ import com.google.gson.annotations.SerializedName;
 
 public class RegisterData {
 
-	@SerializedName("name")
-	private String name;
+	@SerializedName("email_user")
+	private String emailUser;
 
-	@SerializedName("email")
-	private String email;
+	@SerializedName("nama_user")
+	private String namaUser;
 
-	public void setName(String name){
-		this.name = name;
+	public void setEmailUser(String emailUser){
+		this.emailUser = emailUser;
 	}
 
-	public String getName(){
-		return name;
+	public String getEmailUser(){
+		return emailUser;
 	}
 
-	public void setEmail(String email){
-		this.email = email;
+	public void setNamaUser(String namaUser){
+		this.namaUser = namaUser;
 	}
 
-	public String getEmail(){
-		return email;
+	public String getNamaUser(){
+		return namaUser;
 	}
 }

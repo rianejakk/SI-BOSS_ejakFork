@@ -5,13 +5,13 @@ $connection = null;
 try{
     //Config
     $host = "localhost";
-    $username = "root";
-    $password ="";
-    $dbname = "SI-BOSS";
+    $email_user = "root";
+    $password_user ="";
+    $dbname = "si_boss_express";
 
     //Connect
     $database = "mysql:dbname=$dbname;host=$host";
-    $connection = new PDO($database, $username, $password);
+    $connection = new PDO($database, $email_user, $password_user);
     $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // if($connection){

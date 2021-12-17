@@ -196,7 +196,8 @@
                 android:layout_below="@id/EtPasswordBiodata"
                 android:fontFamily="@font/roboto"
                 android:text="Lihat kata sandi"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                android:buttonTint="@color/textDescription"/>
 
             <TextView
                 android:id="@+id/tv8"

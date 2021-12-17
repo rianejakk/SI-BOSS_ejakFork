@@ -15,9 +15,8 @@ public class SessionManager {
     private SharedPreferences.Editor editor;
 
     public static final String IS_LOGGED_IN = "isLoggedIn";
-    public static final String USER_ID ="user_id";
-    public static final String EMAIL ="email";
-    public static final String NAME = "name";
+    public static final String EMAIL_USER ="email";
+    public static final String NAMA_USER = "name";
 
     public SessionManager (Context context){
         this._context = context;
@@ -27,17 +26,15 @@ public class SessionManager {
 
     public void createLoginSession(LoginData user){
         editor.putBoolean(IS_LOGGED_IN, true);
-        editor.putString(USER_ID, user.getUserId());
-        editor.putString(EMAIL, user.getEmail());
-        editor.putString(NAME, user.getName());
+        editor.putString(EMAIL_USER, user.getEmailUser());
+        editor.putString(NAMA_USER, user.getNamaUser());
         editor.commit();
     }
 
     public HashMap<String,String> getUserDetail(){
         HashMap<String,String> user = new HashMap<>();
-        user.put(USER_ID, sharedPreferences.getString(USER_ID, null));
-        user.put(EMAIL, sharedPreferences.getString(EMAIL, null));
-        user.put(NAME, sharedPreferences.getString(NAME, null));
+        user.put(EMAIL_USER, sharedPreferences.getString(EMAIL_USER, null));
+        user.put(NAMA_USER, sharedPreferences.getString(NAMA_USER, null));
         return user;
     }
 

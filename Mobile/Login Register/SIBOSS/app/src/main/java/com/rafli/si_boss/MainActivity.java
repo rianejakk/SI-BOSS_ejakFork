@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity  {
         etName = findViewById(R.id.etMainName);
         BtnKeluar =findViewById(R.id.BtnKeluar);
 
-        email = sessionManager.getUserDetail().get(SessionManager.EMAIL);
-        name = sessionManager.getUserDetail().get(SessionManager.NAME);
+        email = sessionManager.getUserDetail().get(SessionManager.EMAIL_USER);
+        name = sessionManager.getUserDetail().get(SessionManager.NAMA_USER);
 
         etEmail.setText(email);
         etName.setText(name);

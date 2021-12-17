@@ -4,36 +4,25 @@ import com.google.gson.annotations.SerializedName;
 
 public class LoginData {
 
-	@SerializedName("user_id")
-	private String userId;
+	@SerializedName("email_user")
+	private String emailUser;
 
-	@SerializedName("name")
-	private String name;
+	@SerializedName("nama_user")
+	private String namaUser;
 
-	@SerializedName("email")
-	private String email;
-
-	public void setUserId(String userId){
-		this.userId = userId;
+	public void setEmailUser(String emailUser){
+		this.emailUser = emailUser;
 	}
 
-	public String getUserId(){
-		return userId;
+	public String getEmailUser(){
+		return emailUser;
 	}
 
-	public void setName(String name){
-		this.name = name;
+	public void setNamaUser(String namaUser){
+		this.namaUser = namaUser;
 	}
 
-	public String getName(){
-		return name;
-	}
-
-	public void setEmail(String email){
-		this.email = email;
-	}
-
-	public String getEmail(){
-		return email;
+	public String getNamaUser(){
+		return namaUser;
 	}
 }

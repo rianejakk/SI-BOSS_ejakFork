@@ -26,7 +26,7 @@ import retrofit2.Response;
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
     EditText EtEmailLogin, EtPasswordLogin;
-    Button BtnLogin, Btn_ulang_slide;
+    Button BtnLogin;
     CheckBox CbShowPasswordLogin;
     String Email, Password;
     TextView TvRegister;
@@ -103,7 +103,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     sessionManager.createLoginSession(loginData);
 
 
-                    Toast.makeText(LoginActivity.this, response.body().getLoginData().getName(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, response.body().getLoginData().getNamaUser(), Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intent);
                     finish();
