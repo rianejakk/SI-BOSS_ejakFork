@@ -10,23 +10,24 @@
     <!--        android:gravity="center"-->
     <!--        android:orientation="horizontal"-->
     <!--        android:layout_marginTop="27dp">-->
+    <!--&lt;!&ndash;        android:background="@drawable/shape_header"&ndash;&gt;-->
 
     <!--        <TextView-->
     <!--            android:layout_width="wrap_content"-->
     <!--            android:layout_height="wrap_content"-->
     <!--            android:layout_gravity="center"-->
     <!--            android:fontFamily="@font/roboto"-->
-    <!--            android:text="Register"-->
+    <!--            android:text="Login"-->
     <!--            android:textColor="@color/black"-->
     <!--            android:textSize="20sp"-->
     <!--            android:textStyle="bold" />-->
     <!--    </RelativeLayout>-->
 
-
     <RelativeLayout
         android:id="@+id/relative2"
         android:layout_width="match_parent"
         android:layout_height="56dp"
+        android:layout_below="@+id/relative1"
         android:layout_marginTop="100dp"
         android:gravity="center"
         android:orientation="horizontal">
@@ -35,6 +36,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/textsibos"/>
+
+        <!--        <TextView-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_alignParentBottom="true"-->
+        <!--            android:fontFamily="@font/pacifico"-->
+        <!--            android:text="SI-BOSS"-->
+        <!--            android:textColor="@drawable/gradient_bg"-->
+        <!--            android:textSize="24sp" />-->
+
+        <!--        <TextView-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_alignParentBottom="true"-->
+        <!--            android:layout_marginLeft="115dp"-->
+        <!--            android:fontFamily="@font/italianno"-->
+        <!--            android:text="Express"-->
+        <!--            android:textColor="@drawable/gradient_bg"-->
+        <!--            android:textSize="24sp" />-->
     </RelativeLayout>
 
     <RelativeLayout
@@ -54,7 +74,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-medium"
             android:gravity="center"
-            android:text="Daftar akun"
+            android:text="Login akun"
             android:textColor="@color/textHeadline"
             android:textSize="20sp" />
 
@@ -65,21 +85,25 @@
             android:layout_below="@id/tv2"
             android:fontFamily="sans-serif"
             android:gravity="center"
-            android:text="Silahkan Daftarkan akun anda sekarang"
+            android:text="Silahkan login untuk masuk ke dalam aplikasi"
             android:textColor="@color/textDescription"
             android:textSize="14sp" />
+
+        <!--        <ImageView-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="258dp"-->
+        <!--            android:src="@drawable/background2" />-->
 
         <RelativeLayout
             android:id="@id/relativeEt"
             android:layout_width="wrap_content"
-            android:layout_height="210dp"
+            android:layout_height="165dp"
             android:layout_below="@+id/tv3"
             android:layout_marginTop="10dp"
             android:background="@drawable/background2">
 
-
-            <EditText
-                android:id="@+id/EtEmailDaftar"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/EtEmailLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="6dp"
@@ -92,30 +116,13 @@
                 android:hint="Email"
                 android:inputType="textEmailAddress"
                 android:padding="8dp"
-                android:textSize="16sp"/>
-
-            <EditText
-                android:id="@+id/EtNamaLengkapDaftar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/EtEmailDaftar"
-                android:layout_marginLeft="6dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="6dp"
-                android:background="@drawable/edittext_bg"
-                android:drawableStart="@drawable/ic_baseline_account_circle_24"
-                android:drawablePadding="16dp"
-                android:fontFamily="@font/roboto"
-                android:hint="Nama lengkap"
-                android:inputType="textPersonName"
-                android:padding="8dp"
                 android:textSize="16sp" />
 
-            <EditText
-                android:id="@+id/EtPasswordDaftar"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/EtPasswordLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/EtNamaLengkapDaftar"
+                android:layout_below="@+id/EtEmailLogin"
                 android:layout_marginLeft="6dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="6dp"
@@ -128,33 +135,38 @@
                 android:padding="8dp"
                 android:textSize="16sp" />
 
-            <CheckBox
-                android:id="@+id/CbShowPasswordRegister"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:id="@+id/relative4"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/EtPasswordDaftar"
+                android:layout_below="@+id/EtPasswordLogin"
                 android:layout_marginLeft="6dp"
-                android:fontFamily="@font/roboto"
-                android:text="Lihat kata sandi"
-                android:textSize="12sp"
-                android:buttonTint="@color/textDescription"/>
-        </RelativeLayout>
-        <!--        <EditText-->
-        <!--            android:id="@+id/EtKonfirmasiSandi"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_below="@+id/EtSandiDaftar"-->
-        <!--            android:layout_marginTop="10dp"-->
-        <!--            android:background="@drawable/edittext_bg"-->
-        <!--            android:drawableStart="@drawable/ic_baseline_lock_24"-->
-        <!--            android:drawableEnd="@drawable/ic_baseline_visibility_24"-->
-        <!--            android:drawablePadding="16dp"-->
-        <!--            android:fontFamily="@font/roboto"-->
-        <!--            android:hint="Konfirmasi kata sandi"-->
-        <!--            android:inputType="textPassword"-->
-        <!--            android:padding="8dp"-->
-        <!--            android:textSize="16sp" />-->
+                android:layout_marginRight="6dp">
 
+                <CheckBox
+                    android:id="@+id/CbShowPasswordLogin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:text="Lihat kata sandi"
+                    android:textSize="12sp"
+
+                    />
+
+                <TextView
+                    android:id="@+id/TvLupaSandi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginEnd="8dp"
+                    android:fontFamily="@font/roboto"
+                    android:onClick=""
+                    android:text="Lupa kata sandi?"
+                    android:textColor="@color/blue"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+        </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/relative5"
@@ -164,14 +176,14 @@
             android:layout_marginTop="19dp">
 
             <Button
-                android:id="@+id/BtnDaftar"
+                android:id="@+id/BtnLogin"
                 android:layout_width="137dp"
                 android:layout_height="41dp"
                 android:layout_marginHorizontal="100dp"
                 android:layout_marginLeft="150dp"
                 android:layout_marginRight="150dp"
                 android:background="@drawable/round_btn"
-                android:text="Daftar"
+                android:text="Login"
                 android:textAllCaps="true"
                 android:textColor="@color/white" />
 
@@ -179,23 +191,35 @@
                 android:id="@+id/tv4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/BtnDaftar"
+                android:layout_below="@id/BtnLogin"
                 android:layout_marginTop="7dp"
                 android:gravity="center"
-                android:text="@string/String_login"
+                android:text="@string/String_sign_up"
                 android:textColor="@color/textHeadline"
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/TvLogin"
+                android:id="@+id/TvDaftar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv4"
                 android:layout_marginTop="5dp"
                 android:gravity="center"
-                android:text="@string/login_button"
+                android:text="@string/sign_up_button"
                 android:textColor="@color/textHeadline"
                 android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/Btn_ulang_slide"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true"
+                android:background="@null"
+                android:text="Ulangi Slide"
+                android:textSize="12sp"
+                android:textAllCaps="false"
+                android:textColor="@color/textDescription"/>
 
         </RelativeLayout>
     </RelativeLayout>

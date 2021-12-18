@@ -194,10 +194,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/EtPasswordBiodata"
+                android:buttonTint="@color/textDescription"
                 android:fontFamily="@font/roboto"
                 android:text="Lihat kata sandi"
-                android:textSize="12sp"
-                android:buttonTint="@color/textDescription"/>
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/tv8"
@@ -376,6 +376,17 @@
                     android:text="Ubah"
                     android:textAllCaps="false"
                     android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/Tv13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginTop="8dp"
+                    android:text="text view 12"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:layout_below="@+id/BtnUbah"/>
             </RelativeLayout>
 
         </RelativeLayout>
