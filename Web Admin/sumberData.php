@@ -344,7 +344,7 @@
                                 <th class="terminal">Terminal</th>
                                 <th class="alamat">Alamat</th>
                                 <th class="provinsis">Provinsi</th>
-                                <th class="kabupatens">Kabupaten</th>
+                                <th class="kabupatens">Kabupaten/Kota</th>
                                 <th class="kecamatans">Kecamatan</th>
                               </tr>
                             </thead>
@@ -441,7 +441,7 @@
                                             </div>
                                             
                                             <div class="modal-footer">
-                                              <button class="btn btn-secondary roundedBtn" type="button" data-dismiss="modal">Batal</button>
+                                              <button class="btn btn-secondary roundedBtn" type="button" data-bs-dismiss="modal">Batal</button>
                                               <button type="submit" class="btn text-white colorPrimary roundedBtn" name="simpan">Update</button>
                                             </div>
                                           </div>
@@ -467,7 +467,7 @@
                                             <p class="text-warning"><small>Perlu hati-hati karena data akan hilang selamanya !</small></p>
                                           </div>
                                           <div class="modal-footer">
-                                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+                                            <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Batal</button>
                                             <a class="btn btn-danger" href="hapusTerminal.php?id_terminal=<?php echo $id_terminal; ?>">Hapus</a>
                                           </div>
                                         </form>
@@ -652,7 +652,7 @@
                                             </div>
 
                                             <div class="modal-footer">
-                                              <button class="btn btn-secondary roundedBtn" type="button" data-dismiss="modal">Batal</button>
+                                              <button class="btn btn-secondary roundedBtn" type="button" data-bs-dismiss="modal">Batal</button>
                                               <button type="submit" class="btn text-white colorPrimary roundedBtn" name="simpan">Update</button>
                                             </div>
                                           </div>
@@ -678,7 +678,7 @@
                                             <p class="text-warning"><small>Perlu hati-hati karena data akan hilang selamanya !</small></p>
                                           </div>
                                           <div class="modal-footer">
-                                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+                                            <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Batal</button>
                                             <a class="btn btn-danger" href="hapusJenisBus.php?id_jenis=<?php echo $id_jenis; ?>">Hapus</a>
                                           </div>
                                         </form>
@@ -894,7 +894,7 @@
                                               </div>
                                               
                                               <div class="modal-footer">
-                                                <button class="btn btn-secondary roundedBtn" type="button" data-dismiss="modal">Batal</button>
+                                                <button class="btn btn-secondary roundedBtn" type="button" data-bs-dismiss="modal">Batal</button>
                                                 <button type="submit" class="btn text-white colorPrimary roundedBtn" name="simpan">Update</button>
                                               </div>
                                             </div>
@@ -920,7 +920,7 @@
                                               <p class="text-warning"><small>Perlu hati-hati karena data akan hilang selamanya !</small></p>
                                             </div>
                                             <div class="modal-footer">
-                                              <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+                                              <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Batal</button>
                                               <a class="btn btn-danger" href="hapusRute.php?id_rute=<?php echo $id_rute; ?>">Hapus</a>
                                             </div>
                                           </form>
@@ -1119,7 +1119,7 @@
                                               <div class="row">
                                                 <div class="col-lg-6 mb-3">
                                                   <label for="inputNik" class="form-label">NIK Penumpang</label>
-                                                  <input type="text" class="form-control form-control-user2" id="inputNik" name="txt_nik_penumpang" placeholder="Ex: 3509030907020006" value="<?php echo $nik_penumpang2?>" placeholder="" readonly/>
+                                                  <input type="number" class="form-control form-control-user2" id="inputNik" name="txt_nik_penumpang" placeholder="Ex: 3509030907020006" value="<?php echo $nik_penumpang2?>" placeholder="" readonly/>
                                                 </div>
                                                 <div class="col-lg-6 mb-3">
                                                   <label for="inputNamaPenumpang" class="form-label">Nama Penumpang</label>
@@ -1142,12 +1142,12 @@
                                                 </div>
                                                 <div class="col-lg-6 mb-3">
                                                   <label for="inputNoHp" class="form-label">No Handphone</label>
-                                                  <input type="text" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp_penumpang" placeholder="Ex: 085808241204" value="<?php echo $no_hp_penumpang2?>"/>
+                                                  <input type="number" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp_penumpang" placeholder="Ex: 085808241204" value="<?php echo $no_hp_penumpang2?>"/>
                                                 </div>
                                               </div>
                                               
                                               <div class="modal-footer">
-                                                <button class="btn btn-secondary roundedBtn" type="button" data-dismiss="modal">Batal</button>
+                                                <button class="btn btn-secondary roundedBtn" type="button" data-bs-dismiss="modal">Batal</button>
                                                 <button type="submit" class="btn text-white colorPrimary roundedBtn" name="simpan">Update</button>
                                               </div>
                                             </div>
@@ -1173,7 +1173,7 @@
                                               <p class="text-warning"><small>Perlu hati-hati karena data akan hilang selamanya !</small></p>
                                             </div>
                                             <div class="modal-footer">
-                                              <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+                                              <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Batal</button>
                                               <a class="btn btn-danger" href="hapusPenumpang.php?nik_penumpang=<?php echo $nik_penumpang; ?>">Hapus</a>
                                             </div>
                                           </form>
@@ -1210,7 +1210,7 @@
                                   <div class="row">
                                     <div class="col-lg-6 mb-3">
                                       <label for="inputNikPenumpang" class="form-label">NIK Penumpang</label>
-                                      <input type="text" class="form-control form-control-user2" id="inputNikPenumpang" name="txt_nik_penumpang" placeholder="Ex: 3509030907020006" />
+                                      <input type="number" class="form-control form-control-user2" id="inputNikPenumpang" name="txt_nik_penumpang" placeholder="Ex: 3509030907020006" />
                                     </div>
                                     <div class="col-lg-6 mb-3">
                                       <label for="inputNamaPenumpang" class="form-label">Nama Penumpang</label>
@@ -1232,7 +1232,7 @@
                                                 </div>
                                     <div class="col-lg-6 mb-3">
                                       <label for="inputNoHp" class="form-label">No Handphone</label>
-                                      <input type="text" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp_penumpang" placeholder="Ex: 085808241204" />
+                                      <input type="number" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp_penumpang" placeholder="Ex: 085808241204" />
                                     </div>
                                   </div>
                                   

@@ -311,6 +311,42 @@ $email = $_GET['nama'];
                 <button class="btn btn-light text-danger btn-circle custShadow2" data-bs-toggle="modal" data-bs-target="#deleteDataPemesanan"><i class="fas fa-trash" data-bs-toggle="tooltip" title="Hapus Data"></i></button> -->
               </div>
             </div>
+            <div>
+              <form action="cetakLaporan.php" method="POST">
+                <table>
+                  <tr>
+                    <td>
+                      <div class="form-group">Tanggal Mulai</div>
+                    </td>
+                    <td align="center" width="5%">
+                      <div class="form-group">:</div>
+                    </td>
+                    <td>
+                      <div class="form-group">
+                        <input type="date" class="form-control" name="txt_tanggal_mulai">
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="form-group">Tanggal Selesai</div>
+                    </td>
+                    <td align="center">
+                      <div class="form-group">:</div>
+                    </td>
+                    <td>
+                      <div class="form-group">
+                        <input type="date" class="form-control" name="txt_tanggal_selesai">
+                      </div>
+                    </td>
+                  </tr>
+                  
+                  <td>
+                    <button type="submit" class="btn text-white colorPrimary roundedBtn" name="simpan">Lihat</button>
+                  </td>
+                </table>
+              </form>
+            </div>
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-hover dataTable" width="100%">
@@ -348,7 +384,7 @@ $email = $_GET['nama'];
                                       $dis = "disabled";
                                   }
                                   while($row=$data->fetch(PDO::FETCH_ASSOC)){
-                                    $id_pembayaran = $row['id_pembayaran'];
+                                    // $id_pembayaran = $row['id_pembayaran'];
                                     $id_tiket = $row['id_tiket'];
                                     $id_pemesanan = $row['id_pemesanan'];
                                     $nama_user = $row['nama_user'];
@@ -485,7 +521,7 @@ $email = $_GET['nama'];
                                                 
                                               </div>
                                               <div class="modal-footer">
-                                                <button class="btn btn-secondary roundedBtn" type="button" data-dismiss="modal">Batal</button>
+                                                <button class="btn btn-secondary roundedBtn" type="button" data-bs-dismiss="modal">Batal</button>
                                                 <button type="submit" class="btn text-white colorPrimary roundedBtn" name="simpan">Update</button>
                                               </div>
                                             </div>
@@ -512,7 +548,7 @@ $email = $_GET['nama'];
                                             <p class="text-warning"><small>Perlu hati-hati karena data akan hilang selamanya !</small></p>
                                           </div>
                                           <div class="modal-footer">
-                                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+                                            <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Batal</button>
                                             <a class="btn btn-danger" href="hapusTiket.php?id_bus=<?php echo $id_tiket; ?>">Hapus</a>
                                           </div>
                                         </form>

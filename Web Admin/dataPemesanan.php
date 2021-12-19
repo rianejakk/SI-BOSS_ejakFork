@@ -300,14 +300,28 @@ $email = $_GET['nama'];
 
       <!-- Panel -->
       <div class="row g-2 m-0 px-4">
-        <div class="col-lg-12">
-          <div class="card shadow mb-4 rounded">
-            <div class="card-header shadow rounded">
+        <div class="col-12">
+          <div class="colorSecondary2 shadow roundedPanel">
+            <!-- Tabs navs -->
+            <ul class="nav nav-tabs bg-white pt-2 px-4 roundedTab custShadow" id="ex1" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="tab-1" data-bs-toggle="tab" data-bs-target="#tabs-1" type="button" role="tab" aria-controls="tabs-1" aria-selected="true">Data</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="tab-2" data-bs-toggle="tab" data-bs-target="#tabs-2" type="button" role="tab" aria-controls="tabs-2" aria-selected="false">Tambah</button>
+              </li>
+            </ul>
+            <div class="tab-content mb-5" id="ex1-content">
+              <div class="tab-pane fade show active" id="tabs-1" role="tabpanel" aria-labelledby="ex1-tab-1">
+                <div class="row g-2 m-0">
+                  <div class="col-lg-12 p-0 m-0">
+                    <div class="card mb-4 roundedTabContent">
+                    <div class="card-header shadow roundedTabContent">
               <div class="title float-start">
                 <span class="m-0"><b>Tabel Data Pemesanan</b></span>
               </div>
               <div class="btnAction float-end">
-                <button class="btn btn-light text-dark btn-circle custShadow2 me-2" data-bs-toggle="modal" data-bs-target="#tambahDataPemesanan"><i class="fas fa-plus" data-bs-toggle="tooltip" title="Tambah Data"></i></button>
+                <!-- <button class="btn btn-light text-dark btn-circle custShadow2 me-2" data-bs-toggle="modal" data-bs-target="#tambahDataPemesanan"><i class="fas fa-plus" data-bs-toggle="tooltip" title="Tambah Data"></i></button> -->
                 <button class="btn btn-light text-danger btn-circle custShadow2" data-bs-toggle="modal" data-bs-target="#deleteDataPemesanan"><i class="fas fa-trash" data-bs-toggle="tooltip" title="Hapus Data"></i></button>
               </div>
             </div>
@@ -348,7 +362,7 @@ $email = $_GET['nama'];
                                       $dis = "disabled";
                                   }
                                   while($row=$data->fetch(PDO::FETCH_ASSOC)){
-                                    $id_pembayaran = $row['id_pembayaran'];
+                                    // $id_pembayaran = $row['id_pembayaran'];
                                     $id_tiket = $row['id_tiket'];
                                     $id_pemesanan = $row['id_pemesanan'];
                                     $nama_user = $row['nama_user'];
@@ -385,7 +399,7 @@ $email = $_GET['nama'];
                                 </td>
                                 <td>
                                 <?php if ($status!=="Belum Bayar" AND $status!=="Pesanan Dibatalkan"): ?>
-                             <a href="lihatPembayaran.php?id_pembayaran=<?php echo $id_pemesanan ?>" class="btn btn-info"><i class="fas fa-file-invoice-dollar"></i></a><br>
+                             <a href="lihatPembayaran.php?id_pembayaran=<?php echo $id_pemesanan ?>" class="btn btn-info btn-circle"><i class="fas fa-file-invoice-dollar"></i></a><br>
 
                              <?php endif ?>
                                   <!-- <a href="#" class="actionBtn" aria-label="Edit">
@@ -483,7 +497,7 @@ $email = $_GET['nama'];
                                                 
                                               </div>
                                               <div class="modal-footer">
-                                                <button class="btn btn-secondary roundedBtn" type="button" data-dismiss="modal">Batal</button>
+                                                <button class="btn btn-secondary roundedBtn" type="button" data-bs-dismiss="modal">Batal</button>
                                                 <button type="submit" class="btn text-white colorPrimary roundedBtn" name="simpan">Update</button>
                                               </div>
                                             </div>
@@ -510,7 +524,7 @@ $email = $_GET['nama'];
                                             <p class="text-warning"><small>Perlu hati-hati karena data akan hilang selamanya !</small></p>
                                           </div>
                                           <div class="modal-footer">
-                                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+                                            <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Batal</button>
                                             <a class="btn btn-danger" href="hapusTiket.php?id_bus=<?php echo $id_tiket; ?>">Hapus</a>
                                           </div>
                                         </form>
@@ -526,11 +540,11 @@ $email = $_GET['nama'];
                                 <td><?php echo $nama_penumpang; ?></td>
                                 <td><?php echo $jenis_kelamin_penumpang; ?></td>
                                 <td><?php echo $nama_bus;?></td>
-                                <td>Rp. <?php echo $harga;?></td>
+                                <td>Rp. <?php echo number_format($harga);?></td>
                                 <td><?php echo $tanggal_pemberangkatan?></td>
                                 <td><?php echo $waktu_pemesanan;?></td>
                                 <td><?php echo $jumlah_kursi_pesan;?></td>
-                                <td>Rp. <?php echo $total_bayar;?></td>
+                                <td>Rp. <?php echo number_format($total_bayar);?></td>
                               </tr>
                               <?php
                                 $no++;
@@ -538,6 +552,142 @@ $email = $_GET['nama'];
                               ?>
                   </tbody>
                 </table>
+              </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Tabs User -->
+              <div class="tab-pane fade show active" id="tabs-2" role="tabpanel" aria-labelledby="ex1-tab-2">
+                <div class="row g-2 m-0">
+                  <div class="col-lg-12 p-0 m-0">
+                    <div class="card mb-4 roundedTabContent">
+                      <div class="card-header shadow roundedTabContent">
+                        <div class="title float-start">
+                          <span class="m-0"><b>Tambah Pemesanan</b></span>
+                        </div>
+                        <div class="btnAction float-end">
+                          <!-- <button class="btn btn-light text-dark btn-circle custShadow2 me-2" data-bs-toggle="modal" data-bs-target="#tambahDataUser"><i class="fas fa-plus" data-bs-toggle="tooltip" title="Tambah Data"></i></button> -->
+                          <!-- <button class="btn btn-light text-danger btn-circle custShadow2" data-bs-toggle="modal" data-bs-target="#deleteDataUser"><i class="fas fa-trash" data-bs-toggle="tooltip" title="Hapus Data"></i></button> -->
+                        </div>
+                      </div>
+                      <div class="card-body">
+                      <form action="login.php" method="POST">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group" hidden>
+                      <label for="InputId" class="form-label">Id</label>
+                      <input type="text" class="form-control form-control-user2" id="InputId" name="txt_id" placeholder="" />
+                    </div>
+                    <div class="form-group">
+                      <label for="InputFotoBus" class="form-label">Foto Bus</label>
+                      <div class="img-div">
+                        <div class="img-placeholder" onClick="triggerClick()">
+                          <img src="img/ico/IcoeditBusW.png" alt="" />
+                        </div>
+                        <img src="img/ico/IcoeditBus.png" onClick="triggerClick()" id="profileDisplay" />
+                      </div>
+                      <input type="file" name="profileImage" onChange="displayImage(this)" id="profileImage" class="form-control" style="display: none" />
+                      <a href="#" class="float-end view text-secondary"> Lihat Foto </a>
+                    </div>
+                    <div class="form-group">
+                      <label for="InputNamaBus" class="form-label">Nama Bus</label>
+                      <input type="text" class="form-control form-control-user2" id="InputNamaBus" name="txt_NamaBus" placeholder="" />
+                    </div>
+                    <div class="form-group">
+                      <label for="InputJenisBus" class="form-label">Jenis Bus</label>
+                      <select class="form-select form-select-user" aria-label=".form-select-sm example" name="InputJenisBus">
+                        <option disabled selected>Pilih Jenis Bus</option>
+                        <option value="Ekonomi">Ekonomi</option>
+                        <option value="Eksekutif">Eksekutif</option>
+                        <option value="Pariwisata">Pariwisata</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="InputFasilitasBus" class="form-label">Fasilitas Bus</label>
+                      <div class="row">
+                        <div class="col-sm-2">
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="AC" id="flexCheckDefault" />
+                            <label class="form-check-label" for="flexCheckDefault"> AC </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="TV" id="flexCheckDefault" />
+                            <label class="form-check-label" for="flexCheckDefault"> TV </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Wi-Fi" id="flexCheckDefault" />
+                            <label class="form-check-label" for="flexCheckDefault"> Wi-Fi </label>
+                          </div>
+                        </div>
+                        <div class="col-sm-10">
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Toilet" id="flexCheckDefault" />
+                            <label class="form-check-label" for="flexCheckDefault"> Toilet </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Kursi baring" id="flexCheckDefault" />
+                            <label class="form-check-label" for="flexCheckDefault"> Kursi baring </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="InputStatusBus" class="form-label d-block">Status</label>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="Operasional" checked />
+                        <label class="form-check-label" for="exampleRadios1"> Operasional </label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="Pemeliharaan" />
+                        <label class="form-check-label" for="exampleRadios2"> Pemeliharaan/Maintenance </label>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="InputTarif" class="form-label">Tarif</label>
+                      <div class="input-group mb-3">
+                        <span class="input-group-text tarif">Rp</span>
+                        <input type="text" class="form-control form-control-user2" aria-label="Amount (to the nearest dollar)">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="InputTglPemberangkatan" class="form-label">Tanggal Pemberangkatan</label>
+                      <input type="date" class="form-control form-control-user2" id="InputTglPemberangkatan" name="txt_Tgl" >
+                    </div>
+                    <div class="form-group">
+                      <label for="InputWaktu" class="form-label">Waktu pemberangkatan</label>
+                      <input type="time" class="form-control form-control-user2" id="InputWaktu" name="txt_waktu" >
+                    </div>
+                    <div class="form-group">
+                      <label for="InputPemberangkatan" class="form-label">Pemberangkatan</label>
+                      <input type="text" class="form-control form-control-user2" id="InputPemberangkatan" name="txt_Pemberangkatan" placeholder="" />
+                    </div>
+                    <div class="form-group">
+                      <label for="InputTujuan" class="form-label">Tujuan</label>
+                      <input type="text" class="form-control form-control-user2" id="InputTujuan" name="txt_Tujuan" placeholder="" />
+                    </div>
+                    <div class="form-group">
+                      <label for="InputWaktuKedatangan" class="form-label">Estimasi Waktu Kedatangan</label>
+                      <input type="time" class="form-control form-control-user2" id="InputWaktuKedatangan" name="txt_waktuDatang" >
+                    </div>
+                    <div class="form-group">
+                      <label for="InputDetail" class="form-label">Detail Rute</label>
+                      <input type="text" class="form-control form-control-user2" id="InputDetail" name="txt_Detail" placeholder="" />
+                    </div>
+                  </div>
+                  <div class="mb-5"></div>
+                  <div class="col-12 d-flex justify-content-center">
+                    <button type="submit" name="register" class="btn btn-success roundedBtn text-white btn-block3">Tambah</button>
+                  </div>
+                </div>
+              </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

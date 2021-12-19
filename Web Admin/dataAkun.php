@@ -487,14 +487,14 @@
                                               </div>
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputNoHp" class="form-label">No Handphone</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp" placeholder="Ex: 085808241205" value="<?php echo $no_hp?>"/>
+                                                <input type="number" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp" placeholder="Ex: 085808241205" value="<?php echo $no_hp?>"/>
                                               </div>
                                             </div>
 
                                             <div class="row">
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputEmail" class="form-label">Email</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputEmail" name="txt_email" placeholder="Ex: admin@gmail.com" value="<?php echo $email?>"/>
+                                                <input type="email" class="form-control form-control-user2" id="inputEmail" name="txt_email" placeholder="Ex: admin@gmail.com" value="<?php echo $email?>"/>
                                               </div>
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputPassword" class="form-label">Password</label>
@@ -517,10 +517,10 @@
                                                           $dis = "disabled";
                                                       }
                                                       while($row=$datasd->fetch(PDO::FETCH_ASSOC)){
-                                                        $id_level = $row['id_level'];
-                                                        $level = $row['level'];
+                                                        $id_levels = $row['id_level'];
+                                                        $levels = $row['level'];
                                                     ?>
-                                                    <option value="<?php echo $id_level;?>"><?php echo $level;?></option>
+                                                    <option value="<?php echo $id_levels;?>"><?php echo $levels;?></option>
                                                   <?php 
                                                   }}
                                                   ?>
@@ -555,7 +555,7 @@
                                             </div>
 
                                             <div class="modal-footer">
-                                              <button class="btn btn-secondary roundedBtn" type="button" data-dismiss="modal">Batal</button>
+                                              <button class="btn btn-secondary roundedBtn" type="button" data-bs-dismiss="modal">Batal</button>
                                               <button type="submit" class="btn text-white colorPrimary roundedBtn" name="simpan">Update</button>
                                             </div>
                                           </div>
@@ -581,7 +581,7 @@
                                             <p class="text-warning"><small>Perlu hati-hati karena data akan hilang selamanya !</small></p>
                                           </div>
                                           <div class="modal-footer">
-                                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+                                            <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Batal</button>
                                             <a class="btn btn-danger" href="hapusAdministrator.php?id_user_admin=<?php echo $id_user_admin; ?>">Hapus</a>
                                           </div>
                                         </form>
@@ -664,14 +664,14 @@
                                               </div>
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputNoHp" class="form-label">No Handphone</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp" placeholder="Ex: 085808241205" />
+                                                <input type="number" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp" placeholder="Ex: 085808241205" />
                                               </div>
                                             </div>
 
                                             <div class="row">
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputEmail" class="form-label">Email</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputEmail" name="txt_email" placeholder="Ex: admin@gmail.com" />
+                                                <input type="email" class="form-control form-control-user2" id="inputEmail" name="txt_email" placeholder="Ex: admin@gmail.com" />
                                               </div>
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputPassword" class="form-label">Password</label>
@@ -732,7 +732,7 @@
                                             </div>
 
                                             <div class="modal-footer">
-                                              <button class="btn btn-secondary roundedBtn" type="button" data-dismiss="modal">Batal</button>
+                                              <button class="btn btn-secondary roundedBtn" type="button" data-bs-dismiss="modal">Batal</button>
                                               <button type="submit" class="btn text-white colorPrimary roundedBtn" name="simpan">Simpan</button>
                                             </div>
                               </div>
@@ -856,7 +856,7 @@
                                               </div>
                                               <div class="col-lg-6 mb-3" >
                                                 <label for="inputId" class="form-label">NIK</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputId" name="txt_nik_user" value="<?php echo $nik_user?>" placeholder="" />
+                                                <input type="number" class="form-control form-control-user2" id="inputId" name="txt_nik_user" value="<?php echo $nik_user?>" placeholder="" readonly/>
                                                 <label for="inputNama" class="form-label">Nama</label>
                                                 <input type="text" class="form-control form-control-user2" id="inputNama" name="txt_nama_user" placeholder="Ex: Budi Santoso" value="<?php echo $nama_user?>"/>
                                                 <label for="InputJenisKelamin" class="form-label">Jenis Kelamin</label>
@@ -889,13 +889,13 @@
                                               </div>
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputNoHp" class="form-label">No Handphone</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp_user" placeholder="Ex: 085808241205" value="<?php echo $no_hp_user?>"/>
+                                                <input type="number" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp_user" placeholder="Ex: 085808241205" value="<?php echo $no_hp_user?>"/>
                                               </div>
                                             </div>
                                             <div class="row">
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputEmail" class="form-label">Email</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputEmail" name="txt_email_user" placeholder="Ex: admin@gmail.com" value="<?php echo $email_user?>"/>
+                                                <input type="email" class="form-control form-control-user2" id="inputEmail" name="txt_email_user" placeholder="Ex: admin@gmail.com" value="<?php echo $email_user?>"/>
                                               </div>
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputPassword" class="form-label">Password</label>
@@ -930,7 +930,7 @@
                                             <p class="text-warning"><small>Perlu hati-hati karena data akan hilang selamanya !</small></p>
                                           </div>
                                           <div class="modal-footer">
-                                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+                                            <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Batal</button>
                                             <a class="btn btn-danger" href="hapusUser.php?nik_user=<?php echo $nik_user; ?>">Hapus</a>
                                           </div>
                                         </form>
@@ -986,7 +986,7 @@
                                               </div>
                                               <div class="col-lg-6 mb-3" >
                                                 <label for="inputId" class="form-label">NIK</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputId" name="txt_nik_user" placeholder="" />
+                                                <input type="number" class="form-control form-control-user2" id="inputId" name="txt_nik_user" placeholder="" />
                                                 <label for="inputNama" class="form-label">Nama</label>
                                                 <input type="text" class="form-control form-control-user2" id="inputNama" name="txt_nama_user" placeholder="Ex: Budi Santoso" />
                                                 <label for="InputJenisKelamin" class="form-label">Jenis Kelamin</label>
@@ -1019,13 +1019,13 @@
                                               </div>
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputNoHp" class="form-label">No Handphone</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp_user" placeholder="Ex: 085808241205"/>
+                                                <input type="number" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp_user" placeholder="Ex: 085808241205"/>
                                               </div>
                                             </div>
                                             <div class="row">
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputEmail" class="form-label">Email</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputEmail" name="txt_email_user" placeholder="Ex: admin@gmail.com" />
+                                                <input type="email" class="form-control form-control-user2" id="inputEmail" name="txt_email_user" placeholder="Ex: admin@gmail.com" />
                                               </div>
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputPassword" class="form-label">Password</label>

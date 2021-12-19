@@ -447,13 +447,13 @@
                                                 </div>
                                                 <div class="form-group">
                                                   <label for="inputFoto" class="form-label">Jumlah Kursi</label>
-                                                  <input type="text" class="form-control form-control-user2" id="inputFoto" name="txt_jumlah_kursi" placeholder="Ex:" value="<?php echo $jumlah_kursi?>"/>
+                                                  <input type="number" class="form-control form-control-user2" id="inputFoto" name="txt_jumlah_kursi" placeholder="Ex:" value="<?php echo $jumlah_kursi?>"/>
                                                 </div>
                                                 <div class="form-group">
                                                   <label for="InputTarif" class="form-label">Tarif</label>
                                                   <div class="input-group mb-3">
                                                     <span class="input-group-text tarif">Rp</span>
-                                                    <input type="text" class="form-control form-control-user2" aria-label="Amount (to the nearest dollar)" name="txt_harga" value="<?php echo $harga?>">
+                                                    <input type="number" class="form-control form-control-user2" aria-label="Amount (to the nearest dollar)" name="txt_harga" value="<?php echo $harga?>">
                                                   </div>
                                                 </div>
                                               </div>
@@ -517,7 +517,7 @@
                                                 
                                               </div>
                                               <div class="modal-footer">
-                                                <button class="btn btn-secondary roundedBtn" type="button" data-dismiss="modal">Batal</button>
+                                                <button class="btn btn-secondary roundedBtn" type="button" data-bs-dismiss="modal">Batal</button>
                                                 <button type="submit" class="btn text-white colorPrimary roundedBtn" name="simpan">Update</button>
                                               </div>
                                             </div>
@@ -544,7 +544,7 @@
                                             <p class="text-warning"><small>Perlu hati-hati karena data akan hilang selamanya !</small></p>
                                           </div>
                                           <div class="modal-footer">
-                                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+                                            <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Batal</button>
                                             <a class="btn btn-danger" href="hapusBus.php?id_bus=<?php echo $id_bus; ?>">Hapus</a>
                                           </div>
                                         </form>
@@ -555,7 +555,7 @@
                                 <td><?php echo $id_bus; ?></td>
                                 <td><img src="../fotoBus/<?php echo $foto_bus; ?>" height='50px' width='50px'></td>
                                 <td><?php echo $nama_bus; ?></td>
-                                <td>Rp. <?php echo $harga; ?></td>
+                                <td>Rp. <?php echo number_format($harga); ?></td>
                                 <td><?php echo $status_bus; ?></td>
                                 <td><?php echo $jumlah_kursi; ?></td>
                                 <td><?php echo $jenis_bus;?></td>
@@ -617,13 +617,13 @@
                                                 </div>
                                                 <div class="form-group">
                                                   <label for="inputFoto" class="form-label">Jumlah Kursi</label>
-                                                  <input type="text" class="form-control form-control-user2" id="inputFoto" name="txt_jumlah_kursi" placeholder="Ex:" />
+                                                  <input type="number" class="form-control form-control-user2" id="inputFoto" name="txt_jumlah_kursi" placeholder="Ex:" />
                                                 </div>
                                                 <div class="form-group">
                                                   <label for="InputTarif" class="form-label">Tarif</label>
                                                   <div class="input-group mb-3">
                                                     <span class="input-group-text tarif">Rp</span>
-                                                    <input type="text" class="form-control form-control-user2" aria-label="Amount (to the nearest dollar)" name="txt_harga" >
+                                                    <input type="number" class="form-control form-control-user2" aria-label="Amount (to the nearest dollar)" name="txt_harga" >
                                                   </div>
                                                 </div>
                                               </div>
@@ -686,7 +686,7 @@
                                                 
                                               </div>
                                               <div class="modal-footer">
-                                                <button class="btn btn-secondary roundedBtn" type="button" data-dismiss="modal">Batal</button>
+                                                <button class="btn btn-secondary roundedBtn" type="button" data-bs-dismiss="modal">Batal</button>
                                                 <button type="submit" class="btn text-white colorPrimary roundedBtn" name="simpan">Simpan</button>
                                               </div>
                                             </div>

@@ -325,9 +325,9 @@ $sesLvl = $_SESSION['level'];
                   ></iframe>
                 </div>
               </div>
-              <div class="tab-pane fade" id="tabs-2" role="tabpanel" aria-labelledby="ex1-tab-2">Tab 2 content</div>
-              <div class="tab-pane fade" id="tabs-3" role="tabpanel" aria-labelledby="tab-3">Tab 3 content</div>
-              <div class="tab-pane fade" id="tabs-4" role="tabpanel" aria-labelledby="tab-4">Tab 4 content</div>
+              <div class="tab-pane fade" id="tabs-2" role="tabpanel" aria-labelledby="ex1-tab-2">sfda</div>
+              <div class="tab-pane fade" id="tabs-3" role="tabpanel" aria-labelledby="ex1-tab-3">Tab 3 content</div>
+              <div class="tab-pane fade" id="tabs-4" role="tabpanel" aria-labelledby="ex1-tab-4">Tab 4 content</div>
             </div>
           </div>
         </div>
