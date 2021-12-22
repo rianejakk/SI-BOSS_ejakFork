@@ -27,6 +27,7 @@
         <activity android:name=".PaymentFormActivity" />
         <activity android:name=".PenumpangItemActivity" />
         <activity android:name=".search_result" />
+        <activity android:name=".UpdateActivity" />
 
         <activity
             android:name=".SplashScreenActivity"

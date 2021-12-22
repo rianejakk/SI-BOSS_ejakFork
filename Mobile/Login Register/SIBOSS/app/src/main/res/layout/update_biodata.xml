@@ -19,7 +19,7 @@
             android:text="Profile"
             android:textColor="@color/black"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -28,6 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/relative1"
         android:layout_marginTop="5dp"
+        android:background="@drawable/round_btn"
         android:gravity="center_horizontal"
         android:orientation="horizontal">
 
@@ -36,10 +37,19 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_centerInParent="true"
+            android:layout_centerHorizontal="true"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="50dp"
             android:background="@drawable/round_img"
             android:src="@drawable/profile" />
+
+        <Button
+            android:id="@+id/Btn_Ubah_Foto"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/FotoProfil"
+            android:layout_centerHorizontal="true"
+            android:drawableBottom="@drawable/ic_baseline_edit_24" />
     </RelativeLayout>
 
 

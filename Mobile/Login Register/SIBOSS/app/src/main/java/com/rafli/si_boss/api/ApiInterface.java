@@ -3,6 +3,7 @@ package com.rafli.si_boss.api;
 import com.rafli.si_boss.Bus;
 import com.rafli.si_boss.model.login.Login;
 import com.rafli.si_boss.model.register.Register;
+import com.rafli.si_boss.model.update.UserModel;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -19,6 +20,10 @@ public interface ApiInterface {
             @Field("email_user") String email,
             @Field("password_user") String password
     );
+
+    @FormUrlEncoded
+    @POST("user.php")
+    Call<UserModel> getDataUser(@Field("email_user") String email_user);
 
     @FormUrlEncoded
     @POST("register.php")

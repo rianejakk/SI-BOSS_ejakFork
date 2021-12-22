@@ -33,6 +33,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     ApiInterface apiInterface;
     SessionManager sessionManager;
 
+    public static String email_user;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,6 +104,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     LoginData loginData = response.body().getLoginData();
                     sessionManager.createLoginSession(loginData);
 
+                    email_user = email;
 
                     Toast.makeText(LoginActivity.this, response.body().getLoginData().getNamaUser(), Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);

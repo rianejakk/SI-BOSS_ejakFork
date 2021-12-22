@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity  {
     TextView etEmail, etName;
     SessionManager sessionManager;
     String email, name;
-    Button BtnKeluar;
+    Button BtnKeluar,BtnAkunSaya;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +35,21 @@ public class MainActivity extends AppCompatActivity  {
         etEmail = findViewById(R.id.etMainEmail);
         etName = findViewById(R.id.etMainName);
         BtnKeluar =findViewById(R.id.BtnKeluar);
+        BtnAkunSaya = findViewById(R.id.BtnAkunSaya);
 
         email = sessionManager.getUserDetail().get(SessionManager.EMAIL_USER);
         name = sessionManager.getUserDetail().get(SessionManager.NAMA_USER);
 
         etEmail.setText(email);
         etName.setText(name);
+
+        BtnAkunSaya.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), UpdateActivity.class);
+                startActivity(intent);
+            }
+        });
 
         BtnKeluar.setOnClickListener(new View.OnClickListener() {
             @Override
