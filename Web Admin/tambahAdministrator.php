@@ -3,7 +3,7 @@ require ('koneksi.php');
 require ('query.php');
 $obj = new crud;
 
-if($_SERVER['REQUEST_METHOD'] == 'POST'){
+if(isset($_POST['simpan'])){
   $nama = $_POST['txt_nama'];
   $jenis_kelamin = $_POST['Rbtn_jenis_kelamin'];
   $alamat = $_POST['txt_alamat'];
@@ -16,7 +16,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
   $password = $_POST['txt_password'];
 
   // For image upload
-  $target_dir = "../fotoAdmin/";
+  $target_dir = "fotoAdmin/";
   $target_file = $target_dir . basename($fotos);
   // VALIDATION
   // validate image size. Size is calculated in Bytes

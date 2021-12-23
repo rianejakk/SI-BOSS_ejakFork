@@ -431,7 +431,7 @@
                                   <div id="editDataAdministrator<?php echo $id_user_admin ?>" class="modal fade">
                                     <div class="modal-dialog modal-lg">
                                       <div class="modal-content modal-edit">
-                                        <form role="form" action="editAdministrator.php" method="POST">
+                                        <form role="form" action="editAdministrator.php" method="POST" enctype="multipart/form-data">
                                           <?php
                                             $query = $obj->pilihAdministrator($id_user_admin);
                                             while ($row = $query->fetch(PDO::FETCH_ASSOC)){
@@ -452,6 +452,7 @@
                                             </div>
                                             <div class="row">
                                               <div class="col-lg-6 mb-3">
+                                                <!-- <form action="editAdministrator.php" method="POST" enctype="multipart/form-data"> -->
                                                 <div class="form-group">
                                                   <label for="InputFotoBus" class="form-label">Foto Administrator</label>
                                                   <div class="img-div">
@@ -460,10 +461,11 @@
                                                     </div>
                                                     <img src="img/ico/icons8_driver_50px.png" onClick="triggerClick()" id="profileDisplay" />
                                                   </div>
-                                                  <input type="file" name="txt_fotoe" onChange="displayImage(this)" id="profileImage" class="form-control" style="display: none" />
+                                                  <input type="file" name="txt_fotoEa" onChange="displayImage(this)" id="profileImage" class="form-control" style="display: none;" />
                                                   <a href="#" class="float-end view text-secondary"> Lihat Foto </a>
                                                 </div>
                                               </div>
+                                              <!-- </form> -->
                                               
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputNama" class="form-label">Nama</label>
@@ -589,8 +591,8 @@
                                     </div>
                                   </div>
                                 </td>
-                                <td><?php echo $id_user_admin; ?></td>
-                                <td><img src="../fotoAdmin/<?php echo $foto; ?>" height='50px' width='50px'></td>
+                                <td>A000<?php echo $id_user_admin; ?></td>
+                                <td><img src="fotoAdmin/<?php echo $foto; ?>" class='img-fluid'></td>
                                 <td><?php echo $nama; ?></td>
                                 <td><?php echo $jenis_kelamin; ?></td>
                                 <td><?php echo $alamat; ?></td>
@@ -938,7 +940,7 @@
                                     </div>
                                   </div>
                                 </td>
-                                <td><img src="../fotoUser/<?php echo $foto_user; ?>" height='50px' width='50px'></td>
+                                <td><img src="fotoUser/<?php echo $foto_user; ?>" class='img-fluid'></td>
                                 <td><?php echo $nik_user; ?></td>
                                 <td><?php echo $nama_user; ?></td>
                                 <td><?php echo $tempat_lahir_user; ?></td>

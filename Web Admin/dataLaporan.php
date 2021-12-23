@@ -261,11 +261,11 @@ $email = $_GET['nama'];
                 <div class="row">
                                               <div class="col-lg-2 mb-3" hidden>
                                                 <label for="inputJenis" class="form-label">Tanggal Mulai</label>
-                                                <input type="date" class="form-control form-control-user2" id="inputJenis" name="txt_tanggal_mulaim" value="<?php $tgl1 = date('Y-m-d'); $tgl2 = date('Y-m-d', strtotime('-1 week', strtotime($tgl1))); echo $tgl2;?>"/>
+                                                <input type="date" class="form-control form-control-user2" id="inputJenis" name="txt_tanggal_mulaim" value="<?php $tgl1 = date('Y-m-d'); $tgl2 = date("Y-m-d", strtotime('monday this week')); echo $tgl2;?>"/>
                                               </div>
                                               <div class="col-lg-2 mb-3" hidden>
                                                 <label for="inputFasilitas" class="form-label">Tanggal Selesai</label>
-                                                <input type="date" class="form-control form-control-user2" id="inputFasilitas" name="txt_tanggal_selesaim" value="<?php $tgl1 = date('Y-m-d'); $tgl2 = date('Y-m-d', strtotime('+1 week', strtotime($tgl1))); echo $tgl2;?>"/>
+                                                <input type="date" class="form-control form-control-user2" id="inputFasilitas" name="txt_tanggal_selesaim" value="<?php $tgl1 = date('Y-m-d'); $tgl2 = date("Y-m-d", strtotime('sunday this week')); echo $tgl2;?>"/>
                                               </div>
                                               <div class="col-lg-3 mb-3">
                                               <button type="submit" class="btn text-white colorPrimary roundedBtn" name="simpan">Mingguan</button>
@@ -288,11 +288,11 @@ $email = $_GET['nama'];
                 <div class="row">
                                               <div class="col-lg-2 mb-3" hidden>
                                                 <label for="inputJenis" class="form-label">Tanggal Mulai</label>
-                                                <input type="date" class="form-control form-control-user2" id="inputJenis" name="txt_tanggal_mulaib" value="<?php $tgl1 = date('Y-m-d'); $tgl2 = date('Y-m-d', strtotime('-1 month', strtotime($tgl1))); echo $tgl2;?>"/>
+                                                <input type="date" class="form-control form-control-user2" id="inputJenis" name="txt_tanggal_mulaib" value="<?php $tgl1 = date('Y-m-d'); $tgl2 = date('Y-m-01', strtotime($tgl1)); echo $tgl2;?>"/>
                                               </div>
                                               <div class="col-lg-2 mb-3" hidden>
                                                 <label for="inputFasilitas" class="form-label">Tanggal Selesai</label>
-                                                <input type="date" class="form-control form-control-user2" id="inputFasilitas" name="txt_tanggal_selesaib" value="<?php $tgl1 = date('Y-m-d'); $tgl2 = date('Y-m-d', strtotime('+1 month', strtotime($tgl1))); echo $tgl2;?>"/>
+                                                <input type="date" class="form-control form-control-user2" id="inputFasilitas" name="txt_tanggal_selesaib" value="<?php $tgl1 = date('Y-m-d'); $tgl2 = date('Y-m-t', strtotime($tgl1)); echo $tgl2;?>"/>
                                               </div>
                                               <div class="col-lg-3 mb-3">
                                               <button type="submit" class="btn text-white colorPrimary roundedBtn" name="simpan">Bulanan</button>
@@ -315,11 +315,11 @@ $email = $_GET['nama'];
                 <div class="row">
                                               <div class="col-lg-2 mb-3" hidden>
                                                 <label for="inputJenis" class="form-label">Tanggal Mulai</label>
-                                                <input type="date" class="form-control form-control-user2" id="inputJenis" name="txt_tanggal_mulait" value="<?php $tgl1 = date('Y-m-d'); $tgl2 = date('Y-m-d', strtotime('-1 year', strtotime($tgl1))); echo $tgl2;?>"/>
+                                                <input type="date" class="form-control form-control-user2" id="inputJenis" name="txt_tanggal_mulait" value="<?php $tgl1 = date('Y-m-d'); $tgl2 = date('Y-01-01', strtotime($tgl1)); echo $tgl2;?>"/>
                                               </div>
                                               <div class="col-lg-2 mb-3" hidden>
                                                 <label for="inputFasilitas" class="form-label">Tanggal Selesai</label>
-                                                <input type="date" class="form-control form-control-user2" id="inputFasilitas" name="txt_tanggal_selesait" value="<?php $tgl1 = date('Y-m-d'); $tgl2 = date('Y-m-d', strtotime('+1 year', strtotime($tgl1))); echo $tgl2;?>"/>
+                                                <input type="date" class="form-control form-control-user2" id="inputFasilitas" name="txt_tanggal_selesait" value="<?php $tgl1 = date('Y-m-d'); $tgl2 = date('Y-m-t', strtotime($tgl1)); echo $tgl2;?>"/>
                                               </div>
                                               <div class="col-lg-3 mb-3">
                                               <button type="submit" class="btn text-white colorPrimary roundedBtn" name="simpan">Tahunan</button>

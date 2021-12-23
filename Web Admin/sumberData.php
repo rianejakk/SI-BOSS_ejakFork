@@ -475,7 +475,7 @@
                                     </div>
                                   </div>
                                 </td>
-                                <td><?php echo $id_terminal; ?></td>
+                                <td>TRML000<?php echo $id_terminal; ?></td>
                                 <td><?php echo $terminal; ?></td>
                                 <td><?php echo $alamat; ?></td>
                                 <td><?php echo $provinsi; ?></td>
@@ -686,7 +686,7 @@
                                     </div>
                                   </div>
                                 </td>
-                                <td><?php echo $id_jenis; ?></td>
+                                <td>JB000<?php echo $id_jenis; ?></td>
                                 <td><?php echo $jenis; ?></td>
                                 <td><?php echo $fasilitas; ?></td>
                               </tr>
@@ -928,11 +928,11 @@
                                       </div>
                                     </div>
                                   </td>
-                                  <td><?php echo $id_rute; ?></td>
+                                  <td>RT000<?php echo $id_rute; ?></td>
                                   <td><?php echo $pemberangkatan; ?></td>
-                                  <td><?php echo $waktu_berangkat; ?></td>
+                                  <td><?php echo $waktu_berangkat; ?> WIB</td>
                                   <td><?php echo $tujuan; ?></td>
-                                  <td><?php echo $waktu_tiba; ?></td>
+                                  <td><?php echo $waktu_tiba; ?> WIB</td>
                                 </tr>
                                 <?php
                                   $no++;

@@ -58,17 +58,17 @@
         if($rememberMe == 1 ){
           $cookie_name = "cookie_email";
           $cookie_value = $emailVal;
-          $cookie_time = time() + (60 * 60 * 24); //1 hari
+          $cookie_time = time() + (60 * 60 * 0.12); //5 menit
           setcookie($cookie_name, $cookie_value, $cookie_time, "/");
 
           $cookie_name = "cookie_password";
           $cookie_value = $passwordVal;
-          $cookie_time = time() + (60 * 60 * 24); //1 hari
+          $cookie_time = time() + (60 * 60 * 0.12); //5 menit
           setcookie($cookie_name, $cookie_value, $cookie_time, "/");
 
           $cookie_name = "cookie_name";
           $cookie_value = $nama;
-          $cookie_time = time() + (60 * 60 * 24); //1 hari
+          $cookie_time = time() + (60 * 60 * 0.12); //5 menit
           setcookie($cookie_name, $cookie_value, $cookie_time, "/");
         }
           

@@ -532,8 +532,8 @@ $email = $_GET['nama'];
                                     </div>
                                   </div>
                                 </td>
-                                <td><?php echo $id_pemesanan; ?></td>
-                                <td><?php echo $id_tiket; ?></td>
+                                <td>P000<?php echo $id_pemesanan; ?></td>
+                                <td>APBTRMLRT000<?php echo $id_tiket; ?></td>
                                 <td><?php echo $status;?></td>
                                 <td><?php echo $nama_user; ?></td>
                                 <td><?php echo $no_hp_user; ?></td>

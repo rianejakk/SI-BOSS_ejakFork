@@ -346,7 +346,7 @@
                       <th class="kursi">Kursi</th>
                       <th class="jenis">Jenis</th>
                       <th class="fasilitas">Fasilitas</th>
-                      <th class="tanggal">Tanggal</th>
+                      <th class="tanggal">Tanggal Berangkat</th>
                       <th class="pemberangkatan">Pemberangkatan</th>
                       <th class="tujuan">Tujuan</th>
                       <th class="waktu">Waktu Berangkat</th>
@@ -405,7 +405,7 @@
                                   <div id="editDataBus<?php echo $id_bus ?>" class="modal fade">
                                     <div class="modal-dialog modal-lg">
                                       <div class="modal-content modal-edit">
-                                        <form role="form" action="editBus.php" method="POST">
+                                        <form role="form" action="editBus.php" method="POST" enctype="multipart/form-data">
                                           <?php
                                             $query = $obj->pilihBus($id_bus);
                                             while ($row = $query->fetch(PDO::FETCH_ASSOC)){
@@ -552,19 +552,19 @@
                                     </div>
                                   </div>
                                 </td>
-                                <td><?php echo $id_bus; ?></td>
-                                <td><img src="../fotoBus/<?php echo $foto_bus; ?>" height='50px' width='50px'></td>
+                                <td>B000<?php echo $id_bus; ?></td>
+                                <td><img src="fotoBus/<?php echo $foto_bus; ?>" class='img-fluid'></td>
                                 <td><?php echo $nama_bus; ?></td>
                                 <td>Rp. <?php echo number_format($harga); ?></td>
                                 <td><?php echo $status_bus; ?></td>
-                                <td><?php echo $jumlah_kursi; ?></td>
+                                <td><?php echo $jumlah_kursi; ?> kursi</td>
                                 <td><?php echo $jenis_bus;?></td>
                                 <td><?php echo $fasilitas;?></td>
                                 <td><?php echo $tanggal_pemberangkatan?></td>
                                 <td><?php echo $pemberangkatan?></td>
                                 <td><?php echo $tujuan?></td>
-                                <td><?php echo $waktu_berangkat;?></td>
-                                <td><?php echo $waktu_tiba;?></td>
+                                <td><?php echo $waktu_berangkat;?> WIB</td>
+                                <td><?php echo $waktu_tiba;?> WIB</td>
                               </tr>
                               <?php
                                 $no++;
