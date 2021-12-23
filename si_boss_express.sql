@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 17 Des 2021 pada 13.18
+-- Waktu pembuatan: 22 Des 2021 pada 03.14
 -- Versi server: 10.4.21-MariaDB
 -- Versi PHP: 8.0.10
 
@@ -252,8 +252,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`nik_user`, `nama_user`, `tempat_lahir_user`, `tanggal_lahir_user`, `jenis_kelamin_user`, `alamat_user`, `no_hp_user`, `foto_user`, `email_user`, `password_user`) VALUES
-('', 'raflialfajar', '', '0000-00-00', '', '', '', '', 'rafli@gmail.com', '$2y$10$JJ1S7frc/OH/gAHJ6rJBtOmxFnnqZR7lsqD3d/Ir68Eb7brX8pERi'),
-('3509030907020005', 'Muhammad Khoirul Rosikin', 'Jember', '2002-07-09', 'Laki - Laki', 'Jember', '085808241204', '', 'mkhoirulr97@gmail.com', 'Khoirulrosikin97');
+('', 'raflialfajar', '', '0000-00-00', '', '', '', '', 'rafli@gmail.com', '$2y$10$v3T3lZpYWP4fEBkAaiRbp.XyBqDg99aZVFp58J19cUiRDbFXjoBn6'),
+('3509030907020005', 'Muhammad Khoirul Rosikin', 'Jember', '2002-07-09', 'Laki - Laki', 'Jember', '085808241204', '', 'khoirul@gmail.com', '123');
 
 --
 -- Indexes for dumped tables

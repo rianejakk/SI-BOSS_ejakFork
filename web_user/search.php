@@ -1,3 +1,8 @@
+<?php
+require 'function.php';
+$filter = query("SELECT * FROM wberangkat");
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
