@@ -31,6 +31,7 @@ public class UpdateActivity extends AppCompatActivity {
     public CheckBox CbShowPasswordBiodata;
     public TextView Tv13;
     private Object stricMode;
+    public SessionManager sessionManager;
 
     private String nik_user, nama_user, tempat_lahir_user, tanggal_lahir_user, jenis_kelamin_user, alamat_user, no_hp_user, foto_user,
             email_user, password_user;
@@ -39,6 +40,10 @@ public class UpdateActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.update_biodata);
+        sessionManager = new SessionManager(UpdateActivity.this);
+        if(!sessionManager.isLoggedIn()){
+//            moveToLogin();
+        }
 
         BtnUbah = (Button) findViewById(R.id.BtnUbah);
         Btn_Ubah_Foto = (Button)findViewById(R.id.Btn_Ubah_Foto);
@@ -52,6 +57,12 @@ public class UpdateActivity extends AppCompatActivity {
         EtAlamat = (EditText) findViewById(R.id.EtAlamat);
         Tv13 = (TextView) findViewById(R.id.Tv13);
 
+        email_user = sessionManager.getUserDetail().get(SessionManager.EMAIL_USER);
+        nama_user = sessionManager.getUserDetail().get(SessionManager.NAMA_USER);
+
+        EtEmailBiodata.setText(email_user);
+        EtNamaBiodata.setText(nama_user);
+
         getDetailAccount();
 
         Btn_Ubah_Foto.setOnClickListener(v -> {
@@ -60,6 +71,14 @@ public class UpdateActivity extends AppCompatActivity {
             startActivityForResult(intent, 1);
         });
     }
+
+//    private void moveToLogin() {
+//        Intent intent = new Intent(UpdateActivity.this, LoginActivity.class);
+//        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NO_HISTORY);
+//        startActivity(intent);
+//        finish();
+//    }
+
     private void getDetailAccount() {
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
         System.out.println(LoginActivity.email_user);
