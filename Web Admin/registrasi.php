@@ -173,7 +173,7 @@
                                     $kabupaten = $row['kabupaten_terminal'];
                                     $kecamatan = $row['kecamatan_terminal'];
                                 ?>
-                                <option value="<?php echo $id_terminal;?>"><?php echo $nama_terminal, ' ', $provinsi,' ', $kabupaten, ' ', $kecamatan;?></option>
+                                <option value="<?php echo $id_terminal;?>"><?php echo $nama_terminal, ', ', $kabupaten;?></option>
                               <?php 
                               }}
                               ?>
@@ -241,23 +241,17 @@
                   <label for="InputAlamat" class="form-label">Alamat Terminal</label>
                   <textarea class="form-control form-control-user2" id="InputAlamat" name="txt_detail_alamat_terminal" placeholder="Ex: Jl. Dharmawangsa"></textarea>
                 </div>
-                <div class="col-lg-12 mb-3">
-                  <label for="InputPropinsi" class="form-label">Provinsi</label>
-                  <select class="form-select" aria-label=".form-select-sm example" name="d_provinsi_terminal" id="propinsi">
-                    <option disabled selected>Pilih Provinsi</option>
-                  </select>
+                <div class="col-12 mb-3">
+                  <label for="InputProvTerminal" class="form-label">Provinsi</label>
+                  <input type="text" class="form-control form-control-user2" id="InputProvTerminal" name="d_provinsi_terminal" placeholder="Ex: Jawa Timur" />
                 </div>
-                <div class="col-lg-6 mb-3">
-                  <label for="InputKabupaten" class="form-label">Kota</label>
-                  <select class="form-select" aria-label=".form-select-sm example" name="d_kabupaten_terminal" id="kabupaten">
-                    <option disabled selected>Pilih kota</option>
-                  </select>
+                <div class="col-6 mb-3">
+                  <label for="InputKabupatenTerminal" class="form-label">Kabupaten</label>
+                  <input type="text" class="form-control form-control-user2" id="InputKabupatenTerminal" name="d_kabupaten_terminal" placeholder="Ex: Jember" />
                 </div>
-                <div class="col-lg-6 mb-3">
-                  <label for="InputKecamatan" class="form-label">Kecamatan</label>
-                  <select class="form-select" aria-label=".form-select-sm example" name="d_kecamatan_terminal" id="kecamatan">
-                    <option disabled selected>Pilih Kecamatan</option>
-                  </select>
+                <div class="col-6 mb-3">
+                  <label for="InputKecamatanTerminal" class="form-label">Kecamatan</label>
+                  <input type="text" class="form-control form-control-user2" id="InputKecamatanTerminal" name="d_kecamatan_terminal" placeholder="Ex: Rambupuji" />
                 </div>
               </div>
               <div class="modal-footer">

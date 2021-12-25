@@ -69,6 +69,7 @@
         <div class="mx-5">
           <div class="search-bar bg-white py-2 myRounded shadow mod d-flex align-content-center">
             <div class="container">
+            <form action="pencarian.php" method="POST">
               <div class="row">
                 <div class="col-lg-6 myCol border border-start-0 border-bottom-0 border-top-0">
                   <div class="row">
@@ -78,13 +79,57 @@
                       <p class="pe-3 mb-2"><b>Tujuan</b></p>
                     </div>
                     <div class="col-12 mb-4 mb-lg-0">
-                      <div class="input-group">
-                        <span class="input-group-text"><i class="fas fa-location-arrow text-white"></i></span>
-                        <input type="text" class="form-control" placeholder="Pemberangkatan" aria-label="Username" />
-                        <span class="input-group-text"><i class="fas fa-exchange-alt text-white"></i></span>
-                        <input type="text" class="form-control" placeholder="Tujuan" aria-label="Server" />
-                        <span class="input-group-text"><i class="fas fa-map-marker-alt text-white"></i> </span>
-                      </div>
+                        <div class="input-group">
+                          <span class="input-group-text"><i class="fas fa-location-arrow text-white"></i></span>
+                          <label for="InputIdTerminal" class="form-label"></label>
+                                      <select class="form-select form-select-user select-md" aria-label=".form-select-sm example" required data-parsley-required-message="Data harus di isi !!!" name="txt_pemberangkatan" required>
+                                        <option disabled selected>Pilih Terminal</option>
+                                        <?php
+                                          $datasd = $obj->lihatTerminal();
+                                          $no = 1;
+                                          if($datasd->rowCount()>0){
+                                            if($sesLvl == 1){
+                                                $dis = "";
+                                            } else{
+                                                $dis = "disabled";
+                                            }
+                                            while($row=$datasd->fetch(PDO::FETCH_ASSOC)){
+                                              $id_terminalst = $row['id_terminal'];
+                                              $nama_terminalst = $row['nama_terminal'];
+                                              $kabupatenst = $row['kabupaten_terminal'];
+                                          ?>
+                                          <option value="<?php echo $id_terminalst;?>"><?php echo $nama_terminalst, ', ', $kabupatenst;?></option>
+                                        <?php 
+                                        }}
+                                        ?>
+                                      </select>
+                                      <!-- <input type="text" class="form-control" placeholder="Pemberangkatan" aria-label="Username" name="txt_pemberangkatan" /> -->
+                          <span class="input-group-text"><i class="fas fa-exchange-alt text-white"></i></span>
+                          <label for="InputIdTerminal" class="form-label"></label>
+                                      <select class="form-select form-select-user select-md" aria-label=".form-select-sm example" required data-parsley-required-message="Data harus di isi !!!" name="txt_tujuan" required>
+                                        <option disabled selected>Pilih Terminal</option>
+                                        <?php
+                                          $datasd = $obj->lihatTerminal();
+                                          $no = 1;
+                                          if($datasd->rowCount()>0){
+                                            if($sesLvl == 1){
+                                                $dis = "";
+                                            } else{
+                                                $dis = "disabled";
+                                            }
+                                            while($row=$datasd->fetch(PDO::FETCH_ASSOC)){
+                                              $id_terminalst = $row['id_terminal'];
+                                              $nama_terminalst = $row['nama_terminal'];
+                                              $kabupatenst = $row['kabupaten_terminal'];
+                                          ?>
+                                          <option value="<?php echo $id_terminalst;?>"><?php echo $nama_terminalst, ', ', $kabupatenst;?></option>
+                                        <?php 
+                                        }}
+                                        ?>
+                                      </select>
+                                      <!-- <input type="text" class="form-control" placeholder="Tujuan" aria-label="Server" /> -->
+                          <span class="input-group-text"><i class="fas fa-map-marker-alt text-white"></i> </span>
+                        </div>
                     </div>
                   </div>
                 </div>
@@ -94,10 +139,10 @@
                     <div class="col-lg-6 mb-3 mb-lg-0">
                       <div class="form-group">
                         <label for="datepicker" class="ps-3 form-label"><b>Tanggal Pemberangkatan</b></label>
-                        <input type="date" class="form-control" id="datepicker" name="txt_Tgl" />
+                        <input type="date" class="form-control" id="datepicker" name="txt_Tgl" required/>
                       </div>
                     </div>
-                    <div class="col-lg-6">
+                    <!-- <div class="col-lg-6">
                       <div class="form-group">
                         <label for="InputJenisBus" class="ps-3 form-label"><b>Jenis Bus</b></label>
                         <select class="form-select form-select-user" aria-label=".form-select-sm example" name="InputJenisBus">
@@ -107,16 +152,17 @@
                           <option value="Pariwisata">Pariwisata</option>
                         </select>
                       </div>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
               </div>
               <div class="row mt-3">
                 <div class="col-12 text-center">
-                  <button class="btn colorPrimary text-white roundedBtn">Cari</button>
+                  <button type="submit" name="simpan" class="btn colorPrimary text-white roundedBtn">Cari</button>
                 </div>
               </div>
             </div>
+            </form>
           </div>
         </div>
       </section>
@@ -199,7 +245,12 @@
             <div class="me-5">
               <!-- Content Data -->
               <?php
-                $data = $obj->lihatBus();
+                $c_pemberangkatan = $_POST['txt_pemberangkatan'];
+                $c_tujuan = $_POST['txt_tujuan'];
+                $tanggal = $_POST['txt_Tgl'];
+                $data = $obj->PencarianBus($c_pemberangkatan, $c_tujuan, $tanggal);
+                $no = 1;
+                if($data->rowCount()>0){
                 while($row=$data->fetch(PDO::FETCH_ASSOC)){
                   $idBus = $row['id_bus'];
                   $namaBus = $row['nama_bus'];
@@ -301,7 +352,8 @@
                 </div>
               </div>
             <?php
-              }
+            $no++;
+              }}
             ?>
             </div>
           </div>

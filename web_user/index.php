@@ -72,14 +72,18 @@
             <div class="banner" style="background-image: url(assets/img/SBY.png)"></div>
             <div class="carousel-caption">
               <h2 class="animate__animated animate__zoomIn" style="animation-delay: 0.5s">Surabaya</h2>
-              <p class="animate__animated animate__fadeInUp" style="animation-delay: 0.5s">Some representative placeholder content for the first slide.</p>
+              <p class="animate__animated animate__fadeInUp" style="animation-delay: 0.5s">
+                Kota Surabaya terkenal dengan sebutan Kota Pahlawan. Kota terbesar kedua di Indonesia setelah Kota Jakarta ini dikenal pula sebagai pusat bisnis, industri, perdagangan, dan pendidikan di kawasan timur Pulau Jawa dan sekitarnya.
+              </p>
             </div>
           </div>
           <div class="carousel-item">
             <div class="banner" style="background-image: url(assets/img/bali.png)"></div>
             <div class="carousel-caption">
               <h2 class="animate__animated animate__zoomIn" style="animation-delay: 0.5s">Bali</h2>
-              <p class="animate__animated animate__fadeInUp" style="animation-delay: 0.5s">Some representative placeholder content for the first slide.</p>
+              <p class="animate__animated animate__fadeInUp" style="animation-delay: 0.5s">
+                Bali merupakan pulau pariwisata terkemuka di Indonesia. Tempat wisata pegunungan, pantai, hingga pusat kota yang berbeda dari tempat lain di dunia. Perpaduan alam dan budaya yang khas menjadi magnet tersendiri bagi jutaan wisatawan domestik maupun mancanegara untuk berkunjung ke pulau ini.
+            </p>
             </div>
           </div>
           <div class="carousel-item">
@@ -87,7 +91,7 @@
             <div class="carousel-caption">
               <h2 class="animate__animated animate__zoomIn" style="animation-delay: 0.5s">Magelang</h2>
               <p class="animate__animated animate__fadeInUp px-5" style="animation-delay: 0.5s">
-                Candi Borobudur simbol inspiratif. Sebuah tempat yang pas untuk mencari ketenangan jiwa. Kami ingin memfasilitasi itu. Sehingga Borobudur menjadi pemersatu beragam latar belakang agama, politik, sosial, dan budaya. Semua melebur berharmonisasi di sini,
+                Candi Borobudur simbol inspiratif. Sebuah tempat yang pas untuk mencari ketenangan jiwa. Kami ingin memfasilitasi itu. Sehingga Borobudur menjadi pemersatu beragam latar belakang agama, politik, sosial, dan budaya. Semua melebur berharmonisasi di sini.
               </p>
             </div>
           </div>
@@ -95,14 +99,18 @@
             <div class="banner" style="background-image: url(assets/img/jakarta.png)"></div>
             <div class="carousel-caption">
               <h2 class="animate__animated animate__zoomIn" style="animation-delay: 0.5s">Jakarta</h2>
-              <p class="animate__animated animate__fadeInUp" style="animation-delay: 0.5s">Some representative placeholder content for the first slide.</p>
+              <p class="animate__animated animate__fadeInUp" style="animation-delay: 0.5s">
+                Kota Jakarta merupakan ibu kota Indonesia menjadi pusat pemerintahan. Kota Jakarta dijuluki Kota Seribu Pulau yang menarik untuk berwisata bersama keluarga walaupun berada dipusat kota.
+            </p>
             </div>
           </div>
           <div class="carousel-item">
             <div class="banner" style="background-image: url(assets/img/image_2.png)"></div>
             <div class="carousel-caption">
               <h2 class="animate__animated animate__zoomIn" style="animation-delay: 0.5s">Malang</h2>
-              <p class="animate__animated animate__fadeInUp" style="animation-delay: 0.5s">Some representative placeholder content for the first slide.</p>
+              <p class="animate__animated animate__fadeInUp" style="animation-delay: 0.5s">
+                Malang dengan julukan Kota Paris Van Java mampu menarik wisatawan lokal maupun wisatawan mancanegara akan keindahan kotanya yang banyak sekali tempat wisata mulai dari museum hingga wisata paralayang.
+            </p>
             </div>
           </div>
         </div>
@@ -118,14 +126,19 @@
       </div>
 
       <section class="search">
+      <form action="pencarian.php" method="POST">
         <div class="input-group mb-3">
           <span class="input-group-text"><i class="fas fa-location-arrow text-white"></i></span>
-          <input type="text us" class="form-control" placeholder="Pemberangkatan" aria-label="Username">
+          <input type="text" class="form-control" placeholder="Pemberangkatan" aria-label="Username" name="txt_pemberangkatan" required/>
           <span class="input-group-text"><i class="fas fa-exchange-alt text-white"></i></span>
           <input type="text" class="form-control" placeholder="Tujuan" aria-label="Server">
           <span class="input-group-text"><i class="fas fa-map-marker-alt text-white"></i>
           </span>
         </div>
+        <div class="col-12 text-center">
+                  <button type="submit" name="simpan" class="btn colorPrimary text-white roundedBtn">Cari</button>
+                </div>
+      </form>
       </section>
 
       <section class="py-5 bg-light">

@@ -469,7 +469,7 @@
                                               
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputNama" class="form-label">Nama</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputNama" name="txt_nama" placeholder="Ex: Budi Santoso" value="<?php echo $nama?>"/>
+                                                <input type="text" class="form-control form-control-user2" id="inputNama" name="txt_nama" placeholder="Ex: Budi Santoso" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $nama?>"/>
                                                 <label for="InputJenisKelamin" class="form-label">Jenis Kelamin</label>
                                                 <div class="form-check">
                                                   <input class="form-check-input" type="radio" name="Rbtn_jenis_kelamin" id="Radios1" value="Laki-laki" checked />
@@ -485,22 +485,22 @@
                                             <div class="row">
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputAlamat" class="form-label">Alamat</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputAlamat" name="txt_alamat" placeholder="Ex: Jl. Dharmawangsa" value="<?php echo $alamat?>"/>
+                                                <input type="text" class="form-control form-control-user2" id="inputAlamat" name="txt_alamat" placeholder="Ex: Jl. Dharmawangsa" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $alamat?>"/>
                                               </div>
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputNoHp" class="form-label">No Handphone</label>
-                                                <input type="number" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp" placeholder="Ex: 085808241205" value="<?php echo $no_hp?>"/>
+                                                <input type="number" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp" placeholder="Ex: 085808241205"  required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $no_hp?>"/>
                                               </div>
                                             </div>
 
                                             <div class="row">
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputEmail" class="form-label">Email</label>
-                                                <input type="email" class="form-control form-control-user2" id="inputEmail" name="txt_email" placeholder="Ex: admin@gmail.com" value="<?php echo $email?>"/>
+                                                <input type="email" class="form-control form-control-user2" id="inputEmail" name="txt_email" placeholder="Ex: admin@gmail.com" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $email?>"/>
                                               </div>
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputPassword" class="form-label">Password</label>
-                                                <input type="password" class="form-control form-control-user2" id="inputPassword" name="txt_password" placeholder="Ex: ********" value="<?php echo $password?>"/>
+                                                <input type="password" class="form-control form-control-user2" id="inputPassword" name="txt_password" placeholder="Ex: ********" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $password?>"/>
                                               </div>
                                             </div>
 
@@ -646,7 +646,7 @@
                                               
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputNama" class="form-label">Nama</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputNama" name="txt_nama" placeholder="Ex: Budi Santoso" />
+                                                <input type="text" class="form-control form-control-user2" id="inputNama" name="txt_nama" placeholder="Ex: Budi Santoso" required data-parsley-required-message="Data harus di isi !!!"/>
                                                 <label for="InputJenisKelamin" class="form-label">Jenis Kelamin</label>
                                                 <div class="form-check">
                                                   <input class="form-check-input" type="radio" name="Rbtn_jenis_kelamin" id="Radios1" value="Laki-laki" checked />
@@ -662,22 +662,22 @@
                                             <div class="row">
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputAlamat" class="form-label">Alamat</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputAlamat" name="txt_alamat" placeholder="Ex: Jl. Dharmawangsa" />
+                                                <input type="text" class="form-control form-control-user2" id="inputAlamat" name="txt_alamat" placeholder="Ex: Jl. Dharmawangsa" required data-parsley-required-message="Data harus di isi !!!"/>
                                               </div>
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputNoHp" class="form-label">No Handphone</label>
-                                                <input type="number" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp" placeholder="Ex: 085808241205" />
+                                                <input type="number" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp" placeholder="Ex: 085808241205" required data-parsley-required-message="Data harus di isi !!!"/>
                                               </div>
                                             </div>
 
                                             <div class="row">
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputEmail" class="form-label">Email</label>
-                                                <input type="email" class="form-control form-control-user2" id="inputEmail" name="txt_email" placeholder="Ex: admin@gmail.com" />
+                                                <input type="email" class="form-control form-control-user2" id="inputEmail" name="txt_email" placeholder="Ex: admin@gmail.com" required data-parsley-required-message="Data harus di isi !!!"/>
                                               </div>
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputPassword" class="form-label">Password</label>
-                                                <input type="password" class="form-control form-control-user2" id="inputPassword" name="txt_password" placeholder="Ex: ********" />
+                                                <input type="password" class="form-control form-control-user2" id="inputPassword" name="txt_password" placeholder="Ex: ********" required data-parsley-required-message="Data harus di isi !!!"/>
                                               </div>
                                             </div>
 
@@ -858,9 +858,9 @@
                                               </div>
                                               <div class="col-lg-6 mb-3" >
                                                 <label for="inputId" class="form-label">NIK</label>
-                                                <input type="number" class="form-control form-control-user2" id="inputId" name="txt_nik_user" value="<?php echo $nik_user?>" placeholder="" readonly/>
+                                                <input type="number" class="form-control form-control-user2" id="inputId" name="txt_nik_user" value="<?php echo $nik_user?>" placeholder="3509030907020004" readonly/>
                                                 <label for="inputNama" class="form-label">Nama</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputNama" name="txt_nama_user" placeholder="Ex: Budi Santoso" value="<?php echo $nama_user?>"/>
+                                                <input type="text" class="form-control form-control-user2" id="inputNama" name="txt_nama_user" placeholder="Ex: Budi Santoso" required data-parsley-required-message="Data harus di isi !!!"value="<?php echo $nama_user?>"/>
                                                 <label for="InputJenisKelamin" class="form-label">Jenis Kelamin</label>
                                                 <div class="form-check">
                                                   <input class="form-check-input" type="radio" name="Rbtn_jenis_kelamin_user" id="Radios1" value="Laki-laki" checked />
@@ -876,32 +876,32 @@
                                             <div class="row">
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputIdLevel" class="form-label">Tempat Lahir</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputIdLevel" name="txt_tempat_lahir_user" placeholder="Ex: 2" value="<?php echo $tempat_lahir_user?>"/>
+                                                <input type="text" class="form-control form-control-user2" id="inputIdLevel" name="txt_tempat_lahir_user" placeholder="Ex: Jember" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $tempat_lahir_user?>"/>
                                               </div>
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputIdTerminal" class="form-label">Tanggal Lahir</label>
-                                                <input type="date" class="form-control form-control-user2" id="inputIdTerminal" name="txt_tanggal_lahir_user" placeholder="Ex: 1" value="<?php echo $tanggal_lahir_user?>"/>
+                                                <input type="date" class="form-control form-control-user2" id="inputIdTerminal" name="txt_tanggal_lahir_user" placeholder="Ex: 1" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $tanggal_lahir_user?>"/>
                                               </div>
                                             </div>
 
                                             <div class="row">
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputAlamat" class="form-label">Alamat</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputAlamat" name="txt_alamat_user" placeholder="Ex: Jl. Dharmawangsa" value="<?php echo $alamat_user?>"/>
+                                                <input type="text" class="form-control form-control-user2" id="inputAlamat" name="txt_alamat_user" placeholder="Ex: Jl. Dharmawangsa" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $alamat_user?>"/>
                                               </div>
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputNoHp" class="form-label">No Handphone</label>
-                                                <input type="number" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp_user" placeholder="Ex: 085808241205" value="<?php echo $no_hp_user?>"/>
+                                                <input type="number" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp_user" placeholder="Ex: 085808241205" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $no_hp_user?>"/>
                                               </div>
                                             </div>
                                             <div class="row">
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputEmail" class="form-label">Email</label>
-                                                <input type="email" class="form-control form-control-user2" id="inputEmail" name="txt_email_user" placeholder="Ex: admin@gmail.com" value="<?php echo $email_user?>"/>
+                                                <input type="email" class="form-control form-control-user2" id="inputEmail" name="txt_email_user" placeholder="Ex: admin@gmail.com" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $email_user?>"/>
                                               </div>
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputPassword" class="form-label">Password</label>
-                                                <input type="password" class="form-control form-control-user2" id="inputPassword" name="txt_password_user" placeholder="Ex: ********" value="<?php echo $password_user?>"/>
+                                                <input type="password" class="form-control form-control-user2" id="inputPassword" name="txt_password_user" placeholder="Ex: ********" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $password_user?>"/>
                                               </div>
                                             </div>
                                             
@@ -988,9 +988,9 @@
                                               </div>
                                               <div class="col-lg-6 mb-3" >
                                                 <label for="inputId" class="form-label">NIK</label>
-                                                <input type="number" class="form-control form-control-user2" id="inputId" name="txt_nik_user" placeholder="" />
+                                                <input type="number" class="form-control form-control-user2" id="inputId" name="txt_nik_user" placeholder="3509030907020004" required data-parsley-required-message="Data harus di isi !!!"/>
                                                 <label for="inputNama" class="form-label">Nama</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputNama" name="txt_nama_user" placeholder="Ex: Budi Santoso" />
+                                                <input type="text" class="form-control form-control-user2" id="inputNama" name="txt_nama_user" placeholder="Ex: Budi Santoso" required data-parsley-required-message="Data harus di isi !!!"/>
                                                 <label for="InputJenisKelamin" class="form-label">Jenis Kelamin</label>
                                                 <div class="form-check">
                                                   <input class="form-check-input" type="radio" name="Rbtn_jenis_kelamin_user" id="Radios1" value="Laki-laki" checked />
@@ -1006,32 +1006,32 @@
                                             <div class="row">
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputIdLevel" class="form-label">Tempat Lahir</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputIdLevel" name="txt_tempat_lahir_user" placeholder="Ex: 2" />
+                                                <input type="text" class="form-control form-control-user2" id="inputIdLevel" name="txt_tempat_lahir_user" placeholder="Ex: Jember" required data-parsley-required-message="Data harus di isi !!!"/>
                                               </div>
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputIdTerminal" class="form-label">Tanggal Lahir</label>
-                                                <input type="date" class="form-control form-control-user2" id="inputIdTerminal" name="txt_tanggal_lahir_user" placeholder="Ex: 1" />
+                                                <input type="date" class="form-control form-control-user2" id="inputIdTerminal" name="txt_tanggal_lahir_user" placeholder="Ex: 1" required data-parsley-required-message="Data harus di isi !!!"/>
                                               </div>
                                             </div>
 
                                             <div class="row">
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputAlamat" class="form-label">Alamat</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputAlamat" name="txt_alamat_user" placeholder="Ex: Jl. Dharmawangsa" />
+                                                <input type="text" class="form-control form-control-user2" id="inputAlamat" name="txt_alamat_user" placeholder="Ex: Jl. Dharmawangsa" required data-parsley-required-message="Data harus di isi !!!"/>
                                               </div>
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputNoHp" class="form-label">No Handphone</label>
-                                                <input type="number" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp_user" placeholder="Ex: 085808241205"/>
+                                                <input type="number" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp_user" placeholder="Ex: 085808241205" required data-parsley-required-message="Data harus di isi !!!"/>
                                               </div>
                                             </div>
                                             <div class="row">
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputEmail" class="form-label">Email</label>
-                                                <input type="email" class="form-control form-control-user2" id="inputEmail" name="txt_email_user" placeholder="Ex: admin@gmail.com" />
+                                                <input type="email" class="form-control form-control-user2" id="inputEmail" name="txt_email_user" placeholder="Ex: admin@gmail.com" required data-parsley-required-message="Data harus di isi !!!"/>
                                               </div>
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputPassword" class="form-label">Password</label>
-                                                <input type="password" class="form-control form-control-user2" id="inputPassword" name="txt_password_user" placeholder="Ex: ********" />
+                                                <input type="password" class="form-control form-control-user2" id="inputPassword" name="txt_password_user" placeholder="Ex: ********" required data-parsley-required-message="Data harus di isi !!!"/>
                                               </div>
                                             </div>
                                             
@@ -1063,5 +1063,6 @@
     <script src="plugin/js/datatables-demo.js"></script>
     <script src="plugin/js/javascript.js"></script>
     <script src="plugin/js/UpImg.js"></script>
+    <script src="plugin/js/parsley.min.js"></script>
   </body>
 </html>
