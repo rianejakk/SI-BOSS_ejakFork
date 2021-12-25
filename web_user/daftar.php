@@ -54,18 +54,25 @@
             <div class="col-12">
               <div class="row g-0">
                 <div class="col-lg-12">
-                  <div class="panel-banner myRounded shadow shadow-lg d-none d-lg-block" style="height: 480px"></div>
+                  <div class="panel-banner myRounded shadow shadow-lg d-none d-lg-block" style="height: 100%"></div>
                 </div>
-                <div class="col-lg-6 order-md-1">
-                  <div class="panel-form p-5 whiteblur myRounded pop" style="height: 480px">
-                    <h3 class="font-RobotoBold s22 m-0">Login</h3>
-                    <p class="mb-4 s12">Nikmati perjalanan seru bersama <span class="font-Pacifico s12">SI-BOSS</span></p>
+                <div class="col-lg-4 order-md-1 w-100 d-flex justify-content-end">
+                  <div class="panel-form p-5 whiteblur myRounded pop" style="height: 100%">
+                    <h3 class="font-RobotoBold s22 m-0">Daftar</h3>
+                    <p class="mb-4 s12">
+                      Nikmati perjalanan seru bersama
+                      <span class="font-Pacifico s12">SI-BOSS</span>
+                    </p>
                     <form action="index.php" method="POST">
                       <div class="mb-3">
-                        <label for="exampleInputEmail" class="form-label font-RobotoSemiBold colorBold s12">Email</label>
-                        <input type="email" class="form-control form-control-user2" id="exampleInputEmail" name="txt_email" placeholder="Ex: budiman@siboss.com" />
+                        <label for="InputEmail" class="form-label font-RobotoSemiBold colorBold s12">Email</label>
+                        <input type="email" class="form-control form-control-user2" id="InputEmail" name="txt_email" placeholder="Ex: budiman@siboss.com" />
                       </div>
-                      <div class="mb-2">
+                      <div class="mb-3">
+                        <label for="InputNama" class="form-label font-RobotoSemiBold colorBold s12">Nama Lengkap</label>
+                        <input type="text" class="form-control form-control-user2" id="InputNama" name="txt_nama" placeholder="Bondan Prakoso" />
+                      </div>
+                      <div class="mb-3">
                         <label for="password-input" class="form-label font-RobotoSemiBold colorBold s12">Kata sandi</label>
                         <div class="input-group">
                           <input type="password" class="form-control form-control-user2" id="password-input" placeholder="******" aria-label="password" />
@@ -74,26 +81,23 @@
                           </span>
                         </div>
                       </div>
-                      <div class="mb-3 float-start">
-                        <div class="form-check small">
-                          <input type="checkbox" class="form-check-input" id="customCheck" />
-                          <label class="form-check-label" for="customCheck">Remember Me</label>
+                      <div class="mb-5">
+                        <label for="password-input" class="form-label font-RobotoSemiBold colorBold s12">Konfirmasi Kata sandi</label>
+                        <div class="input-group">
+                          <input type="password" class="form-control form-control-user2" id="password-input" placeholder="******" aria-label="password" />
+                          <span class="input-group-text">
+                            <i class="fa fa-eye show-hide" toggle="#password-input"></i>
+                          </span>
                         </div>
                       </div>
-                      <div class="mb-3 float-end">
-                        <div class="small">
-                          <a class="small" href="#">Lupa kata sandi ?</a>
-                        </div>
-                      </div>
-                      <div class="clearfix"></div>
                       <div class="row mb-5">
                         <div class="col-12 d-flex justify-content-center">
                           <button type="submit" name="submit" class="btn colorPrimary text-white py-2 s14 rounded-pill resize">Login</button>
                         </div>
                         <div class="col-12 d-flex justify-content-center">
                           <p class="m-0 p-0 s12 pt-2">
-                            Belum punya Akun ?
-                            <a href="#" class="small s12 ps-0">Daftar disini !</a>
+                            Sudah punya Akun ?
+                            <a href="#" class="small s12 ps-0">Login disini !</a>
                           </p>
                         </div>
                       </div>
@@ -106,30 +110,6 @@
           </div>
         </div>
       </section>
-
-      <div class="footer-bar bg-white fixed-bottom sh-footer">
-        <div class="container">
-          <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 mt-1">
-            <p class="col-md-4 mb-0 text-muted">© 2021 Company, Inc</p>
-
-            <a href="#" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none" title="Logo">
-              <img src="assets/img/logo.png" alt="" width="105px" />
-            </a>
-
-            <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-              <li class="ms-3">
-                <a class="text-muted outline" href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Whatsapp"><i class="icofont-whatsapp s22"></i></a>
-              </li>
-              <li class="ms-3">
-                <a class="text-muted outline" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Instagram"><i class="icofont-instagram s22"></i></a>
-              </li>
-              <li class="ms-3">
-                <a class="text-muted outline" href="#" data-bs-toggle="tooltip" data-bs-placement="right" title="Gmail"><i class="fa fa-google s22"></i></a>
-              </li>
-            </ul>
-          </footer>
-        </div>
-      </div>
     </main>
 
     <!-- JavaScript & JQuery -->

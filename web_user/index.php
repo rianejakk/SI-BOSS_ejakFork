@@ -36,8 +36,12 @@
               </li>
             </ul>
             <div class="ms-auto myClass">
-              <button class="btn colorPrimary me-2 roundedBtn text-white" type="submit">Masuk</button>
-              <button class="btn btn-outlineCust roundedBtn" type="submit">Daftar</button>
+              <a href="login.php">
+                <button class="btn colorPrimary me-2 roundedBtn text-white">Masuk</button>
+              </a>
+              <a href="daftar.php">
+                <button class="btn btn-outlineCust roundedBtn">Daftar</button>
+              </a>
             </div>
           </div>
         </div>
@@ -169,7 +173,7 @@
           </div>
           <div class="row myrow2 py-4">
             <div class="col-sm-6 col-lg-4 d-flex justify-content-center mb-4">
-              <div class="card py-4 shadow-sm hover-top" style="width: 280px; height: 350px">
+              <div class="card card-user py-4 shadow-sm hover-top" style="width: 280px; height: 350px">
                 <div class="text-center step">
                   <img src="assets/img/1.png" alt="step1" height="150" alt="" />
                   <div class="card-body px-2">
@@ -180,7 +184,7 @@
               </div>
             </div>
             <div class="col-sm-6 col-lg-4 d-flex justify-content-center mb-3">
-              <div class="card py-4 shadow-sm hover-top" style="width: 280px; height: 350px">
+              <div class="card card-user py-4 shadow-sm hover-top" style="width: 280px; height: 350px">
                 <div class="text-center step">
                   <img src="assets/img/2.png" alt="step1" height="150" alt="" />
                   <div class="card-body px-2">
@@ -191,7 +195,7 @@
               </div>
             </div>
             <div class="col-sm-6 col-lg-4 d-flex justify-content-center mb-3">
-              <div class="card py-4 shadow-sm hover-top" style="width: 280px; height: 350px">
+              <div class="card card-user py-4 shadow-sm hover-top" style="width: 280px; height: 350px">
                 <div class="text-center step">
                   <img src="assets/img/3.png" alt="step1" height="150" alt="" />
                   <div class="card-body px-2">
@@ -202,7 +206,7 @@
               </div>
             </div>
             <div class="col-sm-6 col-lg-4 d-flex justify-content-center mb-3">
-              <div class="card py-4 shadow-sm hover-top" style="width: 280px; height: 350px">
+              <div class="card card-user py-4 shadow-sm hover-top" style="width: 280px; height: 350px">
                 <div class="text-center step">
                   <img src="assets/img/4.png" alt="step1" height="150" alt="" />
                   <div class="card-body px-2">
@@ -213,7 +217,7 @@
               </div>
             </div>
             <div class="col-sm-6 col-lg-4 d-flex justify-content-center mb-3">
-              <div class="card py-4 shadow-sm hover-top" style="width: 280px; height: 350px">
+              <div class="card card-user py-4 shadow-sm hover-top" style="width: 280px; height: 350px">
                 <div class="text-center step">
                   <img src="assets/img/5.png" alt="step1" height="150" alt="" />
                   <div class="card-body px-2">
@@ -224,7 +228,7 @@
               </div>
             </div>
             <div class="col-sm-6 col-lg-4 d-flex justify-content-center mb-3">
-              <div class="card py-4 shadow-sm hover-top" style="width: 280px; height: 350px">
+              <div class="card card-user py-4 shadow-sm hover-top" style="width: 280px; height: 350px">
                 <div class="text-center step">
                   <img src="assets/img/6.png" alt="step1" height="150" alt="" />
                   <div class="card-body px-2">
