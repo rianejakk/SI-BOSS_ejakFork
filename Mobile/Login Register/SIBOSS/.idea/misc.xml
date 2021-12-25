@@ -45,20 +45,27 @@
         <entry key="..\:/Users/ACER/AndroidStudioProjects/SIBOSS/app/src/main/res/drawable/shape_header.xml" value="0.20512820512820512" />
         <entry key="..\:/Users/ACER/AndroidStudioProjects/SIBOSS/app/src/main/res/drawable/splash_bg.xml" value="0.1" />
         <entry key="..\:/Users/ACER/AndroidStudioProjects/SIBOSS/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/ACER/AndroidStudioProjects/SIBOSS/app/src/main/res/layout/activity_navigation_bar.xml" value="0.1921875" />
+        <entry key="..\:/Users/ACER/AndroidStudioProjects/SIBOSS/app/src/main/res/layout/app_bar_navigation_bar.xml" value="0.1921875" />
         <entry key="..\:/Users/ACER/AndroidStudioProjects/SIBOSS/app/src/main/res/layout/beranda.xml" value="0.3574074074074074" />
         <entry key="..\:/Users/ACER/AndroidStudioProjects/SIBOSS/app/src/main/res/layout/beranda1.xml" value="0.1921875" />
         <entry key="..\:/Users/ACER/AndroidStudioProjects/SIBOSS/app/src/main/res/layout/content_content.xml" value="0.1" />
         <entry key="..\:/Users/ACER/AndroidStudioProjects/SIBOSS/app/src/main/res/layout/content_main.xml" value="0.25" />
+        <entry key="..\:/Users/ACER/AndroidStudioProjects/SIBOSS/app/src/main/res/layout/content_navigation_bar.xml" value="0.10914855072463768" />
         <entry key="..\:/Users/ACER/AndroidStudioProjects/SIBOSS/app/src/main/res/layout/daftar.xml" value="0.25" />
         <entry key="..\:/Users/ACER/AndroidStudioProjects/SIBOSS/app/src/main/res/layout/edit_biodata.xml" value="0.25" />
         <entry key="..\:/Users/ACER/AndroidStudioProjects/SIBOSS/app/src/main/res/layout/forgot_password.xml" value="0.22" />
         <entry key="..\:/Users/ACER/AndroidStudioProjects/SIBOSS/app/src/main/res/layout/forgot_password_2.xml" value="0.25" />
         <entry key="..\:/Users/ACER/AndroidStudioProjects/SIBOSS/app/src/main/res/layout/forgot_password_3.xml" value="0.25" />
+        <entry key="..\:/Users/ACER/AndroidStudioProjects/SIBOSS/app/src/main/res/layout/fragment_gallery.xml" value="0.1921875" />
+        <entry key="..\:/Users/ACER/AndroidStudioProjects/SIBOSS/app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="..\:/Users/ACER/AndroidStudioProjects/SIBOSS/app/src/main/res/layout/fragment_slideshow.xml" value="0.1921875" />
         <entry key="..\:/Users/ACER/AndroidStudioProjects/SIBOSS/app/src/main/res/layout/login.xml" value="0.25" />
         <entry key="..\:/Users/ACER/AndroidStudioProjects/SIBOSS/app/src/main/res/layout/lupa_kata_sandi.xml" value="0.25" />
         <entry key="..\:/Users/ACER/AndroidStudioProjects/SIBOSS/app/src/main/res/layout/lupa_kata_sandi_2.xml" value="0.25" />
         <entry key="..\:/Users/ACER/AndroidStudioProjects/SIBOSS/app/src/main/res/layout/lupa_kata_sandi_3.xml" value="0.25" />
         <entry key="..\:/Users/ACER/AndroidStudioProjects/SIBOSS/app/src/main/res/layout/masuk.xml" value="0.1921875" />
+        <entry key="..\:/Users/ACER/AndroidStudioProjects/SIBOSS/app/src/main/res/layout/nav_header_navigation_bar.xml" value="0.17" />
         <entry key="..\:/Users/ACER/AndroidStudioProjects/SIBOSS/app/src/main/res/layout/nyoba.xml" value="0.25" />
         <entry key="..\:/Users/ACER/AndroidStudioProjects/SIBOSS/app/src/main/res/layout/order_cancel.xml" value="0.25" />
         <entry key="..\:/Users/ACER/AndroidStudioProjects/SIBOSS/app/src/main/res/layout/payment_form.xml" value="0.33" />
