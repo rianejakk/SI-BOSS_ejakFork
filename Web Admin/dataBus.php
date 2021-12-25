@@ -447,20 +447,20 @@
                                                 </div>
                                                 <div class="form-group">
                                                   <label for="inputFoto" class="form-label">Jumlah Kursi</label>
-                                                  <input type="number" class="form-control form-control-user2" id="inputFoto" name="txt_jumlah_kursi" placeholder="Ex:" value="<?php echo $jumlah_kursi?>"/>
+                                                  <input type="number" class="form-control form-control-user2" id="inputFoto" name="txt_jumlah_kursi" placeholder="Ex: 50" required data-parsley-required-message="Data harus di isi !!!"value="<?php echo $jumlah_kursi?>"/>
                                                 </div>
                                                 <div class="form-group">
                                                   <label for="InputTarif" class="form-label">Tarif</label>
                                                   <div class="input-group mb-3">
                                                     <span class="input-group-text tarif">Rp</span>
-                                                    <input type="number" class="form-control form-control-user2" aria-label="Amount (to the nearest dollar)" name="txt_harga" value="<?php echo $harga?>">
+                                                    <input type="number" class="form-control form-control-user2" aria-label="Amount (to the nearest dollar)" name="txt_harga" required data-parsley-required-message="Data harus di isi !!!" placeholder="Ex: 50000" value="<?php echo $harga?>">
                                                   </div>
                                                 </div>
                                               </div>
                                               <div class="col-md-6">
                                               <div class="form-group">
                                                   <label for="InputNamaBus" class="form-label">Nama Bus</label>
-                                                  <input type="text" class="form-control form-control-user2" id="inputNama" name="txt_nama_bus" placeholder="Ex: Pahala Kencana" value="<?php echo $nama_bus?>"/>
+                                                  <input type="text" class="form-control form-control-user2" id="inputNama" name="txt_nama_bus" placeholder="Ex: Pahala Kencana" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $nama_bus?>"/>
                                                 </div>
                                                 <div class="form-group">
                                                   <label for="InputJenisBus" class="form-label">Jenis Bus</label>
@@ -512,7 +512,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                   <label for="InputTglPemberangkatan" class="form-label">Tanggal Pemberangkatan</label>
-                                                  <input type="date" class="form-control form-control-user2" id="InputTglPemberangkatan" name="txt_tanggal_pemberangkatan" value="<?php echo $tanggal_pemberangkatan?>">
+                                                  <input type="date" class="form-control form-control-user2" id="InputTglPemberangkatan" name="txt_tanggal_pemberangkatan" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $tanggal_pemberangkatan?>">
                                                 </div>
                                                 
                                               </div>
@@ -617,20 +617,20 @@
                                                 </div>
                                                 <div class="form-group">
                                                   <label for="inputFoto" class="form-label">Jumlah Kursi</label>
-                                                  <input type="number" class="form-control form-control-user2" id="inputFoto" name="txt_jumlah_kursi" placeholder="Ex:" />
+                                                  <input type="number" class="form-control form-control-user2" id="inputFoto" name="txt_jumlah_kursi" required data-parsley-required-message="Data harus di isi !!!" placeholder="Ex: 50" />
                                                 </div>
                                                 <div class="form-group">
                                                   <label for="InputTarif" class="form-label">Tarif</label>
                                                   <div class="input-group mb-3">
                                                     <span class="input-group-text tarif">Rp</span>
-                                                    <input type="number" class="form-control form-control-user2" aria-label="Amount (to the nearest dollar)" name="txt_harga" >
+                                                    <input type="number" class="form-control form-control-user2" aria-label="Amount (to the nearest dollar)" required data-parsley-required-message="Data harus di isi !!!" name="txt_harga" placeholder="Ex: 50000" >
                                                   </div>
                                                 </div>
                                               </div>
                                               <div class="col-md-6">
                                               <div class="form-group">
                                                   <label for="InputNamaBus" class="form-label">Nama Bus</label>
-                                                  <input type="text" class="form-control form-control-user2" id="inputNama" name="txt_nama_bus" placeholder="Ex: Pahala Kencana" />
+                                                  <input type="text" class="form-control form-control-user2" id="inputNama" name="txt_nama_bus" required data-parsley-required-message="Data harus di isi !!!" placeholder="Ex: Pahala Kencana" />
                                                 </div>
                                                 <div class="form-group">
                                                   <label for="InputJenisBus" class="form-label">Jenis Bus</label>
@@ -681,7 +681,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                   <label for="InputTglPemberangkatan" class="form-label">Tanggal Pemberangkatan</label>
-                                                  <input type="date" class="form-control form-control-user2" id="InputTglPemberangkatan" name="txt_tanggal_pemberangkatan" >
+                                                  <input type="date" class="form-control form-control-user2" id="InputTglPemberangkatan" name="txt_tanggal_pemberangkatan" required data-parsley-required-message="Data harus di isi !!!"/>
                                                 </div>
                                                 
                                               </div>
@@ -709,5 +709,6 @@
     <script src="plugin/js/datatables-demo.js"></script>
     <script src="plugin/js/javascript.js"></script>
     <script src="plugin/js/UpImg.js"></script>
+    <script src="plugin/js/parsley.min.js"></script>
   </body>
 </html>

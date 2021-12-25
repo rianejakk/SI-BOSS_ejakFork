@@ -411,32 +411,26 @@
                                             <div class="row">
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputTerminal" class="form-label">Nama Terminal</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputTerminal" name="txt_nama_terminal" placeholder="Ex: Tawang Alun" value="<?php echo $terminal?>"/>
+                                                <input type="text" class="form-control form-control-user2" id="inputTerminal" name="txt_nama_terminal" required data-parsley-required-message="Data harus di isi !!!" placeholder="Ex: Tawang Alun" value="<?php echo $terminal?>" />
                                               </div>
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputAlamat" class="form-label">Alamat Terminal</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputAlamat" name="txt_detail_alamat_terminal" placeholder="Ex: Jl. Dharmawangsa" value="<?php echo $alamat?>"/>
+                                                <input type="text" class="form-control form-control-user2" id="inputAlamat" name="txt_detail_alamat_terminal" placeholder="Ex: Jl. Dharmawangsa" value="<?php echo $alamat?>" required data-parsley-required-message="Data harus di isi !!!"/>
                                               </div>
-                                              <div class="col-lg-12 mb-3">
-                                                <label for="inputProvinsi" class="form-label">Provinsi</label>
-                                                <select class="form-select form-select-user propinsi" aria-label=".form-select-sm example" name="d_provinsi_terminal" >
-                                                  <option disabled selected>Pilih Provinsi</option>
-                                                </select>
+                                              <div class="col-12 mb-3">
+                                                <label for="InputProvTerminal" class="form-label">Provinsi</label>
+                                                <input type="text" class="form-control form-control-user2" id="InputProvTerminal" name="d_provinsi_terminal" placeholder="Ex: Jawa Timur" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $provinsi?>"/>
                                               </div>
                                             </div>
 
                                             <div class="row">
-                                              <div class="col-lg-6 mb-3">
-                                                <label for="inputKabupaten" class="form-label">Kota</label>
-                                                <select class="form-select form-select-user kabupaten" aria-label=".form-select-sm example" name="d_kabupaten_terminal" >
-                                                  <option disabled selected>Pilih kota</option>
-                                                </select>
+                                              <div class="col-6 mb-3">
+                                                <label for="InputKabupatenTerminal" class="form-label">Kabupaten</label>
+                                                <input type="text" class="form-control form-control-user2" id="InputKabupatenTerminal" name="d_kabupaten_terminal" placeholder="Ex: Jember" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $kabupaten?>"/>
                                               </div>
-                                              <div class="col-lg-6 mb-3">
-                                                <label for="inputKecamatan" class="form-label">Kecamatan</label>
-                                                <select class="form-select form-select-user kecamatan" aria-label=".form-select-sm example" name="d_kecamatan_terminal">
-                                                  <option disabled selected>Pilih Kecamatan</option>
-                                                </select>
+                                              <div class="col-6 mb-3">
+                                                <label for="InputKecamatanTerminal" class="form-label">Kecamatan</label>
+                                                <input type="text" class="form-control form-control-user2" id="InputKecamatanTerminal" name="d_kecamatan_terminal" placeholder="Ex: Rambupuji"  required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $kecamatan?>"/>
                                               </div>
                                             </div>
                                             
@@ -506,33 +500,27 @@
                                 <div class="row">
                                   <div class="col-lg-6 mb-3">
                                     <label for="inputTerminal" class="form-label">Nama Terminal</label>
-                                    <input type="text" class="form-control form-control-user2" id="inputTerminal" name="txt_nama_terminal" placeholder="Ex: Tawang Alun" />
+                                    <input type="text" class="form-control form-control-user2" id="inputTerminal" name="txt_nama_terminal" required data-parsley-required-message="Data harus di isi !!!" placeholder="Ex: Tawang Alun" />
                                   </div>
                                   <div class="col-lg-6 mb-3">
                                                 <label for="inputAlamat" class="form-label">Alamat Terminal</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputAlamat" name="txt_detail_alamat_terminal" placeholder="Ex: Jl. Dharmawangsa"/>
+                                                <input type="text" class="form-control form-control-user2" id="inputAlamat" name="txt_detail_alamat_terminal" required data-parsley-required-message="Data harus di isi !!!" placeholder="Ex: Jl. Dharmawangsa"/>
                                               </div>
-                                  <div class="col-lg-12 mb-3">
-                                    <label for="inputProvinsi" class="form-label">Provinsi</label>
-                                    <select class="form-select form-select-user" aria-label=".form-select-sm example" name="d_provinsi_terminal" id="propinsi" >
-                                      <option disabled selected>Pilih Provinsi</option>
-                                    </select>
-                                  </div>
+                                              <div class="col-12 mb-3">
+                                                <label for="InputProvTerminal" class="form-label">Provinsi</label>
+                                                <input type="text" class="form-control form-control-user2" id="InputProvTerminal" name="d_provinsi_terminal" required data-parsley-required-message="Data harus di isi !!!" placeholder="Ex: Jawa Timur" />
+                                              </div>
                                 </div>
 
                                 <div class="row">
-                                  <div class="col-lg-6 mb-3">
-                                    <label for="inputKabupaten" class="form-label">Kota</label>
-                                    <select class="form-select form-select-user" aria-label=".form-select-sm example" name="d_kabupaten_terminal" id="kabupaten">
-                                      <option disabled selected>Pilih kota</option>
-                                    </select>
-                                  </div>
-                                  <div class="col-lg-6 mb-3">
-                                    <label for="inputKecamatan" class="form-label">Kecamatan</label>
-                                    <select class="form-select form-select-user" aria-label=".form-select-sm example" name="d_kecamatan_terminal" id="kecamatan">
-                                      <option disabled selected>Pilih Kecamatan</option>
-                                    </select>
-                                  </div>
+                                <div class="col-6 mb-3">
+                                                <label for="InputKabupatenTerminal" class="form-label">Kabupaten</label>
+                                                <input type="text" class="form-control form-control-user2" id="InputKabupatenTerminal" name="d_kabupaten_terminal" required data-parsley-required-message="Data harus di isi !!!" placeholder="Ex: Jember" />
+                                              </div>
+                                              <div class="col-6 mb-3">
+                                                <label for="InputKecamatanTerminal" class="form-label">Kecamatan</label>
+                                                <input type="text" class="form-control form-control-user2" id="InputKecamatanTerminal" name="d_kecamatan_terminal" required data-parsley-required-message="Data harus di isi !!!" placeholder="Ex: Rambupuji" />
+                                              </div>
                                 </div>
                                 
                                 <div class="modal-footer">
@@ -643,11 +631,11 @@
                                             <div class="row">
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputJenis" class="form-label">Jenis</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputJenis" name="txt_jenis" placeholder="Ex: AKAS" value="<?php echo $jenis2; ?>"/>
+                                                <input type="text" class="form-control form-control-user2" id="inputJenis" name="txt_jenis" placeholder="Ex: AKAS" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $jenis2; ?>"/>
                                               </div>
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputFasilitas" class="form-label">Fasilitas</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputFasilitas" name="txt_fasilitas" placeholder="Ex: Jl. Dharmawangsa" value="<?php echo $fasilitas2; ?>"/>
+                                                <input type="text" class="form-control form-control-user2" id="inputFasilitas" name="txt_fasilitas" placeholder="Ex: TV, AC, Wifi, Toilet" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $fasilitas2; ?>"/>
                                               </div>
                                             </div>
 
@@ -714,11 +702,11 @@
                                 <div class="row">
                                   <div class="col-lg-6 mb-3">
                                     <label for="inputJenis" class="form-label">Jenis</label>
-                                    <input type="text" class="form-control form-control-user2" id="inputJenis" name="txt_jenis" placeholder="Ex: AKAS" />
+                                    <input type="text" class="form-control form-control-user2" id="inputJenis" name="txt_jenis" placeholder="Ex: AKAS" required data-parsley-required-message="Data harus di isi !!!" />
                                   </div>
                                   <div class="col-lg-6 mb-3">
                                                 <label for="inputFasilitas" class="form-label">Fasilitas</label>
-                                                <input type="text" class="form-control form-control-user2" id="inputFasilitas" name="txt_fasilitas" placeholder="Ex: Jl. Dharmawangsa"/>
+                                                <input type="text" class="form-control form-control-user2" id="inputFasilitas" name="txt_fasilitas" placeholder="Ex: TV, AC, Wifi, Toilet" required data-parsley-required-message="Data harus di isi !!!"/>
                                               </div>
                                 </div>
                                 <div class="modal-footer">
@@ -836,7 +824,7 @@
                                               <div class="row">
                                                 <div class="col-lg-6 mb-3">
                                                   <label for="InputIdTerminal" class="form-label">Pemberangkatan</label>
-                                                  <select class="form-select form-select-user select-md" aria-label=".form-select-sm example" required data-parsley-required-message="Harap pilih data terminal !!!" name="txt_pemberangkatan" >
+                                                  <select class="form-select form-select-user select-md" aria-label=".form-select-sm example" required data-parsley-required-message="Data harus di isi !!!" name="txt_pemberangkatan" >
                                                     <option disabled selected>Pilih Terminal</option>
                                                     <?php
                                                       $datas = $obj->lihatTerminal();
@@ -850,8 +838,9 @@
                                                         while($row=$datas->fetch(PDO::FETCH_ASSOC)){
                                                           $id_terminal = $row['id_terminal'];
                                                           $nama_terminal = $row['nama_terminal'];
+                                                          $kabupaten = $row['kabupaten_terminal'];
                                                       ?>
-                                                      <option value="<?php echo $id_terminal;?>"><?php echo $nama_terminal;?></option>
+                                                      <option value="<?php echo $id_terminal;?>"><?php echo $nama_terminal, ', ', $kabupaten;?></option>
                                                     <?php 
                                                     }}
                                                     ?>
@@ -859,14 +848,14 @@
                                                 </div>
                                                 <div class="col-lg-6 mb-3">
                                                   <label for="inputWaktuBerangkat" class="form-label">Waktu Berangkat</label>
-                                                  <input type="time" class="form-control form-control-user2" id="inputWaktuBerangkat" name="txt_waktu_berangkat" placeholder="Ex: 00.00" value="<?php echo $waktu_berangkat2 ?>"></input>
+                                                  <input type="time" class="form-control form-control-user2" id="inputWaktuBerangkat" name="txt_waktu_berangkat" required data-parsley-required-message="Data harus di isi !!!" placeholder="Ex: 00.00" value="<?php echo $waktu_berangkat2 ?>"></input>
                                                 </div>
                                               </div>
 
                                               <div class="row">
                                                 <div class="col-lg-6 mb-3">
                                                   <label for="InputIdTerminal" class="form-label">Tujuan</label>
-                                                  <select class="form-select form-select-user select-md" aria-label=".form-select-sm example" required data-parsley-required-message="Harap pilih data terminal !!!" name="txt_tujuan">
+                                                  <select class="form-select form-select-user select-md" aria-label=".form-select-sm example" required data-parsley-required-message="Data harus di isi !!!" name="txt_tujuan">
                                                     <option disabled selected>Pilih Terminal</option>
                                                     <?php
                                                       $datasd = $obj->lihatTerminal();
@@ -878,10 +867,11 @@
                                                             $dis = "disabled";
                                                         }
                                                         while($row=$datasd->fetch(PDO::FETCH_ASSOC)){
-                                                          $id_terminal = $row['id_terminal'];
-                                                          $nama_terminal = $row['nama_terminal'];
+                                                          $id_terminals = $row['id_terminal'];
+                                                          $nama_terminals = $row['nama_terminal'];
+                                                          $kabupatens = $row['kabupaten_terminal'];
                                                       ?>
-                                                      <option value="<?php echo $id_terminal;?>"><?php echo $nama_terminal;?></option>
+                                                      <option value="<?php echo $id_terminals;?>"><?php echo $nama_terminals, ', ', $kabupatens;?></option>
                                                     <?php 
                                                     }}
                                                     ?>
@@ -889,7 +879,7 @@
                                                 </div>
                                                 <div class="col-lg-6 mb-3">
                                                   <label for="inputWaktuTiba" class="form-label">Waktu Tiba</label>
-                                                  <input type="time" class="form-control form-control-user2" id="inputWaktuTiba" name="txt_waktu_tiba" placeholder="Ex: 06.00" value="<?php echo $waktu_tiba2 ?>"></input>
+                                                  <input type="time" class="form-control form-control-user2" id="inputWaktuTiba" name="txt_waktu_tiba" required data-parsley-required-message="Data harus di isi !!!" placeholder="Ex: 06.00" value="<?php echo $waktu_tiba2 ?>"></input>
                                                 </div>
                                               </div>
                                               
@@ -958,7 +948,7 @@
                                   <div class="row">
                                     <div class="col-lg-6 mb-3">
                                       <label for="InputIdTerminal" class="form-label">Pemberangkatan</label>
-                                      <select class="form-select form-select-user select-md" aria-label=".form-select-sm example" required data-parsley-required-message="Harap pilih data terminal !!!" name="txt_pemberangkatan" >
+                                      <select class="form-select form-select-user select-md" aria-label=".form-select-sm example" required data-parsley-required-message="Data harus di isi !!!" name="txt_pemberangkatan" >
                                         <option disabled selected>Pilih Terminal</option>
                                         <?php
                                           $datas = $obj->lihatTerminal();
@@ -970,10 +960,11 @@
                                                 $dis = "disabled";
                                             }
                                             while($row=$datas->fetch(PDO::FETCH_ASSOC)){
-                                              $id_terminal = $row['id_terminal'];
-                                              $nama_terminal = $row['nama_terminal'];
+                                              $id_terminalt = $row['id_terminal'];
+                                              $nama_terminalt = $row['nama_terminal'];
+                                              $kabupatent = $row['kabupaten_terminal'];
                                           ?>
-                                          <option value="<?php echo $id_terminal;?>"><?php echo $nama_terminal;?></option>
+                                          <option value="<?php echo $id_terminalt;?>"><?php echo $nama_terminalt, ', ', $kabupatent;?></option>
                                         <?php 
                                         }}
                                         ?>
@@ -981,14 +972,14 @@
                                     </div>
                                     <div class="col-lg-6 mb-3">
                                       <label for="inputWaktuBerangkat" class="form-label">Waktu Berangkat</label>
-                                      <input type="time" class="form-control form-control-user2" id="inputWaktuBerangkat" name="txt_waktu_berangkat" placeholder="Ex: 00.00"></input>
+                                      <input type="time" class="form-control form-control-user2" id="inputWaktuBerangkat" name="txt_waktu_berangkat" required data-parsley-required-message="Data harus di isi !!!" placeholder="Ex: 00.00"></input>
                                     </div>
                                   </div>
 
                                   <div class="row">
                                     <div class="col-lg-6 mb-3">
                                       <label for="InputIdTerminal" class="form-label">Tujuan</label>
-                                      <select class="form-select form-select-user select-md" aria-label=".form-select-sm example" required data-parsley-required-message="Harap pilih data terminal !!!" name="txt_tujuan">
+                                      <select class="form-select form-select-user select-md" aria-label=".form-select-sm example" required data-parsley-required-message="Data harus di isi !!!" name="txt_tujuan">
                                         <option disabled selected>Pilih Terminal</option>
                                         <?php
                                           $datasd = $obj->lihatTerminal();
@@ -1000,10 +991,11 @@
                                                 $dis = "disabled";
                                             }
                                             while($row=$datasd->fetch(PDO::FETCH_ASSOC)){
-                                              $id_terminal = $row['id_terminal'];
-                                              $nama_terminal = $row['nama_terminal'];
+                                              $id_terminalst = $row['id_terminal'];
+                                              $nama_terminalst = $row['nama_terminal'];
+                                              $kabupatenst = $row['kabupaten_terminal'];
                                           ?>
-                                          <option value="<?php echo $id_terminal;?>"><?php echo $nama_terminal;?></option>
+                                          <option value="<?php echo $id_terminalst;?>"><?php echo $nama_terminalst, ', ', $kabupatenst;?></option>
                                         <?php 
                                         }}
                                         ?>
@@ -1011,7 +1003,7 @@
                                     </div>
                                     <div class="col-lg-6 mb-3">
                                       <label for="inputWaktuTiba" class="form-label">Waktu Tiba</label>
-                                      <input type="time" class="form-control form-control-user2" id="inputWaktuTiba" name="txt_waktu_tiba" placeholder="Ex: 06.00"></input>
+                                      <input type="time" class="form-control form-control-user2" id="inputWaktuTiba" name="txt_waktu_tiba" required data-parsley-required-message="Data harus di isi !!!" placeholder="Ex: 06.00"></input>
                                     </div>
                                   </div>
                                   
@@ -1119,11 +1111,11 @@
                                               <div class="row">
                                                 <div class="col-lg-6 mb-3">
                                                   <label for="inputNik" class="form-label">NIK Penumpang</label>
-                                                  <input type="number" class="form-control form-control-user2" id="inputNik" name="txt_nik_penumpang" placeholder="Ex: 3509030907020006" value="<?php echo $nik_penumpang2?>" placeholder="" readonly/>
+                                                  <input type="number" class="form-control form-control-user2" id="inputNik" name="txt_nik_penumpang" required data-parsley-required-message="Data harus di isi !!!" data-parsley-length="[15,16]" maxlength="16" data-parsley-number="1" placeholder="Ex: 3509030907020006" value="<?php echo $nik_penumpang2?>" placeholder="" readonly/>
                                                 </div>
                                                 <div class="col-lg-6 mb-3">
                                                   <label for="inputNamaPenumpang" class="form-label">Nama Penumpang</label>
-                                                  <input type="text" class="form-control form-control-user2" id="inputNamaPenumpang" name="txt_nama_penumpang" placeholder="Ex: Budi Santoso" value="<?php echo $nama_penumpang2?>"/>
+                                                  <input type="text" class="form-control form-control-user2" id="inputNamaPenumpang" name="txt_nama_penumpang" required data-parsley-required-message="Data harus di isi !!!" placeholder="Ex: Budi Santoso" value="<?php echo $nama_penumpang2?>"/>
                                                 </div>
                                                 
                                               </div>
@@ -1142,7 +1134,7 @@
                                                 </div>
                                                 <div class="col-lg-6 mb-3">
                                                   <label for="inputNoHp" class="form-label">No Handphone</label>
-                                                  <input type="number" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp_penumpang" placeholder="Ex: 085808241204" value="<?php echo $no_hp_penumpang2?>"/>
+                                                  <input type="number" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp_penumpang" placeholder="Ex: 085808241204" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $no_hp_penumpang2?>"/>
                                                 </div>
                                               </div>
                                               
@@ -1210,11 +1202,11 @@
                                   <div class="row">
                                     <div class="col-lg-6 mb-3">
                                       <label for="inputNikPenumpang" class="form-label">NIK Penumpang</label>
-                                      <input type="number" class="form-control form-control-user2" id="inputNikPenumpang" name="txt_nik_penumpang" placeholder="Ex: 3509030907020006" />
+                                      <input type="number" class="form-control form-control-user2" id="inputNikPenumpang" name="txt_nik_penumpang" placeholder="Ex: 3509030907020006" required data-parsley-required-message="Data harus di isi !!!" data-parsley-length="[15,16]" maxlength="16" data-parsley-number="1"/>
                                     </div>
                                     <div class="col-lg-6 mb-3">
                                       <label for="inputNamaPenumpang" class="form-label">Nama Penumpang</label>
-                                      <input type="text" class="form-control form-control-user2" id="inputNamaPenumpang" name="txt_nama_penumpang" placeholder="Ex: Budi Santoso" />
+                                      <input type="text" class="form-control form-control-user2" id="inputNamaPenumpang" name="txt_nama_penumpang" placeholder="Ex: Budi Santoso" required data-parsley-required-message="Data harus di isi !!!"/>
                                     </div>
                                   </div>
 
@@ -1232,7 +1224,7 @@
                                                 </div>
                                     <div class="col-lg-6 mb-3">
                                       <label for="inputNoHp" class="form-label">No Handphone</label>
-                                      <input type="number" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp_penumpang" placeholder="Ex: 085808241204" />
+                                      <input type="number" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp_penumpang" placeholder="Ex: 085808241204" required data-parsley-required-message="Data harus di isi !!!"/>
                                     </div>
                                   </div>
                                   
@@ -1265,5 +1257,54 @@
     <script src="plugin/js/javascript.js"></script>
     <script src="plugin/js/dataWilayah.js"></script>
     <script src="plugin/js/dataWilayahT.js"></script>
+    <script src="plugin/js/parsley.min.js"></script>
+    <script>
+      window.Parsley.addValidator("uppercase", {
+        requirementType: "number",
+        validateString: function (value, requirement) {
+          var uppercases = value.match(/[A-Z]/g) || [];
+          return uppercases.length >= requirement;
+        },
+        messages: {
+          en: "Password harus terdiri dari minimal (%s) huruf kapital !!!",
+        },
+      });
+
+      //has lowercase
+      window.Parsley.addValidator("lowercase", {
+        requirementType: "number",
+        validateString: function (value, requirement) {
+          var lowecases = value.match(/[a-z]/g) || [];
+          return lowecases.length >= requirement;
+        },
+        messages: {
+          en: "Password harus terdiri dari huruf abjad !!!",
+        },
+      });
+
+      //has number
+      window.Parsley.addValidator("number", {
+        requirementType: "number",
+        validateString: function (value, requirement) {
+          var numbers = value.match(/[0-9]/g) || [];
+          return numbers.length >= requirement;
+        },
+        messages: {
+          en: "Password harus terdiri dari minimal (%s) angka !!!",
+        },
+      });
+
+      //has special char
+      window.Parsley.addValidator("special", {
+        requirementType: "number",
+        validateString: function (value, requirement) {
+          var specials = value.match(/[^a-zA-Z0-9]/g) || [];
+          return specials.length >= requirement;
+        },
+        messages: {
+          en: "Your password must contain at least (%s) special characters.",
+        },
+      });
+    </script>
   </body>
 </html>

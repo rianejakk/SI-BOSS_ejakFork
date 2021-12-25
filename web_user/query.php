@@ -37,6 +37,13 @@ class crud extends koneksi {
         return $result;
     }
 
+    public function PencarianBus($c_pemberangkatan, $c_tujuan, $c_tanggal){
+        $sql = "SELECT id_bus, foto_bus, nama_bus, harga, status_bus, jumlah_kursi, tanggal_pemberangkatan, jenis, fasilitas, u1.nama_terminal pemberangkatan, u2.nama_terminal tujuan, waktu_berangkat, waktu_tiba FROM bus JOIN jenis_bus ON bus.id_jenis=jenis_bus.id_jenis JOIN rute ON bus.id_rute=rute.id_rute JOIN terminal u1 ON rute.pemberangkatan=u1.id_terminal JOIN terminal u2 ON rute.tujuan=u2.id_terminal WHERE pemberangkatan like '%".$c_pemberangkatan."%' AND tujuan like '%".$c_tujuan."%' OR tanggal_pemberangkatan like '%".$c_tanggal."%' ORDER BY id_bus ASC";
+        $result = $this->koneksi->prepare($sql);
+        $result->execute();
+        return $result;
+    }
+
     public function lihatTerminal(){
         $sql = "SELECT * FROM terminal";
         $result = $this->koneksi->prepare($sql);

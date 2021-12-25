@@ -122,7 +122,7 @@ $email = $_GET['nama'];
                                 
                                 
                                 <!-- <td><?php echo $id_pemesanan; ?></td> -->
-                                <td><?php echo $id_tiket; ?></td>
+                                <td>APBTRMLRT000<?php echo $id_tiket; ?></td>
                                 <!-- <td><?php echo $status;?></td> -->
                                 <td><?php echo $nama_user; ?></td>
                                 <!-- <td><?php echo $no_hp_user; ?></td> -->
@@ -132,7 +132,7 @@ $email = $_GET['nama'];
                                 <!-- <td>Rp. <?php echo $harga;?></td> -->
                                 <!-- <td><?php echo $tanggal_pemberangkatan?></td> -->
                                 <td><?php echo $waktu_pemesanan;?></td>
-                                <td><?php echo $jumlah_kursi_pesan;?></td>
+                                <td><?php echo $jumlah_kursi_pesan;?> kursi</td>
                                 <td>Rp. <?php echo $total_bayar;?></td>
                               </tr>
                               <?php
