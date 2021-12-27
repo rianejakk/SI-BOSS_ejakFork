@@ -26,7 +26,7 @@
           <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto">
               <li class="nav-item ms-3 me-2">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link active" aria-current="page" href="index.php">Home</a>
               </li>
               <li class="nav-item ms-3 me-2">
                 <a class="nav-link" href="#">Booking</a>
@@ -39,8 +39,12 @@
               </li>
             </ul>
             <div class="ms-auto myClass">
-              <button class="btn colorPrimary me-2 roundedBtn text-white" type="submit">Masuk</button>
-              <button class="btn btn-outlineCust roundedBtn" type="submit">Daftar</button>
+            <a href="login.php">
+                <button class="btn btn-outlineCust roundedBtn">Masuk</button>
+              </a>
+              <a href="daftar.php">
+                <button class="btn colorPrimary me-2 roundedBtn text-white">Daftar</button>
+              </a>
             </div>
           </div>
         </div>
@@ -92,12 +96,12 @@
                       </div>
                       <div class="row mb-5">
                         <div class="col-12 d-flex justify-content-center">
-                          <button type="submit" name="submit" class="btn colorPrimary text-white py-2 s14 rounded-pill resize">Login</button>
+                          <button type="submit" name="submit" class="btn colorPrimary text-white py-2 s14 rounded-pill resize">Daftar</button>
                         </div>
                         <div class="col-12 d-flex justify-content-center">
                           <p class="m-0 p-0 s12 pt-2">
                             Sudah punya Akun ?
-                            <a href="#" class="small s12 ps-0">Login disini !</a>
+                            <a href="login.php" class="small s12 ps-0">Login disini !</a>
                           </p>
                         </div>
                       </div>

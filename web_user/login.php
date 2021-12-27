@@ -120,7 +120,7 @@
           <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto">
               <li class="nav-item ms-3 me-2">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link active" aria-current="page" href="index.php">Home</a>
               </li>
               <li class="nav-item ms-3 me-2">
                 <a class="nav-link" href="#">Booking</a>
@@ -133,8 +133,12 @@
               </li>
             </ul>
             <div class="ms-auto myClass">
-              <button class="btn colorPrimary me-2 roundedBtn text-white" type="submit">Masuk</button>
-              <button class="btn btn-outlineCust roundedBtn" type="submit">Daftar</button>
+            <a href="login.php">
+                <button class="btn colorPrimary me-2 roundedBtn text-white">Masuk</button>
+              </a>
+              <a href="daftar.php">
+                <button class="btn btn-outlineCust roundedBtn">Daftar</button>
+              </a>
             </div>
           </div>
         </div>
@@ -207,7 +211,7 @@
                         <div class="col-12 d-flex justify-content-center">
                           <p class="m-0 p-0 s12 pt-2">
                             Belum punya Akun ?
-                            <a href="#" class="small s12 ps-0">Daftar disini !</a>
+                            <a href="daftar.php" class="small s12 ps-0">Daftar disini !</a>
                           </p>
                         </div>
                       </div>

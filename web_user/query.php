@@ -37,6 +37,13 @@ class crud extends koneksi {
         return $result;
     }
 
+    public function detailPemesananBus($id){
+        $sql = "SELECT id_bus, foto_bus, nama_bus, harga, status_bus, jumlah_kursi, tanggal_pemberangkatan, jenis, fasilitas, u1.nama_terminal pemberangkatan, u2.nama_terminal tujuan, waktu_berangkat, waktu_tiba FROM bus JOIN jenis_bus ON bus.id_jenis=jenis_bus.id_jenis JOIN rute ON bus.id_rute=rute.id_rute JOIN terminal u1 ON rute.pemberangkatan=u1.id_terminal JOIN terminal u2 ON rute.tujuan=u2.id_terminal WHERE id_bus like '%".$id."%' ORDER BY bus.id_bus ASC";
+        $result = $this->koneksi->prepare($sql);
+        $result->execute();
+        return $result;
+    }
+
     public function PencarianBus($c_pemberangkatan, $c_tujuan, $c_tanggal){
         $sql = "SELECT id_bus, foto_bus, nama_bus, harga, status_bus, jumlah_kursi, tanggal_pemberangkatan, jenis, fasilitas, u1.nama_terminal pemberangkatan, u2.nama_terminal tujuan, waktu_berangkat, waktu_tiba FROM bus JOIN jenis_bus ON bus.id_jenis=jenis_bus.id_jenis JOIN rute ON bus.id_rute=rute.id_rute JOIN terminal u1 ON rute.pemberangkatan=u1.id_terminal JOIN terminal u2 ON rute.tujuan=u2.id_terminal WHERE pemberangkatan like '%".$c_pemberangkatan."%' AND tujuan like '%".$c_tujuan."%' OR tanggal_pemberangkatan like '%".$c_tanggal."%' ORDER BY id_bus ASC";
         $result = $this->koneksi->prepare($sql);
@@ -234,13 +241,14 @@ class crud extends koneksi {
         }
     }
 
-    public function insertPemesanan($nik_user, $nik_penumpang, $waktu_pemesanan, $total_bayar){
+    public function insertPemesanan($nik_user, $id_bus, $waktu_pemesanan, $jumlah_kursi_pesan, $total_bayar){
         try{
-            $sql ="INSERT INTO pemesanan(nik_user, nik_penumpang, waktu_pemesanan, total_bayar) VALUES (:nik_user, :nik_penumpang, :waktu_pemesanan, :total_bayar)";
+            $sql ="INSERT INTO pemesanan(nik_user, id_bus, waktu_pemesanan, jumlah_kursi_pesan, total_bayar) VALUES (:nik_user, :id_bus, :waktu_pemesanan, :jumlah_kursi_pesan, :total_bayar)";
             $result = $this->koneksi->prepare($sql);
             $result->bindParam(":nik_user", $nik_user);
-            $result->bindParam(":nik_penumpang", $nik_penumpang);
+            $result->bindParam(":id_bus", $id_bus);
             $result->bindParam(":waktu_pemesanan", $waktu_pemesanan);
+            $result->bindParam(":jumlah_kursi_pesan", $jumlah_kursi_pesan);
             $result->bindParam(":total_bayar", $total_bayar);
             $result->execute();
             return true;

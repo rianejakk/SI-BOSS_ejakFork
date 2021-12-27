@@ -17,6 +17,8 @@
     $hasil_rupiah = "Rp " . number_format($angka,0,',','.');
     return $hasil_rupiah;
   }
+
+  
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -178,7 +180,7 @@
                       <span><b>Filter</b></span>
                     </div>
                     <div class="col-6 d-flex justify-content-end">
-                      <button class="btn colorPrimary text-white roundedBtn">Terapkan</button>
+                      <button type="submit" name="simpan" class="btn colorPrimary text-white roundedBtn">Terapkan</button>
                     </div>
                   </div>
                   <div class="row mb-2">
@@ -268,83 +270,93 @@
                   ?>
               <div class="panel-data bg-white py-2 myRounded shadow mod mb-2 d-flex">
                 <div class="container">
+                <form action="detailPemesanan.php" method="POST">
                   <div class="row myrowData h-100">
+                  
                     <div class="col-6 pt-2">
-                      <h3 class="m-0"><b><?php echo ucwords($namaBus) ?></b></h3>
-                      <p class="m-0"><?php echo ucwords($jenis_bus) ?></p>
+                    <div class="form-group" hidden>
+                                                <label for="InputId" class="form-label">Id</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputId" name="txt_id_bus" value="<?php echo $idBus?>" placeholder="" readonly/>
+                                              </div>
+                      <h3 class="m-0" name="txt_nama_bus"><b><?php echo ucwords($namaBus) ?></b></h3>
+                      <p class="m-0" name="txt_jenis_bus"><?php echo ucwords($jenis_bus) ?></p>
                     </div>
                     <div class="col-6 pt-2">
-                      <h3 class="m-0 d-flex justify-content-end font-RobotoBold s22 colorPrimaryText">
+                      <h3 class="m-0 d-flex justify-content-end font-RobotoBold s22 colorPrimaryText" name="txt_harga_bus">
                         <?php echo rupiah($harga) ?>
                         <span class="font-Roboto s14 align-self-center colorBlueDarkText">/Kursi</span>
                       </h3>
-                      <p class="m-0 d-flex justify-content-end font-RobotoBold s14">0/<?php echo $JKursi ?></p>
+                      <p class="m-0 d-flex justify-content-end font-RobotoBold s14" name="txt_jumlah_kursi_bus"><?php echo $JKursi ?> Kursi</p>
                     </div>
                     <div class="col-2 py-2">
-                      <img class="img-fluid img-bus rounded" src="assets/img/image 3.jpg" alt="icoBus" />
-                    </div>
+                      <img src="../Web Admin/fotoBus/<?php echo $fotoBus; ?>" class='img-fluid'>
+                      </div>
                     <div class="col-10 py-2">
-                      <div class="row">
+                    <div class="row">
                         <div class="col-3">
-                          <p class="m-0"><span class="Waktu"><?php echo date("H:i",strtotime($waktu_berangkat)) ?></span></p>
-                          <p class="m-0"><?php echo ucwords($pemberangkatan) ?></p>
-                          <span class="badge bg-warning text-dark"><?php echo date("d-m-Y",strtotime($tgl_brngkt)) ?></span>
+                          <p class="m-0"><span class="Waktu" name="txt_waktu_berangkat_bus"><?php echo date("H:i",strtotime($waktu_berangkat)) ?></span></p>
+                          <p class="m-0" name="txt_pemberangkatan_bus"><?php echo ucwords($pemberangkatan) ?></p>
+                          <span class="badge bg-warning text-dark" name="txt_tanggal_berangkat_bus"><?php echo date("d-m-Y",strtotime($tgl_brngkt)) ?></span>
                         </div>
                         <div class="col-1 d-flex justify-content-center align-items-center">
                           <i class="fas fa-arrow-right"></i>
                         </div>
                         <div class="col-3">
-                          <p class="m-0"><span class="Waktu"><?php echo date("H:i",strtotime($waktu_tiba)) ?></span></p>
-                          <p class="m-0"><?php echo ucwords($tujuan) ?></p>
+                          <p class="m-0"><span class="Waktu" name="txt_waktu_tiba_bus"><?php echo date("H:i",strtotime($waktu_tiba)) ?></span></p>
+                          <p class="m-0" name="txt_tujuan_bus"><?php echo ucwords($tujuan) ?></p>
                         </div>
                         <div class="col-2 border border-start border-bottom-0 border-top-0 border-end-0">
                           <p class="font-Roboto s12 m-0">Estimasi</p>
                           <p class="font-RobotoBold s18">7 jam</p>
                         </div>
                         <div class="col-3 border border-start border-bottom-0 border-top-0 border-end-0 d-flex justify-content-start align-items-center">
+                        
                           <a href="">
-                            <button class="btn colorYellow roundedBtn text-white font-RobotoBold btnPesan">Pesan</button>
+                            <button type="submit" name="submit" class="btn colorYellow roundedBtn text-white font-RobotoBold btnPesan">Pesan</button>
                           </a>
+                
                         </div>
                       </div>
-                      <div class="row mt-2 info">
+                      
+                    </div>
+                    
+                  </div>
+                  </form>
+                  <div class="row mt-2 info">
                         <div class="col-4 text-end">
-                          <button class="colorPrimaryText btn s14" id="shadow1" data-bs-toggle="collapse" data-bs-target="#detailBus" aria-expanded="false" aria-controls="detailBus">Detail Bus</button>
+                          <button class="colorPrimaryText btn s14" id="shadow1" data-bs-toggle="collapse" data-bs-target="#detailBus<?php echo $idBus ?>" aria-expanded="false" aria-controls="detailBus">Detail Bus</button>
                         </div>
                         <div class="col-4 text-center">
-                          <button class="colorPrimaryText btn s14" id="shadow2" data-bs-toggle="collapse" data-bs-target="#detailRute" aria-expanded="false" aria-controls="detailRute">Detail Rute</button>
+                          <button class="colorPrimaryText btn s14" id="shadow2" data-bs-toggle="collapse" data-bs-target="#detailRute<?php echo $idBus ?>" aria-expanded="false" aria-controls="detailRute">Detail Rute</button>
                         </div>
                         <div class="col-4 text-start">
-                          <button class="colorPrimaryText btn s14" id="shadow3" data-bs-toggle="collapse" data-bs-target="#ulasan" aria-expanded="false" aria-controls="ulasan">Ulasan</button>
+                          <button class="colorPrimaryText btn s14" id="shadow3" data-bs-toggle="collapse" data-bs-target="#ulasan<?php echo $idBus ?>" aria-expanded="false" aria-controls="ulasan">Ulasan</button>
                         </div>
                       </div>
-                    </div>
-                  </div>
                 </div>
               </div>
 
-              <div id="detailBus" class="collapse">
+              <div id="detailBus<?php echo $idBus ?>" class="collapse">
                 <div class="panel-data2 bg-white py-2 myRounded transitionShadow mb-1">
                   <div class="container">
-                    <p class="pt-3 font-RobotoBold mb-2">Jenis Bus : <span class="font-Roboto">Eknonomi</span></p>
-                    <p class="font-RobotoBold mb-2">Kapasitas Kursi : <span class="font-Roboto">60 Kursi</span></p>
+                    <p class="pt-3 font-RobotoBold mb-2">Jenis Bus : <span class="font-Roboto"><?php echo $jenis_bus?></span></p>
+                    <p class="font-RobotoBold mb-2">Kapasitas Kursi : <span class="font-Roboto"><?php echo $JKursi?> Kursi</span></p>
                     <p class="font-RobotoBold mb-2">
-                      Fasilitas bus :
-                      <span class="font-Roboto"> - </span>
+                      Fasilitas bus : <span class="font-Roboto"><?php echo $fasilitas?></span>
                     </p>
                   </div>
                 </div>
               </div>
 
-              <div id="detailRute" class="collapse">
+              <div id="detailRute<?php echo $idBus ?>" class="collapse">
                 <div class="panel-data2 bg-white py-2 myRounded transitionShadow mb-1 shadow-none">
                   <div class="container">
-                    <p class="alert alert-danger m-0">Detail Rute Belum Tersedia !</p>
+                    <p class="alert alert-danger m-0"><?php echo $pemberangkatan, " - ", $tujuan;?></p>
                   </div>
                 </div>
               </div>
 
-              <div id="ulasan" class="collapse">
+              <div id="ulasan<?php echo $idBus ?>" class="collapse">
                 <div class="panel-data2 bg-white py-2 myRounded transitionShadow mb-1 shadow-none">
                   <div class="container">
                     <p class="alert alert-danger m-0">Ulasan Belum Tersedia !</p>
