@@ -289,7 +289,7 @@
                       <p class="m-0 d-flex justify-content-end font-RobotoBold s14" name="txt_jumlah_kursi_bus"><?php echo $JKursi ?> Kursi</p>
                     </div>
                     <div class="col-2 py-2">
-                      <img src="../Web Admin/fotoBus/<?php echo $fotoBus; ?>" class='img-fluid'>
+                      <img src="../assets/fotoBus/<?php echo $fotoBus; ?>" class='img-fluid'>
                       </div>
                     <div class="col-10 py-2">
                     <div class="row">

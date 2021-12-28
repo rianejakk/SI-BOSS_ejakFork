@@ -1,3 +1,4 @@
+/* General */
 *,
 *::before,
 *::after {
@@ -60,7 +61,7 @@ body {
 .font-Roboto {
   font-family: Roboto-Regular !important;
 }
-.font-RobotoSemiBold{
+.font-RobotoSemiBold {
   font-family: Roboto-Medium !important;
 }
 .font-RobotoBold {
@@ -75,7 +76,7 @@ body {
 .font-Italiano {
   font-family: Italianno !important;
 }
-.s10{
+.s10 {
   font-size: 10px !important;
 }
 .s12 {
@@ -102,7 +103,6 @@ body {
 .s26 {
   font-size: 26px !important;
 }
-
 .roundedBtn {
   width: 80px;
   border-radius: 20px;
@@ -113,17 +113,31 @@ body {
   border-radius: 12px;
   font-size: 14px !important;
 }
+/* =============================== */
 
 /* Custom Index */
-li.nav-item a.nav-link.active {
+nav {
+  transition: linear 0.4s !important;
+}
+nav.bgNav {
+  background-color: white !important;
+  transition: linear 0.4s !important;
+}
+
+nav li.nav-item a.nav-link.active {
   font-family: Roboto-Bold !important;
   background-image: linear-gradient(to right, rgb(28, 95, 238), rgb(28, 95, 238));
   background-position: bottom center;
   background-repeat: no-repeat;
   background-size: 100% 2px;
 }
-
-ul li {
+nav.landingNav li.nav-item a.nav-link.active {
+  background-image: linear-gradient(to right, rgb(255, 255, 255), rgb(255, 255, 255));
+}
+nav.landingNav ul li {
+  background-image: linear-gradient(to right, rgb(255, 255, 255), rgb(255, 255, 255));
+}
+nav ul li {
   display: inline-block;
   background-image: linear-gradient(to right, rgb(28, 95, 238), rgb(28, 95, 238));
   background-position: bottom center;
@@ -132,12 +146,24 @@ ul li {
   transition: background-size 0.3s ease;
 }
 
-ul li:hover {
+nav ul li:hover {
   background-size: 100% 2px;
-  font-weight: bold;
+  font-family: Roboto-Bold !important;
   color: #527bdd !important ;
 }
-
+.b-cust {
+  color: #fff;
+  border-color: #ffffff;
+}
+#custBtnLogin.b-cust:hover {
+  background-color: #527bdd;
+  border-color: #527bdd;
+}
+#custBtnDaftar.b-cust:hover {
+  color: #fff;
+  background-color: #e54b4d;
+  border-color: #e54b4d;
+}
 .btn-outlineCust {
   color: #527bdd;
   border-color: #527bdd;
@@ -154,14 +180,14 @@ ul li:hover {
 }
 
 .carousel-item {
-  height: 89.9vh;
+  height: 100vh;
 }
 .banner {
   -webkit-background-size: cover;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  height: 89.9vh;
+  height: 100%;
 }
 
 .carousel-item::before {
@@ -173,31 +199,33 @@ ul li:hover {
   right: 0;
   bottom: 0;
   background-color: #000;
-  opacity: 0.5;
+  opacity: 0.55;
 }
 
 .carousel-caption {
   position: absolute;
-  top: 105px;
+  top: 60px;
 }
 .carousel-caption h2 {
   font-family: Vacations;
   font-size: 72px;
+  margin-top: 40px;
 }
 .carousel-caption p {
   position: absolute;
-  top: 280px;
+  top: 420px;
   font-size: 16px;
   left: 0;
   right: 0;
 }
 .search {
   position: absolute;
-  top: 344px;
+  top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 20;
+  z-index: 2;
+  margin-top: 80px;
   margin-left: 18%;
   margin-right: 18%;
   transition: 0.4s ease-in-out;
@@ -225,6 +253,12 @@ section .row.myrow1 p {
   font-size: 14px;
   line-height: 1.5;
 }
+
+.bg-primary-gradient {
+  background: rgb(82,123,221);
+  background: linear-gradient(45deg, rgba(82,123,221,1) 36%, rgba(36,194,236,1) 100%);
+}
+
 
 @-webkit-keyframes move2 {
   0% {
@@ -416,41 +450,41 @@ input[type="search"]:focus {
   height: 100%;
   box-sizing: border-box;
 }
-@media only screen and (max-width: 1400px)  {
-  .custColor{  
+@media only screen and (max-width: 1400px) {
+  .custColor {
     top: 455px !important;
     transition: 0.4s ease-in-out;
   }
 }
-@media only screen and (max-width: 1199.9px)  {
+@media only screen and (max-width: 1199.9px) {
   .panel-banner1 {
     position: relative;
     margin-right: -95px !important;
   }
-  .panel-banner2{
+  .panel-banner2 {
     padding-left: 125px !important;
     padding-right: 28px !important;
   }
-  .mybgs{
+  .mybgs {
     width: 58% !important;
     box-sizing: border-box !important;
     top: 88px;
     transition: 0.4s ease-in-out;
   }
-  .custColor{  
+  .custColor {
     top: 455px !important;
     transition: 0.4s ease-in-out;
   }
 }
 @media only screen and (max-width: 991.98px) {
-  .panel-banner2{
+  .panel-banner2 {
     padding-left: 3rem !important;
     padding-right: 3rem !important;
     transition: 0.4s ease-in-out;
   }
 }
 @media only screen and (max-width: 767.98px) {
-  li.nav-item a.nav-link.active {
+  nav li.nav-item a.nav-link.active {
     font-family: Roboto-Bold !important;
     background-image: linear-gradient(to right, rgb(28, 95, 238), rgb(28, 95, 238));
     background-position: bottom center;
@@ -458,7 +492,7 @@ input[type="search"]:focus {
     background-size: 0% 2px !important;
   }
 
-  ul li {
+  nav ul li {
     display: inline-block;
     background-image: linear-gradient(to right, rgb(28, 95, 238), rgb(28, 95, 238));
     background-position: bottom center;
@@ -467,7 +501,7 @@ input[type="search"]:focus {
     transition: background-size 0.3s ease;
   }
 
-  ul li:hover {
+  nav ul li:hover {
     background-size: 0% 2px;
     font-weight: bold;
     color: #527bdd !important ;
@@ -611,19 +645,18 @@ input[type="search"]:focus {
 
 /* Gradent to light */
 .bg-gradient-blue1 {
-  background: -webkit-gradient(linear,left top,left bottom,from(#5b73e8),to(rgba(91,115,232,.5)))!important;
-  background: linear-gradient(to bottom,#5b73e8,rgba(91,115,232,.5))!important;
+  background: -webkit-gradient(linear, left top, left bottom, from(#5b73e8), to(rgba(91, 115, 232, 0.5))) !important;
+  background: linear-gradient(to bottom, #5b73e8, rgba(91, 115, 232, 0.5)) !important;
 }
 .bg-gradient-blue2 {
-  background: -webkit-gradient(linear,left top,left bottom,from(#50a5f1),to(rgba(80,165,241,.5)))!important;
-  background: linear-gradient(to bottom,#50a5f1,rgba(80,165,241,.5))!important;
+  background: -webkit-gradient(linear, left top, left bottom, from(#50a5f1), to(rgba(80, 165, 241, 0.5))) !important;
+  background: linear-gradient(to bottom, #50a5f1, rgba(80, 165, 241, 0.5)) !important;
 }
 
-.myshadow{
+.myshadow {
   box-shadow: 3px 4px 14px rgba(0 0 0 / 30%);
-  
 }
-.panel-banner2{
+.panel-banner2 {
   padding-left: 144px;
   padding-right: 28px;
   transition: 0.4s ease-in-out;
@@ -639,68 +672,68 @@ input.form-control-user2 {
   border-radius: 8px;
   padding: 12px;
 }
-label.colorBold{
+label.colorBold {
   color: rgb(94, 94, 94) !important;
 }
-button.resize{
+button.resize {
   display: block !important;
   width: 160px !important;
 }
 
-.sh-footer{
+.sh-footer {
   box-shadow: 0px -8px 14px rgba(0 0 0 / 15%);
 }
-.mybg{
+.mybg {
   position: relative;
   top: -9px;
   transition: 0.4s ease-in-out;
 }
 
-.outline{
+.outline {
   border: none;
   outline: none;
   text-decoration: none;
 }
-i.icofont-whatsapp:hover{
-  color: #3EBA4E;
+i.icofont-whatsapp:hover {
+  color: #3eba4e;
 }
-i.icofont-instagram:hover{
-  background-image: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+i.icofont-instagram:hover {
+  background-image: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
   background-size: 100%;
   background-repeat: repeat;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; 
+  -webkit-text-fill-color: transparent;
   -moz-background-clip: text;
   -moz-text-fill-color: transparent;
 }
-i.fa-google:hover{
-  color: #CA473A;
+i.fa-google:hover {
+  color: #ca473a;
 }
-.custColor{  
+.custColor {
   position: absolute;
   z-index: 1;
   width: 98.2%;
   height: 102px;
   top: 480px;
   border-radius: 0px 0 12px 12px;
-  background: linear-gradient(360deg, rgba(255,255,255,1) 28%, rgba(36,194,236,0) 100%);
+  background: linear-gradient(360deg, rgba(255, 255, 255, 1) 28%, rgba(36, 194, 236, 0) 100%);
 }
-.shadow-Cust{
+.shadow-Cust {
   box-shadow: 0px 15px 18px -12px rgba(0 0 0 / 20%);
   transition: 0.4s ease-in-out;
 }
 
-.custom-panel{
+.custom-panel {
   position: absolute;
   z-index: 1;
   transition: 0.4s ease-in-out;
 }
-.custom-panel2{
+.custom-panel2 {
   position: absolute !important;
   top: 18px !important;
   transition: 0.4s ease-in-out;
 }
-.mybgs{
+.mybgs {
   width: 60%;
   position: relative;
   z-index: 2;
@@ -714,53 +747,51 @@ a.small:hover {
   font-weight: bold;
   text-decoration: underline;
 }
-section .custom-panel .input-group{
+section .custom-panel .input-group {
   border: 1px solid #ced4da;
   border-radius: 8px;
 }
-section .custom-panel .input-group:focus-within{
+section .custom-panel .input-group:focus-within {
   border-color: #527bdd;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 4px #527bdd;
   outline: 0 none;
   transition: 0.4s ease-in-out;
 }
-section .custom-panel span.input-group-text{
+section .custom-panel span.input-group-text {
   background-color: white;
   border-radius: 0 8px 8px;
   border: 0;
   cursor: pointer;
 }
-section .custom-panel .input-group input{
+section .custom-panel .input-group input {
   border: 0;
   box-shadow: none;
   -webkit-text-securit: square;
 }
-#parsley-id-7{
+#parsley-id-7 {
   display: inline-block !important;
   float: left;
 }
-.show-hideWithText{
+.show-hideWithText {
   display: inline-block !important;
   float: right;
 }
 
-
 /* Daftar */
-.panel-banner{
+.panel-banner {
   position: absolute;
   z-index: 1;
   width: 97.9%;
   background-image: url(../assets/img/bg-daftar-Ex.png);
   background-size: cover;
-
 }
-.panel-form{
+.panel-form {
   position: relative;
   z-index: 2;
 }
-.whiteblur{
-background-color: rgba(255, 255, 255, 0.815);
--webkit-backdrop-filter: blur(8px);
+.whiteblur {
+  background-color: rgba(255, 255, 255, 0.815);
+  -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   box-shadow: -12px 0px 18px -8px rgba(0 0 0 / 12%);
 }
