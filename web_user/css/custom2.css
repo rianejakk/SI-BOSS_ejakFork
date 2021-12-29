@@ -632,6 +632,8 @@ input[type="search"]:focus {
   position: relative;
   z-index: 10;
   height: 100%;
+  padding-top: 25px;
+  padding-bottom: 85px;
 }
 .panel-banner1 {
   position: relative;
@@ -793,14 +795,26 @@ section .custom-panel .input-group input {
   display: inline-block !important;
   float: right;
 }
+.show-hideWithText2 {
+  display: inline-block !important;
+  float: right;
+  outline: none !important;
+  border: none !important;
+  cursor: pointer;
+}
 
 /* Daftar */
-.panel-banner {
+.paneldaftar{
+  position: relative;
+}
+.panel-bgDaftar {
   position: absolute;
-  z-index: 1;
   width: 97.9%;
+  height: 100%;
   background-image: url(../assets/img/bg-daftar-Ex.png);
   background-size: cover;
+  background-position: -230px 0px;
+  overflow: hidden;
 }
 .panel-form {
   position: relative;
