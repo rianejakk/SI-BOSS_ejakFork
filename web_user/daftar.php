@@ -73,15 +73,15 @@
                     </div>
                     <div class="row g-1">
                       <div class="col-md-6 ">
-                        <div class="mb-3">
-                          <label for="password-input" class="form-label font-RobotoSemiBold colorBold s12">Kata sandi</label>
-                          <input type="password" class="form-control form-control-user2" id="password-input" name="txt_password" required data-parsley-required-message="Kata sandi tidak boleh kosong !!!" placeholder="********" data-parsley-length="[8,16]" maxlength="16" data-parsley-length-message="Harus disiisi 8 sampai 16 karakter !!!" aria-label="password" />
+                        <div class="mb-2">
+                          <label for="password-input" class="form-label font-RobotoSemiBold colorBold s12">Kata Sandi</label>
+                          <input type="password" class="form-control form-control-user2" id="password-input" name="txt_password" required data-parsley-required-message="Kata sandi harus di isi !!!" placeholder="********" data-parsley-length="[8,16]" maxlength="16" data-parsley-length-message="Harus disiisi 8 sampai 16 karakter !!!" data-parsley-uppercase="1" data-parsley-lowercase="1" data-parsley-number="1" />
                         </div>
                       </div>
                       <div class="col-md-6">
-                        <div class="mb-3">
+                        <div class="mb-2">
                           <label for="Kpassword-input" class="form-label font-RobotoSemiBold colorBold s12">Konfirmasi Kata sandi</label>
-                          <input type="password" class="form-control form-control-user2" id="Kpassword-input" name="txt_password" required data-parsley-required-message="Harap konfirmasi kata sandi !!!" placeholder="********" data-parsley-length="[8,16]" maxlength="16" data-parsley-length-message="Harus disiisi 8 sampai 16 karakter !!!" aria-label="password" />
+                          <input type="password" class="form-control form-control-user2" id="Kpassword-input" name="txt_pass" required data-parsley-required-message="Masukan ulang kata sandi !!!" data-parsley-equalto="#password-input"  data-parsley-equalto-message="Kata sandi tidak cocok" placeholder="********" data-parsley-length="[8,16]" maxlength="16" data-parsley-length-message="Harus disiisi 8 sampai 16 karakter !!!" />
                         </div>
                       </div>
                     </div>
@@ -207,6 +207,54 @@
       } else {
         input.attr("type", "password");
       }
+    });
+  </script>
+  <script>
+    window.Parsley.addValidator("uppercase", {
+      requirementType: "number",
+      validateString: function(value, requirement) {
+        var uppercases = value.match(/[A-Z]/g) || [];
+        return uppercases.length >= requirement;
+      },
+      messages: {
+        en: "Password harus terdiri dari minimal (%s) huruf kapital !!!",
+      },
+    });
+
+    //has lowercase
+    window.Parsley.addValidator("lowercase", {
+      requirementType: "number",
+      validateString: function(value, requirement) {
+        var lowecases = value.match(/[a-z]/g) || [];
+        return lowecases.length >= requirement;
+      },
+      messages: {
+        en: "Password harus terdiri dari huruf abjad !!!",
+      },
+    });
+
+    //has number
+    window.Parsley.addValidator("number", {
+      requirementType: "number",
+      validateString: function(value, requirement) {
+        var numbers = value.match(/[0-9]/g) || [];
+        return numbers.length >= requirement;
+      },
+      messages: {
+        en: "Password harus terdiri dari minimal (%s) angka !!!",
+      },
+    });
+
+    //has special char
+    window.Parsley.addValidator("special", {
+      requirementType: "number",
+      validateString: function(value, requirement) {
+        var specials = value.match(/[^a-zA-Z0-9]/g) || [];
+        return specials.length >= requirement;
+      },
+      messages: {
+        en: "Your password must contain at least (%s) special characters.",
+      },
     });
   </script>
 </body>
