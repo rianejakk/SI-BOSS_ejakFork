@@ -196,10 +196,7 @@ $sesID = $_SESSION['id'];
 
               <ul class="dropdown-menu border-0 dropdown-menu-end shadow" aria-labelledby="dropdownProfile">
               <li>
-                  <a href="#" class="dropdown-item">
-                    <a data-bs-toggle="modal" data-bs-target="#editDataAdministrator<?php echo $sesID ?>" ><i class="las la-user mr-2" ></i>My Profile
-                    </a>
-                  </a>
+                  <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editDataAdministrator<?php echo $sesID ?>" ><i class="las la-user mr-2" ></i>My Profile</a>
                 </li>
                 <!-- <li>
                   <a class="dropdown-item" href="#"> <i class="las la-list-alt mr-2"></i> Activity Log </a>
@@ -317,11 +314,106 @@ $sesID = $_SESSION['id'];
                                     </div>
                                   </div>
 
+                                  <!-- Content Row -->
+      <div class="row m-0 px-3 rowCustom">
+        <!-- Card Total Data Bus -->
+        <div class="col-xl-3 col-md-6 mb-4">
+          <div class="card border-0 gradientBlue shadow h-100 py-2 rounded">
+            <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                  <div class="RobotoReg14 text-white">Data Bus</div>
+                  <div class="RobotoBold18 text-white">
+                  <?php
+                        $data = $obj->lihatBus();
+                        $num = $data->rowCount();
+                        echo $num;
+                      ?><span> Bus</span></div>
+                </div>
+                <div class="col-auto">
+                  <img src="img/ico/icons8_Shuttle_bus_50px.png" alt="logoBus" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card Total Data Driver -->
+        <div class="col-xl-3 col-md-6 mb-4">
+          <div class="card border-0 gradientPink shadow h-100 py-2 rounded">
+            <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                  <div class="RobotoReg14 text-white">Data Driver</div>
+                  <div class="RobotoBold18 text-white">(Belum Tersedia)</div>
+                </div>
+                <div class="col-auto">
+                  <img src="img/ico/icons8_driver_50px.png" alt="logoDriver" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card Total Data Pemesanan -->
+        <div class="col-xl-3 col-md-6 mb-4">
+          <div class="card border-0 gradientYellow shadow h-100 py-2 rounded">
+            <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                  <div class="RobotoReg14 text-white">Data Pemesanan</div>
+                  <div class="RobotoBold18 text-white">
+                  <?php
+                        $data = $obj->lihatPemesanan();
+                        $num = $data->rowCount();
+                        echo $num;
+                      ?> Pesanan</div>
+                </div>
+                <div class="col-auto">
+                  <img src="img/ico/icons8_bus_tickets_50px.png" alt="logoTicket" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card Total Data Penghasilan -->
+        <div class="col-xl-3 col-md-6 mb-4">
+          <div class="card border-0 gradientGreen shadow h-100 py-2 rounded">
+            <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                  <div class="RobotoReg14 text-white">Total Penghasilan</div>
+                  <div class="RobotoBold18 text-white"><span>Rp.</span>
+                    <?php
+                      $data = $obj->lihatPemesanan();
+                                $no = 1;
+                                if($data->rowCount()>0){
+                                  if($sesLvl == 1){
+                                      $dis = "";
+                                  } else{
+                                      $dis = "disabled";
+                                  }
+                                  while($row=$data->fetch(PDO::FETCH_ASSOC)){
+                                    $no++;
+                                    $hargatotal[$no] = $row['total_bayar'];
+                                  }
+                                  echo "".array_sum($hargatotal);
+                                  }?></div>
+                </div>
+                <div class="col-auto">
+                  <img src="img/ico/icons8_add_dollar_45px.png" alt="logoPay" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- Content Row -->
       <div class="row m-0 px-3 rowCustom">
       <div>
-      
-              <form action="cetakLaporanPeriode.php" method="POST">
+        <form action="cetakLaporanPeriode.php" method="POST">
                 <table>
                 <div class="row">
                                               <div class="col-lg-2 mb-3">
@@ -341,10 +433,7 @@ $sesID = $_SESSION['id'];
                 </table>
               </form>
             </div>
-      </div>
-      <div class="row m-0 px-3 rowCustom">
       <div>
-      
               <form action="cetakLaporanHarian.php" method="POST">
                 <table>
                 <div class="row">
@@ -359,19 +448,13 @@ $sesID = $_SESSION['id'];
                                               <div class="col-lg-3 mb-3">
                                               <button type="submit" class="btn text-white colorPrimary roundedBtn" name="simpan">Harian</button>
                                                 </div>
-                                              
-                                                
                                             </div>
                   <td>
                     </td>
                 </table>
               </form>
             </div>
-      </div>
-
-      <div class="row m-0 px-3 rowCustom">
       <div>
-      
               <form action="cetakLaporanMingguan.php" method="POST">
                 <table>
                 <div class="row">
@@ -386,19 +469,13 @@ $sesID = $_SESSION['id'];
                                               <div class="col-lg-3 mb-3">
                                               <button type="submit" class="btn text-white colorPrimary roundedBtn" name="simpan">Mingguan</button>
                                                 </div>
-                                              
-                                                
                                             </div>
                   <td>
                     </td>
                 </table>
               </form>
             </div>
-      </div>
-
-      <div class="row m-0 px-3 rowCustom">
       <div>
-      
               <form action="cetakLaporanBulanan.php" method="POST">
                 <table>
                 <div class="row">
@@ -413,19 +490,13 @@ $sesID = $_SESSION['id'];
                                               <div class="col-lg-3 mb-3">
                                               <button type="submit" class="btn text-white colorPrimary roundedBtn" name="simpan">Bulanan</button>
                                                 </div>
-                                              
-                                                
                                             </div>
                   <td>
                     </td>
                 </table>
               </form>
             </div>
-      </div>
-
-      <div class="row m-0 px-3 rowCustom">
       <div>
-      
               <form action="cetakLaporanTahunan.php" method="POST">
                 <table>
                 <div class="row">
@@ -440,8 +511,6 @@ $sesID = $_SESSION['id'];
                                               <div class="col-lg-3 mb-3">
                                               <button type="submit" class="btn text-white colorPrimary roundedBtn" name="simpan">Tahunan</button>
                                                 </div>
-                                              
-                                                
                                             </div>
                   <td>
                     </td>
@@ -449,6 +518,9 @@ $sesID = $_SESSION['id'];
               </form>
             </div>
       </div>
+
+      
+      
       <!-- Panel -->
       <div class="row g-2 m-0 px-4">
         <div class="col-lg-12">

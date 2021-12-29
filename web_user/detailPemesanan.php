@@ -212,7 +212,7 @@
                     <p class="m-0 s16"><b>Data Pemesanan</b></p>
                   </div>
                   <div class="card-body">
-                    <form action="login.php" method="POST">
+                    <form action="pesan.php" method="POST">
                       <div class="row">
                         <div class="col-lg-12 mb-3">
                           <label for="IDPemesanan" class="form-label">Id Pemesanan</label>

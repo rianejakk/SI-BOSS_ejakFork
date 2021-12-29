@@ -193,10 +193,7 @@ $sesFoto = $_SESSION['foto'];
 
               <ul class="dropdown-menu border-0 dropdown-menu-end shadow" aria-labelledby="dropdownProfile">
                 <li>
-                  <a href="#" class="dropdown-item">
-                    <a data-bs-toggle="modal" data-bs-target="#editDataAdministrator<?php echo $sesID ?>" ><i class="las la-user mr-2" ></i>My Profile
-                    </a>
-                  </a>
+                  <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editDataAdministrator<?php echo $sesID ?>" ><i class="las la-user mr-2" ></i>My Profile</a>
                 </li>
                 <!-- <li>
                   <a class="dropdown-item" href="#"> <i class="las la-list-alt mr-2"></i> Activity Log </a>
@@ -213,7 +210,7 @@ $sesFoto = $_SESSION['foto'];
         </nav>
       </div>
 
-      Profile Modal
+      <!-- Profile Modal -->
       <div id="editDataAdministrator<?php echo $sesID ?>" class="modal fade">
                                     <div class="modal-dialog modal-lg">
                                       <div class="modal-content modal-edit">
