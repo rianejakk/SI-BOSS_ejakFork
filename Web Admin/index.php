@@ -13,9 +13,14 @@
     while ($row = $queryCookie->fetch(PDO::FETCH_ASSOC)) {
       $id_user_admin = $row['id_user_admin'];
       $nama = $row['nama'];
+      $jk = $row['jenis_kelamin'];
+      $alamat = $row['alamat'];
+      $noHP = $row['no_hp'];
+      $terminal = $row['id_terminal'];
       $emailVal = $row['email'];
       $passwordVal = $row['password'];
       $level = $row['id_level'];
+      $foto = $row['foto'];
     }
 
     if ($emailVal == $cookieEmail && $passwordVal == $cookiePass) {
@@ -42,18 +47,29 @@
     while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
       $id_user_admin = $row['id_user_admin'];
       $nama = $row['nama'];
+      $jk = $row['jenis_kelamin'];
+      $alamat = $row['alamat'];
+      $noHP = $row['no_hp'];
+      $terminal = $row['id_terminal'];
       $emailVal = $row['email'];
       $passwordVal = $row['password'];
       $level = $row['id_level'];
+      $foto = $row['foto'];
     }
 
     if ($num != 0) {
       if ($emailVal == $email && $passwordVal == $password) {
         $_SESSION['id'] = $id_user_admin;
         $_SESSION['name'] = $nama;
+        $_SESSION['jk'] = $jk;
+        $_SESSION['alamat'] = $alamat;
+        $_SESSION['noHP'] = $noHP;
+        $_SESSION['terminal'] = $terminal;
         $_SESSION['email'] = $emailVal;
         $_SESSION['pass'] = $passwordVal;
         $_SESSION['level'] = $level;
+        $_SESSION['foto'] = $foto;
+        
 
         if($rememberMe == 1 ){
           $cookie_name = "cookie_email";

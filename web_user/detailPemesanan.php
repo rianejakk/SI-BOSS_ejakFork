@@ -144,11 +144,11 @@
                           </div>
                           <div
                             class="col-3 border border-start border-bottom-0 border-top-0 border-end-0 d-flex justify-content-start align-items-center">
-                            <a href="detailPemesanan.php">
+                            <!-- <a href="detailPemesanan.php">
                               <button type="submit" name="submit"
                                 class="btn colorYellow roundedBtn text-white font-RobotoBold btnPesan"
                                 value="<?php echo $idBus?>">Pesan</button>
-                            </a>
+                            </a> -->
                           </div>
                         </div>
                         <div class="row mt-2 info">
