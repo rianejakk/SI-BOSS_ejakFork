@@ -22,6 +22,7 @@ body {
   font-family: Roboto-Regular;
   font-size: 14px !important;
   padding-top: 56px;
+  position: relative;
 }
 .autoHeight {
   height: 100vh;
@@ -220,12 +221,12 @@ nav ul li:hover {
 }
 .search {
   position: absolute;
-  top: 0;
+  height: max-content;
+  top: 300px;
   left: 0;
   right: 0;
   bottom: 0;
   z-index: 2;
-  margin-top: 80px;
   margin-left: 18%;
   margin-right: 18%;
   transition: 0.4s ease-in-out;
@@ -258,7 +259,18 @@ section .row.myrow1 p {
   background: rgb(82,123,221);
   background: linear-gradient(45deg, rgba(82,123,221,1) 36%, rgba(36,194,236,1) 100%);
 }
-
+.sectionFooter{
+  position: relative;
+}
+.bg-holder {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url(../assets/img/footer-bg.png);
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
 
 @-webkit-keyframes move2 {
   0% {
@@ -519,6 +531,9 @@ input[type="search"]:focus {
   .search-bar .myCol {
     border: none !important;
   }
+  #h-Footer{
+    font-size: 27px;
+  }
 }
 
 @media only screen and (max-width: 576px) {
@@ -696,6 +711,7 @@ button.resize {
 }
 i.icofont-whatsapp:hover {
   color: #3eba4e;
+  background-color: white;
 }
 i.icofont-instagram:hover {
   background-image: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
@@ -708,6 +724,7 @@ i.icofont-instagram:hover {
 }
 i.fa-google:hover {
   color: #ca473a;
+
 }
 .custColor {
   position: absolute;

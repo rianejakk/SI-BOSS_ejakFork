@@ -34,16 +34,16 @@ $obj = new crud;
         <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item ms-3 me-2">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a class="nav-link active" aria-current="page" href="#home">Home</a>
             </li>
             <li class="nav-item ms-3 me-2">
-              <a class="nav-link" href="#">Booking</a>
+              <a class="nav-link" href="#booking">Booking</a>
             </li>
             <li class="nav-item ms-3 me-2">
-              <a class="nav-link" href="#">Help</a>
+              <a class="nav-link" href="#help">Help</a>
             </li>
             <li class="nav-item ms-3 me-2">
-              <a class="nav-link" href="#">About</a>
+              <a class="nav-link" href="#about">About</a>
             </li>
           </ul>
           <div class="ms-auto myClass">
@@ -60,159 +60,161 @@ $obj = new crud;
   </header>
 
   <main>
-    <div id="carouselExampleCaptions" class="carousel slide carousel-fade" data-bs-ride="carousel">
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="5" aria-label="Slide 6"></button>
+    <section id="home">
+      <div id="carouselExampleCaptions" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="5" aria-label="Slide 6"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="banner" style="background-image: url(assets/img/papuma.png)"></div>
+            <div class="carousel-caption">
+              <h2 class="animate__animated animate__zoomIn" style="animation-delay: 0.5s">Jember</h2>
+              <p class="animate__animated animate__fadeInUp px-5" style="animation-delay: 0.5s">
+                Salah satu harta karun keindahan alam di Jawa Timur adalah Pantai Papuma Jember. Sebagai tempat wisata,
+                Pantai Papuma sangat cocok untuk dikunjungi karena menyimpan banyak pesona dan keindahan alam. Terdapat
+                juga beberapa objek dan fasilitas yang unik di pantai satu ini.
+              </p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="banner" style="background-image: url(assets/img/SBY.png)"></div>
+            <div class="carousel-caption">
+              <h2 class="animate__animated animate__zoomIn" style="animation-delay: 0.5s">Surabaya</h2>
+              <p class="animate__animated animate__fadeInUp" style="animation-delay: 0.5s">
+                Kota Surabaya terkenal dengan sebutan Kota Pahlawan. Kota terbesar kedua di Indonesia setelah Kota Jakarta
+                ini dikenal pula sebagai pusat bisnis, industri, perdagangan, dan pendidikan di kawasan timur Pulau Jawa
+                dan sekitarnya.
+              </p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="banner" style="background-image: url(assets/img/bali.png)"></div>
+            <div class="carousel-caption">
+              <h2 class="animate__animated animate__zoomIn" style="animation-delay: 0.5s">Bali</h2>
+              <p class="animate__animated animate__fadeInUp" style="animation-delay: 0.5s">
+                Bali merupakan pulau pariwisata terkemuka di Indonesia. Tempat wisata pegunungan, pantai, hingga pusat
+                kota yang berbeda dari tempat lain di dunia. Perpaduan alam dan budaya yang khas menjadi magnet tersendiri
+                bagi jutaan wisatawan domestik maupun mancanegara untuk berkunjung ke pulau ini.
+              </p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="banner" style="background-image: url(assets/img/candi\(Magelang\).png)"></div>
+            <div class="carousel-caption">
+              <h2 class="animate__animated animate__zoomIn" style="animation-delay: 0.5s">Magelang</h2>
+              <p class="animate__animated animate__fadeInUp px-5" style="animation-delay: 0.5s">
+                Candi Borobudur simbol inspiratif. Sebuah tempat yang pas untuk mencari ketenangan jiwa. Kami ingin
+                memfasilitasi itu. Sehingga Borobudur menjadi pemersatu beragam latar belakang agama, politik, sosial, dan
+                budaya. Semua melebur berharmonisasi di sini.
+              </p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="banner" style="background-image: url(assets/img/jakarta.png)"></div>
+            <div class="carousel-caption">
+              <h2 class="animate__animated animate__zoomIn" style="animation-delay: 0.5s">Jakarta</h2>
+              <p class="animate__animated animate__fadeInUp" style="animation-delay: 0.5s">
+                Kota Jakarta merupakan ibu kota Indonesia menjadi pusat pemerintahan. Kota Jakarta dijuluki Kota Seribu
+                Pulau yang menarik untuk berwisata bersama keluarga walaupun berada dipusat kota.
+              </p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="banner" style="background-image: url(assets/img/image_2.png)"></div>
+            <div class="carousel-caption">
+              <h2 class="animate__animated animate__zoomIn" style="animation-delay: 0.5s">Malang</h2>
+              <p class="animate__animated animate__fadeInUp" style="animation-delay: 0.5s">
+                Malang dengan julukan Kota Paris Van Java mampu menarik wisatawan lokal maupun wisatawan mancanegara akan
+                keindahan kotanya yang banyak sekali tempat wisata mulai dari museum hingga wisata paralayang.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
       </div>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <div class="banner" style="background-image: url(assets/img/papuma.png)"></div>
-          <div class="carousel-caption">
-            <h2 class="animate__animated animate__zoomIn" style="animation-delay: 0.5s">Jember</h2>
-            <p class="animate__animated animate__fadeInUp px-5" style="animation-delay: 0.5s">
-              Salah satu harta karun keindahan alam di Jawa Timur adalah Pantai Papuma Jember. Sebagai tempat wisata,
-              Pantai Papuma sangat cocok untuk dikunjungi karena menyimpan banyak pesona dan keindahan alam. Terdapat
-              juga beberapa objek dan fasilitas yang unik di pantai satu ini.
-            </p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="banner" style="background-image: url(assets/img/SBY.png)"></div>
-          <div class="carousel-caption">
-            <h2 class="animate__animated animate__zoomIn" style="animation-delay: 0.5s">Surabaya</h2>
-            <p class="animate__animated animate__fadeInUp" style="animation-delay: 0.5s">
-              Kota Surabaya terkenal dengan sebutan Kota Pahlawan. Kota terbesar kedua di Indonesia setelah Kota Jakarta
-              ini dikenal pula sebagai pusat bisnis, industri, perdagangan, dan pendidikan di kawasan timur Pulau Jawa
-              dan sekitarnya.
-            </p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="banner" style="background-image: url(assets/img/bali.png)"></div>
-          <div class="carousel-caption">
-            <h2 class="animate__animated animate__zoomIn" style="animation-delay: 0.5s">Bali</h2>
-            <p class="animate__animated animate__fadeInUp" style="animation-delay: 0.5s">
-              Bali merupakan pulau pariwisata terkemuka di Indonesia. Tempat wisata pegunungan, pantai, hingga pusat
-              kota yang berbeda dari tempat lain di dunia. Perpaduan alam dan budaya yang khas menjadi magnet tersendiri
-              bagi jutaan wisatawan domestik maupun mancanegara untuk berkunjung ke pulau ini.
-            </p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="banner" style="background-image: url(assets/img/candi\(Magelang\).png)"></div>
-          <div class="carousel-caption">
-            <h2 class="animate__animated animate__zoomIn" style="animation-delay: 0.5s">Magelang</h2>
-            <p class="animate__animated animate__fadeInUp px-5" style="animation-delay: 0.5s">
-              Candi Borobudur simbol inspiratif. Sebuah tempat yang pas untuk mencari ketenangan jiwa. Kami ingin
-              memfasilitasi itu. Sehingga Borobudur menjadi pemersatu beragam latar belakang agama, politik, sosial, dan
-              budaya. Semua melebur berharmonisasi di sini.
-            </p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="banner" style="background-image: url(assets/img/jakarta.png)"></div>
-          <div class="carousel-caption">
-            <h2 class="animate__animated animate__zoomIn" style="animation-delay: 0.5s">Jakarta</h2>
-            <p class="animate__animated animate__fadeInUp" style="animation-delay: 0.5s">
-              Kota Jakarta merupakan ibu kota Indonesia menjadi pusat pemerintahan. Kota Jakarta dijuluki Kota Seribu
-              Pulau yang menarik untuk berwisata bersama keluarga walaupun berada dipusat kota.
-            </p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="banner" style="background-image: url(assets/img/image_2.png)"></div>
-          <div class="carousel-caption">
-            <h2 class="animate__animated animate__zoomIn" style="animation-delay: 0.5s">Malang</h2>
-            <p class="animate__animated animate__fadeInUp" style="animation-delay: 0.5s">
-              Malang dengan julukan Kota Paris Van Java mampu menarik wisatawan lokal maupun wisatawan mancanegara akan
-              keindahan kotanya yang banyak sekali tempat wisata mulai dari museum hingga wisata paralayang.
-            </p>
-          </div>
-        </div>
-      </div>
 
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
+      <section class="search">
+        <form action="pencarian.php" method="POST">
+          <div class="input-group mb-1">
+            <span class="input-group-text"><i class="fas fa-location-arrow text-white"></i></span>
+            <label for="InputIdTerminal" class="form-label"></label>
+            <select class="form-select form-select-user select-md" aria-label=".form-select-sm example" required data-parsley-required-message="Data harus di isi !!!" name="txt_pemberangkatan" required>
+              <option disabled selected>Pilih Terminal</option>
+              <?php
+              $datasd = $obj->lihatTerminal();
+              $no = 1;
+              if ($datasd->rowCount() > 0) {
+                if ($sesLvl == 1) {
+                  $dis = "";
+                } else {
+                  $dis = "disabled";
+                }
+                while ($row = $datasd->fetch(PDO::FETCH_ASSOC)) {
+                  $id_terminalst = $row['id_terminal'];
+                  $nama_terminalst = $row['nama_terminal'];
+                  $kabupatenst = $row['kabupaten_terminal'];
+              ?>
+                  <option value="<?php echo $id_terminalst; ?>"><?php echo $nama_terminalst, ', ', $kabupatenst; ?></option>
+              <?php
+                }
+              }
+              ?>
+            </select>
+            <span class="input-group-text"><i class="fas fa-exchange-alt text-white"></i></span>
+            <label for="InputIdTerminal" class="form-label"></label>
+            <select class="form-select form-select-user select-md" aria-label=".form-select-sm example" required data-parsley-required-message="Data harus di isi !!!" name="txt_tujuan" required>
+              <option disabled selected>Pilih Terminal</option>
+              <?php
+              $datasd = $obj->lihatTerminal();
+              $no = 1;
+              if ($datasd->rowCount() > 0) {
+                if ($sesLvl == 1) {
+                  $dis = "";
+                } else {
+                  $dis = "disabled";
+                }
+                while ($row = $datasd->fetch(PDO::FETCH_ASSOC)) {
+                  $id_terminalst = $row['id_terminal'];
+                  $nama_terminalst = $row['nama_terminal'];
+                  $kabupatenst = $row['kabupaten_terminal'];
+              ?>
+                  <option value="<?php echo $id_terminalst; ?>"><?php echo $nama_terminalst, ', ', $kabupatenst; ?></option>
+              <?php
+                }
+              }
+              ?>
+            </select><span class="input-group-text"><i class="fas fa-map-marker-alt text-white"></i>
+            </span>
+          </div>
 
-    <section class="search d-flex align-items-center justify-content-center">
-      <form action="pencarian.php" method="POST">
-        <div class="input-group mb-1">
-          <span class="input-group-text"><i class="fas fa-location-arrow text-white"></i></span>
-          <label for="InputIdTerminal" class="form-label"></label>
-          <select class="form-select form-select-user select-md" aria-label=".form-select-sm example" required data-parsley-required-message="Data harus di isi !!!" name="txt_pemberangkatan" required>
-            <option disabled selected>Pilih Terminal</option>
-            <?php
-            $datasd = $obj->lihatTerminal();
-            $no = 1;
-            if ($datasd->rowCount() > 0) {
-              if ($sesLvl == 1) {
-                $dis = "";
-              } else {
-                $dis = "disabled";
-              }
-              while ($row = $datasd->fetch(PDO::FETCH_ASSOC)) {
-                $id_terminalst = $row['id_terminal'];
-                $nama_terminalst = $row['nama_terminal'];
-                $kabupatenst = $row['kabupaten_terminal'];
-            ?>
-                <option value="<?php echo $id_terminalst; ?>"><?php echo $nama_terminalst, ', ', $kabupatenst; ?></option>
-            <?php
-              }
-            }
-            ?>
-          </select>
-          <span class="input-group-text"><i class="fas fa-exchange-alt text-white"></i></span>
-          <label for="InputIdTerminal" class="form-label"></label>
-          <select class="form-select form-select-user select-md" aria-label=".form-select-sm example" required data-parsley-required-message="Data harus di isi !!!" name="txt_tujuan" required>
-            <option disabled selected>Pilih Terminal</option>
-            <?php
-            $datasd = $obj->lihatTerminal();
-            $no = 1;
-            if ($datasd->rowCount() > 0) {
-              if ($sesLvl == 1) {
-                $dis = "";
-              } else {
-                $dis = "disabled";
-              }
-              while ($row = $datasd->fetch(PDO::FETCH_ASSOC)) {
-                $id_terminalst = $row['id_terminal'];
-                $nama_terminalst = $row['nama_terminal'];
-                $kabupatenst = $row['kabupaten_terminal'];
-            ?>
-                <option value="<?php echo $id_terminalst; ?>"><?php echo $nama_terminalst, ', ', $kabupatenst; ?></option>
-            <?php
-              }
-            }
-            ?>
-          </select><span class="input-group-text"><i class="fas fa-map-marker-alt text-white"></i>
-          </span>
-        </div>
+          <div class="input-group ms-auto me-auto" style="width: 400px;">
+            <span class="input-group-text"></span>
+            <input type="date" class="form-control" id="datepicker" name="txt_Tgl" required />
+            <span class="input-group-text"></span>
+          </div>
 
-        <div class="input-group ms-auto me-auto" style="width: 400px;">
-          <span class="input-group-text"></span>
-          <input type="date" class="form-control" id="datepicker" name="txt_Tgl" required />
-          <span class="input-group-text"></span>
-        </div>
-
-        <div class="text-center mt-3">
-          <button type="submit" name="simpan" class="btn colorPrimary text-white roundedBtn">Cari</button>
-        </div>
-      </form>
+          <div class="text-center mt-3">
+            <button type="submit" name="simpan" class="btn colorPrimary text-white roundedBtn">Cari</button>
+          </div>
+        </form>
+      </section>
     </section>
 
-    <section class="py-5 bg-light">
+    <section class="py-5 bg-light" id="booking">
       <div class="container py-1">
         <div class="row myrow1 py-sm-3 animate__animated animate__fadeInLeft">
           <div class="col-sm-6 pe-sm-5 text-center text-sm-start">
@@ -250,7 +252,7 @@ $obj = new crud;
       </div>
     </section>
 
-    <section class="py-5 bg-light">
+    <section class="py-5 bg-light" id="help">
       <div class="container py-1">
         <div class="row myrow1 mb-4">
           <div class="col-12 text-center">
@@ -328,7 +330,7 @@ $obj = new crud;
       </div>
     </section>
 
-    <section class="py-5 bg-white">
+    <section class="py-5 bg-white" id="about">
       <div class="container py-1">
         <div class="row myrow1 mb-4">
           <div class="col-12 text-center">
@@ -344,65 +346,61 @@ $obj = new crud;
     </section>
   </main>
 
-  <section class="bg-primary-gradient text-white">
-    <div class="bg-holder" style="background-image:url(../assets/img/footer-bg.png);background-position:center;background-size:cover;">
+  <section class="bg-primary-gradient text-white sectionFooter">
+    <div class="bg-holder">
     </div>
     <div class="container">
       <footer class="py-5">
         <div class="row">
-          <div class="col-2">
-            <h5>Section</h5>
-            <ul class="nav flex-column">
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Home</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Features</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Pricing</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">FAQs</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">About</a></li>
-            </ul>
-          </div>
-
-          <div class="col-2">
-            <h5>Section</h5>
-            <ul class="nav flex-column">
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Home</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Features</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Pricing</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">FAQs</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">About</a></li>
-            </ul>
-          </div>
-
-          <div class="col-2">
-            <h5>Section</h5>
-            <ul class="nav flex-column">
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Home</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Features</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Pricing</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">FAQs</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">About</a></li>
-            </ul>
-          </div>
-
-          <div class="col-4 offset-1">
-            <form>
-              <h5>Subscribe to our newsletter</h5>
-              <p>Monthly digest of whats new and exciting from us.</p>
-              <div class="d-flex w-100 gap-2">
-                <label for="newsletter1" class="visually-hidden">Email address</label>
-                <input id="newsletter1" type="text" class="form-control" placeholder="Email address">
-                <button class="btn btn-primary" type="button">Subscribe</button>
+          <div class="col-12">
+            <div class="row d-flex">
+              <div class="col-4 col-md-2 order-2 order-md-1">
+                <h5 class="font-RobotoBold">Landing Page</h5>
+                <ul class="nav flex-column">
+                  <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Home</a></li>
+                  <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Booking</a></li>
+                  <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Help</a></li>
+                  <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">About</a></li>
+                </ul>
               </div>
-            </form>
+
+              <div class="col-4 col-md-2 order-3 order-md-2">
+                <h5 class="font-RobotoBold">Pencarian</h5>
+                <ul class="nav flex-column">
+                  <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Data Tiket Bus</a></li>
+                  <li class="nav-item mb-2">Filter</li>
+                </ul>
+              </div>
+
+              <div class="col-4 col-md-2 order-4 order-md-3">
+                <h5 class="font-RobotoBold">Profil</h5>
+                <ul class="nav flex-column">
+                  <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Edit Profil</a></li>
+                  <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Pesanan Saya</a></li>
+                </ul>
+              </div>
+
+              <div class="col-12 col-md-4 offset-md-1 order-1 order-md-4 mb-5 text-center text-md-start">
+                <form>
+                  <h5 class="font-RobotoBold" id="h-Footer">Bantuan !</h5>
+                  <p>Jika ada masalah,hubungi kami dengan mengirimkan pesan ke email dibawah ini ! </p>
+                  <div class="d-flex w-100 gap-2">
+                    <label for="newsletter1" class="visually-hidden">Email address</label>
+                    <input id="newsletter1" type="text" class="form-control" placeholder="Email address">
+                    <button class="btn btn-primary" type="button">Hubungi</button>
+                  </div>
+                </form>
+              </div>
+            </div>
           </div>
         </div>
-
-        <div class="d-flex justify-content-between py-4 my-4 border-top">
-          <p>&copy; 2021 Company, Inc. All rights reserved.</p>
+        <div class="d-flex justify-content-between py-4 my-4 border-top position-relative">
+          <p>&copy; 2021 SI-BOSS, Inc. All rights reserved.</p>
           <ul class="list-unstyled d-flex">
             <li class="ms-3"><a class="link-dark" href="#">
-                <a class="text-white outline" href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Whatsapp"><i class="icofont-whatsapp s26"></i></a>
+                <a class="text-white outline" href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Whatsapp"><i class="icofont-whatsapp s26 rounded-circle"></i></a>
             <li class="ms-3"><a class="link-dark" href="#">
-                <a class="text-white outline" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Instagram"><i class="icofont-instagram s22"></i></a>
+                <a class="text-white outline" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Instagram"><i class="icofont-instagram s22 rounded-circle"></i></a>
             <li class="ms-3"><a class="link-dark" href="#">
                 <a class="text-white outline" href="#" data-bs-toggle="tooltip" data-bs-placement="right" title="Gmail"><i class="fa fa-google s22"></i></a>
           </ul>
@@ -445,6 +443,25 @@ $obj = new crud;
         $("#logoNav").attr("src", "assets/img/logoW.png");
       }
     });
+
+    const sections = document.querySelectorAll('section[id]')
+
+    function scrollActive() {
+      const scrollY = window.pageYOffset
+
+      sections.forEach(current => {
+        const sectionHeight = current.offsetHeight,
+          sectionTop = current.offsetTop - 58,
+          sectionId = current.getAttribute('id')
+
+        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+          document.querySelector('.navbar-nav a[href*=' + sectionId + ']').classList.add('active')
+        } else {
+          document.querySelector('.navbar-nav a[href*=' + sectionId + ']').classList.remove('active')
+        }
+      })
+    }
+    window.addEventListener('scroll', scrollActive)
   </script>
 </body>
 
