@@ -11,11 +11,17 @@
     $cookieName = $_COOKIE['cookie_name'];
     $queryCookie = $obj->login($cookieEmail);
     while ($row = $queryCookie->fetch(PDO::FETCH_ASSOC)) {
-      $id_user_admin = $row['id_user_admin'];
-      $nama = $row['nama'];
-      $emailVal = $row['email'];
-      $passwordVal = $row['password'];
-      $level = $row['id_level'];
+      $id_user_admin = $row['nik_user'];
+      $nama = $row['nama_user'];
+      $emailVal = $row['email_user'];
+      $passwordVal = $row['password_user'];
+      $tempat = $row['tempat_lahir_user'];
+      $tanggal = $row['tanggal_lahir_user'];
+      $level = $row['level'];
+      $jk = $row['jenis_kelamin_user'];
+      $alamat = $row['alamat_user'];
+      $noHP = $row['no_hp_user'];
+      $foto = $row['foto_user'];
     }
 
     if ($emailVal == $cookieEmail && $passwordVal == $cookiePass) {
@@ -25,7 +31,7 @@
     }
 
     if(isset($_SESSION['email'])){
-      header('Location: dashboard.php');
+      header('Location: index.php');
 
     }
   }
@@ -40,11 +46,17 @@
       $num = $query->rowCount();
 
     while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
-      $id_user_admin = $row['id_user_admin'];
-      $nama = $row['nama'];
-      $emailVal = $row['email'];
-      $passwordVal = $row['password'];
-      $level = $row['id_level'];
+      $id_user_admin = $row['nik_user'];
+      $nama = $row['nama_user'];
+      $emailVal = $row['email_user'];
+      $passwordVal = $row['password_user'];
+      $tempat = $row['tempat_lahir_user'];
+      $tanggal = $row['tanggal_lahir_user'];
+      $level = $row['level'];
+      $jk = $row['jenis_kelamin_user'];
+      $alamat = $row['alamat_user'];
+      $noHP = $row['no_hp_user'];
+      $foto = $row['foto_user'];
     }
 
     if ($num != 0) {
@@ -54,6 +66,12 @@
         $_SESSION['email'] = $emailVal;
         $_SESSION['pass'] = $passwordVal;
         $_SESSION['level'] = $level;
+        $_SESSION['tempat'] = $tempat;
+        $_SESSION['tanggal'] = $tanggal;
+        $_SESSION['jk'] = $jk;
+        $_SESSION['alamat'] = $alamat;
+        $_SESSION['noHP'] = $noHP;
+        $_SESSION['foto'] = $foto;
 
         if($rememberMe == 1 ){
           $cookie_name = "cookie_email";

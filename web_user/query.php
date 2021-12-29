@@ -1,9 +1,9 @@
 <?php
 class crud extends koneksi {
     public function login($data){
-        $sql ="SELECT * FROM administrator WHERE email=:email";
+        $sql ="SELECT * FROM user WHERE email_user=:email_user";
         $result = $this->koneksi->prepare($sql);
-        $result->bindParam(":email", $data);
+        $result->bindParam(":email_user", $data);
         $result->execute();
         return $result;
     }

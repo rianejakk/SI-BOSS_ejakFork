@@ -11,7 +11,14 @@
 
   $sesID = $_SESSION['id'];
   $sesName = $_SESSION['name'];
+  $sesJK = $_SESSION['jk'];
+  $sesAlamat = $_SESSION['alamat'];
+  $sesNoHP = $_SESSION['noHP'];
+  $sesTerminal = $_SESSION['terminal'];
+  $sesEmail = $_SESSION['email'];
+  $sesPass = $_SESSION['pass'];
   $sesLvl = $_SESSION['level'];
+  $sesFoto = $_SESSION['foto'];
 
   if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $nama_bus = $_POST['txt_nama_bus'];
@@ -122,6 +129,7 @@
           </ul>
         </li>
 
+        <?php if ($_SESSION['level']=="1"): ?>
         <li class="nav-item">
           <a href="dataAkun.php" class="focusMenu">
             <div class="frame-ico">
@@ -134,6 +142,7 @@
           </ul>
         </li>
         <li><hr class="seperator" /></li>
+        <?php endif ?>
 
         <li class="sidebar-heading mt-2 p-0">Layanan</li>
         <li class="nav-item">
@@ -163,7 +172,7 @@
         <li class="nav-item">
           <div class="profile-details">
             <div class="profile-content">
-              <img src="img/bis.png" alt="profileImg" />
+              <img src="fotoAdmin/<?php echo $sesFoto; ?>" />
             </div>
             <div class="name-job">
               <div class="profile_name">
@@ -188,23 +197,27 @@
             <li class="nav-item">
               <a href="#" class="nav-link transition">
                 <i class="far fa-bell"></i>
-                <span class="badge alert-danger p-1">5</span>
+                <?php
+                        $data = $obj->lihatAdministrator();
+                        $num = $data->rowCount();
+                      ?>
+                <span class="badge alert-danger p-1"> <?php echo $num - 1;?> Staff</span>
               </a>
             </li>
 
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" id="dropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <span class="RobotoReg14"><?php echo $sesName;?></span>
-                <img class="img-profile rounded-circle" src="img/bis.png" alt="LogoBis" />
+                <img class="img-profile rounded-circle" src="fotoAdmin/<?php echo $sesFoto; ?>" />
               </a>
 
               <ul class="dropdown-menu border-0 dropdown-menu-end shadow" aria-labelledby="dropdownProfile">
-                <li>
-                  <a class="dropdown-item" href="#"> <i class="las la-user mr-2"></i> My Profile </a>
+              <li>
+                  <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editDataAdministrator<?php echo $sesID ?>" ><i class="las la-user mr-2" ></i>My Profile</a>
                 </li>
-                <li>
+                <!-- <li>
                   <a class="dropdown-item" href="#"> <i class="las la-list-alt mr-2"></i> Activity Log </a>
-                </li>
+                </li> -->
                 <li>
                   <div class="dropdown-divider"></div>
                 </li>
@@ -216,6 +229,107 @@
           </ul>
         </nav>
       </div>
+
+      <div id="editDataAdministrator<?php echo $sesID ?>" class="modal fade">
+                                    <div class="modal-dialog modal-lg">
+                                      <div class="modal-content modal-edit">
+                                        <form role="form" action="editAdministrator.php" method="POST" enctype="multipart/form-data">
+                                          <?php
+                                            $query = $obj->pilihAdministrator($sesID);
+                                            while ($row = $query->fetch(PDO::FETCH_ASSOC)){
+                                          ?>
+                                          <div class="modal-header">
+                                            <h4 class="modal-title">Edit Data Administrator</h4>
+                                            <button type="button" class="btn btn-danger btn-circle btn-user2 shadow" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true">
+                                              <i class="fa fa-times fa-sm"></i>
+                                            </button>
+                                          </div>
+                                          <div class="modal-body">
+                                            
+                                            <div class="row">
+                                              <div class="col-lg-12 mb-3" hidden>
+                                                <label for="inputId" class="form-label">Id</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputId" name="txt_id_user_admin" value="<?php echo $sesID?>" placeholder="" readonly/>
+                                              </div>
+                                            </div>
+                                            <div class="row">
+                                              <div class="col-lg-6 mb-3">
+                                                <!-- <form action="editAdministrator.php" method="POST" enctype="multipart/form-data"> -->
+                                                <div class="form-group">
+                                                  <label for="InputFotoBus" class="form-label">Foto Administrator</label>
+                                                  <div class="img-div">
+                                                    <div class="img-placeholder" onClick="triggerClick()">
+                                                      <img src="img/ico/icons8_driver_50px.png" alt="" />
+                                                    </div>
+                                                    <img class="img-profile rounded-circle" src="fotoAdmin/<?php echo $sesFoto; ?>" onClick="triggerClick()" id="profileDisplay"/>
+                                                    <!-- <img src="img/ico/icons8_driver_50px.png" onClick="triggerClick()" id="profileDisplay" /> -->
+                                                  </div>
+                                                  <input type="file" name="txt_fotoEa" onChange="displayImage(this)" id="profileImage" class="form-control" style="display: none;" />
+                                                  <a href="#" class="float-end view text-secondary"> Lihat Foto </a>
+                                                </div>
+                                              </div>
+                                              <!-- </form> -->
+                                              
+                                              <div class="col-lg-6 mb-3">
+                                                <label for="inputNama" class="form-label">Nama</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputNama" name="txt_nama" placeholder="Ex: Budi Santoso" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $sesName?>"/>
+                                                <label for="InputJenisKelamin" class="form-label">Jenis Kelamin</label>
+                                                <div class="form-check">
+                                                  <input class="form-check-input" type="radio" name="Rbtn_jenis_kelamin" id="Radios1" value="Laki-laki" checked />
+                                                  <label class="form-label2" for="Radios1"><span>Laki-laki</span></label>
+                                                </div>
+                                                <div class="form-check">
+                                                  <input class="form-check-input" type="radio" name="Rbtn_jenis_kelamin" id="Radios2" value="Perempuan" />
+                                                  <label class="form-label2" for="Radios2"><span>Perempuan</span></label>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            
+                                            <div class="row">
+                                              <div class="col-lg-6 mb-3">
+                                                <label for="inputAlamat" class="form-label">Alamat</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputAlamat" name="txt_alamat" placeholder="Ex: Jl. Dharmawangsa" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $sesAlamat?>"/>
+                                              </div>
+                                              <div class="col-lg-6 mb-3">
+                                                <label for="inputNoHp" class="form-label">No Handphone</label>
+                                                <input type="number" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp" placeholder="Ex: 085808241205"  required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $sesNoHP?>"/>
+                                              </div>
+                                            </div>
+
+                                            <div class="row">
+                                              <div class="col-lg-6 mb-3">
+                                                <label for="inputEmail" class="form-label">Email</label>
+                                                <input type="email" class="form-control form-control-user2" id="inputEmail" name="txt_email" placeholder="Ex: admin@gmail.com" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $sesEmail?>"/>
+                                              </div>
+                                              <div class="col-lg-6 mb-3">
+                                                <label for="inputPassword" class="form-label">Password</label>
+                                                <input type="password" class="form-control form-control-user2" id="inputPassword" name="txt_password" placeholder="Ex: ********" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $sesPass?>"/>
+                                              </div>
+                                            </div>
+
+                                            <div class="row">
+                                            <div class="col-lg-6 mb-3" hidden>
+                                                <label for="inputId" class="form-label">Status</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputId" name="txt_id_level" value="<?php echo $sesLvl?>" placeholder="" readonly />
+                                              </div>
+                                              <div class="col-lg-6 mb-3">
+                                                <label for="inputId" class="form-label">Status</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputId" name="txt" value="Staff" placeholder="" readonly />
+                                              </div>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                              <button class="btn btn-secondary roundedBtn" type="button" data-bs-dismiss="modal">Batal</button>
+                                              <!-- <button type="submit" class="btn text-white colorPrimary roundedBtn" name="simpan">Update</button> -->
+                                            </div>
+                                          </div>
+                                        </form>
+                                        <?php 
+                                          }
+                                        ?> 
+                                      </div>
+                                    </div>
+                                  </div>
 
       <!-- Content Row -->
       <div class="row m-0 px-3 rowCustom">
