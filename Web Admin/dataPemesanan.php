@@ -507,7 +507,7 @@ if(!isset($_SESSION['email'])){
                                 </td>
                                 <td>
                                 <?php if ($status!=="Belum Bayar" AND $status!=="Pesanan Dibatalkan"): ?>
-                             <a href="lihatPembayaran.php?id_pembayaran=<?php echo $id_pemesanan ?>" class="btn btn-info btn-circle"><i class="fas fa-file-invoice-dollar"></i></a><br>
+                             <a href="#" class="btn btn-info btn-circle"><i class="fas fa-file-invoice-dollar"></i></a><br>
 
                              <?php endif ?>
                                   <!-- <a href="#" class="actionBtn" aria-label="Edit">
