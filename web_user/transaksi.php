@@ -164,7 +164,7 @@
                       </div>
                       <div class="row ps-2">
                         <div class="col-md-6">
-                          <div class="myRounded border shadow mod p-3 mb-4" style="min-height: 30px;">
+                          <div class="myRounded border shadow mod p-3 mb-2" style="min-height: 30px;">
                             <div class="row">
                               <div class="col-sm-3">
                                 <p>NIK</p>
@@ -198,6 +198,7 @@
                               </div>
                             </div>
                           </div>
+                          <hr>
                         </div>
                       </div>
 
