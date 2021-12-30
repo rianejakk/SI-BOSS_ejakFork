@@ -115,7 +115,7 @@ function rupiah($angka)
           while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
           ?>
             <div class="modal-header">
-              <h4 class="modal-title">Edit Data Administrator</h4>
+              <h4 class="modal-title">Profile</h4>
               <button type="button" class="btn btn-danger btn-circle btn-user2 shadow" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true">
                 <i class="fa fa-times fa-sm"></i>
               </button>
@@ -132,7 +132,7 @@ function rupiah($angka)
                 <div class="col-lg-6 mb-3">
                   <!-- <form action="editAdministrator.php" method="POST" enctype="multipart/form-data"> -->
                   <div class="form-group">
-                    <label for="InputFotoBus" class="form-label">Foto Administrator</label>
+                    <label for="InputFotoBus" class="form-label">Foto</label>
                     <div class="img-div">
                       <div class="img-placeholder" onClick="triggerClick()">
                         <img src="img/ico/icons8_driver_50px.png" alt="" />
@@ -168,7 +168,7 @@ function rupiah($angka)
                 </div>
                 <div class="col-lg-6 mb-3">
                   <label for="inputNoHp" class="form-label">Tanggal Lahir</label>
-                  <input type="number" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp" placeholder="Ex: 085808241205" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $sesTanggal ?>" />
+                  <input type="text" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp" placeholder="Ex: 085808241205" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $sesTanggal ?>" />
                 </div>
               </div>
 
@@ -424,14 +424,19 @@ function rupiah($angka)
             ?>
                 <div class="panel-data bg-white py-2 myRounded shadow mod mb-2 d-flex">
                   <div class="container">
-                    <form action="detailPemesanan.php" method="POST">
+                    <form role="form" action="detailPemesanan.php" method="POST">
+                    <input hidden type="datetime" class="form-control form-control-user2" id="inputId" name="txt_waktu_pemesanan" value="<?php $tz = 'Asia/Jakarta'; $dt = new DateTime("now", new DateTimeZone($tz)); $timestamp = $dt->format('d-m-Y H:i:s'); echo $timestamp; ?>" placeholder="" />
                       <div class="row myrowData h-100">
-
                         <div class="col-6 pt-2">
                           <div class="form-group" hidden>
                             <label for="InputId" class="form-label">Id</label>
                             <input type="text" class="form-control form-control-user2" id="inputId" name="txt_id_bus" value="<?php echo $idBus ?>" placeholder="" readonly />
                           </div>
+                          <div class="form-group" hidden>
+                            <label for="InputId" class="form-label">Id</label>
+                            <input type="text" class="form-control form-control-user2" id="inputId" name="txt_nik_user" value="<?php echo $sesID ?>" placeholder="" readonly />
+                          </div>
+                          <!-- <h3 class="m-0" name="txt_nik_user" hidden><b><?php echo $sesID ?></b></h3> -->
                           <h3 class="m-0" name="txt_nama_bus"><b><?php echo ucwords($namaBus) ?></b></h3>
                           <p class="m-0" name="txt_jenis_bus"><?php echo ucwords($jenis_bus) ?></p>
                         </div>
@@ -464,16 +469,12 @@ function rupiah($angka)
                               <p class="font-RobotoBold s18">7 jam</p>
                             </div>
                             <div class="col-3 border border-start border-bottom-0 border-top-0 border-end-0 d-flex justify-content-start align-items-center">
-
                               <a href="">
-                                <button type="submit" name="submit" class="btn colorYellow roundedBtn text-white font-RobotoBold btnPesan">Pesan</button>
+                                <button type="submit" name="simpan" class="btn colorYellow roundedBtn text-white font-RobotoBold btnPesan">Pesan</button>
                               </a>
-
                             </div>
                           </div>
-
                         </div>
-
                       </div>
                     </form>
                     <div class="row mt-2 info">
@@ -532,7 +533,7 @@ function rupiah($angka)
   <script src="plugin/jquery/jquery-3.6.0.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script>
-    $("#shadow1, #shadow2, #shadow3").click(function () {
+    $("#shadow1, #shadow2, #shadow3").click(function() {
       $(".transitionShadow").toggleClass("shadow mod");
     });
     $(".btn").click(function() {

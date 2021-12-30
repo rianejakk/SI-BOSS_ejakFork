@@ -143,7 +143,7 @@
                       <div class="col-12 d-flex justify-content-center">
                         <p class="m-0 p-0 s12 pt-2">
                           Sudah punya Akun ?
-                          <a href="daftar.php" class="small s12 ps-0">Login disini !</a>
+                          <a href="login.php" class="small s12 ps-0">Login disini !</a>
                         </p>
                       </div>
                     </div>

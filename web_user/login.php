@@ -90,7 +90,7 @@
           setcookie($cookie_name, $cookie_value, $cookie_time, "/");
         }
           
-        header('Location: dashboard.php');
+        header('Location: index.php');
 
       } if ($emailVal != $email && $passwordVal == $password) {?>
         <div class="alert alert-danger d-block position-fixed custAlert" role="alert">Email tidak ditemukan !</div><?php 

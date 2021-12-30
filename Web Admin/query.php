@@ -116,6 +116,27 @@ class crud extends koneksi {
         }
     }
 
+    public function insertAdministrato($nama, $jenis_kelamin, $alamat, $no_hp, $level, $id_terminal, $email, $password){
+        try{
+            $sql ="INSERT INTO administrator(nama, jenis_kelamin, alamat, no_hp, id_level, id_terminal, email, password) VALUES (:nama, :jenis_kelamin, :alamat, :no_hp, :id_level, :id_terminal, :email, :password)";
+            $result = $this->koneksi->prepare($sql);
+            $result->bindParam(":nama", $nama);
+            $result->bindParam(":jenis_kelamin", $jenis_kelamin);
+            $result->bindParam(":alamat", $alamat);
+            $result->bindParam(":no_hp", $no_hp);
+            $result->bindParam(":id_level", $level);
+            $result->bindParam(":id_terminal", $id_terminal);
+            $result->bindParam(":email", $email);
+            $result->bindParam(":password", $password);
+            $result->execute();
+            return true;
+        }
+        catch (PDOException $e){
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
     public function insertUser($nik_user, $nama_user, $tempat_lahir_user, $tanggal_lahir_user, $jenis_kelamin_user, $alamat_user, $no_hp_user, $foto_user, $email_user, $password_user){
         try{
             $sql ="INSERT INTO user(nik_user, nama_user, tempat_lahir_user, tanggal_lahir_user, jenis_kelamin_user, alamat_user, no_hp_user, foto_user, email_user, password_user) VALUES (:nik_user, :nama_user, :tempat_lahir_user, :tanggal_lahir_user, :jenis_kelamin_user, :alamat_user, :no_hp_user, :foto_user, :email_user, :password_user)";

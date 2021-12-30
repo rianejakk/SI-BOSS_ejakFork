@@ -28,10 +28,11 @@
     $jenis_bus = $_POST['txt_jenis_bus'];
     $fasilitas = $_POST['txt_fasilitas'];
     $foto_bus = $_POST['txt_foto_bus'];
+    $tanggal_pemberangkatan = $_POST['txt_tanggal_pemberangkatan'];
     $id_jenis = $_POST['txt_id_jenis'];
     $id_rute = $_POST['txt_id_rute'];
     
-    if($obj->insertBus($nama_bus, $harga, $status_bus, $jumlah_kursi, $foto_bus, $id_jenis, $id_rute)){
+    if($obj->insertBus($nama_bus, $harga, $status_bus, $jumlah_kursi, $foto_bus, $tanggal_pemberangkatan, $id_jenis, $id_rute)){
       // echo '<div class="alert alert-success">Terminal Berhasil Ditambahkan</div>';
     } else{
       // echo '<div class="alert alert-danger">Terminal Gagal Ditambahkan</div>';

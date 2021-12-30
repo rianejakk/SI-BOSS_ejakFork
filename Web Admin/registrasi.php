@@ -46,7 +46,7 @@
     $id_terminal = $_POST['id_terminal'];
     $email = $_POST['txt_email'];
     $password = $_POST['txt_password'];
-    if($obj->insertAdministrator($nama, $jenis_kelamin, $alamat, $no_hp, $level, $id_terminal, $email, $password)){
+    if($obj->insertAdministrato($nama, $jenis_kelamin, $alamat, $no_hp, $level, $id_terminal, $email, $password)){
       echo '<div class="alert alert-success">Akun Berhasil Didaftarkan</div>';
     } else{
       echo '<div class="alert alert-danger">Akun Gagal Didaftarkan</div>';
