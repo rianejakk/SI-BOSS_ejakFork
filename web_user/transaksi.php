@@ -29,7 +29,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // echo '<div class="alert alert-success">Terminal Berhasil Ditambahkan</div>';
         // header("Location: transaksi.php");
         echo '<div class="alert alert-success">Berhasil</div>';
-        
       }
     }
   } else {
@@ -103,34 +102,42 @@ function rupiah($angka)
               <a class="nav-link" href="#">About</a>
             </li>
           </ul>
-          <?php if ($_SESSION['level']) : ?>
+          <?php if (!isset($_SESSION['level'])) : ?>
             <div class="ms-auto myClass">
-              <button href="login.php"class="btn colorPrimary me-2 roundedBtn text-white" type="submit">Masuk</button>
-              <button class="btn btn-outlineCust roundedBtn" type="submit">Daftar</button>
+              <a href="login.php" class="text-decoration-none">
+                <button class="btn b-cust me-2 roundedBtn text-white" id="custBtnLogin">Masuk</button>
+              </a>
+              <a href="daftar.php" class="text-decoration-none">
+                <button class="btn roundedBtn b-cust" id="custBtnDaftar">Daftar</button>
+              </a>
             </div>
           <?php elseif ($_SESSION['level'] == "0") : ?>
             <div class="ms-auto myClass">
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="dropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <span class="RobotoReg14"><?php echo $sesName; ?></span>
-                  <img class="img-profile rounded-circle" src="../Web Admin/fotoUser/<?php echo $sesFoto; ?>" />
-                </a>
-
-                <ul class="dropdown-menu border-0 dropdown-menu-end shadow" aria-labelledby="dropdownProfile">
-                  <li>
-                    <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editDataAdministrator<?php echo $sesID ?>"><i class="las la-user mr-2"></i>My Profile</a>
-                  </li>
-                  <!-- <li>
-                  <a class="dropdown-item" href="#"> <i class="las la-list-alt mr-2"></i> Activity Log </a>
-                </li> -->
-                  <li>
-                    <div class="dropdown-divider"></div>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="logout.php"> <i class="las la-sign-out-alt mr-2"></i> Sign Out </a>
-                  </li>
-                </ul>
-              </li>
+              <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="ropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img class="avatar rounded-circle me-2" src="../Web Admin/fotoUser/<?php echo $sesFoto; ?>" alt="foto">
+                    <span><?php echo $sesName; ?></span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end myRounded" aria-labelledby="navbarDarkDropdownMenuLink">
+                    <li><a class="dropdown-item s14" href="#" data-bs-toggle="modal" data-bs-target="#editDataAdministrator<?php echo $sesID ?>">
+                        <i class="fas fa-user-edit me-2"></i>
+                        <span>Edit Profil</span>
+                      </a></li>
+                    <li><a class="dropdown-item s14" href="#">
+                        <i class="fas fa-receipt me-3"></i>
+                        <span>Pesanan saya</span>
+                      </a></li>
+                    <li>
+                      <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item s14" href="logout.php">
+                        <i class="fas fa-sign-out-alt me-3"></i>
+                        <span>Logout</span>
+                      </a></li>
+                  </ul>
+                </li>
+              </ul>
             </div>
           <?php endif ?>
         </div>
@@ -143,110 +150,110 @@ function rupiah($angka)
     <div class="modal-dialog modal-lg">
       <div class="modal-content modal-edit">
         <!-- <form role="form" action="editAdministrator.php" method="POST" enctype="multipart/form-data"> -->
-          <?php
-          $query = $obj->pilihUser($sesID);
-          while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
-          ?>
-            <div class="modal-header">
-              <h4 class="modal-title">Profile</h4>
-              <button type="button" class="btn btn-danger btn-circle btn-user2 shadow" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true">
-                <i class="fa fa-times fa-sm"></i>
-              </button>
-            </div>
-            <div class="modal-body">
+        <?php
+        $query = $obj->pilihUser($sesID);
+        while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+        ?>
+          <div class="modal-header">
+            <h4 class="modal-title">Profile</h4>
+            <button type="button" class="btn btn-danger btn-circle btn-user2 shadow" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true">
+              <i class="fa fa-times fa-sm"></i>
+            </button>
+          </div>
+          <div class="modal-body">
 
-              <div class="row">
-                <div class="col-lg-6 mb-3">
-                  <label for="inputId" class="form-label">NIK</label>
-                  <input type="text" class="form-control form-control-user2" id="inputId" name="txt_id_user_admin" value="<?php echo $sesID ?>" placeholder="" readonly />
-                </div>
+            <div class="row">
+              <div class="col-lg-6 mb-3">
+                <label for="inputId" class="form-label">NIK</label>
+                <input type="text" class="form-control form-control-user2" id="inputId" name="txt_id_user_admin" value="<?php echo $sesID ?>" placeholder="" readonly />
               </div>
-              <div class="row">
-                <div class="col-lg-6 mb-3">
-                  <!-- <form action="editAdministrator.php" method="POST" enctype="multipart/form-data"> -->
-                  <div class="form-group">
-                    <label for="InputFotoBus" class="form-label">Foto</label>
-                    <div class="img-div">
-                      <div class="img-placeholder" onClick="triggerClick()">
-                        <img src="img/ico/icons8_driver_50px.png" alt="" />
-                      </div>
-                      <img class="img-profile rounded-circle" src="../Web Admin/fotoAdmin/<?php echo $sesFoto; ?>" onClick="triggerClick()" id="profileDisplay" />
-                      <!-- <img src="img/ico/icons8_driver_50px.png" onClick="triggerClick()" id="profileDisplay" /> -->
+            </div>
+            <div class="row">
+              <div class="col-lg-6 mb-3">
+                <!-- <form action="editAdministrator.php" method="POST" enctype="multipart/form-data"> -->
+                <div class="form-group">
+                  <label for="InputFotoBus" class="form-label">Foto</label>
+                  <div class="img-div">
+                    <div class="img-placeholder" onClick="triggerClick()">
+                      <img src="img/ico/icons8_driver_50px.png" alt="" />
                     </div>
-                    <input type="file" name="txt_fotoEa" onChange="displayImage(this)" id="profileImage" class="form-control" style="display: none;" />
-                    <a href="#" class="float-end view text-secondary"> Lihat Foto </a>
+                    <img class="img-profile rounded-circle" src="../Web Admin/fotoAdmin/<?php echo $sesFoto; ?>" onClick="triggerClick()" id="profileDisplay" />
+                    <!-- <img src="img/ico/icons8_driver_50px.png" onClick="triggerClick()" id="profileDisplay" /> -->
                   </div>
-                </div>
-                <!-- </form> -->
-
-                <div class="col-lg-6 mb-3">
-                  <label for="inputNama" class="form-label">Nama</label>
-                  <input type="text" class="form-control form-control-user2" id="inputNama" name="txt_nama" placeholder="Ex: Budi Santoso" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $sesName ?>" />
-                  <label for="InputJenisKelamin" class="form-label">Jenis Kelamin</label>
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="Rbtn_jenis_kelamin" id="Radios1" value="Laki-laki" checked />
-                    <label class="form-label2" for="Radios1"><span>Laki-laki</span></label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="Rbtn_jenis_kelamin" id="Radios2" value="Perempuan" />
-                    <label class="form-label2" for="Radios2"><span>Perempuan</span></label>
-                  </div>
+                  <input type="file" name="txt_fotoEa" onChange="displayImage(this)" id="profileImage" class="form-control" style="display: none;" />
+                  <a href="#" class="float-end view text-secondary"> Lihat Foto </a>
                 </div>
               </div>
+              <!-- </form> -->
 
-              <div class="row">
-                <div class="col-lg-6 mb-3">
-                  <label for="inputAlamat" class="form-label">Tempat Lahir</label>
-                  <input type="text" class="form-control form-control-user2" id="inputAlamat" name="txt_alamat" placeholder="Ex: Jl. Dharmawangsa" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $sesTempat ?>" />
+              <div class="col-lg-6 mb-3">
+                <label for="inputNama" class="form-label">Nama</label>
+                <input type="text" class="form-control form-control-user2" id="inputNama" name="txt_nama" placeholder="Ex: Budi Santoso" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $sesName ?>" />
+                <label for="InputJenisKelamin" class="form-label">Jenis Kelamin</label>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="Rbtn_jenis_kelamin" id="Radios1" value="Laki-laki" checked />
+                  <label class="form-label2" for="Radios1"><span>Laki-laki</span></label>
                 </div>
-                <div class="col-lg-6 mb-3">
-                  <label for="inputNoHp" class="form-label">Tanggal Lahir</label>
-                  <input type="text" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp" placeholder="Ex: 085808241205" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $sesTanggal ?>" />
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="Rbtn_jenis_kelamin" id="Radios2" value="Perempuan" />
+                  <label class="form-label2" for="Radios2"><span>Perempuan</span></label>
                 </div>
-              </div>
-
-              <div class="row">
-                <div class="col-lg-6 mb-3">
-                  <label for="inputAlamat" class="form-label">Alamat</label>
-                  <input type="text" class="form-control form-control-user2" id="inputAlamat" name="txt_alamat" placeholder="Ex: Jl. Dharmawangsa" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $sesAlamat ?>" />
-                </div>
-                <div class="col-lg-6 mb-3">
-                  <label for="inputNoHp" class="form-label">No Handphone</label>
-                  <input type="number" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp" placeholder="Ex: 085808241205" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $sesNoHP ?>" />
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col-lg-6 mb-3">
-                  <label for="inputEmail" class="form-label">Email</label>
-                  <input type="email" class="form-control form-control-user2" id="inputEmail" name="txt_email" placeholder="Ex: admin@gmail.com" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $sesEmail ?>" />
-                </div>
-                <div class="col-lg-6 mb-3">
-                  <label for="inputPassword" class="form-label">Password</label>
-                  <input type="password" class="form-control form-control-user2" id="inputPassword" name="txt_password" placeholder="Ex: ********" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $sesPass ?>" />
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col-lg-6 mb-3" hidden>
-                  <label for="inputId" class="form-label">Status</label>
-                  <input type="text" class="form-control form-control-user2" id="inputId" name="txt_id_level" value="<?php echo $sesLvl ?>" placeholder="" readonly />
-                </div>
-                <div class="col-lg-6 mb-3" hidden>
-                  <label for="inputId" class="form-label">Status</label>
-                  <input type="text" class="form-control form-control-user2" id="inputId" name="txt" value="User" placeholder="" readonly />
-                </div>
-              </div>
-
-              <div class="modal-footer">
-                <button class="btn btn-secondary roundedBtn" type="button" data-bs-dismiss="modal">Batal</button>
-                <!-- <button type="submit" class="btn text-white colorPrimary roundedBtn" name="simpan">Update</button> -->
               </div>
             </div>
-        <!-- </form> -->
-      <?php
-          }
-      ?>
+
+            <div class="row">
+              <div class="col-lg-6 mb-3">
+                <label for="inputAlamat" class="form-label">Tempat Lahir</label>
+                <input type="text" class="form-control form-control-user2" id="inputAlamat" name="txt_alamat" placeholder="Ex: Jl. Dharmawangsa" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $sesTempat ?>" />
+              </div>
+              <div class="col-lg-6 mb-3">
+                <label for="inputNoHp" class="form-label">Tanggal Lahir</label>
+                <input type="text" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp" placeholder="Ex: 085808241205" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $sesTanggal ?>" />
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-6 mb-3">
+                <label for="inputAlamat" class="form-label">Alamat</label>
+                <input type="text" class="form-control form-control-user2" id="inputAlamat" name="txt_alamat" placeholder="Ex: Jl. Dharmawangsa" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $sesAlamat ?>" />
+              </div>
+              <div class="col-lg-6 mb-3">
+                <label for="inputNoHp" class="form-label">No Handphone</label>
+                <input type="number" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp" placeholder="Ex: 085808241205" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $sesNoHP ?>" />
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-6 mb-3">
+                <label for="inputEmail" class="form-label">Email</label>
+                <input type="email" class="form-control form-control-user2" id="inputEmail" name="txt_email" placeholder="Ex: admin@gmail.com" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $sesEmail ?>" />
+              </div>
+              <div class="col-lg-6 mb-3">
+                <label for="inputPassword" class="form-label">Password</label>
+                <input type="password" class="form-control form-control-user2" id="inputPassword" name="txt_password" placeholder="Ex: ********" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $sesPass ?>" />
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-6 mb-3" hidden>
+                <label for="inputId" class="form-label">Status</label>
+                <input type="text" class="form-control form-control-user2" id="inputId" name="txt_id_level" value="<?php echo $sesLvl ?>" placeholder="" readonly />
+              </div>
+              <div class="col-lg-6 mb-3" hidden>
+                <label for="inputId" class="form-label">Status</label>
+                <input type="text" class="form-control form-control-user2" id="inputId" name="txt" value="User" placeholder="" readonly />
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button class="btn btn-secondary roundedBtn" type="button" data-bs-dismiss="modal">Batal</button>
+              <!-- <button type="submit" class="btn text-white colorPrimary roundedBtn" name="simpan">Update</button> -->
+            </div>
+          </div>
+          <!-- </form> -->
+        <?php
+        }
+        ?>
       </div>
     </div>
   </div>
@@ -258,275 +265,281 @@ function rupiah($angka)
           <div class="col-12 custom-panel">
             <div class="row">
               <div class="col-12">
-              <?php
-                  $id = $_POST["txt_id_bus"];
-                  $data = $obj->detailPemesananBus($id);
-                  // $no = 1;
-                  // if ($data->rowCount() > 0) {
-                    while ($row = $data->fetch(PDO::FETCH_ASSOC)) {
-                      $idBus = $row['id_bus'];
-                      $namaBus = $row['nama_bus'];
-                      $harga = $row['harga'];
-                      $status = $row['status_bus'];
-                      $JKursi = $row['jumlah_kursi'];
-                      $fotoBus = $row['foto_bus'];
-                      $jenis_bus = $row['jenis'];
-                      $fasilitas = $row['fasilitas'];
-                      $tgl_brngkt = $row['tanggal_pemberangkatan'];
-                      $pemberangkatan = $row['pemberangkatan'];
-                      $waktu_berangkat = $row['waktu_berangkat'];
-                      $tujuan = $row['tujuan'];
-                      $waktu_tiba = $row['waktu_tiba'];
-                  ?>
-                <div class="panel-data bg-white py-2 myRounded shadow mod mb-2 d-flex">
-                  <div class="container">
-                    <div class="row myrowData h-100">
-                      <div class="col-6 pt-2">
-                      <div class="form-group" hidden>
+                <?php
+                $id = $_POST["txt_id_bus"];
+                $data = $obj->detailPemesananBus($id);
+                // $no = 1;
+                // if ($data->rowCount() > 0) {
+                while ($row = $data->fetch(PDO::FETCH_ASSOC)) {
+                  $idBus = $row['id_bus'];
+                  $namaBus = $row['nama_bus'];
+                  $harga = $row['harga'];
+                  $status = $row['status_bus'];
+                  $JKursi = $row['jumlah_kursi'];
+                  $fotoBus = $row['foto_bus'];
+                  $jenis_bus = $row['jenis'];
+                  $fasilitas = $row['fasilitas'];
+                  $tgl_brngkt = $row['tanggal_pemberangkatan'];
+                  $pemberangkatan = $row['pemberangkatan'];
+                  $waktu_berangkat = $row['waktu_berangkat'];
+                  $tujuan = $row['tujuan'];
+                  $waktu_tiba = $row['waktu_tiba'];
+                ?>
+                  <div class="panel-data bg-white py-2 myRounded shadow mod mb-2 d-flex">
+                    <div class="container">
+                      <div class="row myrowData h-100">
+                        <div class="col-6 pt-2">
+                          <div class="form-group" hidden>
                             <label for="InputId" class="form-label">Id</label>
                             <input type="text" class="form-control form-control-user2" id="inputId" name="txt_id_bus" value="<?php echo $idBus ?>" placeholder="" readonly />
                           </div>
-                              <h3 class="m-0" name="txt_nama_bus"><b><?php echo ucwords($namaBus) ?></b></h3>
-                              <p class="m-0" name="txt_jenis_bus"><?php echo ucwords($jenis_bus) ?></p>
-                      </div>
-                      <div class="col-6 pt-2">
-                      <h3 class="m-0 d-flex justify-content-end font-RobotoBold s22 colorPrimaryText" name="txt_harga_bus">
-                                <?php echo rupiah($harga) ?>
-                                <span class="font-Roboto s14 align-self-center colorBlueDarkText">/Kursi</span>
-                              </h3>
-                              <p class="m-0 d-flex justify-content-end font-RobotoBold s14" name="txt_jumlah_kursi_bus">
-                                <?php echo $JKursi ?> Kursi</p>
-                      </div>
-                      <div class="col-2 py-2">
-                      <img src="../Web Admin/fotoBus/<?php echo $fotoBus; ?>" class='img-fluid'>
-                      </div>
-                      <div class="col-10 py-2">
-                              <div class="row">
-                                <div class="col-3">
-                                  <p class="m-0"><span class="Waktu" name="txt_waktu_berangkat_bus"><?php echo date("H:i", strtotime($waktu_berangkat)) ?></span>
-                                  </p>
-                                  <p class="m-0" name="txt_pemberangkatan_bus"><?php echo ucwords($pemberangkatan) ?></p>
-                                  <span class="badge bg-warning text-dark" name="txt_tanggal_berangkat_bus"><?php echo date("d-m-Y", strtotime($tgl_brngkt)) ?></span>
-                                </div>
-                                <div class="col-1 d-flex justify-content-center align-items-center">
-                                  <i class="fas fa-arrow-right"></i>
-                                </div>
-                                <div class="col-3">
-                                  <p class="m-0"><span class="Waktu" name="txt_waktu_tiba_bus"><?php echo date("H:i", strtotime($waktu_tiba)) ?></span></p>
-                                  <p class="m-0" name="txt_tujuan_bus"><?php echo ucwords($tujuan) ?></p>
-                                </div>
-                                <div class="col-2 border border-start border-bottom-0 border-top-0 border-end-0">
-                                  <p class="font-Roboto s12 m-0">Estimasi</p>
-                                  <p class="font-RobotoBold s18">7 jam</p>
-                                </div>
-                                <div class="col-3 border border-start border-bottom-0 border-top-0 border-end-0 d-flex justify-content-start align-items-center">
-                                  <!-- <a href="detailPemesanan.php">
+                          <h3 class="m-0" name="txt_nama_bus"><b><?php echo ucwords($namaBus) ?></b></h3>
+                          <p class="m-0" name="txt_jenis_bus"><?php echo ucwords($jenis_bus) ?></p>
+                        </div>
+                        <div class="col-6 pt-2">
+                          <h3 class="m-0 d-flex justify-content-end font-RobotoBold s22 colorPrimaryText" name="txt_harga_bus">
+                            <?php echo rupiah($harga) ?>
+                            <span class="font-Roboto s14 align-self-center colorBlueDarkText">/Kursi</span>
+                          </h3>
+                          <p class="m-0 d-flex justify-content-end font-RobotoBold s14" name="txt_jumlah_kursi_bus">
+                            <?php echo $JKursi ?> Kursi</p>
+                        </div>
+                        <div class="col-2 py-2">
+                          <img src="../Web Admin/fotoBus/<?php echo $fotoBus; ?>" class='img-fluid'>
+                        </div>
+                        <div class="col-10 py-2">
+                          <div class="row">
+                            <div class="col-3">
+                              <p class="m-0"><span class="Waktu" name="txt_waktu_berangkat_bus"><?php echo date("H:i", strtotime($waktu_berangkat)) ?></span>
+                              </p>
+                              <p class="m-0" name="txt_pemberangkatan_bus"><?php echo ucwords($pemberangkatan) ?></p>
+                              <span class="badge bg-warning text-dark" name="txt_tanggal_berangkat_bus"><?php echo date("d-m-Y", strtotime($tgl_brngkt)) ?></span>
+                            </div>
+                            <div class="col-1 d-flex justify-content-center align-items-center">
+                              <i class="fas fa-arrow-right"></i>
+                            </div>
+                            <div class="col-3">
+                              <p class="m-0"><span class="Waktu" name="txt_waktu_tiba_bus"><?php echo date("H:i", strtotime($waktu_tiba)) ?></span></p>
+                              <p class="m-0" name="txt_tujuan_bus"><?php echo ucwords($tujuan) ?></p>
+                            </div>
+                            <div class="col-2 border border-start border-bottom-0 border-top-0 border-end-0">
+                              <p class="font-Roboto s12 m-0">Estimasi</p>
+                              <p class="font-RobotoBold s18">7 jam</p>
+                            </div>
+                            <div class="col-3 border border-start border-bottom-0 border-top-0 border-end-0 d-flex justify-content-start align-items-center">
+                              <!-- <a href="detailPemesanan.php">
                               <button type="submit" name="submit"
                                 class="btn colorYellow roundedBtn text-white font-RobotoBold btnPesan"
                                 value="<?php echo $idBus ?>">Pesan</button>
                             </a> -->
-                                </div>
-                              </div>
-                              <div class="row mt-2 info">
-                                <div class="col-4 text-end">
-                                  <button class="colorPrimaryText btn s14" id="shadow1" data-bs-toggle="collapse" data-bs-target="#detailBus<?php echo $idBus ?>" aria-expanded="false" aria-controls="detailBus">Detail Bus</button>
-                                </div>
-                                <div class="col-4 text-center">
-                                  <button class="colorPrimaryText btn s14" id="shadow2" data-bs-toggle="collapse" data-bs-target="#detailRute<?php echo $idBus ?>" aria-expanded="false" aria-controls="detailRute">Detail Rute</button>
-                                </div>
-                                <div class="col-4 text-start">
-                                  <button class="colorPrimaryText btn s14" id="shadow3" data-bs-toggle="collapse" data-bs-target="#ulasan<?php echo $idBus ?>" aria-expanded="false" aria-controls="ulasan">Ulasan</button>
-                                </div>
-                              </div>
                             </div>
+                          </div>
+                          <div class="row mt-2 info">
+                            <div class="col-4 text-end">
+                              <button class="colorPrimaryText btn s14" id="shadow1" data-bs-toggle="collapse" data-bs-target="#detailBus<?php echo $idBus ?>" aria-expanded="false" aria-controls="detailBus">Detail Bus</button>
+                            </div>
+                            <div class="col-4 text-center">
+                              <button class="colorPrimaryText btn s14" id="shadow2" data-bs-toggle="collapse" data-bs-target="#detailRute<?php echo $idBus ?>" aria-expanded="false" aria-controls="detailRute">Detail Rute</button>
+                            </div>
+                            <div class="col-4 text-start">
+                              <button class="colorPrimaryText btn s14" id="shadow3" data-bs-toggle="collapse" data-bs-target="#ulasan<?php echo $idBus ?>" aria-expanded="false" aria-controls="ulasan">Ulasan</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div id="detailBus<?php echo $idBus ?>" class="collapse">
-                        <div class="panel-data2 bg-white py-2 myRounded transitionShadow mb-1">
-                          <div class="container">
-                            <p class="pt-3 font-RobotoBold mb-2">Jenis Bus : <span class="font-Roboto"><?php echo $jenis_bus ?></span></p>
-                            <p class="font-RobotoBold mb-2">Kapasitas Kursi : <span class="font-Roboto"><?php echo $JKursi ?>
-                                Kursi</span></p>
-                            <p class="font-RobotoBold mb-2">
-                              Fasilitas bus : <span class="font-Roboto"><?php echo $fasilitas ?></span>
-                            </p>
-                          </div>
-                        </div>
+                  <div id="detailBus<?php echo $idBus ?>" class="collapse">
+                    <div class="panel-data2 bg-white py-2 myRounded transitionShadow mb-1">
+                      <div class="container">
+                        <p class="pt-3 font-RobotoBold mb-2">Jenis Bus : <span class="font-Roboto"><?php echo $jenis_bus ?></span></p>
+                        <p class="font-RobotoBold mb-2">Kapasitas Kursi : <span class="font-Roboto"><?php echo $JKursi ?>
+                            Kursi</span></p>
+                        <p class="font-RobotoBold mb-2">
+                          Fasilitas bus : <span class="font-Roboto"><?php echo $fasilitas ?></span>
+                        </p>
                       </div>
+                    </div>
+                  </div>
 
-                      <div id="detailRute<?php echo $idBus ?>" class="collapse">
-                        <div class="panel-data2 bg-white py-2 myRounded transitionShadow mb-1 shadow-none">
-                          <div class="container">
-                            <p class="alert alert-danger m-0"><?php echo $pemberangkatan, " - ", $tujuan; ?></p>
-                          </div>
-                        </div>
+                  <div id="detailRute<?php echo $idBus ?>" class="collapse">
+                    <div class="panel-data2 bg-white py-2 myRounded transitionShadow mb-1 shadow-none">
+                      <div class="container">
+                        <p class="alert alert-danger m-0"><?php echo $pemberangkatan, " - ", $tujuan; ?></p>
                       </div>
+                    </div>
+                  </div>
 
-                      <div id="ulasan<?php echo $idBus ?>" class="collapse">
-                        <div class="panel-data2 bg-white py-2 myRounded transitionShadow mb-1 shadow-none">
-                          <div class="container">
-                            <p class="alert alert-danger m-0">Ulasan Belum Tersedia !</p>
-                          </div>
-                        </div>
+                  <div id="ulasan<?php echo $idBus ?>" class="collapse">
+                    <div class="panel-data2 bg-white py-2 myRounded transitionShadow mb-1 shadow-none">
+                      <div class="container">
+                        <p class="alert alert-danger m-0">Ulasan Belum Tersedia !</p>
                       </div>
-                  <?php
-                      
-                    }
-                  
-                  ?>
+                    </div>
+                  </div>
+                <?php
+
+                }
+
+                ?>
 
                 <div class="card cardUser myRounded shadow mod mb-3">
                   <div class="card-header">
                     <p class="m-0 s16 p-2"><b>Transaksi</b></p>
                   </div>
                   <div class="card-body">
-                  <?php $id = $_POST["txt_id_pemesanan"];
-                  $data = $obj->pemesananB($id);
-                  $no = 1;
-                  if ($data->rowCount() > 0) {
-                    while ($row = $data->fetch(PDO::FETCH_ASSOC)) {
+                    <?php $id = $_POST["txt_id_pemesanan"];
+                    $data = $obj->pemesananB($id);
+                    $no = 1;
+                    if ($data->rowCount() > 0) {
+                      while ($row = $data->fetch(PDO::FETCH_ASSOC)) {
                         $idPemesanan = $row['id_pemesanan']; ?>
-                    <form action="cetakTiket.php" method="POST">
-                      <div class="row ps-2">
-                        <div class="col-md-6 mb-3">
-                          <label for="IDPemesanan" class="form-label">ID Pemesanan</label>
-                          <input type="text" class="form-control form-control-user2" id="IDPemesanan" name="txt_id_pemesanan" value="P000<?php echo $idPemesanan?>"placeholder="" readonly />
-                        </div>
-                      </div>
-                      <div class="row ps-2">
-                        <div class="col-md-6 mb-1">
-                          <label for="exampleInputEmail" class="form-label">Nama Pemesan</label>
-                          <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_nama" value="<?php echo $sesName?>"placeholder="Ex: Budi Santoso" readonly/>
-                          <hr>
-                        </div>
-                      </div>
-
-                      <div class="row ps-2">
-                        <div class="col-md-6 mb-4">
-                          <p class="m-0 s14"><b>Detail Pemesanan</b></p>
-                        </div>
-                      </div>
-                      <div class="row ps-2">
-                      <?php $id = $_POST["txt_nik_penumpang"];
-                  $data = $obj->penumpang($id);
-                  $no = 1;
-                  if ($data->rowCount() > 0) {
-                    while ($row = $data->fetch(PDO::FETCH_ASSOC)) {
-                        $nik_penumpang = $row['nik_penumpang'];
-                        $nama_penumpang = $row['nama_penumpang'];
-                        $no_hp_penumpang = $row['no_hp_penumpang'];
-                        $jk_penumpang = $row['jenis_kelamin_penumpang']; ?>
-                        <div class="col-md-6">
-                          <div class="myRounded border shadow mod p-3 mb-2" style="min-height: 30px;">
-                            <div class="row">
-                              <div class="col-sm-3">
-                                <p>NIK</p>
-                              </div>
-                              <div class="col-sm-7">
-                                <p>: <?php echo $nik_penumpang?></p>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-sm-3">
-                                <p>Nama</p>
-                              </div>
-                              <div class="col-sm-7">
-                                <p>: <?php echo $nama_penumpang?></p>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-sm-3">
-                                <p>Jenis Kelamin</p>
-                              </div>
-                              <div class="col-sm-7">
-                                <p>: <?php echo $jk_penumpang?></p>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-sm-3">
-                                <p class="m-0">Nomor HP</p>
-                              </div>
-                              <div class="col-sm-7">
-                                <p class="m-0">: <?php echo $no_hp_penumpang?></p>
-                              </div>
+                        <form action="cetakTiket.php" method="POST">
+                          <div class="row ps-2">
+                            <div class="col-md-6 mb-3">
+                              <label for="IDPemesanan" class="form-label">ID Pemesanan</label>
+                              <input type="text" class="form-control form-control-user2" id="IDPemesanan" name="txt_id_pemesanan" value="P000<?php echo $idPemesanan ?>" placeholder="" readonly />
                             </div>
                           </div>
-                          <hr>
-                        </div>
-                        <?php
-                        $no;
-                    }
-                      };?>
-                      </div>
-
-                      <div class="row ps-2">
-                        <div class="col-md-6 mb-4">
-                          <p class="m-0 s14"><b>Pembayaran</b></p>
-                        </div>
-                      </div>
-                      <form action="cetakTiket.php" method="POST">
-                      <?php $id = $_POST["txt_id_pemesanan"];
-                  $data = $obj->pemesananB($id);
-                  $no = 1;
-                  if ($data->rowCount() > 0) {
-                    while ($row = $data->fetch(PDO::FETCH_ASSOC)) {
-                        $idPemesanan = $row['id_pemesanan'];
-                        $total = $row['total_bayar']; ?>
-                      <div class="row ps-2">
-                      <div class="col-lg-6 mb-3" hidden>
-                  <label for="inputAlamat" class="form-label">ID</label>
-                  <input type="text" class="form-control form-control-user2" id="inputAlamat" name="txt_id_pemesanan" placeholder="Ex: Jl. Dharmawangsa" value="<?php echo $id_pemesanan?>"readonly/>
-                </div>
-                      <div class="col-lg-6 mb-3">
-                  <label for="inputAlamat" class="form-label">Waktu Pembayaran</label>
-                  <input type="datetime" class="form-control form-control-user2" id="inputId" name="txt_waktu_pembayaran" value="<?php $tz = 'Asia/Jakarta'; $dt = new DateTime("now", new DateTimeZone($tz)); $timestamp = $dt->format('Y-m-d H:i:s'); echo $timestamp; ?>" placeholder="" readonly/></div>
-                <div class="col-lg-6 mb-3">
-                  <label for="inputAlamat" class="form-label">Total Bayar</label>
-                  <input type="text" class="form-control form-control-user2" id="inputAlamat" name="txt_bayar" placeholder="Ex: Jl. Dharmawangsa" value="<?php echo $total?>"readonly/>
-                </div>
-                      </div>
-                      <div class="row ps-2">
-                      <div class="col-lg-6 mb-3">
-                  <label for="inputAlamat" class="form-label">Nama Pengirim</label>
-                  <input type="text" class="form-control form-control-user2" id="inputAlamat" name="txt_nama_pengirim" placeholder="Ex: Jl. Dharmawangsa" required data-parsley-required-message="Data harus di isi !!!"  />
-                </div>
-                        <div class="col-md-6 mb-3">
-                          <label for="MethodPay" class="form-label">Metode Pembayaran</label>
-                          <select class="form-select form-select-user select-md pay" aria-label=".form-select-sm example" required data-parsley-required-message="Harap pilih data terminal !!!" name="txt_nama_bank" id="pay">
-                            <option>Pilih</option>
-                            <option value="BRI briva">Bank BRI (BRIVA)</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="row ps-2 hidden" id="noBriva">
-                        <div class="col-md-6 mb-3">
-                          <label for="NoBriva" class="form-label">No. Briva</label>
-                          <input type="text" class="form-control form-control-user2" id="NoBriva" name="txt_no_rekening" placeholder="" readonly value="86531616235361"/>
-                        </div>
-                      </div>
-                      <div class="row ps-2">
-                        <div class="col-md-6">
-                          <label for="UploadBukti" class="form-label ">Upload Bukti Pembayaran</label>
-                          <div class="input-group mb-3">
-                            <input type="file" class="form-control form-select-user select-md" id="UploadBukti" name="txt_bukti_pembayaran">
+                          <div class="row ps-2">
+                            <div class="col-md-6 mb-1">
+                              <label for="exampleInputEmail" class="form-label">Nama Pemesan</label>
+                              <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_nama" value="<?php echo $sesName ?>" placeholder="Ex: Budi Santoso" readonly />
+                              <hr>
+                            </div>
                           </div>
-                        </div>
-                      </div>
-                      <div class="col-12 d-flex justify-content-center mb-5">
-              <button type="submit" name="submit" class="btn colorPrimary text-white py-2 s14 rounded-pill resize">Konfirmasi</button>
-            </div>
-            <?php
-          }};?>
-                    </form>
+
+                          <div class="row ps-2">
+                            <div class="col-md-6 mb-4">
+                              <p class="m-0 s14"><b>Detail Pemesanan</b></p>
+                            </div>
+                          </div>
+                          <div class="row ps-2">
+                            <?php $id = $_POST["txt_nik_penumpang"];
+                            $data = $obj->penumpang($id);
+                            $no = 1;
+                            if ($data->rowCount() > 0) {
+                              while ($row = $data->fetch(PDO::FETCH_ASSOC)) {
+                                $nik_penumpang = $row['nik_penumpang'];
+                                $nama_penumpang = $row['nama_penumpang'];
+                                $no_hp_penumpang = $row['no_hp_penumpang'];
+                                $jk_penumpang = $row['jenis_kelamin_penumpang']; ?>
+                                <div class="col-md-6">
+                                  <div class="myRounded border shadow mod p-3 mb-2" style="min-height: 30px;">
+                                    <div class="row">
+                                      <div class="col-sm-3">
+                                        <p>NIK</p>
+                                      </div>
+                                      <div class="col-sm-7">
+                                        <p>: <?php echo $nik_penumpang ?></p>
+                                      </div>
+                                    </div>
+                                    <div class="row">
+                                      <div class="col-sm-3">
+                                        <p>Nama</p>
+                                      </div>
+                                      <div class="col-sm-7">
+                                        <p>: <?php echo $nama_penumpang ?></p>
+                                      </div>
+                                    </div>
+                                    <div class="row">
+                                      <div class="col-sm-3">
+                                        <p>Jenis Kelamin</p>
+                                      </div>
+                                      <div class="col-sm-7">
+                                        <p>: <?php echo $jk_penumpang ?></p>
+                                      </div>
+                                    </div>
+                                    <div class="row">
+                                      <div class="col-sm-3">
+                                        <p class="m-0">Nomor HP</p>
+                                      </div>
+                                      <div class="col-sm-7">
+                                        <p class="m-0">: <?php echo $no_hp_penumpang ?></p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <hr>
+                                </div>
+                            <?php
+                                $no;
+                              }
+                            }; ?>
+                          </div>
+
+                          <div class="row ps-2">
+                            <div class="col-md-6 mb-4">
+                              <p class="m-0 s14"><b>Pembayaran</b></p>
+                            </div>
+                          </div>
+                          <form action="cetakTiket.php" method="POST">
+                            <?php $id = $_POST["txt_id_pemesanan"];
+                            $data = $obj->pemesananB($id);
+                            $no = 1;
+                            if ($data->rowCount() > 0) {
+                              while ($row = $data->fetch(PDO::FETCH_ASSOC)) {
+                                $idPemesanan = $row['id_pemesanan'];
+                                $total = $row['total_bayar']; ?>
+                                <div class="row ps-2">
+                                  <div class="col-lg-6 mb-3" hidden>
+                                    <label for="inputAlamat" class="form-label">ID</label>
+                                    <input type="text" class="form-control form-control-user2" id="inputAlamat" name="txt_id_pemesanan" placeholder="Ex: Jl. Dharmawangsa" value="<?php echo $id_pemesanan ?>" readonly />
+                                  </div>
+                                  <div class="col-lg-6 mb-3">
+                                    <label for="inputAlamat" class="form-label">Waktu Pembayaran</label>
+                                    <input type="datetime" class="form-control form-control-user2" id="inputId" name="txt_waktu_pembayaran" value="<?php $tz = 'Asia/Jakarta';
+                                                                                                                                                    $dt = new DateTime("now", new DateTimeZone($tz));
+                                                                                                                                                    $timestamp = $dt->format('Y-m-d H:i:s');
+                                                                                                                                                    echo $timestamp; ?>" placeholder="" readonly />
+                                  </div>
+                                  <div class="col-lg-6 mb-3">
+                                    <label for="inputAlamat" class="form-label">Total Bayar</label>
+                                    <input type="text" class="form-control form-control-user2" id="inputAlamat" name="txt_bayar" placeholder="Ex: Jl. Dharmawangsa" value="<?php echo $total ?>" readonly />
+                                  </div>
+                                </div>
+                                <div class="row ps-2">
+                                  <div class="col-lg-6 mb-3">
+                                    <label for="inputAlamat" class="form-label">Nama Pengirim</label>
+                                    <input type="text" class="form-control form-control-user2" id="inputAlamat" name="txt_nama_pengirim" placeholder="Ex: Jl. Dharmawangsa" required data-parsley-required-message="Data harus di isi !!!" />
+                                  </div>
+                                  <div class="col-md-6 mb-3">
+                                    <label for="MethodPay" class="form-label">Metode Pembayaran</label>
+                                    <select class="form-select form-select-user select-md pay" aria-label=".form-select-sm example" required data-parsley-required-message="Harap pilih data terminal !!!" name="txt_nama_bank" id="pay">
+                                      <option>Pilih</option>
+                                      <option value="BRI briva">Bank BRI (BRIVA)</option>
+                                    </select>
+                                  </div>
+                                </div>
+                                <div class="row ps-2 hidden" id="noBriva">
+                                  <div class="col-md-6 mb-3">
+                                    <label for="NoBriva" class="form-label">No. Briva</label>
+                                    <input type="text" class="form-control form-control-user2" id="NoBriva" name="txt_no_rekening" placeholder="" readonly value="86531616235361" />
+                                  </div>
+                                </div>
+                                <div class="row ps-2">
+                                  <div class="col-md-6">
+                                    <label for="UploadBukti" class="form-label ">Upload Bukti Pembayaran</label>
+                                    <div class="input-group mb-3">
+                                      <input type="file" class="form-control form-select-user select-md" id="UploadBukti" name="txt_bukti_pembayaran">
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-12 d-flex justify-content-center mb-5">
+                                  <button type="submit" name="submit" class="btn colorPrimary text-white py-2 s14 rounded-pill resize">Konfirmasi</button>
+                                </div>
+                            <?php
+                              }
+                            }; ?>
+                          </form>
                   </div>
-                  <?php
-                  $no;
-                  }};?>
+              <?php
+                        $no;
+                      }
+                    }; ?>
                 </div>
               </div>
             </div>
-            
+
           </div>
         </div>
       </div>
@@ -560,18 +573,18 @@ function rupiah($angka)
     });
   </script>
   <script>
-      $(".pay").change(function () {
-        var responseID = $(this).val();
-        if (responseID == "BRI briva") {
-          $("#noBriva").removeClass("hidden");
-          $("#noBriva").addClass("show");
-        } else {
-          $("#noBriva").removeClass("show");
-          $("#noBriva").addClass("hidden");
-        }
-        console.log(responseID);
-      });
-    </script>
+    $(".pay").change(function() {
+      var responseID = $(this).val();
+      if (responseID == "BRI briva") {
+        $("#noBriva").removeClass("hidden");
+        $("#noBriva").addClass("show");
+      } else {
+        $("#noBriva").removeClass("show");
+        $("#noBriva").addClass("hidden");
+      }
+      console.log(responseID);
+    });
+  </script>
 </body>
 
 </html>

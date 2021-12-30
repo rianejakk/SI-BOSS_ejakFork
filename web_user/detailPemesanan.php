@@ -86,34 +86,42 @@ function rupiah($angka)
               <a class="nav-link" href="#">About</a>
             </li>
           </ul>
-          <?php if ($_SESSION['level']) : ?>
+          <?php if (!isset($_SESSION['level'])) : ?>
             <div class="ms-auto myClass">
-              <button href="login.php"class="btn colorPrimary me-2 roundedBtn text-white" type="submit">Masuk</button>
-              <button class="btn btn-outlineCust roundedBtn" type="submit">Daftar</button>
+              <a href="login.php" class="text-decoration-none">
+                <button class="btn b-cust me-2 roundedBtn text-white" id="custBtnLogin">Masuk</button>
+              </a>
+              <a href="daftar.php" class="text-decoration-none">
+                <button class="btn roundedBtn b-cust" id="custBtnDaftar">Daftar</button>
+              </a>
             </div>
           <?php elseif ($_SESSION['level'] == "0") : ?>
             <div class="ms-auto myClass">
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="dropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <span class="RobotoReg14"><?php echo $sesName; ?></span>
-                  <img class="img-profile rounded-circle" src="../Web Admin/fotoUser/<?php echo $sesFoto; ?>" />
-                </a>
-
-                <ul class="dropdown-menu border-0 dropdown-menu-end shadow" aria-labelledby="dropdownProfile">
-                  <li>
-                    <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editDataAdministrator<?php echo $sesID ?>"><i class="las la-user mr-2"></i>My Profile</a>
-                  </li>
-                  <!-- <li>
-                  <a class="dropdown-item" href="#"> <i class="las la-list-alt mr-2"></i> Activity Log </a>
-                </li> -->
-                  <li>
-                    <div class="dropdown-divider"></div>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="logout.php"> <i class="las la-sign-out-alt mr-2"></i> Sign Out </a>
-                  </li>
-                </ul>
-              </li>
+              <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="ropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img class="avatar rounded-circle me-2" src="../Web Admin/fotoUser/<?php echo $sesFoto; ?>" alt="foto">
+                    <span><?php echo $sesName; ?></span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end myRounded" aria-labelledby="navbarDarkDropdownMenuLink">
+                    <li><a class="dropdown-item s14" href="#" data-bs-toggle="modal" data-bs-target="#editDataAdministrator<?php echo $sesID ?>">
+                        <i class="fas fa-user-edit me-2"></i>
+                        <span>Edit Profil</span>
+                      </a></li>
+                    <li><a class="dropdown-item s14" href="#">
+                        <i class="fas fa-receipt me-3"></i>
+                        <span>Pesanan saya</span>
+                      </a></li>
+                    <li>
+                      <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item s14" href="logout.php">
+                        <i class="fas fa-sign-out-alt me-3"></i>
+                        <span>Logout</span>
+                      </a></li>
+                  </ul>
+                </li>
+              </ul>
             </div>
           <?php endif ?>
         </div>
@@ -126,110 +134,110 @@ function rupiah($angka)
     <div class="modal-dialog modal-lg">
       <div class="modal-content modal-edit">
         <!-- <form role="form" action="editAdministrator.php" method="POST" enctype="multipart/form-data"> -->
-          <?php
-          $query = $obj->pilihUser($sesID);
-          while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
-          ?>
-            <div class="modal-header">
-              <h4 class="modal-title">Profile</h4>
-              <button type="button" class="btn btn-danger btn-circle btn-user2 shadow" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true">
-                <i class="fa fa-times fa-sm"></i>
-              </button>
-            </div>
-            <div class="modal-body">
+        <?php
+        $query = $obj->pilihUser($sesID);
+        while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+        ?>
+          <div class="modal-header">
+            <h4 class="modal-title">Profile</h4>
+            <button type="button" class="btn btn-danger btn-circle btn-user2 shadow" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true">
+              <i class="fa fa-times fa-sm"></i>
+            </button>
+          </div>
+          <div class="modal-body">
 
-              <div class="row">
-                <div class="col-lg-6 mb-3">
-                  <label for="inputId" class="form-label">NIK</label>
-                  <input type="text" class="form-control form-control-user2" id="inputId" name="txt_id_user_admin" value="<?php echo $sesID ?>" placeholder="" readonly />
-                </div>
+            <div class="row">
+              <div class="col-lg-6 mb-3">
+                <label for="inputId" class="form-label">NIK</label>
+                <input type="text" class="form-control form-control-user2" id="inputId" name="txt_id_user_admin" value="<?php echo $sesID ?>" placeholder="" readonly />
               </div>
-              <div class="row">
-                <div class="col-lg-6 mb-3">
-                  <!-- <form action="editAdministrator.php" method="POST" enctype="multipart/form-data"> -->
-                  <div class="form-group">
-                    <label for="InputFotoBus" class="form-label">Foto</label>
-                    <div class="img-div">
-                      <div class="img-placeholder" onClick="triggerClick()">
-                        <img src="img/ico/icons8_driver_50px.png" alt="" />
-                      </div>
-                      <img class="img-profile rounded-circle" src="../Web Admin/fotoAdmin/<?php echo $sesFoto; ?>" onClick="triggerClick()" id="profileDisplay" />
-                      <!-- <img src="img/ico/icons8_driver_50px.png" onClick="triggerClick()" id="profileDisplay" /> -->
+            </div>
+            <div class="row">
+              <div class="col-lg-6 mb-3">
+                <!-- <form action="editAdministrator.php" method="POST" enctype="multipart/form-data"> -->
+                <div class="form-group">
+                  <label for="InputFotoBus" class="form-label">Foto</label>
+                  <div class="img-div">
+                    <div class="img-placeholder" onClick="triggerClick()">
+                      <img src="img/ico/icons8_driver_50px.png" alt="" />
                     </div>
-                    <input type="file" name="txt_fotoEa" onChange="displayImage(this)" id="profileImage" class="form-control" style="display: none;" />
-                    <a href="#" class="float-end view text-secondary"> Lihat Foto </a>
+                    <img class="img-profile rounded-circle" src="../Web Admin/fotoAdmin/<?php echo $sesFoto; ?>" onClick="triggerClick()" id="profileDisplay" />
+                    <!-- <img src="img/ico/icons8_driver_50px.png" onClick="triggerClick()" id="profileDisplay" /> -->
                   </div>
-                </div>
-                <!-- </form> -->
-
-                <div class="col-lg-6 mb-3">
-                  <label for="inputNama" class="form-label">Nama</label>
-                  <input type="text" class="form-control form-control-user2" id="inputNama" name="txt_nama" placeholder="Ex: Budi Santoso" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $sesName ?>" />
-                  <label for="InputJenisKelamin" class="form-label">Jenis Kelamin</label>
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="Rbtn_jenis_kelamin" id="Radios1" value="Laki-laki" checked />
-                    <label class="form-label2" for="Radios1"><span>Laki-laki</span></label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="Rbtn_jenis_kelamin" id="Radios2" value="Perempuan" />
-                    <label class="form-label2" for="Radios2"><span>Perempuan</span></label>
-                  </div>
+                  <input type="file" name="txt_fotoEa" onChange="displayImage(this)" id="profileImage" class="form-control" style="display: none;" />
+                  <a href="#" class="float-end view text-secondary"> Lihat Foto </a>
                 </div>
               </div>
+              <!-- </form> -->
 
-              <div class="row">
-                <div class="col-lg-6 mb-3">
-                  <label for="inputAlamat" class="form-label">Tempat Lahir</label>
-                  <input type="text" class="form-control form-control-user2" id="inputAlamat" name="txt_alamat" placeholder="Ex: Jl. Dharmawangsa" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $sesTempat ?>" />
+              <div class="col-lg-6 mb-3">
+                <label for="inputNama" class="form-label">Nama</label>
+                <input type="text" class="form-control form-control-user2" id="inputNama" name="txt_nama" placeholder="Ex: Budi Santoso" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $sesName ?>" />
+                <label for="InputJenisKelamin" class="form-label">Jenis Kelamin</label>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="Rbtn_jenis_kelamin" id="Radios1" value="Laki-laki" checked />
+                  <label class="form-label2" for="Radios1"><span>Laki-laki</span></label>
                 </div>
-                <div class="col-lg-6 mb-3">
-                  <label for="inputNoHp" class="form-label">Tanggal Lahir</label>
-                  <input type="text" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp" placeholder="Ex: 085808241205" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $sesTanggal ?>" />
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="Rbtn_jenis_kelamin" id="Radios2" value="Perempuan" />
+                  <label class="form-label2" for="Radios2"><span>Perempuan</span></label>
                 </div>
-              </div>
-
-              <div class="row">
-                <div class="col-lg-6 mb-3">
-                  <label for="inputAlamat" class="form-label">Alamat</label>
-                  <input type="text" class="form-control form-control-user2" id="inputAlamat" name="txt_alamat" placeholder="Ex: Jl. Dharmawangsa" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $sesAlamat ?>" />
-                </div>
-                <div class="col-lg-6 mb-3">
-                  <label for="inputNoHp" class="form-label">No Handphone</label>
-                  <input type="number" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp" placeholder="Ex: 085808241205" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $sesNoHP ?>" />
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col-lg-6 mb-3">
-                  <label for="inputEmail" class="form-label">Email</label>
-                  <input type="email" class="form-control form-control-user2" id="inputEmail" name="txt_email" placeholder="Ex: admin@gmail.com" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $sesEmail ?>" />
-                </div>
-                <div class="col-lg-6 mb-3">
-                  <label for="inputPassword" class="form-label">Password</label>
-                  <input type="password" class="form-control form-control-user2" id="inputPassword" name="txt_password" placeholder="Ex: ********" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $sesPass ?>" />
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col-lg-6 mb-3" hidden>
-                  <label for="inputId" class="form-label">Status</label>
-                  <input type="text" class="form-control form-control-user2" id="inputId" name="txt_id_level" value="<?php echo $sesLvl ?>" placeholder="" readonly />
-                </div>
-                <div class="col-lg-6 mb-3" hidden>
-                  <label for="inputId" class="form-label">Status</label>
-                  <input type="text" class="form-control form-control-user2" id="inputId" name="txt" value="User" placeholder="" readonly />
-                </div>
-              </div>
-
-              <div class="modal-footer">
-                <button class="btn btn-secondary roundedBtn" type="button" data-bs-dismiss="modal">Batal</button>
-                <!-- <button type="submit" class="btn text-white colorPrimary roundedBtn" name="simpan">Update</button> -->
               </div>
             </div>
-        <!-- </form> -->
-      <?php
-          }
-      ?>
+
+            <div class="row">
+              <div class="col-lg-6 mb-3">
+                <label for="inputAlamat" class="form-label">Tempat Lahir</label>
+                <input type="text" class="form-control form-control-user2" id="inputAlamat" name="txt_alamat" placeholder="Ex: Jl. Dharmawangsa" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $sesTempat ?>" />
+              </div>
+              <div class="col-lg-6 mb-3">
+                <label for="inputNoHp" class="form-label">Tanggal Lahir</label>
+                <input type="text" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp" placeholder="Ex: 085808241205" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $sesTanggal ?>" />
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-6 mb-3">
+                <label for="inputAlamat" class="form-label">Alamat</label>
+                <input type="text" class="form-control form-control-user2" id="inputAlamat" name="txt_alamat" placeholder="Ex: Jl. Dharmawangsa" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $sesAlamat ?>" />
+              </div>
+              <div class="col-lg-6 mb-3">
+                <label for="inputNoHp" class="form-label">No Handphone</label>
+                <input type="number" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp" placeholder="Ex: 085808241205" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $sesNoHP ?>" />
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-6 mb-3">
+                <label for="inputEmail" class="form-label">Email</label>
+                <input type="email" class="form-control form-control-user2" id="inputEmail" name="txt_email" placeholder="Ex: admin@gmail.com" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $sesEmail ?>" />
+              </div>
+              <div class="col-lg-6 mb-3">
+                <label for="inputPassword" class="form-label">Password</label>
+                <input type="password" class="form-control form-control-user2" id="inputPassword" name="txt_password" placeholder="Ex: ********" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $sesPass ?>" />
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-6 mb-3" hidden>
+                <label for="inputId" class="form-label">Status</label>
+                <input type="text" class="form-control form-control-user2" id="inputId" name="txt_id_level" value="<?php echo $sesLvl ?>" placeholder="" readonly />
+              </div>
+              <div class="col-lg-6 mb-3" hidden>
+                <label for="inputId" class="form-label">Status</label>
+                <input type="text" class="form-control form-control-user2" id="inputId" name="txt" value="User" placeholder="" readonly />
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button class="btn btn-secondary roundedBtn" type="button" data-bs-dismiss="modal">Batal</button>
+              <!-- <button type="submit" class="btn text-white colorPrimary roundedBtn" name="simpan">Update</button> -->
+            </div>
+          </div>
+          <!-- </form> -->
+        <?php
+        }
+        ?>
       </div>
     </div>
   </div>
@@ -240,8 +248,8 @@ function rupiah($angka)
         <div class="row">
           <div class="col-12 custom-panel">
             <div class="row">
-            <form role="form" action="transaksi.php" method="POST" enctype="multipart/form-data">
-                            
+              <form role="form" action="transaksi.php" method="POST" enctype="multipart/form-data">
+
                 <div class="col-12">
                   <!-- Content Data -->
                   <?php
@@ -268,10 +276,10 @@ function rupiah($angka)
                         <div class="container">
                           <div class="row myrowData h-100">
                             <div class="col-6 pt-2">
-                            <div class="form-group" hidden>
-                            <label for="InputId" class="form-label">Id</label>
-                            <input type="text" class="form-control form-control-user2" id="inputId" name="txt_id_bus" value="<?php echo $idBus ?>" placeholder="" readonly />
-                          </div>
+                              <div class="form-group" hidden>
+                                <label for="InputId" class="form-label">Id</label>
+                                <input type="text" class="form-control form-control-user2" id="inputId" name="txt_id_bus" value="<?php echo $idBus ?>" placeholder="" readonly />
+                              </div>
                               <h3 class="m-0" name="txt_nama_bus"><b><?php echo ucwords($namaBus) ?></b></h3>
                               <p class="m-0" name="txt_jenis_bus"><?php echo ucwords($jenis_bus) ?></p>
                             </div>
@@ -363,8 +371,6 @@ function rupiah($angka)
                   }
                   ?>
 
-
-
                   <div class="row">
                     <div class="col-lg-2 mb-3">
                       <label for="IDPemesanan" class="form-label">Kursi Pesan</label>
@@ -373,15 +379,15 @@ function rupiah($angka)
 
                     <div class="col-lg-2 mb-3">
                       <label for="IDPemesanan" class="form-label">Total Bayar</label>
-                      <input type="text" class="form-control form-control-user2" id="IDPemesanan" name="txt_total_bayar" placeholder="" value="<?php echo $harga?>" readonly />
+                      <input type="text" class="form-control form-control-user2" id="IDPemesanan" name="txt_total_bayar" placeholder="" value="<?php echo $harga ?>" readonly />
                     </div>
 
-                    <div class="col-lg-2 mb-3" >
+                    <div class="col-lg-2 mb-3">
                       <label for="IDPemesanan" class="form-label">Status</label>
-                      <input type="text" class="form-control form-control-user2" id="IDPemesanan" name="txt_status" value="<?php $statu = "Belum Bayar"; echo $statu?>" placeholder="" readonly />
+                      <input type="text" class="form-control form-control-user2" id="IDPemesanan" name="txt_status" value="<?php $statu = "Belum Bayar";
+                                                                                                                            echo $statu ?>" placeholder="" readonly />
                     </div>
                   </div>
-
 
                   <div class="card cardUser myRounded shadow mod mb-3">
                     <div class="card-header">
@@ -422,123 +428,52 @@ function rupiah($angka)
                   <!-- <div class="repeater p-0" enctype="multipart/form-data">
                     <div data-repeater-list="group-a">
                       <div data-repeater-item class="row p-0 d-flex justify-content-center"> -->
-                        <div class="card cardUser p-0 myRounded shadow mod mb-3" style="width: 98%;">
-                          <div class="card-header">
-                            <p class="m-0 s16"><b>Data Penumpang</b></p>
-                          </div>
-                          <div class="card-body">
-                          <div class="row">
-                              <div class="col-lg-12 mb-3" hidden>
-                                <label for="IDPemesanan" class="form-label">Id Pemesanan</label>
-                                <input type="text" class="form-control form-control-user2" id="IDPemesanan" name="txt_id" placeholder="" readonly />
-                              </div>
-                              <div class="col-lg-6 mb-3">
-                                <label for="exampleInputEmail" class="form-label">Nama Lengkap</label>
-                                <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_nama_penumpang" placeholder="Ex: Budi Santoso" />
-                              </div>
-                              <div class="col-lg-6 mb-3">
-                                <label for="Input NIK" class="form-label">NIK</label>
-                                <input type="number" class="form-control form-control-user2" id="InputNIK" name="txt_nik_penumpang" placeholder="35678891638191" />
-                              </div>
-                              <div class="col-lg-6 mb-3">
-                                <label for="InputNoHP" class="form-label">No. HP</label>
-                                <input type="number" class="form-control form-control-user2" id="InputNoHP" name="txt_no_hp_penumpang" placeholder="08872861622" />
-                              </div>
-                              <div class="col-lg-6 mb-3">
-                                <label for="exampleInputPassword" class="form-label">Jenis Kelamin</label>
-                                <div class="form-check">
-                                  <input class="form-check-input" type="radio" name="txt_jenis_kelamin_penumpang" id="exampleRadios1" value="Laki - Laki" checked />
-                                  <label class="form-check-label2" for="exampleRadios1"> Laki-laki</label>
-                                </div>
-                                <div class="form-check">
-                                  <input class="form-check-input" type="radio" name="txt_jenis_kelamin_penumpang" id="exampleRadios2" value="Perempuan" />
-                                  <label class="form-check-label2" for="exampleRadios2"> Perempuan </label>
-                                </div>
-                              </div>
-                            </div>
-                            
-                            <input data-repeater-create type="button" class="btn btn-success mt-3 mt-lg-0" value="Add" />
-                            <input data-repeater-delete type="button" class="btn btn-primary" value="Delete" />
-                          
-                          </div>
-                        </div>
-                      <!-- </div>
+                  <div class="card cardUser p-0 myRounded shadow mod mb-3" style="width: 98%;">
+                    <div class="card-header">
+                      <p class="m-0 s16"><b>Data Penumpang</b></p>
                     </div>
-                  </div> -->
-
-
-
-
-                  <!-- <div class="row g-2 m-0">
-                  <div class="col-lg-12 p-0">
-                    <div class="card cardUser p-0 myRounded shadow mod mb-3">
-                      <div class="card-header rounded">
-                        <div class="title float-start d-flex align-items-center" style="height: 42px;">
-                          <b>Data Penumpang</b>
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-lg-12 mb-3" hidden>
+                          <label for="IDPemesanan" class="form-label">Id Pemesanan</label>
+                          <input type="text" class="form-control form-control-user2" id="IDPemesanan" name="txt_id" placeholder="" readonly />
                         </div>
-                        <div class="btnAction float-end d-flex align-items-center" style="height: 42px;">
-                          <a href="#">
-                            <button class="btn btn-light text-dark btn-circle custShadow2 me-2"><i class="fas fa-plus" data-bs-toggle="tooltip" title="Tambah"></i></button>
-                          </a>
+                        <div class="col-lg-6 mb-3">
+                          <label for="exampleInputEmail" class="form-label">Nama Lengkap</label>
+                          <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_nama_penumpang" placeholder="Ex: Budi Santoso" />
                         </div>
-                      </div>
-                      <div class="card-body">
-                        <div class="table-responsive">
-                          <table class="table table-hover dataTable" width="100%">
-                            <thead>
-                              <tr>
-                                <th class="cb">
-                                  <span class="custom-checkbox">
-                                    <input type="checkbox" class="selectAll" />
-                                    <label for="selectAll"></label>
-                                  </span>
-                                </th>
-                                <th class="actions">Action</th>
-                                <th class="nama">Id Pemesanan</th>
-                                <th class="email">NIK</th>
-                                <th class="pass">Nama Lengkap</th>
-                                <th class="alamat">No. Hp</th>
-                                <th class="jenisKelamin">Jenis Kelamin</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td>
-                                  <span class="custom-checkbox">
-                                    <input type="checkbox" id="checkbox1" name="option[]" value="1" />
-                                    <label for="checkbox1"></label>
-                                  </span>
-                                </td>
-                                <td>
-                                  <a href="#" class="actionBtn" aria-label="Edit">
-                                    <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#editDataAkun" value="edit">
-                                      &nbsp;<i class="fa fa-edit fa-sm" data-bs-toggle="tooltip" title="Edit"></i>
-                                    </button>
-                                  </a>
-                                  <a href="#" class="actionBtn" aria-label="Delete">
-                                    <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteDataAkun" value="hapus">
-                                      <i class="fa fa-trash fa-sm" data-bs-toggle="tooltip" title="Delete"></i>
-                                    </button>
-                                  </a>
-                                </td>
-                                <td>PM001</td>
-                                <td>350903090702005</td>
-                                <td>Muhammad Khoirul Rosikin</td>
-                                <td>085808241207</td>
-                                <td>Laki-laki</td>
-                              </tr>
-                            </tbody>
-                          </table>
+                        <div class="col-lg-6 mb-3">
+                          <label for="Input NIK" class="form-label">NIK</label>
+                          <input type="number" class="form-control form-control-user2" id="InputNIK" name="txt_nik_penumpang" placeholder="35678891638191" />
+                        </div>
+                        <div class="col-lg-6 mb-3">
+                          <label for="InputNoHP" class="form-label">No. HP</label>
+                          <input type="number" class="form-control form-control-user2" id="InputNoHP" name="txt_no_hp_penumpang" placeholder="08872861622" />
+                        </div>
+                        <div class="col-lg-6 mb-3">
+                          <label for="exampleInputPassword" class="form-label">Jenis Kelamin</label>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="txt_jenis_kelamin_penumpang" id="exampleRadios1" value="Laki - Laki" checked />
+                            <label class="form-check-label2" for="exampleRadios1"> Laki-laki</label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="txt_jenis_kelamin_penumpang" id="exampleRadios2" value="Perempuan" />
+                            <label class="form-check-label2" for="exampleRadios2"> Perempuan </label>
+                          </div>
                         </div>
                       </div>
+                      <input data-repeater-create type="button" class="btn btn-success mt-3 mt-lg-0" value="Add" />
+                      <input data-repeater-delete type="button" class="btn btn-primary" value="Delete" />
                     </div>
                   </div>
-                </div> -->
+                  <!-- </div>
+                    </div>
+                  </div> -->
                 </div>
                 <div class="col-12 d-flex justify-content-center mb-5">
                   <button type="submit" name="simpan" class="btn colorPrimary text-white py-2 s14 rounded-pill resize">Pesan</button>
                 </div>
-            </form>
+              </form>
             </div>
           </div>
         </div>

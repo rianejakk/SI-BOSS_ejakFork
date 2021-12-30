@@ -32,7 +32,6 @@
 
     if(isset($_SESSION['email'])){
       header('Location: index.php');
-
     }
   }
 
@@ -93,15 +92,27 @@
         header('Location: index.php');
 
       } if ($emailVal != $email && $passwordVal == $password) {?>
-        <div class="alert alert-danger d-block position-fixed custAlert" role="alert">Email tidak ditemukan !</div><?php 
+        <div class="w-100 d-flex justify-content-center">
+          <div class="alert alert-danger d-block position-fixed custAlert" style="z-index: 11;" role="alert">Email tidak ditemukan !</div>
+        </div>
+          <?php 
       } if ($emailVal == $email && $passwordVal != $password) {?>
-        <div class="alert alert-danger d-block position-fixed custAlert" role="alert">Password salah !</div><?php 
+        <div class="w-100 d-flex justify-content-center">
+          <div class="alert alert-danger d-block position-fixed custAlert" style="z-index: 11;" role="alert">Password salah !</div>
+        </div>  
+        <?php 
       }
     } else {?>
-      <div class="alert alert-danger d-block position-fixed custAlert" role="alert">Email atau password salah !!</div><?php 
-    }
-    } else {?> 
-      <div class="alert alert-danger d-block position-fixed custAlert" role="alert">Email atau password kosong !!</div><?php 
+      <div class="w-100 d-flex justify-content-center">
+        <div class="alert alert-danger d-block position-fixed custAlert"  style="z-index: 11;" role="alert">Email atau password salah !!</div>
+      </div>
+      <?php   
+  }
+    } else {?>
+      <div class="w-100 d-flex justify-content-center"> 
+        <div class="alert alert-danger d-block position-fixed custAlert"  style="z-index: 11;" role="alert">Email atau password kosong !!</div>
+      </div>
+      <?php 
     }
   }
 ?>
@@ -182,7 +193,7 @@
                       <label for="password-input" class="form-label font-RobotoSemiBold colorBold s12">Kata sandi</label>
                       <input type="password" class="form-control form-control-user2" id="password-input" name="txt_password" required data-parsley-required-message="Kata sandi tidak boleh kosong !!!" placeholder="********" data-parsley-length="[8,16]" maxlength="16" data-parsley-length-message="Harus disiisi 8 sampai 16 karakter !!!" aria-label="password" />
                     </div>
-                    <span class="input-group-text s10 p-0 mb-2 d-flex justify-content-end text-muted show-hideWithText" toggle="#password-input" id="spanShow">
+                    <span class="s10 p-0 mb-2 d-flex justify-content-end text-muted show-hideWithText" toggle="#password-input" id="spanShow">
                       Tampilkan Kata Sandi
                     </span>
                     <div class="clearfix"></div>

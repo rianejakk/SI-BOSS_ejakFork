@@ -128,6 +128,13 @@ select.form-select-user {
   border-radius: 5px;
   padding: 10px;
 }
+.avatar{
+  width: 33px;
+  height: 33px;
+  object-position: center;
+  object-fit: cover;
+}
+
 .form-select:focus {
   border-color: #527bdd;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 4px #527bdd;
@@ -142,20 +149,20 @@ nav.bgNav {
   transition: linear 0.4s !important;
 }
 
-nav li.nav-item a.nav-link.active {
+nav ul.menu li.nav-item a.nav-link.active {
   font-family: Roboto-Bold !important;
   background-image: linear-gradient(to right, rgb(28, 95, 238), rgb(28, 95, 238));
   background-position: bottom center;
   background-repeat: no-repeat;
   background-size: 100% 2px;
 }
-nav.landingNav li.nav-item a.nav-link.active {
+nav.landingNav ul.menu li.nav-item a.nav-link.active {
   background-image: linear-gradient(to right, rgb(255, 255, 255), rgb(255, 255, 255));
 }
-nav.landingNav ul li {
+nav.landingNav ul.menu li {
   background-image: linear-gradient(to right, rgb(255, 255, 255), rgb(255, 255, 255));
 }
-nav ul li {
+nav ul.menu li {
   display: inline-block;
   background-image: linear-gradient(to right, rgb(28, 95, 238), rgb(28, 95, 238));
   background-position: bottom center;
@@ -164,11 +171,13 @@ nav ul li {
   transition: background-size 0.3s ease;
 }
 
-nav ul li:hover {
+nav ul.menu li:hover {
   background-size: 100% 2px;
   font-family: Roboto-Bold !important;
   color: #527bdd !important ;
 }
+
+
 .b-cust {
   color: #fff;
   border-color: #ffffff;
@@ -766,7 +775,7 @@ i.fa-google:hover {
 }
 .custom-panel2 {
   position: absolute !important;
-  top: 18px !important;
+  top: 18.4px !important;
   transition: 0.4s ease-in-out;
 }
 .mybgs {
@@ -783,36 +792,12 @@ a.small:hover {
   font-weight: bold;
   text-decoration: underline;
 }
-/* section .custom-panel .input-group {
-  border: 1px solid #ced4da;
-  border-radius: 8px;
-}
-section .custom-panel .input-group:focus-within {
-  border-color: #527bdd;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 4px #527bdd;
-  outline: 0 none;
-  transition: 0.4s ease-in-out;
-}
-section .custom-panel span.input-group-text {
-  background-color: white;
-  border-radius: 0 8px 8px;
-  border: 0;
-  cursor: pointer;
-}
-section .custom-panel .input-group input {
-  border: 0;
-  box-shadow: none;
-  -webkit-text-securit: square;
-} */
+
 #parsley-id-7 {
   display: inline-block !important;
   float: left;
 }
 .show-hideWithText {
-  display: inline-block !important;
-  float: right;
-}
-.show-hideWithText2 {
   display: inline-block !important;
   float: right;
   outline: none !important;
