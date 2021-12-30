@@ -68,36 +68,42 @@ function rupiah($angka)
               <a class="nav-link" href="#">About</a>
             </li>
           </ul>
-
-          <?php if ($_SESSION['level'] == "") : ?>
+          <?php if (!isset($_SESSION['level'])) : ?>
             <div class="ms-auto myClass">
-              <button class="btn colorPrimary me-2 roundedBtn text-white" type="submit">Masuk</button>
-              <button class="btn btn-outlineCust roundedBtn" type="submit">Daftar</button>
+              <a href="login.php" class="text-decoration-none">
+                <button class="btn b-cust me-2 roundedBtn text-white" id="custBtnLogin">Masuk</button>
+              </a>
+              <a href="daftar.php" class="text-decoration-none">
+                <button class="btn roundedBtn b-cust" id="custBtnDaftar">Daftar</button>
+              </a>
             </div>
-
           <?php elseif ($_SESSION['level'] == "0") : ?>
             <div class="ms-auto myClass">
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="dropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <span class="RobotoReg14"><?php echo $sesName; ?></span>
-                  <img class="img-profile rounded-circle" src="../Web Admin/fotoUser/<?php echo $sesFoto; ?>" />
-                </a>
-
-                <ul class="dropdown-menu border-0 dropdown-menu-end shadow" aria-labelledby="dropdownProfile">
-                  <li>
-                    <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editDataAdministrator<?php echo $sesID ?>"><i class="las la-user mr-2"></i>My Profile</a>
-                  </li>
-                  <!-- <li>
-                  <a class="dropdown-item" href="#"> <i class="las la-list-alt mr-2"></i> Activity Log </a>
-                </li> -->
-                  <li>
-                    <div class="dropdown-divider"></div>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="logout.php"> <i class="las la-sign-out-alt mr-2"></i> Sign Out </a>
-                  </li>
-                </ul>
-              </li>
+              <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="ropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img class="avatar rounded-circle me-2" src="../Web Admin/fotoUser/<?php echo $sesFoto; ?>" alt="foto">
+                    <span><?php echo $sesName; ?></span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end myRounded" aria-labelledby="navbarDarkDropdownMenuLink">
+                    <li><a class="dropdown-item s14" href="#" data-bs-toggle="modal" data-bs-target="#editDataAdministrator<?php echo $sesID ?>">
+                        <i class="fas fa-user-edit me-2"></i>
+                        <span>Edit Profil</span>
+                      </a></li>
+                    <li><a class="dropdown-item s14" href="#">
+                        <i class="fas fa-receipt me-3"></i>
+                        <span>Pesanan saya</span>
+                      </a></li>
+                    <li>
+                      <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item s14" href="logout.php">
+                        <i class="fas fa-sign-out-alt me-3"></i>
+                        <span>Logout</span>
+                      </a></li>
+                  </ul>
+                </li>
+              </ul>
             </div>
           <?php endif ?>
         </div>
@@ -425,7 +431,10 @@ function rupiah($angka)
                 <div class="panel-data bg-white py-2 myRounded shadow mod mb-2 d-flex">
                   <div class="container">
                     <form role="form" action="detailPemesanan.php" method="POST">
-                    <input hidden type="datetime" class="form-control form-control-user2" id="inputId" name="txt_waktu_pemesanan" value="<?php $tz = 'Asia/Jakarta'; $dt = new DateTime("now", new DateTimeZone($tz)); $timestamp = $dt->format('d-m-Y H:i:s'); echo $timestamp; ?>" placeholder="" />
+                      <input hidden type="datetime" class="form-control form-control-user2" id="inputId" name="txt_waktu_pemesanan" value="<?php $tz = 'Asia/Jakarta';
+                                                                                                                                            $dt = new DateTime("now", new DateTimeZone($tz));
+                                                                                                                                            $timestamp = $dt->format('d-m-Y H:i:s');
+                                                                                                                                            echo $timestamp; ?>" placeholder="" />
                       <div class="row myrowData h-100">
                         <div class="col-6 pt-2">
                           <div class="form-group" hidden>

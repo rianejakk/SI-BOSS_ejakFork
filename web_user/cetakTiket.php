@@ -21,16 +21,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $bukti = time() . '-' . $_FILES["txt_bukti_pembayaran"]["name"];
 
   $sumber = $_FILES['txt_bukti_pembayaran']['tmp_name'];
-      $target_dir = "../bukti/";
-      move_uploaded_file($sumber, $target_dir.$bukti);
+  $target_dir = "../bukti/";
+  move_uploaded_file($sumber, $target_dir . $bukti);
   // $id_bus = $_POST['txt_id_bus'];
   if ($obj->insertPembayaran($id_pemesanan, $nama_pengirim, $nama_bank, $no_rekening, $bayar, $waktu, $bukti)) {
-    
-        // echo '<div class="alert alert-success">Terminal Berhasil Ditambahkan</div>';
-        // header("Location: transaksi.php");
-        echo '<div class="alert alert-success">Berhasil</div>';
-        
-     
+
+    // echo '<div class="alert alert-success">Terminal Berhasil Ditambahkan</div>';
+    // header("Location: transaksi.php");
+    echo '<div class="alert alert-success">Berhasil</div>';
   } else {
     // echo '<div class="alert alert-danger">Terminal Gagal Ditambahkan</div>';
     // header("Location: transaksi.php");
@@ -102,34 +100,42 @@ function rupiah($angka)
               <a class="nav-link" href="#">About</a>
             </li>
           </ul>
-          <?php if ($_SESSION['level']) : ?>
+          <?php if (!isset($_SESSION['level'])) : ?>
             <div class="ms-auto myClass">
-              <button href="login.php"class="btn colorPrimary me-2 roundedBtn text-white" type="submit">Masuk</button>
-              <button class="btn btn-outlineCust roundedBtn" type="submit">Daftar</button>
+              <a href="login.php" class="text-decoration-none">
+                <button class="btn b-cust me-2 roundedBtn text-white" id="custBtnLogin">Masuk</button>
+              </a>
+              <a href="daftar.php" class="text-decoration-none">
+                <button class="btn roundedBtn b-cust" id="custBtnDaftar">Daftar</button>
+              </a>
             </div>
           <?php elseif ($_SESSION['level'] == "0") : ?>
             <div class="ms-auto myClass">
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="dropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <span class="RobotoReg14"><?php echo $sesName; ?></span>
-                  <img class="img-profile rounded-circle" src="../Web Admin/fotoUser/<?php echo $sesFoto; ?>" />
-                </a>
-
-                <ul class="dropdown-menu border-0 dropdown-menu-end shadow" aria-labelledby="dropdownProfile">
-                  <li>
-                    <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editDataAdministrator<?php echo $sesID ?>"><i class="las la-user mr-2"></i>My Profile</a>
-                  </li>
-                  <!-- <li>
-                  <a class="dropdown-item" href="#"> <i class="las la-list-alt mr-2"></i> Activity Log </a>
-                </li> -->
-                  <li>
-                    <div class="dropdown-divider"></div>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="logout.php"> <i class="las la-sign-out-alt mr-2"></i> Sign Out </a>
-                  </li>
-                </ul>
-              </li>
+              <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="ropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img class="avatar rounded-circle me-2" src="../Web Admin/fotoUser/<?php echo $sesFoto; ?>" alt="foto">
+                    <span><?php echo $sesName; ?></span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end myRounded" aria-labelledby="navbarDarkDropdownMenuLink">
+                    <li><a class="dropdown-item s14" href="#" data-bs-toggle="modal" data-bs-target="#editDataAdministrator<?php echo $sesID ?>">
+                        <i class="fas fa-user-edit me-2"></i>
+                        <span>Edit Profil</span>
+                      </a></li>
+                    <li><a class="dropdown-item s14" href="#">
+                        <i class="fas fa-receipt me-3"></i>
+                        <span>Pesanan saya</span>
+                      </a></li>
+                    <li>
+                      <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item s14" href="logout.php">
+                        <i class="fas fa-sign-out-alt me-3"></i>
+                        <span>Logout</span>
+                      </a></li>
+                  </ul>
+                </li>
+              </ul>
             </div>
           <?php endif ?>
         </div>
@@ -142,110 +148,110 @@ function rupiah($angka)
     <div class="modal-dialog modal-lg">
       <div class="modal-content modal-edit">
         <!-- <form role="form" action="editAdministrator.php" method="POST" enctype="multipart/form-data"> -->
-          <?php
-          $query = $obj->pilihUser($sesID);
-          while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
-          ?>
-            <div class="modal-header">
-              <h4 class="modal-title">Profile</h4>
-              <button type="button" class="btn btn-danger btn-circle btn-user2 shadow" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true">
-                <i class="fa fa-times fa-sm"></i>
-              </button>
-            </div>
-            <div class="modal-body">
+        <?php
+        $query = $obj->pilihUser($sesID);
+        while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+        ?>
+          <div class="modal-header">
+            <h4 class="modal-title">Profile</h4>
+            <button type="button" class="btn btn-danger btn-circle btn-user2 shadow" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true">
+              <i class="fa fa-times fa-sm"></i>
+            </button>
+          </div>
+          <div class="modal-body">
 
-              <div class="row">
-                <div class="col-lg-6 mb-3">
-                  <label for="inputId" class="form-label">NIK</label>
-                  <input type="text" class="form-control form-control-user2" id="inputId" name="txt_id_user_admin" value="<?php echo $sesID ?>" placeholder="" readonly />
-                </div>
+            <div class="row">
+              <div class="col-lg-6 mb-3">
+                <label for="inputId" class="form-label">NIK</label>
+                <input type="text" class="form-control form-control-user2" id="inputId" name="txt_id_user_admin" value="<?php echo $sesID ?>" placeholder="" readonly />
               </div>
-              <div class="row">
-                <div class="col-lg-6 mb-3">
-                  <!-- <form action="editAdministrator.php" method="POST" enctype="multipart/form-data"> -->
-                  <div class="form-group">
-                    <label for="InputFotoBus" class="form-label">Foto</label>
-                    <div class="img-div">
-                      <div class="img-placeholder" onClick="triggerClick()">
-                        <img src="img/ico/icons8_driver_50px.png" alt="" />
-                      </div>
-                      <img class="img-profile rounded-circle" src="../Web Admin/fotoAdmin/<?php echo $sesFoto; ?>" onClick="triggerClick()" id="profileDisplay" />
-                      <!-- <img src="img/ico/icons8_driver_50px.png" onClick="triggerClick()" id="profileDisplay" /> -->
+            </div>
+            <div class="row">
+              <div class="col-lg-6 mb-3">
+                <!-- <form action="editAdministrator.php" method="POST" enctype="multipart/form-data"> -->
+                <div class="form-group">
+                  <label for="InputFotoBus" class="form-label">Foto</label>
+                  <div class="img-div">
+                    <div class="img-placeholder" onClick="triggerClick()">
+                      <img src="img/ico/icons8_driver_50px.png" alt="" />
                     </div>
-                    <input type="file" name="txt_fotoEa" onChange="displayImage(this)" id="profileImage" class="form-control" style="display: none;" />
-                    <a href="#" class="float-end view text-secondary"> Lihat Foto </a>
+                    <img class="img-profile rounded-circle" src="../Web Admin/fotoAdmin/<?php echo $sesFoto; ?>" onClick="triggerClick()" id="profileDisplay" />
+                    <!-- <img src="img/ico/icons8_driver_50px.png" onClick="triggerClick()" id="profileDisplay" /> -->
                   </div>
-                </div>
-                <!-- </form> -->
-
-                <div class="col-lg-6 mb-3">
-                  <label for="inputNama" class="form-label">Nama</label>
-                  <input type="text" class="form-control form-control-user2" id="inputNama" name="txt_nama" placeholder="Ex: Budi Santoso" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $sesName ?>" />
-                  <label for="InputJenisKelamin" class="form-label">Jenis Kelamin</label>
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="Rbtn_jenis_kelamin" id="Radios1" value="Laki-laki" checked />
-                    <label class="form-label2" for="Radios1"><span>Laki-laki</span></label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="Rbtn_jenis_kelamin" id="Radios2" value="Perempuan" />
-                    <label class="form-label2" for="Radios2"><span>Perempuan</span></label>
-                  </div>
+                  <input type="file" name="txt_fotoEa" onChange="displayImage(this)" id="profileImage" class="form-control" style="display: none;" />
+                  <a href="#" class="float-end view text-secondary"> Lihat Foto </a>
                 </div>
               </div>
+              <!-- </form> -->
 
-              <div class="row">
-                <div class="col-lg-6 mb-3">
-                  <label for="inputAlamat" class="form-label">Tempat Lahir</label>
-                  <input type="text" class="form-control form-control-user2" id="inputAlamat" name="txt_alamat" placeholder="Ex: Jl. Dharmawangsa" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $sesTempat ?>" />
+              <div class="col-lg-6 mb-3">
+                <label for="inputNama" class="form-label">Nama</label>
+                <input type="text" class="form-control form-control-user2" id="inputNama" name="txt_nama" placeholder="Ex: Budi Santoso" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $sesName ?>" />
+                <label for="InputJenisKelamin" class="form-label">Jenis Kelamin</label>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="Rbtn_jenis_kelamin" id="Radios1" value="Laki-laki" checked />
+                  <label class="form-label2" for="Radios1"><span>Laki-laki</span></label>
                 </div>
-                <div class="col-lg-6 mb-3">
-                  <label for="inputNoHp" class="form-label">Tanggal Lahir</label>
-                  <input type="text" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp" placeholder="Ex: 085808241205" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $sesTanggal ?>" />
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="Rbtn_jenis_kelamin" id="Radios2" value="Perempuan" />
+                  <label class="form-label2" for="Radios2"><span>Perempuan</span></label>
                 </div>
-              </div>
-
-              <div class="row">
-                <div class="col-lg-6 mb-3">
-                  <label for="inputAlamat" class="form-label">Alamat</label>
-                  <input type="text" class="form-control form-control-user2" id="inputAlamat" name="txt_alamat" placeholder="Ex: Jl. Dharmawangsa" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $sesAlamat ?>" />
-                </div>
-                <div class="col-lg-6 mb-3">
-                  <label for="inputNoHp" class="form-label">No Handphone</label>
-                  <input type="number" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp" placeholder="Ex: 085808241205" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $sesNoHP ?>" />
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col-lg-6 mb-3">
-                  <label for="inputEmail" class="form-label">Email</label>
-                  <input type="email" class="form-control form-control-user2" id="inputEmail" name="txt_email" placeholder="Ex: admin@gmail.com" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $sesEmail ?>" />
-                </div>
-                <div class="col-lg-6 mb-3">
-                  <label for="inputPassword" class="form-label">Password</label>
-                  <input type="password" class="form-control form-control-user2" id="inputPassword" name="txt_password" placeholder="Ex: ********" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $sesPass ?>" />
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col-lg-6 mb-3" hidden>
-                  <label for="inputId" class="form-label">Status</label>
-                  <input type="text" class="form-control form-control-user2" id="inputId" name="txt_id_level" value="<?php echo $sesLvl ?>" placeholder="" readonly />
-                </div>
-                <div class="col-lg-6 mb-3" hidden>
-                  <label for="inputId" class="form-label">Status</label>
-                  <input type="text" class="form-control form-control-user2" id="inputId" name="txt" value="User" placeholder="" readonly />
-                </div>
-              </div>
-
-              <div class="modal-footer">
-                <button class="btn btn-secondary roundedBtn" type="button" data-bs-dismiss="modal">Batal</button>
-                <!-- <button type="submit" class="btn text-white colorPrimary roundedBtn" name="simpan">Update</button> -->
               </div>
             </div>
-        <!-- </form> -->
-      <?php
-          }
-      ?>
+
+            <div class="row">
+              <div class="col-lg-6 mb-3">
+                <label for="inputAlamat" class="form-label">Tempat Lahir</label>
+                <input type="text" class="form-control form-control-user2" id="inputAlamat" name="txt_alamat" placeholder="Ex: Jl. Dharmawangsa" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $sesTempat ?>" />
+              </div>
+              <div class="col-lg-6 mb-3">
+                <label for="inputNoHp" class="form-label">Tanggal Lahir</label>
+                <input type="text" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp" placeholder="Ex: 085808241205" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $sesTanggal ?>" />
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-6 mb-3">
+                <label for="inputAlamat" class="form-label">Alamat</label>
+                <input type="text" class="form-control form-control-user2" id="inputAlamat" name="txt_alamat" placeholder="Ex: Jl. Dharmawangsa" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $sesAlamat ?>" />
+              </div>
+              <div class="col-lg-6 mb-3">
+                <label for="inputNoHp" class="form-label">No Handphone</label>
+                <input type="number" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp" placeholder="Ex: 085808241205" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $sesNoHP ?>" />
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-6 mb-3">
+                <label for="inputEmail" class="form-label">Email</label>
+                <input type="email" class="form-control form-control-user2" id="inputEmail" name="txt_email" placeholder="Ex: admin@gmail.com" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $sesEmail ?>" />
+              </div>
+              <div class="col-lg-6 mb-3">
+                <label for="inputPassword" class="form-label">Password</label>
+                <input type="password" class="form-control form-control-user2" id="inputPassword" name="txt_password" placeholder="Ex: ********" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $sesPass ?>" />
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-6 mb-3" hidden>
+                <label for="inputId" class="form-label">Status</label>
+                <input type="text" class="form-control form-control-user2" id="inputId" name="txt_id_level" value="<?php echo $sesLvl ?>" placeholder="" readonly />
+              </div>
+              <div class="col-lg-6 mb-3" hidden>
+                <label for="inputId" class="form-label">Status</label>
+                <input type="text" class="form-control form-control-user2" id="inputId" name="txt" value="User" placeholder="" readonly />
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button class="btn btn-secondary roundedBtn" type="button" data-bs-dismiss="modal">Batal</button>
+              <!-- <button type="submit" class="btn text-white colorPrimary roundedBtn" name="simpan">Update</button> -->
+            </div>
+          </div>
+          <!-- </form> -->
+        <?php
+        }
+        ?>
       </div>
     </div>
   </div>
@@ -257,131 +263,132 @@ function rupiah($angka)
           <div class="col-12 custom-panel">
             <div class="row">
               <div class="col-12">
-              
+
                 <div class="card cardUser myRounded shadow mod mb-3">
                   <div class="card-header">
                     <p class="m-0 s16 p-2"><b>Transaksi</b></p>
                   </div>
                   <div class="card-body">
-                  <?php $id = $_POST["txt_id_pemesanan"];
-                  $data = $obj->pemesananB($id);
-                  $no = 1;
-                  if ($data->rowCount() > 0) {
-                    while ($row = $data->fetch(PDO::FETCH_ASSOC)) {
+                    <?php $id = $_POST["txt_id_pemesanan"];
+                    $data = $obj->pemesananB($id);
+                    $no = 1;
+                    if ($data->rowCount() > 0) {
+                      while ($row = $data->fetch(PDO::FETCH_ASSOC)) {
                         $idPemesanan = $row['id_pemesanan']; ?>
-                    <form action="#" method="POST">
-                      <div class="row ps-2">
-                        <div class="col-md-6 mb-3">
-                          <label for="IDPemesanan" class="form-label">ID Pemesanan</label>
-                          <input type="text" class="form-control form-control-user2" id="IDPemesanan" name="txt_id_pemesanan" value="P000<?php echo $idPemesanan?>"placeholder="" readonly />
-                        </div>
-                      </div>
-                      <div class="row ps-2">
-                        <div class="col-md-6 mb-1">
-                          <label for="exampleInputEmail" class="form-label">Nama Pemesan</label>
-                          <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_nama" value="<?php echo $sesName?>"placeholder="Ex: Budi Santoso" readonly/>
-                          <hr>
-                        </div>
-                      </div>
+                        <form action="#" method="POST">
+                          <div class="row ps-2">
+                            <div class="col-md-6 mb-3">
+                              <label for="IDPemesanan" class="form-label">ID Pemesanan</label>
+                              <input type="text" class="form-control form-control-user2" id="IDPemesanan" name="txt_id_pemesanan" value="P000<?php echo $idPemesanan ?>" placeholder="" readonly />
+                            </div>
+                          </div>
+                          <div class="row ps-2">
+                            <div class="col-md-6 mb-1">
+                              <label for="exampleInputEmail" class="form-label">Nama Pemesan</label>
+                              <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_nama" value="<?php echo $sesName ?>" placeholder="Ex: Budi Santoso" readonly />
+                              <hr>
+                            </div>
+                          </div>
 
-                      <div class="row ps-2">
-                        <div class="col-md-6 mb-4">
-                          <p class="m-0 s14"><b>Detail Pemesanan</b></p>
-                        </div>
-                      </div>
-                      <div class="row ps-2">
-                      <?php $id = $_POST["txt_nik_penumpang"];
-                  $data = $obj->penumpang($id);
-                  $no = 1;
-                  if ($data->rowCount() > 0) {
-                    while ($row = $data->fetch(PDO::FETCH_ASSOC)) {
-                        $nik_penumpang = $row['nik_penumpang'];
-                        $nama_penumpang = $row['nama_penumpang'];
-                        $no_hp_penumpang = $row['no_hp_penumpang'];
-                        $jk_penumpang = $row['jenis_kelamin_penumpang']; ?>
-                        <div class="col-md-6">
-                          <div class="myRounded border shadow mod p-3 mb-2" style="min-height: 30px;">
-                            <div class="row">
-                              <div class="col-sm-3">
-                                <p>NIK</p>
-                              </div>
-                              <div class="col-sm-7">
-                                <p>: <?php echo $nik_penumpang?></p>
-                              </div>
+                          <div class="row ps-2">
+                            <div class="col-md-6 mb-4">
+                              <p class="m-0 s14"><b>Detail Pemesanan</b></p>
                             </div>
-                            <div class="row">
-                              <div class="col-sm-3">
-                                <p>Nama</p>
-                              </div>
-                              <div class="col-sm-7">
-                                <p>: <?php echo $nama_penumpang?></p>
-                              </div>
+                          </div>
+                          <div class="row ps-2">
+                            <?php $id = $_POST["txt_nik_penumpang"];
+                            $data = $obj->penumpang($id);
+                            $no = 1;
+                            if ($data->rowCount() > 0) {
+                              while ($row = $data->fetch(PDO::FETCH_ASSOC)) {
+                                $nik_penumpang = $row['nik_penumpang'];
+                                $nama_penumpang = $row['nama_penumpang'];
+                                $no_hp_penumpang = $row['no_hp_penumpang'];
+                                $jk_penumpang = $row['jenis_kelamin_penumpang']; ?>
+                                <div class="col-md-6">
+                                  <div class="myRounded border shadow mod p-3 mb-2" style="min-height: 30px;">
+                                    <div class="row">
+                                      <div class="col-sm-3">
+                                        <p>NIK</p>
+                                      </div>
+                                      <div class="col-sm-7">
+                                        <p>: <?php echo $nik_penumpang ?></p>
+                                      </div>
+                                    </div>
+                                    <div class="row">
+                                      <div class="col-sm-3">
+                                        <p>Nama</p>
+                                      </div>
+                                      <div class="col-sm-7">
+                                        <p>: <?php echo $nama_penumpang ?></p>
+                                      </div>
+                                    </div>
+                                    <div class="row">
+                                      <div class="col-sm-3">
+                                        <p>Jenis Kelamin</p>
+                                      </div>
+                                      <div class="col-sm-7">
+                                        <p>: <?php echo $jk_penumpang ?></p>
+                                      </div>
+                                    </div>
+                                    <div class="row">
+                                      <div class="col-sm-3">
+                                        <p class="m-0">Nomor HP</p>
+                                      </div>
+                                      <div class="col-sm-7">
+                                        <p class="m-0">: <?php echo $no_hp_penumpang ?></p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <hr>
+                                </div>
+                            <?php
+                                $no;
+                              }
+                            }; ?>
+                          </div>
+
+                          <div class="row ps-2">
+                            <div class="col-md-6 mb-4">
+                              <p class="m-0 s14"><b>Pembayaran</b></p>
                             </div>
-                            <div class="row">
-                              <div class="col-sm-3">
-                                <p>Jenis Kelamin</p>
-                              </div>
-                              <div class="col-sm-7">
-                                <p>: <?php echo $jk_penumpang?></p>
-                              </div>
+                          </div>
+                          <div class="row ps-2">
+                            <div class="col-md-6 mb-3">
+                              <label for="MethodPay" class="form-label">Metode Pembayaran</label>
+                              <select class="form-select form-select-user select-md pay" aria-label=".form-select-sm example" required data-parsley-required-message="Harap pilih data terminal !!!" name="MethodPay" id="pay">
+                                <option>Pilih</option>
+                                <option value="briva">Bank BRI (BRIVA)</option>
+                              </select>
                             </div>
-                            <div class="row">
-                              <div class="col-sm-3">
-                                <p class="m-0">Nomor HP</p>
-                              </div>
-                              <div class="col-sm-7">
-                                <p class="m-0">: <?php echo $no_hp_penumpang?></p>
+                          </div>
+                          <div class="row ps-2 hidden" id="noBriva">
+                            <div class="col-md-6 mb-3">
+                              <label for="NoBriva" class="form-label">No. Briva</label>
+                              <input type="text" class="form-control form-control-user2" id="NoBriva" name="txt_noBriva" placeholder="" readonly value="86531616235361" />
+                            </div>
+                          </div>
+                          <div class="row ps-2">
+                            <div class="col-md-6">
+                              <label for="UploadBukti" class="form-label ">Upload Bukti Pembayaran</label>
+                              <div class="input-group mb-3">
+                                <input type="file" class="form-control form-select-user select-md" id="UploadBukti">
                               </div>
                             </div>
                           </div>
-                          <hr>
-                        </div>
-                        <?php
-                        $no;
-                    }
-                      };?>
-                      </div>
-
-                      <div class="row ps-2">
-                        <div class="col-md-6 mb-4">
-                          <p class="m-0 s14"><b>Pembayaran</b></p>
-                        </div>
-                      </div>
-                      <div class="row ps-2">
-                        <div class="col-md-6 mb-3">
-                          <label for="MethodPay" class="form-label">Metode Pembayaran</label>
-                          <select class="form-select form-select-user select-md pay" aria-label=".form-select-sm example" required data-parsley-required-message="Harap pilih data terminal !!!" name="MethodPay" id="pay">
-                            <option>Pilih</option>
-                            <option value="briva">Bank BRI (BRIVA)</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="row ps-2 hidden" id="noBriva">
-                        <div class="col-md-6 mb-3">
-                          <label for="NoBriva" class="form-label">No. Briva</label>
-                          <input type="text" class="form-control form-control-user2" id="NoBriva" name="txt_noBriva" placeholder="" readonly value="86531616235361"/>
-                        </div>
-                      </div>
-                      <div class="row ps-2">
-                        <div class="col-md-6">
-                          <label for="UploadBukti" class="form-label ">Upload Bukti Pembayaran</label>
-                          <div class="input-group mb-3">
-                            <input type="file" class="form-control form-select-user select-md" id="UploadBukti">
+                          <div class="col-12 d-flex justify-content-center mb-5">
+                            <button type="submit" name="submit" class="btn colorPrimary text-white py-2 s14 rounded-pill resize">Konfirmasi</button>
                           </div>
-                        </div>
-                      </div>
-                      <div class="col-12 d-flex justify-content-center mb-5">
-              <button type="submit" name="submit" class="btn colorPrimary text-white py-2 s14 rounded-pill resize">Konfirmasi</button>
-            </div>
-                    </form>
+                        </form>
                   </div>
-                  <?php
-                  $no;
-                  }};?>
+              <?php
+                        $no;
+                      }
+                    }; ?>
                 </div>
               </div>
             </div>
-            
+
           </div>
         </div>
       </div>
@@ -415,18 +422,18 @@ function rupiah($angka)
     });
   </script>
   <script>
-      $(".pay").change(function () {
-        var responseID = $(this).val();
-        if (responseID == "briva") {
-          $("#noBriva").removeClass("hidden");
-          $("#noBriva").addClass("show");
-        } else {
-          $("#noBriva").removeClass("show");
-          $("#noBriva").addClass("hidden");
-        }
-        console.log(responseID);
-      });
-    </script>
+    $(".pay").change(function() {
+      var responseID = $(this).val();
+      if (responseID == "briva") {
+        $("#noBriva").removeClass("hidden");
+        $("#noBriva").addClass("show");
+      } else {
+        $("#noBriva").removeClass("show");
+        $("#noBriva").addClass("hidden");
+      }
+      console.log(responseID);
+    });
+  </script>
 </body>
 
 </html>

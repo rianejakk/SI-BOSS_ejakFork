@@ -81,11 +81,11 @@
                       <div class="col-md-6">
                         <div class="mb-2">
                           <label for="Kpassword-input" class="form-label font-RobotoSemiBold colorBold s12">Konfirmasi Kata sandi</label>
-                          <input type="password" class="form-control form-control-user2" id="Kpassword-input" name="txt_pass" required data-parsley-required-message="Masukan ulang kata sandi !!!" data-parsley-equalto="#password-input"  data-parsley-equalto-message="Kata sandi tidak cocok" placeholder="********" data-parsley-length="[8,16]" maxlength="16" data-parsley-length-message="Harus disiisi 8 sampai 16 karakter !!!" />
+                          <input type="password" class="form-control form-control-user2" id="Kpassword-input" name="txt_pass" required data-parsley-required-message="Masukan ulang kata sandi !!!" data-parsley-equalto="#password-input" data-parsley-equalto-message="Kata sandi tidak cocok" placeholder="********" data-parsley-length="[8,16]" maxlength="16" data-parsley-length-message="Harus disiisi 8 sampai 16 karakter !!!" />
                         </div>
                       </div>
                     </div>
-                    <span class="input-group-text s10 p-0 mb-2 d-flex justify-content-end text-muted show-hideWithText2" toggle="#password-input" toggle2="#Kpassword-input" id="spanShow">
+                    <span class="s10 p-0 mb-2 d-flex justify-content-end text-muted show-hideWithText" toggle="#password-input" toggle2="#Kpassword-input" id="spanShow">
                       Tampilkan Kata Sandi
                     </span>
                     <div class="clearfix"></div>
@@ -193,7 +193,7 @@
     });
   </script>
   <script>
-    $(".show-hideWithText2").click(function() {
+    $(".show-hideWithText").click(function() {
       $(this).text(($("#spanShow").text() == 'Sembunyikan Kata Sandi') ? 'Tampilkan Kata Sandi' : 'Sembunyikan Kata Sandi');
       var input = $($(this).attr("toggle"));
       if (input.attr("type") == "password") {
