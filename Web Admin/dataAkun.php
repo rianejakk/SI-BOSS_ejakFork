@@ -140,14 +140,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       </li>
 
       <li class="nav-item">
-        <a href="#" class="focusMenu">
+        <a href="dataDriver.php" class="focusMenu">
           <div class="frame-ico">
             <img class="ico2" src="img/ico/icoDriver_noFill.png" alt="logo1" />
           </div>
           <span class="link_name">Data Driver</span>
         </a>
         <ul class="sub-menu blank">
-          <li><a class="link_name" href="#">Data Driver</a></li>
+          <li><a class="link_name" href="dataDriver.php">Data Driver</a></li>
         </ul>
       </li>
 
@@ -204,7 +204,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
             <div class="job">Staff</div>
           </div>
-          <i class="bx bx-log-out"></i>
+          <a class="" href="logout.php"> <i class="bx bx-log-out"></i></a>
         </div>
       </li>
     </ul>
@@ -258,7 +258,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div id="editDataAdministrator<?php echo $sesID ?>" class="modal fade">
       <div class="modal-dialog modal-lg">
         <div class="modal-content modal-edit">
-          <form role="form" action="editAdministrator.php" method="POST" enctype="multipart/form-data">
+          <form role="form" action="editProfile.php" method="POST" enctype="multipart/form-data">
             <?php
             $query = $obj->pilihAdministrator($sesID);
             while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
@@ -290,7 +290,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <!-- <img src="img/ico/icons8_driver_50px.png" onClick="triggerClick()" id="profileDisplay" /> -->
                       </div>
                       <input type="file" name="txt_fotoEa" onChange="displayImage(this)" id="profileImage" class="form-control" style="display: none;" />
-                      <a href="#" class="float-end view text-secondary"> Lihat Foto </a>
+                      <!-- <a href="#" class="float-end view text-secondary"> Lihat Foto </a> -->
                     </div>
                   </div>
                   <!-- </form> -->
@@ -341,11 +341,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <label for="inputId" class="form-label">Status</label>
                     <input type="text" class="form-control form-control-user2" id="inputId" name="txt" value="Staff" placeholder="" readonly />
                   </div>
+                  <div class="col-lg-6 mb-3" hidden>
+                                                <label for="inputId" class="form-label">Terminal</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputId" name="txt_id_terminal" value="<?php echo $sesTerminal?>" placeholder="" readonly />
+                                              </div>
                 </div>
 
                 <div class="modal-footer">
                   <button class="btn btn-secondary roundedBtn" type="button" data-bs-dismiss="modal">Batal</button>
-                  <!-- <button type="submit" class="btn text-white colorPrimary roundedBtn" name="simpan">Update</button> -->
+                  <button type="submit" class="btn text-white colorPrimary roundedBtn" name="simpan">Update</button>
                 </div>
               </div>
           </form>
@@ -476,7 +480,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                       </div>
                       <div class="btnAction float-end">
                         <button class="btn btn-light text-dark btn-circle custShadow2 me-2" data-bs-toggle="modal" data-bs-target="#tambahDataAdministrator"><i class="fas fa-plus" data-bs-toggle="tooltip" title="Tambah Data"></i></button>
-                        <button class="btn btn-light text-danger btn-circle custShadow2" data-bs-toggle="modal" data-bs-target="#deleteDataAdministrator"><i class="fas fa-trash" data-bs-toggle="tooltip" title="Hapus Data"></i></button>
+                        <!-- <button class="btn btn-light text-danger btn-circle custShadow2" data-bs-toggle="modal" data-bs-target="#deleteDataAdministrator"><i class="fas fa-trash" data-bs-toggle="tooltip" title="Hapus Data"></i></button> -->
                       </div>
                     </div>
                     <div class="card-body">
@@ -583,7 +587,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                                         <img src="img/ico/icons8_driver_50px.png" onClick="triggerClick()" id="profileDisplay" />
                                                       </div>
                                                       <input type="file" name="txt_fotoEa" onChange="displayImage(this)" id="profileImage" class="form-control" style="display: none;" />
-                                                      <a href="#" class="float-end view text-secondary"> Lihat Foto </a>
+                                                      <!-- <a href="#" class="float-end view text-secondary"> Lihat Foto </a> -->
                                                     </div>
                                                   </div>
                                                   <!-- </form> -->
@@ -764,7 +768,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                       <img src="img/ico/icons8_driver_50px.png" onClick="triggerClick()" id="profileDisplay" />
                                     </div>
                                     <input type="file" name="txt_fotot" onChange="displayImage(this)" id="profileImage" class="form-control" style="display: none" />
-                                    <a href="#" class="float-end view text-secondary"> Lihat Foto </a>
+                                    <!-- <a href="#" class="float-end view text-secondary"> Lihat Foto </a> -->
                                   </div>
                                 </div>
 
@@ -884,7 +888,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                       </div>
                       <div class="btnAction float-end">
                         <button class="btn btn-light text-dark btn-circle custShadow2 me-2" data-bs-toggle="modal" data-bs-target="#tambahDataUser"><i class="fas fa-plus" data-bs-toggle="tooltip" title="Tambah Data"></i></button>
-                        <button class="btn btn-light text-danger btn-circle custShadow2" data-bs-toggle="modal" data-bs-target="#deleteDataUser"><i class="fas fa-trash" data-bs-toggle="tooltip" title="Hapus Data"></i></button>
+                        <!-- <button class="btn btn-light text-danger btn-circle custShadow2" data-bs-toggle="modal" data-bs-target="#deleteDataUser"><i class="fas fa-trash" data-bs-toggle="tooltip" title="Hapus Data"></i></button> -->
                       </div>
                     </div>
                     <div class="card-body">
@@ -979,7 +983,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                                         <img src="img/ico/icons8_driver_50px.png" onClick="triggerClick()" id="profileDisplay" />
                                                       </div>
                                                       <input type="file" name="txt_foto_usere" onChange="displayImag(this)" id="profileImage" class="form-control" style="display: none" />
-                                                      <a href="#" class="float-end view text-secondary"> Lihat Foto </a>
+                                                      <!-- <a href="#" class="float-end view text-secondary"> Lihat Foto </a> -->
                                                     </div>
                                                   </div>
                                                   <div class="col-lg-6 mb-3">
@@ -1110,7 +1114,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                       <img src="img/ico/IcoeditBus.png" onClick="triggerClick()" id="profileDisplay" />
                                     </div>
                                     <input type="file" name="txt_foto_usert" onChange="displayImage(this)" id="profileImage" class="form-control" style="display: none" />
-                                    <a href="#" class="float-end view text-secondary"> Lihat Foto </a>
+                                    <!-- <a href="#" class="float-end view text-secondary"> Lihat Foto </a> -->
                                   </div>
                                 </div>
                                 <div class="col-lg-6 mb-3">

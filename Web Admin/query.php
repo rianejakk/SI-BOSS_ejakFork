@@ -470,16 +470,15 @@ class crud extends koneksi {
         }
     }
 
-    public function detailDetailPemesanan($data){
+    public function detailTiket($data){
         try{
-            $sql ="SELECT * FROM detail_pemesanan WHERE id_detail_pemesanan=:id_detail_pemesanan";
+            $sql ="SELECT * FROM tiket WHERE id_tiket=:id_tiket";
             $result = $this->koneksi->prepare($sql);
-            $result->bindParam(":id_detail_pemesanan", $data);
+            $result->bindParam(":id_tiket", $data);
             $result->execute();
-            $result->bindColumn(1, $this->id_detail_pemesanan);
+            $result->bindColumn(1, $this->id_tiket);
             $result->bindColumn(2, $this->id_pemesanan);
-            $result->bindColumn(3, $this->id_bus);
-            $result->bindColumn(4, $this->jumlah_kursi_pesan);
+            $result->bindColumn(3, $this->nik_penumpang);
             $result->fetch(PDO::FETCH_ASSOC);
             if($result->rowCount()==1):
                 return true;
@@ -843,11 +842,11 @@ class crud extends koneksi {
         }
     }
 
-    public function deleteDetailPemesanan($data){
+    public function deleteTiket($data){
         try{
-            $sql ="DELETE FROM detail_pemesanan WHERE id_detail_pemesanan=:id_detail_pemesanan";
+            $sql ="DELETE FROM tiket WHERE id_tiket=:id_tiket";
             $result = $this->koneksi->prepare($sql);
-            $result->execute(array("id_detail_pemesanan"=>$data));
+            $result->execute(array("id_tiket"=>$data));
             return true;
         }
         catch (PDOException $e){

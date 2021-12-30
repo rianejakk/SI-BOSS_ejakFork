@@ -119,14 +119,14 @@
         </li>
 
         <li class="nav-item">
-          <a href="#" class="focusMenu">
+          <a href="dataDriver.php" class="focusMenu">
             <div class="frame-ico">
               <img class="ico2" src="img/ico/icoDriver_noFill.png" alt="logo1" />
             </div>
             <span class="link_name">Data Driver</span>
           </a>
           <ul class="sub-menu blank">
-            <li><a class="link_name" href="#">Data Driver</a></li>
+            <li><a class="link_name" href="dataDriver.php">Data Driver</a></li>
           </ul>
         </li>
 
@@ -181,7 +181,7 @@
               </div>
               <div class="job">Staff</div>
             </div>
-            <i class="bx bx-log-out"></i>
+            <a class="" href="logout.php"> <i class="bx bx-log-out"></i></a>
           </div>
         </li>
       </ul>
@@ -266,7 +266,7 @@
                                                     <!-- <img src="img/ico/icons8_driver_50px.png" onClick="triggerClick()" id="profileDisplay" /> -->
                                                   </div>
                                                   <input type="file" name="txt_fotoEa" onChange="displayImage(this)" id="profileImage" class="form-control" style="display: none;" />
-                                                  <a href="#" class="float-end view text-secondary"> Lihat Foto </a>
+                                                  <!-- <a href="#" class="float-end view text-secondary"> Lihat Foto </a> -->
                                                 </div>
                                               </div>
                                               <!-- </form> -->
@@ -317,11 +317,15 @@
                                                 <label for="inputId" class="form-label">Status</label>
                                                 <input type="text" class="form-control form-control-user2" id="inputId" name="txt" value="Staff" placeholder="" readonly />
                                               </div>
+                                              <div class="col-lg-6 mb-3" hidden>
+                                                <label for="inputId" class="form-label">Terminal</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputId" name="txt_id_terminal" value="<?php echo $sesTerminal?>" placeholder="" readonly />
+                                              </div>
                                             </div>
 
                                             <div class="modal-footer">
                                               <button class="btn btn-secondary roundedBtn" type="button" data-bs-dismiss="modal">Batal</button>
-                                              <!-- <button type="submit" class="btn text-white colorPrimary roundedBtn" name="simpan">Update</button> -->
+                                              <button type="submit" class="btn text-white colorPrimary roundedBtn" name="simpan">Update</button>
                                             </div>
                                           </div>
                                         </form>
@@ -438,7 +442,7 @@
               </div>
               <div class="btnAction float-end">
                 <button class="btn btn-light text-dark btn-circle custShadow2 me-2" data-bs-toggle="modal" data-bs-target="#tambahDataBus"><i class="fas fa-plus" data-bs-toggle="tooltip" title="Tambah Data"></i></button>
-                <button class="btn btn-light text-danger btn-circle custShadow2" data-bs-toggle="modal" data-bs-target="#deleteDataBus"><i class="fas fa-trash" data-bs-toggle="tooltip" title="Hapus Data"></i></button>
+                <!-- <button class="btn btn-light text-danger btn-circle custShadow2" data-bs-toggle="modal" data-bs-target="#deleteDataBus"><i class="fas fa-trash" data-bs-toggle="tooltip" title="Hapus Data"></i></button> -->
               </div>
             </div>
             <div class="card-body">
@@ -547,7 +551,7 @@
                                                   <img src="img/ico/IcoeditBus.png" onClick="triggerClick()" id="profileDisplay" />
                                                 </div>
                                                 <input type="file" name="txt_foto_bus" onChange="displayImage(this)" id="profileImage" class="form-control" style="display: none" />
-                                                  <a href="#" class="float-end view text-secondary"> Lihat Foto </a>
+                                                  <!-- <a href="#" class="float-end view text-secondary"> Lihat Foto </a> -->
                                               </div>
                                                 <div class="form-group">
                                                   <label for="InputStatusBus" class="form-label d-block">Status</label>
@@ -717,7 +721,7 @@
                                                   <img src="img/ico/IcoeditBus.png" onClick="triggerClick()" id="profileDisplay" />
                                                 </div>
                                                 <input type="file" name="txt_foto_bus" onChange="displayImage(this)" id="profileImage" class="form-control" style="display: none" />
-                                                  <a href="#" class="float-end view text-secondary"> Lihat Foto </a>
+                                                  <!-- <a href="#" class="float-end view text-secondary"> Lihat Foto </a> -->
                                               </div>
                                                 <div class="form-group">
                                                   <label for="InputStatusBus" class="form-label d-block">Status</label>

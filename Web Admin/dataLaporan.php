@@ -101,14 +101,14 @@ $sesID = $_SESSION['id'];
         </li>
 
         <li class="nav-item">
-          <a href="#" class="focusMenu">
+          <a href="dataDriver.php" class="focusMenu">
             <div class="frame-ico">
               <img class="ico2" src="img/ico/icoDriver_noFill.png" alt="logo1" />
             </div>
             <span class="link_name">Data Driver</span>
           </a>
           <ul class="sub-menu blank">
-            <li><a class="link_name" href="#">Data Driver</a></li>
+            <li><a class="link_name" href="dataDriver.php">Data Driver</a></li>
           </ul>
         </li>
 
@@ -163,7 +163,7 @@ $sesID = $_SESSION['id'];
               </div>
               <div class="job">Staff</div>
             </div>
-            <i class="bx bx-log-out"></i>
+            <a class="" href="logout.php"> <i class="bx bx-log-out"></i></a>
           </div>
         </li>
       </ul>
@@ -216,7 +216,7 @@ $sesID = $_SESSION['id'];
       <div id="editDataAdministrator<?php echo $sesID ?>" class="modal fade">
                                     <div class="modal-dialog modal-lg">
                                       <div class="modal-content modal-edit">
-                                        <form role="form" action="editAdministrator.php" method="POST" enctype="multipart/form-data">
+                                        <form role="form" action="editProfile.php" method="POST" enctype="multipart/form-data">
                                           <?php
                                             $query = $obj->pilihAdministrator($sesID);
                                             while ($row = $query->fetch(PDO::FETCH_ASSOC)){
@@ -248,7 +248,7 @@ $sesID = $_SESSION['id'];
                                                     <!-- <img src="img/ico/icons8_driver_50px.png" onClick="triggerClick()" id="profileDisplay" /> -->
                                                   </div>
                                                   <input type="file" name="txt_fotoEa" onChange="displayImage(this)" id="profileImage" class="form-control" style="display: none;" />
-                                                  <a href="#" class="float-end view text-secondary"> Lihat Foto </a>
+                                                  <!-- <a href="#" class="float-end view text-secondary"> Lihat Foto </a> -->
                                                 </div>
                                               </div>
                                               <!-- </form> -->
@@ -298,6 +298,10 @@ $sesID = $_SESSION['id'];
                                               <div class="col-lg-6 mb-3">
                                                 <label for="inputId" class="form-label">Status</label>
                                                 <input type="text" class="form-control form-control-user2" id="inputId" name="txt" value="Staff" placeholder="" readonly />
+                                              </div>
+                                              <div class="col-lg-6 mb-3" hidden>
+                                                <label for="inputId" class="form-label">Terminal</label>
+                                                <input type="text" class="form-control form-control-user2" id="inputId" name="txt_id_terminal" value="<?php echo $sesTerminal?>" placeholder="" readonly />
                                               </div>
                                             </div>
 

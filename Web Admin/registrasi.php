@@ -199,11 +199,11 @@
                     </div>
                   </div>
                   <div class="d-block position-fixed markQuestion2">
-                    <a href="#">
+                    <!-- <a href="#">
                       <button class="btn colorPrimary text-white custBtn rounded-circle">
                         <span class="txt_mark">?</span>
                       </button>
-                    </a>
+                    </a> -->
                   </div>
                   <footer class="d-flex justify-content-center text-center">
                     <p class="col-md-4 mb-0 text-muted">&copy; 2021 SI-BOSS, All Rights Reserved</p>

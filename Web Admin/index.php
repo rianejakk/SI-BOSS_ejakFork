@@ -170,9 +170,9 @@
                           </div>
                         </div>
                         <div class="mb-3 float-end">
-                          <div class="small">
+                          <!-- <div class="small">
                             <a class="small" href="#">Lupa kata sandi ?</a>
-                          </div>
+                          </div> -->
                         </div>
                         <div class="clearfix"></div>
                         <div class="row mb-5">
@@ -189,11 +189,11 @@
                     </div>
                   </div>
                   <div class="d-block position-fixed markQuestion2">
-                    <a href="#">
+                    <!-- <a href="#">
                       <button class="btn colorPrimary text-white custBtn rounded-circle">
                         <span class="txt_mark">?</span>
                       </button>
-                    </a>
+                    </a> -->
                   </div>
                   <footer class="d-flex justify-content-center text-center mb-1">
                     <p class="col-md-4 mb-0 text-muted">&copy; 2021 SI-BOSS, All Rights Reserved</p>
