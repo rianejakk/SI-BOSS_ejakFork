@@ -44,6 +44,20 @@ class crud extends koneksi {
         return $result;
     }
 
+    public function pemesananB($id){
+        $sql = "SELECT * FROM pemesanan WHERE id_pemesanan like '%".$id."%' ORDER BY pemesanan.id_pemesanan ASC";
+        $result = $this->koneksi->prepare($sql);
+        $result->execute();
+        return $result;
+    }
+
+    public function penumpang($id){
+        $sql = "SELECT * FROM penumpang WHERE nik_penumpang like '%".$id."%' ORDER BY penumpang.nik_penumpang ASC";
+        $result = $this->koneksi->prepare($sql);
+        $result->execute();
+        return $result;
+    }
+
     public function PencarianBus($c_pemberangkatan, $c_tujuan, $c_tanggal){
         $sql = "SELECT id_bus, foto_bus, nama_bus, harga, status_bus, jumlah_kursi, tanggal_pemberangkatan, jenis, fasilitas, u1.nama_terminal pemberangkatan, u2.nama_terminal tujuan, waktu_berangkat, waktu_tiba FROM bus JOIN jenis_bus ON bus.id_jenis=jenis_bus.id_jenis JOIN rute ON bus.id_rute=rute.id_rute JOIN terminal u1 ON rute.pemberangkatan=u1.id_terminal JOIN terminal u2 ON rute.tujuan=u2.id_terminal WHERE pemberangkatan like '%".$c_pemberangkatan."%' AND tujuan like '%".$c_tujuan."%' OR tanggal_pemberangkatan like '%".$c_tanggal."%' ORDER BY id_bus ASC";
         $result = $this->koneksi->prepare($sql);
@@ -309,6 +323,26 @@ class crud extends koneksi {
             $result = $this->koneksi->prepare($sql);
             $result->bindParam(":id_pemesanan", $id_pemesanan);
             $result->bindParam(":nik_penumpang", $nik_penumpang);
+            $result->execute();
+            return true;
+        }
+        catch (PDOException $e){
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+    public function insertPembayaran($id_pemesanan, $nama_pengirim, $nama_bank, $no_rekening, $bayar, $waktu_pembayaran, $bukti_pembayaran){
+        try{
+            $sql ="INSERT INTO pembayaran(id_pemesanan, nama_pengirim, nama_bank, no_rekening, bayar, waktu_pembayaran, bukti_pembayaran) VALUES (:id_pemesanan, :nama_pengirim, :nama_bank, :no_rekening, :bayar, :waktu_pembayaran, :bukti_pembayaran)";
+            $result = $this->koneksi->prepare($sql);
+            $result->bindParam(":id_pemesanan", $id_pemesanan);
+            $result->bindParam(":nama_pengirim", $nama_pengirim);
+            $result->bindParam(":nama_bank", $nama_bank);
+            $result->bindParam(":no_rekening", $no_rekening);
+            $result->bindParam(":bayar", $bayar);
+            $result->bindParam(":waktu_pembayaran", $waktu_pembayaran);
+            $result->bindParam(":bukti_pembayaran", $bukti_pembayaran);
             $result->execute();
             return true;
         }

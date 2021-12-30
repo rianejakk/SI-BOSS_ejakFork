@@ -240,7 +240,7 @@ function rupiah($angka)
         <div class="row">
           <div class="col-12 custom-panel">
             <div class="row">
-            <form role="form" action="tambahPenumpang.php" method="POST" enctype="multipart/form-data">
+            <form role="form" action="transaksi.php" method="POST" enctype="multipart/form-data">
                             
                 <div class="col-12">
                   <!-- Content Data -->
@@ -268,7 +268,10 @@ function rupiah($angka)
                         <div class="container">
                           <div class="row myrowData h-100">
                             <div class="col-6 pt-2">
-                              <h3 class="m-0" name="txt_id_bus" hidden><b><?php echo ucwords($idBus) ?></b></h3>
+                            <div class="form-group" hidden>
+                            <label for="InputId" class="form-label">Id</label>
+                            <input type="text" class="form-control form-control-user2" id="inputId" name="txt_id_bus" value="<?php echo $idBus ?>" placeholder="" readonly />
+                          </div>
                               <h3 class="m-0" name="txt_nama_bus"><b><?php echo ucwords($namaBus) ?></b></h3>
                               <p class="m-0" name="txt_jenis_bus"><?php echo ucwords($jenis_bus) ?></p>
                             </div>
@@ -533,7 +536,7 @@ function rupiah($angka)
                 </div> -->
                 </div>
                 <div class="col-12 d-flex justify-content-center mb-5">
-                  <button type="submit" name="submit" class="btn colorPrimary text-white py-2 s14 rounded-pill resize">Pesan</button>
+                  <button type="submit" name="simpan" class="btn colorPrimary text-white py-2 s14 rounded-pill resize">Pesan</button>
                 </div>
             </form>
             </div>
