@@ -57,6 +57,12 @@ body {
 .colorBlueDarkText {
   color: #183153 !important;
 }
+.hidden {
+  display: none;
+}
+.show {
+  display: block;
+}
 
 /* CSS Custom Font */
 .font-Roboto {
@@ -117,6 +123,17 @@ body {
 /* =============================== */
 
 /* Custom Index */
+select.form-select-user {
+  font-size: 14px;
+  border-radius: 5px;
+  padding: 10px;
+}
+.form-select:focus {
+  border-color: #527bdd;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 4px #527bdd;
+  outline: 0 none;
+  transition: 0.4s ease-in-out;
+}
 nav {
   transition: linear 0.4s !important;
 }
@@ -766,7 +783,7 @@ a.small:hover {
   font-weight: bold;
   text-decoration: underline;
 }
-section .custom-panel .input-group {
+/* section .custom-panel .input-group {
   border: 1px solid #ced4da;
   border-radius: 8px;
 }
@@ -786,7 +803,7 @@ section .custom-panel .input-group input {
   border: 0;
   box-shadow: none;
   -webkit-text-securit: square;
-}
+} */
 #parsley-id-7 {
   display: inline-block !important;
   float: left;
