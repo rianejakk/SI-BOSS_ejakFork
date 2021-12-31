@@ -10,6 +10,8 @@ if (!isset($_SESSION['email'])) {
   header('Location: login.php');
 }
 
+// if(!$obj->detailPemesanan($_GET['id_pemesanan'])) die ("Error: Id tidak ada");
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   // $nik_penumpang = $_POST['txt_nik_penumpang'];
   // $nama_penumpang = $_POST['txt_nama_penumpang'];
@@ -393,7 +395,11 @@ function rupiah($angka)
                     $no = 1;
                     if ($data->rowCount() > 0) {
                       while ($row = $data->fetch(PDO::FETCH_ASSOC)) {
-                        $idPemesanan = $row['id_pemesanan']; ?>
+                        $idPemesanan = $row['id_pemesanan']; 
+                        $waktu_pemesanan = $row['waktu_pemesanan'];
+                        $total = $row['total_bayar'];
+                        $status = $row['status'];
+                        ?>
                         <form action="cetakTiket.php" method="POST">
                           <div class="row ps-2">
                             <div class="col-md-6 mb-3" hidden>
@@ -451,80 +457,13 @@ function rupiah($angka)
                                   <hr>
                                 </div>
 
-                          <!-- <div class="row ps-2">
-                            <div class="col-md-6 mb-4">
-                              <p class="m-0 s14"><b>Data Penumpang</b></p>
-                            </div>
-                          </div>
-                          <div class="row ps-2">
-                            <?php $id = $_POST["txt_nik_penumpang"];
-                            $data = $obj->penumpang($id);
-                            $no = 1;
-                            if ($data->rowCount() > 0) {
-                              while ($row = $data->fetch(PDO::FETCH_ASSOC)) {
-                                $nik_penumpang = $row['nik_penumpang'];
-                                $nama_penumpang = $row['nama_penumpang'];
-                                $no_hp_penumpang = $row['no_hp_penumpang'];
-                                $jk_penumpang = $row['jenis_kelamin_penumpang']; ?>
-                                <div class="col-md-6">
-                                  <div class="myRounded border shadow mod p-3 mb-2" style="min-height: 30px;">
-                                  <div class="col-md-6 mb-3" hidden>
-                              <label for="IDPemesanan" class="form-label">ID Pemesanan</label>
-                              <input type="text" class="form-control form-control-user2" id="IDPemesanan" name="txt_nik_penumpang" value="<?php echo $nik_penumpang ?>" placeholder="" readonly />
-                            </div><div class="row">
-                                      <div class="col-sm-3">
-                                        <p>NIK</p>
-                                      </div>
-                                      <div class="col-sm-7">
-                                        <p>: <?php echo $nik_penumpang ?></p>
-                                      </div>
-                                    </div>
-                                    <div class="row">
-                                      <div class="col-sm-3">
-                                        <p>Nama</p>
-                                      </div>
-                                      <div class="col-sm-7">
-                                        <p>: <?php echo $nama_penumpang ?></p>
-                                      </div>
-                                    </div>
-                                    <div class="row">
-                                      <div class="col-sm-3">
-                                        <p>Jenis Kelamin</p>
-                                      </div>
-                                      <div class="col-sm-7">
-                                        <p>: <?php echo $jk_penumpang ?></p>
-                                      </div>
-                                    </div>
-                                    <div class="row">
-                                      <div class="col-sm-3">
-                                        <p class="m-0">Nomor HP</p>
-                                      </div>
-                                      <div class="col-sm-7">
-                                        <p class="m-0">: <?php echo $no_hp_penumpang ?></p>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <hr>
-                                </div>
-                            <?php
-                                $no;
-                              }
-                            }; ?>
-                          </div> -->
-
-                          <div class="row ps-2">
+                                                    <div class="row ps-2">
                             <div class="col-md-6 mb-4">
                               <p class="m-0 s14"><b>Pembayaran</b></p>
                             </div>
                           </div>
                           <form action="cetakTiket.php" method="POST">
-                            <?php $id = $_POST["txt_id_pemesanan"];
-                            $data = $obj->pemesananB($id);
-                            $no = 1;
-                            if ($data->rowCount() > 0) {
-                              while ($row = $data->fetch(PDO::FETCH_ASSOC)) {
-                                $idPemesanan = $row['id_pemesanan'];
-                                $total = $row['total_bayar']; ?>
+                            
                                 <div class="row ps-2">
                                   <div class="col-lg-6 mb-3" hidden>
                                     <label for="inputAlamat" class="form-label">ID</label>
@@ -587,9 +526,7 @@ function rupiah($angka)
                                 <div class="col-12 d-flex justify-content-center mb-5">
                                   <button type="submit" name="submit" class="btn colorPrimary text-white py-2 s14 rounded-pill resize">Konfirmasi</button>
                                 </div>
-                            <?php
-                              }
-                            }; ?>
+                            
                           </form>
                   </div>
               <?php

@@ -221,16 +221,15 @@ if (isset($_SESSION['email'])) {
   <div id="pesananSaya<?php echo $sesID ?>" class="modal fade">
     <div class="modal-dialog modal-lg">
       <div class="modal-content modal-edit">
-          
+        <!-- <form role="form" action="transaksi.php" method="POST" enctype="multipart/form-data"> -->
             <div class="modal-header">
-              <h4 class="modal-title">Profile</h4>
+              <h4 class="modal-title">Pesanan Saya</h4>
               <button type="button" class="btn btn-danger btn-circle btn-user2 shadow" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true">
                 <i class="fa fa-times fa-sm"></i>
               </button>
             </div>
             <div class="modal-body">
-            <div class="table-responsive">
-                        <table class="table table-hover dataTable" width="100%">
+            <table class="table table-hover dataTable" width="100%">
                           <thead>
                             <tr>
                               <th class="cb">
@@ -240,38 +239,34 @@ if (isset($_SESSION['email'])) {
                                 </span>
                               </th>
                               <th class="actions">Action</th>
-                              <th class="nik">ID Pemesanan</th>
-                              <!-- <th class="nama">Nama Bus</th> -->
-                              <th class="jk">Waktu Pesan</th>
-                              <th class="no_hp">Kursi Pesan</th>
+                              <th class="nik">ID Pemesanan </th>
+                              <!-- <th>ID Bus</th> -->
+                              <th class="nama">Waktu Pemesanan</th>
+                              <th class="jk">Kursi Pesan</th>
                               <th class="no_hp">Total Bayar</th>
-                              <th class="no_hp">Status</th>
+                              <th>Status</th>
                             </tr>
                           </thead>
                           <tbody>
-                          <?php
-          $query = $obj->pesananSaya($sesID);
-          $no = 0;
-                            if ($query->rowCount() > 0) {
-                              if ($sesLvl == 0) {
+                            <?php
+                            $data = $obj->pesananSaya($sesID);
+                            $no = 1;
+                            if ($data->rowCount() > 0) {
+                              if ($sesLvl == 1) {
                                 $dis = "";
                               } else {
                                 $dis = "disabled";
                               }
-          while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
-            $id = $row['id_pemesanan'];
-            $nik_user = $row['nik_user'];
-            $id_bus = $row['id_bus'];
-            // $nama_bus = $row['nama_bus'];
-            $waktu = $row['waktu_pemesanan'];
-            $kursi = $row['jumlah_kursi_pesan'];
-            $total = $row['total_bayar'];
-            $status = $row['status'];
-          ?>
-                            
+                              while ($row = $data->fetch(PDO::FETCH_ASSOC)) {
+                                $id_pemesanan = $row['id_pemesanan'];
+                                $nik_user = $row['nik_user'];
+                                $id_bus = $row['id_bus'];
+                                $waktu_pemesanan = $row['waktu_pemesanan'];
+                                $kursi = $row['jumlah_kursi_pesan'];
+                                $total = $row['total_bayar'];
+                                $status = $row['status'];
+                            ?>
                                 <tr>
-                                <form role="form" action="transaksi.php" method="POST" enctype="multipart/form-data">
-        
                                   <td>
                                     <span class="custom-checkbox">
                                       <input type="checkbox" id="checkbox1" name="option[]" value="<?php echo $no; ?>" />
@@ -279,145 +274,53 @@ if (isset($_SESSION['email'])) {
                                     </span>
                                   </td>
                                   <td>
-                                    <a href="transaksi.php<?php echo $id ?>" class="actionBtn" aria-label="Edit">
-                                      <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="<?php echo $id ?>" value="edit">
+                                    <!-- <a href="#" class="actionBtn" aria-label="Edit">
+                                      <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#bayarPemesanan<?php echo $id_pemesanan ?>" value="edit">
                                         &nbsp;<i class="fa fa-edit fa-sm" data-bs-toggle="tooltip" title="Edit"></i>
                                       </button>
-                                    </a>
-                                    <div class="col-lg-6 mb-3" hidden>
-                                                    <label for="inputNik" class="form-label">NIK Penumpang</label>
-                                                    <input type="number" class="form-control form-control-user2" id="inputNik" name="txt_id_pemesanan" required data-parsley-required-message="Data harus di isi !!!" data-parsley-length="[15,16]" maxlength="16" data-parsley-number="1" placeholder="Ex: 3509030907020006" value="<?php echo $id ?>" placeholder="" readonly />
-                                                  </div>
-                                                  <div class="col-lg-6 mb-3" hidden>
-                                                    <label for="inputNik" class="form-label">NIK Penumpang</label>
-                                                    <input type="number" class="form-control form-control-user2" id="inputNik" name="txt_jumlah_kursi_pesan" required data-parsley-required-message="Data harus di isi !!!" data-parsley-length="[15,16]" maxlength="16" data-parsley-number="1" placeholder="Ex: 3509030907020006" value="<?php echo $kursi ?>" placeholder="" readonly />
-                                                  </div>
-                                                  <div class="col-lg-6 mb-3" hidden>
-                                                    <label for="inputNik" class="form-label">NIK Penumpang</label>
-                                                    <input type="number" class="form-control form-control-user2" id="inputNik" name="txt_total_bayar" required data-parsley-required-message="Data harus di isi !!!" data-parsley-length="[15,16]" maxlength="16" data-parsley-number="1" placeholder="Ex: 3509030907020006" value="<?php echo $total ?>" placeholder="" readonly />
-                                                  </div>
-                                                  <div class="col-lg-6 mb-3" hidden>
-                                                    <label for="inputNik" class="form-label">NIK Penumpang</label>
-                                                    <input type="number" class="form-control form-control-user2" id="inputNik" name="txt_status" required data-parsley-required-message="Data harus di isi !!!" data-parsley-length="[15,16]" maxlength="16" data-parsley-number="1" placeholder="Ex: 3509030907020006" value="<?php echo $status ?>" placeholder="" readonly />
-                                                  </div>
-                                                  <div class="col-lg-6 mb-3" hidden>
-                                                    <label for="inputNik" class="form-label">NIK Penumpang</label>
-                                                    <input type="number" class="form-control form-control-user2" id="inputNik" name="txt_id_bus" required data-parsley-required-message="Data harus di isi !!!" data-parsley-length="[15,16]" maxlength="16" data-parsley-number="1" placeholder="Ex: 3509030907020006" value="<?php echo $id_bus ?>" placeholder="" readonly />
-                                                  </div>
-                                    <a href="#" class="actionBtn" aria-label="Delete">
-                                      <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteDataPenumpang<?php echo $nik_penumpang ?>" value="hapus">
-                                        <i class="fa fa-trash fa-sm" data-bs-toggle="tooltip" title="Delete"></i>
-                                      </button>
-                                    </a>
-
-                                    <!-- Edit Modal -->
-                                    <div id="editDataPenumpang<?php echo $nik_penumpang ?>" class="modal fade">
-                                      <div class="modal-dialog">
-                                        <div class="modal-content modal-edit">
-                                          <form role="form" action="editPenumpang.php" method="POST">
-                                            <?php
-                                            $query = $obj->pilihPenumpang($nik_penumpang);
-                                            while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
-                                              $nik_penumpang2 = $row['nik_penumpang'];
-                                              $nama_penumpang2 = $row['nama_penumpang'];
-                                              $jenis_kelamin_penumpang2 = $row['jenis_kelamin_penumpang'];
-                                              $no_hp_penumpang2 = $row['no_hp_penumpang'];
-                                            ?>
-                                              <div class="modal-header">
-                                                <h4 class="modal-title">Edit Data Penumpang</h4>
-                                                <button type="button" class="btn btn-danger btn-circle btn-user2 shadow" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true">
-                                                  <i class="fa fa-times fa-sm"></i>
-                                                </button>
-                                              </div>
-                                              <div class="modal-body">
-                                                <div class="row">
-                                                  <div class="col-lg-6 mb-3">
-                                                    <label for="inputNik" class="form-label">NIK Penumpang</label>
-                                                    <input type="number" class="form-control form-control-user2" id="inputNik" name="txt_nik_penumpang" required data-parsley-required-message="Data harus di isi !!!" data-parsley-length="[15,16]" maxlength="16" data-parsley-number="1" placeholder="Ex: 3509030907020006" value="<?php echo $nik_penumpang2 ?>" placeholder="" readonly />
-                                                  </div>
-                                                  <div class="col-lg-6 mb-3">
-                                                    <label for="inputNamaPenumpang" class="form-label">Nama Penumpang</label>
-                                                    <input type="text" class="form-control form-control-user2" id="inputNamaPenumpang" name="txt_nama_penumpang" required data-parsley-required-message="Data harus di isi !!!" placeholder="Ex: Budi Santoso" value="<?php echo $nama_penumpang2 ?>" />
-                                                  </div>
-
-                                                </div>
-
-                                                <div class="row">
-                                                  <div class="col-lg-6 mb-3">
-                                                    <label for="InputJenisKelamin" class="form-label">Jenis Kelamin</label>
-                                                    <div class="form-check">
-                                                      <input class="form-check-input" type="radio" name="txt_jenis_kelamin_penumpang" id="Radios1" value="Laki-laki" checked />
-                                                      <label class="form-label2" for="Radios1"><span>Laki-laki</span></label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                      <input class="form-check-input" type="radio" name="txt_jenis_kelamin_penumpang" id="Radios2" value="Perempuan" />
-                                                      <label class="form-label2" for="Radios2"><span>Perempuan</span></label>
-                                                    </div>
-                                                  </div>
-                                                  <div class="col-lg-6 mb-3">
-                                                    <label for="inputNoHp" class="form-label">No Handphone</label>
-                                                    <input type="number" class="form-control form-control-user2" id="inputNoHp" name="txt_no_hp_penumpang" placeholder="Ex: 085808241204" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $no_hp_penumpang2 ?>" />
-                                                  </div>
-                                                </div>
-
-                                                <div class="modal-footer">
-                                                  <button class="btn btn-secondary roundedBtn" type="button" data-bs-dismiss="modal">Batal</button>
-                                                  <button type="submit" class="btn text-white colorPrimary roundedBtn" name="simpan">Update</button>
-                                                </div>
-                                              </div>
-                                          </form>
-                                        <?php
-                                            }
-                                        ?>
-                                        </div>
-                                      </div>
-                                    </div>
-
-                                    <!-- Delete Modal -->
-                                    <div id="deleteDataPenumpang<?php echo $nik_penumpang; ?>" class="modal fade">
-                                      <div class="modal-dialog">
-                                        <div class="modal-content">
-                                          <form action="">
-                                            <div class="modal-header">
-                                              <h4 class="modal-title">Hapus Penumpang</h4>
-                                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                              <p>Apakah Anda yakin ingin menghapus data penumpang ini ?</p>
-                                              <p class="text-warning"><small>Perlu hati-hati karena data akan hilang selamanya !</small></p>
-                                            </div>
-                                            <div class="modal-footer">
-                                              <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Batal</button>
-                                              <a class="btn btn-danger" href="hapusPenumpang.php?nik_penumpang=<?php echo $nik_penumpang; ?>">Hapus</a>
-                                            </div>
-                                          </form>
-                                        </div>
-                                      </div>
-                                    </div>
+                                    </a> -->
+                                    <a class="btn btn-danger" href="hapusPemesanan.php?id_pemesanan=<?php echo $id_pemesanan; ?>">Hapus</a>
+                                    <!-- <div class="col-lg-6 mb-3" > -->
+                <!-- <label for="inputId" class="form-label">Status</label> -->
+                <form action="transaksi.php" method="POST">
+                <input hidden type="text" class="form-control form-control-user2" id="inputId" name="txt_id_pemesanan" value="<?php echo $id_pemesanan ?>" placeholder="" readonly />
+                <input hidden type="text" class="form-control form-control-user2" id="inputId" name="txt_id_bus" value="<?php echo $id_bus ?>" placeholder="" readonly />
+                <input hidden type="text" class="form-control form-control-user2" id="inputId" name="txt_waktu_pemesanan" value="<?php echo $waktu_pemesanan ?>" placeholder="" readonly />
+                <input hidden type="text" class="form-control form-control-user2" id="inputId" name="txt_jumlah_kursi_pesan" value="<?php echo $kursi ?>" placeholder="" readonly />
+                <input hidden type="text" class="form-control form-control-user2" id="inputId" name="txt_total_bayar" value="<?php echo $total ?>" placeholder="" readonly />
+                <input hidden type="text" class="form-control form-control-user2" id="inputId" name="txt_status" value="<?php echo $status ?>" placeholder="" readonly />
+                
+                <div class="text-center mt-3">
+            <button type="submit" name="simpan" class="btn colorPrimary text-white roundedBtn">Cari</button>
+          </div>
+                </form>
+              <!-- </div> -->
+                                    
                                   </td>
-                                  <td>P000<?php echo $id; ?></td>
-                                  <!-- <td><?php echo $nama_bus; ?></td> -->
-                                  <td><?php echo $waktu; ?></td>
+                                  <td>P000<?php echo $id_pemesanan; ?></td>
+                                  <!-- <td><?php echo $id_bus; ?></td> -->
+                                  <td><?php echo $waktu_pemesanan; ?></td>
                                   <td><?php echo $kursi; ?> kursi</td>
-                                  <td>Rp. <?php echo number_format($total); ?></td>
+                                  <td><?php echo $total; ?></td>
                                   <td><?php echo $status; ?></td>
-                                  </form>
                                 </tr>
-                            
+                            <?php
+                                $no++;
+                              }
+                            }
+                            ?>
                           </tbody>
                         </table>
-                      </div>
             </div>
-        
+        <!-- </form> -->
       <?php
-      $no++;
-          }
-        }
+          // }
       ?>
       </div>
     </div>
   </div>
 
+  
   <main>
     <section id="home">
       <div id="carouselExampleCaptions" class="carousel slide carousel-fade" data-bs-ride="carousel">
