@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Landing Page-SI-BOSS</title>
+  <title>SI-BOSS Express</title>
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
   <link rel="stylesheet" type="text/css" href="css/custom2.css" />
   <link rel="stylesheet" href="font/stylesheet.css" />

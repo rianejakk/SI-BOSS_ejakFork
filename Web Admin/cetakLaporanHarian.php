@@ -21,7 +21,7 @@ $email = $_GET['nama'];
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Laporan Pemesanan</title>
+    <title>SI-BOSS Express</title>
     <link rel="stylesheet" href="plugin/css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="plugin/font/stylesheet.css" />

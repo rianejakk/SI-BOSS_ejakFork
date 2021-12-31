@@ -110,7 +110,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Login - SI BOSS</title>
+    <title>SI-BOSS Express</title>
     <link rel="stylesheet" href="plugin/css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="plugin/font/stylesheet.css" />

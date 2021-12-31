@@ -27,7 +27,7 @@ if(!isset($_SESSION['email'])){
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard - SI BOSS</title>
+    <title>SI-BOSS Express</title>
     <link rel="stylesheet" href="plugin/css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="plugin/font/stylesheet.css" />
@@ -507,7 +507,7 @@ if(!isset($_SESSION['email'])){
                                 </td>
                                 <td>
                                 <?php if ($status!=="Belum Bayar" AND $status!=="Pesanan Dibatalkan"): ?>
-                             <a href="lihatPembayaran.php?id_pembayaran=<?php echo $id_pemesanan ?>" class="btn btn-info btn-circle"><i class="fas fa-file-invoice-dollar"></i></a><br>
+                             <a href="#" class="btn btn-info btn-circle"><i class="fas fa-file-invoice-dollar"></i></a><br>
 
                              <?php endif ?>
                                   <!-- <a href="#" class="actionBtn" aria-label="Edit">
