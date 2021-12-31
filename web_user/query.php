@@ -51,6 +51,13 @@ class crud extends koneksi {
         return $result;
     }
 
+    public function pesananSaya($id){
+        $sql = "SELECT * FROM pemesanan WHERE nik_user='$id' ORDER BY pemesanan.id_pemesanan ASC";
+        $result = $this->koneksi->prepare($sql);
+        $result->execute();
+        return $result;
+    }
+
     public function penumpang($id){
         $sql = "SELECT * FROM penumpang WHERE nik_penumpang like '%".$id."%' ORDER BY penumpang.nik_penumpang ASC";
         $result = $this->koneksi->prepare($sql);

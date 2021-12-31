@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $waktu_pemesanan = $_POST['txt_waktu_pemesanan'];
 
   if ($obj->insertPemesana($nik_user, $id_bus, $waktu_pemesanan)) {
-    echo '<div class="alert alert-success">Terminal Berhasil Ditambahkan</div>';
+    // echo '<div class="alert alert-success">Terminal Berhasil Ditambahkan</div>';
     // header("Location: detailPemesanan.php");
   } else {
     echo '<div class="alert alert-danger">Terminal Gagal Ditambahkan</div>';
@@ -248,7 +248,7 @@ function rupiah($angka)
         <div class="row">
           <div class="col-12 custom-panel">
             <div class="row">
-              <form role="form" action="transaksi.php" method="POST" enctype="multipart/form-data">
+              <form role="form" action="pesan.php" method="POST" enctype="multipart/form-data">
 
                 <div class="col-12">
                   <!-- Content Data -->
@@ -382,7 +382,7 @@ function rupiah($angka)
                       <input type="text" class="form-control form-control-user2" id="IDPemesanan" name="txt_total_bayar" placeholder="" value="<?php echo $harga ?>" readonly />
                     </div>
 
-                    <div class="col-lg-2 mb-3">
+                    <div class="col-lg-2 mb-3" hidden>
                       <label for="IDPemesanan" class="form-label">Status</label>
                       <input type="text" class="form-control form-control-user2" id="IDPemesanan" name="txt_status" value="<?php $statu = "Belum Bayar";
                                                                                                                             echo $statu ?>" placeholder="" readonly />
@@ -397,12 +397,49 @@ function rupiah($angka)
                       <?php $data = $obj->lihatPemesana();
                       while ($row = $data->fetch(PDO::FETCH_ASSOC)) {
                         $id = $row['id_pemesanan']; ?>
+                        <div class="col-md-12">
+                                  <div class="myRounded border shadow mod p-3 mb-2" style="min-height: 30px;">
+                                    <div class="row">
+                                      <div class="col-sm-3">
+                                        <p>NIK</p>
+                                      </div>
+                                      <div class="col-sm-7">
+                                        <p>: <?php echo $sesID ?></p>
+                                      </div>
+                                    </div>
+                                    <div class="row">
+                                      <div class="col-sm-3">
+                                        <p>Nama</p>
+                                      </div>
+                                      <div class="col-sm-7">
+                                        <p>: <?php echo $sesName ?></p>
+                                      </div>
+                                    </div>
+                                    <div class="row">
+                                      <div class="col-sm-3">
+                                        <p>Jenis Kelamin</p>
+                                      </div>
+                                      <div class="col-sm-7">
+                                        <p>: <?php echo $sesJK ?></p>
+                                      </div>
+                                    </div>
+                                    <div class="row">
+                                      <div class="col-sm-3">
+                                        <p class="m-0">Nomor HP</p>
+                                      </div>
+                                      <div class="col-sm-7">
+                                        <p class="m-0">: <?php echo $sesNoHP ?></p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <hr>
+                                </div>
                         <div class="row">
                           <div class="col-lg-12 mb-3" hidden>
                             <label for="IDPemesanan" class="form-label">Id Pemesanan</label>
                             <input type="text" class="form-control form-control-user2" id="IDPemesanan" name="txt_id_pemesanan" placeholder="" value="<?php echo $id; ?>" readonly />
                           </div>
-                          <div class="col-lg-6 mb-3">
+                          <!-- <div class="col-lg-6 mb-3">
                             <label for="exampleInputEmail" class="form-label">Nama Lengkap</label>
                             <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_nama" placeholder="Ex: Budi Santoso" value="<?php echo $sesName; ?>" readonly />
                           </div>
@@ -417,7 +454,7 @@ function rupiah($angka)
                           <div class="col-lg-6 mb-3">
                             <label for="InputNoHP" class="form-label">Jenis Kelamin</label>
                             <input type="text" class="form-control form-control-user2" id="InputNoHP" name="txt_nohp" placeholder="08872861622" value="<?php echo $sesJK; ?>" readonly />
-                          </div>
+                          </div> -->
                         </div>
                     </div>
                   <?php

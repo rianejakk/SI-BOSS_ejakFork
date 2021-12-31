@@ -12,30 +12,26 @@ if (!isset($_SESSION['email'])) {
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $nik_penumpang = $_POST['txt_nik_penumpang'];
+  $nama_penumpang = $_POST['txt_nama_penumpang'];
+  $jenis_kelamin_penumpang = $_POST['txt_jenis_kelamin_penumpang'];
+  $no_hp_penumpang = $_POST['txt_no_hp_penumpang'];
   $id_pemesanan = $_POST['txt_id_pemesanan'];
-  $nama_pengirim = $_POST['txt_nama_pengirim'];
-  $nama_bank = $_POST['txt_nama_bank'];
-  $no_rekening = $_POST['txt_no_rekening'];
-  $bayar = $_POST['txt_bayar'];
-  $waktu = $_POST['txt_waktu_pembayaran'];
-  $ekstensi_diperbolehkan	= array('png','jpg');
-            $gambar = time() . '-' . $_FILES['gambar']['name'];
-            $x = explode('.', $gambar);
-            $ekstensi = strtolower(end($x));
-            $file_tmp = $_FILES['gambar']['tmp_name'];
-
-            if (!empty($gambar)){
-                if (in_array($ekstensi, $ekstensi_diperbolehkan) === true){
-    
-                    //Mengupload gambar
-                    move_uploaded_file($file_tmp, 'bukti/'.$gambar);
-
-  if ($obj->insertPembayaran($id_pemesanan, $nama_pengirim, $nama_bank, $no_rekening, $bayar, $waktu, $gambar)) {
-
-    // echo '<div class="alert alert-success">Terminal Berhasil Ditambahkan</div>';
-    // header("Location: transaksi.php");
-    echo '<div class="alert alert-success">Berhasil</div>';
-  }}} else {
+  $jumlah_kursi_pesan = $_POST['txt_jumlah_kursi_pesan'];
+  $total_bayar = $_POST['txt_total_bayar'];
+  $status = $_POST['txt_status'];
+  // $id_bus = $_POST['txt_id_bus'];
+  if ($obj->insertPenumpang($nik_penumpang, $nama_penumpang, $jenis_kelamin_penumpang, $no_hp_penumpang)) {
+    if (!$obj->detailPemesanan($id_pemesanan)) die("Error: Id tidak ada");
+    if ($obj->updatePemesanan($jumlah_kursi_pesan, $total_bayar, $status, $id_pemesanan)) {
+      $id = $id_pemesanan;
+      $nik = $nik_penumpang;
+      if ($obj->insertTiket($id_pemesanan, $nik_penumpang)) {
+        // echo '<div class="alert alert-success">Terminal Berhasil Ditambahkan</div>';
+        // header("Location: transaksi.php");
+        // echo '<div class="alert alert-success">Berhasil</div>';
+      }
+    }
+  } else {
     // echo '<div class="alert alert-danger">Terminal Gagal Ditambahkan</div>';
     // header("Location: transaksi.php");
     // echo $nik_penumpang;
@@ -269,7 +265,6 @@ function rupiah($angka)
           <div class="col-12 custom-panel">
             <div class="row">
               <div class="col-12">
-
                 <div class="card cardUser myRounded shadow mod mb-3">
                   <div class="card-header">
                     <p class="m-0 s16 p-2"><b>Transaksi</b></p>
@@ -281,8 +276,8 @@ function rupiah($angka)
                     if ($data->rowCount() > 0) {
                       while ($row = $data->fetch(PDO::FETCH_ASSOC)) {
                         $idPemesanan = $row['id_pemesanan']; ?>
-                        <form action="#" method="POST">
-                        <div class="row ps-2">
+                        <form action="cetakTiket.php" method="POST">
+                          <div class="row ps-2">
                             <div class="col-md-6 mb-3" hidden>
                               <label for="IDPemesanan" class="form-label">ID Pemesanan</label>
                               <input type="text" class="form-control form-control-user2" id="IDPemesanan" name="txt_id_pemesanan" value="P000<?php echo $idPemesanan ?>" placeholder="" readonly />
@@ -338,7 +333,7 @@ function rupiah($angka)
                                   <hr>
                                 </div>
 
-                          <div class="row ps-2">
+                          <!-- <div class="row ps-2">
                             <div class="col-md-6 mb-4">
                               <p class="m-0 s14"><b>Data Penumpang</b></p>
                             </div>
@@ -355,7 +350,10 @@ function rupiah($angka)
                                 $jk_penumpang = $row['jenis_kelamin_penumpang']; ?>
                                 <div class="col-md-6">
                                   <div class="myRounded border shadow mod p-3 mb-2" style="min-height: 30px;">
-                                    <div class="row">
+                                  <div class="col-md-6 mb-3" hidden>
+                              <label for="IDPemesanan" class="form-label">ID Pemesanan</label>
+                              <input type="text" class="form-control form-control-user2" id="IDPemesanan" name="txt_nik_penumpang" value="<?php echo $nik_penumpang ?>" placeholder="" readonly />
+                            </div><div class="row">
                                       <div class="col-sm-3">
                                         <p>NIK</p>
                                       </div>
@@ -394,40 +392,87 @@ function rupiah($angka)
                                 $no;
                               }
                             }; ?>
-                          </div>
+                          </div> -->
 
-                          <!-- <div class="row ps-2">
+                          <div class="row ps-2">
                             <div class="col-md-6 mb-4">
                               <p class="m-0 s14"><b>Pembayaran</b></p>
                             </div>
                           </div>
-                          <div class="row ps-2">
-                            <div class="col-md-6 mb-3">
-                              <label for="MethodPay" class="form-label">Metode Pembayaran</label>
-                              <select class="form-select form-select-user select-md pay" aria-label=".form-select-sm example" required data-parsley-required-message="Harap pilih data terminal !!!" name="MethodPay" id="pay">
-                                <option>Pilih</option>
-                                <option value="briva">Bank BRI (BRIVA)</option>
-                              </select>
+                          <form action="cetakTiket.php" method="POST">
+                            <?php $id = $_POST["txt_id_pemesanan"];
+                            $data = $obj->pemesananB($id);
+                            $no = 1;
+                            if ($data->rowCount() > 0) {
+                              while ($row = $data->fetch(PDO::FETCH_ASSOC)) {
+                                $idPemesanan = $row['id_pemesanan'];
+                                $total = $row['total_bayar']; ?>
+                                <div class="row ps-2">
+                                  <div class="col-lg-6 mb-3" hidden>
+                                    <label for="inputAlamat" class="form-label">ID</label>
+                                    <input type="text" class="form-control form-control-user2" id="inputAlamat" name="txt_id_pemesanan" placeholder="Ex: Jl. Dharmawangsa" value="<?php echo $id_pemesanan ?>" readonly />
+                                  </div>
+                                  <div class="col-lg-6 mb-3">
+                                    <label for="inputAlamat" class="form-label">Waktu Pembayaran</label>
+                                    <input type="datetime" class="form-control form-control-user2" id="inputId" name="txt_waktu_pembayaran" value="<?php $tz = 'Asia/Jakarta';
+                                                                                                                                                    $dt = new DateTime("now", new DateTimeZone($tz));
+                                                                                                                                                    $timestamp = $dt->format('Y-m-d H:i:s');
+                                                                                                                                                    echo $timestamp; ?>" placeholder="" readonly />
+                                  </div>
+                                  <div class="col-lg-6 mb-3">
+                                    <label for="inputAlamat" class="form-label">Total Bayar</label>
+                                    <input type="text" class="form-control form-control-user2" id="inputAlamat" name="txt_bayar" placeholder="Ex: Jl. Dharmawangsa" value="<?php echo $total ?>" readonly />
+                                  </div>
+                                </div>
+                                <div class="row ps-2">
+                                  <div class="col-lg-6 mb-3">
+                                    <label for="inputAlamat" class="form-label">Nama Pengirim</label>
+                                    <input type="text" class="form-control form-control-user2" id="inputAlamat" name="txt_nama_pengirim" placeholder="Ex: Jl. Dharmawangsa" required data-parsley-required-message="Data harus di isi !!!" />
+                                  </div>
+                                  <div class="col-md-6 mb-3">
+                                    <label for="MethodPay" class="form-label">Metode Pembayaran</label>
+                                    <select class="form-select form-select-user select-md pay" aria-label=".form-select-sm example" required data-parsley-required-message="Harap pilih data terminal !!!" name="txt_nama_bank" id="pay">
+                                      <option disabled selected>Pilih BANK</option>
+                                      <option value="BRI briva">Bank BRI (BRIVA)</option>
+                                    </select>
+                                  </div>
+                                </div>
+                                <div class="row ps-2 hidden" id="noBriva">
+                                  <div class="col-md-6 mb-3">
+                                    <label for="NoBriva" class="form-label">No. Briva</label>
+                                    <input type="text" class="form-control form-control-user2" id="NoBriva" name="txt_no_rekening" placeholder="" readonly value="86531616235361" />
+                                  </div>
+                                </div>
+                                <!-- <div class="row ps-2">
+                                  <div class="col-md-6">
+                                    <label for="UploadBukti" class="form-label ">Upload Bukti Pembayaran</label>
+                                    <div class="input-group mb-3" name="txt_bukti_pembayaran">
+                                      <input type="file" class="form-control form-select-user select-md" id="UploadBukti" name="txt_bukti_pembayaran">
+                                    </div>
+                                  </div>
+                                </div> -->
+                                <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <div id="msg"></div>
+                        <input type="file" name="gambar" class="file" >
+                            <div class="input-group my-3">
+                                <input type="text" class="form-control" disabled placeholder="Upload Gambar" id="file">
+                                <div class="input-group-append">
+                                        <button type="button" id="pilih_gambar" class="browse btn btn-dark">Pilih Gambar</button>
+                                </div>
                             </div>
-                          </div>
-                          <div class="row ps-2 hidden" id="noBriva">
-                            <div class="col-md-6 mb-3">
-                              <label for="NoBriva" class="form-label">No. Briva</label>
-                              <input type="text" class="form-control form-control-user2" id="NoBriva" name="txt_noBriva" placeholder="" readonly value="86531616235361" />
-                            </div>
-                          </div>
-                          <div class="row ps-2">
-                            <div class="col-md-6">
-                              <label for="UploadBukti" class="form-label ">Upload Bukti Pembayaran</label>
-                              <div class="input-group mb-3">
-                                <input type="file" class="form-control form-select-user select-md" id="UploadBukti">
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-12 d-flex justify-content-center mb-5">
-                            <button type="submit" name="submit" class="btn colorPrimary text-white py-2 s14 rounded-pill resize">Konfirmasi</button>
-                          </div> -->
-                        </form>
+                        <img src="gambar/80x80.png" id="preview" class="img-thumbnail">
+                    </div>
+                </div>
+            </div>
+                                <div class="col-12 d-flex justify-content-center mb-5">
+                                  <button type="submit" name="submit" class="btn colorPrimary text-white py-2 s14 rounded-pill resize">Konfirmasi</button>
+                                </div>
+                            <?php
+                              }
+                            }; ?>
+                          </form>
                   </div>
               <?php
                         $no;
@@ -472,7 +517,7 @@ function rupiah($angka)
   <script>
     $(".pay").change(function() {
       var responseID = $(this).val();
-      if (responseID == "briva") {
+      if (responseID == "BRI briva") {
         $("#noBriva").removeClass("hidden");
         $("#noBriva").addClass("show");
       } else {
@@ -482,6 +527,31 @@ function rupiah($angka)
       console.log(responseID);
     });
   </script>
+  <script>
+
+function konfirmasi(){
+    konfirmasi=confirm("Apakah anda yakin ingin menghapus gambar ini?")
+    document.writeln(konfirmasi)
+}
+
+$(document).on("click", "#pilih_gambar", function() {
+var file = $(this).parents().find(".file");
+file.trigger("click");
+});
+
+$('input[type="file"]').change(function(e) {
+var fileName = e.target.files[0].name;
+$("#file").val(fileName);
+
+var reader = new FileReader();
+reader.onload = function(e) {
+    // get loaded data and render thumbnail.
+    document.getElementById("preview").src = e.target.result;
+};
+// read the image file as a data URL.
+reader.readAsDataURL(this.files[0]);
+});
+</script>
 </body>
 
 </html>
