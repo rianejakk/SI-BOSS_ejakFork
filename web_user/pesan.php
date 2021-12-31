@@ -4,6 +4,8 @@ require ('query.php');
 $obj = new crud;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+  $id_bus = $_POST['txt_id_bus'];
+  $stok_kursi = $_POST['txt_stok_kursi'];
   $nik_penumpang = $_POST['txt_nik_penumpang'];
   $nama_penumpang = $_POST['txt_nama_penumpang'];
   $jenis_kelamin_penumpang = $_POST['txt_jenis_kelamin_penumpang'];
@@ -19,10 +21,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $id = $id_pemesanan;
       $nik = $nik_penumpang;
       if ($obj->insertTiket($id_pemesanan, $nik_penumpang)) {
+        if (!$obj->detailBus($id_bus)) die("Error: Id tidak ada");
+    if ($obj->updateStokBus($stok_kursi, $id_bus)) {
         // echo '<div class="alert alert-success">Terminal Berhasil Ditambahkan</div>';
         header("Location: index.php");
         // echo '<div class="alert alert-success">Berhasil</div>';
-      }
+      }}
     }
   } else {
     // echo '<div class="alert alert-danger">Terminal Gagal Ditambahkan</div>';

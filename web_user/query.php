@@ -713,6 +713,21 @@ class crud extends koneksi {
         }
     }
 
+    public function updateStokBus($jumlah_kursi, $data){
+        try{
+            $sql ="UPDATE bus SET jumlah_kursi=:jumlah_kursi WHERE id_bus=:id_bus";
+            $result = $this->koneksi->prepare($sql);
+            $result->bindParam(":jumlah_kursi", $jumlah_kursi);
+            $result->bindParam(":id_bus", $data);
+            $result->execute();
+            return true;
+        }
+        catch (PDOException $e){
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
     public function updateTerminal($terminal, $alamat, $provinsi, $kabupaten, $kecamatan, $data){
         try{
             $sql ="UPDATE terminal SET nama_terminal=:terminal, detail_alamat_terminal=:alamat, provinsi_terminal=:provinsi, kabupaten_terminal=:kabupaten, kecamatan_terminal=:kecamatan WHERE id_terminal=:id_terminal";

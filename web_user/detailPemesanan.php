@@ -365,6 +365,10 @@ function rupiah($angka)
                           </div>
                         </div>
                       </div>
+                      <div class="col-lg-2 mb-3">
+                      <label for="IDPemesanan" class="form-label">Total Bayar</label>
+                      <input type="text" class="form-control form-control-user2" id="IDPemesanan" name="txt_stok_kursi" placeholder="" value="<?php echo $JKursi - 1; ?>" readonly />
+                    </div>
                   <?php
                       $no;
                     }
