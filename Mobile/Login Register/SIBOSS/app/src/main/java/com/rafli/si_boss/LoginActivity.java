@@ -34,7 +34,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     SessionManager sessionManager;
 
     public static String email_user;
-    public static String pwd;
+    public static String password_user;
 
 
     @Override
@@ -106,7 +106,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     sessionManager.createLoginSession(loginData);
 
                     email_user = email;
-                    pwd = password;
+                    password_user = password;
 
                     Toast.makeText(LoginActivity.this, response.body().getLoginData().getNamaUser(), Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
