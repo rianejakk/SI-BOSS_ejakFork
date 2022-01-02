@@ -74,16 +74,16 @@ function rupiah($angka)
         <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item ms-3 me-2">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a class="nav-link active" aria-current="page" href="index.php">Home</a>
             </li>
             <li class="nav-item ms-3 me-2">
-              <a class="nav-link" href="#">Booking</a>
+              <a class="nav-link" href="index.php#booking">Booking</a>
             </li>
             <li class="nav-item ms-3 me-2">
-              <a class="nav-link" href="#">Help</a>
+              <a class="nav-link" href="index.php#help">Help</a>
             </li>
             <li class="nav-item ms-3 me-2">
-              <a class="nav-link" href="#">About</a>
+              <a class="nav-link" href="index.php#about">About</a>
             </li>
           </ul>
           <?php if (!isset($_SESSION['level'])) : ?>
@@ -365,10 +365,7 @@ function rupiah($angka)
                           </div>
                         </div>
                       </div>
-                      <div class="col-lg-2 mb-3">
-                      <label for="IDPemesanan" class="form-label">Total Bayar</label>
-                      <input type="text" class="form-control form-control-user2" id="IDPemesanan" name="txt_stok_kursi" placeholder="" value="<?php echo $JKursi - 1; ?>" readonly />
-                    </div>
+
                   <?php
                       $no;
                     }
@@ -376,14 +373,19 @@ function rupiah($angka)
                   ?>
 
                   <div class="row">
-                    <div class="col-lg-2 mb-3">
-                      <label for="IDPemesanan" class="form-label">Kursi Pesan</label>
-                      <input type="text" class="form-control form-control-user2" id="IDPemesanan" name="txt_jumlah_kursi_pesan" placeholder="" value="1" readonly />
+                    <div class="col-lg-2 mb-3" hidden>
+                      <label for="IDPemesanan" class="form-label">Stok Kursi</label>
+                      <input type="text" class="form-control form-control-user2" id="IDPemesanan" name="txt_stok_kursi" placeholder="" value="<?php echo $JKursi - 1; ?>" readonly />
                     </div>
 
-                    <div class="col-lg-2 mb-3">
+                    <div class="col-lg-2 mb-3" hidden>
                       <label for="IDPemesanan" class="form-label">Total Bayar</label>
                       <input type="text" class="form-control form-control-user2" id="IDPemesanan" name="txt_total_bayar" placeholder="" value="<?php echo $harga ?>" readonly />
+                    </div>
+
+                    <div class="col-lg-2 mb-3" hidden>
+                      <label for="IDPemesanan" class="form-label">Kursi Pesan</label>
+                      <input type="text" class="form-control form-control-user2" id="IDPemesanan" name="txt_jumlah_kursi_pesan" placeholder="" value="1" readonly />
                     </div>
 
                     <div class="col-lg-2 mb-3" hidden>
@@ -392,7 +394,13 @@ function rupiah($angka)
                                                                                                                             echo $statu ?>" placeholder="" readonly />
                     </div>
                   </div>
-
+                  <div class="myRounded border shadow mod p-3 mb-2" style="min-height: 30px;">
+                    <h3 class="m-0 d-flex justify-content-end font-RobotoBold s22 colorPrimaryText">
+                      Total Bayar : <?php echo rupiah($harga) ?>
+                      <span class="font-Roboto s14 align-self-center colorBlueDarkText"></span>
+                    </h3>
+                    <p class="m-0 d-flex justify-content-end font-RobotoBold s14">Pesan : 1 Kursi</p>
+                  </div>
                   <div class="card cardUser myRounded shadow mod mb-3">
                     <div class="card-header">
                       <p class="m-0 s16"><b>Data Pemesan</b></p>
@@ -402,63 +410,47 @@ function rupiah($angka)
                       while ($row = $data->fetch(PDO::FETCH_ASSOC)) {
                         $id = $row['id_pemesanan']; ?>
                         <div class="col-md-12">
-                                  <div class="myRounded border shadow mod p-3 mb-2" style="min-height: 30px;">
-                                    <div class="row">
-                                      <div class="col-sm-3">
-                                        <p>NIK</p>
-                                      </div>
-                                      <div class="col-sm-7">
-                                        <p>: <?php echo $sesID ?></p>
-                                      </div>
-                                    </div>
-                                    <div class="row">
-                                      <div class="col-sm-3">
-                                        <p>Nama</p>
-                                      </div>
-                                      <div class="col-sm-7">
-                                        <p>: <?php echo $sesName ?></p>
-                                      </div>
-                                    </div>
-                                    <div class="row">
-                                      <div class="col-sm-3">
-                                        <p>Jenis Kelamin</p>
-                                      </div>
-                                      <div class="col-sm-7">
-                                        <p>: <?php echo $sesJK ?></p>
-                                      </div>
-                                    </div>
-                                    <div class="row">
-                                      <div class="col-sm-3">
-                                        <p class="m-0">Nomor HP</p>
-                                      </div>
-                                      <div class="col-sm-7">
-                                        <p class="m-0">: <?php echo $sesNoHP ?></p>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <hr>
-                                </div>
+                          <div class="myRounded border shadow mod p-3 mb-2" style="min-height: 30px;">
+                            <div class="row">
+                              <div class="col-sm-3">
+                                <p>NIK</p>
+                              </div>
+                              <div class="col-sm-7">
+                                <p>: <?php echo $sesID ?></p>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-3">
+                                <p>Nama</p>
+                              </div>
+                              <div class="col-sm-7">
+                                <p>: <?php echo $sesName ?></p>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-3">
+                                <p>Jenis Kelamin</p>
+                              </div>
+                              <div class="col-sm-7">
+                                <p>: <?php echo $sesJK ?></p>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-3">
+                                <p class="m-0">Nomor HP</p>
+                              </div>
+                              <div class="col-sm-7">
+                                <p class="m-0">: <?php echo $sesNoHP ?></p>
+                              </div>
+                            </div>
+                          </div>
+                          <hr>
+                        </div>
                         <div class="row">
                           <div class="col-lg-12 mb-3" hidden>
                             <label for="IDPemesanan" class="form-label">Id Pemesanan</label>
                             <input type="text" class="form-control form-control-user2" id="IDPemesanan" name="txt_id_pemesanan" placeholder="" value="<?php echo $id; ?>" readonly />
                           </div>
-                          <!-- <div class="col-lg-6 mb-3">
-                            <label for="exampleInputEmail" class="form-label">Nama Lengkap</label>
-                            <input type="text" class="form-control form-control-user2" id="exampleInputEmail" name="txt_nama" placeholder="Ex: Budi Santoso" value="<?php echo $sesName; ?>" readonly />
-                          </div>
-                          <div class="col-lg-6 mb-3">
-                            <label for="Input NIK" class="form-label">NIK</label>
-                            <input type="text" class="form-control form-control-user2" id="InputNIK" name="txt_nik" placeholder="35678891638191" value="<?php echo $sesID; ?>" readonly />
-                          </div>
-                          <div class="col-lg-6 mb-3">
-                            <label for="InputNoHP" class="form-label">No. HP</label>
-                            <input type="text" class="form-control form-control-user2" id="InputNoHP" name="txt_nohp" placeholder="08872861622" value="<?php echo $sesNoHP; ?>" readonly />
-                          </div>
-                          <div class="col-lg-6 mb-3">
-                            <label for="InputNoHP" class="form-label">Jenis Kelamin</label>
-                            <input type="text" class="form-control form-control-user2" id="InputNoHP" name="txt_nohp" placeholder="08872861622" value="<?php echo $sesJK; ?>" readonly />
-                          </div> -->
                         </div>
                     </div>
                   <?php
@@ -503,18 +495,24 @@ function rupiah($angka)
                           </div>
                         </div>
                       </div>
-                      <input data-repeater-create type="button" class="btn btn-success mt-3 mt-lg-0" value="Add" />
-                      <input data-repeater-delete type="button" class="btn btn-primary" value="Delete" />
+                      <!-- <input data-repeater-create type="button" class="btn btn-success mt-3 mt-lg-0" value="Add" />
+                      <input data-repeater-delete type="button" class="btn btn-primary" value="Delete" /> -->
                     </div>
                   </div>
                   <!-- </div>
                     </div>
                   </div> -->
                 </div>
-                <div class="col-12 d-flex justify-content-center mb-5">
+
+                <div class="col-12 d-flex justify-content-center mb-3">
                   <button type="submit" name="simpan" class="btn colorPrimary text-white py-2 s14 rounded-pill resize">Pesan</button>
                 </div>
               </form>
+              <div class="col-12 d-flex justify-content-center mb-5">
+                  <a href="index.php" class="actionBtn" aria-label="Delete">
+                    <button class="btn btn-danger btn-user btn-circle py-2 s14 rounded-pill resize">Batal</button>
+                  </a>
+                </div>
             </div>
           </div>
         </div>

@@ -38,14 +38,14 @@ class crud extends koneksi {
     }
 
     public function detailPemesananBus($id){
-        $sql = "SELECT id_bus, foto_bus, nama_bus, harga, status_bus, jumlah_kursi, tanggal_pemberangkatan, jenis, fasilitas, u1.nama_terminal pemberangkatan, u2.nama_terminal tujuan, waktu_berangkat, waktu_tiba FROM bus JOIN jenis_bus ON bus.id_jenis=jenis_bus.id_jenis JOIN rute ON bus.id_rute=rute.id_rute JOIN terminal u1 ON rute.pemberangkatan=u1.id_terminal JOIN terminal u2 ON rute.tujuan=u2.id_terminal WHERE id_bus like '%".$id."%' ORDER BY bus.id_bus ASC";
+        $sql = "SELECT id_bus, foto_bus, nama_bus, harga, status_bus, jumlah_kursi, tanggal_pemberangkatan, jenis, fasilitas, u1.nama_terminal pemberangkatan, u2.nama_terminal tujuan, waktu_berangkat, waktu_tiba FROM bus JOIN jenis_bus ON bus.id_jenis=jenis_bus.id_jenis JOIN rute ON bus.id_rute=rute.id_rute JOIN terminal u1 ON rute.pemberangkatan=u1.id_terminal JOIN terminal u2 ON rute.tujuan=u2.id_terminal WHERE id_bus='$id' ORDER BY bus.id_bus ASC";
         $result = $this->koneksi->prepare($sql);
         $result->execute();
         return $result;
     }
 
     public function pemesananB($id){
-        $sql = "SELECT * FROM pemesanan WHERE id_pemesanan like '%".$id."%' ORDER BY pemesanan.id_pemesanan ASC";
+        $sql = "SELECT * FROM pemesanan WHERE id_pemesanan='$id' ORDER BY pemesanan.id_pemesanan ASC";
         $result = $this->koneksi->prepare($sql);
         $result->execute();
         return $result;
@@ -59,7 +59,7 @@ class crud extends koneksi {
     }
 
     public function penumpang($id){
-        $sql = "SELECT * FROM penumpang WHERE nik_penumpang like '%".$id."%' ORDER BY penumpang.nik_penumpang ASC";
+        $sql = "SELECT * FROM penumpang WHERE nik_penumpang='$id' ORDER BY penumpang.nik_penumpang ASC";
         $result = $this->koneksi->prepare($sql);
         $result->execute();
         return $result;
@@ -123,6 +123,13 @@ class crud extends koneksi {
 
     public function lihatTiket(){
         $sql = "SELECT * FROM tiket";
+        $result = $this->koneksi->prepare($sql);
+        $result->execute();
+        return $result;
+    }
+
+    public function cetakTiket($id){
+        $sql = "SELECT id_tiket, nama_penumpang, tanggal_pemberangkatan, jenis_kelamin_penumpang, no_hp_penumpang, u1.nama_terminal pemberangkatan, u2.nama_terminal tujuan, nama_bus, total_bayar, waktu_berangkat, waktu_tiba FROM tiket JOIN pemesanan ON tiket.id_pemesanan=pemesanan.id_pemesanan JOIN penumpang ON tiket.nik_penumpang=penumpang.nik_penumpang JOIN user ON pemesanan.nik_user=user.nik_user JOIN bus ON pemesanan.id_bus=bus.id_bus JOIN rute ON bus.id_rute=rute.id_rute JOIN terminal u1 ON rute.pemberangkatan=u1.id_terminal JOIN terminal u2 ON rute.tujuan=u2.id_terminal WHERE tiket.id_pemesanan='$id' ORDER BY tiket.id_tiket ASC";
         $result = $this->koneksi->prepare($sql);
         $result->execute();
         return $result;

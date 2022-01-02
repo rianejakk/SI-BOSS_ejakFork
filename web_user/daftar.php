@@ -32,13 +32,13 @@
               <a class="nav-link" aria-current="page" href="index.php">Home</a>
             </li>
             <li class="nav-item ms-3 me-2">
-              <a class="nav-link" href="#">Booking</a>
+              <a class="nav-link" href="index.php#booking">Booking</a>
             </li>
             <li class="nav-item ms-3 me-2">
-              <a class="nav-link" href="#">Help</a>
+              <a class="nav-link" href="index.php#help">Help</a>
             </li>
             <li class="nav-item ms-3 me-2">
-              <a class="nav-link" href="#">About</a>
+              <a class="nav-link" href="index.php#about">About</a>
             </li>
           </ul>
           <div class="ms-auto myClass">
@@ -69,7 +69,7 @@
                   <form class="custom-validation px-2" action="login.php" method="POST">
                     <div class="mb-3">
                       <label for="exampleInputEmail" class="form-label font-RobotoSemiBold colorBold s12">Email</label>
-                      <input type="email" class="form-control form-control-user2" id="exampleInputEmail" name="txt_email" required data-parsley-required-message="Email tidak boleh kosong !!!" data-parsley-type-message="Harus sesuai format email menggunakan @" placeholder="Ex: budiman@siboss.com" />
+                      <input type="email" class="form-control form-control-user2" id="exampleInputEmail" name="txt_email" required data-parsley-required-message="Email tidak boleh kosong !!!" data-parsley-type-message="Harus sesuai format email menggunakan @" placeholder="Ex: budiman@gmail.com" />
                     </div>
                     <div class="row g-1">
                       <div class="col-md-6 ">
@@ -91,23 +91,23 @@
                     <div class="clearfix"></div>
                     <div class="mb-3">
                       <label for="InputNama" class="form-label font-RobotoSemiBold colorBold s12">NIK</label>
-                      <input type="text" class="form-control form-control-user2" id="InputNama" name="txt_nama" required data-parsley-required-message="Email tidak boleh kosong !!!" placeholder="Budi Santoso" />
+                      <input type="text" class="form-control form-control-user2" id="InputNama" name="txt_nama" required data-parsley-required-message="NIK tidak boleh kosong !!!" placeholder="Ex: Budi Santoso" />
                     </div>
                     <div class="mb-3">
                       <label for="InputNama" class="form-label font-RobotoSemiBold colorBold s12">Nama Lengkap</label>
-                      <input type="text" class="form-control form-control-user2" id="InputNama" name="txt_nama" required data-parsley-required-message="Email tidak boleh kosong !!!" placeholder="Budi Santoso" />
+                      <input type="text" class="form-control form-control-user2" id="InputNama" name="txt_nama" required data-parsley-required-message="Nama tidak boleh kosong !!!" placeholder="Ex: Budi Santoso" />
                     </div>
                     <div class="row g-1">
                       <div class="col-md-6 ">
                         <div class="mb-3">
                           <label for="tptLahir-input" class="form-label font-RobotoSemiBold colorBold s12">Tempat Lahir</label>
-                          <input type="text" class="form-control form-control-user2" id="tptLahir-input" name="txt_tptLahir" required data-parsley-required-message="Data tidak boleh kosong !!!" aria-label="tptLahir" />
+                          <input type="text" class="form-control form-control-user2" id="tptLahir-input" name="txt_tptLahir" required data-parsley-required-message="Tempat Lahir tidak boleh kosong !!!" placeholder="Ex: Jember" aria-label="tptLahir" />
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="mb-3">
                           <label for="tptTglLahir-input" class="form-label font-RobotoSemiBold colorBold s12">Tempat Lahir</label>
-                          <input type="date" class="form-control form-control-user2" id="tptTglLahir-input" name="txt_tptTglLahir-input" required data-parsley-required-message="Data tidak boleh kosong !!!" />
+                          <input type="date" class="form-control form-control-user2" id="tptTglLahir-input" name="txt_tptTglLahir-input" required data-parsley-required-message="Tanggal Lahir tidak boleh kosong !!!" />
                         </div>
                       </div>
                     </div>
@@ -159,7 +159,7 @@
     <div class="footer-bar bg-white fixed-bottom sh-footer">
       <div class="container">
         <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 mt-1">
-          <p class="col-md-4 mb-0 text-muted">© 2021 SI-BOSS, Inc</p>
+          <p class="col-md-4 mb-0 text-muted">© 2021 SI-BOSS Express, Inc</p>
 
           <a href="#" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none" title="Logo">
             <img src="assets/img/logo.png" alt="" width="105px" />

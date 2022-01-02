@@ -1,48 +1,48 @@
 <?php
-  require('koneksi.php');
-  require ('query.php');
-  $obj = new crud;
-  
-  session_start();
+require('koneksi.php');
+require('query.php');
+$obj = new crud;
 
-  if(isset($_COOKIE['cookie_email'])){
-    $cookieEmail = $_COOKIE['cookie_email'];
-    $cookiePass = $_COOKIE['cookie_password'];
-    $cookieName = $_COOKIE['cookie_name'];
-    $queryCookie = $obj->login($cookieEmail);
-    while ($row = $queryCookie->fetch(PDO::FETCH_ASSOC)) {
-      $id_user_admin = $row['nik_user'];
-      $nama = $row['nama_user'];
-      $emailVal = $row['email_user'];
-      $passwordVal = $row['password_user'];
-      $tempat = $row['tempat_lahir_user'];
-      $tanggal = $row['tanggal_lahir_user'];
-      $level = $row['level'];
-      $jk = $row['jenis_kelamin_user'];
-      $alamat = $row['alamat_user'];
-      $noHP = $row['no_hp_user'];
-      $foto = $row['foto_user'];
-    }
+session_start();
 
-    if ($emailVal == $cookieEmail && $passwordVal == $cookiePass) {
-      $_SESSION['name'] = $cookieName;
-      $_SESSION['email'] = $cookieEmail;
-      $_SESSION['pass'] = $cookiePass;
-    }
-
-    if(isset($_SESSION['email'])){
-      header('Location: index.php');
-    }
+if (isset($_COOKIE['cookie_email'])) {
+  $cookieEmail = $_COOKIE['cookie_email'];
+  $cookiePass = $_COOKIE['cookie_password'];
+  $cookieName = $_COOKIE['cookie_name'];
+  $queryCookie = $obj->login($cookieEmail);
+  while ($row = $queryCookie->fetch(PDO::FETCH_ASSOC)) {
+    $id_user_admin = $row['nik_user'];
+    $nama = $row['nama_user'];
+    $emailVal = $row['email_user'];
+    $passwordVal = $row['password_user'];
+    $tempat = $row['tempat_lahir_user'];
+    $tanggal = $row['tanggal_lahir_user'];
+    $level = $row['level'];
+    $jk = $row['jenis_kelamin_user'];
+    $alamat = $row['alamat_user'];
+    $noHP = $row['no_hp_user'];
+    $foto = $row['foto_user'];
   }
 
-  if (isset($_POST['submit'])) {
-    $email = $_POST['txt_email'];
-    $password = $_POST['txt_password'];
-    $rememberMe = !empty($_POST['check_remember']) ? $_POST['check_remember'] : '';
+  if ($emailVal == $cookieEmail && $passwordVal == $cookiePass) {
+    $_SESSION['name'] = $cookieName;
+    $_SESSION['email'] = $cookieEmail;
+    $_SESSION['pass'] = $cookiePass;
+  }
 
-    if (!empty(trim($email)) && !empty(trim($password))) {
-      $query = $obj->login($email);
-      $num = $query->rowCount();
+  if (isset($_SESSION['email'])) {
+    header('Location: index.php');
+  }
+}
+
+if (isset($_POST['submit'])) {
+  $email = $_POST['txt_email'];
+  $password = $_POST['txt_password'];
+  $rememberMe = !empty($_POST['check_remember']) ? $_POST['check_remember'] : '';
+
+  if (!empty(trim($email)) && !empty(trim($password))) {
+    $query = $obj->login($email);
+    $num = $query->rowCount();
 
     while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
       $id_user_admin = $row['nik_user'];
@@ -72,7 +72,7 @@
         $_SESSION['noHP'] = $noHP;
         $_SESSION['foto'] = $foto;
 
-        if($rememberMe == 1 ){
+        if ($rememberMe == 1) {
           $cookie_name = "cookie_email";
           $cookie_value = $emailVal;
           $cookie_time = time() + (60 * 60 * 0.12); //5 menit
@@ -88,36 +88,38 @@
           $cookie_time = time() + (60 * 60 * 0.12); //5 menit
           setcookie($cookie_name, $cookie_value, $cookie_time, "/");
         }
-          
-        header('Location: index.php');
 
-      } if ($emailVal != $email && $passwordVal == $password) {?>
+        header('Location: index.php');
+      }
+      if ($emailVal != $email && $passwordVal == $password) { ?>
         <div class="w-100 d-flex justify-content-center">
           <div class="alert alert-danger d-block position-fixed custAlert" style="z-index: 11;" role="alert">Email tidak ditemukan !</div>
         </div>
-          <?php 
-      } if ($emailVal == $email && $passwordVal != $password) {?>
+      <?php
+      }
+      if ($emailVal == $email && $passwordVal != $password) { ?>
         <div class="w-100 d-flex justify-content-center">
           <div class="alert alert-danger d-block position-fixed custAlert" style="z-index: 11;" role="alert">Password salah !</div>
-        </div>  
-        <?php 
+        </div>
+      <?php
       }
-    } else {?>
+    } else { ?>
       <div class="w-100 d-flex justify-content-center">
-        <div class="alert alert-danger d-block position-fixed custAlert"  style="z-index: 11;" role="alert">Email atau password salah !!</div>
+        <div class="alert alert-danger d-block position-fixed custAlert" style="z-index: 11;" role="alert">Email atau password salah !!</div>
       </div>
-      <?php   
-  }
-    } else {?>
-      <div class="w-100 d-flex justify-content-center"> 
-        <div class="alert alert-danger d-block position-fixed custAlert"  style="z-index: 11;" role="alert">Email atau password kosong !!</div>
-      </div>
-      <?php 
+    <?php
     }
+  } else { ?>
+    <div class="w-100 d-flex justify-content-center">
+      <div class="alert alert-danger d-block position-fixed custAlert" style="z-index: 11;" role="alert">Email atau password kosong !!</div>
+    </div>
+<?php
   }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -187,7 +189,7 @@
                   <form class="custom-validation" action="login.php" method="POST">
                     <div class="mb-3">
                       <label for="exampleInputEmail" class="form-label font-RobotoSemiBold colorBold s12">Email</label>
-                      <input type="email" class="form-control form-control-user2" id="exampleInputEmail" name="txt_email" required data-parsley-required-message="Email tidak boleh kosong !!!" data-parsley-type-message="Harus sesuai format email menggunakan @" placeholder="Ex: budiman@siboss.com" />
+                      <input type="email" class="form-control form-control-user2" id="exampleInputEmail" name="txt_email" required data-parsley-required-message="Email tidak boleh kosong !!!" data-parsley-type-message="Harus sesuai format email menggunakan @" placeholder="Ex: budiman@gmail.com" />
                     </div>
                     <div class="mb-2">
                       <label for="password-input" class="form-label font-RobotoSemiBold colorBold s12">Kata sandi</label>
@@ -209,7 +211,7 @@
                       <div class="col-6 d-flex justify-content-end">
                         <div class="mb-3 ">
                           <div class="small">
-                            <a class="small s12" href="#">Lupa kata sandi ?</a>
+                            <!-- <a class="small s12" href="#">Lupa kata sandi ?</a> -->
                           </div>
                         </div>
                       </div>
@@ -248,7 +250,7 @@
     <div class="footer-bar bg-white fixed-bottom sh-footer">
       <div class="container">
         <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 mt-1">
-          <p class="col-md-4 mb-0 text-muted">© 2021 SI-BOSS, Inc</p>
+          <p class="col-md-4 mb-0 text-muted">© 2021 SI-BOSS Express, Inc</p>
           <a href="#" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none" title="Logo">
             <img src="assets/img/logo.png" alt="" width="105px" />
           </a>

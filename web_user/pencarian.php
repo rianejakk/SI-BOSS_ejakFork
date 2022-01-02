@@ -56,16 +56,16 @@ function rupiah($angka)
         <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item ms-3 me-2">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a class="nav-link active" aria-current="page" href="index.php">Home</a>
             </li>
             <li class="nav-item ms-3 me-2">
-              <a class="nav-link" href="#">Booking</a>
+              <a class="nav-link" href="index.php#booking">Booking</a>
             </li>
             <li class="nav-item ms-3 me-2">
-              <a class="nav-link" href="#">Help</a>
+              <a class="nav-link" href="index.php#help">Help</a>
             </li>
             <li class="nav-item ms-3 me-2">
-              <a class="nav-link" href="#">About</a>
+              <a class="nav-link" href="index.php#about">About</a>
             </li>
           </ul>
           <?php if (!isset($_SESSION['level'])) : ?>
@@ -90,7 +90,7 @@ function rupiah($angka)
                         <i class="fas fa-user-edit me-2"></i>
                         <span>Edit Profil</span>
                       </a></li>
-                    <li><a class="dropdown-item s14" href="#">
+                    <li><a class="dropdown-item s14" href="pembayaran.php" data-bs-toggle="modal" data-bs-target="#pesananSaya<?php echo $sesID ?>">
                         <i class="fas fa-receipt me-3"></i>
                         <span>Pesanan saya</span>
                       </a></li>
@@ -220,6 +220,96 @@ function rupiah($angka)
       <?php
           }
       ?>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pesanan Modal -->
+  <div id="pesananSaya<?php echo $sesID ?>" class="modal fade">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content modal-edit">
+        <!-- <form role="form" action="transaksi.php" method="POST" enctype="multipart/form-data"> -->
+        <div class="modal-header">
+          <h4 class="modal-title">Pesanan Saya</h4>
+          <button type="button" class="btn btn-danger btn-circle btn-user2 shadow" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true">
+            <i class="fa fa-times fa-sm"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <table class="table table-hover dataTable" width="100%">
+            <thead>
+              <tr>
+                <th class="actions">Action</th>
+                <th class="nik">ID Pemesanan </th>
+                <!-- <th>ID Bus</th> -->
+                <th class="nama">Waktu Pemesanan</th>
+                <th class="jk">Kursi Pesan</th>
+                <th class="no_hp">Total Bayar</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php
+              $data = $obj->pesananSaya($sesID);
+              $no = 1;
+              if ($data->rowCount() > 0) {
+                if ($sesLvl == 1) {
+                  $dis = "";
+                } else {
+                  $dis = "disabled";
+                }
+                while ($row = $data->fetch(PDO::FETCH_ASSOC)) {
+                  $id_pemesanan = $row['id_pemesanan'];
+                  $nik_user = $row['nik_user'];
+                  $id_bus = $row['id_bus'];
+                  $waktu_pemesanan = $row['waktu_pemesanan'];
+                  $kursi = $row['jumlah_kursi_pesan'];
+                  $total = $row['total_bayar'];
+                  $status = $row['status'];
+              ?>
+                  <tr>
+                    <td>
+                      <form action="transaksi.php" method="POST">
+                        <input hidden type="text" class="form-control form-control-user2" id="inputId" name="txt_id_pemesanan" value="<?php echo $id_pemesanan ?>" placeholder="" readonly />
+                        <input hidden type="text" class="form-control form-control-user2" id="inputId" name="txt_id_bus" value="<?php echo $id_bus ?>" placeholder="" readonly />
+                        <input hidden type="text" class="form-control form-control-user2" id="inputId" name="txt_waktu_pemesanan" value="<?php echo $waktu_pemesanan ?>" placeholder="" readonly />
+                        <input hidden type="text" class="form-control form-control-user2" id="inputId" name="txt_jumlah_kursi_pesan" value="<?php echo $kursi ?>" placeholder="" readonly />
+                        <input hidden type="text" class="form-control form-control-user2" id="inputId" name="txt_total_bayar" value="<?php echo $total ?>" placeholder="" readonly />
+                        <input hidden type="text" class="form-control form-control-user2" id="inputId" name="txt_status" value="<?php echo $status ?>" placeholder="" readonly />
+                        <a href="#" class="actionBtn" aria-label="Edit">
+                          <button type="submit" name="simpan" class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#editDataBus<?php echo $id_bus ?>" value="edit">
+                            &nbsp;<i class="fa fa-edit fa-sm" data-bs-toggle="tooltip" title="Edit"></i>
+                          </button>
+                        </a>
+                      </form>
+                      <a href="hapusPemesanan.php?id_pemesanan=<?php echo $id_pemesanan; ?>" class="actionBtn" aria-label="Delete">
+                        <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteDataBus<?php echo $id_bus ?>" value="hapus">
+                          <i class="fa fa-trash fa-sm" data-bs-toggle="tooltip" title="Delete"></i>
+                        </button>
+                      </a>
+                      <!-- <a class="btn btn-danger btn-user btn-circle" href="hapusPemesanan.php?id_pemesanan=<?php echo $id_pemesanan; ?>">Hapus</a> -->
+
+
+                    </td>
+                    <td>P000<?php echo $id_pemesanan; ?></td>
+                    <!-- <td><?php echo $id_bus; ?></td> -->
+                    <td><?php echo $waktu_pemesanan; ?></td>
+                    <td><?php echo $kursi; ?> kursi</td>
+                    <td><?php echo $total; ?></td>
+                    <td><?php echo $status; ?></td>
+                  </tr>
+              <?php
+                  $no++;
+                }
+              }
+              ?>
+            </tbody>
+          </table>
+        </div>
+        <!-- </form> -->
+        <?php
+        // }
+        ?>
       </div>
     </div>
   </div>
@@ -445,7 +535,6 @@ function rupiah($angka)
                             <label for="InputId" class="form-label">Id</label>
                             <input type="text" class="form-control form-control-user2" id="inputId" name="txt_nik_user" value="<?php echo $sesID ?>" placeholder="" readonly />
                           </div>
-                          <!-- <h3 class="m-0" name="txt_nik_user" hidden><b><?php echo $sesID ?></b></h3> -->
                           <h3 class="m-0" name="txt_nama_bus"><b><?php echo ucwords($namaBus) ?></b></h3>
                           <p class="m-0" name="txt_jenis_bus"><?php echo ucwords($jenis_bus) ?></p>
                         </div>

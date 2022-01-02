@@ -9,7 +9,7 @@ if(!$obj->detailPemesanan($_GET['id_pemesanan'])) die ("Error: Id tidak ada");
         header("Location: index.php");
     } else {
         echo '<div class="alert alert-success">Data gagal dihapus</div>';
-        header("Location: index.php");
+        header("Location: indext.php");
     }
 
 ?>

@@ -73,31 +73,33 @@ if (isset($_SESSION['email'])) {
               </a>
             </div>
           <?php elseif ($_SESSION['level'] == "0") : ?>
-          <div class="ms-auto myClass">
-            <ul class="navbar-nav">
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="ropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <img class="avatar rounded-circle me-2" src="../Web Admin/fotoUser/<?php echo $sesFoto; ?>" alt="foto">
-                  <span class="text-white" id="namaProfil"><?php echo $sesName; ?></span>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-end myRounded" aria-labelledby="navbarDarkDropdownMenuLink">
-                  <li><a class="dropdown-item s14" href="#" data-bs-toggle="modal" data-bs-target="#editDataAdministrator<?php echo $sesID ?>">
-                    <i class="fas fa-user-edit me-2"></i>
-                    <span>Edit Profil</span>
-                  </a></li>
-                  <li><a class="dropdown-item s14" href="pembayaran.php" data-bs-toggle="modal" data-bs-target="#pesananSaya<?php echo $sesID ?>">
-                    <i class="fas fa-receipt me-3"></i>
-                    <span>Pesanan saya</span>
-                  </a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item s14" href="logout.php">
-                    <i class="fas fa-sign-out-alt me-3"></i>
-                    <span>Logout</span>
-                  </a></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
+            <div class="ms-auto myClass">
+              <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="ropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img class="avatar rounded-circle me-2" src="../Web Admin/fotoUser/<?php echo $sesFoto; ?>" alt="foto">
+                    <span class="text-white" id="namaProfil"><?php echo $sesName; ?></span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end myRounded" aria-labelledby="navbarDarkDropdownMenuLink">
+                    <li><a class="dropdown-item s14" href="#" data-bs-toggle="modal" data-bs-target="#editDataAdministrator<?php echo $sesID ?>">
+                        <i class="fas fa-user-edit me-2"></i>
+                        <span>Edit Profil</span>
+                      </a></li>
+                    <li><a class="dropdown-item s14" href="pembayaran.php" data-bs-toggle="modal" data-bs-target="#pesananSaya<?php echo $sesID ?>">
+                        <i class="fas fa-receipt me-3"></i>
+                        <span>Pesanan saya</span>
+                      </a></li>
+                    <li>
+                      <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item s14" href="logout.php">
+                        <i class="fas fa-sign-out-alt me-3"></i>
+                        <span>Logout</span>
+                      </a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
           <?php endif ?>
         </div>
       </div>
@@ -217,110 +219,94 @@ if (isset($_SESSION['email'])) {
     </div>
   </div>
 
-  <!-- Profile Modal -->
+  <!-- Pesanan Modal -->
   <div id="pesananSaya<?php echo $sesID ?>" class="modal fade">
     <div class="modal-dialog modal-lg">
       <div class="modal-content modal-edit">
         <!-- <form role="form" action="transaksi.php" method="POST" enctype="multipart/form-data"> -->
-            <div class="modal-header">
-              <h4 class="modal-title">Pesanan Saya</h4>
-              <button type="button" class="btn btn-danger btn-circle btn-user2 shadow" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true">
-                <i class="fa fa-times fa-sm"></i>
-              </button>
-            </div>
-            <div class="modal-body">
-            <table class="table table-hover dataTable" width="100%">
-                          <thead>
-                            <tr>
-                              <th class="cb">
-                                <span class="custom-checkbox">
-                                  <input type="checkbox" class="selectAll" />
-                                  <label for="selectAll"></label>
-                                </span>
-                              </th>
-                              <th class="actions">Action</th>
-                              <th class="nik">ID Pemesanan </th>
-                              <!-- <th>ID Bus</th> -->
-                              <th class="nama">Waktu Pemesanan</th>
-                              <th class="jk">Kursi Pesan</th>
-                              <th class="no_hp">Total Bayar</th>
-                              <th>Status</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <?php
-                            $data = $obj->pesananSaya($sesID);
-                            $no = 1;
-                            if ($data->rowCount() > 0) {
-                              if ($sesLvl == 1) {
-                                $dis = "";
-                              } else {
-                                $dis = "disabled";
-                              }
-                              while ($row = $data->fetch(PDO::FETCH_ASSOC)) {
-                                $id_pemesanan = $row['id_pemesanan'];
-                                $nik_user = $row['nik_user'];
-                                $id_bus = $row['id_bus'];
-                                $waktu_pemesanan = $row['waktu_pemesanan'];
-                                $kursi = $row['jumlah_kursi_pesan'];
-                                $total = $row['total_bayar'];
-                                $status = $row['status'];
-                            ?>
-                                <tr>
-                                  <td>
-                                    <span class="custom-checkbox">
-                                      <input type="checkbox" id="checkbox1" name="option[]" value="<?php echo $no; ?>" />
-                                      <label for="checkbox1"></label>
-                                    </span>
-                                  </td>
-                                  <td>
-                                    <!-- <a href="#" class="actionBtn" aria-label="Edit">
-                                      <button class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#bayarPemesanan<?php echo $id_pemesanan ?>" value="edit">
-                                        &nbsp;<i class="fa fa-edit fa-sm" data-bs-toggle="tooltip" title="Edit"></i>
-                                      </button>
-                                    </a> -->
-                                    <a class="btn btn-danger" href="hapusPemesanan.php?id_pemesanan=<?php echo $id_pemesanan; ?>">Hapus</a>
-                                    <!-- <div class="col-lg-6 mb-3" > -->
-                <!-- <label for="inputId" class="form-label">Status</label> -->
-                <form action="transaksi.php" method="POST">
-                <input hidden type="text" class="form-control form-control-user2" id="inputId" name="txt_id_pemesanan" value="<?php echo $id_pemesanan ?>" placeholder="" readonly />
-                <input hidden type="text" class="form-control form-control-user2" id="inputId" name="txt_id_bus" value="<?php echo $id_bus ?>" placeholder="" readonly />
-                <input hidden type="text" class="form-control form-control-user2" id="inputId" name="txt_waktu_pemesanan" value="<?php echo $waktu_pemesanan ?>" placeholder="" readonly />
-                <input hidden type="text" class="form-control form-control-user2" id="inputId" name="txt_jumlah_kursi_pesan" value="<?php echo $kursi ?>" placeholder="" readonly />
-                <input hidden type="text" class="form-control form-control-user2" id="inputId" name="txt_total_bayar" value="<?php echo $total ?>" placeholder="" readonly />
-                <input hidden type="text" class="form-control form-control-user2" id="inputId" name="txt_status" value="<?php echo $status ?>" placeholder="" readonly />
-                
-                <div class="text-center mt-3">
-            <button type="submit" name="simpan" class="btn colorPrimary text-white roundedBtn">Cari</button>
-          </div>
-                </form>
-              <!-- </div> -->
-                                    
-                                  </td>
-                                  <td>P000<?php echo $id_pemesanan; ?></td>
-                                  <!-- <td><?php echo $id_bus; ?></td> -->
-                                  <td><?php echo $waktu_pemesanan; ?></td>
-                                  <td><?php echo $kursi; ?> kursi</td>
-                                  <td><?php echo $total; ?></td>
-                                  <td><?php echo $status; ?></td>
-                                </tr>
-                            <?php
-                                $no++;
-                              }
-                            }
-                            ?>
-                          </tbody>
-                        </table>
-            </div>
+        <div class="modal-header">
+          <h4 class="modal-title">Pesanan Saya</h4>
+          <button type="button" class="btn btn-danger btn-circle btn-user2 shadow" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true">
+            <i class="fa fa-times fa-sm"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <table class="table table-hover dataTable" width="100%">
+            <thead>
+              <tr>
+                <th class="actions">Action</th>
+                <th class="nik">ID Pemesanan </th>
+                <!-- <th>ID Bus</th> -->
+                <th class="nama">Waktu Pemesanan</th>
+                <th class="jk">Kursi Pesan</th>
+                <th class="no_hp">Total Bayar</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php
+              $data = $obj->pesananSaya($sesID);
+              $no = 1;
+              if ($data->rowCount() > 0) {
+                if ($sesLvl == 1) {
+                  $dis = "";
+                } else {
+                  $dis = "disabled";
+                }
+                while ($row = $data->fetch(PDO::FETCH_ASSOC)) {
+                  $id_pemesanan = $row['id_pemesanan'];
+                  $nik_user = $row['nik_user'];
+                  $id_bus = $row['id_bus'];
+                  $waktu_pemesanan = $row['waktu_pemesanan'];
+                  $kursi = $row['jumlah_kursi_pesan'];
+                  $total = $row['total_bayar'];
+                  $status = $row['status'];
+              ?>
+                  <tr>
+                    <td>
+                      <form action="transaksi.php" method="POST">
+                        <input hidden type="text" class="form-control form-control-user2" id="inputId" name="txt_id_pemesanan" value="<?php echo $id_pemesanan ?>" placeholder="" readonly />
+                        <input hidden type="text" class="form-control form-control-user2" id="inputId" name="txt_id_bus" value="<?php echo $id_bus ?>" placeholder="" readonly />
+                        <input hidden type="text" class="form-control form-control-user2" id="inputId" name="txt_waktu_pemesanan" value="<?php echo $waktu_pemesanan ?>" placeholder="" readonly />
+                        <input hidden type="text" class="form-control form-control-user2" id="inputId" name="txt_jumlah_kursi_pesan" value="<?php echo $kursi ?>" placeholder="" readonly />
+                        <input hidden type="text" class="form-control form-control-user2" id="inputId" name="txt_total_bayar" value="<?php echo $total ?>" placeholder="" readonly />
+                        <input hidden type="text" class="form-control form-control-user2" id="inputId" name="txt_status" value="<?php echo $status ?>" placeholder="" readonly />
+                        <a href="#" class="actionBtn" aria-label="Edit">
+                          <button type="submit" name="simpan" class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#editDataBus<?php echo $id_bus ?>" value="edit">
+                            &nbsp;<i class="fa fa-edit fa-sm" data-bs-toggle="tooltip" title="Edit"></i>
+                          </button>
+                        </a>
+                      </form>
+                      <a href="hapusPemesanan.php?id_pemesanan=<?php echo $id_pemesanan; ?>" class="actionBtn" aria-label="Delete">
+                        <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteDataBus<?php echo $id_bus ?>" value="hapus">
+                          <i class="fa fa-trash fa-sm" data-bs-toggle="tooltip" title="Delete"></i>
+                        </button>
+                      </a>
+                      <!-- <a class="btn btn-danger btn-user btn-circle" href="hapusPemesanan.php?id_pemesanan=<?php echo $id_pemesanan; ?>">Hapus</a> -->
+                    </td>
+                    <td>P000<?php echo $id_pemesanan; ?></td>
+                    <!-- <td><?php echo $id_bus; ?></td> -->
+                    <td><?php echo $waktu_pemesanan; ?></td>
+                    <td><?php echo $kursi; ?> kursi</td>
+                    <td><?php echo $total; ?></td>
+                    <td><?php echo $status; ?></td>
+                  </tr>
+              <?php
+                  $no++;
+                }
+              }
+              ?>
+            </tbody>
+          </table>
+        </div>
         <!-- </form> -->
-      <?php
-          // }
-      ?>
+        <?php
+        // }
+        ?>
       </div>
     </div>
   </div>
 
-  
   <main>
     <section id="home">
       <div id="carouselExampleCaptions" class="carousel slide carousel-fade" data-bs-ride="carousel">
@@ -415,7 +401,7 @@ if (isset($_SESSION['email'])) {
             <span class="input-group-text"><i class="fas fa-location-arrow text-white"></i></span>
             <label for="InputIdTerminal" class="form-label"></label>
             <select class="form-select form-select-user select-md" aria-label=".form-select-sm example" required data-parsley-required-message="Data harus di isi !!!" name="txt_pemberangkatan" required>
-              <option disabled selected>Pilih Terminal</option>
+              <option disabled selected>-- Pilih Terminal Pemberangkatan --</option>
               <?php
               $datasd = $obj->lihatTerminal();
               $no = 1;
@@ -439,7 +425,7 @@ if (isset($_SESSION['email'])) {
             <span class="input-group-text"><i class="fas fa-exchange-alt text-white"></i></span>
             <label for="InputIdTerminal" class="form-label"></label>
             <select class="form-select form-select-user select-md" aria-label=".form-select-sm example" required data-parsley-required-message="Data harus di isi !!!" name="txt_tujuan" required>
-              <option disabled selected>Pilih Terminal</option>
+              <option disabled selected>-- Pilih Terminal Tujuan --</option>
               <?php
               $datasd = $obj->lihatTerminal();
               $no = 1;
@@ -480,11 +466,10 @@ if (isset($_SESSION['email'])) {
       <div class="container py-1">
         <div class="row myrow1 py-sm-3 animate__animated animate__fadeInLeft">
           <div class="col-sm-6 pe-sm-5 text-center text-sm-start">
-            <h3>SI-BOSS siap membantu Anda dalam bepergian !</h3>
-            <p class="my-4 pe-xl-8">Anda kesulitan mencari tiket bis ? Kami bisa membantu Anda dalam mencari tiket bis
-              sesuai tujuan yang Anda inginkan. Yuk cek disini !</p>
-            <a href="#"><button class="btn colorPrimary text-white d-none d-sm-inline-block">Cek <span>Tiket Anda
-                  Sekarang !</span></button>
+            <h3>SI-BOSS Express siap membantu Anda bepergian !</h3>
+            <p class="my-4 pe-xl-8">Anda kesulitan mencari tiket bis ? </p>
+            <p class="my-4 pe-xl-8">Kami bisa membantu Anda dalam mencari tiket bis sesuai tujuan yang Anda inginkan dengan mudah dan cepat. Yuk cek disini !</p>
+            <a href="#"><button class="btn colorPrimary text-white d-none d-sm-inline-block">Cek <span>Tiket Anda Sekarang !</span></button>
             </a>
           </div>
           <div class="col-sm-6">
@@ -504,8 +489,8 @@ if (isset($_SESSION['email'])) {
         <div class="row myrow1 py-sm-3 animate__animated animate__fadeInRight">
           <div class="col-sm-6 ps-sm-5 text-center text-sm-start order-sm-2">
             <h3>Banyaknya rute perjalanan</h3>
-            <p class="my-4 pe-xl-8">Si-Boss memiliki rute perjalanan yang mengantarkan Anda ke kota tujuan dengan opsi
-              pemberhentian pada terminal yang diinginkan.</p>
+            <p class="my-4 pe-xl-8">SI-BOSS Express memiliki rute perjalanan yang mengantarkan Anda ke kota tujuan dengan opsi pemberhentian pada terminal yang diinginkan.</p>
+            <p class="my-4 pe-xl-8">Lakukan pemesanan tiket bus dimanapun dan kapanpun dengan mudah dan cepat.</p>
           </div>
           <div class="col-sm-6 order-sm-1">
             <img class="img-fluid imgMove" src="assets/img/bus2.png" alt="gbrBus" />
@@ -572,7 +557,7 @@ if (isset($_SESSION['email'])) {
                 <img src="assets/img/5.png" alt="step1" height="150" alt="" />
                 <div class="card-body px-2">
                   <h3 class="mt-3">Pembayaran</h3>
-                  <p class="mt-2 mb-0">Cari tiket berdasarkan tujuan terminal yang ingin di tuju.</p>
+                  <p class="mt-2 mb-0">Lakukan pembayaran dengan tranfer ke rekening yang tersedia untuk cetak tiket.</p>
                 </div>
               </div>
             </div>
@@ -583,7 +568,7 @@ if (isset($_SESSION['email'])) {
                 <img src="assets/img/6.png" alt="step1" height="150" alt="" />
                 <div class="card-body px-2">
                   <h3 class="mt-3">Cetak Tiket</h3>
-                  <p class="mt-2 mb-0">Cari tiket berdasarkan tujuan terminal yang ingin di tuju.</p>
+                  <p class="mt-2 mb-0">Cetak tiket penumpang sebagai bukti melakukan pemesanan online.</p>
                 </div>
               </div>
             </div>
@@ -598,10 +583,10 @@ if (isset($_SESSION['email'])) {
           <div class="col-12 text-center">
             <h3 class="mb-5">Tentang Kami</h3>
             <i class=""></i>
-            <p class="px-3 myPagrph"><b>SI-BOSS</b> dikembangkan oleh mahasiswa prodi Teknik Informatika kampus
-              Politeknik Negeri Jember. Sistem Informasi ini digunakan untuk pemesanan tiket bus antar kota baik dengan
-              mudah baik luar provinsi maupun di dalam provinsi. Memesan tiket bus di SI-Boss dapat dilakukan dimanapun
-              dan kapanpun kita berada.</p>
+            <p class="px-3 myPagrph"><b>SI-BOSS Express</b> dikembangkan oleh mahasiswa prodi Teknik Informatika kampus
+              Politeknik Negeri Jember. Sistem Informasi ini digunakan untuk pemesanan tiket bus antar kota
+              baik dalam provinsi maupun luar provinsi dengan mudah. Memesan tiket bus di SI-BOSS Express dapat dilakukan dimanapun
+              dan kapanpun dengan mudah dan cepat.</p>
           </div>
         </div>
       </div>
@@ -627,9 +612,12 @@ if (isset($_SESSION['email'])) {
               </div>
 
               <div class="col-4 col-md-2 order-3 order-md-2">
-                <h5 class="font-RobotoBold">Pencarian</h5>
+                <h5 class="font-RobotoBold">Pemesanan</h5>
                 <ul class="nav flex-column">
-                  <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Data Tiket Bus</a></li>
+                  <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Pencarian tiket bus</a></li>
+                  <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Pesan tiket Bus</a></li>
+                  <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Pembayaran</a></li>
+                  <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Cetak tiket bus</a></li>
                   <li class="nav-item mb-2">Filter</li>
                 </ul>
               </div>
@@ -657,7 +645,7 @@ if (isset($_SESSION['email'])) {
           </div>
         </div>
         <div class="d-flex justify-content-between py-4 my-4 border-top position-relative">
-          <p>&copy; 2021 SI-BOSS, Inc. All rights reserved.</p>
+          <p>&copy; 2021 SI-BOSS Express, Inc. All rights reserved.</p>
           <ul class="list-unstyled d-flex">
             <li class="ms-3"><a class="link-dark" href="#">
                 <a class="text-white outline" href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="Whatsapp"><i class="icofont-whatsapp s26 rounded-circle"></i></a>
