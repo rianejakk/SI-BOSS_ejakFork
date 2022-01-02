@@ -135,6 +135,13 @@ class crud extends koneksi {
         return $result;
     }
 
+    public function cetakTikets($id){
+        $sql = "SELECT * FROM tiket JOIN pemesanan ON tiket.id_pemesanan=pemesanan.id_pemesanan JOIN penumpang ON tiket.nik_penumpang=penumpang.nik_penumpang JOIN user ON pemesanan.nik_user=user.nik_user JOIN bus ON pemesanan.id_bus=bus.id_bus WHERE tiket.id_pemesanan='$id' ORDER BY tiket.id_tiket ASC";
+        $result = $this->koneksi->prepare($sql);
+        $result->execute();
+        return $result;
+    }
+
     public function lihatPembayaran(){
         $sql = "SELECT * FROM pembayaran";
         $result = $this->koneksi->prepare($sql);

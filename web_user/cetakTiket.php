@@ -392,7 +392,7 @@ function rupiah($angka)
                   <div class="card-body">
                     <?php
                     $id = $_POST["txt_id_pemesanan"];
-                    $data = $obj->cetakTiket($id);
+                    $data = $obj->cetakTikets($id);
                     $no = 1;
                     if ($data->rowCount() > 0) {
                       while ($row = $data->fetch(PDO::FETCH_ASSOC)) {
