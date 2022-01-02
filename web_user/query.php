@@ -822,6 +822,21 @@ class crud extends koneksi {
         }
     }
 
+    public function updatePemesananStatus($status, $data){
+        try{
+            $sql ="UPDATE pemesanan SET status=:status WHERE id_pemesanan=:id_pemesanan";
+            $result = $this->koneksi->prepare($sql);
+            $result->bindParam(":status", $status);
+            $result->bindParam(":id_pemesanan", $data);
+            $result->execute();
+            return true;
+        }
+        catch (PDOException $e){
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
     public function updateDetailPemesanan($id_pemesanan, $id_bus, $jumlah_kursi_pesan, $data){
         try{
             $sql ="UPDATE detail_pemesanan SET id_pemesanan=:id_pemesanan, id_bus=:id_bus, jumlah_kursi_pesan=:jumlah_kursi_pesan WHERE id_detail_pemesanan=:id_detail_pemesanan";

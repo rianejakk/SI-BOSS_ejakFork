@@ -17,6 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $no_rekening = $_POST['txt_no_rekening'];
   $bayar = $_POST['txt_bayar'];
   $waktu = $_POST['txt_waktu_pembayaran'];
+  $status = $_POST['txt_status'];
   $ekstensi_diperbolehkan  = array('png', 'jpg');
   $gambar = time() . '-' . $_FILES['gambar']['name'];
   $x = explode('.', $gambar);
@@ -31,7 +32,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
   }
   if ($obj->insertPembayaran($id_pemesanan, $nama_pengirim, $nama_bank, $no_rekening, $bayar, $waktu, $gambar)) {
-
+    if (!$obj->detailPemesanan($id_pemesanan)) die("Error: Id tidak ada");
+      if ($obj->updatePemesananStatus($status, $id_pemesanan)) {}
     // echo '<div class="alert alert-success">Terminal Berhasil Ditambahkan</div>';
     // header("Location: transaksi.php");
 

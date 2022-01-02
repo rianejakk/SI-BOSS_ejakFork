@@ -482,6 +482,7 @@ function rupiah($angka)
                               <input type="text" class="form-control form-control-user2" id="inputAlamat" name="txt_bayar" placeholder="Ex: Jl. Dharmawangsa" value="<?php echo $total ?>" readonly />
                             </div>
                           </div>
+                          <input hidden type="text" class="form-control form-control-user2" id="inputAlamat" name="txt_status" placeholder="Ex: Budi Santoso" value="Sudah Bayar" />
                           <div class="row ps-2">
                             <div class="col-lg-6 mb-3">
                               <label for="inputAlamat" class="form-label">Nama Pengirim</label>
