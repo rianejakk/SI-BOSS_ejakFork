@@ -5,7 +5,6 @@ $obj = new crud;
 
 session_start();
 
-
 if (!isset($_SESSION['email'])) {
   header('Location: login.php');
 }
@@ -14,7 +13,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $nik_user = $_POST["txt_nik_user"];
   $id_bus = $_POST["txt_id_bus"];
   $waktu_pemesanan = $_POST['txt_waktu_pemesanan'];
-
   if ($obj->insertPemesana($nik_user, $id_bus, $waktu_pemesanan)) {
     // echo '<div class="alert alert-success">Terminal Berhasil Ditambahkan</div>';
     // header("Location: detailPemesanan.php");
@@ -41,9 +39,8 @@ function rupiah($angka)
   $hasil_rupiah = "Rp " . number_format($angka, 0, ',', '.');
   return $hasil_rupiah;
 }
-
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -86,6 +83,7 @@ function rupiah($angka)
               <a class="nav-link" href="index.php#about">About</a>
             </li>
           </ul>
+
           <?php if (!isset($_SESSION['level'])) : ?>
             <div class="ms-auto myClass">
               <a href="login.php" class="text-decoration-none">
@@ -95,9 +93,20 @@ function rupiah($angka)
                 <button class="btn roundedBtn b-cust" id="custBtnDaftar">Daftar</button>
               </a>
             </div>
+
           <?php elseif ($_SESSION['level'] == "0") : ?>
             <div class="ms-auto myClass">
               <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a href="#" class="nav-link transition">
+                    <i class="far fa-bell"></i>
+                    <?php
+                    $data = $obj->pesananSaya($sesID);
+                    $num = $data->rowCount();
+                    ?>
+                    <span class="badge alert-danger p-1"> <?php echo $num; ?></span>
+                  </a>
+                </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="ropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <img class="avatar rounded-circle me-2" src="../Web Admin/fotoUser/<?php echo $sesFoto; ?>" alt="foto">
@@ -108,7 +117,7 @@ function rupiah($angka)
                         <i class="fas fa-user-edit me-2"></i>
                         <span>Edit Profil</span>
                       </a></li>
-                    <li><a class="dropdown-item s14" href="#">
+                    <li><a class="dropdown-item s14" href="pembayaran.php" data-bs-toggle="modal" data-bs-target="#pesananSaya<?php echo $sesID ?>">
                         <i class="fas fa-receipt me-3"></i>
                         <span>Pesanan saya</span>
                       </a></li>
@@ -242,6 +251,94 @@ function rupiah($angka)
     </div>
   </div>
 
+  <!-- Pesanan Modal -->
+  <div id="pesananSaya<?php echo $sesID ?>" class="modal fade">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content modal-edit">
+        <!-- <form role="form" action="transaksi.php" method="POST" enctype="multipart/form-data"> -->
+        <div class="modal-header">
+          <h4 class="modal-title">Pesanan Saya</h4>
+          <button type="button" class="btn btn-danger btn-circle btn-user2 shadow" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true">
+            <i class="fa fa-times fa-sm"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <table class="table table-hover dataTable" width="100%">
+            <thead>
+              <tr>
+                <th class="actions">Action</th>
+                <th class="nik">ID Pemesanan </th>
+                <!-- <th>ID Bus</th> -->
+                <th class="nama">Waktu Pemesanan</th>
+                <th class="jk">Kursi Pesan</th>
+                <th class="no_hp">Total Bayar</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php
+              $data = $obj->pesananSaya($sesID);
+              $no = 1;
+              if ($data->rowCount() > 0) {
+                if ($sesLvl == 1) {
+                  $dis = "";
+                } else {
+                  $dis = "disabled";
+                }
+                while ($row = $data->fetch(PDO::FETCH_ASSOC)) {
+                  $id_pemesanan = $row['id_pemesanan'];
+                  $nik_user = $row['nik_user'];
+                  $id_bus = $row['id_bus'];
+                  $waktu_pemesanan = $row['waktu_pemesanan'];
+                  $kursi = $row['jumlah_kursi_pesan'];
+                  $total = $row['total_bayar'];
+                  $status = $row['status'];
+              ?>
+                  <tr>
+                    <td>
+                      <form action="transaksi.php" method="POST">
+                        <input hidden type="text" class="form-control form-control-user2" id="inputId" name="txt_id_pemesanan" value="<?php echo $id_pemesanan ?>" placeholder="" readonly />
+                        <input hidden type="text" class="form-control form-control-user2" id="inputId" name="txt_id_bus" value="<?php echo $id_bus ?>" placeholder="" readonly />
+                        <input hidden type="text" class="form-control form-control-user2" id="inputId" name="txt_waktu_pemesanan" value="<?php echo $waktu_pemesanan ?>" placeholder="" readonly />
+                        <input hidden type="text" class="form-control form-control-user2" id="inputId" name="txt_jumlah_kursi_pesan" value="<?php echo $kursi ?>" placeholder="" readonly />
+                        <input hidden type="text" class="form-control form-control-user2" id="inputId" name="txt_total_bayar" value="<?php echo $total ?>" placeholder="" readonly />
+                        <input hidden type="text" class="form-control form-control-user2" id="inputId" name="txt_status" value="<?php echo $status ?>" placeholder="" readonly />
+                        <a href="#" class="actionBtn" aria-label="Edit">
+                          <button type="submit" name="simpan" class="btn btn-success btn-user btn-circle" aria-label="EditModal" data-bs-toggle="modal" data-bs-target="#editDataBus<?php echo $id_bus ?>" value="edit">
+                            &nbsp;<i class="fa fa-edit fa-sm" data-bs-toggle="tooltip" title="Edit"></i>
+                          </button>
+                        </a>
+                      </form>
+                      <!-- <a href="hapusPemesanan.php?id_pemesanan=<?php echo $id_pemesanan; ?>" class="actionBtn" aria-label="Delete">
+                        <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteDataBus<?php echo $id_bus ?>" value="hapus">
+                          <i class="fa fa-trash fa-sm" data-bs-toggle="tooltip" title="Delete"></i>
+                        </button>
+                      </a> -->
+                      <!-- <a class="btn btn-danger btn-user btn-circle" href="hapusPemesanan.php?id_pemesanan=<?php echo $id_pemesanan; ?>">Hapus</a> -->
+                    </td>
+                    <td>P000<?php echo $id_pemesanan; ?></td>
+                    <!-- <td><?php echo $id_bus; ?></td> -->
+                    <td><?php echo $waktu_pemesanan; ?></td>
+                    <td><?php echo $kursi; ?> kursi</td>
+                    <td><?php echo $total; ?></td>
+                    <td><?php echo $status; ?></td>
+                  </tr>
+              <?php
+                  $no++;
+                }
+              }
+              ?>
+            </tbody>
+          </table>
+        </div>
+        <!-- </form> -->
+        <?php
+        // }
+        ?>
+      </div>
+    </div>
+  </div>
+
   <main>
     <section class="mycontent2 py-4">
       <div class="container position-relative">
@@ -249,7 +346,6 @@ function rupiah($angka)
           <div class="col-12 custom-panel">
             <div class="row">
               <form role="form" action="pesan.php" method="POST" enctype="multipart/form-data">
-
                 <div class="col-12">
                   <!-- Content Data -->
                   <?php
@@ -365,7 +461,6 @@ function rupiah($angka)
                           </div>
                         </div>
                       </div>
-
                   <?php
                       $no;
                     }
@@ -377,17 +472,14 @@ function rupiah($angka)
                       <label for="IDPemesanan" class="form-label">Stok Kursi</label>
                       <input type="text" class="form-control form-control-user2" id="IDPemesanan" name="txt_stok_kursi" placeholder="" value="<?php echo $JKursi - 1; ?>" readonly />
                     </div>
-
                     <div class="col-lg-2 mb-3" hidden>
                       <label for="IDPemesanan" class="form-label">Total Bayar</label>
                       <input type="text" class="form-control form-control-user2" id="IDPemesanan" name="txt_total_bayar" placeholder="" value="<?php echo $harga ?>" readonly />
                     </div>
-
                     <div class="col-lg-2 mb-3" hidden>
                       <label for="IDPemesanan" class="form-label">Kursi Pesan</label>
                       <input type="text" class="form-control form-control-user2" id="IDPemesanan" name="txt_jumlah_kursi_pesan" placeholder="" value="1" readonly />
                     </div>
-
                     <div class="col-lg-2 mb-3" hidden>
                       <label for="IDPemesanan" class="form-label">Status</label>
                       <input type="text" class="form-control form-control-user2" id="IDPemesanan" name="txt_status" value="<?php $statu = "Belum Bayar";
@@ -503,16 +595,15 @@ function rupiah($angka)
                     </div>
                   </div> -->
                 </div>
-
                 <div class="col-12 d-flex justify-content-center mb-3">
                   <button type="submit" name="simpan" class="btn colorPrimary text-white py-2 s14 rounded-pill resize">Pesan</button>
                 </div>
               </form>
               <div class="col-12 d-flex justify-content-center mb-5">
-                  <a href="index.php" class="actionBtn" aria-label="Delete">
-                    <button class="btn btn-danger btn-user btn-circle py-2 s14 rounded-pill resize">Batal</button>
-                  </a>
-                </div>
+                <a href="index.php" class="actionBtn" aria-label="Delete">
+                  <button class="btn btn-danger btn-user btn-circle py-2 s14 rounded-pill resize">Batal</button>
+                </a>
+              </div>
             </div>
           </div>
         </div>

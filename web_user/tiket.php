@@ -5,7 +5,6 @@ $obj = new crud;
 
 session_start();
 
-
 if (!isset($_SESSION['email'])) {
   header('Location: login.php');
 }
@@ -130,7 +129,6 @@ function rupiah($angka)
             </button>
           </div>
           <div class="modal-body">
-
             <div class="row">
               <div class="col-lg-6 mb-3">
                 <label for="inputId" class="form-label">NIK</label>
@@ -154,7 +152,6 @@ function rupiah($angka)
                 </div>
               </div>
               <!-- </form> -->
-
               <div class="col-lg-6 mb-3">
                 <label for="inputNama" class="form-label">Nama</label>
                 <input type="text" class="form-control form-control-user2" id="inputNama" name="txt_nama" placeholder="Ex: Budi Santoso" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $sesName ?>" />
@@ -255,116 +252,115 @@ function rupiah($angka)
                       $waktu_berangkat = $row['waktu_berangkat'];
                       $waktu_tiba = $row['waktu_tiba'];
                     ?>
-                        <div class="row ps-2">
-                          <div class="col-md-6 mb-4">
-                            <p class="m-0 s14"><b>Data Pemesan</b></p>
-                          </div>
+                      <div class="row ps-2">
+                        <div class="col-md-6 mb-4">
+                          <p class="m-0 s14"><b>Data Pemesan</b></p>
                         </div>
-                        <div class="col-md-12">
-                          <div class="myRounded border shadow mod p-3 mb-2" style="min-height: 30px;">
-                            <div class="row">
-                              <div class="col-sm-3">
-                                <p>Nomor Tiket</p>
-                              </div>
-                              <div class="col-sm-7">
-                                <p>: APBTRMLRT000<?php echo $tiket ?></p>
-                              </div>
+                      </div>
+                      <div class="col-md-12">
+                        <div class="myRounded border shadow mod p-3 mb-2" style="min-height: 30px;">
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <p>Nomor Tiket</p>
                             </div>
-                            <div class="row">
-                              <div class="col-sm-3">
-                                <p>Nama Penumpang</p>
-                              </div>
-                              <div class="col-sm-7">
-                                <p>: <?php echo $nama_penumpang ?></p>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-sm-3">
-                                <p>Jenis Kelamin</p>
-                              </div>
-                              <div class="col-sm-7">
-                                <p>: <?php echo $jk_penumpang ?></p>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-sm-3">
-                                <p>Nomor HP</p>
-                              </div>
-                              <div class="col-sm-7">
-                                <p>: <?php echo $no_hp_penumpang ?></p>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-sm-3">
-                                <p>Nama Bus</p>
-                              </div>
-                              <div class="col-sm-7">
-                                <p>: <?php echo $nama_bus ?></p>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-sm-3">
-                                <p>Tanggal Pemberangkatan</p>
-                              </div>
-                              <div class="col-sm-7">
-                                <p>: <?php echo $tanggal ?></p>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-sm-3">
-                                <p>Total Bayar</p>
-                              </div>
-                              <div class="col-sm-7">
-                                <p>: <?php echo $total ?></p>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-sm-3">
-                                <p>Pemberangkatan</p>
-                              </div>
-                              <div class="col-sm-7">
-                                <p>: <?php echo $pemberangkatan ?></p>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-sm-3">
-                                <p>Tujuan</p>
-                              </div>
-                              <div class="col-sm-7">
-                                <p>: <?php echo $tujuan ?></p>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-sm-3">
-                                <p>Waktu Berangkat</p>
-                              </div>
-                              <div class="col-sm-7">
-                                <p>: <?php echo $waktu_berangkat ?></p>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-sm-3">
-                                <p>WAktu Tiba</p>
-                              </div>
-                              <div class="col-sm-7">
-                                <p>: <?php echo $waktu_tiba ?></p>
-                              </div>
+                            <div class="col-sm-7">
+                              <p>: APBTRMLRT000<?php echo $tiket ?></p>
                             </div>
                           </div>
-                          <hr>
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <p>Nama Penumpang</p>
+                            </div>
+                            <div class="col-sm-7">
+                              <p>: <?php echo $nama_penumpang ?></p>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <p>Jenis Kelamin</p>
+                            </div>
+                            <div class="col-sm-7">
+                              <p>: <?php echo $jk_penumpang ?></p>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <p>Nomor HP</p>
+                            </div>
+                            <div class="col-sm-7">
+                              <p>: <?php echo $no_hp_penumpang ?></p>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <p>Nama Bus</p>
+                            </div>
+                            <div class="col-sm-7">
+                              <p>: <?php echo $nama_bus ?></p>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <p>Tanggal Pemberangkatan</p>
+                            </div>
+                            <div class="col-sm-7">
+                              <p>: <?php echo $tanggal ?></p>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <p>Total Bayar</p>
+                            </div>
+                            <div class="col-sm-7">
+                              <p>: <?php echo $total ?></p>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <p>Pemberangkatan</p>
+                            </div>
+                            <div class="col-sm-7">
+                              <p>: <?php echo $pemberangkatan ?></p>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <p>Tujuan</p>
+                            </div>
+                            <div class="col-sm-7">
+                              <p>: <?php echo $tujuan ?></p>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <p>Waktu Berangkat</p>
+                            </div>
+                            <div class="col-sm-7">
+                              <p>: <?php echo $waktu_berangkat ?></p>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <p>WAktu Tiba</p>
+                            </div>
+                            <div class="col-sm-7">
+                              <p>: <?php echo $waktu_tiba ?></p>
+                            </div>
+                          </div>
                         </div>
+                        <hr>
+                      </div>
                       <div class="col-12 d-flex justify-content-center mb-3">
-                            <a href="index.php" class="actionBtn" aria-label="Delete">
-                              <button class="btn btn-danger btn-user btn-circle py-2 s14 rounded-pill resize">Batal</button>
-                            </a>
-                          </div>
+                        <a href="index.php" class="actionBtn" aria-label="Delete">
+                          <button class="btn btn-danger btn-user btn-circle py-2 s14 rounded-pill resize">Batal</button>
+                        </a>
+                      </div>
                   </div>
                 <?php
                     }; ?>
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>

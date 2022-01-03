@@ -5,7 +5,6 @@ $obj = new crud;
 
 session_start();
 
-
 if (!isset($_SESSION['email'])) {
   header('Location: login.php');
 }
@@ -23,26 +22,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $x = explode('.', $gambar);
   $ekstensi = strtolower(end($x));
   $file_tmp = $_FILES['gambar']['tmp_name'];
-
   if (!empty($gambar)) {
     if (in_array($ekstensi, $ekstensi_diperbolehkan) === true) {
-
       //Mengupload gambar
       move_uploaded_file($file_tmp, 'bukti/' . $gambar);
     }
   }
   if ($obj->insertPembayaran($id_pemesanan, $nama_pengirim, $nama_bank, $no_rekening, $bayar, $waktu, $gambar)) {
     if (!$obj->detailPemesanan($id_pemesanan)) die("Error: Id tidak ada");
-      if ($obj->updatePemesananStatus($status, $id_pemesanan)) {}
+    if ($obj->updatePemesananStatus($status, $id_pemesanan)) {
+    }
     // echo '<div class="alert alert-success">Terminal Berhasil Ditambahkan</div>';
     // header("Location: transaksi.php");
-
   } else {
     // echo '<div class="alert alert-danger">Terminal Gagal Ditambahkan</div>';
     // header("Location: transaksi.php");
     // echo $nik_penumpang;
   }
 }
+
 $sesID = $_SESSION['id'];
 $sesName = $_SESSION['name'];
 $sesTempat = $_SESSION['tempat'];
@@ -60,8 +58,6 @@ function rupiah($angka)
   $hasil_rupiah = "Rp " . number_format($angka, 0, ',', '.');
   return $hasil_rupiah;
 }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -106,6 +102,7 @@ function rupiah($angka)
               <a class="nav-link" href="#">About</a>
             </li> -->
           </ul>
+
           <?php if (!isset($_SESSION['level'])) : ?>
             <div class="ms-auto myClass">
               <a href="login.php" class="text-decoration-none">
@@ -115,9 +112,20 @@ function rupiah($angka)
                 <button class="btn roundedBtn b-cust" id="custBtnDaftar">Daftar</button>
               </a>
             </div>
+
           <?php elseif ($_SESSION['level'] == "0") : ?>
             <div class="ms-auto myClass">
               <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a href="#" class="nav-link transition">
+                    <i class="far fa-bell"></i>
+                    <?php
+                    $data = $obj->pesananSaya($sesID);
+                    $num = $data->rowCount();
+                    ?>
+                    <span class="badge alert-danger p-1"> <?php echo $num; ?></span>
+                  </a>
+                </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="ropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <img class="avatar rounded-circle me-2" src="../Web Admin/fotoUser/<?php echo $sesFoto; ?>" alt="foto">
@@ -128,19 +136,19 @@ function rupiah($angka)
                         <i class="fas fa-user-edit me-2"></i>
                         <span>Edit Profil</span>
                       </a></li>
-                    <li><a class="dropdown-item s14" href="#">
+                    <!-- <li><a class="dropdown-item s14" href="#">
                         <i class="fas fa-receipt me-3"></i>
                         <span>Pesanan saya</span>
                       </a></li>
-                    <li>
-                      <hr class="dropdown-divider">
-                    </li>
-                    <li><a class="dropdown-item s14" href="logout.php">
-                        <i class="fas fa-sign-out-alt me-3"></i>
-                        <span>Logout</span>
-                      </a></li>
-                  </ul>
+                    <li> -->
+                    <hr class="dropdown-divider">
                 </li>
+                <li><a class="dropdown-item s14" href="logout.php">
+                    <i class="fas fa-sign-out-alt me-3"></i>
+                    <span>Logout</span>
+                  </a></li>
+              </ul>
+              </li>
               </ul>
             </div>
           <?php endif ?>
@@ -165,7 +173,6 @@ function rupiah($angka)
             </button>
           </div>
           <div class="modal-body">
-
             <div class="row">
               <div class="col-lg-6 mb-3">
                 <label for="inputId" class="form-label">NIK</label>
@@ -189,7 +196,6 @@ function rupiah($angka)
                 </div>
               </div>
               <!-- </form> -->
-
               <div class="col-lg-6 mb-3">
                 <label for="inputNama" class="form-label">Nama</label>
                 <input type="text" class="form-control form-control-user2" id="inputNama" name="txt_nama" placeholder="Ex: Budi Santoso" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $sesName ?>" />
@@ -509,11 +515,12 @@ function rupiah($angka)
                             <button type="submit" name="submit" class="btn colorPrimary text-white py-2 s14 rounded-pill resize">Cetak Tiket</button>
                           </div>
                         </form>
-                      </div>
-                    <?php
+                  </div>
+              <?php
                         $no;
                       }
-                    }; ?>
+                    };
+              ?>
                 </div>
               </div>
             </div>

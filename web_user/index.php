@@ -3,7 +3,6 @@ require('koneksi.php');
 require('query.php');
 $obj = new crud;
 
-
 session_start();
 
 if (isset($_SESSION['email'])) {
@@ -63,6 +62,7 @@ if (isset($_SESSION['email'])) {
               <a class="nav-link" href="#about">About</a>
             </li>
           </ul>
+
           <?php if (!isset($_SESSION['level'])) : ?>
             <div class="ms-auto myClass">
               <a href="login.php" class="text-decoration-none">
@@ -72,9 +72,20 @@ if (isset($_SESSION['email'])) {
                 <button class="btn roundedBtn b-cust" id="custBtnDaftar">Daftar</button>
               </a>
             </div>
+
           <?php elseif ($_SESSION['level'] == "0") : ?>
             <div class="ms-auto myClass">
               <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a href="#" class="nav-link transition">
+                    <i class="far fa-bell"></i>
+                    <?php
+                    $data = $obj->pesananSaya($sesID);
+                    $num = $data->rowCount();
+                    ?>
+                    <span class="badge alert-danger p-1"> <?php echo $num; ?></span>
+                  </a>
+                </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="ropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <img class="avatar rounded-circle me-2" src="../Web Admin/fotoUser/<?php echo $sesFoto; ?>" alt="foto">
@@ -122,7 +133,6 @@ if (isset($_SESSION['email'])) {
               </button>
             </div>
             <div class="modal-body">
-
               <div class="row">
                 <div class="col-lg-6 mb-3">
                   <label for="inputId" class="form-label">NIK</label>
@@ -146,7 +156,6 @@ if (isset($_SESSION['email'])) {
                   </div>
                 </div>
                 <!-- </form> -->
-
                 <div class="col-lg-6 mb-3">
                   <label for="inputNama" class="form-label">Nama</label>
                   <input type="text" class="form-control form-control-user2" id="inputNama" name="txt_nama" placeholder="Ex: Budi Santoso" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $sesName ?>" />
@@ -277,11 +286,11 @@ if (isset($_SESSION['email'])) {
                           </button>
                         </a>
                       </form>
-                      <a href="hapusPemesanan.php?id_pemesanan=<?php echo $id_pemesanan; ?>" class="actionBtn" aria-label="Delete">
+                      <!-- <a href="hapusPemesanan.php?id_pemesanan=<?php echo $id_pemesanan; ?>" class="actionBtn" aria-label="Delete">
                         <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteDataBus<?php echo $id_bus ?>" value="hapus">
                           <i class="fa fa-trash fa-sm" data-bs-toggle="tooltip" title="Delete"></i>
                         </button>
-                      </a>
+                      </a> -->
                       <!-- <a class="btn btn-danger btn-user btn-circle" href="hapusPemesanan.php?id_pemesanan=<?php echo $id_pemesanan; ?>">Hapus</a> -->
                     </td>
                     <td>P000<?php echo $id_pemesanan; ?></td>
@@ -448,13 +457,11 @@ if (isset($_SESSION['email'])) {
             </select><span class="input-group-text"><i class="fas fa-map-marker-alt text-white"></i>
             </span>
           </div>
-
           <div class="input-group ms-auto me-auto" style="width: 400px;">
             <span class="input-group-text"></span>
             <input type="date" class="form-control" id="datepicker" name="txt_Tgl" required />
             <span class="input-group-text"></span>
           </div>
-
           <div class="text-center mt-3">
             <button type="submit" name="simpan" class="btn colorPrimary text-white roundedBtn">Cari</button>
           </div>
@@ -659,7 +666,6 @@ if (isset($_SESSION['email'])) {
     </div>
   </section>
 
-
   <!-- JavaScript & JQuery -->
   <script src="plugin/jquery/jquery-3.6.0.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
@@ -697,17 +703,13 @@ if (isset($_SESSION['email'])) {
         $("#logoNav").attr("src", "assets/img/logoW.png");
       }
     });
-
     const sections = document.querySelectorAll('section[id]')
-
     function scrollActive() {
       const scrollY = window.pageYOffset
-
       sections.forEach(current => {
         const sectionHeight = current.offsetHeight,
           sectionTop = current.offsetTop - 58,
           sectionId = current.getAttribute('id')
-
         if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
           document.querySelector('.navbar-nav a[href*=' + sectionId + ']').classList.add('active')
         } else {
@@ -718,5 +720,4 @@ if (isset($_SESSION['email'])) {
     window.addEventListener('scroll', scrollActive)
   </script>
 </body>
-
 </html>

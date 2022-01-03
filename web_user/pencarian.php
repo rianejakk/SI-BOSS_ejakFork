@@ -26,9 +26,8 @@ function rupiah($angka)
   $hasil_rupiah = "Rp " . number_format($angka, 0, ',', '.');
   return $hasil_rupiah;
 }
-
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -68,6 +67,7 @@ function rupiah($angka)
               <a class="nav-link" href="index.php#about">About</a>
             </li>
           </ul>
+
           <?php if (!isset($_SESSION['level'])) : ?>
             <div class="ms-auto myClass">
               <a href="login.php" class="text-decoration-none">
@@ -77,9 +77,20 @@ function rupiah($angka)
                 <button class="btn roundedBtn b-cust" id="custBtnDaftar">Daftar</button>
               </a>
             </div>
+
           <?php elseif ($_SESSION['level'] == "0") : ?>
             <div class="ms-auto myClass">
               <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a href="#" class="nav-link transition">
+                    <i class="far fa-bell"></i>
+                    <?php
+                    $data = $obj->pesananSaya($sesID);
+                    $num = $data->rowCount();
+                    ?>
+                    <span class="badge alert-danger p-1"> <?php echo $num; ?></span>
+                  </a>
+                </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="ropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <img class="avatar rounded-circle me-2" src="../Web Admin/fotoUser/<?php echo $sesFoto; ?>" alt="foto">
@@ -127,7 +138,6 @@ function rupiah($angka)
               </button>
             </div>
             <div class="modal-body">
-
               <div class="row">
                 <div class="col-lg-6 mb-3">
                   <label for="inputId" class="form-label">NIK</label>
@@ -151,7 +161,6 @@ function rupiah($angka)
                   </div>
                 </div>
                 <!-- </form> -->
-
                 <div class="col-lg-6 mb-3">
                   <label for="inputNama" class="form-label">Nama</label>
                   <input type="text" class="form-control form-control-user2" id="inputNama" name="txt_nama" placeholder="Ex: Budi Santoso" required data-parsley-required-message="Data harus di isi !!!" value="<?php echo $sesName ?>" />
@@ -210,7 +219,6 @@ function rupiah($angka)
                   <input type="text" class="form-control form-control-user2" id="inputId" name="txt" value="User" placeholder="" readonly />
                 </div>
               </div>
-
               <div class="modal-footer">
                 <button class="btn btn-secondary roundedBtn" type="button" data-bs-dismiss="modal">Batal</button>
                 <!-- <button type="submit" class="btn text-white colorPrimary roundedBtn" name="simpan">Update</button> -->
@@ -282,14 +290,12 @@ function rupiah($angka)
                           </button>
                         </a>
                       </form>
-                      <a href="hapusPemesanan.php?id_pemesanan=<?php echo $id_pemesanan; ?>" class="actionBtn" aria-label="Delete">
+                      <!-- <a href="hapusPemesanan.php?id_pemesanan=<?php echo $id_pemesanan; ?>" class="actionBtn" aria-label="Delete">
                         <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal" data-bs-toggle="modal" data-bs-target="#deleteDataBus<?php echo $id_bus ?>" value="hapus">
                           <i class="fa fa-trash fa-sm" data-bs-toggle="tooltip" title="Delete"></i>
                         </button>
-                      </a>
+                      </a> -->
                       <!-- <a class="btn btn-danger btn-user btn-circle" href="hapusPemesanan.php?id_pemesanan=<?php echo $id_pemesanan; ?>">Hapus</a> -->
-
-
                     </td>
                     <td>P000<?php echo $id_pemesanan; ?></td>
                     <!-- <td><?php echo $id_bus; ?></td> -->

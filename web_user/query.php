@@ -216,6 +216,29 @@ class crud extends koneksi {
         }
     }
 
+    public function insertUserRegistrasi($nik_user, $nama_user, $tempat_lahir_user, $tanggal_lahir_user, $jenis_kelamin_user, $alamat_user, $no_hp_user, $email_user, $password_user, $level){
+        try{
+            $sql ="INSERT INTO user(nik_user, nama_user, tempat_lahir_user, tanggal_lahir_user, jenis_kelamin_user, alamat_user, no_hp_user, email_user, password_user, level) VALUES (:nik_user, :nama_user, :tempat_lahir_user, :tanggal_lahir_user, :jenis_kelamin_user, :alamat_user, :no_hp_user, :email_user, :password_user, :level)";
+            $result = $this->koneksi->prepare($sql);
+            $result->bindParam(":nik_user", $nik_user);
+            $result->bindParam(":nama_user", $nama_user);
+            $result->bindParam(":tempat_lahir_user", $tempat_lahir_user);
+            $result->bindParam(":tanggal_lahir_user", $tanggal_lahir_user);
+            $result->bindParam(":jenis_kelamin_user", $jenis_kelamin_user);
+            $result->bindParam(":alamat_user", $alamat_user);
+            $result->bindParam(":no_hp_user", $no_hp_user);
+            $result->bindParam(":email_user", $email_user);
+            $result->bindParam(":password_user", $password_user);
+            $result->bindParam(":level", $level);
+            $result->execute();
+            return true;
+        }
+        catch (PDOException $e){
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
     public function insertBus($nama_bus, $harga, $status_bus, $jumlah_kursi, $foto_bus, $tanggal_pemberangkatan, $id_jenis, $id_rute){
         try{
             $sql ="INSERT INTO bus(nama_bus, harga, status_bus, jumlah_kursi, foto_bus, tanggal_pemberangkatan, id_jenis, id_rute) VALUES (:nama_bus, :harga, :status_bus, :jumlah_kursi, :foto_bus, :tanggal_pemberangkatan, :id_jenis, :id_rute)";
@@ -979,4 +1002,3 @@ class crud extends koneksi {
         }
     }
 }
-?>

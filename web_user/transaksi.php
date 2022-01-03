@@ -5,12 +5,9 @@ $obj = new crud;
 
 session_start();
 
-
 if (!isset($_SESSION['email'])) {
   header('Location: login.php');
 }
-
-// if(!$obj->detailPemesanan($_GET['id_pemesanan'])) die ("Error: Id tidak ada");
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   // $nik_penumpang = $_POST['txt_nik_penumpang'];
@@ -39,7 +36,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   }
 }
 
-
 $sesID = $_SESSION['id'];
 $sesName = $_SESSION['name'];
 $sesTempat = $_SESSION['tempat'];
@@ -57,8 +53,6 @@ function rupiah($angka)
   $hasil_rupiah = "Rp " . number_format($angka, 0, ',', '.');
   return $hasil_rupiah;
 }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -103,6 +97,7 @@ function rupiah($angka)
               <a class="nav-link" href="index.php#about">About</a>
             </li>
           </ul>
+
           <?php if (!isset($_SESSION['level'])) : ?>
             <div class="ms-auto myClass">
               <a href="login.php" class="text-decoration-none">
@@ -112,9 +107,20 @@ function rupiah($angka)
                 <button class="btn roundedBtn b-cust" id="custBtnDaftar">Daftar</button>
               </a>
             </div>
+
           <?php elseif ($_SESSION['level'] == "0") : ?>
             <div class="ms-auto myClass">
               <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a href="#" class="nav-link transition">
+                    <i class="far fa-bell"></i>
+                    <?php
+                    $data = $obj->pesananSaya($sesID);
+                    $num = $data->rowCount();
+                    ?>
+                    <span class="badge alert-danger p-1"> <?php echo $num; ?></span>
+                  </a>
+                </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="ropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <img class="avatar rounded-circle me-2" src="../Web Admin/fotoUser/<?php echo $sesFoto; ?>" alt="foto">
@@ -125,19 +131,19 @@ function rupiah($angka)
                         <i class="fas fa-user-edit me-2"></i>
                         <span>Edit Profil</span>
                       </a></li>
-                    <li><a class="dropdown-item s14" href="#">
+                    <!-- <li><a class="dropdown-item s14" href="#">
                         <i class="fas fa-receipt me-3"></i>
                         <span>Pesanan saya</span>
                       </a></li>
-                    <li>
-                      <hr class="dropdown-divider">
-                    </li>
-                    <li><a class="dropdown-item s14" href="logout.php">
-                        <i class="fas fa-sign-out-alt me-3"></i>
-                        <span>Logout</span>
-                      </a></li>
-                  </ul>
+                    <li> -->
+                    <hr class="dropdown-divider">
                 </li>
+                <li><a class="dropdown-item s14" href="logout.php">
+                    <i class="fas fa-sign-out-alt me-3"></i>
+                    <span>Logout</span>
+                  </a></li>
+              </ul>
+              </li>
               </ul>
             </div>
           <?php endif ?>
@@ -162,7 +168,6 @@ function rupiah($angka)
             </button>
           </div>
           <div class="modal-body">
-
             <div class="row">
               <div class="col-lg-6 mb-3">
                 <label for="inputId" class="form-label">NIK</label>
@@ -464,8 +469,9 @@ function rupiah($angka)
                         </div>
                         <form action="cetakTiket.php" method="POST">
                           <div class="row ps-2">
-                          <input hidden type="text" class="form-control form-control-user2" id="inputId" name="txt_id_bus" value="<?php $id_bus = $_POST['txt_id_bus']; echo $id_bus ?>" placeholder="" readonly />
-                          
+                            <input hidden type="text" class="form-control form-control-user2" id="inputId" name="txt_id_bus" value="<?php $id_bus = $_POST['txt_id_bus'];
+                                                                                                                                    echo $id_bus ?>" placeholder="" readonly />
+
                             <div class="col-lg-6 mb-3" hidden>
                               <label for="inputAlamat" class="form-label">ID</label>
                               <input type="text" class="form-control form-control-user2" id="inputAlamat" name="txt_id_pemesanan" placeholder="Ex: Jl. Dharmawangsa" value="<?php echo $idPemesanan ?>" readonly />
@@ -528,18 +534,18 @@ function rupiah($angka)
                           <div class="col-12 d-flex justify-content-center mb-3">
                             <button type="submit" name="submit" class="btn colorPrimary text-white py-2 s14 rounded-pill resize">Konfirmasi</button>
                           </div>
-                          
+
                         </form>
                         <div class="col-12 d-flex justify-content-center mb-3">
-                            <a href="index.php" class="actionBtn" aria-label="Delete">
-                              <button class="btn btn-danger btn-user btn-circle py-2 s14 rounded-pill resize">Batal</button>
-                            </a>
-                          </div>
+                          <a href="index.php" class="actionBtn" aria-label="Delete">
+                            <button class="btn btn-danger btn-user btn-circle py-2 s14 rounded-pill resize">Batal</button>
+                          </a>
+                        </div>
                   </div>
-                  <?php
+              <?php
                       }
-                    }; 
-                    ?>
+                    };
+              ?>
                 </div>
               </div>
             </div>
