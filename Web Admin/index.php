@@ -1,110 +1,9 @@
 <?php
-  require('koneksi.php');
-  require ('query.php');
-  $obj = new crud;
-  
-  session_start();
+require ('function.php');
 
-  if(isset($_COOKIE['cookie_email'])){
-    $cookieEmail = $_COOKIE['cookie_email'];
-    $cookiePass = $_COOKIE['cookie_password'];
-    $cookieName = $_COOKIE['cookie_name'];
-    $queryCookie = $obj->login($cookieEmail);
-    while ($row = $queryCookie->fetch(PDO::FETCH_ASSOC)) {
-      $id_user_admin = $row['id_user_admin'];
-      $nama = $row['nama'];
-      $jk = $row['jenis_kelamin'];
-      $alamat = $row['alamat'];
-      $noHP = $row['no_hp'];
-      $terminal = $row['id_terminal'];
-      $emailVal = $row['email'];
-      $passwordVal = $row['password'];
-      $level = $row['id_level'];
-      $foto = $row['foto'];
-    }
-
-    if ($emailVal == $cookieEmail && $passwordVal == $cookiePass) {
-      $_SESSION['name'] = $cookieName;
-      $_SESSION['email'] = $cookieEmail;
-      $_SESSION['pass'] = $cookiePass;
-    }
-
-    if(isset($_SESSION['email'])){
-      header('Location: dashboard.php');
-
-    }
-  }
-
-  if (isset($_POST['submit'])) {
-    $email = $_POST['txt_email'];
-    $password = $_POST['txt_password'];
-    $rememberMe = !empty($_POST['check_remember']) ? $_POST['check_remember'] : '';
-
-    if (!empty(trim($email)) && !empty(trim($password))) {
-      $query = $obj->login($email);
-      $num = $query->rowCount();
-
-    while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
-      $id_user_admin = $row['id_user_admin'];
-      $nama = $row['nama'];
-      $jk = $row['jenis_kelamin'];
-      $alamat = $row['alamat'];
-      $noHP = $row['no_hp'];
-      $terminal = $row['id_terminal'];
-      $emailVal = $row['email'];
-      $passwordVal = $row['password'];
-      $level = $row['id_level'];
-      $foto = $row['foto'];
-    }
-
-    if ($num != 0) {
-      if ($emailVal == $email && $passwordVal == $password) {
-        $_SESSION['id'] = $id_user_admin;
-        $_SESSION['name'] = $nama;
-        $_SESSION['jk'] = $jk;
-        $_SESSION['alamat'] = $alamat;
-        $_SESSION['noHP'] = $noHP;
-        $_SESSION['terminal'] = $terminal;
-        $_SESSION['email'] = $emailVal;
-        $_SESSION['pass'] = $passwordVal;
-        $_SESSION['level'] = $level;
-        $_SESSION['foto'] = $foto;
-        
-
-        if($rememberMe == 1 ){
-          $cookie_name = "cookie_email";
-          $cookie_value = $emailVal;
-          $cookie_time = time() + (60 * 60 * 0.12); //5 menit
-          setcookie($cookie_name, $cookie_value, $cookie_time, "/");
-
-          $cookie_name = "cookie_password";
-          $cookie_value = $passwordVal;
-          $cookie_time = time() + (60 * 60 * 0.12); //5 menit
-          setcookie($cookie_name, $cookie_value, $cookie_time, "/");
-
-          $cookie_name = "cookie_name";
-          $cookie_value = $nama;
-          $cookie_time = time() + (60 * 60 * 0.12); //5 menit
-          setcookie($cookie_name, $cookie_value, $cookie_time, "/");
-        }
-          
-        header('Location: dashboard.php');
-
-      } if ($emailVal != $email && $passwordVal == $password) {
-        ?><div class="alert alert-danger d-block position-fixed custAlert" role="alert">Email tidak ditemukan !</div><?php 
-
-      } if ($emailVal == $email && $passwordVal != $password) {
-        ?><div class="alert alert-danger d-block position-fixed custAlert" role="alert">Password salah !</div><?php 
-      }
-
-    } else {
-      ?><div class="alert alert-danger d-block position-fixed custAlert" role="alert">Email atau password salah !!</div><?php 
-    }
-
-  } else {
-    ?> <div class="alert alert-danger d-block position-fixed custAlert" role="alert">Email atau password kosong !!</div><?php 
-    }
-  }
+if (isset($_COOKIE['cookie_email'])) {
+  systemCookies();
+}
 ?>
 
 <!DOCTYPE html>
@@ -115,8 +14,10 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="plugin/font/stylesheet.css" />
     <link rel="stylesheet" href="plugin/css/app.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.3/dist/sweetalert2.min.css" integrity="sha256-7FY/kD9x8sdXwruZy+8tjKt05pkuxyF52nbrSazsNg8=" crossorigin="anonymous">
   </head>
   <body class="bg-white">
+  <div class="info-data" data-infodata="<?php if(isset($_SESSION['info'])){ echo $_SESSION['info']; } unset($_SESSION['info']); ?>"></div>
     <div class="container-fluid">
       <div class="row">
         <div class="col-xl-12 col-lg-12 col-md-12">
@@ -143,7 +44,7 @@
                       <div class="judul">
                         <h4 class="text-gray-900 mb-5">Login <br /><span>System Information Booking Online Bus</span></h4>
                       </div>
-                      <form class="custom-validation" action="index.php" method="POST">
+                      <form class="custom-validation" action="function.php" method="POST">
                         <div class="mb-3">
                           <label for="exampleInputEmail" class="form-label">Email</label>
                           <input type="email" class="form-control form-control-user" id="exampleInputEmail" name="txt_email" required data-parsley-required-message="Email tidak boleh kosong !!!" placeholder="Ex: budiman@siboss.com" />
@@ -177,7 +78,7 @@
                         <div class="clearfix"></div>
                         <div class="row mb-5">
                           <div class="col-6 d-flex justify-content-end">
-                            <button type="submit" name="submit" class="btn colorPrimary btn-login text-white btn-block py-2">Login</button>
+                            <button type="submit" name="login" class="btn colorPrimary btn-login text-white btn-block py-2">Login</button>
                           </div>
                           <div class="col-6 d-flex justify-content-start">
                             <a href="registrasi.php" class="btn btn-daftar btn-block py-2">
@@ -211,6 +112,8 @@
     <script src="jquery/jquery-3.6.0.min.js"></script>
     <script src="plugin/js/form-validation.init.js"></script>
     <script src="plugin/js/parsley.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.3/dist/sweetalert2.all.min.js" integrity="sha256-+InBGKGbhOQiyCbWrARmIEICqZ8UvYJr/qVhHmlmFpc=" crossorigin="anonymous"></script>
+    <script src="plugin/js/custom_SweetAlert2.js"></script>
     <script>
     $(document).ready(function() {
       window.setTimeout(function() {
