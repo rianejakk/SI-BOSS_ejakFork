@@ -1,104 +1,257 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="#d3d3d3"
     tools:context=".MainActivity">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="172dp"
-        android:background="@drawable/round_dashboard"
-        android:orientation="vertical">
-
-        <ImageView
-            android:id="@+id/FotoProfil"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="50dp"
-            android:background="@drawable/round_img"
-            android:src="@drawable/profile"/>
-
-        <TextView
-            android:id="@+id/etMainEmail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="16dp"
-            android:text="Email"
-            android:textColor="@color/black"
-            android:textSize="14sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/etMainName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="Full name"
-            android:textColor="@color/black"
-            android:textSize="14sp"
-            android:textStyle="bold" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="300dp"
-        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@drawable/round_dashboard">
-    <Button
-        android:id="@+id/BtnBeranda"
-        android:layout_marginTop="8dp"
-        android:layout_width="279dp"
-        android:layout_height="40dp"
-        android:text="Beranda"
-        android:fontFamily="@font/opensanssemibold"
-        android:textSize="16sp"
-        android:drawableStart="@drawable/ic_baseline_home_24"
-        android:textAllCaps="false"
-        android:background="@drawable/edittext_bg"/>
-    <Button
-        android:id="@+id/BtnPemesanan"
-        android:layout_marginTop="8dp"
-        android:layout_width="279dp"
-        android:layout_height="40dp"
-        android:text="Pemesanan"
-        android:fontFamily="@font/opensanssemibold"
-        android:textSize="16sp"
-        android:textAllCaps="false"
-        android:background="@drawable/edittext_bg"/>
-    <Button
-        android:id="@+id/BtnPembayaran"
-        android:layout_marginTop="8dp"
-        android:layout_width="279dp"
-        android:layout_height="40dp"
-        android:text="Pembayaran"
-        android:fontFamily="@font/opensanssemibold"
-        android:textSize="16sp"
-        android:textAllCaps="false"
-        android:background="@drawable/edittext_bg"/>
-    <Button
-        android:id="@+id/BtnAkunSaya"
-        android:layout_marginTop="8dp"
-        android:layout_width="279dp"
-        android:layout_height="40dp"
-        android:text="Profile"
-        android:fontFamily="@font/opensanssemibold"
-        android:textSize="16sp"
-        android:textAllCaps="false"
-        android:background="@drawable/edittext_bg"/>
-    <Button
-        android:id="@+id/BtnKeluar"
-        android:layout_marginTop="8dp"
-        android:layout_width="279dp"
-        android:layout_height="40dp"
-        android:text="Logout"
-        android:fontFamily="@font/opensanssemibold"
-        android:textSize="16sp"
-        android:textAllCaps="false"
-        android:background="@drawable/edittext_bg"/>
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-</LinearLayout>
-</LinearLayout>
+        <RelativeLayout
+            android:id="@+id/relative2"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_below="@+id/relative1"
+            android:background="@drawable/background_dashboard"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/FotoProfil"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/round_img"
+                android:src="@drawable/profile" />
+
+            <Button
+                android:id="@+id/Btn_Ubah_Foto"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/FotoProfil"
+                android:layout_marginLeft="70dp"
+                android:layout_marginTop="5dp"
+                android:drawableBottom="@drawable/ic_baseline_edit_24" />
+
+            <TextView
+                android:id="@+id/etMainEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/Btn_Ubah_Foto"
+                android:layout_marginLeft="60dp"
+                android:text="Email"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/etMainName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/etMainEmail"
+                android:layout_marginLeft="60dp"
+                android:text="Full name"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+        <GridLayout
+            android:columnCount="2"
+            android:rowCount="3"
+            android:alignmentMode="alignMargins"
+            android:columnOrderPreserved="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                app:cardElevation="6dp"
+                app:cardCornerRadius="12dp"
+                android:layout_margin="12dp">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <Button
+                        android:id="@+id/BtnBeranda"
+                        android:drawableTop="@drawable/home_dashboard"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"/>
+
+                    <TextView
+                        android:fontFamily="@font/roboto"
+                        android:textStyle="bold"
+                        android:layout_marginTop="12dp"
+                        android:textColor="#1154F4"
+                        android:textSize="18sp"
+                        android:text="Beranda"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                app:cardElevation="6dp"
+                app:cardCornerRadius="12dp"
+                android:layout_margin="12dp">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <Button
+                        android:id="@+id/BtnPemesanan"
+                        android:drawableTop="@drawable/pemesanan_dashboard"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"/>
+
+                    <TextView
+                        android:fontFamily="@font/roboto"
+                        android:textStyle="bold"
+                        android:layout_marginTop="12dp"
+                        android:textColor="#1154F4"
+                        android:textSize="18sp"
+                        android:text="Pemesanan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                app:cardElevation="6dp"
+                app:cardCornerRadius="12dp"
+                android:layout_margin="12dp">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <Button
+                        android:id="@+id/BtnPembayaran"
+                        android:drawableTop="@drawable/pembayaran_dashboard"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"/>
+
+                    <TextView
+                        android:fontFamily="@font/roboto"
+                        android:textStyle="bold"
+                        android:layout_marginTop="12dp"
+                        android:textColor="#1154F4"
+                        android:textSize="18sp"
+                        android:text="Pembayaran"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                app:cardElevation="6dp"
+                app:cardCornerRadius="12dp"
+                android:layout_margin="12dp">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <Button
+                        android:id="@+id/BtnAkunSaya"
+                        android:drawableTop="@drawable/profil_dashboard"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"/>
+
+                    <TextView
+                        android:fontFamily="@font/roboto"
+                        android:textStyle="bold"
+                        android:layout_marginTop="12dp"
+                        android:textColor="#1154F4"
+                        android:textSize="18sp"
+                        android:text="Akun anda"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </GridLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            app:cardElevation="6dp"
+            app:cardCornerRadius="12dp"
+            android:layout_margin="12dp"
+            android:layout_gravity="center">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/BtnKeluar"
+                    android:drawableTop="@drawable/logout_dashboard"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"/>
+
+                <TextView
+                    android:fontFamily="@font/roboto"
+                    android:textStyle="bold"
+                    android:layout_marginTop="12dp"
+                    android:textColor="#1154F4"
+                    android:textSize="18sp"
+                    android:text="         Logout         "
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+</ScrollView>
