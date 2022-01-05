@@ -24,6 +24,7 @@
 body {
   line-height: 1.5em;
   font-family: Roboto-Regular;
+  font-size: 14px !important;
 }
 .autoHeight {
   height: 100vh;
@@ -1056,6 +1057,7 @@ input[type="search"]:focus {
 
 div.dataTables_length{
   margin-top: 10px;
+  margin-bottom: 10px;
 }
 div.dataTables_length label{
   font-family: Roboto-Regular;
@@ -1069,6 +1071,7 @@ div.dataTables_wrapper div.dataTables_length select {
 
 div.dataTables_filter{
   margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 div.dataTables_filter input{
@@ -1127,7 +1130,19 @@ div.dataTables_info{
   font-size: 9px;
 }
 
+table th.cb{
+  width: 6% !important;
+}
+
+table th.actions{
+  width: 10% !important;
+}
+
 .table thead th {
+  border-bottom: 2px solid #527bdd !important;
+}
+
+/* .table thead th {
   vertical-align: bottom;
   padding-top: 10px !important;
   padding-bottom: 0px !important;
@@ -1172,7 +1187,7 @@ table.table tr th.waktuTiba{
 }
 table.table tr th.detailRute{
   min-width: 320px;
-}
+} */
 .customW{
   width: 120px !important;
 }
@@ -1180,7 +1195,7 @@ table.table tr th.detailRute{
 
 .table-responsive::-webkit-scrollbar {
   width: 5px;
-  height: 4px;
+  height: 5px;
 }
 
 .table-responsive::-webkit-scrollbar-thumb {
