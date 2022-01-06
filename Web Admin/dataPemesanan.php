@@ -435,7 +435,7 @@ if(!isset($_SESSION['email'])){
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-hover dataTable" width="100%">
+                <table class="table table-hover dataTable nowrap dataPemesanan" width="100%">
                   <thead>
                     <tr>
                       <th class="cb">

@@ -1374,7 +1374,7 @@ $sesFoto = $_SESSION['foto'];
                                 <a href="#" class="actionBtn" aria-label="Delete">
                                   <button class="btn btn-danger btn-user btn-circle" aria-label="DeleteModal"
                                     data-bs-toggle="modal"
-                                    data-bs-target="#deleteDataPenumpang<?php echo $nik_penumpang ?>" value="hapus">
+                                    data-bs-target="#deleteDataPenumpang<?php echo $nik_penumpang; ?>" value="hapus">
                                     <i class="fa fa-trash fa-sm" data-bs-toggle="tooltip" title="Delete"></i>
                                   </button>
                                 </a>
@@ -1470,7 +1470,7 @@ $sesFoto = $_SESSION['foto'];
                                             aria-label="Close" aria-hidden="true"></button>
                                         </div>
                                         <div class="modal-body">
-                                          <p>Apakah Anda yakin ingin menghapus data penumpang ini ?</p>
+                                          <p>Apakah Anda yakin ingin menghapus data <?php echo $nik_penumpang; ?> ini ?</p>
                                           <p class="text-warning"><small>Perlu hati-hati karena data akan hilang
                                               selamanya !</small></p>
                                         </div>

@@ -1133,6 +1133,9 @@ div.dataTables_info{
 table th.cb{
   width: 6% !important;
 }
+/* .dataPemesanan th.actions{
+  min-width: 180px !important;
+} */
 
 table th.actions{
   width: 10% !important;

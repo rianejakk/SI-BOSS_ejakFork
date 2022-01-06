@@ -485,7 +485,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
                     <div class="card-body">
                       <div class="table-responsive">
-                        <table class="table table-hover dataTable" width="100%">
+                        <table class="table table-hover dataTable nowrap" width="100%">
                           <thead>
                             <tr>
                               <th class="cb">
@@ -893,7 +893,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
                     <div class="card-body">
                       <div class="table-responsive">
-                        <table class="table table-hover dataTable" width="100%">
+                        <table class="table table-hover dataTable nowrap" width="100%">
                           <thead>
                             <tr>
                               <th class="cb">
