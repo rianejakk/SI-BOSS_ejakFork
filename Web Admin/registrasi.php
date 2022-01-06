@@ -1,5 +1,6 @@
 <?php
 require ('function.php');
+
 if (isset($_COOKIE['cookie_email'])) {
   systemCookies();
 }
@@ -16,13 +17,11 @@ if (isset($_COOKIE['cookie_email'])) {
   <link rel="stylesheet" href="plugin/font/stylesheet.css" />
   <link rel="stylesheet" href="plugin/css/app.min.css" />
   <link rel="stylesheet" href="plugin/fontawesome-free/css/all.min.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.3/dist/sweetalert2.min.css"
-    integrity="sha256-7FY/kD9x8sdXwruZy+8tjKt05pkuxyF52nbrSazsNg8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.3/dist/sweetalert2.min.css" integrity="sha256-7FY/kD9x8sdXwruZy+8tjKt05pkuxyF52nbrSazsNg8=" crossorigin="anonymous">
 </head>
 
 <body class="bg-white">
-  <div class="info-data"
-    data-infodata="<?php if(isset($_SESSION['info'])){ echo $_SESSION['info']; } unset($_SESSION['info']); ?>"></div>
+  <div class="info-data" data-infodata="<?php if(isset($_SESSION['info'])){ echo $_SESSION['info']; } unset($_SESSION['info']); ?>"></div>
   <div class="container-fluid">
     <div class="row">
       <div class="col-xl-12 col-lg-12 col-md-12">
@@ -244,116 +243,8 @@ if (isset($_COOKIE['cookie_email'])) {
   <script src="plugin/js/form-validation.init.js"></script>
   <script src="plugin/js/parsley.min.js"></script>
   <script src="plugin/js/javascript.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.3/dist/sweetalert2.all.min.js"
-    integrity="sha256-+InBGKGbhOQiyCbWrARmIEICqZ8UvYJr/qVhHmlmFpc=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.3/dist/sweetalert2.all.min.js" integrity="sha256-+InBGKGbhOQiyCbWrARmIEICqZ8UvYJr/qVhHmlmFpc=" crossorigin="anonymous"></script>
   <script src="plugin/js/custom_SweetAlert2.js"></script>
-  <script type="text/javascript">
-    var return_first = function () {
-      var tmp = null;
-      $.ajax({
-        'async': false,
-        'type': "get",
-        'global': false,
-        'dataType': 'json',
-        'url': 'https://x.rajaapi.com/poe',
-        'success': function (data) {
-          tmp = data.token;
-        }
-      });
-      return tmp;
-    }();
-    $(document).ready(function () {
-      $.ajax({
-        url: 'https://x.rajaapi.com/MeP7c5ne' + window.return_first + '/m/wilayah/provinsi',
-        type: 'GET',
-        dataType: 'json',
-        success: function (json) {
-          if (json.code == 200) {
-            for (i = 0; i < Object.keys(json.data).length; i++) {
-              $('#propinsi').append($('<option>').text(json.data[i].name).attr('value', json.data[i].id));
-            }
-          } else {
-            $('#kabupaten').append($('<option>').text('Data tidak di temukan').attr('value',
-              'Data tidak di temukan'));
-          }
-        }
-      });
-      $("#propinsi").change(function () {
-        var propinsi = $("#propinsi").val();
-        $.ajax({
-          url: 'https://x.rajaapi.com/MeP7c5ne' + window.return_first + '/m/wilayah/kabupaten',
-          data: "idpropinsi=" + propinsi,
-          type: 'GET',
-          cache: false,
-          dataType: 'json',
-          success: function (json) {
-            $("#kabupaten").html('');
-            if (json.code == 200) {
-              for (i = 0; i < Object.keys(json.data).length; i++) {
-                $('#kabupaten').append($('<option>').text(json.data[i].name).attr('value', json.data[i]
-                  .id));
-              }
-              $('#kecamatan').html($('<option>').text('-- Pilih Kecamatan --').attr('value',
-                '-- Pilih Kecamatan --'));
-              $('#kelurahan').html($('<option>').text('-- Pilih Kelurahan --').attr('value',
-                '-- Pilih Kelurahan --'));
-
-            } else {
-              $('#kabupaten').append($('<option>').text('Data tidak di temukan').attr('value',
-                'Data tidak di temukan'));
-            }
-          }
-        });
-      });
-      $("#kabupaten").change(function () {
-        var kabupaten = $("#kabupaten").val();
-        $.ajax({
-          url: 'https://x.rajaapi.com/MeP7c5ne' + window.return_first + '/m/wilayah/kecamatan',
-          data: "idkabupaten=" + kabupaten + "&idpropinsi=" + propinsi,
-          type: 'GET',
-          cache: false,
-          dataType: 'json',
-          success: function (json) {
-            $("#kecamatan").html('');
-            if (json.code == 200) {
-              for (i = 0; i < Object.keys(json.data).length; i++) {
-                $('#kecamatan').append($('<option>').text(json.data[i].name).attr('value', json.data[i]
-                  .id));
-              }
-              $('#kelurahan').html($('<option>').text('-- Pilih Kelurahan --').attr('value',
-                '-- Pilih Kelurahan --'));
-
-            } else {
-              $('#kecamatan').append($('<option>').text('Data tidak di temukan').attr('value',
-                'Data tidak di temukan'));
-            }
-          }
-        });
-      });
-      $("#kecamatan").change(function () {
-        var kecamatan = $("#kecamatan").val();
-        $.ajax({
-          url: 'https://x.rajaapi.com/MeP7c5ne' + window.return_first + '/m/wilayah/kelurahan',
-          data: "idkabupaten=" + kabupaten + "&idpropinsi=" + propinsi + "&idkecamatan=" + kecamatan,
-          type: 'GET',
-          dataType: 'json',
-          cache: false,
-          success: function (json) {
-            $("#kelurahan").html('');
-            if (json.code == 200) {
-              for (i = 0; i < Object.keys(json.data).length; i++) {
-                $('#kelurahan').append($('<option>').text(json.data[i].name).attr('value', json.data[i]
-                  .id));
-              }
-            } else {
-              $('#kelurahan').append($('<option>').text('Data tidak di temukan').attr('value',
-                'Data tidak di temukan'));
-            }
-          }
-        });
-      });
-    });
-  </script>
   <script>
     window.Parsley.addValidator("uppercase", {
       requirementType: "number",

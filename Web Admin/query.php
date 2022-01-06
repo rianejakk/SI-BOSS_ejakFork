@@ -9,19 +9,11 @@ class crud extends koneksi {
     }
 
     public function ValidasiEmail($data){
-        try{
-            $sql ="SELECT * FROM administrator WHERE email=:email";
-            $result = $this->koneksi->prepare($sql);
-            $result->bindParam(":email", $data);
-            $result->execute();
-            if ($result->rowCount() > 0) {
-                $_SESSION['info'] = 'EmailHasBeenTaken';
-                header('Location: registrasi.php');
-            }
-            return $result;
-        } catch (PDOException $e){
-            echo $e->getMessage();
-        }
+        $sql ="SELECT * FROM administrator WHERE email=:email";
+        $result = $this->koneksi->prepare($sql);
+        $result->bindParam(":email", $data);
+        $result->execute();
+        return $result;
     }
     
     // lihat
@@ -871,4 +863,3 @@ class crud extends koneksi {
         }
     }
 }
-?>

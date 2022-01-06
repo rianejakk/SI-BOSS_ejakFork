@@ -119,15 +119,18 @@ if (isset($_POST['daftar'])) {
 	$id_terminal = $_POST['id_terminal'];
 	$email = $_POST['txt_email'];
 	$password = $_POST['txt_password'];
-	if (!$obj->ValidasiEmail($email)) {
-		if ($obj->insertAdministrato($nama, $jenis_kelamin, $alamat, $no_hp, $level, $id_terminal, $email, $password)) {
+	$data = $obj->ValidasiEmail($email);
+  if ($data->rowCount() > 0) {
+    $_SESSION['info'] = 'EmailHasBeenTaken';
+    header('Location: registrasi.php');
+  }else if ($obj->insertAdministrato($nama, $jenis_kelamin, $alamat, $no_hp, $level, $id_terminal, $email, $password)) {
 			$_SESSION['info'] = 'statusSignUp';
 			header('Location: index.php');
 		} else {
 			$_SESSION['info'] = 'error';
 			header('Location: registrasi.php');
 		}
-	}
+
 }
 
 // Fungsi

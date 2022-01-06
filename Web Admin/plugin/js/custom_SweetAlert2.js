@@ -1,20 +1,5 @@
 const notifikasi = $('.info-data').data('infodata');
 
-// if(notifikasi == "Disimpan" || notifikasi=="Dihapus"){
-// 	Swal.fire({
-// 	  icon: 'success',
-// 	  title: 'Sukses',
-// 	  text: 'Data Berhasil '+notifikasi,
-// 	})
-// }else if(notifikasi == "Gagal Disimpan" || notifikasi=="Gagal Dihapus"){
-// 	Swal.fire({
-// 	  icon: 'error',
-// 	  title: 'GAGAL',
-// 	  text: 'Data '+notifikasi,
-// 	})
-// }else if(notifikasi == "Kosong"){
- 
-// }
 if(notifikasi == "berhasil"){
 	Swal.fire({
 	  icon: 'success',
