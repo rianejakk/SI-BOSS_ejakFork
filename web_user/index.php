@@ -121,7 +121,7 @@ if (isset($_SESSION['email'])) {
   <div id="editDataAdministrator<?php echo $sesID ?>" class="modal fade">
     <div class="modal-dialog modal-lg">
       <div class="modal-content modal-edit">
-        <form role="form" action="editAdministrator.php" method="POST" enctype="multipart/form-data">
+        <form role="form" action="login.php" method="POST" enctype="multipart/form-data">
           <?php
           $query = $obj->pilihUser($sesID);
           while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
