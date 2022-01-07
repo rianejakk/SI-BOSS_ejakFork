@@ -13,11 +13,11 @@ public class Register{
 	@SerializedName("status")
 	private boolean status;
 
-	public void setRegisterData(RegisterData registerData){
+	public void setData(RegisterData registerData){
 		this.registerData = registerData;
 	}
 
-	public RegisterData getRegisterData(){
+	public RegisterData getData(){
 		return registerData;
 	}
 

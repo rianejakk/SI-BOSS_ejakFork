@@ -28,6 +28,7 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST("register.php")
     Call<Register> registerResponse(
+            @Field("nik_user") String nik,
             @Field("email_user") String email,
             @Field("password_user") String password,
             @Field("nama_user") String name

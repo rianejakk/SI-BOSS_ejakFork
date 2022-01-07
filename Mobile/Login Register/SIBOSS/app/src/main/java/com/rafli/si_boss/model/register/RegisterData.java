@@ -10,6 +10,9 @@ public class RegisterData {
 	@SerializedName("nama_user")
 	private String namaUser;
 
+	@SerializedName("nik_user")
+	private String nikUser;
+
 	public void setEmailUser(String emailUser){
 		this.emailUser = emailUser;
 	}
@@ -24,5 +27,13 @@ public class RegisterData {
 
 	public String getNamaUser(){
 		return namaUser;
+	}
+
+	public void setNikUser(String nikUser){
+		this.nikUser = nikUser;
+	}
+
+	public String getNikUser(){
+		return nikUser;
 	}
 }

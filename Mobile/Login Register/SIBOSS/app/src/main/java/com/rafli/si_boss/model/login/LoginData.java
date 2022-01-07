@@ -10,6 +10,9 @@ public class LoginData {
 	@SerializedName("nama_user")
 	private String namaUser;
 
+	@SerializedName("nik_user")
+	private String nikUser;
+
 	public void setEmailUser(String emailUser){
 		this.emailUser = emailUser;
 	}
@@ -25,4 +28,5 @@ public class LoginData {
 	public String getNamaUser(){
 		return namaUser;
 	}
+
 }

@@ -72,18 +72,34 @@
         <RelativeLayout
             android:id="@id/relativeEt"
             android:layout_width="wrap_content"
-            android:layout_height="210dp"
+            android:layout_height="260dp"
             android:layout_below="@+id/tv3"
             android:layout_marginTop="10dp"
             android:background="@drawable/background2">
 
+            <EditText
+                android:id="@+id/EtNIKDaftar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="6dp"
+                android:background="@drawable/edittext_bg"
+                android:drawableStart="@drawable/ic_baseline_credit_card_24"
+                android:drawablePadding="16dp"
+                android:fontFamily="@font/roboto"
+                android:hint="Nomor Induk Kependudukan"
+                android:inputType="number"
+                android:padding="8dp"
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/EtEmailDaftar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/EtNIKDaftar"
                 android:layout_marginLeft="6dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginRight="6dp"
                 android:background="@drawable/edittext_bg"
                 android:drawableStart="@drawable/ic_baseline_email_24"
@@ -92,7 +108,7 @@
                 android:hint="Email"
                 android:inputType="textEmailAddress"
                 android:padding="8dp"
-                android:textSize="16sp"/>
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/EtNamaLengkapDaftar"
@@ -134,10 +150,10 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/EtPasswordDaftar"
                 android:layout_marginLeft="6dp"
+                android:buttonTint="@color/textDescription"
                 android:fontFamily="@font/roboto"
                 android:text="Lihat kata sandi"
-                android:textSize="12sp"
-                android:buttonTint="@color/textDescription"/>
+                android:textSize="12sp" />
         </RelativeLayout>
         <!--        <EditText-->
         <!--            android:id="@+id/EtKonfirmasiSandi"-->
