@@ -31,31 +31,31 @@ body {
   height: 100vh;
 }
 .colorPrimary {
-  background-color: #527bdd;
+  background-color: #527bdd !important;
 }
 .colorPrimaryText {
-  color: #527bdd;
+  color: #527bdd !important;
 }
 .colorSecondary {
-  background-color: #f1f3fd;
+  background-color: #f1f3fd !important;
 }
 .colorSecondary2 {
-  background-color: #f8f9ff;
+  background-color: #f8f9ff !important;
 }
 .colorBlue1 {
-  background-color: #3669e0;
+  background-color: #3669e0 !important;
 }
 .colorBlue2 {
-  background: #edf3f8;
+  background: #edf3f8 !important;
 }
 .colorRed {
-  background-color: #fb3f4a;
+  background-color: #fb3f4a !important;
 }
 .colorYellow {
-  background-color: #fab005;
+  background-color: #fab005 !important;
 }
 .colorBlueDark {
-  background-color: #183153;
+  background-color: #183153 !important;
 }
 .colorBlueDarkText {
   color: #183153 !important;
@@ -441,27 +441,14 @@ input[type="search"]:focus {
 .inputPass{
   position: relative;
 }
+
+/* CSS Show/Hide Password in Login Page */
 span.eye{
   position: absolute;
-  /* top: 56%;
-  transform: translate(0, -50%);
-  left: 70%; */
 }
-
 .wrapper{
   position: relative;
-
 }
-/* #password{
-  box-sizing: border-box;
-  width: 100%;
-  padding: 10px 10px;
-  border-radius: 3px;
-  font-family: 'Poppins', sans-serif;
-  color: #4a4a4a;
-  letter-spacing: 0.5px;
-  box-shadow: 0 5px 40px rgba(22, 89, 233, 0.4);
-} */
 ::placeholder{
   color: #9a9a9a;
   font-weight: 400;
@@ -485,7 +472,17 @@ span.eye2{
   color: #d8d8d8;
   cursor: pointer;
 }
+/* =================================== */
 
+/* CSS Show/Hide Password in Register Page*/
+#parsley-id-13{
+  display: inline-block;
+  float: left;
+}
+.show-hideWithText{
+  cursor: pointer;
+  color: #6c757D;
+}
 
 /* Custom Placeholder */
 ::placeholder {

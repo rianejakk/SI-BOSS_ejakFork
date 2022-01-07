@@ -72,18 +72,22 @@ if (isset($_COOKIE['cookie_email'])) {
 
                       <div class="row">
                         <div class="col-lg-6 mb-3">
-                          <label for="InputPassword" class="form-label">Kata Sandi</label>
-                          <input type="password" class="form-control form-control-user2" id="InputPassword"
+                          <label for="password-input" class="form-label">Kata Sandi</label>
+                          <input type="password" class="form-control form-control-user2" id="password-input"
                             name="txt_password" required data-parsley-required-message="Kata sandi harus di isi !!!"
-                            placeholder="********" data-parsley-length="[8,16]" maxlength="16"
+                            placeholder="********" data-parsley-length="[8,16]" maxlength="16" data-parsley-length-message="Harus disiisi 8 sampai 16 karakter !!!"
                             data-parsley-uppercase="1" data-parsley-lowercase="1" data-parsley-number="1" />
                         </div>
                         <div class="col-lg-6 mb-3">
-                          <label for="InputPassword2" class="form-label">Konfirmasi Kata sandi</label>
-                          <input type="password" class="form-control form-control-user2" id="InputPassword2"
+                          <label for="Kpassword-input" class="form-label">Konfirmasi Kata sandi</label>
+                          <input type="password" class="form-control form-control-user2" id="Kpassword-input"
                             name="txt_pass" required data-parsley-required-message="Masukan ulang kata sandi !!!"
-                            data-parsley-equalto="#InputPassword" placeholder="********" />
-                        </div>
+                            data-parsley-equalto="#password-input" data-parsley-equalto-message="Kata sandi tidak cocok" placeholder="********" />
+                            <span class="s10 p-0 mb-2 d-flex justify-content-end show-hideWithText mt-1" toggle="#password-input" toggle2="#Kpassword-input" id="spanShow">
+                              Tampilkan Kata Sandi
+                            </span>
+                          </div>
+
                       </div>
                       <input type="hidden" name="id_level">
                       <div class="row">
@@ -245,6 +249,29 @@ if (isset($_COOKIE['cookie_email'])) {
   <script src="plugin/js/javascript.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.3/dist/sweetalert2.all.min.js" integrity="sha256-+InBGKGbhOQiyCbWrARmIEICqZ8UvYJr/qVhHmlmFpc=" crossorigin="anonymous"></script>
   <script src="plugin/js/custom_SweetAlert2.js"></script>
+  <script>
+    $(document).ready(function(){
+      $(".show-hideWithText").click(function() {
+        $(this).text(($("#spanShow").text() == 'Sembunyikan Kata Sandi') ? 'Tampilkan Kata Sandi' : 'Sembunyikan Kata Sandi');
+        var input = $($(this).attr("toggle"));
+        if (input.attr("type") == "password") {
+          $('.show-hideWithText').css('color','#527bdd');
+          input.attr("type", "text");
+        } else {
+          $('.show-hideWithText').css('color','#6c757D');
+          input.attr("type", "password");
+        }
+        var input = $($(this).attr("toggle2"));
+        if (input.attr("type") == "password") {
+          $('.show-hideWithText').css('color','#527bdd');
+          input.attr("type", "text");
+        } else {
+          $('.show-hideWithText').css('color','#6c757D');
+          input.attr("type", "password");
+        }
+      });
+    });
+  </script>
   <script>
     window.Parsley.addValidator("uppercase", {
       requirementType: "number",
