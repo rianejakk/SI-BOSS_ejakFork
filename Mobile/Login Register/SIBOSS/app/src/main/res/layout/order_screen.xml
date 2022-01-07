@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment"
     android:orientation="vertical"
     >
 
@@ -77,7 +76,8 @@
         android:textColor="#A5A5A5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="397dp" />
+        tools:layout_editor_absoluteY="397dp"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/pergi"
@@ -107,7 +107,8 @@
         android:text="Tanggal"
         android:textColor="#A5A5A5"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="518dp" />
+        tools:layout_editor_absoluteY="518dp"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/pulang"
@@ -137,7 +138,8 @@
         android:text="Tanggal"
         android:textColor="#A5A5A5"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="518dp" />
+        tools:layout_editor_absoluteY="518dp"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/cari"
