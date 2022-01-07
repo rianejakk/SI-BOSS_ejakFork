@@ -26,12 +26,15 @@ body {
   font-family: Roboto-Regular;
   font-size: 14px !important;
 }
+
 .autoHeight {
   height: 100vh;
 }
-
 .colorPrimary {
   background-color: #527bdd;
+}
+.colorPrimaryText {
+  color: #527bdd;
 }
 .colorSecondary {
   background-color: #f1f3fd;
@@ -39,6 +42,88 @@ body {
 .colorSecondary2 {
   background-color: #f8f9ff;
 }
+.colorBlue1 {
+  background-color: #3669e0;
+}
+.colorBlue2 {
+  background: #edf3f8;
+}
+.colorRed {
+  background-color: #fb3f4a;
+}
+.colorYellow {
+  background-color: #fab005;
+}
+.colorBlueDark {
+  background-color: #183153;
+}
+.colorBlueDarkText {
+  color: #183153 !important;
+}
+.hidden {
+  display: none;
+}
+.show {
+  display: block;
+}
+
+/* CSS Custom Font */
+.font-Roboto {
+  font-family: Roboto-Regular !important;
+}
+.font-RobotoSemiBold {
+  font-family: Roboto-Medium !important;
+}
+.font-RobotoBold {
+  font-family: Roboto-Bold !important;
+}
+.font-Poppins {
+  font-family: Poppins-Regular !important;
+}
+.font-Pacifico {
+  font-family: Pacifico !important;
+}
+.font-Italiano {
+  font-family: Italianno !important;
+}
+.s10 {
+  font-size: 10px !important;
+}
+.s12 {
+  font-size: 12px !important;
+}
+.s14 {
+  font-size: 14px !important;
+}
+.s16 {
+  font-size: 16px !important;
+}
+.s18 {
+  font-size: 18px !important;
+}
+.s20 {
+  font-size: 20px !important;
+}
+.s22 {
+  font-size: 22px !important;
+}
+.s24 {
+  font-size: 24px !important;
+}
+.s26 {
+  font-size: 26px !important;
+}
+.roundedBtn2 {
+  width: 80px;
+  border-radius: 20px;
+  font-family: Roboto-Regular;
+  font-size: 14px !important;
+}
+.myRounded {
+  border-radius: 12px;
+  font-size: 14px !important;
+}
+/* =============================== */
 
 .bg-img {
   background-image: url("../img/bg-pattern.png");
@@ -353,6 +438,54 @@ input[type="search"]:focus {
   font-size: large;
   font-weight: bold;
 }
+.inputPass{
+  position: relative;
+}
+span.eye{
+  position: absolute;
+  /* top: 56%;
+  transform: translate(0, -50%);
+  left: 70%; */
+}
+
+.wrapper{
+  position: relative;
+
+}
+/* #password{
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px 10px;
+  border-radius: 3px;
+  font-family: 'Poppins', sans-serif;
+  color: #4a4a4a;
+  letter-spacing: 0.5px;
+  box-shadow: 0 5px 40px rgba(22, 89, 233, 0.4);
+} */
+::placeholder{
+  color: #9a9a9a;
+  font-weight: 400;
+}
+span.eye{
+  position: absolute;
+  right: 15px;
+  transform: translate(0, -50%);
+  top: 50%;
+  transition: 0.4s ease-in-out;
+}
+span.eye2{
+  position: absolute;
+  right: 15px;
+  transform: translate(0, -50%);
+  top: 35%;
+  transition: 0.4s ease-in-out;
+}
+.fas{
+  font-size: 14px;
+  color: #d8d8d8;
+  cursor: pointer;
+}
+
 
 /* Custom Placeholder */
 ::placeholder {
