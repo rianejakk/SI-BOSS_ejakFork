@@ -16,7 +16,6 @@ public class search_result extends AppCompatActivity {
     public List<Bus> busResultList;
     private RecyclerView.Adapter adapter;
     private ApiInterface apiInterface;
-    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +27,6 @@ public class search_result extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
 
-
+        getJson
     }
 }

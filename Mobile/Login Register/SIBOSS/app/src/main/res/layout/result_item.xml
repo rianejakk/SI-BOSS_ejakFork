@@ -18,33 +18,88 @@
         />
 
     <TextView
-        android:id="@+id/detail_bus"
+        android:id="@+id/berangkat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="detail"
+        android:layout_below="@id/busName"
         android:layout_marginHorizontal="5pt"
         android:layout_marginTop="2pt"
         android:layout_toRightOf="@id/bus_image"
-        android:layout_below="@id/busName"
-        />
+        android:text="Berangkat" />
 
     <TextView
-        android:id="@+id/release_date"
+        android:id="@+id/berangkat_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="release date"
+        android:layout_below="@id/busName"
+        android:layout_marginHorizontal="9pt"
+        android:layout_marginTop="2pt"
+        android:layout_toRightOf="@id/berangkat"
+        android:text="time" />
+
+
+    <TextView
+        android:id="@+id/tiba"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tiba"
         android:layout_marginHorizontal="5pt"
         android:layout_marginTop="2pt"
         android:layout_marginBottom="2pt"
-        android:layout_below="@id/detail_bus"
+        android:layout_below="@id/berangkat"
         android:layout_toRightOf="@id/bus_image"
         />
+
+    <TextView
+        android:id="@+id/rp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tiba"
+        android:layout_marginHorizontal="5pt"
+        android:layout_marginTop="2pt"
+        android:layout_marginBottom="2pt"
+        android:layout_toRightOf="@id/bus_image"
+        android:text="Rp " />
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tiba"
+        android:layout_marginHorizontal="5pt"
+        android:layout_marginTop="2pt"
+        android:layout_marginBottom="2pt"
+        android:layout_toRightOf="@id/rp"
+        android:text="price" />
+
+    <TextView
+        android:id="@+id/arrival_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/berangkat"
+        android:layout_marginHorizontal="25pt"
+        android:layout_marginTop="2pt"
+        android:layout_marginBottom="2pt"
+        android:layout_toRightOf="@id/tiba"
+        android:text="time" />
 
     <ImageView
         android:id="@+id/bus_image"
         android:layout_width="200dp"
-        android:layout_height="100dp" />
-<!--        android:src="@drawable/ic_temp_banner_foreground"-->
+        android:layout_height="100dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="50dp"/>
 
+    <Button
+        android:id="@+id/button"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rp"
+        android:background="@drawable/gradient"
+        android:textColor="@color/white"
+        android:layout_marginVertical="10dp"
+        android:layout_marginHorizontal="10.5dp"
+        android:layout_toRightOf="@id/bus_image"
+        android:text="Pesan" />
 
 </RelativeLayout>

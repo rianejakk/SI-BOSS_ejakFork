@@ -18,7 +18,7 @@ public class order_activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_home);
+        setContentView(R.layout.order_screen);
 
         Button search_btn = findViewById(R.id.cari);
         search_btn.setOnClickListener(view -> {
@@ -45,24 +45,5 @@ public class order_activity extends AppCompatActivity {
         };
         datepicker.setOnClickListener(view -> new DatePickerDialog(order_activity.this, date, newCalendar.get(Calendar.YEAR),
                 newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH)).show());
-
-        final Calendar calendar_back = Calendar.getInstance();
-        EditText date_back = findViewById(R.id.pulang_edit);
-        DatePickerDialog.OnDateSetListener date2 = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                calendar_back.set(Calendar.YEAR, year);
-                calendar_back.set(Calendar.MONTH, monthOfYear);
-                calendar_back.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                updateLabel();
-            }
-            private void updateLabel() {
-                String myFormat = "MM/dd/yy";
-                SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
-                date_back.setText(sdf.format(calendar_back.getTime()));
-            }
-        };
-        date_back.setOnClickListener(view -> new DatePickerDialog(order_activity.this, date2, calendar_back.get(Calendar.YEAR),
-                calendar_back.get(Calendar.MONTH), calendar_back.get(Calendar.DAY_OF_MONTH)).show());
     }
 }
