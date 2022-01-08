@@ -2,6 +2,8 @@ package com.rafli.si_boss;
 
 import android.os.Bundle;
 import android.widget.ProgressBar;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,7 +18,7 @@ public class search_result extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
-    public static List<Bus> busResultList;
+    private List<Bus> busResultList;
     private RecyclerView.Adapter adapter;
     private ApiInterface apiInterface;
 
@@ -30,22 +32,25 @@ public class search_result extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
 
+        fetchBusList("bus", "");
 
     }
-    public void getJson(String a, String b) {
+    public void fetchBusList(String a, String b) {
 
         apiInterface = ApiClient.getClient().create(ApiInterface.class);
-        Call<Bus> call = apiInterface.getBusFromDB(a, b);
-        call.enqueue(new Callback<Bus>() {
+        Call<List<Bus>> call = apiInterface.getBusFromDB(a, b);
+        call.enqueue(new Callback<List<Bus>>() {
             @Override
-            public void onResponse(Call<Bus> call, Response<Bus> response) {
+            public void onResponse(Call<List<Bus>> call, Response<List<Bus>> response) {
                 busResultList = response.body();
-                adapter = new BusAdapter()
+                adapter = new BusAdapter(search_result.this, busResultList);
+                recyclerView.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
             }
 
             @Override
-            public void onFailure(Call<Bus> call, Throwable t) {
-
+            public void onFailure(Call<List<Bus>> call, Throwable t) {
+                Toast.makeText(search_result.this, "Error\n"+t.toString(), Toast.LENGTH_LONG).show();
             }
         });
     }

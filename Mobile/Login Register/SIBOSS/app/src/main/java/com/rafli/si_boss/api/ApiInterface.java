@@ -5,6 +5,8 @@ import com.rafli.si_boss.model.login.Login;
 import com.rafli.si_boss.model.register.Register;
 import com.rafli.si_boss.model.update.UserModel;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -35,7 +37,7 @@ public interface ApiInterface {
     );
 
     @GET("Api.php")
-    Call<Bus> getBusFromDB(
+    Call<List<Bus>> getBusFromDB(
             @Query("nama_bus") String nama_bus,
             @Query("harga") String harga
     );
