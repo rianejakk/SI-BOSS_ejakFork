@@ -37,6 +37,6 @@ public interface ApiInterface {
     @GET("Api.php")
     Call<Bus> getBusFromDB(
             @Query("nama_bus") String nama_bus,
-            @Query("detail_bus") String detail_bus
+            @Query("harga") String harga
     );
 }
