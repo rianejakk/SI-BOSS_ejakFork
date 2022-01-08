@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_bg">
 
     <RelativeLayout
         android:id="@+id/relative1"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_marginTop="27dp"
+        android:background="@drawable/gradient_bg"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -19,16 +21,16 @@
             android:text="Profile"
             android:textColor="@color/black"
             android:textSize="20sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/relative2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         android:layout_below="@+id/relative1"
         android:layout_marginTop="5dp"
-        android:background="@drawable/round_btn"
+        android:background="@drawable/blue_bus"
         android:gravity="center_horizontal"
         android:orientation="horizontal">
 
@@ -57,19 +59,20 @@
         android:id="@+id/tv2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/relative2"
         android:fontFamily="sans-serif-medium"
         android:gravity="center"
         android:text="Informasi pribadi"
         android:textColor="@color/black"
-        android:textSize="20sp"
-        android:layout_below="@+id/relative2"/>
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/tv3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:layout_below="@+id/tv2"
         android:layout_marginTop="20dp"
+        android:background="@drawable/gradient_bg"
         android:fontFamily="@font/roboto"
         android:text="Akun saya"
         android:textColor="@color/black"
@@ -102,7 +105,8 @@
                 android:fontFamily="@font/roboto"
                 android:text="Nama lengkap"
                 android:textColor="@color/black"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                android:background="@drawable/gradient_bg"/>
 
             <EditText
                 android:id="@+id/EtNamaBiodata"
@@ -129,7 +133,8 @@
                 android:fontFamily="@font/roboto"
                 android:text="NIK"
                 android:textColor="@color/black"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                android:background="@drawable/gradient_bg"/>
 
             <EditText
                 android:id="@+id/EtNIK"
@@ -156,7 +161,8 @@
                 android:fontFamily="@font/roboto"
                 android:text="Email"
                 android:textColor="@color/black"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                android:background="@drawable/gradient_bg"/>
 
             <EditText
                 android:id="@+id/EtEmailBiodata"
@@ -183,7 +189,8 @@
                 android:fontFamily="@font/roboto"
                 android:text="Kata sandi"
                 android:textColor="@color/black"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                android:background="@drawable/gradient_bg"/>
 
             <EditText
                 android:id="@+id/EtPasswordBiodata"
@@ -220,7 +227,8 @@
                 android:fontFamily="@font/roboto"
                 android:text="Jenis Kelamin"
                 android:textColor="@color/black"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                android:background="@drawable/gradient_bg"/>
 
             <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/RadioGroup"
@@ -259,7 +267,8 @@
                 android:fontFamily="@font/roboto"
                 android:text="Tempat lahir"
                 android:textColor="@color/black"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                android:background="@drawable/gradient_bg"/>
 
             <EditText
                 android:id="@+id/EtTempatLahirBiodata"
@@ -286,7 +295,8 @@
                 android:fontFamily="@font/roboto"
                 android:text="Tanggal lahir"
                 android:textColor="@color/black"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                android:background="@drawable/gradient_bg"/>
 
             <EditText
                 android:id="@id/EtTanggalLahirBiodata"
@@ -314,7 +324,8 @@
                 android:fontFamily="@font/roboto"
                 android:text="Nomor handphone"
                 android:textColor="@color/black"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                android:background="@drawable/gradient_bg"/>
 
             <EditText
                 android:id="@+id/EtNoHandphone"
@@ -341,7 +352,8 @@
                 android:fontFamily="@font/roboto"
                 android:text="Alamat"
                 android:textColor="@color/black"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                android:background="@drawable/gradient_bg"/>
 
             <EditText
                 android:id="@+id/EtAlamat"
