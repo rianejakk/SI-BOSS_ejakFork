@@ -4,33 +4,60 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginHorizontal="7.5dp"
-    android:layout_marginVertical="7.5dp">
+    android:layout_marginVertical="7.5dp"
+    android:background="@drawable/gradient_bg">
 <!--    tools:context=".PaymentFormActivity">-->
+    <RelativeLayout
+        android:id="@+id/relative1"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginTop="27dp"
+        android:background="@drawable/gradient_bg"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/roboto"
+            android:text="Pembayaran"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
 
     <ImageView
         android:id="@+id/logo"
         android:layout_width="200dp"
-        android:layout_height="100dp"
+        android:layout_height="50dp"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/textsibos" />
+        android:src="@drawable/textsibos"
+        android:background="@color/yellow"
+        android:layout_below="@+id/relative1"/>
 
     <TextView
         android:id="@+id/no_pemesanan_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/logo"
-        android:text="Nomor Pemesanan"
-        />
+        android:fontFamily="@font/roboto"
+        android:text="Nomor Pemesanan:"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/no_pemesanan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/no_pemesanan_title"
-        android:text="-------------------"
-        android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"
-        />
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/roboto"
+        android:text="__________________________"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/nama_pemesan_title"
@@ -38,29 +65,34 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/no_pemesanan"
         android:layout_marginTop="10dp"
-
-        android:text="Nama Pemesan"
-        />
+        android:fontFamily="@font/roboto"
+        android:text="Nama Pemesan:"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/nama_pemesan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/nama_pemesan_title"
-        android:text="-------------------"
-        android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"
-        />
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/roboto"
+        android:text="__________________________"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/depart_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/nama_pemesan"
-        android:layout_marginTop="30dp"
         android:layout_marginLeft="30dp"
-        android:text="Depart time"
-        />
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/roboto"
+        android:text="Waktu berangkat"
+        android:textColor="@color/white" />
 
     <TextView
         android:id="@+id/depart_city"
@@ -70,60 +102,68 @@
         android:layout_marginTop="30dp"
         android:layout_marginLeft="150dp"
         android:layout_toRightOf="@+id/depart_time"
-        android:text="Depart city"
-        />
+        android:text="Kota pemberangkatan"
+        android:textColor="@color/white"
+        android:fontFamily="@font/roboto"/>
 
     <TextView
         android:id="@+id/depart_place"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/depart_city"
-        android:layout_marginTop="10dp"
         android:layout_marginLeft="150dp"
+        android:layout_marginTop="10dp"
         android:layout_toRightOf="@+id/depart_time"
-        android:text="Depart place"
-        />
+        android:fontFamily="@font/roboto"
+        android:text="Berangkat dari tempat"
+        android:textColor="@color/white" />
 
     <TextView
         android:id="@+id/depart_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/depart_time"
-        android:layout_marginTop="10dp"
         android:layout_marginLeft="30dp"
-        android:text="Depart date"
-        />
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/roboto"
+        android:text="Tanggal pemberangkatan"
+        android:textColor="@color/white" />
 
     <TextView
         android:id="@+id/estimate_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/depart_date"
-        android:layout_marginTop="30dp"
         android:layout_marginLeft="30dp"
-        android:text="Estimate time"
-        />
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/roboto"
+        android:text="Perkiraan waktu:"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/arrival_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/estimate_time"
-        android:layout_marginTop="30dp"
         android:layout_marginLeft="30dp"
-        android:text="Arrival time"
-        />
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/roboto"
+        android:text="Jam kedatangan"
+        android:textColor="@color/white" />
 
     <TextView
         android:id="@+id/arrival_city"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/estimate_time"
-        android:layout_marginTop="30dp"
         android:layout_marginLeft="150dp"
+        android:layout_marginTop="15dp"
         android:layout_toRightOf="@id/arrival_time"
-        android:text="Arrival city"
-        />
+        android:fontFamily="@font/roboto"
+        android:text="Kota kedatangan"
+        android:textColor="@color/white" />
 
     <TextView
         android:id="@+id/arrival_place"
@@ -133,18 +173,20 @@
         android:layout_marginTop="10dp"
         android:layout_marginLeft="150dp"
         android:layout_toRightOf="@id/arrival_time"
-        android:text="Arrival place"
-        />
+        android:text="Tempat kedatangan"
+        android:textColor="@color/white"
+        android:fontFamily="@font/roboto"/>
 
     <TextView
         android:id="@+id/arrival_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/arrival_time"
-        android:layout_marginTop="10dp"
         android:layout_marginLeft="30dp"
-        android:text="Arrival date"
-        />
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/roboto"
+        android:text="Tanggal kedatangan"
+        android:textColor="@color/white" />
 
     <TextView
         android:id="@+id/rute_title"
@@ -152,55 +194,70 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/arrival_date"
         android:layout_marginTop="30dp"
+        android:fontFamily="@font/roboto"
         android:text="Rute :"
-        />
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/rute"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/rute_title"
-        android:text="-------------------"
-        android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"
-        />
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/roboto"
+        android:text="__________________________"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/jml_penumpang_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/rute"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/roboto"
         android:text="Jumlah Penumpang :"
-        />
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/jml_penumpang_sum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/jml_penumpang_title"
-        android:text="-------------------"
-        android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"
-        />
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/roboto"
+        android:text="__________________________"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/payment_sum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/jml_penumpang_sum"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/roboto"
         android:text="Total Pembayaran :"
-        />
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/payment_sum_total"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/payment_sum"
-        android:text="-------------------"
-        android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"
-        />
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/roboto"
+        android:text="__________________________"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
 
 </RelativeLayout>

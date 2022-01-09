@@ -55,7 +55,7 @@ public class UpdateActivity extends AppCompatActivity {
         EtTanggalLahirBiodata = (EditText) findViewById(R.id.EtTanggalLahirBiodata);
         EtNoHandphone = (EditText) findViewById(R.id.EtNoHandphone);
         EtAlamat = (EditText) findViewById(R.id.EtAlamat);
-        Tv13 = (TextView) findViewById(R.id.Tv13);
+//        Tv13 = (TextView) findViewById(R.id.Tv13);
 
         email_user = sessionManager.getUserDetail().get(SessionManager.EMAIL_USER);
         nama_user = sessionManager.getUserDetail().get(SessionManager.NAMA_USER);

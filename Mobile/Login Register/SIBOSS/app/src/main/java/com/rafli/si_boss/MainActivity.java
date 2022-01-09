@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity  {
     TextView etEmail, etName;
     SessionManager sessionManager;
     String email, name;
-    Button BtnKeluar,BtnAkunSaya;
+    Button BtnKeluar,BtnAkunSaya,BtnPemesanan,BtnPembayaran;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +34,11 @@ public class MainActivity extends AppCompatActivity  {
 
         etEmail = findViewById(R.id.etMainEmail);
         etName = findViewById(R.id.etMainName);
+
         BtnKeluar =findViewById(R.id.BtnKeluar);
         BtnAkunSaya = findViewById(R.id.BtnAkunSaya);
+        BtnPemesanan = findViewById(R.id.BtnPemesanan);
+        BtnPembayaran = findViewById(R.id.BtnPembayaran);
 
         email = sessionManager.getUserDetail().get(SessionManager.EMAIL_USER);
         name = sessionManager.getUserDetail().get(SessionManager.NAMA_USER);
@@ -59,6 +62,22 @@ public class MainActivity extends AppCompatActivity  {
                 startActivity(intent);
                 sessionManager.logoutSession();
                 moveToLogin();
+            }
+        });
+
+        BtnPemesanan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), order_activity.class);
+                startActivity(intent);
+            }
+        });
+
+        BtnPembayaran.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), PaymentFormActivity.class);
+                startActivity(intent);
             }
         });
     }

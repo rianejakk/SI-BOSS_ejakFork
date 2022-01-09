@@ -14,6 +14,7 @@
     <color name="lightGrey">#EAEAEA</color>
     <color name="white">#FFFFFF</color>
     <color name="blue">#0404A9</color>
+    <color name="yellow">#FFFF00</color>
 
         <!-- dots inactive colors -->
         <color name="dot_dark_screen1">#FFFFF0</color>

@@ -30,7 +30,7 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="50dp"
                 android:background="@drawable/round_img"
-                android:src="@drawable/profile" />
+                android:src="@drawable/ic_baseline_account_circle_24" />
 
             <Button
                 android:id="@+id/Btn_Ubah_Foto"
@@ -207,7 +207,7 @@
                         android:layout_marginTop="12dp"
                         android:textColor="#1154F4"
                         android:textSize="18sp"
-                        android:text="Akun anda"
+                        android:text="Profile"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                 </LinearLayout>

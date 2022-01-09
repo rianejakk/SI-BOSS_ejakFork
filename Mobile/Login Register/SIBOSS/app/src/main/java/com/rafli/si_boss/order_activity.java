@@ -15,13 +15,14 @@ import java.util.Locale;
 
 public class order_activity extends AppCompatActivity {
 
+    Button Btncari;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.order_screen);
 
-        Button search_btn = findViewById(R.id.cari);
-        search_btn.setOnClickListener(view -> {
+        Btncari = findViewById(R.id.Btncari);
+        Btncari.setOnClickListener(view -> {
             Intent i = new Intent(getApplicationContext(), search_result.class);
             startActivity(i);
         });

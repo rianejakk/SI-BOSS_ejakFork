@@ -39,11 +39,10 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_centerInParent="true"
-            android:layout_centerHorizontal="true"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="50dp"
             android:background="@drawable/round_img"
-            android:src="@drawable/profile" />
+            android:src="@drawable/ic_baseline_account_circle_24"/>
 
         <Button
             android:id="@+id/Btn_Ubah_Foto"
@@ -102,11 +101,11 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginRight="10dp"
+                android:background="@drawable/gradient_bg"
                 android:fontFamily="@font/roboto"
                 android:text="Nama lengkap"
                 android:textColor="@color/black"
-                android:textSize="12sp"
-                android:background="@drawable/gradient_bg"/>
+                android:textSize="12sp" />
 
             <EditText
                 android:id="@+id/EtNamaBiodata"
@@ -399,16 +398,16 @@
                     android:textAllCaps="false"
                     android:textColor="@color/white" />
 
-                <TextView
-                    android:id="@+id/Tv13"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginTop="8dp"
-                    android:text="text view 12"
-                    android:textAllCaps="false"
-                    android:textColor="@color/black"
-                    android:layout_below="@+id/BtnUbah"/>
+<!--                <TextView-->
+<!--                    android:id="@+id/Tv13"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_alignParentLeft="true"-->
+<!--                    android:layout_marginTop="8dp"-->
+<!--                    android:text="text view 12"-->
+<!--                    android:textAllCaps="false"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:layout_below="@+id/BtnUbah"/>-->
             </RelativeLayout>
 
         </RelativeLayout>

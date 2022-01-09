@@ -55,6 +55,7 @@
         <entry key="..\:/Users/ACER/AndroidStudioProjects/SIBOSS/app/src/main/res/layout/app_bar_navigation_bar.xml" value="0.1921875" />
         <entry key="..\:/Users/ACER/AndroidStudioProjects/SIBOSS/app/src/main/res/layout/beranda.xml" value="0.3574074074074074" />
         <entry key="..\:/Users/ACER/AndroidStudioProjects/SIBOSS/app/src/main/res/layout/beranda1.xml" value="0.1921875" />
+        <entry key="..\:/Users/ACER/AndroidStudioProjects/SIBOSS/app/src/main/res/layout/bus_detail.xml" value="0.17708333333333334" />
         <entry key="..\:/Users/ACER/AndroidStudioProjects/SIBOSS/app/src/main/res/layout/content_content.xml" value="0.1" />
         <entry key="..\:/Users/ACER/AndroidStudioProjects/SIBOSS/app/src/main/res/layout/content_main.xml" value="0.25" />
         <entry key="..\:/Users/ACER/AndroidStudioProjects/SIBOSS/app/src/main/res/layout/content_navigation_bar.xml" value="0.10914855072463768" />
@@ -74,7 +75,8 @@
         <entry key="..\:/Users/ACER/AndroidStudioProjects/SIBOSS/app/src/main/res/layout/nav_header_navigation_bar.xml" value="0.17" />
         <entry key="..\:/Users/ACER/AndroidStudioProjects/SIBOSS/app/src/main/res/layout/nyoba.xml" value="0.25" />
         <entry key="..\:/Users/ACER/AndroidStudioProjects/SIBOSS/app/src/main/res/layout/order_cancel.xml" value="0.25" />
-        <entry key="..\:/Users/ACER/AndroidStudioProjects/SIBOSS/app/src/main/res/layout/payment_form.xml" value="0.33" />
+        <entry key="..\:/Users/ACER/AndroidStudioProjects/SIBOSS/app/src/main/res/layout/order_screen.xml" value="0.25" />
+        <entry key="..\:/Users/ACER/AndroidStudioProjects/SIBOSS/app/src/main/res/layout/payment_form.xml" value="0.25" />
         <entry key="..\:/Users/ACER/AndroidStudioProjects/SIBOSS/app/src/main/res/layout/penumpang_item.xml" value="0.25" />
         <entry key="..\:/Users/ACER/AndroidStudioProjects/SIBOSS/app/src/main/res/layout/result_item.xml" value="0.16" />
         <entry key="..\:/Users/ACER/AndroidStudioProjects/SIBOSS/app/src/main/res/layout/result_search.xml" value="0.22" />
