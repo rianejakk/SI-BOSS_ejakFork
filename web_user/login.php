@@ -17,7 +17,6 @@ if (isset($_COOKIE['cookie_email'])) {
     $passwordVal = $row['password_user'];
     $tempat = $row['tempat_lahir_user'];
     $tanggal = $row['tanggal_lahir_user'];
-    $level = $row['level'];
     $jk = $row['jenis_kelamin_user'];
     $alamat = $row['alamat_user'];
     $noHP = $row['no_hp_user'];
@@ -51,7 +50,6 @@ if (isset($_POST['submit'])) {
       $passwordVal = $row['password_user'];
       $tempat = $row['tempat_lahir_user'];
       $tanggal = $row['tanggal_lahir_user'];
-      $level = $row['level'];
       $jk = $row['jenis_kelamin_user'];
       $alamat = $row['alamat_user'];
       $noHP = $row['no_hp_user'];
@@ -64,7 +62,6 @@ if (isset($_POST['submit'])) {
         $_SESSION['name'] = $nama;
         $_SESSION['email'] = $emailVal;
         $_SESSION['pass'] = $passwordVal;
-        $_SESSION['level'] = $level;
         $_SESSION['tempat'] = $tempat;
         $_SESSION['tanggal'] = $tanggal;
         $_SESSION['jk'] = $jk;

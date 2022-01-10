@@ -18,7 +18,6 @@ $sesAlamat = $_SESSION['alamat'];
 $sesNoHP = $_SESSION['noHP'];
 $sesEmail = $_SESSION['email'];
 $sesPass = $_SESSION['pass'];
-$sesLvl = $_SESSION['level'];
 $sesFoto = $_SESSION['foto'];
 
 function rupiah($angka)
@@ -67,43 +66,31 @@ function rupiah($angka)
               <a class="nav-link" href="index.php#about">About</a>
             </li>
           </ul>
-
-          <?php if (!isset($_SESSION['level'])) : ?>
-            <div class="ms-auto myClass">
-              <a href="login.php" class="text-decoration-none">
-                <button class="btn b-cust me-2 roundedBtn text-white" id="custBtnLogin">Masuk</button>
-              </a>
-              <a href="daftar.php" class="text-decoration-none">
-                <button class="btn roundedBtn b-cust" id="custBtnDaftar">Daftar</button>
-              </a>
-            </div>
-
-          <?php elseif ($_SESSION['level'] == "0") : ?>
+          <?php
+          if (isset($_SESSION['email'])) { ?>
             <div class="ms-auto myClass">
               <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a href="#" class="nav-link transition">
-                    <i class="far fa-bell"></i>
-                    <?php
-                    $data = $obj->pesananSaya($sesID);
-                    $num = $data->rowCount();
-                    ?>
-                    <span class="badge alert-danger p-1"> <?php echo $num; ?></span>
-                  </a>
-                </li>
+                <?php
+                $data = $obj->pesananSaya($sesID);
+                $num = $data->rowCount();
+                ?>
                 <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="ropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <a class="nav-link dropdown-toggle badgeCust" href="#" id="ropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <img class="avatar rounded-circle me-2" src="../Web Admin/fotoUser/<?php echo $sesFoto; ?>" alt="foto">
-                    <span><?php echo $sesName; ?></span>
+                    <span class="position-relative showBadge" id="namaProfil"><?php echo $sesName; ?>
+                      <span class="position-absolute translate-middle badge rounded-pill colorRed show" style="left: -8%; top: -30%;" id="badgeOrder">
+                        <?php echo $num; ?>
+                      </span>
+                    </span>
                   </a>
-                  <ul class="dropdown-menu dropdown-menu-end myRounded" aria-labelledby="navbarDarkDropdownMenuLink">
-                    <li><a class="dropdown-item s14" href="#" data-bs-toggle="modal" data-bs-target="#editDataAdministrator<?php echo $sesID ?>">
+                  <ul class="dropdown-menu dropdown-menu-end myRounded border-0 shadow mod mt-2 navDrop" aria-labelledby="navbarDarkDropdownMenuLink">
+                    <li><a class="dropdown-item s14" href="#" data-bs-toggle="modal" data-bs-target="#editDataAdministrator<?php echo $sesID ?>" id="editProfile">
                         <i class="fas fa-user-edit me-2"></i>
                         <span>Edit Profil</span>
                       </a></li>
-                    <li><a class="dropdown-item s14" href="pembayaran.php" data-bs-toggle="modal" data-bs-target="#pesananSaya<?php echo $sesID ?>">
+                    <li><a class="dropdown-item s14" href="pembayaran.php" data-bs-toggle="modal" data-bs-target="#pesananSaya<?php echo $sesID ?>" id="myOrder">
                         <i class="fas fa-receipt me-3"></i>
-                        <span>Pesanan saya</span>
+                        <span class="position-relative">Pesanan saya <span class="badge colorRed" style="color: white  !important;"><?php echo $num; ?></span></span>
                       </a></li>
                     <li>
                       <hr class="dropdown-divider">
@@ -116,7 +103,19 @@ function rupiah($angka)
                 </li>
               </ul>
             </div>
-          <?php endif ?>
+          <?php
+          } else { ?>
+            <div class="ms-auto myClass">
+              <a href="login.php" class="text-decoration-none">
+                <button class="btn b-cust me-2 roundedBtn text-white" id="custBtnLogin">Masuk</button>
+              </a>
+              <a href="daftar.php" class="text-decoration-none">
+                <button class="btn roundedBtn b-cust" id="custBtnDaftar">Daftar</button>
+              </a>
+            </div>
+          <?php
+          }
+          ?>
         </div>
       </div>
     </nav>

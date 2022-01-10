@@ -15,7 +15,6 @@ if (isset($_SESSION['email'])) {
   $sesNoHP = $_SESSION['noHP'];
   $sesEmail = $_SESSION['email'];
   $sesPass = $_SESSION['pass'];
-  $sesLvl = $_SESSION['level'];
   $sesFoto = $_SESSION['foto'];
 }
 ?>
@@ -48,7 +47,7 @@ if (isset($_SESSION['email'])) {
           <i class="icon fas fa-bars"></i>
         </button>
         <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
-          <ul class="navbar-nav ms-auto menu">
+          <ul class="navbar-nav ms-auto menu ps-lg-5">
             <li class="nav-item ms-3 me-2">
               <a class="nav-link active" aria-current="page" href="#home">Home</a>
             </li>
@@ -62,43 +61,31 @@ if (isset($_SESSION['email'])) {
               <a class="nav-link" href="#about">About</a>
             </li>
           </ul>
-
-          <?php if (!isset($_SESSION['level'])) : ?>
-            <div class="ms-auto myClass">
-              <a href="login.php" class="text-decoration-none">
-                <button class="btn b-cust me-2 roundedBtn text-white" id="custBtnLogin">Masuk</button>
-              </a>
-              <a href="daftar.php" class="text-decoration-none">
-                <button class="btn roundedBtn b-cust" id="custBtnDaftar">Daftar</button>
-              </a>
-            </div>
-
-          <?php elseif ($_SESSION['level'] == "0") : ?>
+          <?php
+          if (isset($_SESSION['email'])) { ?>
             <div class="ms-auto myClass">
               <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a href="#" class="nav-link transition">
-                    <i class="far fa-bell"></i>
-                    <?php
-                    $data = $obj->pesananSaya($sesID);
-                    $num = $data->rowCount();
-                    ?>
-                    <span class="badge alert-danger p-1"> <?php echo $num; ?></span>
-                  </a>
-                </li>
+                <?php
+                $data = $obj->pesananSaya($sesID);
+                $num = $data->rowCount();
+                ?>
                 <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="ropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <a class="nav-link dropdown-toggle badgeCust" href="#" id="ropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <img class="avatar rounded-circle me-2" src="../Web Admin/fotoUser/<?php echo $sesFoto; ?>" alt="foto">
-                    <span class="text-white" id="namaProfil"><?php echo $sesName; ?></span>
+                    <span class="text-white position-relative showBadge" id="namaProfil"><?php echo $sesName; ?>
+                      <span class="position-absolute translate-middle badge rounded-pill colorRed show" style="left: -8%; top: -30%;" id="badgeOrder">
+                        <?php echo $num; ?>
+                      </span>
+                    </span>
                   </a>
-                  <ul class="dropdown-menu dropdown-menu-end myRounded" aria-labelledby="navbarDarkDropdownMenuLink">
-                    <li><a class="dropdown-item s14" href="#" data-bs-toggle="modal" data-bs-target="#editDataAdministrator<?php echo $sesID ?>">
+                  <ul class="dropdown-menu dropdown-menu-end myRounded border-0 shadow mod mt-2 navDrop" aria-labelledby="navbarDarkDropdownMenuLink">
+                    <li><a class="dropdown-item s14" href="#" data-bs-toggle="modal" data-bs-target="#editDataAdministrator<?php echo $sesID ?>" id="editProfile">
                         <i class="fas fa-user-edit me-2"></i>
                         <span>Edit Profil</span>
                       </a></li>
-                    <li><a class="dropdown-item s14" href="pembayaran.php" data-bs-toggle="modal" data-bs-target="#pesananSaya<?php echo $sesID ?>">
+                    <li><a class="dropdown-item s14" href="pembayaran.php" data-bs-toggle="modal" data-bs-target="#pesananSaya<?php echo $sesID ?>" id="myOrder">
                         <i class="fas fa-receipt me-3"></i>
-                        <span>Pesanan saya</span>
+                        <span class="position-relative">Pesanan saya <span class="badge colorRed" style="color: white  !important;"><?php echo $num; ?></span></span>
                       </a></li>
                     <li>
                       <hr class="dropdown-divider">
@@ -111,7 +98,19 @@ if (isset($_SESSION['email'])) {
                 </li>
               </ul>
             </div>
-          <?php endif ?>
+          <?php
+          } else { ?>
+            <div class="ms-auto myClass">
+              <a href="login.php" class="text-decoration-none">
+                <button class="btn b-cust me-2 roundedBtn text-white" id="custBtnLogin">Masuk</button>
+              </a>
+              <a href="daftar.php" class="text-decoration-none">
+                <button class="btn roundedBtn b-cust" id="custBtnDaftar">Daftar</button>
+              </a>
+            </div>
+          <?php
+          }
+          ?>
         </div>
       </div>
     </nav>
@@ -134,7 +133,7 @@ if (isset($_SESSION['email'])) {
             </div>
             <div class="modal-body">
               <div class="row">
-                <div class="col-lg-6 mb-3">
+                <div class="col-lg-12 mb-3">
                   <label for="inputId" class="form-label">NIK</label>
                   <input type="text" class="form-control form-control-user2" id="inputId" name="txt_id_user_admin" value="<?php echo $sesID ?>" placeholder="" readonly />
                 </div>
@@ -217,7 +216,7 @@ if (isset($_SESSION['email'])) {
 
               <div class="modal-footer">
                 <button class="btn btn-secondary roundedBtn" type="button" data-bs-dismiss="modal">Batal</button>
-                <!-- <button type="submit" class="btn text-white colorPrimary roundedBtn" name="simpan">Update</button> -->
+                <button type="submit" class="btn text-white colorPrimary roundedBtn" name="simpan">Update</button>
               </div>
             </div>
         </form>
@@ -257,11 +256,6 @@ if (isset($_SESSION['email'])) {
               $data = $obj->pesananSaya($sesID);
               $no = 1;
               if ($data->rowCount() > 0) {
-                if ($sesLvl == 1) {
-                  $dis = "";
-                } else {
-                  $dis = "disabled";
-                }
                 while ($row = $data->fetch(PDO::FETCH_ASSOC)) {
                   $id_pemesanan = $row['id_pemesanan'];
                   $nik_user = $row['nik_user'];
@@ -344,7 +338,8 @@ if (isset($_SESSION['email'])) {
             <div class="carousel-caption">
               <h2 class="animate__animated animate__zoomIn" style="animation-delay: 0.5s">Surabaya</h2>
               <p class="animate__animated animate__fadeInUp" style="animation-delay: 0.5s">
-                Kota Surabaya terkenal dengan sebutan Kota Pahlawan. Kota terbesar kedua di Indonesia setelah Kota Jakarta
+                Kota Surabaya terkenal dengan sebutan Kota Pahlawan. Kota terbesar kedua di Indonesia setelah Kota
+                Jakarta
                 ini dikenal pula sebagai pusat bisnis, industri, perdagangan, dan pendidikan di kawasan timur Pulau Jawa
                 dan sekitarnya.
               </p>
@@ -356,7 +351,8 @@ if (isset($_SESSION['email'])) {
               <h2 class="animate__animated animate__zoomIn" style="animation-delay: 0.5s">Bali</h2>
               <p class="animate__animated animate__fadeInUp" style="animation-delay: 0.5s">
                 Bali merupakan pulau pariwisata terkemuka di Indonesia. Tempat wisata pegunungan, pantai, hingga pusat
-                kota yang berbeda dari tempat lain di dunia. Perpaduan alam dan budaya yang khas menjadi magnet tersendiri
+                kota yang berbeda dari tempat lain di dunia. Perpaduan alam dan budaya yang khas menjadi magnet
+                tersendiri
                 bagi jutaan wisatawan domestik maupun mancanegara untuk berkunjung ke pulau ini.
               </p>
             </div>
@@ -367,7 +363,8 @@ if (isset($_SESSION['email'])) {
               <h2 class="animate__animated animate__zoomIn" style="animation-delay: 0.5s">Magelang</h2>
               <p class="animate__animated animate__fadeInUp px-5" style="animation-delay: 0.5s">
                 Candi Borobudur simbol inspiratif. Sebuah tempat yang pas untuk mencari ketenangan jiwa. Kami ingin
-                memfasilitasi itu. Sehingga Borobudur menjadi pemersatu beragam latar belakang agama, politik, sosial, dan
+                memfasilitasi itu. Sehingga Borobudur menjadi pemersatu beragam latar belakang agama, politik, sosial,
+                dan
                 budaya. Semua melebur berharmonisasi di sini.
               </p>
             </div>
@@ -387,7 +384,8 @@ if (isset($_SESSION['email'])) {
             <div class="carousel-caption">
               <h2 class="animate__animated animate__zoomIn" style="animation-delay: 0.5s">Malang</h2>
               <p class="animate__animated animate__fadeInUp" style="animation-delay: 0.5s">
-                Malang dengan julukan Kota Paris Van Java mampu menarik wisatawan lokal maupun wisatawan mancanegara akan
+                Malang dengan julukan Kota Paris Van Java mampu menarik wisatawan lokal maupun wisatawan mancanegara
+                akan
                 keindahan kotanya yang banyak sekali tempat wisata mulai dari museum hingga wisata paralayang.
               </p>
             </div>
@@ -415,11 +413,6 @@ if (isset($_SESSION['email'])) {
               $datasd = $obj->lihatTerminal();
               $no = 1;
               if ($datasd->rowCount() > 0) {
-                if ($sesLvl == 1) {
-                  $dis = "";
-                } else {
-                  $dis = "disabled";
-                }
                 while ($row = $datasd->fetch(PDO::FETCH_ASSOC)) {
                   $id_terminalst = $row['id_terminal'];
                   $nama_terminalst = $row['nama_terminal'];
@@ -439,11 +432,6 @@ if (isset($_SESSION['email'])) {
               $datasd = $obj->lihatTerminal();
               $no = 1;
               if ($datasd->rowCount() > 0) {
-                if ($sesLvl == 1) {
-                  $dis = "";
-                } else {
-                  $dis = "disabled";
-                }
                 while ($row = $datasd->fetch(PDO::FETCH_ASSOC)) {
                   $id_terminalst = $row['id_terminal'];
                   $nama_terminalst = $row['nama_terminal'];
@@ -475,8 +463,10 @@ if (isset($_SESSION['email'])) {
           <div class="col-sm-6 pe-sm-5 text-center text-sm-start">
             <h3>SI-BOSS Express siap membantu Anda bepergian !</h3>
             <p class="my-4 pe-xl-8">Anda kesulitan mencari tiket bis ? </p>
-            <p class="my-4 pe-xl-8">Kami bisa membantu Anda dalam mencari tiket bis sesuai tujuan yang Anda inginkan dengan mudah dan cepat. Yuk cek disini !</p>
-            <a href="#"><button class="btn colorPrimary text-white d-none d-sm-inline-block">Cek <span>Tiket Anda Sekarang !</span></button>
+            <p class="my-4 pe-xl-8">Kami bisa membantu Anda dalam mencari tiket bis sesuai tujuan yang Anda inginkan
+              dengan mudah dan cepat. Yuk cek disini !</p>
+            <a href="#"><button class="btn colorPrimary text-white d-none d-sm-inline-block">Cek <span>Tiket Anda
+                  Sekarang !</span></button>
             </a>
           </div>
           <div class="col-sm-6">
@@ -496,7 +486,8 @@ if (isset($_SESSION['email'])) {
         <div class="row myrow1 py-sm-3 animate__animated animate__fadeInRight">
           <div class="col-sm-6 ps-sm-5 text-center text-sm-start order-sm-2">
             <h3>Banyaknya rute perjalanan</h3>
-            <p class="my-4 pe-xl-8">SI-BOSS Express memiliki rute perjalanan yang mengantarkan Anda ke kota tujuan dengan opsi pemberhentian pada terminal yang diinginkan.</p>
+            <p class="my-4 pe-xl-8">SI-BOSS Express memiliki rute perjalanan yang mengantarkan Anda ke kota tujuan
+              dengan opsi pemberhentian pada terminal yang diinginkan.</p>
             <p class="my-4 pe-xl-8">Lakukan pemesanan tiket bus dimanapun dan kapanpun dengan mudah dan cepat.</p>
           </div>
           <div class="col-sm-6 order-sm-1">
@@ -509,7 +500,7 @@ if (isset($_SESSION['email'])) {
     <section class="py-5 bg-light" id="help">
       <div class="container py-1">
         <div class="row myrow1 mb-4">
-          <div class="col-12 text-center">
+          <div class="col-12 text-center p-3">
             <h3>Cara Pesan Tiket di <br /><span class="span1">SI-BOSS</span><span class="span2">Express</span></h3>
           </div>
         </div>
@@ -564,7 +555,8 @@ if (isset($_SESSION['email'])) {
                 <img src="assets/img/5.png" alt="step1" height="150" alt="" />
                 <div class="card-body px-2">
                   <h3 class="mt-3">Pembayaran</h3>
-                  <p class="mt-2 mb-0">Lakukan pembayaran dengan tranfer ke rekening yang tersedia untuk cetak tiket.</p>
+                  <p class="mt-2 mb-0">Lakukan pembayaran dengan tranfer ke rekening yang tersedia untuk cetak tiket.
+                  </p>
                 </div>
               </div>
             </div>
@@ -587,12 +579,13 @@ if (isset($_SESSION['email'])) {
     <section class="py-5 bg-white" id="about">
       <div class="container py-1">
         <div class="row myrow1 mb-4">
-          <div class="col-12 text-center">
+          <div class="col-12 text-center p-3">
             <h3 class="mb-5">Tentang Kami</h3>
             <i class=""></i>
             <p class="px-3 myPagrph"><b>SI-BOSS Express</b> dikembangkan oleh mahasiswa prodi Teknik Informatika kampus
               Politeknik Negeri Jember. Sistem Informasi ini digunakan untuk pemesanan tiket bus antar kota
-              baik dalam provinsi maupun luar provinsi dengan mudah. Memesan tiket bus di SI-BOSS Express dapat dilakukan dimanapun
+              baik dalam provinsi maupun luar provinsi dengan mudah. Memesan tiket bus di SI-BOSS Express dapat
+              dilakukan dimanapun
               dan kapanpun dengan mudah dan cepat.</p>
           </div>
         </div>
@@ -704,6 +697,7 @@ if (isset($_SESSION['email'])) {
       }
     });
     const sections = document.querySelectorAll('section[id]')
+
     function scrollActive() {
       const scrollY = window.pageYOffset
       sections.forEach(current => {
@@ -719,5 +713,62 @@ if (isset($_SESSION['email'])) {
     }
     window.addEventListener('scroll', scrollActive)
   </script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $("#ropdownProfile").click(function() {
+        if($('#namaProfil').is('.showBadge')){
+          $('#namaProfil').removeClass('showBadge');
+          $('#badgeOrder').removeClass('show');
+          $('#namaProfil').addClass('hideBadge');
+          $('#badgeOrder').addClass('hidden');
+        } else {
+          $('#namaProfil').removeClass('hideBadge');
+          $('#badgeOrder').removeClass('hidden');
+          $('#namaProfil').addClass('showBadge');
+          $('#badgeOrder').addClass('show');
+        }
+      });
+      $("#myOrder").click(function() {
+        if($('#namaProfil').is('.showBadge')){
+          $('#namaProfil').removeClass('showBadge');
+          $('#badgeOrder').removeClass('show');
+          $('#namaProfil').addClass('hideBadge');
+          $('#badgeOrder').addClass('hidden');
+        } else {
+          $('#namaProfil').removeClass('hideBadge');
+          $('#badgeOrder').removeClass('hidden');
+          $('#namaProfil').addClass('showBadge');
+          $('#badgeOrder').addClass('show');
+        }
+      });
+      $("#editProfile").click(function() {
+        if($('#namaProfil').is('.showBadge')){
+          $('#namaProfil').removeClass('showBadge');
+          $('#badgeOrder').removeClass('show');
+          $('#namaProfil').addClass('hideBadge');
+          $('#badgeOrder').addClass('hidden');
+        } else {
+          $('#namaProfil').removeClass('hideBadge');
+          $('#badgeOrder').removeClass('hidden');
+          $('#namaProfil').addClass('showBadge');
+          $('#badgeOrder').addClass('show');
+        }
+      });
+      $(body).click(function() {
+        if($('#namaProfil').is('.showBadge')){
+          $('#namaProfil').removeClass('showBadge');
+          $('#badgeOrder').removeClass('show');
+          $('#namaProfil').addClass('hideBadge');
+          $('#badgeOrder').addClass('hidden');
+        } else {
+          $('#namaProfil').removeClass('hideBadge');
+          $('#badgeOrder').removeClass('hidden');
+          $('#namaProfil').addClass('showBadge');
+          $('#badgeOrder').addClass('show');
+        }
+      });
+    });
+  </script>
 </body>
+
 </html>

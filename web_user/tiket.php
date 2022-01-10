@@ -18,7 +18,6 @@ $sesAlamat = $_SESSION['alamat'];
 $sesNoHP = $_SESSION['noHP'];
 $sesEmail = $_SESSION['email'];
 $sesPass = $_SESSION['pass'];
-$sesLvl = $_SESSION['level'];
 $sesFoto = $_SESSION['foto'];
 
 function rupiah($angka)

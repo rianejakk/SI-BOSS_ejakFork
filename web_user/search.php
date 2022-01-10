@@ -1,6 +1,6 @@
 <?php
 require 'function.php';
-$filter = query("SELECT * FROM wberangkat");
+$filter = mysqli_query($koneksi, "SELECT * FROM wberangkat");
 ?>
 
 <!doctype html>

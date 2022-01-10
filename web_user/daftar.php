@@ -34,14 +34,10 @@ if (isset($_COOKIE['cookie_email'])) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  $_POST['level'] = 0;
-  // echo json_encode($_POST); die();
   $nama = $_POST['txt_nama'];
   $jenis_kelamin = $_POST['Rbtn_jenis_kelamin'];
   $alamat = $_POST['txt_alamat'];
   $no_hp = $_POST['txt_no_hp'];
-  // $foto = $_POST['txt_foto'];
-  $level = $_POST['level'];
   $nik = $_POST['txt_nik'];
   $tempat_lahir = $_POST['txt_tempat_lahir'];
   $tanggal_lahir = $_POST['txt_tanggal_lahir'];

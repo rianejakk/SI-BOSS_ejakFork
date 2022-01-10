@@ -216,9 +216,9 @@ class crud extends koneksi {
         }
     }
 
-    public function insertUserRegistrasi($nik_user, $nama_user, $tempat_lahir_user, $tanggal_lahir_user, $jenis_kelamin_user, $alamat_user, $no_hp_user, $email_user, $password_user, $level){
+    public function insertUserRegistrasi($nik_user, $nama_user, $tempat_lahir_user, $tanggal_lahir_user, $jenis_kelamin_user, $alamat_user, $no_hp_user, $email_user, $password_user){
         try{
-            $sql ="INSERT INTO user(nik_user, nama_user, tempat_lahir_user, tanggal_lahir_user, jenis_kelamin_user, alamat_user, no_hp_user, email_user, password_user, level) VALUES (:nik_user, :nama_user, :tempat_lahir_user, :tanggal_lahir_user, :jenis_kelamin_user, :alamat_user, :no_hp_user, :email_user, :password_user, :level)";
+            $sql ="INSERT INTO user(nik_user, nama_user, tempat_lahir_user, tanggal_lahir_user, jenis_kelamin_user, alamat_user, no_hp_user, email_user, password_user) VALUES (:nik_user, :nama_user, :tempat_lahir_user, :tanggal_lahir_user, :jenis_kelamin_user, :alamat_user, :no_hp_user, :email_user, :password_user)";
             $result = $this->koneksi->prepare($sql);
             $result->bindParam(":nik_user", $nik_user);
             $result->bindParam(":nama_user", $nama_user);
@@ -229,7 +229,6 @@ class crud extends koneksi {
             $result->bindParam(":no_hp_user", $no_hp_user);
             $result->bindParam(":email_user", $email_user);
             $result->bindParam(":password_user", $password_user);
-            $result->bindParam(":level", $level);
             $result->execute();
             return true;
         }

@@ -476,7 +476,7 @@ input[type="search"]:focus {
 }
 
 .panel-data {
-  height: 195px;
+  height: 205px;
 }
 
 .panel-data2 {
@@ -639,6 +639,21 @@ input[type="search"]:focus {
   height: 525px;
   top: 80px;
 }
+
+ul.navDrop i{
+  color: rgba(207, 207, 207, 0.7) !important;
+}
+ul.navDrop span{
+  color: rgba(0,0,0,.7) !important;
+}
+ul.navDrop .dropdown-item:hover span{
+  color: #212529 !important;
+  font-family: Roboto-Medium;
+}
+ul.navDrop .dropdown-item:hover i{
+  color: #212529 !important;
+}
+
 
 /* Login */
 #particles-js {
